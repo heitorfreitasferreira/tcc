@@ -1,0 +1,285 @@
+\documentclass[dissertmst]{ppgco}
+%Não altere o comando seguinte. O título de seu trabalho será especificado mais adiante.
+\title{Template de Monografia do PPGCO}
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}				% Usa a fonte Latin Modern			
+\usepackage{makeidx}            	% Cria o indice
+\usepackage{hyperref}  			% Controla a formação do índice
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}			% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{graphicx}			% Inclusão de gráficos
+% ---
+
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo eesc
+% ---
+\usepackage{lipsum}				       % para geração de dummy text
+\usepackage[printonlyused]{acronym}
+\usepackage[table]{xcolor}
+% ---
+\usepackage{subfig}
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+%
+% Título:
+%	1. Título em português
+%	2. Título em inglês
+\titulo{Análise de Algoritmos Bio-inspirados aplicados ao Problema de TODO: A decidir}
+%
+% Autor:
+%	1. Nome completo do autor
+%	2. Formato de nome para bibliografia
+\autor{Heitor Freitas Ferreira}{Freitas Ferreira, Heitor}
+%
+% Cidade
+\local{Uberlândia}
+% Ano de defesa
+\data{2024}
+% Área de concentração da pesquisa
+\areaconcentracao{Ciência da Computação}
+% Nome do orientador
+\orientador{Dr. Claudiney Ramos Tinoco}
+% Nome do coorientador
+%\coorientador{Nome completo do coorientador}
+% ---
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Compila a lista de abreviaturas e siglas
+% ---
+\makenomenclature
+% ---
+
+% ---
+% Inserir ficha catalográfica
+%
+% Caso o comando \inserirfichacatalografica seja definido, a %ficha catalográfica
+% será inserida atrás da folha de rosto. Caso contrário a página será deixada em
+% branco.
+%
+% CUIDADO: Esta opção deve ser preenchida antes do comando \maketitle
+% ---
+%entre em contato com a biblioteca para obter a sua ficha catalográfica em arquivo pdf. Essa %folha só será inserida no documento após a sua defesa.
+
+\inserirfichacatalografica{fichaCatalografica.pdf}
+% ---
+
+% ---
+% Inserir folha de aprovação
+%
+% Caso o comando \inserirfolhaaprovacao seja definido, a a folha de aprovação
+% será inserida. Além disso, conforme Resolução CoPGr 5890, as informações 
+% de rodapé são inseridas apropriadamente na folha de rosto.
+%
+% CUIDADO: Esta opção deve ser preenchida antes do comando \maketitle
+% ---
+% baseie-se no modelo desse documento e gere a sua folha de %rosto em arquivo pdf.
+
+\inserirfolhaaprovacao{folhaAprovacao.pdf}
+% ---
+
+% ----
+% Início do documento
+% ----
+
+\begin{document}
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+% ---
+% Insere Capa, Folha de rosto, Ficha catalográfica (se inserida)
+% e folha de aprovação (se inserida).
+% ---
+\maketitle
+
+
+% ---
+% Dedicatória
+% ---
+\imprimirdedicatoria{Este trabalho é dedicado às crianças adultas que,\\
+   quando pequenas, sonharam em se tornar cientistas.}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\imprimiragradecimentos{
+Faça os agradecimentos àqueles que direta ou indiretamente contribuíram para que você tivesse obtido êxito. Inclua na sua lista agradecimentos aos órgãos de fomento, quando for o caso.
+}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\imprimirepigrafe{
+		``Sua vida pode ser dividida em dois períodos: antes de agora e a partir de agora.''\\
+		(Prof. Obvious Stating)
+}
+% ---
+
+% ---
+% RESUMO e ABSTRACT
+% ---
+
+% Resumo em português - as palavras entre chaves são as palavras-chave do trbalho
+\begin{resumo}{Latex. Abntex. Normas USP}
+
+ 	 Segundo a \citeonline[3.1-3.2]{NBR6028:2003}, o resumo deve ressaltar o  objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão  destes itens dependem do tipo de resumo (informativo ou indicativo) e do  tratamento que cada item recebe no documento original. O resumo deve ser  precedido da referência do documento, com exceção do resumo inserido no  próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do  resumo, antecedidas da expressão Palavras-chave:, separadas entre si por  ponto e finalizadas também por ponto.
+     
+    Para auxiliá-lo com o latex, o Apêndice 
+  \ref{cap_exemplos} apresenta os resultados dos comandos incluídos no arquivo ape\_comandos/abntex2-modelo-include-comandos.tex 
+
+\end{resumo}
+
+% Resumo em inglês
+\begin{abstract}{Latex. Abntex.}
+This is the english abstract.
+	
+\end{abstract}
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+\listailustracoes
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\listatabelas
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\listasiglas{abrev/Abreviaturas}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\sumario
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\mainmatter
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\include{cap_introducao/introducao}
+
+
+% ----------------------------------------------------------
+% Fundamentação
+% ----------------------------------------------------------
+\include{cap_fundamentacao/fundamentacao}
+
+% ----------------------------------------------------------
+% Proposta de pesquisa
+% ----------------------------------------------------------
+\include{cap_proposta/proposta}
+
+
+% ----------------------------------------------------------
+% Experimentos e avaliação dos resultados
+% ----------------------------------------------------------
+
+\include{cap_experimentos/experimentos}
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+\include{cap_conclusao/conclusao}
+
+
+ 
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{bib/abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+% ----------------------------------------------------------
+% Incluir Apêndice
+% ----------------------------------------------------------
+% ----------------------------------------------------------
+% Capitulo com exemplos de comandos inseridos de arquivo externo 
+% ----------------------------------------------------------
+\include{ape_comandos/abntex2-modelo-include-comandos}
+
+\end{apendicesenv}
+% ---
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+% Imprime uma página indicando o início dos anexos
+\partanexos
+% ---
+% Incluir Anexo
+% ---
+\chapter{Morbi ultrices rutrum lorem.}
+
+%o comando lipsum[] comando serve apenas para incluir texto no documento para efeito de visualização do formato.
+\lipsum[1-25]
+\section{Test}
+\lipsum[1-20]
+
+
+\end{anexosenv}
+
+
+\end{document}
