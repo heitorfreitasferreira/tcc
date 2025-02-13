@@ -20,20 +20,19 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
+		// WIP: Sugestão: isso virar parametro num futuro distante (proavelmente nunca)
 		frequency := map[int]int{
-			// 3: 1,
-			// 6: 1,
-			// 7:  1,
-			// 8:  1,
-			// 9:  1,
-			// 10: 1,
-			// 15: 1,
-			// 20: 1,
-			// 25: 1,
-			// 30: 1,
-			// 35: 1,
-			// 40: 1,
-			// 45: 1,
+			3:  5,
+			4:  5,
+			5:  5,
+			6:  5,
+			7:  5,
+			8:  5,
+			9:  5,
+			10: 5,
+			20: 5,
+			30: 5,
+			40: 5,
 			50: 5,
 		}
 		seed, err := cmd.Root().PersistentFlags().GetInt64("seed")
