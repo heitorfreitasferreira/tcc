@@ -60,7 +60,7 @@ func Save(graphs []Graph, folder string) error {
 }
 
 // Carrega os grafos a partir da pasta que foram salvos (provavelmente com a função Save acima)
-func Load(folder string) ([]Graph, error) {
+func LoadFromFolder(folder string) ([]Graph, error) {
 	files, err := os.ReadDir(folder)
 	if err != nil {
 		log.Fatalf("failed reading directory: %s", err)
@@ -87,4 +87,18 @@ func Load(folder string) ([]Graph, error) {
 	}
 
 	return graphs, nil
+}
+
+func LoadFromFile(file string) (Graph, error) {
+	data, err := os.ReadFile(file)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read file: %w", err)
+	}
+
+	graph, err := decode(string(data))
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode graph: %w", err)
+	}
+
+	return graph, nil
 }

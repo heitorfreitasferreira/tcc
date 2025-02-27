@@ -1,7 +1,7 @@
 package pso
 
 import (
-	"math"
+	"fmt"
 	"sort"
 )
 
@@ -10,9 +10,13 @@ type particle struct {
 	v            []float64
 	bestX        []float64
 	sequence     []int
-	clusterId    int
 	makespan     float64
 	bestMakespan float64
+}
+
+func (p particle) String() string {
+	return fmt.Sprintf("Particle{x: %v, v: %v, sequence: %v, makespan: %.2f, bestMakespan: %.2f}",
+		p.x, p.v, p.sequence, p.makespan, p.bestMakespan)
 }
 
 func (p *particle) setSequence() {
@@ -34,23 +38,14 @@ func (p *particle) setSequence() {
 	p.sequence = seq
 }
 
-func newParticle(dimention int) particle {
-	return particle{
-		x:            make([]float64, dimention),
-		v:            make([]float64, dimention),
-		bestX:        make([]float64, dimention),
-		bestMakespan: math.MaxFloat64,
-	}
-}
-
-func (p *particle) update(w, c1, c2, r1, r2 float64, gBest *particle) {
+func (p *particle) update(w, c1, c2, r1, r2 float64, gBest []float64) {
 	for i := range p.x {
 		// Inércia
 		p.v[i] *= w
 		// Cognitivo
 		p.v[i] += c1 * r1 * (p.bestX[i] - p.x[i])
 		// Social
-		p.v[i] += c2 * r2 * (gBest.x[i] - p.x[i])
+		p.v[i] += c2 * r2 * (gBest[i] - p.x[i])
 		// Att a posição
 		p.x[i] += p.v[i]
 	}

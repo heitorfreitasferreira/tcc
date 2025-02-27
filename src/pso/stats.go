@@ -15,15 +15,15 @@ func newStats() *SwarmStats {
 	}
 }
 
-func (ss SwarmStats) ToCsv() string {
-	return ss.csvHeaders() + ss.Builder.String()
+func (ss *SwarmStats) ToCsv() string {
+	return ss.csvHeaders() + ss.String()
 }
 
-func (ss SwarmStats) addIterData(mksp float64, x []float64, seq []int) {
-	ss.WriteString(fmt.Sprintf("%.3f%s %s%s %s\n", mksp, separator, encodeFloat(x), separator, encodeInt(seq)))
+func (ss *SwarmStats) addIterData(mksp float64, x []float64, seq []int) {
+	fmt.Fprintf(ss, "%.3f%s %s%s %s\n", mksp, separator, encodeFloat(x), separator, encodeInt(seq))
 }
 
-func (ss SwarmStats) csvHeaders() string {
+func (ss *SwarmStats) csvHeaders() string {
 	return strings.Join([]string{"makespan", "best_pos", "best_seq"}, separator) + "\n"
 }
 
