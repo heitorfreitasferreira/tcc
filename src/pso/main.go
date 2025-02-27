@@ -1,72 +1,71 @@
 package pso
 
 import (
-	"math"
 	"math/rand"
 	"tcc/graph"
+	"tcc/shared"
 )
 
-type particle struct {
-	x            []float64
-	v            []float64
-	bestX        []float64
-	clusterId    int
-	makespan     float64
-	bestMakespan float64
-}
-
-func newParticle(dimention, clusterId int) particle {
-
-	return particle{
-		x:            make([]float64, dimention),
-		v:            make([]float64, dimention),
-		bestX:        make([]float64, dimention),
-		clusterId:    clusterId,
-		bestMakespan: math.MaxFloat64,
-	}
-}
-
 type Params struct {
+	shared.HyperParams
 	C1, C2, W float64
 }
 
 type Swarm struct {
 	*graph.Graph
 	Params
-	particles     []particle
-	bestByCluster [][]float64 // var bestInCluster []float64 = bestByCluster[clusterId]
-	rng           rand.Rand
+	particles []particle
+	gBest     particle
+	rng       rand.Rand
 }
 
-// func (sw Swarm) Optimize() SwarmStats {
-// 	//TODO
-// }
+func (sw *Swarm) Optimize() *SwarmStats {
+	sw.initialize()
+	sw.evaluate()
 
-func (sw *Swarm) update(p *particle) {
-	for i := 0; i < len(p.x); i++ {
-		rnd1 := sw.rng.Float64()*2 - 1 // TODO: ver se é [-1,1] ou [0,1] https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1259748#page=1.54
-		rnd2 := sw.rng.Float64()*2 - 1 // TODO: ver se é [-1,1] ou [0,1] https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1259748#page=1.54
-
-		// Inércia
-		p.v[i] *= sw.W
-		// Cognitivo
-		p.v[i] += sw.C1 * rnd1 * (p.bestX[i] - p.x[i])
-		// Social
-		p.v[i] += sw.C2 * rnd2 * (sw.bestByCluster[p.clusterId][i] - p.x[i])
-		// Att a posição
-		p.x[i] += p.v[i]
+	stats := newStats()
+	for range sw.Iterations {
+		sw.update()
+		sw.evaluate()
+		stats.addIterData(sw.gBest.bestMakespan, sw.gBest.bestX, sw.gBest.sequence)
 	}
 
-	seq := discretize(p.x)
-
-	if !sw.Graph.IsValidSolution(seq) {
-		panic("Solução inválida")
-	}
-
-	p.makespan = sw.Graph.Makespan(seq)
+	return stats
 }
 
-func discretize(x []float64) []int {
-	//TODO
-	return []int{1, 2, 3}
+func (sw *Swarm) update() {
+	for _, p := range sw.particles {
+		r1 := sw.rng.Float64()
+		r2 := sw.rng.Float64()
+		p.update(sw.W, sw.C1, sw.C2, r1, r2, &sw.gBest)
+	}
+}
+
+func (sw *Swarm) evaluate() {
+	for _, p := range sw.particles {
+		p.makespan = sw.Makespan(p.sequence)
+		if p.makespan < p.bestMakespan {
+			p.bestMakespan = p.makespan
+			copy(p.bestX, p.x)
+			if p.bestMakespan < sw.gBest.bestMakespan {
+				sw.gBest = p
+			}
+		}
+	}
+}
+
+func (sw *Swarm) initialize() {
+	if sw.Graph == nil {
+		panic("Trying to initialize a swarm without a graph")
+	}
+
+	for range sw.PopulationSize {
+		newParticle := newParticle(sw.NumberOfNodes())
+		for i := range newParticle.x {
+			newParticle.x[i] = sw.rng.Float64()
+		}
+		newParticle.setSequence()
+
+		sw.particles = append(sw.particles, newParticle)
+	}
 }
