@@ -1,6 +1,7 @@
 package pso
 
 import (
+	"fmt"
 	"math"
 	"math/rand"
 	"tcc/graph"
@@ -35,7 +36,7 @@ func (sw *Swarm) Init(g *graph.Graph, p Params, rng *rand.Rand) {
 	sw.particles = make([]particle, 0, p.PopulationSize)
 }
 
-func (sw *Swarm) Optimize() *SwarmStats {
+func (sw *Swarm) Optimize() *shared.SwarmStats {
 	// initialize
 	for range sw.PopulationSize {
 		x := make([]float64, sw.NumberOfNodes())
@@ -56,11 +57,12 @@ func (sw *Swarm) Optimize() *SwarmStats {
 	// run
 	sw.evaluate()
 
-	stats := newStats()
+	stats := shared.NewStats()
+	stats.AddIterData(sw.bestMakespan, sw.gBestPos, sw.gBestSeq)
 	for range sw.Iterations {
 		sw.update()
 		sw.evaluate()
-		stats.addIterData(sw.bestMakespan, sw.gBestPos, sw.gBestSeq)
+		stats.AddIterData(sw.bestMakespan, sw.gBestPos, sw.gBestSeq)
 	}
 
 	return stats
@@ -81,6 +83,7 @@ func (sw *Swarm) evaluate() {
 			p.bestMakespan = p.makespan
 			copy(p.bestX, p.x)
 			if p.bestMakespan < sw.bestMakespan {
+				fmt.Println("Changing from", sw.bestMakespan, "to", p.bestMakespan)
 				sw.bestMakespan = p.bestMakespan
 				copy(sw.gBestPos, p.bestX)
 				copy(sw.gBestSeq, p.sequence)
