@@ -35,7 +35,7 @@ func (p *particle) setSequence() {
 		seq[index] = i
 	}
 
-	p.sequence = seq
+	copy(p.sequence, seq)
 }
 
 func (p *particle) update(w, c1, c2, r1, r2 float64, gBest []float64) {
