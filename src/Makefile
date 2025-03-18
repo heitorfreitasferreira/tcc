@@ -48,7 +48,6 @@ coverage: ## displays test coverage report in html mode
 
 ## Build
 build: ## build the go application
-	mkdir -p out/
 	go build -o $(APP_EXECUTABLE)
 	@echo "Build passed"
 
@@ -58,8 +57,9 @@ run: ## runs the go binary. use additional options if required.
 	$(APP_EXECUTABLE)
 
 clean: ## cleans binary and other generated files
+	rm $(APP_EXECUTABLE)
 	go clean
-	rm -rf out/
+	rm -rf data/
 	rm -f coverage*.out
 
 vendor: ## all packages required to support builds and tests in the /vendor directory
