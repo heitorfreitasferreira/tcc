@@ -2,7 +2,6 @@ package aco
 
 import (
 	"math"
-	"math/rand"
 )
 
 type ant struct {
@@ -37,7 +36,7 @@ func (aco *ACO) updatePheromones(ants []ant) {
 	}
 }
 
-func (aco *ACO) selectNextNode(prev, curr int, visited []bool, rng *rand.Rand) int {
+func (aco *ACO) selectNextNode(prev, curr int, visited []bool) int {
 	probabilities := make([]float64, len(aco.Graph))
 	total := 0.0
 
@@ -61,7 +60,7 @@ func (aco *ACO) selectNextNode(prev, curr int, visited []bool, rng *rand.Rand) i
 	}
 
 	// Roleta
-	cutoff := rng.Float64() * total
+	cutoff := aco.rng.Float64() * total
 	sum := 0.0
 	for next, prob := range probabilities {
 		if sum += prob; sum >= cutoff {
@@ -71,7 +70,7 @@ func (aco *ACO) selectNextNode(prev, curr int, visited []bool, rng *rand.Rand) i
 	return -1
 }
 
-func (aco *ACO) walk(rng *rand.Rand) ant {
+func (aco *ACO) walk() ant {
 	n := len(aco.Graph)
 	ant := ant{
 		seq:     make([]int, 0, n),
@@ -83,7 +82,6 @@ func (aco *ACO) walk(rng *rand.Rand) ant {
 	ant.seq = append(ant.seq, current)
 	ant.visited[current] = true
 
-	// Segundo nó
 	next := aco.rng.Intn(n)
 	for next == current {
 		next = aco.rng.Intn(n)
@@ -91,13 +89,12 @@ func (aco *ACO) walk(rng *rand.Rand) ant {
 	ant.seq = append(ant.seq, next)
 	ant.visited[next] = true
 
-	// Demais nós
 	for len(ant.seq) < n {
 		prev := ant.seq[len(ant.seq)-2]
 		curr := ant.seq[len(ant.seq)-1]
-		next := aco.selectNextNode(prev, curr, ant.visited, rng)
+		next := aco.selectNextNode(prev, curr, ant.visited)
 		if next == -1 {
-			break // Caminho inválido
+			break
 		}
 
 		ant.seq = append(ant.seq, next)
@@ -105,7 +102,6 @@ func (aco *ACO) walk(rng *rand.Rand) ant {
 		ant.lk += aco.Graph[prev][curr][next]
 	}
 
-	// Volta ao início para completar ciclo
 	if len(ant.seq) == n {
 		prev := ant.seq[len(ant.seq)-2]
 		curr := ant.seq[len(ant.seq)-1]

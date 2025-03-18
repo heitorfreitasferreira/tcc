@@ -1,9 +1,8 @@
 package aco
 
 import (
-	"fmt"
+	"math"
 	"math/rand"
-	"sync"
 	"tcc/graph"
 	"tcc/shared"
 )
@@ -22,44 +21,28 @@ type ACO struct {
 	pheromones [][][]float64
 }
 
-func Optimize(p Params, g graph.Graph, rng *rand.Rand) {
+func Optimize(p Params, g graph.Graph, rng *rand.Rand) string {
 	aco := new(p, g, rng)
+	sts := shared.NewStats()
+	bestCost := math.MaxFloat64
 	var bestPath []int
-	var bestCost float64
-	var mutex sync.Mutex
+
 	for range aco.Iterations {
 		ants := make([]ant, aco.PopulationSize)
-		seeds := make([]int64, aco.PopulationSize)
+		for i := range ants {
+			a := aco.walk()
+			ants[i] = a
 
-		// Geração segura de seeds
-		for i := range aco.PopulationSize {
-			seeds[i] = aco.rng.Int63()
+			if a.lk < bestCost && len(a.seq) == len(aco.Graph) {
+				bestCost = a.lk
+				bestPath = make([]int, len(a.seq))
+				copy(bestPath, a.seq)
+			}
 		}
-
-		var wg sync.WaitGroup
-		for i := range aco.PopulationSize {
-			wg.Add(1)
-			go func(idx int, seed int64) {
-				defer wg.Done()
-				localRNG := rand.New(rand.NewSource(seed))
-				ant := aco.walk(localRNG)
-
-				// Atualização thread-safe do melhor caminho
-				mutex.Lock()
-				defer mutex.Unlock()
-				if ant.lk < bestCost && len(ant.seq) == len(aco.Graph) {
-					bestCost = ant.lk
-					bestPath = make([]int, len(ant.seq))
-					copy(bestPath, ant.seq)
-				}
-				ants[idx] = ant
-			}(i, seeds[i])
-		}
-		wg.Wait()
-
 		aco.updatePheromones(ants)
+		sts.AddIterData(bestCost, []float64{}, bestPath)
 	}
-	fmt.Println(bestPath, bestCost)
+	return sts.ToCsv()
 }
 
 func new(p Params, g graph.Graph, rng *rand.Rand) *ACO {
