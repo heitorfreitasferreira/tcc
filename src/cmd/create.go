@@ -21,4 +21,9 @@ var createCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(createCmd)
 
+	createCmd.PersistentFlags().String(
+		"frequency",
+		"3:5,4:5,5:5,6:5,7:5,8:5,9:5,10:5,20:5,30:5,40:5,50:5",
+		"Mapa de frequência no formato 'chave:valor,chave2:valor2'",
+	)
 }
