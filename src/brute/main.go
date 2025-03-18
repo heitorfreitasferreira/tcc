@@ -11,38 +11,41 @@ func Optimize(g graph.Graph) ([]int, float64) {
 		places[i-1] = i
 	}
 
-	bestI := -1
+	bestPerm := []int{}
 	bestMksp := math.MaxFloat64
-	perms := generatePermutations(places)
-	for i, perm := range perms {
+
+	for perm := range generatePermutations(places) {
 		mksp := g.Makespan(perm)
 		if bestMksp > mksp {
-			bestI = i
+			bestPerm = perm
 			bestMksp = mksp
 		}
 	}
-	return perms[bestI], bestMksp
+	return bestPerm, bestMksp
 }
 
-func generatePermutations(arr []int) [][]int {
-	var result [][]int
-	var helper func([]int, int)
-	helper = func(arr []int, n int) {
-		if n == 1 {
-			tmp := make([]int, len(arr))
-			copy(tmp, arr)
-			result = append(result, tmp)
-			return
-		}
-		for i := range n {
-			helper(arr, n-1)
-			if n%2 == 1 {
-				arr[0], arr[n-1] = arr[n-1], arr[0]
-			} else {
-				arr[i], arr[n-1] = arr[n-1], arr[i]
+func generatePermutations(arr []int) <-chan []int {
+	ch := make(chan []int)
+	go func() {
+		defer close(ch)
+		var helper func([]int, int)
+		helper = func(arr []int, n int) {
+			if n == 1 {
+				tmp := make([]int, len(arr))
+				copy(tmp, arr)
+				ch <- tmp
+				return
+			}
+			for i := 0; i < n; i++ {
+				helper(arr, n-1)
+				if n%2 == 1 {
+					arr[0], arr[n-1] = arr[n-1], arr[0]
+				} else {
+					arr[i], arr[n-1] = arr[n-1], arr[i]
+				}
 			}
 		}
-	}
-	helper(arr, len(arr))
-	return result
+		helper(arr, len(arr))
+	}()
+	return ch
 }
