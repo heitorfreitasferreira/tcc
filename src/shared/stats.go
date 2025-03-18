@@ -28,6 +28,9 @@ func (ss *SwarmStats) csvHeaders() string {
 }
 
 func encode[T int | float64](list []T) string {
+	if len(list) == 0 {
+		return ""
+	}
 	encodingSeparator := ", "
 	var sb strings.Builder
 	sb.WriteString("(")
