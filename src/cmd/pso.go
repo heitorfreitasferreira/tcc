@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"math/rand"
 	"tcc/graph"
-	"tcc/pso"
+	"tcc/optimization/pso"
 	"tcc/shared"
 
 	"github.com/spf13/cobra"

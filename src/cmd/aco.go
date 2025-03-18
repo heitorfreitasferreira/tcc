@@ -6,8 +6,8 @@ package cmd
 import (
 	"fmt"
 	"math/rand"
-	"tcc/aco"
 	"tcc/graph"
+	"tcc/optimization/aco"
 	"tcc/shared"
 
 	"github.com/spf13/cobra"

@@ -5,8 +5,8 @@ package cmd
 
 import (
 	"fmt"
-	"tcc/brute"
 	"tcc/graph"
+	"tcc/optimization/brute"
 
 	"github.com/spf13/cobra"
 )
