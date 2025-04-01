@@ -20,3 +20,10 @@ func RandomizeSlice[T ~int | ~int32 | ~int64 | ~float32 | ~float64](slice []T, r
 		}
 	}
 }
+
+func Shuffle[T any](slice []T, rnd *rand.Rand) {
+	for i := len(slice) - 1; i > 0; i-- {
+		j := rnd.Intn(i + 1)
+		slice[i], slice[j] = slice[j], slice[i]
+	}
+}
