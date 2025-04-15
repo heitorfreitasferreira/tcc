@@ -4,6 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"math/rand"
 	"tcc/graph"
 	"tcc/optimization/ga"
@@ -47,8 +48,8 @@ to quickly create a Cobra application.`,
 		}
 
 		bestGen, bestFen := ga.Optimize(params, g, rng)
-		cmd.Println("Best solution:", bestGen)
-		cmd.Println("Best fitness:", bestFen)
+		fmt.Println("Best solution:", bestGen)
+		fmt.Println("Best fitness:", bestFen)
 	},
 }
 
