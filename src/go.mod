@@ -1,6 +1,6 @@
 module tcc
 
-go 1.24.1
+go 1.23.7
 
 require github.com/spf13/cobra v1.8.1
 
