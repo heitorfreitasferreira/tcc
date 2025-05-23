@@ -26,5 +26,6 @@ files=(data/*.graph)
 
 for file in "${files[@]##*/}"; do
   base="${file%.graph}"
-  echo "./tcc optimize ${optimization_method} --instance data/${file} > data/${base}.${optimization_method}"
-done | parallel -j $(nproc)
+  echo "{ time ./tcc optimize ${optimization_method} --instance data/${file} > \
+    data/${base}.${optimization_method}; } 2> data/${base}.${optimization_method}.time"
+done | parallel -j "$(nproc)"
