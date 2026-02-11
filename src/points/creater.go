@@ -10,10 +10,10 @@ func CreateInstances(seed int64, pointsPerInstace map[int]int) []Points2D {
 
 	inst := make([]Points2D, 0)
 	for nPoints, nInstances := range pointsPerInstace {
-		for i := 0; i < nInstances; i++ {
+		for range nInstances {
 			points := make([]Coordinate2D, nPoints)
 
-			for j := 0; j < nPoints; j++ {
+			for j := range nPoints {
 				// Coordenadas no espaço R² (-1, +1)
 				x := rng.Float64()*2 - 1
 				y := rng.Float64()*2 - 1

@@ -3,7 +3,7 @@ package points
 import "math"
 
 func (p Coordinate2D) EuclideanDistance(other Coordinate2D) float64 {
-	return math.Sqrt(math.Pow(p[0]-other[0], 2) + math.Pow(p[1]-other[1], 2))
+	return math.Sqrt((p[0]-other[0])*(p[0]-other[0]) + (p[1]-other[1])*(p[1]-other[1]))
 }
 
 // Retorna angulo em radiano (0..PI)
