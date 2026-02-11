@@ -44,11 +44,18 @@ func runMap(cmd *cobra.Command) error {
 	}
 
 	pts := points.CreateInstances(seed, frequency)
-	if err := points.Save(pts, folder); err != nil {
+	report, err := points.Save(pts, folder)
+	if err != nil {
 		return fmt.Errorf("save points in %q: %w", folder, err)
 	}
 
-	cmd.Printf("%d point files saved at `%s`\n", len(pts), folder)
+	cmd.Printf(
+		"point files: created=%d skipped=%d total=%d at `%s`\n",
+		report.Created,
+		report.Skipped,
+		len(pts),
+		folder,
+	)
 	return nil
 }
 

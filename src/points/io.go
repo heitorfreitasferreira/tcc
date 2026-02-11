@@ -10,35 +10,50 @@ import (
 
 const fileExtention = ".points"
 
+type SaveReport struct {
+	Created int
+	Skipped int
+}
+
 // Salva os mapas em arquivos na pasta informada
-func Save(maps []Points2D, folder string) error {
+func Save(maps []Points2D, folder string) (SaveReport, error) {
 	// Cria o diretório se ele não existir
 	err := os.MkdirAll(folder, os.ModePerm)
 	if err != nil {
-		return fmt.Errorf("failed to create directory: %w", err)
+		return SaveReport{}, fmt.Errorf("failed to create directory: %w", err)
 	}
 
+	report := SaveReport{}
 	frequency := make(map[int]int)
 
 	for _, points := range maps {
 		charCode := 'a' + frequency[len(points)]
 		filepath := fmt.Sprintf("%s/%d%c%s", folder, len(points), charCode, fileExtention)
-		file, err := os.Create(filepath)
-		if err != nil {
-			return err
+
+		_, err := os.Stat(filepath)
+		if err == nil {
+			frequency[len(points)]++
+			report.Skipped++
+			continue
 		}
-		defer file.Close()
+		if !os.IsNotExist(err) {
+			return report, fmt.Errorf("stat file %q: %w", filepath, err)
+		}
+
 		enc, err := encode(points)
 		if err != nil {
-			return err
+			return report, err
 		}
-		_, err = file.WriteString(enc)
+
+		err = os.WriteFile(filepath, []byte(enc), 0o666)
 		if err != nil {
-			return err
+			return report, err
 		}
+
 		frequency[len(points)]++
+		report.Created++
 	}
-	return nil
+	return report, nil
 }
 
 // Carrega os mapas a partir da pasta que foram salvos (provavelmente com a função Save acima)

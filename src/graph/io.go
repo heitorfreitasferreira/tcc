@@ -10,6 +10,11 @@ import (
 
 const fileExtension = ".graph"
 
+type SaveReport struct {
+	Created int
+	Skipped int
+}
+
 func encode(g Graph) (string, error) {
 	data, err := json.Marshal(g)
 	if err != nil {
@@ -28,35 +33,43 @@ func decode(data string) (Graph, error) {
 }
 
 // Salva os grafos em arquivos na pasta informada
-func Save(graphs []Graph, folder string) error {
+func Save(graphs []Graph, folder string) (SaveReport, error) {
 	err := os.MkdirAll(folder, os.ModePerm)
 	if err != nil {
-		return fmt.Errorf("failed to create directory: %w", err)
+		return SaveReport{}, fmt.Errorf("failed to create directory: %w", err)
 	}
 
+	report := SaveReport{}
 	frequency := make(map[int]int)
 
 	for _, graph := range graphs {
 		charCode := 'a' + frequency[len(graph)]
 		filepath := fmt.Sprintf("%s/%d%c%s", folder, len(graph), charCode, fileExtension)
-		file, err := os.Create(filepath)
-		if err != nil {
-			return err
+
+		_, err := os.Stat(filepath)
+		if err == nil {
+			frequency[len(graph)]++
+			report.Skipped++
+			continue
 		}
-		defer file.Close()
+		if !os.IsNotExist(err) {
+			return report, fmt.Errorf("stat file %q: %w", filepath, err)
+		}
 
 		data, err := encode(graph)
 		if err != nil {
-			return err
+			return report, err
 		}
 
-		_, err = file.WriteString(data)
+		err = os.WriteFile(filepath, []byte(data), 0o666)
 		if err != nil {
-			return err
+			return report, err
 		}
+
 		frequency[len(graph)]++
+		report.Created++
 	}
-	return nil
+	return report, nil
 }
 
 // Carrega os grafos a partir da pasta que foram salvos (provavelmente com a função Save acima)

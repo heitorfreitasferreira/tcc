@@ -38,10 +38,17 @@ func runGraph(cmd *cobra.Command) error {
 	}
 
 	grphs := graph.CreateAll(pts)
-	if err := graph.Save(grphs, folder); err != nil {
+	report, err := graph.Save(grphs, folder)
+	if err != nil {
 		return fmt.Errorf("save graphs in %q: %w", folder, err)
 	}
 
-	cmd.Printf("%d graph files saved at `%s`\n", len(grphs), folder)
+	cmd.Printf(
+		"graph files: created=%d skipped=%d total=%d at `%s`\n",
+		report.Created,
+		report.Skipped,
+		len(grphs),
+		folder,
+	)
 	return nil
 }
