@@ -65,11 +65,48 @@ mkdir -p "${results_dir}/logs"
 
 "${tcc_bin}" create --frequency "${frequency_input}" --folder "${data_folder}" --seed "${seed}"
 
-shopt -s nullglob
-files=("${data_folder}"/*.graph)
+declare -A frequency_map=()
+IFS=',' read -r -a frequency_pairs <<<"${frequency_input}"
+
+for raw_pair in "${frequency_pairs[@]}"; do
+  pair="${raw_pair//[[:space:]]/}"
+  if [[ -z "${pair}" ]]; then
+    continue
+  fi
+
+  if [[ ! "${pair}" =~ ^([0-9]+):([0-9]+)$ ]]; then
+    echo "Invalid --frequency entry: ${raw_pair}" >&2
+    exit 1
+  fi
+
+  size="${BASH_REMATCH[1]}"
+  count="${BASH_REMATCH[2]}"
+  frequency_map["${size}"]="${count}"
+done
+
+if [[ ${#frequency_map[@]} -eq 0 ]]; then
+  echo "No valid frequency entries were provided." >&2
+  exit 1
+fi
+
+mapfile -t sorted_sizes < <(printf '%s\n' "${!frequency_map[@]}" | sort -n)
+
+files=()
+for size in "${sorted_sizes[@]}"; do
+  count="${frequency_map[${size}]}"
+  for ((idx = 0; idx < 10#${count}; idx++)); do
+    printf -v suffix "\\$(printf '%03o' "$((97 + idx))")"
+    path="${data_folder}/${size}${suffix}.graph"
+    if [[ ! -f "${path}" ]]; then
+      echo "Expected graph file not found for --frequency entry: ${path}" >&2
+      exit 1
+    fi
+    files+=("${path}")
+  done
+done
 
 if [[ ${#files[@]} -eq 0 ]]; then
-  echo "No graph files found in ${data_folder}" >&2
+  echo "No graph files requested by frequency ${frequency_input}" >&2
   exit 0
 fi
 
