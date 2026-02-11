@@ -30,30 +30,53 @@ func Save(maps []Points2D, folder string) (SaveReport, error) {
 		charCode := 'a' + frequency[len(points)]
 		filepath := fmt.Sprintf("%s/%d%c%s", folder, len(points), charCode, fileExtention)
 
-		_, err := os.Stat(filepath)
-		if err == nil {
-			frequency[len(points)]++
-			report.Skipped++
-			continue
-		}
-		if !os.IsNotExist(err) {
-			return report, fmt.Errorf("stat file %q: %w", filepath, err)
-		}
-
 		enc, err := encode(points)
 		if err != nil {
 			return report, err
 		}
 
-		err = os.WriteFile(filepath, []byte(enc), 0o666)
+		created, err := writeFileIfNotExists(filepath, []byte(enc))
 		if err != nil {
 			return report, err
 		}
 
+		if created {
+			report.Created++
+		} else {
+			report.Skipped++
+		}
 		frequency[len(points)]++
-		report.Created++
 	}
 	return report, nil
+}
+
+func writeFileIfNotExists(path string, data []byte) (bool, error) {
+	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o666)
+	if err != nil {
+		if os.IsExist(err) {
+			return false, nil
+		}
+		return false, err
+	}
+
+	if _, err := file.Write(data); err != nil {
+		_ = file.Close()
+		_ = os.Remove(path)
+		return false, err
+	}
+
+	if err := file.Sync(); err != nil {
+		_ = file.Close()
+		_ = os.Remove(path)
+		return false, err
+	}
+
+	if err := file.Close(); err != nil {
+		_ = os.Remove(path)
+		return false, err
+	}
+
+	return true, nil
 }
 
 // Carrega os mapas a partir da pasta que foram salvos (provavelmente com a função Save acima)
