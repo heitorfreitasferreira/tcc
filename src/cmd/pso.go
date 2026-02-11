@@ -9,40 +9,57 @@ import (
 	"tcc/graph"
 	"tcc/optimization/pso"
 	"tcc/shared"
+	"time"
 
 	"github.com/spf13/cobra"
 )
 
 var psoCmd = &cobra.Command{
-	Use: "pso",
-	Run: func(cmd *cobra.Command, args []string) {
-		seed, err := cmd.Root().PersistentFlags().GetInt64("seed")
+	Use:   "pso",
+	Short: "Optimize an instance using particle swarm optimization",
+	Args:  cobra.NoArgs,
+	RunE: func(cmd *cobra.Command, args []string) error {
+		seed, err := cmd.Flags().GetInt64("seed")
 		if err != nil {
-			cmd.PrintErrln("Error getting random seed parameter:", err)
-			return
+			return fmt.Errorf("get --seed: %w", err)
 		}
-		instance, err := cmd.Parent().PersistentFlags().GetString("instance")
+
+		instance, err := cmd.Flags().GetString("instance")
 		if err != nil {
-			cmd.PrintErrln("Error getting instance file path:", err)
-			return
+			return fmt.Errorf("get --instance: %w", err)
 		}
 
 		rng := rand.New(rand.NewSource(seed))
 
 		params, err := getPsoParams(cmd)
 		if err != nil {
-			cmd.PrintErrln("Error getting parameters: ", err)
-			return
+			return err
 		}
-		graph, err := graph.LoadFromFile(instance)
+
+		run, skip, err := prepareOptimizeRun(cmd, "pso", instance, seed, psoParamsMap(params))
 		if err != nil {
-			cmd.PrintErrln("Error getting folder:", err)
-			return
+			return err
 		}
+		if skip {
+			return nil
+		}
+
+		loadStart := time.Now()
+		g, err := graph.LoadFromFile(instance)
+		if err != nil {
+			return fmt.Errorf("load graph instance %q: %w", instance, err)
+		}
+		loadDuration := time.Since(loadStart)
+
 		sw := pso.Swarm{}
-		sw.Init(&graph, params, rng)
-		stats := sw.Optimize()
-		fmt.Print(stats.ToCsv())
+		sw.Init(&g, params, rng)
+
+		optimizeStart := time.Now()
+		result := sw.Optimize(improvementLogger(cmd, run))
+		optimizeDuration := time.Since(optimizeStart)
+		optimizedAt := time.Now()
+
+		return persistOptimizeRun(cmd, run, result, loadDuration, optimizeDuration, optimizedAt)
 	},
 }
 
@@ -54,30 +71,29 @@ func init() {
 }
 
 func getPsoParams(cmd *cobra.Command) (pso.Params, error) {
-	iterations, err := cmd.Parent().PersistentFlags().GetInt("iterations")
+	iterations, err := cmd.Flags().GetInt("iterations")
 	if err != nil {
-		cmd.PrintErrln("Error getting iterations parameter:", err)
-		return pso.Params{}, err
+		return pso.Params{}, fmt.Errorf("get --iterations: %w", err)
 	}
-	population, err := cmd.Parent().PersistentFlags().GetInt("population")
+
+	population, err := cmd.Flags().GetInt("population")
 	if err != nil {
-		cmd.PrintErrln("Error getting population parameter:", err)
-		return pso.Params{}, err
+		return pso.Params{}, fmt.Errorf("get --population: %w", err)
 	}
+
 	w, err := cmd.Flags().GetFloat64("w")
 	if err != nil {
-		cmd.PrintErrln("Error getting inertia parameter:", err)
-		return pso.Params{}, err
+		return pso.Params{}, fmt.Errorf("get --w: %w", err)
 	}
+
 	c1, err := cmd.Flags().GetFloat64("c1")
 	if err != nil {
-		cmd.PrintErrln("Error getting cognitive component (c1) parameter:", err)
-		return pso.Params{}, err
+		return pso.Params{}, fmt.Errorf("get --c1: %w", err)
 	}
+
 	c2, err := cmd.Flags().GetFloat64("c2")
 	if err != nil {
-		cmd.PrintErrln("Error getting social component (c2) parameter:", err)
-		return pso.Params{}, err
+		return pso.Params{}, fmt.Errorf("get --c2: %w", err)
 	}
 
 	return pso.Params{
@@ -89,4 +105,14 @@ func getPsoParams(cmd *cobra.Command) (pso.Params, error) {
 		C2: c2,
 		W:  w,
 	}, nil
+}
+
+func psoParamsMap(params pso.Params) map[string]any {
+	return map[string]any{
+		"population": params.HyperParams.PopulationSize,
+		"iterations": params.HyperParams.Iterations,
+		"w":          params.W,
+		"c1":         params.C1,
+		"c2":         params.C2,
+	}
 }

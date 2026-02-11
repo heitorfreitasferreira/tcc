@@ -1,6 +1,7 @@
 package ga
 
 import (
+	"math"
 	"math/rand"
 	"sort"
 	"tcc/graph"
@@ -19,24 +20,62 @@ type individual struct {
 	fen float64
 }
 
-func Optimize(p Params, g graph.Graph, rnd *rand.Rand) ([]int, float64) {
+func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared.Improvement)) shared.OptimizationResult {
+	result := shared.OptimizationResult{
+		BestMakespan: math.MaxFloat64,
+	}
+
+	evaluationCount := 0
+	reportImprovement := func(iteration int, sequence []int, makespan float64) {
+		if makespan >= result.BestMakespan {
+			return
+		}
+
+		delta := 0.0
+		if result.BestMakespan < math.MaxFloat64 {
+			delta = makespan - result.BestMakespan
+		}
+
+		result.BestMakespan = makespan
+		result.BestSequence = append([]int(nil), sequence...)
+
+		improvement := shared.Improvement{
+			Iteration:    iteration,
+			Evaluation:   evaluationCount,
+			BestMakespan: makespan,
+			Delta:        delta,
+			BestSequence: append([]int(nil), sequence...),
+		}
+		result.Improvements = append(result.Improvements, improvement)
+
+		if onImprovement != nil {
+			onImprovement(improvement)
+		}
+	}
+
 	// Initial population
 	pop := make([]individual, p.PopulationSize)
-	for i := range p.PopulationSize {
+	for i := 0; i < p.PopulationSize; i++ {
 		pop[i] = individual{gen: make([]int, len(g)), fen: -1.0}
 		for j := range g {
 			pop[i].gen[j] = j
 		}
 		shared.Shuffle(pop[i].gen, rnd)
 		pop[i].fen = g.Makespan(pop[i].gen)
+		evaluationCount++
+		reportImprovement(0, pop[i].gen, pop[i].fen)
 	}
 
-	for range p.Iterations {
+	for iteration := 1; iteration <= p.Iterations; iteration++ {
 		newPop := make([]individual, 0, p.PopulationSize)
 
 		if p.Elitism > 0 {
 			sort.Slice(pop, func(i, j int) bool { return pop[i].fen < pop[j].fen })
-			newPop = append(newPop, pop[:p.Elitism]...)
+			eliteSize := p.Elitism
+			if eliteSize > len(pop) {
+				eliteSize = len(pop)
+			}
+			newPop = append(newPop, pop[:eliteSize]...)
 		}
 
 		// Generate new population
@@ -54,7 +93,12 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand) ([]int, float64) {
 
 			// Evaluate fitness
 			fen1 := g.Makespan(child1)
+			evaluationCount++
+			reportImprovement(iteration, child1, fen1)
+
 			fen2 := g.Makespan(child2)
+			evaluationCount++
+			reportImprovement(iteration, child2, fen2)
 
 			// Add to new population
 			newPop = append(newPop, individual{child1, fen1}, individual{child2, fen2})
@@ -68,9 +112,16 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand) ([]int, float64) {
 		pop = newPop
 	}
 
-	sort.Slice(pop, func(i, j int) bool { return pop[i].fen < pop[j].fen })
-	best := pop[0]
-	return best.gen, best.fen
+	result.IterationsCompleted = p.Iterations
+	result.Evaluations = evaluationCount
+
+	if len(result.BestSequence) == 0 && len(pop) > 0 {
+		sort.Slice(pop, func(i, j int) bool { return pop[i].fen < pop[j].fen })
+		result.BestSequence = append([]int(nil), pop[0].gen...)
+		result.BestMakespan = pop[0].fen
+	}
+
+	return result
 }
 
 func selectParentTournament(pop []individual, p Params, rnd *rand.Rand) individual {
