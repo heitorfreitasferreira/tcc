@@ -29,10 +29,10 @@ func (p *particle) setSequence() {
 		return p.x[indices[i]] < p.x[indices[j]]
 	})
 
-	// Cria um array para os resultados
+	// Converte random-keys para rota (nós 1..n-1).
 	seq := make([]int, len(p.x))
-	for i, index := range indices {
-		seq[index] = i
+	for i := range indices {
+		seq[i] = indices[i] + 1
 	}
 
 	copy(p.sequence, seq)

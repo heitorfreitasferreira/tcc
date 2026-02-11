@@ -38,14 +38,14 @@ func Optimize(p Params, g graph.Graph, rng *rand.Rand, onImprovement func(shared
 			evaluationCount++
 
 			if a.lk < bestCost && len(a.seq) == len(aco.Graph) {
+				route := aco.pathWithoutOrigin(a.seq)
 				delta := 0.0
 				if bestCost < math.MaxFloat64 {
 					delta = a.lk - bestCost
 				}
 
 				bestCost = a.lk
-				bestPath = make([]int, len(a.seq))
-				copy(bestPath, a.seq)
+				bestPath = route
 
 				improvement := shared.Improvement{
 					Iteration:    iteration,
@@ -69,6 +69,16 @@ func Optimize(p Params, g graph.Graph, rng *rand.Rand, onImprovement func(shared
 	result.Evaluations = evaluationCount
 
 	return result
+}
+
+func (aco *ACO) pathWithoutOrigin(seq []int) []int {
+	if len(seq) <= 1 {
+		return []int{}
+	}
+
+	path := make([]int, len(seq)-1)
+	copy(path, seq[1:])
+	return path
 }
 
 func new(p Params, g graph.Graph, rng *rand.Rand) *ACO {

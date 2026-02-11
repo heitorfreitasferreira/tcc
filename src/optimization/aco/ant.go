@@ -99,13 +99,10 @@ func (aco *ACO) walk() ant {
 
 		ant.seq = append(ant.seq, next)
 		ant.visited[next] = true
-		ant.lk += aco.Graph[prev][curr][next]
 	}
 
 	if len(ant.seq) == n {
-		prev := ant.seq[len(ant.seq)-2]
-		curr := ant.seq[len(ant.seq)-1]
-		ant.lk += aco.Graph[prev][curr][ant.seq[0]]
+		ant.lk = aco.Makespan(aco.pathWithoutOrigin(ant.seq))
 	}
 	return ant
 }

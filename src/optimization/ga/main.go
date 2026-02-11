@@ -54,12 +54,14 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared
 	}
 
 	// Initial population
+	nodes := make([]int, len(g)-1)
+	for node := 1; node < len(g); node++ {
+		nodes[node-1] = node
+	}
+
 	pop := make([]individual, p.PopulationSize)
 	for i := 0; i < p.PopulationSize; i++ {
-		pop[i] = individual{gen: make([]int, len(g)), fen: -1.0}
-		for j := range g {
-			pop[i].gen[j] = j
-		}
+		pop[i] = individual{gen: append([]int(nil), nodes...), fen: -1.0}
 		shared.Shuffle(pop[i].gen, rnd)
 		pop[i].fen = g.Makespan(pop[i].gen)
 		evaluationCount++

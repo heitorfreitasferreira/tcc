@@ -30,21 +30,24 @@ func (sw *Swarm) Init(g *graph.Graph, p Params, rng *rand.Rand) {
 	sw.Params = p
 	sw.rng = rng
 	sw.bestMakespan = math.MaxFloat64
-	sw.gBestPos = make([]float64, g.NumberOfNodes())
-	sw.gBestSeq = make([]int, g.NumberOfNodes())
+	dimension := max(g.NumberOfNodes()-1, 0)
+	sw.gBestPos = make([]float64, dimension)
+	sw.gBestSeq = make([]int, dimension)
 	sw.particles = make([]particle, 0, p.PopulationSize)
 }
 
 func (sw *Swarm) Optimize(onImprovement func(shared.Improvement)) shared.OptimizationResult {
+	dimension := max(sw.NumberOfNodes()-1, 0)
+
 	// initialize
 	for i := 0; i < sw.PopulationSize; i++ {
-		x := make([]float64, sw.NumberOfNodes())
+		x := make([]float64, dimension)
 		shared.RandomizeSlice(x, sw.rng)
 		newParticle := particle{
 			x:            x,
-			v:            make([]float64, sw.NumberOfNodes()),
-			bestX:        make([]float64, sw.NumberOfNodes()),
-			sequence:     make([]int, sw.NumberOfNodes()),
+			v:            make([]float64, dimension),
+			bestX:        make([]float64, dimension),
+			sequence:     make([]int, dimension),
 			bestMakespan: math.MaxFloat64,
 		}
 
