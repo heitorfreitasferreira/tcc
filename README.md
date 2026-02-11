@@ -58,6 +58,36 @@ This CLI application is designed for finding RTSP paths using bio-inspired metah
 - Creates graphs for each point instance
 - Saves graph files in the same folder
 
+### 4. `optimize <method>`
+
+**Short Description**: Optimize one `.graph` instance with a selected method
+
+**Methods**:
+
+- `bruteforce`
+- `ga`
+- `aco`
+- `pso`
+
+**Shared Flags**:
+
+- `--instance string`: Input graph file (default: `./data/10a.graph`)
+- `-p, --population int`: Population size for population-based methods (default: `100`)
+- `-i, --iterations int`: Number of iterations for population-based methods (default: `100`)
+- `--results-dir string`: Base folder for structured outputs (default: `./data/results`)
+- `--run-id string`: Optional explicit identifier for a run
+- `--if-exists string`: Existing artifact policy: `skip|overwrite|error` (default: `skip`)
+- `--progress bool`: Print improvement progress to stderr (default: `true`)
+
+**Structured Outputs** (saved under `--results-dir`):
+
+- `summary/<run_id>.json`: final best solution, metadata and params
+- `evolution/<run_id>.jsonl`: only improvement events (one JSON record per improvement)
+- `timing/<run_id>.json`: execution timing breakdown (`load_instance`, `optimize`, `serialize`, `total`)
+- `logs/<run_id>.log`: recommended destination for stderr when running in batch
+
+The `evolution` file only stores rows when the best makespan changes, including the iteration and evaluation count where it changed.
+
 ## Example Usage
 
 ```bash
@@ -69,4 +99,10 @@ tcc map -s 123 -f ./point-instances
 
 # Generate graphs from existing point instances
 tcc graph -f ./point-instances
+
+# Optimize with GA and save structured artifacts
+tcc optimize ga --instance ./data/10a.graph --results-dir ./data/results
+
+# Batch execution with run_all.sh
+./src/run_all.sh --method=ga --frequency=10:3,11:3 --results-dir=./src/data/results --if-exists=skip
 ```

@@ -3,9 +3,10 @@ package brute
 import (
 	"math"
 	"tcc/graph"
+	"tcc/shared"
 )
 
-func Optimize(g graph.Graph) ([]int, float64) {
+func Optimize(g graph.Graph, onImprovement func(shared.Improvement)) shared.OptimizationResult {
 	places := make([]int, len(g)-1)
 	for i := 1; i < len(g); i++ {
 		places[i-1] = i
@@ -13,15 +14,42 @@ func Optimize(g graph.Graph) ([]int, float64) {
 
 	bestPerm := []int{}
 	bestMksp := math.MaxFloat64
+	evaluations := 0
+	improvements := make([]shared.Improvement, 0)
 
 	for perm := range generatePermutations(places) {
+		evaluations++
 		mksp := g.Makespan(perm)
 		if bestMksp > mksp {
-			bestPerm = perm
+			delta := 0.0
+			if bestMksp < math.MaxFloat64 {
+				delta = mksp - bestMksp
+			}
+
+			bestPerm = append([]int(nil), perm...)
 			bestMksp = mksp
+
+			improvement := shared.Improvement{
+				Iteration:    evaluations,
+				Evaluation:   evaluations,
+				BestMakespan: bestMksp,
+				Delta:        delta,
+				BestSequence: append([]int(nil), bestPerm...),
+			}
+			improvements = append(improvements, improvement)
+			if onImprovement != nil {
+				onImprovement(improvement)
+			}
 		}
 	}
-	return bestPerm, bestMksp
+
+	return shared.OptimizationResult{
+		BestSequence:        bestPerm,
+		BestMakespan:        bestMksp,
+		IterationsCompleted: evaluations,
+		Evaluations:         evaluations,
+		Improvements:        improvements,
+	}
 }
 
 func generatePermutations(arr []int) <-chan []int {

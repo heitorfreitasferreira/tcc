@@ -8,6 +8,7 @@ import (
 	"math/rand"
 	"tcc/graph"
 	"tcc/optimization/ga"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -15,41 +16,46 @@ import (
 // gaCmd represents the ga command
 var gaCmd = &cobra.Command{
 	Use:   "ga",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		instance, err := cmd.Parent().PersistentFlags().GetString("instance")
+	Short: "Optimize an instance using genetic algorithm",
+	Args:  cobra.NoArgs,
+	RunE: func(cmd *cobra.Command, args []string) error {
+		instance, err := cmd.Flags().GetString("instance")
 		if err != nil {
-			cmd.PrintErrln("Error getting instance file path:", err)
-			return
-		}
-		g, err := graph.LoadFromFile(instance)
-		if err != nil {
-			cmd.PrintErrln("Error loading graph:", err)
-			return
+			return fmt.Errorf("get --instance: %w", err)
 		}
 
-		seed, err := cmd.Root().PersistentFlags().GetInt64("seed")
+		seed, err := cmd.Flags().GetInt64("seed")
 		if err != nil {
-			cmd.PrintErrln("Error getting random seed:", err)
-			return
+			return fmt.Errorf("get --seed: %w", err)
 		}
-		rng := rand.New(rand.NewSource(seed))
 
 		params, err := getParams(cmd)
 		if err != nil {
-			cmd.PrintErrln("Error getting parameters:", err)
-			return
+			return err
 		}
 
-		bestGen, bestFen := ga.Optimize(params, g, rng)
-		fmt.Println("Best solution:", bestGen)
-		fmt.Println("Best fitness:", bestFen)
+		run, skip, err := prepareOptimizeRun(cmd, "ga", instance, seed, gaParamsMap(params))
+		if err != nil {
+			return err
+		}
+		if skip {
+			return nil
+		}
+
+		loadStart := time.Now()
+		g, err := graph.LoadFromFile(instance)
+		if err != nil {
+			return fmt.Errorf("load graph instance %q: %w", instance, err)
+		}
+		loadDuration := time.Since(loadStart)
+
+		rng := rand.New(rand.NewSource(seed))
+		optimizeStart := time.Now()
+		result := ga.Optimize(params, g, rng, improvementLogger(cmd, run))
+		optimizeDuration := time.Since(optimizeStart)
+		optimizedAt := time.Now()
+
+		return persistOptimizeRun(cmd, run, result, loadDuration, optimizeDuration, optimizedAt)
 	},
 }
 
@@ -57,35 +63,45 @@ func init() {
 	optimizeCmd.AddCommand(gaCmd)
 	gaCmd.Flags().Int("elitism", 1, "Number of elite individuals to keep each generation")
 	gaCmd.Flags().Float64("mutation-rate", 0.05, "Probability of mutation (swap two genes)")
-	gaCmd.Flags().Int("tournament-size", 2.0, "Tournament size for parent selection")
+	gaCmd.Flags().Int("tournament-size", 2, "Tournament size for parent selection")
 }
 
 func getParams(cmd *cobra.Command) (ga.Params, error) {
 	var err error
 	params := ga.Params{}
 
-	iterations, err := cmd.Parent().PersistentFlags().GetInt("iterations")
+	iterations, err := cmd.Flags().GetInt("iterations")
 	if err != nil {
-		return params, err
+		return params, fmt.Errorf("get --iterations: %w", err)
 	}
-	population, err := cmd.Parent().PersistentFlags().GetInt("population")
+	population, err := cmd.Flags().GetInt("population")
 	if err != nil {
-		return params, err
+		return params, fmt.Errorf("get --population: %w", err)
 	}
 	params.HyperParams.Iterations = iterations
 	params.HyperParams.PopulationSize = population
 
 	params.Elitism, err = cmd.Flags().GetInt("elitism")
 	if err != nil {
-		return params, err
+		return params, fmt.Errorf("get --elitism: %w", err)
 	}
 	params.MutationRate, err = cmd.Flags().GetFloat64("mutation-rate")
 	if err != nil {
-		return params, err
+		return params, fmt.Errorf("get --mutation-rate: %w", err)
 	}
 	params.TournamentSize, err = cmd.Flags().GetInt("tournament-size")
 	if err != nil {
-		return params, err
+		return params, fmt.Errorf("get --tournament-size: %w", err)
 	}
 	return params, nil
+}
+
+func gaParamsMap(params ga.Params) map[string]any {
+	return map[string]any{
+		"population":      params.HyperParams.PopulationSize,
+		"iterations":      params.HyperParams.Iterations,
+		"elitism":         params.Elitism,
+		"mutation_rate":   params.MutationRate,
+		"tournament_size": params.TournamentSize,
+	}
 }

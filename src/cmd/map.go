@@ -4,6 +4,7 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 	"tcc/points"
@@ -14,35 +15,11 @@ import (
 // mapCmd represents the map command
 var mapCmd = &cobra.Command{
 	Use:   "map",
-	Short: "Salva no disco instâncais de pontos gerados aleatóriamente para serem usando no TSP",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		frequency := parseFrequency(cmd)
-		if frequency == nil {
-			return
-		}
-		seed, err := cmd.Root().PersistentFlags().GetInt64("seed")
-		if err != nil {
-			cmd.PrintErrln("Error getting seed:", err)
-			return
-		}
-		folder, err := cmd.Root().PersistentFlags().GetString("folder")
-		if err != nil {
-			cmd.PrintErrln("Error getting folder:", err)
-			return
-		}
-
-		pts := points.CreateInstances(seed, frequency)
-		err = points.Save(pts, folder)
-		if err != nil {
-			cmd.PrintErrln("Error saving instances into folder: ", err)
-		}
-		cmd.Printf("%d files saved at `%s`\n", len(pts), folder)
+	Short: "Generate random point instances",
+	Long:  `Generate random 2D point instances and save them to disk.`,
+	Args:  cobra.NoArgs,
+	RunE: func(cmd *cobra.Command, args []string) error {
+		return runMap(cmd)
 	},
 }
 
@@ -50,39 +27,65 @@ func init() {
 	createCmd.AddCommand(mapCmd)
 }
 
-func parseFrequency(cmd *cobra.Command) map[int]int {
-	frequencyStr, err := cmd.Flags().GetString("frequency") // ← Corrigido!
+func runMap(cmd *cobra.Command) error {
+	frequency, err := parseFrequency(cmd)
 	if err != nil {
-		cmd.PrintErrln("Erro ao obter frequency:", err)
-		return nil
+		return err
+	}
+
+	seed, err := cmd.Flags().GetInt64("seed")
+	if err != nil {
+		return fmt.Errorf("get --seed: %w", err)
+	}
+
+	folder, err := cmd.Flags().GetString("folder")
+	if err != nil {
+		return fmt.Errorf("get --folder: %w", err)
+	}
+
+	pts := points.CreateInstances(seed, frequency)
+	if err := points.Save(pts, folder); err != nil {
+		return fmt.Errorf("save points in %q: %w", folder, err)
+	}
+
+	cmd.Printf("%d point files saved at `%s`\n", len(pts), folder)
+	return nil
+}
+
+func parseFrequency(cmd *cobra.Command) (map[int]int, error) {
+	frequencyStr, err := cmd.Flags().GetString("frequency")
+	if err != nil {
+		return nil, fmt.Errorf("get --frequency: %w", err)
 	}
 
 	frequency := make(map[int]int)
 
 	for i, pair := range strings.Split(frequencyStr, ",") {
+		pair = strings.TrimSpace(pair)
 		if pair == "" {
 			continue
 		}
 
 		parts := strings.Split(pair, ":")
 		if len(parts) != 2 {
-			cmd.PrintErrf("Entrada inválida no par #%d: '%s'. Formato esperado: 'chave:valor'\n", i+1, pair)
-			return nil
+			return nil, fmt.Errorf("invalid pair #%d %q, expected format 'key:value'", i+1, pair)
 		}
 
-		key, err := strconv.Atoi(parts[0])
+		keyText := strings.TrimSpace(parts[0])
+		valueText := strings.TrimSpace(parts[1])
+
+		key, err := strconv.Atoi(keyText)
 		if err != nil {
-			cmd.PrintErrf("Chave inválida no par #%d ('%s'): %v\n", i+1, parts[0], err)
-			return nil
+			return nil, fmt.Errorf("invalid key in pair #%d %q: %w", i+1, keyText, err)
 		}
 
-		value, err := strconv.Atoi(parts[1])
+		value, err := strconv.Atoi(valueText)
 		if err != nil {
-			cmd.PrintErrf("Valor inválido no par #%d ('%s'): %v\n", i+1, parts[1], err)
-			return nil
+			return nil, fmt.Errorf("invalid value in pair #%d %q: %w", i+1, valueText, err)
 		}
 
 		frequency[key] = value
 	}
-	return frequency
+
+	return frequency, nil
 }

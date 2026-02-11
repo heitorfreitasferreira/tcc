@@ -9,6 +9,7 @@ import (
 	"tcc/graph"
 	"tcc/optimization/aco"
 	"tcc/shared"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -16,37 +17,46 @@ import (
 // acoCmd represents the aco command
 var acoCmd = &cobra.Command{
 	Use:   "aco",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empoalphaers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		seed, err := cmd.Root().PersistentFlags().GetInt64("seed")
+	Short: "Optimize an instance using ant colony optimization",
+	Args:  cobra.NoArgs,
+	RunE: func(cmd *cobra.Command, args []string) error {
+		seed, err := cmd.Flags().GetInt64("seed")
 		if err != nil {
-			cmd.PrintErrln("Error getting random seed parameter:", err)
-			return
-		}
-		instance, err := cmd.Parent().PersistentFlags().GetString("instance")
-		if err != nil {
-			cmd.PrintErrln("Error getting instance file path:", err)
-			return
+			return fmt.Errorf("get --seed: %w", err)
 		}
 
-		rng := rand.New(rand.NewSource(seed))
-		graph, err := graph.LoadFromFile(instance)
+		instance, err := cmd.Flags().GetString("instance")
 		if err != nil {
-			cmd.PrintErrln("Error getting folder:", err)
-			return
+			return fmt.Errorf("get --instance: %w", err)
 		}
+
 		params, err := getAcoParams(cmd)
 		if err != nil {
-			cmd.PrintErrln("Error getting parameters: ", err)
-			return
+			return err
 		}
-		fmt.Println(aco.Optimize(params, graph, rng))
+
+		run, skip, err := prepareOptimizeRun(cmd, "aco", instance, seed, acoParamsMap(params))
+		if err != nil {
+			return err
+		}
+		if skip {
+			return nil
+		}
+
+		loadStart := time.Now()
+		g, err := graph.LoadFromFile(instance)
+		if err != nil {
+			return fmt.Errorf("load graph instance %q: %w", instance, err)
+		}
+		loadDuration := time.Since(loadStart)
+
+		rng := rand.New(rand.NewSource(seed))
+		optimizeStart := time.Now()
+		result := aco.Optimize(params, g, rng, improvementLogger(cmd, run))
+		optimizeDuration := time.Since(optimizeStart)
+		optimizedAt := time.Now()
+
+		return persistOptimizeRun(cmd, run, result, loadDuration, optimizeDuration, optimizedAt)
 	},
 }
 
@@ -61,43 +71,41 @@ func init() {
 }
 
 func getAcoParams(cmd *cobra.Command) (aco.Params, error) {
-	iterations, err := cmd.Parent().PersistentFlags().GetInt("iterations")
+	iterations, err := cmd.Flags().GetInt("iterations")
 	if err != nil {
-		cmd.PrintErrln("Error getting iterations parameter:", err)
-		return aco.Params{}, err
+		return aco.Params{}, fmt.Errorf("get --iterations: %w", err)
 	}
-	population, err := cmd.Parent().PersistentFlags().GetInt("population")
+
+	population, err := cmd.Flags().GetInt("population")
 	if err != nil {
-		cmd.PrintErrln("Error getting population parameter:", err)
-		return aco.Params{}, err
+		return aco.Params{}, fmt.Errorf("get --population: %w", err)
 	}
 
 	alpha, err := cmd.Flags().GetFloat64("alpha")
 	if err != nil {
-		cmd.PrintErrln("Error getting alpha", err)
-		return aco.Params{}, err
+		return aco.Params{}, fmt.Errorf("get --alpha: %w", err)
 	}
+
 	beta, err := cmd.Flags().GetFloat64("beta")
 	if err != nil {
-		cmd.PrintErrln("Error getting beta", err)
-		return aco.Params{}, err
+		return aco.Params{}, fmt.Errorf("get --beta: %w", err)
 	}
+
 	gama, err := cmd.Flags().GetFloat64("gama")
 	if err != nil {
-		cmd.PrintErrln("Error getting gama", err)
-		return aco.Params{}, err
+		return aco.Params{}, fmt.Errorf("get --gama: %w", err)
 	}
+
 	rho, err := cmd.Flags().GetFloat64("rho")
 	if err != nil {
-		cmd.PrintErrln("Error getting Rho", err)
-		return aco.Params{}, err
+		return aco.Params{}, fmt.Errorf("get --rho: %w", err)
 	}
 
 	q, err := cmd.Flags().GetFloat64("q")
 	if err != nil {
-		cmd.PrintErrln("Error getting Q", err)
-		return aco.Params{}, err
+		return aco.Params{}, fmt.Errorf("get --q: %w", err)
 	}
+
 	return aco.Params{
 		HyperParams: shared.HyperParams{
 			Iterations:     iterations,
@@ -109,4 +117,16 @@ func getAcoParams(cmd *cobra.Command) (aco.Params, error) {
 		Rho:   rho,
 		Q:     q,
 	}, nil
+}
+
+func acoParamsMap(params aco.Params) map[string]any {
+	return map[string]any{
+		"population": params.HyperParams.PopulationSize,
+		"iterations": params.HyperParams.Iterations,
+		"alpha":      params.Alpha,
+		"beta":       params.Beta,
+		"gama":       params.Gama,
+		"rho":        params.Rho,
+		"q":          params.Q,
+	}
 }

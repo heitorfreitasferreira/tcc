@@ -1,7 +1,6 @@
 package pso
 
 import (
-	"fmt"
 	"math"
 	"math/rand"
 	"tcc/graph"
@@ -36,9 +35,9 @@ func (sw *Swarm) Init(g *graph.Graph, p Params, rng *rand.Rand) {
 	sw.particles = make([]particle, 0, p.PopulationSize)
 }
 
-func (sw *Swarm) Optimize() *shared.SwarmStats {
+func (sw *Swarm) Optimize(onImprovement func(shared.Improvement)) shared.OptimizationResult {
 	// initialize
-	for range sw.PopulationSize {
+	for i := 0; i < sw.PopulationSize; i++ {
 		x := make([]float64, sw.NumberOfNodes())
 		shared.RandomizeSlice(x, sw.rng)
 		newParticle := particle{
@@ -54,39 +53,69 @@ func (sw *Swarm) Optimize() *shared.SwarmStats {
 		sw.particles = append(sw.particles, newParticle)
 	}
 
-	// run
-	sw.evaluate()
+	result := shared.OptimizationResult{
+		BestMakespan: math.MaxFloat64,
+	}
+	evaluationCount := 0
 
-	stats := shared.NewStats()
-	stats.AddIterData(sw.bestMakespan, sw.gBestPos, sw.gBestSeq)
-	for range sw.Iterations {
+	// run
+	sw.evaluate(0, &result, &evaluationCount, onImprovement)
+
+	for iteration := 1; iteration <= sw.Iterations; iteration++ {
 		sw.update()
-		sw.evaluate()
-		stats.AddIterData(sw.bestMakespan, sw.gBestPos, sw.gBestSeq)
+		sw.evaluate(iteration, &result, &evaluationCount, onImprovement)
 	}
 
-	return stats
+	result.IterationsCompleted = sw.Iterations
+	result.Evaluations = evaluationCount
+	result.BestMakespan = sw.bestMakespan
+	result.BestSequence = append([]int(nil), sw.gBestSeq...)
+
+	return result
 }
 
 func (sw *Swarm) update() {
-	for _, p := range sw.particles {
+	for i := range sw.particles {
+		p := &sw.particles[i]
 		r1 := sw.rng.Float64()
 		r2 := sw.rng.Float64()
 		p.update(sw.W, sw.C1, sw.C2, r1, r2, sw.gBestPos)
 	}
 }
 
-func (sw *Swarm) evaluate() {
-	for _, p := range sw.particles {
+func (sw *Swarm) evaluate(
+	iteration int,
+	result *shared.OptimizationResult,
+	evaluationCount *int,
+	onImprovement func(shared.Improvement),
+) {
+	for i := range sw.particles {
+		p := &sw.particles[i]
 		p.makespan = sw.Makespan(p.sequence)
+		*evaluationCount = *evaluationCount + 1
 		if p.makespan < p.bestMakespan {
 			p.bestMakespan = p.makespan
 			copy(p.bestX, p.x)
 			if p.bestMakespan < sw.bestMakespan {
-				fmt.Println("Changing from", sw.bestMakespan, "to", p.bestMakespan)
+				delta := 0.0
+				if sw.bestMakespan < math.MaxFloat64 {
+					delta = p.bestMakespan - sw.bestMakespan
+				}
 				sw.bestMakespan = p.bestMakespan
 				copy(sw.gBestPos, p.bestX)
 				copy(sw.gBestSeq, p.sequence)
+
+				improvement := shared.Improvement{
+					Iteration:    iteration,
+					Evaluation:   *evaluationCount,
+					BestMakespan: sw.bestMakespan,
+					Delta:        delta,
+					BestSequence: append([]int(nil), sw.gBestSeq...),
+				}
+				result.Improvements = append(result.Improvements, improvement)
+				if onImprovement != nil {
+					onImprovement(improvement)
+				}
 			}
 		}
 	}
