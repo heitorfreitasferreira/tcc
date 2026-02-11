@@ -1,6 +1,5 @@
 /*
-Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
+Copyright © 2024 HEITOR FREITAS FERREIRA <heitor.ff@hotmail.com>
 */
 package main
 
