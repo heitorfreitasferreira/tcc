@@ -1,0 +1,24 @@
+services:
+  cli:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    image: tcc-app:local
+    working_dir: /app/src
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - ./src/data:/app/src/data
+    entrypoint: ["/app/src/tcc"]
+    stdin_open: true
+    tty: true
+
+  run-all:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    image: tcc-app:local
+    working_dir: /app/src
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - ./src/data:/app/src/data
+    entrypoint: ["/app/src/run_all.sh"]
