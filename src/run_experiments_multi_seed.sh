@@ -198,7 +198,7 @@ for ((seed = seed_start; seed <= seed_end; seed++)); do
       "${run_all_script}"
       "--method=${method}"
       "--seed=${seed}"
-      "--frequency=${frequengy_input}"
+      "--frequency=${frequency_input}"
       "--folder=${data_folder}"
       "--if-exists=${if_exists}"
       "--progress=${progress}"
