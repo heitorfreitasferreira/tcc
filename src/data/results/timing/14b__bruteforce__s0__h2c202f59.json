@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "14b__bruteforce__s0__h2c202f59",
+  "method": "bruteforce",
+  "instance": "/home/heitor/tcc/src/data/14b.graph",
+  "durations_ms": {
+    "load_instance": 7,
+    "optimize": 2745648,
+    "serialize": 8,
+    "total": 2745664
+  },
+  "measured": {
+    "started_at": "2026-02-11T20:54:25.740529258Z",
+    "finished_at": "2026-02-11T21:40:11.405309369Z"
+  }
+}
