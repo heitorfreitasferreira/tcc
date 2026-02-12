@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":1,"eval_count":1,"best_makespan":23.943824604931407,"delta":0,"best_sequence":[9,10,12,7,8,5,4,3,11,2,6,1,13]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":1,"eval_count":2,"best_makespan":19.557542161351762,"delta":-4.3862824435796455,"best_sequence":[8,12,13,6,1,3,5,2,4,9,11,10,7]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":1,"eval_count":17,"best_makespan":18.64093764713947,"delta":-0.9166045142122918,"best_sequence":[8,6,1,3,2,9,12,10,13,7,11,4,5]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":2,"eval_count":132,"best_makespan":18.039853328229206,"delta":-0.6010843189102637,"best_sequence":[3,9,7,6,8,1,11,13,2,4,10,12,5]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":4,"eval_count":391,"best_makespan":17.65795570068339,"delta":-0.3818976275458148,"best_sequence":[12,1,5,6,3,11,8,10,9,13,4,7,2]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":6,"eval_count":584,"best_makespan":16.223355380801095,"delta":-1.4346003198822963,"best_sequence":[3,8,11,9,12,7,1,5,6,2,4,10,13]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":30,"eval_count":2950,"best_makespan":16.206559753329618,"delta":-0.01679562747147756,"best_sequence":[6,8,11,10,13,9,3,7,2,4,12,1,5]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":30,"eval_count":2965,"best_makespan":15.953268090506176,"delta":-0.2532916628234414,"best_sequence":[3,8,11,9,12,1,5,6,10,7,13,2,4]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":37,"eval_count":3604,"best_makespan":15.525807433376194,"delta":-0.4274606571299824,"best_sequence":[3,8,11,1,12,6,5,2,7,4,9,13,10]}
+{"schema":"tcc.evolution.v1","run_id":"14a__aco__s26__h90ac4031","method":"aco","iter":49,"eval_count":4885,"best_makespan":15.311669082022515,"delta":-0.21413835135367876,"best_sequence":[3,8,11,9,12,1,5,6,10,13,7,2,4]}

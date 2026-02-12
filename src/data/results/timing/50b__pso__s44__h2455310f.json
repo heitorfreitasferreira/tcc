@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "50b__pso__s44__h2455310f",
+  "method": "pso",
+  "instance": "/home/heitor/tcc/src/data/50b.graph",
+  "durations_ms": {
+    "load_instance": 49,
+    "optimize": 49,
+    "serialize": 3,
+    "total": 101
+  },
+  "measured": {
+    "started_at": "2026-02-12T19:35:23.105088718Z",
+    "finished_at": "2026-02-12T19:35:23.20690064Z"
+  }
+}

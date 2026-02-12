@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":0,"eval_count":1,"best_makespan":15.740794158331646,"delta":0,"best_sequence":[2,1,5,3,6,8,7,9,4]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":0,"eval_count":7,"best_makespan":15.072687267274633,"delta":-0.6681068910570129,"best_sequence":[6,2,4,7,8,5,9,1,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":0,"eval_count":8,"best_makespan":14.014563760350677,"delta":-1.0581235069239554,"best_sequence":[4,2,6,7,3,5,9,8,1]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":0,"eval_count":10,"best_makespan":13.639949831325394,"delta":-0.37461392902528345,"best_sequence":[9,5,7,2,3,4,8,6,1]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":0,"eval_count":32,"best_makespan":12.854850810655075,"delta":-0.7850990206703194,"best_sequence":[6,4,1,2,8,3,9,7,5]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":1,"eval_count":101,"best_makespan":11.85320225774185,"delta":-1.001648552913224,"best_sequence":[4,6,9,8,1,7,2,3,5]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":1,"eval_count":117,"best_makespan":11.177094778919148,"delta":-0.6761074788227024,"best_sequence":[6,4,1,8,2,7,3,5,9]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":2,"eval_count":202,"best_makespan":11.161207158072646,"delta":-0.015887620846502415,"best_sequence":[6,4,1,7,8,2,3,9,5]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":2,"eval_count":284,"best_makespan":11.020299334054231,"delta":-0.14090782401841473,"best_sequence":[4,6,8,1,7,2,9,5,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s4__h0eae7ad1","method":"pso","iter":6,"eval_count":623,"best_makespan":10.94395495653126,"delta":-0.07634437752297174,"best_sequence":[4,6,1,8,7,2,9,3,5]}

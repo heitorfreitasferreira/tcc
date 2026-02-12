@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "15b__ga__s49__h24c4bb8c",
+  "method": "ga",
+  "instance": "/home/heitor/tcc/src/data/15b.graph",
+  "durations_ms": {
+    "load_instance": 0,
+    "optimize": 5,
+    "serialize": 3,
+    "total": 9
+  },
+  "measured": {
+    "started_at": "2026-02-12T19:35:47.877283715Z",
+    "finished_at": "2026-02-12T19:35:47.886652214Z"
+  }
+}

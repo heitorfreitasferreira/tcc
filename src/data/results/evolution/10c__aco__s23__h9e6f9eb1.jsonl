@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":1,"eval_count":1,"best_makespan":16.8123035849542,"delta":0,"best_sequence":[7,4,2,1,5,9,8,3,6]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":1,"eval_count":5,"best_makespan":16.42846922923693,"delta":-0.3838343557172692,"best_sequence":[4,6,2,3,8,5,7,1,9]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":1,"eval_count":6,"best_makespan":16.406491204061542,"delta":-0.021978025175389604,"best_sequence":[1,5,9,6,2,4,7,8,3]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":1,"eval_count":7,"best_makespan":14.577384194046248,"delta":-1.829107010015294,"best_sequence":[2,4,3,7,8,6,1,9,5]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":1,"eval_count":20,"best_makespan":14.505238079950978,"delta":-0.07214611409527016,"best_sequence":[2,5,3,6,8,4,1,9,7]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":1,"eval_count":50,"best_makespan":13.478657631704708,"delta":-1.0265804482462695,"best_sequence":[2,5,7,1,8,3,4,6,9]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":1,"eval_count":92,"best_makespan":13.330688072532784,"delta":-0.14796955917192456,"best_sequence":[2,8,7,5,9,3,1,4,6]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":2,"eval_count":107,"best_makespan":13.070085236838052,"delta":-0.26060283569473164,"best_sequence":[2,9,1,3,4,8,5,7,6]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":2,"eval_count":136,"best_makespan":12.951879202432375,"delta":-0.11820603440567723,"best_sequence":[2,9,8,3,4,6,1,7,5]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s23__h9e6f9eb1","method":"aco","iter":25,"eval_count":2458,"best_makespan":12.50854986573443,"delta":-0.4433293366979445,"best_sequence":[7,5,9,6,8,4,3,1,2]}

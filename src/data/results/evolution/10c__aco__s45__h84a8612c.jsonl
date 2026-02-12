@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":1,"best_makespan":17.11610963340145,"delta":0,"best_sequence":[7,2,5,8,6,1,4,9,3]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":2,"best_makespan":17.044199983800944,"delta":-0.0719096496005065,"best_sequence":[5,9,8,2,4,6,3,7,1]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":3,"best_makespan":16.80801088441412,"delta":-0.23618909938682364,"best_sequence":[3,8,7,6,5,4,1,9,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":5,"best_makespan":16.39952683109343,"delta":-0.4084840533206915,"best_sequence":[3,4,6,5,1,7,9,8,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":6,"best_makespan":15.675513218279711,"delta":-0.7240136128137173,"best_sequence":[9,2,4,1,6,5,8,3,7]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":7,"best_makespan":14.817747265566503,"delta":-0.8577659527132084,"best_sequence":[6,8,7,5,9,1,3,2,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":33,"best_makespan":14.302263546703061,"delta":-0.5154837188634414,"best_sequence":[9,5,2,1,8,3,4,6,7]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":53,"best_makespan":14.056914516430151,"delta":-0.24534903027291044,"best_sequence":[1,6,8,4,3,5,7,9,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":1,"eval_count":58,"best_makespan":12.331317589521134,"delta":-1.7255969269090166,"best_sequence":[2,9,7,5,1,8,3,4,6]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s45__h84a8612c","method":"aco","iter":9,"eval_count":849,"best_makespan":12.037306630433713,"delta":-0.29401095908742114,"best_sequence":[2,9,5,4,7,8,6,1,3]}

@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":1,"eval_count":1,"best_makespan":15.086575672709316,"delta":0,"best_sequence":[6,3,2,9,7,1,5,4,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":1,"eval_count":3,"best_makespan":14.866224098293777,"delta":-0.2203515744155382,"best_sequence":[9,1,8,2,6,3,4,7,5]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":1,"eval_count":4,"best_makespan":14.428059804312992,"delta":-0.43816429398078505,"best_sequence":[1,7,5,9,3,8,6,4,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":1,"eval_count":7,"best_makespan":13.184531820380416,"delta":-1.2435279839325766,"best_sequence":[4,7,9,5,1,8,2,6,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":1,"eval_count":22,"best_makespan":12.849877936116554,"delta":-0.33465388426386156,"best_sequence":[4,6,8,9,2,7,3,1,5]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":1,"eval_count":70,"best_makespan":12.745621252716512,"delta":-0.1042566834000418,"best_sequence":[6,2,4,1,7,8,9,5,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":1,"eval_count":78,"best_makespan":11.906455100406024,"delta":-0.8391661523104883,"best_sequence":[6,4,2,1,7,8,3,5,9]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":2,"eval_count":155,"best_makespan":11.673753367192578,"delta":-0.232701733213446,"best_sequence":[4,6,8,7,1,9,5,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":3,"eval_count":231,"best_makespan":11.441298899711763,"delta":-0.23245446748081555,"best_sequence":[4,6,8,7,2,1,9,5,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s7__h95b10100","method":"aco","iter":68,"eval_count":6764,"best_makespan":11.290099389867144,"delta":-0.15119950984461816,"best_sequence":[6,4,7,1,2,8,3,5,9]}
