@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "12c__pso__s1__hd7208735",
+  "method": "pso",
+  "instance": "/home/htr/tcc/src/data/12c.graph",
+  "durations_ms": {
+    "load_instance": 1,
+    "optimize": 12,
+    "serialize": 1,
+    "total": 16
+  },
+  "measured": {
+    "started_at": "2026-02-12T16:23:42.445094208Z",
+    "finished_at": "2026-02-12T16:23:42.461465889Z"
+  }
+}

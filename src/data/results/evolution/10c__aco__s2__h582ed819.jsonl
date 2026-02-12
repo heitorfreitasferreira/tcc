@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":1,"eval_count":1,"best_makespan":16.081406718190838,"delta":0,"best_sequence":[6,2,1,3,8,9,5,4,7]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":1,"eval_count":2,"best_makespan":15.357224018114147,"delta":-0.7241827000766907,"best_sequence":[6,5,8,3,4,7,9,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":1,"eval_count":13,"best_makespan":15.347170149686052,"delta":-0.010053868428094859,"best_sequence":[2,7,8,9,5,6,1,3,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":1,"eval_count":17,"best_makespan":15.091191190848036,"delta":-0.2559789588380159,"best_sequence":[1,2,5,4,7,6,9,8,3]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":1,"eval_count":27,"best_makespan":14.418728171889162,"delta":-0.6724630189588741,"best_sequence":[2,1,3,8,5,6,9,4,7]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":1,"eval_count":65,"best_makespan":14.178656620993987,"delta":-0.24007155089517518,"best_sequence":[2,5,6,8,1,3,4,9,7]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":1,"eval_count":93,"best_makespan":12.508157698494957,"delta":-1.6704989224990303,"best_sequence":[2,3,1,8,7,5,9,4,6]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":3,"eval_count":240,"best_makespan":12.32517790871745,"delta":-0.18297978977750695,"best_sequence":[2,7,5,9,6,8,1,4,3]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":5,"eval_count":423,"best_makespan":12.231446994019558,"delta":-0.09373091469789152,"best_sequence":[2,7,5,9,4,8,1,6,3]}
+{"schema":"tcc.evolution.v1","run_id":"10c__aco__s2__h582ed819","method":"aco","iter":7,"eval_count":674,"best_makespan":11.99979459513542,"delta":-0.23165239888413858,"best_sequence":[2,1,4,8,7,5,9,6,3]}

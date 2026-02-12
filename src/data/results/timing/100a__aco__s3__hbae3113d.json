@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "100a__aco__s3__hbae3113d",
+  "method": "aco",
+  "instance": "/home/htr/tcc/src/data/100a.graph",
+  "durations_ms": {
+    "load_instance": 2219,
+    "optimize": 14391,
+    "serialize": 1,
+    "total": 16612
+  },
+  "measured": {
+    "started_at": "2026-02-12T16:26:05.896280463Z",
+    "finished_at": "2026-02-12T16:26:22.508858388Z"
+  }
+}

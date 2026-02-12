@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "10c__bruteforce__s1__hfed238dc",
+  "method": "bruteforce",
+  "instance": "/home/htr/tcc/src/data/10c.graph",
+  "durations_ms": {
+    "load_instance": 1,
+    "optimize": 427,
+    "serialize": 3,
+    "total": 431
+  },
+  "measured": {
+    "started_at": "2026-02-12T16:24:04.214533187Z",
+    "finished_at": "2026-02-12T16:24:04.645960386Z"
+  }
+}

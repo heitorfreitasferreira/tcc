@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "13b__bruteforce__s1__hb563a4a5",
+  "method": "bruteforce",
+  "instance": "/home/htr/tcc/src/data/13b.graph",
+  "durations_ms": {
+    "load_instance": 1,
+    "optimize": 1082358,
+    "serialize": 2,
+    "total": 1082362
+  },
+  "measured": {
+    "started_at": "2026-02-12T16:24:08.02450379Z",
+    "finished_at": "2026-02-12T16:42:10.386944524Z"
+  }
+}

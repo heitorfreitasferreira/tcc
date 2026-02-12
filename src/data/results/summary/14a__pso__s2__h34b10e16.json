@@ -1,0 +1,39 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "14a__pso__s2__h34b10e16",
+  "method": "pso",
+  "instance": "/home/htr/tcc/src/data/14a.graph",
+  "seed": 2,
+  "params": {
+    "c1": 2,
+    "c2": 2,
+    "iterations": 100,
+    "population": 100,
+    "w": 0.7
+  },
+  "status": "ok",
+  "result": {
+    "best_makespan": 16.338281712715528,
+    "best_sequence": [
+      3,
+      8,
+      9,
+      13,
+      1,
+      11,
+      6,
+      5,
+      12,
+      2,
+      4,
+      7,
+      10
+    ],
+    "iterations_completed": 100,
+    "evaluations": 10100
+  },
+  "timing_file": "timing/14a__pso__s2__h34b10e16.json",
+  "evolution_file": "evolution/14a__pso__s2__h34b10e16.jsonl",
+  "started_at": "2026-02-12T16:25:18.189500834Z",
+  "finished_at": "2026-02-12T16:25:18.230277057Z"
+}
