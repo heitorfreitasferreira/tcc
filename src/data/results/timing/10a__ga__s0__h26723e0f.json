@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "10a__ga__s0__h26723e0f",
+  "method": "ga",
+  "instance": "/home/htr/tcc/src/data/10a.graph",
+  "durations_ms": {
+    "load_instance": 0,
+    "optimize": 5,
+    "serialize": 4,
+    "total": 11
+  },
+  "measured": {
+    "started_at": "2026-02-11T21:13:38.310459235Z",
+    "finished_at": "2026-02-11T21:13:38.321536276Z"
+  }
+}

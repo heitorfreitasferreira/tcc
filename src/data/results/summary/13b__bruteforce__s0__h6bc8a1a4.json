@@ -1,0 +1,32 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "13b__bruteforce__s0__h6bc8a1a4",
+  "method": "bruteforce",
+  "instance": "/home/htr/tcc/src/data/13b.graph",
+  "seed": 0,
+  "params": {},
+  "status": "ok",
+  "result": {
+    "best_makespan": 13.964976911258763,
+    "best_sequence": [
+      1,
+      6,
+      2,
+      4,
+      11,
+      3,
+      8,
+      7,
+      9,
+      5,
+      12,
+      10
+    ],
+    "iterations_completed": 479001600,
+    "evaluations": 479001600
+  },
+  "timing_file": "timing/13b__bruteforce__s0__h6bc8a1a4.json",
+  "evolution_file": "evolution/13b__bruteforce__s0__h6bc8a1a4.jsonl",
+  "started_at": "2026-02-11T21:14:07.113437812Z",
+  "finished_at": "2026-02-11T21:22:44.466236339Z"
+}
