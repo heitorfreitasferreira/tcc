@@ -11,6 +11,7 @@ results_dir="${script_dir}/data/results"
 data_folder="${script_dir}/data"
 if_exists="skip"
 progress="false"
+jobs="$(nproc)"
 
 usage() {
 	cat <<EOF
@@ -23,6 +24,7 @@ Options:
   --folder=<path>       Pasta com .graph (padrao: src/data)
   --if-exists=<mode>    skip|overwrite|error (padrao: skip)
   --progress=<bool>     Exibir progresso no binario (padrao: false)
+  --jobs=<int>          Paralelismo das instancias (padrao: nproc)
   -h, --help            Mostra esta ajuda
 
 Comportamento padrao:
@@ -60,6 +62,9 @@ while [[ $# -gt 0 ]]; do
 	--progress=*)
 		progress="${1#*=}"
 		;;
+	--jobs=*)
+		jobs="${1#*=}"
+		;;
 	-h|--help)
 		usage
 		exit 0
@@ -80,6 +85,11 @@ fi
 
 if [[ ! "${min_size}" =~ ^[0-9]+$ ]]; then
 	echo "Invalid --min-size: ${min_size}. Expected a positive integer." >&2
+	exit 1
+fi
+
+if [[ ! "${jobs}" =~ ^[1-9][0-9]*$ ]]; then
+	echo "Invalid --jobs: ${jobs}. Expected a positive integer." >&2
 	exit 1
 fi
 
@@ -133,9 +143,11 @@ echo "Data folder: ${data_folder}"
 echo "Results dir: ${results_dir}"
 echo "if_exists: ${if_exists}"
 echo "Instancias candidatas: ${#files[@]}"
+echo "Jobs: ${jobs}"
 
 executed=0
 skipped=0
+declare -a targets=()
 
 for path in "${files[@]}"; do
 	file="${path##*/}"
@@ -158,21 +170,26 @@ for path in "${files[@]}"; do
 		fi
 	fi
 
+	targets+=("${path}")
+done
+
+if [[ ${#targets[@]} -eq 0 ]]; then
+	echo "Concluido: nada para executar. Executadas: 0 | Puladas: ${skipped}"
+	exit 0
+fi
+
+for path in "${targets[@]}"; do
+	file="${path##*/}"
+	base="${file%.graph}"
+
 	path_hash="$(printf '%s' "${path}" | sha1sum | cut -c1-8)"
 	run_id="${base}__bruteforce__s${seed}__h${path_hash}"
 	log_file="${results_dir}/logs/${run_id}.log"
 
-	echo "-> Rodando bruteforce: ${base}"
-	"${tcc_bin}" optimize bruteforce \
-		--instance "${path}" \
-		--seed "${seed}" \
-		--folder "${data_folder}" \
-		--results-dir "${results_dir}" \
-		--if-exists "${if_exists}" \
-		--progress="${progress}" \
-		2> "${log_file}"
+echo "-> Rodando bruteforce: ${base}"
+echo "\"${tcc_bin}\" optimize bruteforce --instance \"${path}\" --seed ${seed} --folder \"${data_folder}\" --results-dir \"${results_dir}\" --if-exists \"${if_exists}\" --progress=${progress} 2> \"${log_file}\""
+done | parallel --halt soon,fail=1 -j "${jobs}"
 
-	executed=$((executed + 1))
-done
+executed=${#targets[@]}
 
 echo "Concluido: bruteforce para instancias >= ${min_size}. Executadas: ${executed} | Puladas: ${skipped}"
