@@ -63,8 +63,6 @@ fi
 
 mkdir -p "${results_dir}/logs"
 
-"${tcc_bin}" create --frequency "${frequency_input}" --folder "${data_folder}" --seed "${seed}"
-
 declare -A frequency_map=()
 IFS=',' read -r -a frequency_pairs <<<"${frequency_input}"
 
