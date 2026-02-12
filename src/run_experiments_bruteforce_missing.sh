@@ -3,72 +3,32 @@
 set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-run_all_script="${script_dir}/run_all.sh"
+tcc_bin="${script_dir}/tcc"
 
 seed="0"
 min_size="15"
-frequency_input=""
-results_dir=""
+results_dir="${script_dir}/data/results"
 data_folder="${script_dir}/data"
 if_exists="skip"
 progress="false"
-jobs=""
 
 usage() {
 	cat <<EOF
 Usage: $0 [options]
 
 Options:
-  --seed=<int>          Seed para o bruteforce (padrao: 0)
+  --seed=<int>          Seed do bruteforce (padrao: 0)
   --min-size=<int>      Tamanho minimo da instancia (padrao: 15)
-  --frequency=<spec>    Frequencia no formato n:q (sobrescreve auto-deteccao)
-  --results-dir=<path>  Diretorio de resultados
+  --results-dir=<path>  Diretorio de resultados (padrao: src/data/results)
   --folder=<path>       Pasta com .graph (padrao: src/data)
-  --if-exists=<mode>    Modo para execucoes existentes (padrao: skip)
+  --if-exists=<mode>    skip|overwrite|error (padrao: skip)
   --progress=<bool>     Exibir progresso no binario (padrao: false)
-  --jobs=<int>          Paralelismo interno do run_all
   -h, --help            Mostra esta ajuda
+
+Comportamento padrao:
+  - roda bruteforce apenas 1 vez por instancia
+  - se ja existir qualquer summary de bruteforce para a instancia, pula (if-exists=skip)
 EOF
-}
-
-build_frequency_from_graphs() {
-	local folder="$1"
-	local min_required_size="$2"
-	declare -A counts=()
-	local path file base size
-
-	shopt -s nullglob
-	for path in "${folder}"/*.graph; do
-		file="${path##*/}"
-		base="${file%.graph}"
-
-		if [[ ! "${base}" =~ ^([0-9]+)[A-Za-z]+$ ]]; then
-			continue
-		fi
-
-		size="${BASH_REMATCH[1]}"
-		if ((10#${size} < 10#${min_required_size})); then
-			continue
-		fi
-
-		counts["${size}"]=$(( ${counts["${size}"]:-0} + 1 ))
-	done
-	shopt -u nullglob
-
-	if [[ ${#counts[@]} -eq 0 ]]; then
-		return 1
-	fi
-
-	mapfile -t sorted_sizes < <(printf '%s\n' "${!counts[@]}" | sort -n)
-
-	local pairs=()
-	local current_size
-	for current_size in "${sorted_sizes[@]}"; do
-		pairs+=("${current_size}:${counts["${current_size}"]}")
-	done
-
-	local IFS=,
-	echo "${pairs[*]}"
 }
 
 while [[ $# -gt 0 ]]; do
@@ -88,9 +48,6 @@ while [[ $# -gt 0 ]]; do
 	--min-size=*)
 		min_size="${1#*=}"
 		;;
-	--frequency=*)
-		frequency_input="${1#*=}"
-		;;
 	--results-dir=*)
 		results_dir="${1#*=}"
 		;;
@@ -102,9 +59,6 @@ while [[ $# -gt 0 ]]; do
 		;;
 	--progress=*)
 		progress="${1#*=}"
-		;;
-	--jobs=*)
-		jobs="${1#*=}"
 		;;
 	-h|--help)
 		usage
@@ -129,8 +83,13 @@ if [[ ! "${min_size}" =~ ^[0-9]+$ ]]; then
 	exit 1
 fi
 
-if [[ ! -x "${run_all_script}" ]]; then
-	echo "run_all.sh not found or not executable at ${run_all_script}" >&2
+if [[ ! "${if_exists}" =~ ^(skip|overwrite|error)$ ]]; then
+	echo "Invalid --if-exists: ${if_exists}. Allowed: skip|overwrite|error" >&2
+	exit 1
+fi
+
+if [[ ! -x "${tcc_bin}" ]]; then
+	echo "Binary not found at ${tcc_bin}. Build it first with 'make -C src build' or 'go build -o ./tcc' inside src/." >&2
 	exit 1
 fi
 
@@ -139,37 +98,81 @@ if [[ ! -d "${data_folder}" ]]; then
 	exit 1
 fi
 
-if [[ -z "${frequency_input}" ]]; then
-	if ! frequency_input="$(build_frequency_from_graphs "${data_folder}" "${min_size}")"; then
-		echo "Could not derive frequency for min-size ${min_size} in ${data_folder}." >&2
-		exit 1
+mkdir -p "${results_dir}/logs"
+
+declare -a files=()
+
+shopt -s nullglob
+for path in "${data_folder}"/*.graph; do
+	file="${path##*/}"
+	base="${file%.graph}"
+
+	if [[ ! "${base}" =~ ^([0-9]+)[A-Za-z]+$ ]]; then
+		continue
 	fi
+
+	size="${BASH_REMATCH[1]}"
+	if ((10#${size} < 10#${min_size})); then
+		continue
+	fi
+
+	files+=("${path}")
+done
+shopt -u nullglob
+
+if [[ ${#files[@]} -eq 0 ]]; then
+	echo "Nenhum .graph encontrado com n >= ${min_size} em ${data_folder}." >&2
+	exit 0
 fi
 
-echo "=== Bruteforce para instancias sem baseline (>= ${min_size}) ==="
+mapfile -t files < <(printf '%s\n' "${files[@]}" | sort -V)
+
+echo "=== Bruteforce para instancias >= ${min_size} ==="
 echo "Seed: ${seed}"
-echo "Frequencia: ${frequency_input}"
 echo "Data folder: ${data_folder}"
+echo "Results dir: ${results_dir}"
 echo "if_exists: ${if_exists}"
+echo "Instancias candidatas: ${#files[@]}"
 
-cmd=(
-	"${run_all_script}"
-	"--method=bruteforce"
-	"--seed=${seed}"
-	"--frequency=${frequency_input}"
-	"--folder=${data_folder}"
-	"--if-exists=${if_exists}"
-	"--progress=${progress}"
-)
+executed=0
+skipped=0
 
-if [[ -n "${results_dir}" ]]; then
-	cmd+=("--results-dir=${results_dir}")
-fi
+for path in "${files[@]}"; do
+	file="${path##*/}"
+	base="${file%.graph}"
 
-if [[ -n "${jobs}" ]]; then
-	cmd+=("--jobs=${jobs}")
-fi
+	shopt -s nullglob
+	existing_bf=("${results_dir}/summary/${base}__bruteforce__s"*.json)
+	shopt -u nullglob
 
-"${cmd[@]}"
+	if [[ ${#existing_bf[@]} -gt 0 ]]; then
+		if [[ "${if_exists}" == "skip" ]]; then
+			echo "-> Pulando ${base}: ja existe bruteforce em summary/."
+			skipped=$((skipped + 1))
+			continue
+		fi
 
-echo "Concluido: bruteforce para instancias >= ${min_size} finalizado."
+		if [[ "${if_exists}" == "error" ]]; then
+			echo "Ja existe bruteforce em summary/ para ${base}." >&2
+			exit 1
+		fi
+	fi
+
+	path_hash="$(printf '%s' "${path}" | sha1sum | cut -c1-8)"
+	run_id="${base}__bruteforce__s${seed}__h${path_hash}"
+	log_file="${results_dir}/logs/${run_id}.log"
+
+	echo "-> Rodando bruteforce: ${base}"
+	"${tcc_bin}" optimize bruteforce \
+		--instance "${path}" \
+		--seed "${seed}" \
+		--folder "${data_folder}" \
+		--results-dir "${results_dir}" \
+		--if-exists "${if_exists}" \
+		--progress="${progress}" \
+		2> "${log_file}"
+
+	executed=$((executed + 1))
+done
+
+echo "Concluido: bruteforce para instancias >= ${min_size}. Executadas: ${executed} | Puladas: ${skipped}"
