@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Hello World</title>
+  <desc id="desc">Speech bubble illustration for hello world page</desc>
+  <defs>
+    <linearGradient id="bubbleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="24" fill="#fff7ed" />
+  <path d="M40 38h80c8.8 0 16 7.2 16 16v38c0 8.8-7.2 16-16 16H80l-24 16v-16H40c-8.8 0-16-7.2-16-16V54c0-8.8 7.2-16 16-16z" fill="url(#bubbleGradient)" />
+  <circle cx="62" cy="72" r="6" fill="#fff" />
+  <circle cx="80" cy="72" r="6" fill="#fff" />
+  <circle cx="98" cy="72" r="6" fill="#fff" />
+</svg>

@@ -1,0 +1,15 @@
+{{ define "content" }}
+<div class="layout">
+  <aside class="sidebar">
+    <h1>RTSP Viewer</h1>
+    <p class="sidebar-hint">Selecione mapa, metodo e run no menu em niveis.</p>
+    <div id="sidebar-tree">
+      {{ template "sidebar_tree" . }}
+    </div>
+  </aside>
+
+  <main id="main-content" class="main-content">
+    {{ template "main_content" . }}
+  </main>
+</div>
+{{ end }}

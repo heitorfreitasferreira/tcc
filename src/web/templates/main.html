@@ -1,0 +1,27 @@
+{{ define "main_content" }}
+  {{ if .SelectedMap }}
+    {{ template "main_points" . }}
+  {{ else }}
+    {{ template "main_empty" . }}
+  {{ end }}
+{{ end }}
+
+{{ define "main_empty" }}
+<section class="main-card">
+  <h2>Como usar</h2>
+  <p>1) Selecione um mapa no menu lateral.</p>
+  <p>2) Abra um metodo e selecione uma run no menu em niveis.</p>
+</section>
+{{ end }}
+
+{{ define "main_points" }}
+<section class="main-card">
+  <h2>Mapa {{ .SelectedMap }}</h2>
+  <canvas id="points-canvas" width="760" height="760" data-points='{{ .PointsJSON }}'></canvas>
+</section>
+{{ end }}
+
+{{ define "main_with_sidebar_oob" }}
+{{ template "main_content" . }}
+{{ template "sidebar_tree_oob" . }}
+{{ end }}

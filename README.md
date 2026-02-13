@@ -88,6 +88,24 @@ This CLI application is designed for finding RTSP paths using bio-inspired metah
 
 The `evolution` file only stores rows when the best makespan changes, including the iteration and evaluation count where it changed.
 
+### 5. `serve`
+
+**Short Description**: Start the RTSP results viewer web server
+
+**Usage**: `tcc serve`
+
+**Flags**:
+
+- `--addr string`: Address where the web server listens (default: `:8080`)
+
+**Behavior**:
+
+- Renders `/` with a sidebar tree (`map -> method -> run`) and a canvas preview for map points
+- Serves static files from `/css`, `/js`, and `/img`
+- Uses HTMX endpoints for partial updates: `/ui/select-map`, `/ui/select-method`, `/ui/select-run`
+- Uses embedded assets from `./data`: `*.graph`, `*.points`, `results/summary`, `results/evolution`, `results/timing`
+- Does not embed `results/logs` files in the binary
+
 ## Example Usage
 
 ```bash
@@ -102,6 +120,9 @@ tcc graph -f ./point-instances
 
 # Optimize with GA and save structured artifacts
 tcc optimize ga --instance ./data/10a.graph --results-dir ./data/results
+
+# Start the local RTSP viewer web server
+tcc serve --addr :8080
 
 # Batch execution with run_all.sh
 ./src/run_all.sh --method=ga --frequency=10:3,11:3 --results-dir=./src/data/results --if-exists=skip
