@@ -23,7 +23,7 @@
             class="menu-link method-link {{ if eq $.SelectedMethod $group.Method }}is-active{{ end }}"
             href="{{ if eq $.ExpandedMethod $group.Method }}/?map={{ urlquery $.SelectedMap }}{{ else }}/?map={{ urlquery $.SelectedMap }}&method={{ urlquery $group.Method }}{{ end }}"
             hx-get="/ui/select-method?map={{ urlquery $.SelectedMap }}&method={{ urlquery $group.Method }}&current_method={{ urlquery $.SelectedMethod }}&expanded_method={{ urlquery $.ExpandedMethod }}"
-            hx-target="#sidebar-tree"
+            hx-target="#main-content"
             hx-swap="innerHTML"
             hx-push-url="{{ if eq $.ExpandedMethod $group.Method }}/?map={{ urlquery $.SelectedMap }}{{ else }}/?map={{ urlquery $.SelectedMap }}&method={{ urlquery $group.Method }}{{ end }}"
           >
@@ -39,12 +39,12 @@
                 class="menu-link run-link {{ if eq $.SelectedRun $run.RunID }}is-active{{ end }}"
                 href="/?map={{ urlquery $.SelectedMap }}&method={{ urlquery $group.Method }}&run={{ urlquery $run.RunID }}"
                 hx-get="/ui/select-run?map={{ urlquery $.SelectedMap }}&method={{ urlquery $group.Method }}&run={{ urlquery $run.RunID }}"
-                hx-target="#sidebar-tree"
+                hx-target="#main-content"
                 hx-swap="innerHTML"
                 hx-push-url="/?map={{ urlquery $.SelectedMap }}&method={{ urlquery $group.Method }}&run={{ urlquery $run.RunID }}"
               >
                 <span>{{ $run.RunHash }}</span>
-                <span class="run-seed">seed {{ $run.Seed }}</span>
+                <span class="run-seed">seed {{ $run.Seed }}{{ if gt $run.Iterations 0 }} | {{ $run.Iterations }} it{{ end }}</span>
               </a>
             </li>
             {{ else }}

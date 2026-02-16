@@ -54,7 +54,7 @@ func NewHandler() (http.Handler, error) {
 	mux.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.FS(imgFS))))
 
 	dataRepository := repository.NewEmbeddedDataRepository(dataassets.Files)
-	pageService := service.NewPageService(dataRepository)
+	pageService := service.NewPageService(dataRepository, dataRepository, dataRepository)
 	pageHandler := handlers.NewPageHandler(tmpl, pageService)
 	pageHandler.RegisterRoutes(mux)
 

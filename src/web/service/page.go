@@ -36,19 +36,24 @@ type RunOption struct {
 	Method       string
 	Seed         int64
 	BestMakespan float64
+	Iterations   int
 }
 
 type PageData struct {
-	Title          string
-	Maps           []MapOption
-	SelectedMap    string
-	ExpandedMap    string
-	MethodGroups   []MethodGroup
-	SelectedMethod string
-	ExpandedMethod string
-	SelectedRun    string
-	Points         points.Points2D
-	PointsJSON     string
+	Title                   string
+	Maps                    []MapOption
+	SelectedMap             string
+	ExpandedMap             string
+	MethodGroups            []MethodGroup
+	SelectedMethod          string
+	ExpandedMethod          string
+	SelectedRun             string
+	SelectedRunIterations   int
+	SelectedRunBestMakespan float64
+	EvolutionFramesCount    int
+	Points                  points.Points2D
+	PointsJSON              string
+	EvolutionJSON           string
 }
 
 type SelectionState struct {
@@ -60,15 +65,25 @@ type SelectionState struct {
 }
 
 type PageService struct {
-	repo  repository.Reader
-	title string
+	mapsRepo      repository.MapsReader
+	summaryRepo   repository.SummaryReader
+	evolutionRepo repository.EvolutionReader
+	title         string
 }
 
-func NewPageService(repo repository.Reader) *PageService {
+func NewPageService(mapsRepo repository.MapsReader, summaryRepo repository.SummaryReader, evolutionRepo repository.EvolutionReader) *PageService {
 	return &PageService{
-		repo:  repo,
-		title: defaultTitle,
+		mapsRepo:      mapsRepo,
+		summaryRepo:   summaryRepo,
+		evolutionRepo: evolutionRepo,
+		title:         defaultTitle,
 	}
+}
+
+type evolutionPayload struct {
+	RunID      string                      `json:"run_id"`
+	Iterations int                         `json:"iterations"`
+	Frames     []repository.EvolutionFrame `json:"frames"`
 }
 
 func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (PageData, error) {
@@ -78,7 +93,7 @@ func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (
 	expandedMethod := strings.TrimSpace(selection.ExpandedMethod)
 	selectedRun := strings.TrimSpace(selection.SelectedRun)
 
-	availableMapIDs, err := s.repo.ListMaps(ctx)
+	availableMapIDs, err := s.mapsRepo.ListMaps(ctx)
 	if err != nil {
 		return PageData{}, fmt.Errorf("load available maps: %w", err)
 	}
@@ -92,7 +107,7 @@ func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (
 		return data, nil
 	}
 
-	loadedPoints, err := s.repo.LoadPoints(ctx, selectedMap)
+	loadedPoints, err := s.mapsRepo.LoadPoints(ctx, selectedMap)
 	if err != nil {
 		return PageData{}, fmt.Errorf("load points for map %q: %w", selectedMap, err)
 	}
@@ -102,7 +117,7 @@ func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (
 		return PageData{}, fmt.Errorf("marshal points for map %q: %w", selectedMap, err)
 	}
 
-	loadedRuns, err := s.repo.ListRuns(ctx, selectedMap)
+	loadedRuns, err := s.summaryRepo.ListRuns(ctx, selectedMap)
 	if err != nil {
 		return PageData{}, fmt.Errorf("load runs for map %q: %w", selectedMap, err)
 	}
@@ -171,12 +186,52 @@ func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (
 		return data, nil
 	}
 
+	var selectedRunData RunOption
+	selectedRunValid := false
 	for _, run := range runs {
 		if run.RunID == selectedRun && run.Method == selectedMethod {
+			selectedRunData = run
+			selectedRunValid = true
 			data.SelectedRun = selectedRun
 			break
 		}
 	}
+
+	if !selectedRunValid {
+		return data, nil
+	}
+
+	loadedEvolution, err := s.evolutionRepo.LoadEvolution(ctx, selectedRun)
+	if err != nil {
+		return PageData{}, fmt.Errorf("load evolution for run %q: %w", selectedRun, err)
+	}
+
+	loadedGraph, err := s.mapsRepo.LoadGraph(ctx, selectedMap)
+	if err != nil {
+		return PageData{}, fmt.Errorf("load graph for map %q: %w", selectedMap, err)
+	}
+
+	nodeLimit := len(loadedPoints)
+	if graphSize := len(loadedGraph); graphSize > 0 && graphSize < nodeLimit {
+		nodeLimit = graphSize
+	}
+
+	normalizedFrames := normalizeEvolutionFrames(loadedEvolution, nodeLimit)
+	payload := evolutionPayload{
+		RunID:      selectedRun,
+		Iterations: selectedRunData.Iterations,
+		Frames:     normalizedFrames,
+	}
+
+	encodedEvolution, err := json.Marshal(payload)
+	if err != nil {
+		return PageData{}, fmt.Errorf("marshal evolution for run %q: %w", selectedRun, err)
+	}
+
+	data.SelectedRunIterations = selectedRunData.Iterations
+	data.SelectedRunBestMakespan = selectedRunData.BestMakespan
+	data.EvolutionFramesCount = len(normalizedFrames)
+	data.EvolutionJSON = string(encodedEvolution)
 
 	return data, nil
 }
@@ -266,6 +321,7 @@ func toRunOptions(records []repository.RunRecord) []RunOption {
 			Method:       record.Method,
 			Seed:         record.Seed,
 			BestMakespan: record.BestMakespan,
+			Iterations:   record.Iterations,
 		})
 	}
 
@@ -279,6 +335,49 @@ func extractRunHash(runID string) string {
 	}
 
 	return runID[idx+2:]
+}
+
+func normalizeEvolutionFrames(frames []repository.EvolutionFrame, nodeLimit int) []repository.EvolutionFrame {
+	if len(frames) == 0 {
+		return []repository.EvolutionFrame{}
+	}
+
+	normalized := make([]repository.EvolutionFrame, 0, len(frames))
+	for _, frame := range frames {
+		normalized = append(normalized, repository.EvolutionFrame{
+			Iter:         nonNegative(frame.Iter),
+			EvalCount:    nonNegative(frame.EvalCount),
+			BestMakespan: frame.BestMakespan,
+			BestSequence: normalizeSequence(frame.BestSequence, nodeLimit),
+		})
+	}
+
+	return normalized
+}
+
+func normalizeSequence(sequence []int, nodeLimit int) []int {
+	if len(sequence) == 0 || nodeLimit <= 0 {
+		return []int{}
+	}
+
+	normalized := make([]int, 0, len(sequence))
+	for _, index := range sequence {
+		if index < 0 || index >= nodeLimit {
+			continue
+		}
+
+		normalized = append(normalized, index)
+	}
+
+	return normalized
+}
+
+func nonNegative(value int) int {
+	if value < 0 {
+		return 0
+	}
+
+	return value
 }
 
 func groupRunsByMethod(runs []RunOption) []MethodGroup {

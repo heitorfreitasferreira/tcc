@@ -69,7 +69,7 @@ func (h *PageHandler) SelectMethod(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	h.executeTemplate(w, "sidebar_tree", data)
+	h.executeTemplate(w, "main_with_sidebar_oob", data)
 }
 
 func (h *PageHandler) SelectRun(w http.ResponseWriter, r *http.Request) {
@@ -89,7 +89,7 @@ func (h *PageHandler) SelectRun(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	h.executeTemplate(w, "sidebar_tree", data)
+	h.executeTemplate(w, "main_with_sidebar_oob", data)
 }
 
 func (h *PageHandler) Index(w http.ResponseWriter, r *http.Request) {

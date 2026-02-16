@@ -1,6 +1,6 @@
 package graph
 
-// Calcula o tempo da solução (caminho), deve conter todos os números de 1 até o último ponto
+// Makespan... calcula o tempo da solução (caminho), deve conter todos os números de 1 até o último ponto
 // o drone sempre sai da origem (0), e volta ao destino (0)
 // Logo um order= {1, 4, 3, 2, 4, 5} indica que o drone vai começar no ponto 0, vai para o 1, dps
 // para o 4, até chegar no ponto 5, após isso é considerado que o mesmo volta para o 0
