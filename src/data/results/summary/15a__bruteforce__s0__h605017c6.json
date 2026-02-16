@@ -1,0 +1,34 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "15a__bruteforce__s0__h605017c6",
+  "method": "bruteforce",
+  "instance": "/home/heitor/tcc/src/data/15a.graph",
+  "seed": 0,
+  "params": {},
+  "status": "ok",
+  "result": {
+    "best_makespan": 13.721568890559402,
+    "best_sequence": [
+      6,
+      4,
+      14,
+      9,
+      1,
+      8,
+      11,
+      7,
+      2,
+      10,
+      13,
+      12,
+      3,
+      5
+    ],
+    "iterations_completed": 87178291200,
+    "evaluations": 87178291200
+  },
+  "timing_file": "timing/15a__bruteforce__s0__h605017c6.json",
+  "evolution_file": "evolution/15a__bruteforce__s0__h605017c6.jsonl",
+  "started_at": "2026-02-12T20:52:16.448781321Z",
+  "finished_at": "2026-02-13T02:24:33.300416673Z"
+}
