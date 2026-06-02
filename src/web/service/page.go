@@ -19,12 +19,12 @@ import (
 const defaultTitle = "TCC - Visualizador"
 
 // preferredMethods defines the display ordering of method groups in the sidebar.
-// ACO appears first (primary heuristic), then PSO and GA, with brute-force last.
 var preferredMethods = map[string]int{
 	"aco":        0,
 	"pso":        1,
 	"ga":         2,
-	"bruteforce": 3,
+	"lowerbound": 3,
+	"bruteforce": 4,
 }
 
 // MapOption represents a selectable map in the sidebar tree.
