@@ -16,6 +16,22 @@
         "/home/heitor/.config/opencode/mcp/Google-Scholar-MCP-Server/google_scholar_server.py"
       ],
       "enabled": true
+    },
+    "arxiv": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "arxiv-mcp-server"
+      ],
+      "enabled": true
+    },
+    "pdf-reader": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@sylphx/pdf-reader-mcp"
+      ],
+      "enabled": true
     }
   }
 }

@@ -12,6 +12,14 @@
 - `monografia/` is the LaTeX monograph using `ppgco.cls`; chapter files are included by `main_ppgco_ufu.tex` from `cap_*` directories and references live in `monografia/bib/abntex2-references.bib`.
 - `scripts/visualizacoes.ipynb` analyzes `src/data/results` and expects run file names like `<instance>__<method>__s...__h....json`.
 
+## Image & Artifact Generation
+
+- **Web server is the canonical source for visual analysis images.** The `tcc serve` command exposes `/api/render?map=X&run=Y&iteration=N` which returns `image/png` — pure Go rendering (no browser dependency). All analysis figures for the monograph should be generated through this endpoint when possible.
+- Use `bash scripts/gerar-figuras.sh` to batch-generate the standard set of figures into `monografia/figs/`. The script starts the server, calls `/api/render` for each desired figure, then stops the server.
+- **If the render endpoint lacks a visualization you need, extend it rather than duplicating logic.** Add new rendering functions in `src/web/render/` and wire them through `src/web/handlers/render.go`. Keep the server as the single source of truth for route/graph visualization.
+- **Python is also acceptable** for generating images, plots, tables, or analysis artifacts when it is genuinely easier (e.g., statistical plots with matplotlib/seaborn, complex data transformations with pandas). Prefer adding such code to `scripts/` or the Jupyter notebook `scripts/visualizacoes.ipynb`. The key rule: **do not duplicate visualization logic** — if the web server already renders what you need, use it; if not, choose the tool (Go render endpoint or Python script) that best fits the task.
+- When a new analysis/visualization is needed, first check if the web server already exposes the required data (evolution, summary, timing, graph structure) and consider adding a new render function or query parameter before reaching for a separate tool.
+
 ## Go CLI Commands
 
 - Build: `make -C src build` creates `src/tcc`; batch scripts require this executable before running.

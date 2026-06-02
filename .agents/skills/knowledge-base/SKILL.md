@@ -12,9 +12,12 @@ tools:
   - webfetch
   - google-scholar_search_google_scholar_key_words
   - google-scholar_search_google_scholar_advanced
+  - google-scholar_get_author_info
   - scihub_search_scihub_by_title
   - scihub_search_scihub_by_doi
+  - scihub_search_scihub_by_keyword
   - scihub_get_paper_metadata
+  - scihub_download_scihub_pdf
 ---
 
 <role>
@@ -37,7 +40,7 @@ Import script: `scripts/import-bib-to-vault.sh` — parses .bib and generates va
 
 <mcp-available>
 - `google-scholar` — search for papers (tools: search_google_scholar_key_words, search_google_scholar_advanced, get_author_info)
-- `scihub` — fetch metadata/PDF (tools: search_scihub_by_title, search_scihub_by_doi, get_paper_metadata, download_scihub_pdf)
+- `scihub` — fetch metadata, search, and **download PDFs** (tools: search_scihub_by_title, search_scihub_by_doi, search_scihub_by_keyword, get_paper_metadata, download_scihub_pdf)
 </mcp-available>
 
 <workflow>
@@ -92,7 +95,24 @@ bash scripts/import-bib-to-vault.sh
 ```
 Verify the note was created at `vault/papers/<key>.md`.
 
-### Step 6 — Enrich Note
+### Step 6 — Download PDF (when available)
+After importing, attempt to download the PDF:
+```bash
+mkdir -p vault/papers/pdfs
+```
+**Primary method** — Sci-Hub: use `scihub_search_scihub_by_doi` to find the URL, then `scihub_download_scihub_pdf` to save to `vault/papers/pdfs/<bibtex-key>.pdf`.
+
+**Fallback (Sci-Hub offline)** — try Unpaywall API (open-access):
+```
+webfetch https://api.unpaywall.org/v2/{doi}?email=agent@opencode
+```
+If a free PDF URL is found in `best_oa_location.url_for_pdf`, download with `curl -Lo vault/papers/pdfs/<key>.pdf "<url>"`.
+
+If PDF obtained, update the note's YAML frontmatter with `pdf: papers/pdfs/<key>.pdf` and add a local link in the note body. If unavailable, set `pdf: ""` and move on — never use fake/open-access URLs.
+
+> **Current note (Jun 2026):** Sci-Hub domains are unreachable from this environment. Fallback to Unpaywall or skip PDF download; the vault and BibTeX remain fully functional without PDFs.
+
+### Step 7 — Enrich Note
 Use `Read` to load the generated note, then `Edit` to fill every section:
 - **Resumo**: 2-5 sentence summary of the paper's core contribution
 - **Contribuições Principais**: bullet list of key contributions
@@ -103,13 +123,13 @@ Use `Read` to load the generated note, then `Edit` to fill every section:
 - **Citações-chave**: include one or two impactful quotes with `>`
 Keep prose in Portuguese. Use the `obsidian-markdown` formatting conventions (callouts, `[[links]]`, tags).
 
-### Step 7 — Update Knowledge Graph Canvas
+### Step 8 — Update Knowledge Graph Canvas
 Read `vault/canvas/tcc-knowledge-graph.canvas`, then `Write` the updated version adding:
 - A new `node` entry for the paper (`id`, `x/y` position, `type: "file"`, `file` path, `text` label)
 - New `edge` entries connecting the paper to relevant area/method nodes with descriptive labels
 Place new papers below existing ones (increment y by ~70-80). Group related papers near each other.
 
-### Step 8 — Verify
+### Step 9 — Verify
 - Confirm the note renders correctly: check YAML frontmatter has no syntax errors
 - Confirm `[[wiki links]]` match actual files in `vault/areas/`
 - Confirm `git status` shows only intended changes
