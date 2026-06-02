@@ -16,21 +16,21 @@ func New(pts points.Points2D) Graph {
 
 	penalty := make(Graph, len(pts))
 
-	for i, curr := range pts {
-		penalty[i] = make([][]float64, len(pts))
-		for j, next := range pts {
-			// Tempo do trajeto de curr -> next
-			time := curr.EuclideanDistance(next) / float64(droneSpeed)
+	for k, old := range pts {
+		penalty[k] = make([][]float64, len(pts))
+		for i, curr := range pts {
+			penalty[k][i] = make([]float64, len(pts))
+			for j, next := range pts {
+				// Tempo do trajeto de curr -> next
+				time := curr.EuclideanDistance(next) / float64(droneSpeed)
 
-			penalty[i][j] = make([]float64, len(pts))
-			for k, old := range pts {
 				currX, currY := old.Vector(curr)
 				currVector := vector2D{currX, currY}
 				nextX, nextY := curr.Vector(next)
 				nextVector := vector2D{nextX, nextY}
 
 				// Tempo da curva dada a direção que eu to (função da posição atual, posição anterior) e a direção que eu vou
-				penalty[i][j][k] = turnCost(currVector, nextVector) + time
+				penalty[k][i][j] = turnCost(currVector, nextVector) + time
 			}
 		}
 	}

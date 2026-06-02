@@ -25,7 +25,9 @@ func angle(v1, v2 vector2D) float64 {
 	return math.Acos(cosTheta)
 }
 
-// TODO: ta saindo uns grafo esquisito com uns valores mto altos... tipo 5e+08 que não era pra existir...
+//BUG: maxPenalti como time.Duration (int64) — float64(maxPenalti) só não dá overflow porque 1ns→1.0.
+//     O TODO original reportava valores ~5e+08 no grafo, provavelmente NaN propagation ou bug de versão anterior.
+//     Se maxPenalti fosse alterado para 1e9, o cast para nanossegundos daria 0, subestimando o turn cost.
 func turnCost(v1, v2 vector2D) float64 {
 	angle := angle(v1, v2)
 	if math.IsNaN(angle) {
