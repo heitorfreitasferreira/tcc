@@ -17,7 +17,10 @@
 {{ define "main_points" }}
 <div class="main-split">
   <section class="main-card map-card">
-    <h2>Mapa {{ .SelectedMap }}</h2>
+    <div class="map-card-header">
+      <h2>Mapa {{ .SelectedMap }}</h2>
+      <button type="button" id="export-png-button" class="export-png-button">Exportar PNG</button>
+    </div>
     <canvas
       id="points-canvas"
       width="760"

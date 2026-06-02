@@ -15,6 +15,9 @@ import (
 	"tcc/shared/reporting"
 )
 
+// ListRuns returns all runs whose run_id starts with mapID (e.g., "10a" matches
+// "10a__aco__s1__h12345678"). Each record is parsed from a JSON summary artifact in
+// results/summary/. Runs are sorted by method, seed, then run_id.
 func (r *EmbeddedDataRepository) ListRuns(_ context.Context, mapID string) ([]RunRecord, error) {
 	entries, err := fs.ReadDir(r.dataFS, summaryDir)
 	if err != nil {
@@ -76,6 +79,8 @@ func (r *EmbeddedDataRepository) ListRuns(_ context.Context, mapID string) ([]Ru
 	return runs, nil
 }
 
+// extractIterations reads the "iterations" key from a params map, handling
+// all JSON-possible types (float64, string, json.Number, int, int64).
 func extractIterations(params map[string]any) int {
 	if len(params) == 0 {
 		return 0
@@ -94,6 +99,8 @@ func extractIterations(params map[string]any) int {
 	return iterations
 }
 
+// toInt is a safe conversion from any JSON-decoded type (float64, string, json.Number, int64) to int.
+// Returns false if the value is NaN, Inf, out of range, or unconvertible.
 func toInt(value any) (int, bool) {
 	switch typed := value.(type) {
 	case int:

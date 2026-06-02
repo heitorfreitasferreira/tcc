@@ -13,6 +13,8 @@ import (
 	"tcc/points"
 )
 
+// ListMaps returns sorted map IDs for which both a .graph and a .points file exist.
+// Ordering is natural-numeric by the numeric prefix of the ID (e.g., 2a, 10a, 100a).
 func (r *EmbeddedDataRepository) ListMaps(_ context.Context) ([]string, error) {
 	entries, err := fs.ReadDir(r.dataFS, ".")
 	if err != nil {
@@ -76,6 +78,7 @@ func (r *EmbeddedDataRepository) ListMaps(_ context.Context) ([]string, error) {
 	return ids, nil
 }
 
+// LoadPoints reads a .points file for the given map ID and returns the 2D point array.
 func (r *EmbeddedDataRepository) LoadPoints(_ context.Context, mapID string) (points.Points2D, error) {
 	rawPoints, err := fs.ReadFile(r.dataFS, mapID+".points")
 	if err != nil {
@@ -90,6 +93,7 @@ func (r *EmbeddedDataRepository) LoadPoints(_ context.Context, mapID string) (po
 	return loaded, nil
 }
 
+// LoadGraph reads a .graph file for the given map ID and returns the adjacency matrix.
 func (r *EmbeddedDataRepository) LoadGraph(_ context.Context, mapID string) (graph.Graph, error) {
 	rawGraph, err := fs.ReadFile(r.dataFS, mapID+".graph")
 	if err != nil {

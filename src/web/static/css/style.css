@@ -139,6 +139,27 @@ body {
   text-align: center;
 }
 
+.map-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.export-png-button {
+  border: 1px solid #cdcdcd;
+  background: #fff;
+  color: #1f1f1f;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.export-png-button:hover {
+  background: #f6f6f6;
+  border-color: #0a66c2;
+}
+
 .evolution-card {
   text-align: left;
 }

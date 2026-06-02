@@ -67,6 +67,27 @@ function bindHTMXListeners() {
   });
 }
 
+function bindExportButton() {
+  const button = document.getElementById("export-png-button");
+  if (!button) {
+    return;
+  }
+
+  button.addEventListener("click", () => {
+    const canvas = document.getElementById("points-canvas");
+    if (!canvas) {
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.download = "graph.png";
+    link.href = canvas.toDataURL("image/png");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+}
+
 export function initMainContentApp() {
   if (document.readyState === "loading") {
     document.addEventListener(
@@ -74,6 +95,7 @@ export function initMainContentApp() {
       () => {
         renderMainContent();
         bindHTMXListeners();
+        bindExportButton();
       },
       { once: true },
     );
@@ -82,4 +104,5 @@ export function initMainContentApp() {
 
   renderMainContent();
   bindHTMXListeners();
+  bindExportButton();
 }

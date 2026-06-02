@@ -1,3 +1,7 @@
+// Package service implements the business logic for the experiment visualization UI.
+// It transforms raw repository data into PageData structs consumed by HTML templates,
+// and resolves user selection state (which map/method/run is active) into minimal
+// data-loading operations.
 package service
 
 import (
@@ -14,6 +18,8 @@ import (
 
 const defaultTitle = "TCC - Visualizador"
 
+// preferredMethods defines the display ordering of method groups in the sidebar.
+// ACO appears first (primary heuristic), then PSO and GA, with brute-force last.
 var preferredMethods = map[string]int{
 	"aco":        0,
 	"pso":        1,
@@ -21,15 +27,20 @@ var preferredMethods = map[string]int{
 	"bruteforce": 3,
 }
 
+// MapOption represents a selectable map in the sidebar tree.
 type MapOption struct {
+	// ID is the map identifier (e.g., "10a", "100b").
 	ID string
 }
 
+// MethodGroup groups runs that share the same optimization method.
 type MethodGroup struct {
+	// Method is the method name (aco, pso, ga, bruteforce).
 	Method string
 	Runs   []RunOption
 }
 
+// RunOption describes a single optimization run in the sidebar selection.
 type RunOption struct {
 	RunID        string
 	RunHash      string
@@ -39,6 +50,9 @@ type RunOption struct {
 	Iterations   int
 }
 
+// PageData is the main view model passed to HTML templates and consumed by the
+// frontend JavaScript. PointsJSON and EvolutionJSON are serialized into data attributes
+// on the canvas element and parsed by the client-side renderer.
 type PageData struct {
 	Title                   string
 	Maps                    []MapOption
@@ -56,6 +70,8 @@ type PageData struct {
 	EvolutionJSON           string
 }
 
+// SelectionState captures the current navigation tree state (which map, method, and
+// run the user has selected or expanded). Empty strings mean the level is inactive.
 type SelectionState struct {
 	SelectedMap    string
 	ExpandedMap    string
@@ -64,6 +80,9 @@ type SelectionState struct {
 	SelectedRun    string
 }
 
+// PageService orchestrates data loading and transforms repository records into
+// PageData for templates. It implements lazy loading: deeper data (evolution frames,
+// graph structure) is only fetched when the user drills down to a specific run.
 type PageService struct {
 	mapsRepo      repository.MapsReader
 	summaryRepo   repository.SummaryReader
@@ -71,6 +90,8 @@ type PageService struct {
 	title         string
 }
 
+// NewPageService creates a PageService wired to the three repository interfaces.
+// All three typically share the same *EmbeddedDataRepository instance.
 func NewPageService(mapsRepo repository.MapsReader, summaryRepo repository.SummaryReader, evolutionRepo repository.EvolutionReader) *PageService {
 	return &PageService{
 		mapsRepo:      mapsRepo,
@@ -80,12 +101,22 @@ func NewPageService(mapsRepo repository.MapsReader, summaryRepo repository.Summa
 	}
 }
 
+// evolutionPayload is the JSON structure sent to the frontend for animation playback.
 type evolutionPayload struct {
 	RunID      string                      `json:"run_id"`
 	Iterations int                         `json:"iterations"`
 	Frames     []repository.EvolutionFrame `json:"frames"`
 }
 
+// BuildPage constructs the full PageData for a given selection state.
+// It loads data progressively:
+//  1. Always: list available maps.
+//  2. If a valid map is selected: load points, list runs, group by method.
+//  3. If a valid method and run are selected: load evolution frames and graph,
+//     normalize sequences, and serialize the evolution payload.
+//
+// Returns partial data if any level is missing or invalid (no hard errors for
+// missing runs — the UI just shows a hint instead).
 func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (PageData, error) {
 	selectedMap := strings.TrimSpace(selection.SelectedMap)
 	expandedMap := strings.TrimSpace(selection.ExpandedMap)
@@ -236,6 +267,9 @@ func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (
 	return data, nil
 }
 
+// ResolveMapSelection computes the new selection state when a map is clicked.
+// Toggle behavior: clicking the already-expanded map collapses it; clicking a
+// different map switches to it and expands it.
 func (s *PageService) ResolveMapSelection(current SelectionState, targetMap string) SelectionState {
 	targetMap = strings.TrimSpace(targetMap)
 	currentMap := strings.TrimSpace(current.SelectedMap)
@@ -263,6 +297,9 @@ func (s *PageService) ResolveMapSelection(current SelectionState, targetMap stri
 	}
 }
 
+// ResolveMethodSelection computes the new selection state when a method is clicked.
+// Toggle behavior mirrors ResolveMapSelection: clicking the expanded method collapses
+// it and deselects it.
 func (s *PageService) ResolveMethodSelection(current SelectionState, targetMethod string) SelectionState {
 	selectedMethod := strings.TrimSpace(current.SelectedMethod)
 	expandedMethod := strings.TrimSpace(current.ExpandedMethod)
@@ -290,6 +327,8 @@ func (s *PageService) ResolveMethodSelection(current SelectionState, targetMetho
 	}
 }
 
+// ResolveRunSelection computes the new selection state when a specific run is clicked.
+// Selecting a run also selects and expands the parent method.
 func (s *PageService) ResolveRunSelection(mapID, method, runID string) SelectionState {
 	selectedMap := strings.TrimSpace(mapID)
 	selectedMethod := strings.TrimSpace(method)

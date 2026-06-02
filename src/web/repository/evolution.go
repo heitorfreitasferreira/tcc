@@ -13,6 +13,10 @@ import (
 	"tcc/shared/reporting"
 )
 
+// LoadEvolution reads a JSONL file (results/evolution/<runID>.jsonl) and returns
+// all evolution frames. Each line is a JSON object with iter, eval_count, best_makespan,
+// and best_sequence. Returns nil, nil if the file does not exist (missing evolution data
+// is not an error because brute-force runs do not produce evolution files).
 func (r *EmbeddedDataRepository) LoadEvolution(ctx context.Context, runID string) ([]EvolutionFrame, error) {
 	runID = strings.TrimSpace(runID)
 	if runID == "" {
