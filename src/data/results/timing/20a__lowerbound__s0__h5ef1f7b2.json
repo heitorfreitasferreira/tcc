@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "20a__lowerbound__s0__h5ef1f7b2",
+  "method": "lowerbound",
+  "instance": "src/data/20a.graph",
+  "durations_ms": {
+    "load_instance": 4,
+    "optimize": 0,
+    "serialize": 2,
+    "total": 6
+  },
+  "measured": {
+    "started_at": "2026-06-02T19:16:20.692423843Z",
+    "finished_at": "2026-06-02T19:16:20.698666071Z"
+  }
+}

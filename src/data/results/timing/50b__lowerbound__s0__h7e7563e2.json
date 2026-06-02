@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "50b__lowerbound__s0__h7e7563e2",
+  "method": "lowerbound",
+  "instance": "src/data/50b.graph",
+  "durations_ms": {
+    "load_instance": 63,
+    "optimize": 0,
+    "serialize": 2,
+    "total": 66
+  },
+  "measured": {
+    "started_at": "2026-06-02T19:16:20.903002056Z",
+    "finished_at": "2026-06-02T19:16:20.969900124Z"
+  }
+}

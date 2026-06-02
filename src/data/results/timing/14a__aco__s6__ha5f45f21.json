@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "14a__aco__s6__ha5f45f21",
+  "method": "aco",
+  "instance": "/home/heitor/tcc/src/data/14a.graph",
+  "durations_ms": {
+    "load_instance": 1,
+    "optimize": 112,
+    "serialize": 5,
+    "total": 119
+  },
+  "measured": {
+    "started_at": "2026-06-02T15:26:53.661935672Z",
+    "finished_at": "2026-06-02T15:26:53.781035315Z"
+  }
+}

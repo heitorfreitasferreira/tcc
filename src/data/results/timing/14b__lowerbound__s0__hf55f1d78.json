@@ -1,0 +1,16 @@
+{
+  "schema": "tcc.timing.v1",
+  "run_id": "14b__lowerbound__s0__hf55f1d78",
+  "method": "lowerbound",
+  "instance": "/home/heitor/tcc/src/data/14b.graph",
+  "durations_ms": {
+    "load_instance": 1,
+    "optimize": 0,
+    "serialize": 1,
+    "total": 2
+  },
+  "measured": {
+    "started_at": "2026-06-02T19:16:09.415251244Z",
+    "finished_at": "2026-06-02T19:16:09.417624098Z"
+  }
+}
