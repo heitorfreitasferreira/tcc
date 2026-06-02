@@ -30,11 +30,11 @@ This CLI application is designed for finding RTSP paths using bio-inspired metah
 - Creates corresponding graphs
 - Saves files to the specified folder
 
-### 2. `map`
+### 2. `create map`
 
 **Short Description**: Save randomly generated point instances for Traveling Salesman Problem (TSP)
 
-**Usage**: `tcc map`
+**Usage**: `tcc create map`
 
 **Features**:
 
@@ -113,7 +113,7 @@ The `evolution` file only stores rows when the best makespan changes, including 
 tcc create -s 42 -f ./experiment-data
 
 # Generate only point instances
-tcc map -s 123 -f ./point-instances
+tcc create map -s 123 -f ./point-instances
 
 # Generate graphs from existing point instances
 tcc graph -f ./point-instances
