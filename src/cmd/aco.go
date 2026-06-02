@@ -66,7 +66,7 @@ func init() {
 	acoCmd.Flags().Float64("alpha", 1.0, "Alpha")
 	acoCmd.Flags().Float64("beta", 2.0, "Beta")
 	acoCmd.Flags().Float64("gama", 0.1, "Gama")
-	acoCmd.Flags().Float64("rho", 0.5, "Rho")
+	acoCmd.Flags().Float64("rho", 0.5, "Rho") //BUG: ρ=0.5 é muito agressivo. Literatura usa 0.1-0.3. Com ρ=0.5, τ cai para 0.001 em 10 iterações sem reforço (1.0×0.5¹⁰), agravando diluição 3D.
 	acoCmd.Flags().Float64("q", 100, "Q")
 }
 
