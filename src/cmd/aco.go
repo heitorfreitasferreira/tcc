@@ -65,8 +65,7 @@ func init() {
 
 	acoCmd.Flags().Float64("alpha", 1.0, "Alpha")
 	acoCmd.Flags().Float64("beta", 2.0, "Beta")
-	acoCmd.Flags().Float64("gama", 0.1, "Gama")
-	acoCmd.Flags().Float64("rho", 0.5, "Rho") //BUG: ρ=0.5 é muito agressivo. Literatura usa 0.1-0.3. Com ρ=0.5, τ cai para 0.001 em 10 iterações sem reforço (1.0×0.5¹⁰), agravando diluição 3D.
+	acoCmd.Flags().Float64("rho", 0.2, "Rho")
 	acoCmd.Flags().Float64("q", 100, "Q")
 }
 
@@ -91,11 +90,6 @@ func getAcoParams(cmd *cobra.Command) (aco.Params, error) {
 		return aco.Params{}, err
 	}
 
-	gama, err := getNonNegativeFloatFlag(cmd, "gama")
-	if err != nil {
-		return aco.Params{}, err
-	}
-
 	rho, err := getProbabilityFlag(cmd, "rho")
 	if err != nil {
 		return aco.Params{}, err
@@ -113,7 +107,6 @@ func getAcoParams(cmd *cobra.Command) (aco.Params, error) {
 		},
 		Alpha: alpha,
 		Beta:  beta,
-		Gama:  gama,
 		Rho:   rho,
 		Q:     q,
 	}, nil
@@ -125,7 +118,6 @@ func acoParamsMap(params aco.Params) map[string]any {
 		"iterations": params.HyperParams.Iterations,
 		"alpha":      params.Alpha,
 		"beta":       params.Beta,
-		"gama":       params.Gama,
 		"rho":        params.Rho,
 		"q":          params.Q,
 	}

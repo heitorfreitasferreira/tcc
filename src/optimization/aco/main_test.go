@@ -20,7 +20,6 @@ func TestOptimizeUsesRoutesWithoutOrigin(t *testing.T) {
 		},
 		Alpha: 1.0,
 		Beta:  2.0,
-		Gama:  0.1,
 		Rho:   0.5,
 		Q:     100.0,
 	}

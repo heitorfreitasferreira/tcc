@@ -9,7 +9,7 @@ import (
 
 type Params struct {
 	shared.HyperParams
-	Alpha, Beta, Gama, Rho float64 //NOTE: Gama é lido das flags e persistido nos resultados, mas nunca usado em selectNextNode() ou updatePheromones(). Dead parameter.
+	Alpha, Beta, Rho float64
 	Q                      float64
 }
 
@@ -82,8 +82,7 @@ func (aco *ACO) pathWithoutOrigin(seq []int) []int {
 }
 
 func new(p Params, g graph.Graph, rng *rand.Rand) *ACO {
-	//NOTE: feromônio 3D (N³) é inerente ao TSP-SD-ATP — o tensor G[prev][curr][next] exige τ_{ijk} com mesma dimensionalidade.
-	//     Diluição é estrutural: N× mais entradas que ACO 2D clássico (τ_{ij}), mesma quantidade de formigas depositando.
+	
 	pheromones := make([][][]float64, len(g))
 	for i := range len(g) {
 		pheromones[i] = make([][]float64, len(g))
