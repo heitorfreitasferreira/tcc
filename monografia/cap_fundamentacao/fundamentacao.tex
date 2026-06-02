@@ -1,3 +1,93 @@
 \chapter[Fundamentação Teórica]{Fundamentação Teórica}
+\label{fundamentacao}
 
-Nesse capítulo devem ser apresentados a fundamentação teórica do seu trabalho e os trabalhos relacionados. Dependendo da necessidade, esses dois tópicos  poderão compor dois capítulos diferentes: um para Conceitos Básicos e  outro para Trabalhos Correlatos. As seções e subseções desse capítulo vão depender do tema sendo tratado.
+Este capítulo apresenta os conceitos necessários para compreender a formulação do problema e os métodos de otimização comparados neste trabalho. A Seção~\ref{sec:tsp} introduz o Problema do Caixeiro Viajante e sua relevância em otimização combinatória. A Seção~\ref{sec:custo-dependente} formaliza o modelo de custo dependente da sequência adotado. A Seção~\ref{sec:drone-tsp} situa o trabalho no contexto da literatura de roteamento com drones. As Seções~\ref{sec:exaustiva} a~\ref{sec:aco} descrevem os quatro métodos implementados, e a Seção~\ref{sec:comparativos} sumariza estudos comparativos relevantes.
+
+\section{Problema do Caixeiro Viajante}
+\label{sec:tsp}
+
+O Problema do Caixeiro Viajante (TSP) define a busca por um ciclo de menor custo que visita cada cidade exatamente uma vez e retorna à cidade inicial. O problema ocupa posição central em otimização combinatória por combinar formulação simples, dificuldade computacional elevada e ampla relevância prática \cite{lawler1985traveling,applegate2006traveling}. A versão de decisão do TSP é NP-completa \cite{garey1979computers}, o que explica a inviabilidade da enumeração completa em instâncias grandes.
+
+Em uma instância com $n$ pontos, fixando-se a origem, há $(n-1)!$ ordens possíveis de visita. Heurísticas clássicas, como a de Lin--Kernighan \cite{lin1973effective}, obtêm soluções de alta qualidade sem examinar todo o espaço de busca. Surveys recentes cobrem o estado-da-arte em variantes do TSP, como o problema generalizado \cite{pop2024comprehensive} e aplicações em armazenagem \cite{bock2025survey}. Rajwar, Deep e Das \cite{rajwar2023exhaustive} oferecem uma revisão exaustiva de aproximadamente 540 meta-heurísticas para busca e otimização.
+
+\section{Custo Dependente da Sequência}
+\label{sec:custo-dependente}
+
+No TSP clássico, o custo de cada aresta independe do contexto. Em cenários de patrulhamento aéreo, a manobra necessária para mudar de direção ao passar por um ponto depende de onde o drone veio e para onde vai em seguida. Modelar esse custo exige um tensor tridimensional.
+
+\subsection{Formulação Matemática}
+
+Seja $V = \{0, 1, \ldots, n-1\}$ o conjunto de nós, em que $0$ representa a base de origem e retorno, e $V' = V \setminus \{0\}$ os pontos de interesse. Define-se o tensor de custos $C \in \mathbb{R}^{n \times n \times n}$, em que cada elemento $c_{i,j,k}$ representa o tempo necessário para deslocar-se do nó $j$ para o nó $k$ sabendo que o nó visitado imediatamente antes de $j$ foi o nó $i$:
+
+\begin{equation}
+c_{i,j,k} = \frac{d(j,k)}{v} + \tau(\vec{v}_{i,j}, \vec{v}_{j,k}), \quad i,j,k \in V
+\label{eq:custo}
+\end{equation}
+
+em que $d(j,k)$ é a distância euclidiana, $v$ é a velocidade do drone (normalizada para 1), $\vec{v}_{i,j}$ é o vetor de $i$ para $j$, e $\tau$ é a penalização de curva:
+
+\begin{equation}
+\tau(\vec{a}, \vec{b}) = \frac{1}{\pi} \cdot \arccos\left( \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \, \|\vec{b}\|} \right)
+\label{eq:penalizacao}
+\end{equation}
+
+A penalização $\tau$ varia entre $0$ (trajetória em linha reta) e $1$ (mudança de sentido). Essa formulação segue a modelagem de custos de curva em roteamento \cite{winter2002modeling,vanhove2012route}, adaptada para o contexto de drones. A literatura de planejamento de trajetória para VANTs reconhece que curvas fechadas aumentam o consumo de energia \cite{ahmed2024receding}.
+
+\subsection{Função Objetivo}
+
+Uma solução é uma permutação $\pi = (\pi_1, \pi_2, \ldots, \pi_{n-1})$ dos pontos em $V'$. O \textit{makespan} $f(\pi)$ é o custo total acumulado:
+
+\begin{equation}
+f(\pi) = c_{0,0,\pi_1} + \sum_{t=2}^{n-1} c_{\pi_{t-2},\pi_{t-1},\pi_t} + c_{\pi_{n-2},\pi_{n-1},0}
+\label{eq:objetivo}
+\end{equation}
+
+O objetivo é encontrar $\pi^* = \arg\min f(\pi)$. Na implementação, o tensor é armazenado como $G[i][j][k]$, indexado por anterior, atual e próximo.
+
+\section{Roteamento de Drones e Variantes do TSP}
+\label{sec:drone-tsp}
+
+O uso de drones em roteamento motivou novas variantes do TSP. Murray e Chu \cite{murray2015flying} introduziram o \textit{Flying Sidekick Traveling Salesman Problem} (FSTSP), no qual um caminhão e um drone cooperam para realizar entregas. Agatz, Bouman e Schmidt \cite{agatz2018optimization} estudaram o TSP com drone por meio de formulações e heurísticas. Trabalhos recentes avançaram modelos exatos para o FSTSP \cite{dellamico2022exact} e variantes com múltiplos drones \cite{dellamico2021multiple}. De Freitas e Penna \cite{freitas2020vns} propuseram uma busca em vizinhança variável para o FSTSP.
+
+Especificamente no contexto de patrulhamento, Rajan, Sundar e Gautam \cite{rajan2022routing} modelaram o problema de roteamento de VANTs em missões de patrulha como um problema de otimização com horizonte finito, resolvido por \textit{progressive hedging}. Este trabalho se diferencia por modelar o custo de deslocamento com penalização angular dependente da sequência, aproximando o problema de uma rota de patrulhamento em que a suavidade da trajetória afeta o tempo total.
+
+\section{Busca Exaustiva}
+\label{sec:exaustiva}
+
+A busca exaustiva enumera todas as permutações dos pontos não pertencentes à origem e avalia cada rota pela função objetivo (\ref{eq:objetivo}). Na implementação, a enumeração usa o algoritmo de Heap para gerar permutações. O método é determinístico e retorna a solução ótima global, mas seu custo cresce como $(n-1)!$ avaliações. Por isso, a busca exaustiva é usada como linha de base apenas em instâncias pequenas (até 15 pontos).
+
+\section{Algoritmos Genéticos}
+\label{sec:ga}
+
+Algoritmos Genéticos são meta-heurísticas populacionais inspiradas em seleção e recombinação de indivíduos \cite{holland1975adaptation,goldberg1989genetic}. Potvin \cite{potvin1996ga} propôs uma taxonomia dos operadores de cruzamento para TSP em três categorias: preservação de ordem relativa (OX), preservação de posição absoluta (PMX) e preservação de arestas (ERX). Larrañaga et al. \cite{larranaga1999ga} apresentaram uma revisão abrangente de representações e operadores, concluindo que a combinação PMX com mutação \textit{swap} ou inversão produz resultados robustos.
+
+Nagata \cite{nagata2006eax} propôs o operador \textit{Edge Assembly Crossover} (EAX), que constrói ciclos a partir das arestas de duas soluções pai e os rearranja para gerar filhos. O GA com EAX atinge qualidade comparável à heurística Lin--Kernighan, sendo considerado estado-da-arte em crossover para TSP. Singh, Singh e Chaurasia \cite{hga2024hybrid} propuseram um híbrido GA-ACO em dois estágios: o ACO gera a população inicial e o GA a refina com operador \textit{Inver-over} e busca local 2-opt.
+
+Na implementação avaliada neste trabalho, cada indivíduo contém uma permutação direta dos pontos. A população inicial é aleatória. A seleção de pais usa torneio, o cruzamento utiliza operador ordenado (OX), a mutação troca dois genes com probabilidade definida, e o elitismo preserva o melhor indivíduo entre gerações.
+
+\section{Otimização por Enxame de Partículas}
+\label{sec:pso}
+
+A Otimização por Enxame de Partículas foi proposta como meta-heurística populacional baseada na interação entre partículas que ajustam suas posições a partir de componentes de inércia, memória individual e influência social \cite{kennedy1995particle}. Como o PSO original opera em espaços contínuos, sua aplicação a problemas de permutação exige adaptação.
+
+Clerc \cite{clerc2000discretepso} formalizou o PSO discreto para problemas de permutação definindo posições como permutações, velocidade como lista de transposições e os operadores de subtração e adição correspondentes. O mecanismo NoHope/ReHope evita estagnação ao reexpandir o enxame quando não há melhoria. Kappagantula et al. \cite{kappagantula2025dpso} propuseram o DPSO-Q, que integra \textit{reinforcement learning} ao PSO discreto para melhorar a qualidade das soluções em instâncias TSP.
+
+Neste trabalho, o PSO usa representação por chaves aleatórias (\textit{random keys}): cada partícula mantém um vetor real, e a rota é obtida pela ordenação dos índices desse vetor \cite{bean1994genetic}. A cada iteração, a velocidade é atualizada com parâmetros de inércia ($w$), componente cognitivo ($c_1$) e social ($c_2$). A avaliação da sequência resultante atualiza o melhor histórico da partícula e o melhor global do enxame.
+
+\section{Otimização por Colônia de Formigas}
+\label{sec:aco}
+
+A Otimização por Colônia de Formigas (ACO) modela a construção incremental de soluções por agentes que combinam informação heurística e trilhas de feromônio \cite{dorigo1996ant}. O TSP foi uma das primeiras aplicações de referência \cite{dorigo1997ant}. Dorigo e Stützle \cite{dorigo2004book} apresentam o framework completo da meta-heurística, cobrindo variantes como \textit{Ant System} (AS), \textit{Ant Colony System} (ACS) e \textit{MAX-MIN Ant System} (MMAS). Blum \cite{blum2005acointro} oferece uma introdução comparativa das variantes, e Dorigo e Blum \cite{dorigo2005acotheory} revisam os fundamentos teóricos de convergência.
+
+O MAX-MIN Ant System (MMAS), proposto por Stützle e Hoos \cite{stutzle2000mmas}, introduz limites $\tau_{\min}$ e $\tau_{\max}$ para os valores de feromônio, evitando estagnação. Apenas a melhor formiga deposita feromônio, e os valores são inicializados em $\tau_{\max}$ para promover exploração inicial.
+
+Avanços recentes integram ACO com aprendizado profundo. Ye et al. \cite{deepaco2023} propuseram o DeepACO, que utiliza redes neurais de grafos (GNN) treinadas com PPO para gerar heurísticas específicas por instância. O NeuFACO \cite{neufaco2025}, dos mesmos autores, combina PPO com \textit{Focused ACO}, reconstruindo seletivamente subconjuntos de nós e alcançando gaps de 1--3\% em TSPLIB com tempo 60 vezes menor que o DeepACO. Sheppard et al. \cite{ppaco2024} propuseram o PGACO/PPOACO, que substitui a atualização de feromônio por gradientes de política com \textit{experience replay}. Liu, Chen e Zhang \cite{gpaco2025} usaram Programação Genética (GP) para projetar automaticamente regras de transição de estado, produzindo regras interpretáveis que competem com heurísticas projetadas manualmente.
+
+Na implementação deste trabalho, cada formiga constrói uma rota a partir da origem usando uma roleta proporcional ao produto entre feromônio e informação heurística. Como o custo depende de três nós, a matriz de feromônio também é tridimensional. Após a construção das rotas, ocorre evaporação global e depósito proporcional a $Q/L_k$, em que $L_k$ é o \textit{makespan} da rota.
+
+\section{Estudos Comparativos}
+\label{sec:comparativos}
+
+O teorema \textit{No Free Lunch} estabelece que nenhum algoritmo de otimização supera todos os demais em todas as classes de problema. Estudos comparativos entre GA, PSO e ACO para TSP confirmam esse princípio. Wu \cite{wu2020comparative} avaliou os três métodos em instâncias TSPLIB e observou vantagem do GA em instâncias de até 100 cidades. Haroun et al. \cite{haroun2015performance} relataram que o ACO produz soluções de melhor qualidade que o GA, porém com maior tempo computacional. Almufti e Shaban \cite{almufti2025comparative} compararam nove meta-heurísticas e encontraram variação significativa na ordenação conforme a instância.
+
+Chandra e Naro \cite{chandra2022comparative} aplicaram análise estatística (ANOVA e teste de Tukey) a oito métodos, identificando diferenças significativas entre GA, PSO e ACO em nível de 5\%. Wadi e Umar \cite{wadi2025charting} concentraram-se em abordagens baseadas em enxame e relataram que o PSO apresenta boa escalabilidade, mas perde em qualidade para o GA em instâncias densas. Alexander e Sriwindono \cite{alexander2020comparison} encontraram vantagem do GA sobre o ACO em instâncias pequenas. Hossain e Yilmaz Acar \cite{hossain2024comparison} testaram algoritmos clássicos e modernos e concluíram que a diferença de desempenho se reduz em instâncias grandes, enquanto Toaza e Esztergár-Kiss \cite{toaza2023review} revisaram 120 meta-heurísticas aplicadas a problemas de scheduling baseados em TSP.

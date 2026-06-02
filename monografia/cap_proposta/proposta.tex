@@ -1,3 +1,95 @@
-\chapter[A Sua Proposta]{Proposta}
+\chapter[Proposta]{Formulação do Problema e Métodos}
 
-Escreva aqui de forma clara e objetiva a sua proposta. Procure formalizar a sua proposta. Deixe claro, dentro de um arcabouço abrangente, em que você está efetivamente contribuindo. Atribua um nome para o método, o meta-método ou o sistema que você desenvolveu. Conceitos criados por você devem ser colocados nesse capítulo. A partir dessa seção, a menos que seja vital para o que pretende descrever, não faça mais citações de outros trabalhos. Comparações com outros trabalhos devem fazer referência ao capítulo de revisão bibliográfica.
+\label{proposta}
+
+Este capítulo formaliza o modelo matemático adotado e descreve como cada método de otimização foi adaptado ao problema de roteamento de patrulhamento com custo dependente da sequência. O modelo baseia-se no Problema do Caixeiro Viajante (TSP), estendido para incorporar penalização angular nas transições entre pontos consecutivos.
+
+\section{Modelo Matemático}
+
+O problema é definido sobre um conjunto de nós $V = \{0, 1, \ldots, n-1\}$, em que $0$ é a base de origem e retorno. Os demais nós $V' = V \setminus \{0\}$ representam os pontos de interesse (\textit{points of interest}, POIs) a serem visitados exatamente uma vez. Uma rota é uma permutação $\pi = (\pi_1, \pi_2, \ldots, \pi_{n-1})$ de $V'$, e o \textit{makespan} total é calculado conforme a Equação~(\ref{eq:objetivo}).
+
+O tensor de custo $G[\text{anterior}][\text{atual}][\text{próximo}]$ é pré-calculado a partir das coordenadas dos pontos no plano bidimensional. Diferentemente do TSP clássico, em que o custo depende apenas do par origem--destino, aqui cada transição $(j \to k)$ tem seu custo modulado pelo ângulo de chegada ao nó $j$ vindo do nó $i$. Esse modelo captura o efeito de manobras de drone: mudanças bruscas de direção aumentam o tempo de deslocamento em relação a trajetórias aproximadamente retilíneas.
+
+\subsection{Tensor de Custos}
+
+Para cada terna $(i,j,k) \in V^3$ com $i \neq j$ e $j \neq k$, calcula-se:
+
+\begin{equation}
+G[i][j][k] = \frac{d(j,k)}{v} + \frac{1}{\pi} \cdot \arccos\left( \frac{\vec{v}_{i,j} \cdot \vec{v}_{j,k}}{\|\vec{v}_{i,j}\| \, \|\vec{v}_{j,k}\|} \right),
+\label{eq:tensor}
+\end{equation}
+
+em que $d(j,k)$ é a distância euclidiana, $v$ é a velocidade do drone (normalizada para 1), $\vec{v}_{i,j} = (x_j - x_i, y_j - y_i)$ e $\vec{v}_{j,k} = (x_k - x_j, y_k - y_j)$. Para o primeiro movimento (partida da base sem nó anterior), adota-se $i = 0$ e $\vec{v}_{0,0} = \vec{0}$, resultando em $\tau = 0$ e $G[0][0][\pi_1] = d(0, \pi_1)$. O mesmo se aplica ao retorno: $G[\pi_{n-2}][\pi_{n-1}][0] = d(\pi_{n-1}, 0)$.
+
+\begin{algorithm}[htbp]
+\caption{Cálculo do makespan}
+\label{alg:objetivo}
+\begin{algorithmic}
+\STATE \textbf{Entrada:} permutação $\pi$, tensor $G$,
+\STATE \quad \quad \quad \quad número de pontos $n$
+\STATE \textbf{Saída:} makespan $f$
+\STATE $f \gets 0$
+\STATE $anterior \gets 0$
+\STATE $atual \gets 0$
+\FOR{$t = 1$ \TO $n-1$}
+    \STATE $proximo \gets \pi[t]$
+    \STATE $f \gets f + G[anterior][atual][proximo]$
+    \STATE $anterior \gets atual$
+    \STATE $atual \gets proximo$
+\ENDFOR
+\STATE $f \gets f + G[anterior][atual][0]$ \COMMENT{Retorno à base}
+\RETURN $f$
+\end{algorithmic}
+\end{algorithm}
+
+O Algoritmo~\ref{alg:objetivo} detalha o cálculo do \textit{makespan} para uma permutação $\pi$.
+
+\section{Adaptação dos Métodos}
+
+Os quatro métodos compartilham a mesma função objetivo (\ref{eq:objetivo}) e a mesma representação de instância (tensor $G$). A seguir descreve-se como cada método foi adaptado ao modelo proposto.
+
+\subsection{Busca Exaustiva}
+
+A busca exaustiva gera todas as $(n-1)!$ permutações dos POIs usando o algoritmo de Heap. Para cada permutação, calcula-se o \textit{makespan} e registra-se a melhor solução. O método é determinístico e serve como referência exata para instâncias com até 15 pontos.
+
+\subsection{Algoritmo Genético}
+
+Cada indivíduo representa uma permutação direta dos POIs. A população inicial é gerada aleatoriamente. A função de aptidão é o inverso do \textit{makespan}. A seleção de pais usa torneio de tamanho 2. O cruzamento ordenado (OX) preserva a ordem relativa dos pontos e é aplicado com probabilidade~1. A mutação por troca (\textit{swap}) é aplicada com probabilidade~0,05, trocando dois genes aleatórios. A estratégia de elitismo preserva o melhor indivíduo entre gerações.
+
+\subsection{Otimização por Enxame de Partículas}
+
+Cada partícula mantém um vetor real de dimensão $n$. A rota é obtida ordenando os índices do vetor em ordem crescente (\textit{random keys}). A velocidade é atualizada por:
+
+\begin{equation}
+v_{i,d}^{t+1} = w \cdot v_{i,d}^{t} + c_1 r_1 (p_{i,d} - x_{i,d}^{t}) + c_2 r_2 (g_{d} - x_{i,d}^{t}),
+\label{eq:pso}
+\end{equation}
+
+em que $w = 0{,}7$, $c_1 = c_2 = 2$, $r_1, r_2 \sim U(0,1)$, $p_i$ é a melhor posição da partícula e $g$ a melhor posição global. A posição é atualizada por $x_{i,d}^{t+1} = x_{i,d}^{t} + v_{i,d}^{t+1}$.
+
+\subsection{Otimização por Colônia de Formigas}
+
+Cada formiga constrói uma rota incrementalmente. No nó $j$, a probabilidade de escolher o nó $k$ como próximo é:
+
+\begin{equation}
+p_{ijk} = \frac{[\tau_{ijk}]^{\alpha} \cdot [\eta_{ijk}]^{\beta}}{\sum_{l \in \mathcal{N}} [\tau_{ijl}]^{\alpha} \cdot [\eta_{ijl}]^{\beta}},
+\label{eq:aco}
+\end{equation}
+
+em que $\tau_{ijk}$ é o feromônio associado à transição $i \to j \to k$, $\eta_{ijk} = 1 / c_{i,j,k}$ é a informação heurística, $\alpha = 1$ e $\beta = 2$ controlam a importância relativa, e $\mathcal{N}$ é o conjunto de nós ainda não visitados. Após todas as formigas construírem suas rotas, o feromônio é atualizado por:
+
+\begin{equation}
+\tau_{ijk} \gets (1 - \rho) \cdot \tau_{ijk} + \sum_{k=1}^{m} \Delta\tau_{ijk}^{k},
+\quad \Delta\tau_{ijk}^{k} = 
+\begin{cases}
+Q / L_k, & \text{se a formiga } k \text{ usou } (i,j,k), \\
+0, & \text{caso contrário},
+\end{cases}
+\label{eq:feromonio}
+\end{equation}
+
+com $\rho = 0{,}5$ e $Q = 100$.
+
+\section{Desenho Experimental}
+
+Todas as meta-heurísticas usam população~100 e 100 iterações. A busca exaustiva não tem hiperparâmetros. Instâncias são geradas com coordenadas aleatórias em $[-1, 1]$, com tamanhos 10, 11, 12, 13, 14, 15, 20, 30, 50 e 100 pontos, três instâncias por tamanho. Para cada combinação instância--método, executam-se 55 sementes (GA, PSO, ACO) ou uma execução determinística (busca exaustiva). O total de execuções é de 5029 arquivos de resumo registrados.

@@ -18,9 +18,8 @@
 % 	dissertmst: Formata documento para dissertação de mestrado
 % 	qualimst:   Formata documento para qualificação de mestrado
 % ------------------------------------------------------------------------
-\documentclass[dissertmst]{ppgco}
-%Não altere o comando seguinte. O título de seu trabalho será especificado mais adiante.
-\title{Template de Monografia do PPGCO}
+\documentclass[monografia]{ppgco}
+\title{Otimização de Rotas de Patrulhamento com Drones: Um Estudo Comparativo de Meta-heurísticas Bioinspiradas}
 
 % ---
 % PACOTES
@@ -45,11 +44,14 @@
 \usepackage{lipsum}				       % para geração de dummy text
 \usepackage[printonlyused]{acronym}
 \usepackage[table]{xcolor}
+\usepackage{booktabs}
 % ---
 
 % ---
 % Pacotes pessoais
 % ---
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{subfig}
 %
 
@@ -60,20 +62,13 @@
 % Título:
 %	1. Título em português
 %	2. Título em inglês
-\titulo{Modeloaaaaaaa do Trabalho de Conclusão de Curso para o Bacharelado em Ciência da Computação}{Título em inglês}
+\titulo{Otimização de Rotas de Patrulhamento com Drones: Um Estudo Comparativo de Meta-heurísticas Bioinspiradas}{Drone Patrol Route Optimization: A Comparative Study of Bio-inspired Metaheuristics}
 %
-% Autor:
-%	1. Nome completo do autor
-%	2. Formato de nome para bibliografia
-\autor{Nome do Aluno}{Sobrenome, Primeiro Nome}
+\autor{Heitor Freitas}{Freitas, Heitor}
 %
-% Cidade
 \local{Uberlândia}
-% Ano de defesa
-\data{2024}
-% Área de concentração da pesquisa
+\data{2026}
 \areaconcentracao{Ciência da Computação}
-% Nome do orientador
 \orientador{Dr. Claudiney Ramos Tinoco}
 % Nome do coorientador
 %\coorientador{Nome completo do coorientador}
@@ -140,15 +135,14 @@
 % ---
 % Dedicatória
 % ---
-\imprimirdedicatoria{Este trabalho é dedicado às crianças adultas que,\\
-   quando pequenas, sonharam em se tornar cientistas.}
+\imprimirdedicatoria{Aos meus pais, pelo apoio incondicional.}
 % ---
 
 % ---
 % Agradecimentos
 % ---
 \imprimiragradecimentos{
-Faça os agradecimentos àqueles que direta ou indiretamente contribuíram para que você tivesse obtido êxito. Inclua na sua lista agradecimentos aos órgãos de fomento, quando for o caso.
+Ao Prof. Dr. Claudiney Ramos Tinoco, pela orientação e pelo incentivo ao longo deste trabalho. Aos colegas de curso, pelas discussões e pelo apoio durante a graduação.
 }
 % ---
 
@@ -156,8 +150,7 @@ Faça os agradecimentos àqueles que direta ou indiretamente contribuíram para 
 % Epígrafe
 % ---
 \imprimirepigrafe{
-		``Sua vida pode ser dividida em dois períodos: antes de agora e a partir de agora.''\\
-		(Prof. Obvious Stating)
+		``Otimização é a arte de encontrar a melhor resposta possível dentro do que é computacionalmente viável.''\\
 }
 % ---
 
@@ -165,14 +158,12 @@ Faça os agradecimentos àqueles que direta ou indiretamente contribuíram para 
 % RESUMO e ABSTRACT
 % ---
 
-% Resumo em português - as palavras entre chaves são as palavras-chave do trbalho
-\begin{resumo}{Latex. Abntex. Normas USP}
-This is the portuguese abstract.
+\begin{resumo}{Otimização Combinatória. Problema do Caixeiro Viajante. Meta-heurísticas Bioinspiradas. Patrulhamento com Drones.}
+Este trabalho investiga o problema de otimização de rotas para patrulhamento com veículos aéreos não tripulados, modelado como uma variante do Problema do Caixeiro Viajante com custo dependente da sequência de visita. O custo de deslocamento entre dois pontos incorpora uma penalização angular calculada a partir do ponto anterior, do ponto atual e do próximo ponto, representado por um tensor tridimensional. Quatro métodos de otimização foram implementados e comparados: busca exaustiva (usada como referência exata em instâncias pequenas), Algoritmo Genético, Otimização por Enxame de Partículas e Otimização por Colônia de Formigas. Os experimentos totalizaram 5029 execuções em 30 instâncias com tamanhos entre 10 e 100 pontos. O Algoritmo Genético encontrou o ótimo global em todas as 18 instâncias pequenas e manteve superioridade nas instâncias maiores, com diferenças de até 22\% em relação ao segundo melhor método. Os resultados indicam que a representação direta por permutação e os operadores de cruzamento ordenado são mais adequados a esse problema do que a representação por chaves aleatórias usada pelo PSO ou a construção probabilística tridimensional do ACO.
 \end{resumo}
 
-% Resumo em inglês
-\begin{abstract}{Latex. Abntex.}
-This is the english abstract.
+\begin{abstract}{Combinatorial Optimization. Traveling Salesman Problem. Bio-inspired Metaheuristics. Drone Patrol.}
+This work investigates the route optimization problem for unmanned aerial vehicle patrolling, modeled as a variant of the Traveling Salesman Problem with sequence-dependent travel costs. The displacement cost between two points incorporates an angular penalty calculated from the previous, current, and next points, represented as a three-dimensional tensor. Four optimization methods were implemented and compared: exhaustive search (used as exact reference for small instances), Genetic Algorithm, Particle Swarm Optimization, and Ant Colony Optimization. The experiments totaled 5029 runs across 30 instances ranging from 10 to 100 points. The Genetic Algorithm found the global optimum in all 18 small instances and maintained superiority in larger instances, with differences of up to 22\% over the second-best method. The results indicate that direct permutation representation with ordered crossover operators is more suitable for this problem than the random-key representation used by PSO or the three-dimensional probabilistic construction of ACO.
 \end{abstract}
 % ---
 

@@ -1,11 +1,28 @@
 \chapter[Conclusão]{Conclusão}
-Faça uma breve introdução para o capítulo. Observe os objetivos geral e específicos do trabalho no capítulo de introdução e coloque aqui um comentário sobre como o desenvolvimento ajudou a chegar a cada um desses objetivos, ou seja, como a pesquisa permitiu concluir que cada um dos objetivos foi atingido.
+\label{conclusao}
+
+Este trabalho investigou o problema de otimização de rotas para patrulhamento com drones, modelado como uma variante do Problema do Caixeiro Viajante com custo dependente da sequência de visita. Quatro métodos foram implementados e comparados: busca exaustiva (referência exata), Algoritmo Genético, Otimização por Enxame de Partículas e Otimização por Colônia de Formigas. Os experimentos totalizaram 5029 execuções em 30 instâncias entre 10 e 100 pontos.
 
 \section{Principais Contribuições}
-Nessa seção destaque ainda mais as suas contribuições, mostrando que sua hipótese foi validada pelos experimentos executados. 
+
+Os resultados confirmam a hipótese principal: as meta-heurísticas produzem rotas de baixo \textit{makespan} com custo computacional muito inferior ao da enumeração completa. O GA destaca-se como o método mais eficaz: encontrou o ótimo global em todas as 18 instâncias pequenas (10--15 pontos) no seu melhor caso, com desvio padrão máximo de 0,44, e manteve vantagem consistente nas instâncias maiores, com \textit{makespan} até 22\% inferior ao do ACO na instância 100a.
+
+O PSO ocupou a segunda posição na maioria das instâncias, mas apresentou maior variabilidade entre sementes, refletindo a dependência da representação por chaves aleatórias. O ACO apresentou os maiores \textit{gaps} em relação ao ótimo, com convergência prematura nas primeiras 20--30 iterações. Esse resultado sugere que o feromônio tridimensional sofre diluição no espaço de busca, reduzindo a eficácia da construção probabilística.
+
+A hipótese secundária também se confirmou: GA e ACO, por operarem diretamente sobre permutações, exploram a estrutura combinatória do problema de forma mais natural que o PSO. No entanto, o ACO não se beneficiou dessa vantagem devido à dispersão do feromônio no tensor tridimensional.
+
+As contribuições específicas incluem: (i) a formalização do modelo com custo dependente da sequência e penalização angular; (ii) a implementação comparativa de quatro métodos sobre a mesma função objetivo; (iii) a base experimental com 5029 execuções e saídas estruturadas; (iv) a análise empírica detalhada de convergência, estabilidade e escalabilidade.
+
+\section{Limitações}
+
+Três limitações metodológicas devem ser consideradas. Primeiro, a consistência entre a documentação do tensor $G[i][j][k]$ e a ordem dos índices na geração dos custos precisa ser validada antes de atribuir significado físico definitivo à penalização de curva. Embora isso não afete a comparação entre métodos, limita a interpretação do modelo como simulação de voo real. Segundo, os hiperparâmetros foram fixados sem ajuste fino (população~100, 100 iterações para todos). O ACO, em particular, poderia se beneficiar de variações em $\alpha$, $\beta$, $\rho$ e $Q$. Terceiro, as instâncias são sintéticas com coordenadas aleatórias, o que não reflete necessariamente a geometria de cenários reais de patrulhamento.
 
 \section{Trabalhos Futuros}
-Destaque nessa seção o que pode ser melhorado no método proposto para resolver as possíveis falhas que você identificou e descreveu na seção. Indique quais outros projetos podem ser gerados a partir do seu trabalho.
+
+Diversas direções de continuidade são possíveis. O ajuste fino de hiperparâmetros por instância poderia alterar o ordenamento relativo entre os métodos. A implementação de variantes mais avançadas de cada meta-heurística, como o MMAS para ACO (com limites $\tau_{\min}$ e $\tau_{\max}$) ou o operador EAX para GA, pode melhorar a qualidade das soluções. A hibridização entre métodos, como no esquema GA-ACO em dois estágios \cite{hga2024hybrid}, representa uma direção promissora.
+
+No horizonte mais amplo, a integração de aprendizado profundo com meta-heurísticas swarm -- como DeepACO \cite{deepaco2023}, NeuFACO \cite{neufaco2025} e PGACO/PPOACO \cite{ppaco2024} -- constitui o estado-da-arte em otimização combinatória neural. A aplicação dessas abordagens ao modelo com custo dependente da sequência é uma extensão natural. Por fim, a validação do modelo em cenários reais de patrulha, com dados geográficos e restrições operacionais de VANTs, permitiria avaliar o impacto prático das soluções encontradas.
 
 \section{Contribuições em Produção Bibliográfica}
-Liste a produção bibliográfica resultante do seu trabalho.
+
+Este trabalho gerou uma base de código aberta para experimentos com meta-heurísticas em problemas de roteamento, documentada no repositório associado a esta monografia.

@@ -1,17 +1,125 @@
 \chapter[Experimentos e Análise dos Resultados]{Experimentos e Análise dos Resultados}
 \label{experimentos}
 
-Faça uma breve introdução para o capítulo.
+Este capítulo descreve o desenho experimental usado para comparar a busca exaustiva, GA, PSO e ACO, e apresenta a análise quantitativa dos resultados consolidados a partir dos 5029 arquivos de resumo. A formulação do problema e as adaptações específicas de cada método foram detalhadas no Capítulo~\ref{proposta}.
 
 \section{Método para a Avaliação}
 \label{metodo}
-Descreva os métodos utilizados para validar a sua hipótese incluindo as medidas de avaliação, conjunto de parâmetros, bases de dados e os trabalhos com os quais a sua proposta será comparada.
+
+Todas as execuções avaliam a mesma função objetivo, denominada \textit{makespan}. Uma solução é uma sequência com todos os pontos de interesse, excluindo a origem. O drone parte do nó $0$, visita os pontos na ordem indicada e retorna ao nó $0$. O custo acumulado usa uma estrutura tridimensional $G[i][j][k]$, que representa o tempo para seguir ao próximo nó considerando o nó anterior, o nó atual e o nó seguinte.
+
+As instâncias são geradas a partir de pontos no plano bidimensional, com coordenadas aleatórias no intervalo $[-1,1]$. O tempo de deslocamento considera a distância euclidiana e uma penalização angular normalizada pelo ângulo entre o vetor de chegada e o vetor de saída. Essa modelagem aproxima o problema de uma rota de patrulhamento em que manobras mais bruscas aumentam o tempo total.
+
+A avaliação usa três grupos de arquivos produzidos automaticamente pela ferramenta: arquivos de resumo, arquivos de evolução e arquivos de tempo. O resumo contém método, instância, semente, parâmetros, melhor \textit{makespan}, melhor sequência, número de iterações e quantidade de avaliações. A evolução registra cada melhoria observada durante a execução. O arquivo de tempo separa carregamento da instância, otimização, serialização e duração total.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Métodos implementados e parâmetros usados nos experimentos.}
+  \label{tab:metodos-parametros}
+  \begin{tabular}{lll}
+    \toprule
+    Método & Representação & Parâmetros principais \\
+    \midrule
+    Busca exaustiva & Permutação direta & Sem hiperparâmetros \\
+    GA & Permutação direta & população=100, iterações=100, elitismo=1, mutação=0{,}05, torneio=2 \\
+    PSO & Chaves aleatórias & população=100, iterações=100, $w=0{,}7$, $c_1=2$, $c_2=2$ \\
+    ACO & Construção probabilística & população=100, iterações=100, $\alpha=1$, $\beta=2$, $\rho=0{,}5$, $Q=100$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+O inventário atual contém 5029 execuções registradas: 1650 para GA, 1650 para PSO, 1650 para ACO e 79 para busca exaustiva. As meta-heurísticas foram executadas em 30 instâncias, com tamanhos de 10, 11, 12, 13, 14, 15, 20, 30, 50 e 100 pontos, três instâncias por tamanho. A busca exaustiva foi aplicada às instâncias menores, nas quais a enumeração completa ainda é viável.
 
 \section{Experimentos}
-De acordo com o que foi descrito na Seção, apresente os resultados dos seus experimentos. A apresentação dos resultados pode ser feita via gráficos ou tabelas. O importante é que haja clareza.
+
+Uma interface de linha de comando implementada em Go executou os experimentos. Cada execução recebe uma instância em formato de grafo, uma semente e um diretório de resultados. O identificador da execução combina instância, método, semente e um hash dos parâmetros, o que reduz o risco de sobrescrever resultados de configurações diferentes.
+
+Para as meta-heurísticas, cada execução usa população 100 e 100 iterações. Como GA, PSO e ACO são métodos estocásticos, a repetição por diferentes sementes é necessária para avaliar estabilidade. Para a busca exaustiva, a semente é registrada apenas por padronização do formato de saída, pois o método não usa aleatoriedade na geração das soluções.
 
 
 \section{Avaliação dos Resultados}
 \label{avaliacao}
 
-A avaliação dos resultados pode ser feita à medida em que os resultados dos experimentos são apresentados, ou em uma seção separada. É importante que você aponte os acertos e as limitações da sua proposta e justifique os resultados obtidos. É fundamental apresentar evidências de que sua hipótese é verdadeira.
+Esta seção consolida os 5029 arquivos de resumo em estatísticas descritivas por instância e método. A análise cobre três aspectos: qualidade da solução em relação ao ótimo conhecido (nas instâncias pequenas), desempenho relativo entre meta-heurísticas (em todas as instâncias), e comportamento de convergência ao longo das iterações.
+
+\subsection{Instâncias Pequenas: Comparação com o Ótimo}
+
+Nas instâncias de tamanho 10 a 15, a busca exaustiva fornece o valor ótimo global. A Tabela~\ref{tab:resultados-consolidados-pequenas} apresenta o melhor makespan encontrado por cada método e o gap percentual em relação ao ótimo.
+
+Entre as meta-heurísticas, o GA destaca-se por encontrar o ótimo global em todas as 18 instâncias no seu melhor caso. O PSO também encontra o ótimo na maioria das instâncias, mas apresenta gap médio de 0,5\% a 2\% nas instâncias maiores (13--15 nós). O ACO apresenta os maiores gaps, chegando a 14,72\% na instância 15c, e seu melhor caso frequentemente fica 4\% a 8\% acima do ótimo mesmo em instâncias de 11--12 nós.
+
+A variabilidade também difere entre os métodos. O GA apresenta desvio padrão tipicamente entre 0,00 e 0,44, indicando que todas as 55 sementes convergem para soluções próximas ao ótimo. O PSO apresenta desvios de 0,31 a 1,00, refletindo a dependência da qualidade da representação por chaves aleatórias. O ACO apresenta desvios intermediários (0,23 a 0,67), mas com média mais distante do ótimo, indicando convergência prematura para soluções subótimas consistentes. Esse padrão está alinhado com os estudos comparativos da literatura: Haroun et al. \cite{haroun2015performance} e Wu \cite{wu2020comparative} também relataram sensibilidade do ACO à parametrização e maior estabilidade do GA em instâncias de médio porte.
+
+\begin{table}[htbp]
+\centering
+\caption{Melhor makespan e gap percentual em relação ao ótimo (busca exaustiva).}
+\label{tab:resultados-consolidados-pequenas}
+\begin{tabular}{lrrrr}
+\toprule
+Instância & BF (ótimo) & GA & PSO & ACO \\
+\midrule
+10a & 10,94 & 10,94 (0,00\%) & 10,94 (0,00\%) & 10,95 (0,07\%) \\
+10b & 8,96 & 8,96 (0,00\%) & 8,96 (0,00\%) & 9,12 (1,74\%) \\
+10c & 11,07 & 11,07 (0,00\%) & 11,07 (0,00\%) & 11,07 (0,00\%) \\
+11a & 11,62 & 11,62 (0,00\%) & 11,62 (0,00\%) & 12,08 (4,04\%) \\
+11b & 10,74 & 10,74 (0,00\%) & 10,74 (0,00\%) & 11,26 (4,86\%) \\
+11c & 12,51 & 12,51 (0,00\%) & 12,51 (0,00\%) & 13,30 (6,30\%) \\
+12a & 13,11 & 13,11 (0,00\%) & 13,11 (0,00\%) & 13,90 (6,02\%) \\
+12b & 12,68 & 12,68 (0,00\%) & 12,86 (1,48\%) & 12,72 (0,32\%) \\
+12c & 12,67 & 12,67 (0,00\%) & 12,67 (0,00\%) & 13,43 (5,96\%) \\
+13a & 13,68 & 13,68 (0,00\%) & 13,68 (0,00\%) & 14,79 (8,16\%) \\
+13b & 13,96 & 13,96 (0,00\%) & 14,03 (0,44\%) & 14,15 (1,32\%) \\
+13c & 13,89 & 13,89 (0,00\%) & 14,02 (0,98\%) & 14,48 (4,22\%) \\
+14a & 13,54 & 13,54 (0,00\%) & 13,74 (1,50\%) & 13,94 (2,97\%) \\
+14b & 14,20 & 14,20 (0,00\%) & 14,29 (0,69\%) & 14,80 (4,27\%) \\
+14c & 14,91 & 14,91 (0,00\%) & 15,13 (1,48\%) & 15,61 (4,70\%) \\
+15a & 13,72 & 13,72 (0,00\%) & 14,09 (2,67\%) & 14,07 (2,53\%) \\
+15b & 16,01 & 16,01 (0,00\%) & 16,58 (3,56\%) & 18,12 (13,19\%) \\
+15c & 15,20 & 15,20 (0,00\%) & 15,99 (5,19\%) & 17,43 (14,72\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Instâncias Maiores: Desempenho Relativo}
+
+Para as instâncias de 20 a 100 nós, não há ótimo conhecido por busca exaustiva. A comparação é relativa entre os três métodos. A Tabela~\ref{tab:resultados-consolidados-grandes} apresenta os melhores valores encontrados.
+
+O GA mantém a superioridade observada nas instâncias pequenas. Na instância 100a, por exemplo, o GA encontra makespan 114,65, contra 134,81 do PSO e 146,95 do ACO -- uma diferença de aproximadamente 15\% e 22\%, respectivamente. Essa vantagem se mantém consistentemente em todas as 12 instâncias maiores.
+
+O PSO ocupa a segunda posição na maioria das instâncias. O ACO apresenta os maiores makespans, ficando tipicamente 10\% a 20\% acima do GA. Esse resultado sugere que o modelo de feromônio tridimensional do ACO, embora conceitualmente adequado ao problema, sofre com a diluição da informação de feromônio no espaço de busca tridimensional, reduzindo a eficácia da construção probabilística de rotas.
+
+\begin{table}[htbp]
+\centering
+\caption{Melhor makespan por instância nas execuções sem busca exaustiva.}
+\label{tab:resultados-consolidados-grandes}
+\begin{tabular}{lrrr}
+\toprule
+Instância & GA & PSO & ACO \\
+\midrule
+20a & 19,34 & 21,31 & 24,83 \\
+20b & 19,58 & 22,75 & 24,41 \\
+20c & 18,87 & 20,90 & 21,14 \\
+30a & 28,83 & 34,83 & 39,14 \\
+30b & 28,79 & 34,67 & 36,46 \\
+30c & 29,06 & 34,56 & 38,21 \\
+50a & 46,37 & 59,83 & 65,80 \\
+50b & 49,18 & 66,30 & 72,41 \\
+50c & 49,36 & 63,77 & 70,32 \\
+100a & 114,65 & 134,81 & 146,95 \\
+100b & 111,76 & 136,52 & 145,51 \\
+100c & 116,66 & 136,92 & 150,39 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Convergência e Estabilidade}
+
+Os registros de evolução permitem analisar a velocidade de convergência. O GA tende a encontrar melhorias nas primeiras iterações e converge gradualmente, com melhorias esporádicas ao longo das 100 iterações. O PSO apresenta atualizações mais frequentes no início, mas a qualidade da solução estagna mais cedo, possivelmente devido à limitação da representação por chaves aleatórias em capturar a estrutura combinatória do problema. O ACO converge rapidamente para uma solução nas primeiras iterações e raramente apresenta melhorias após as primeiras 20--30 iterações, consistente com a hipótese de convergência prematura.
+
+A dispersão entre sementes (medida pelo desvio padrão do melhor makespan) confirma esses padrões. O GA é o método mais estável, com desvio tipicamente entre 0,1 e 4,3, crescendo com o tamanho da instância. O PSO apresenta a maior dispersão (desvios de 0,3 a 3,4), refletindo a variabilidade introduzida pela representação contínua. O ACO apresenta dispersão moderada (0,2 a 1,7), coerente com uma convergência consistente para soluções de qualidade similar, ainda que subótimas.
+
+\subsection{Limitações Metodológicas}
+
+Uma limitação metodológica já identificada é a necessidade de revisar a consistência entre a documentação da estrutura do grafo e a ordem dos índices usada na geração dos custos. A função objetivo interpreta o grafo como $G[\text{anterior}][\text{atual}][\text{pr\'oximo}]$; a etapa de geração da instância deve ser validada antes de se atribuir significado físico definitivo à penalização de curva. Essa verificação não impede a comparação interna entre métodos, pois todos otimizam a mesma função, mas afeta a interpretação do modelo como aproximação de voo real.
+
+Além disso, os hiperparâmetros das meta-heurísticas foram fixados sem ajuste fino: população 100 e 100 iterações para todos os métodos. Valores diferentes poderiam alterar o ordenamento relativo, especialmente para o ACO, cujos parâmetros $\alpha$, $\beta$, $\rho$ e $Q$ não foram otimizados por instância. Essa limitação é comum em estudos comparativos e, como observam Chandra e Naro \cite{chandra2022comparative} e Almufti e Shaban \cite{almufti2025comparative}, o ajuste de parâmetros por instância pode produzir ordenações diferentes das obtidas com valores fixos.

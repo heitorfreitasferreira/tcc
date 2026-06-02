@@ -1,21 +1,56 @@
 \chapter[Introdução]{Introdução}
 
-Contextualize o seu trabalho de forma sucinta. 
-Delimite o seu tema de estudo. 
-Convença o leitor da relevância e importância do seu trabalho. \cite{tinoco2022wildfire}
+Veículos aéreos não tripulados (VANTs) oferecem uma alternativa operacional para missões em que pontos de interesse precisam ser visitados com rapidez, regularidade e baixo custo de deslocamento. Em cenários de patrulhamento, inspeção e monitoramento, a tarefa computacional central é definir a ordem de visita desses pontos. Quando se considera um único veículo que parte de uma base, visita todos os pontos uma vez e retorna à origem, a formulação se aproxima do Problema do Caixeiro Viajante (\textit{Traveling Salesman Problem}, TSP), um dos problemas clássicos de otimização combinatória \cite{lawler1985traveling,applegate2006traveling}.
+
+O TSP é computacionalmente difícil: sua versão de decisão pertence ao conjunto dos problemas NP-completos \cite{garey1979computers}. Essa característica torna inviável a enumeração exaustiva de soluções em instâncias de tamanho moderado, pois o número de rotas cresce fatorialmente com a quantidade de pontos. Por esse motivo, heurísticas e meta-heurísticas são empregadas quando o objetivo é obter boas soluções em tempo computacional controlado, ainda que sem garantia de otimalidade global.
+
+A literatura registra dezenas de estudos comparativos entre meta-heurísticas aplicadas ao TSP. Wu \cite{wu2020comparative} comparou GA, ACO e PSO em instâncias TSPLIB e observou que o GA apresenta melhor desempenho médio em instâncias de até 100 cidades. Haroun et al. \cite{haroun2015performance} relataram vantagem do ACO sobre o GA em termos de qualidade de solução, porém com maior custo computacional. Almufti e Shaban \cite{almufti2025comparative} avaliaram nove meta-heurísticas e concluíram que nenhum método domina todas as classes de instância, em linha com o teorema \textit{No Free Lunch}. Chandra e Naro \cite{chandra2022comparative} aplicaram ANOVA aos resultados de oito métodos e identificaram diferenças estatisticamente significativas entre GA, PSO e ACO. Halim e Ismail \cite{halim2019combinatorial} revisaram seis heurísticas para otimização combinatória e apontaram que a escolha da representação da solução é tão determinante quanto o método de busca. Estudos mais recentes, como o de Hossain e Yilmaz Acar \cite{hossain2024comparison}, confirmam que a qualidade relativa entre métodos clássicos e modernos depende fortemente do tamanho e da estrutura da instância.
+
+Este trabalho investiga o problema de roteamento para patrulhamento com drones, modelado como uma variante do TSP com custo dependente da sequência de visita. A implementação desenvolvida compara uma busca exaustiva, usada como referência exata em instâncias pequenas, com três meta-heurísticas bioinspiradas: Algoritmo Genético (\textit{Genetic Algorithm}, GA), Otimização por Enxame de Partículas (\textit{Particle Swarm Optimization}, PSO) e Otimização por Colônia de Formigas (\textit{Ant Colony Optimization}, ACO). Todos os métodos otimizam a mesma função objetivo, denominada \textit{makespan}, que representa o tempo total de uma rota iniciada e encerrada na base.
+
+O modelo adotado acrescenta uma particularidade ao TSP euclidiano usual: o custo para seguir de um ponto atual para um próximo depende também do ponto visitado imediatamente antes. Essa dependência permite incorporar uma penalização de curva, compatível com a ideia de que mudanças bruscas de direção afetam o tempo de voo de um drone. Representa-se a instância por um grafo tridimensional de custos, indexado por nó anterior, nó atual e próximo nó.
 
 \section{Motivação}
-Introduza o leitor ao assunto, descreva os fatores motivadores para o desenvolvimento do seu trabalho.   Descreva brevemente o estado da arte e indique os problemas que ainda não foram resolvidos. Faça um gancho para a próxima sub-seção em que você descreve os  objetivos do seu trabalho. 
+
+Aplicações de roteamento com drones mostram que pequenas mudanças no modelo físico ou operacional alteram substancialmente a estrutura do problema. O problema do caixeiro viajante com drone, introduzido por Murray e Chu \cite{murray2015flying} como \textit{Flying Sidekick Traveling Salesman Problem} (FSTSP), e posteriormente estendido por Agatz, Bouman e Schmidt \cite{agatz2018optimization} e Dell'Amico et al. \cite{dellamico2021multiple,dellamico2022exact}, combina decisões de roteamento terrestre e aéreo. Rajan, Sundar e Gautam \cite{rajan2022routing} abordaram especificamente o roteamento de VANTs em missões de patrulha, propondo um algoritmo de \textit{progressive hedging} para instâncias com horizonte de planejamento finito.
+
+Embora este trabalho não trate de entrega com caminhão e drone, essa literatura reforça a relevância de estudar variantes do TSP quando restrições reais de operação são incorporadas. No caso de patrulhamento aéreo, a ordem de visita não afeta apenas a distância percorrida: a sequência também influencia a suavidade do trajeto, a quantidade de manobras e, por consequência, o tempo estimado de deslocamento. A motivação deste trabalho é avaliar como três meta-heurísticas bioinspiradas se comportam quando aplicadas a essa variante sequencial, usando uma implementação reprodutível e registros estruturados de desempenho.
 
 \section{Objetivos e Desafios da Pesquisa}
-Descreva claramente os desafios que o tema propõe e quais os  objetivos que se pretende alcançar. Se o tema for muito abrangente, descreva os objetivos em termos de "objetivo geral" e  "objetivos específicos". Cuidado com objetivos como "desenvolver um sistema...."; "explorar um método ...".Esses objetivos são triviais, ou seja, uma vez desenvolvido o sistema ou explorado o método, independente dos resultados, o objetivo foi atingido. Prefira verbos como: "contribuir", "analisar", "investigar", "comparar". Os membros da banca ao lerem essa seção farão o seguinte questionamento: Algum conhecimento novo para a humanidade foi produzido?
 
+O objetivo geral é analisar o desempenho de meta-heurísticas bioinspiradas na otimização de rotas de patrulhamento por drones modeladas como uma variante do TSP com custo dependente da sequência.
+
+Os objetivos específicos são:
+\begin{itemize}
+  \item formalizar a função objetivo usada para avaliar uma rota de patrulhamento com penalização de curva;
+  \item implementar e comparar busca exaustiva, GA, PSO e ACO sobre o mesmo conjunto de instâncias;
+  \item medir qualidade da solução, quantidade de avaliações e tempo de execução;
+  \item analisar a escalabilidade dos métodos quando o número de pontos de interesse aumenta;
+  \item identificar limitações experimentais e oportunidades de melhoria nos métodos implementados.
+\end{itemize}
 
 \section{Hipótese}
-Descreva claramente quais são as hipóteses da sua pesquisa (Uma hipótese é uma suposição para a solução do problema que você pretende desenvolver). Indique quais perguntas estão associadas a sua hipótese. Lembre-se que as hipóteses deverão ser comprovadas via os experimentos que serão descritos no capítulo.
+
+A hipótese principal é que as meta-heurísticas bioinspiradas obtêm rotas de baixo \textit{makespan} com custo computacional inferior ao da busca exaustiva em instâncias nas quais a enumeração completa se torna impraticável.
+A hipótese secundária é que o comportamento dos métodos difere conforme o tamanho da instância: GA e ACO tendem a explorar diretamente a estrutura permutacional do problema, enquanto PSO depende da qualidade da representação contínua por chaves aleatórias para produzir boas permutações.
+
+As perguntas de pesquisa são:
+\begin{itemize}
+  \item Em instâncias pequenas, quão próximas as soluções das meta-heurísticas ficam da solução ótima obtida por busca exaustiva?
+  \item Em instâncias maiores, qual método apresenta melhor compromisso entre \textit{makespan} e tempo de execução?
+  \item As diferenças de convergência e estabilidade entre os métodos explicam seu desempenho relativo?
+\end{itemize}
 
 \section{Contribuições}
-Liste as contribuições do seu trabalho. Lembre-se que publicações não são contribuições científicas do seu trabalho. Haverá uma seção específica com esse fim.
 
-\section{Organização da Dissertação ou Tese}
-Descreva como a sua monografia está organizada, descrevendo brevemente o conteúdo de cada capítulo.
+As contribuições deste trabalho são:
+\begin{itemize}
+  \item uma formulação computacional de rotas de patrulhamento com custo dependente da sequência anterior--atual--próximo;
+  \item uma implementação comparativa de quatro métodos de otimização sobre a mesma função objetivo;
+  \item uma base experimental com saídas estruturadas de resumo, evolução e tempo de execução;
+  \item uma análise empírica do comportamento de GA, PSO e ACO em instâncias de diferentes tamanhos.
+\end{itemize}
+
+\section{Organização do Documento}
+
+O Capítulo~\ref{fundamentacao} apresenta os conceitos necessários para compreender o problema e os métodos de otimização avaliados. O Capítulo~\ref{proposta} descreve o modelo matemático e as adaptações algorítmicas realizadas. O Capítulo~\ref{experimentos} detalha o desenho experimental e a análise dos resultados. O Capítulo~\ref{conclusao} reúne as conclusões, limitações e possibilidades de trabalhos futuros.
