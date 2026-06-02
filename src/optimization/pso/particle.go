@@ -1,8 +1,9 @@
 package pso
 
 import (
+	"cmp"
 	"fmt"
-	"sort"
+	"slices"
 )
 
 type particle struct {
@@ -25,8 +26,8 @@ func (p *particle) setSequence() {
 		indices[i] = i
 	}
 
-	sort.Slice(indices, func(i, j int) bool {
-		return p.x[indices[i]] < p.x[indices[j]]
+	slices.SortFunc(indices, func(a, b int) int {
+		return cmp.Compare(p.x[a], p.x[b])
 	})
 
 	// Converte random-keys para rota (nós 1..n-1).

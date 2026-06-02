@@ -1,13 +1,14 @@
 package repository
 
 import (
+	"cmp"
 	"context"
 	"encoding/json"
 	"errors"
 	"io/fs"
 	"math"
 	"path"
-	"sort"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -60,16 +61,16 @@ func (r *EmbeddedDataRepository) ListRuns(_ context.Context, mapID string) ([]Ru
 		})
 	}
 
-	sort.Slice(runs, func(i, j int) bool {
-		if runs[i].Method != runs[j].Method {
-			return runs[i].Method < runs[j].Method
+	slices.SortFunc(runs, func(a, b RunRecord) int {
+		if order := cmp.Compare(a.Method, b.Method); order != 0 {
+			return order
 		}
 
-		if runs[i].Seed != runs[j].Seed {
-			return runs[i].Seed < runs[j].Seed
+		if order := cmp.Compare(a.Seed, b.Seed); order != 0 {
+			return order
 		}
 
-		return runs[i].RunID < runs[j].RunID
+		return cmp.Compare(a.RunID, b.RunID)
 	})
 
 	return runs, nil

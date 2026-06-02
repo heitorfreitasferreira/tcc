@@ -1,9 +1,10 @@
 package ga
 
 import (
+	"cmp"
 	"math"
 	"math/rand"
-	"sort"
+	"slices"
 	"tcc/graph"
 	"tcc/shared"
 )
@@ -72,7 +73,7 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared
 		newPop := make([]individual, 0, p.PopulationSize)
 
 		if p.Elitism > 0 {
-			sort.Slice(pop, func(i, j int) bool { return pop[i].fen < pop[j].fen })
+			slices.SortFunc(pop, func(a, b individual) int { return cmp.Compare(a.fen, b.fen) })
 			eliteSize := p.Elitism
 			if eliteSize > len(pop) {
 				eliteSize = len(pop)
@@ -118,7 +119,7 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared
 	result.Evaluations = evaluationCount
 
 	if len(result.BestSequence) == 0 && len(pop) > 0 {
-		sort.Slice(pop, func(i, j int) bool { return pop[i].fen < pop[j].fen })
+		slices.SortFunc(pop, func(a, b individual) int { return cmp.Compare(a.fen, b.fen) })
 		result.BestSequence = append([]int(nil), pop[0].gen...)
 		result.BestMakespan = pop[0].fen
 	}

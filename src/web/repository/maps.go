@@ -1,11 +1,12 @@
 package repository
 
 import (
+	"cmp"
 	"context"
 	"encoding/json"
 	"io/fs"
 	"path"
-	"sort"
+	"slices"
 	"strings"
 
 	"tcc/graph"
@@ -45,31 +46,31 @@ func (r *EmbeddedDataRepository) ListMaps(_ context.Context) ([]string, error) {
 		}
 	}
 
-	sort.Slice(ids, func(i, j int) bool {
-		leftNum, leftSuffix, leftOK := splitMapID(ids[i])
-		rightNum, rightSuffix, rightOK := splitMapID(ids[j])
+	slices.SortFunc(ids, func(left, right string) int {
+		leftNum, leftSuffix, leftOK := splitMapID(left)
+		rightNum, rightSuffix, rightOK := splitMapID(right)
 
 		if leftOK && rightOK {
-			if leftNum != rightNum {
-				return leftNum < rightNum
+			if order := cmp.Compare(leftNum, rightNum); order != 0 {
+				return order
 			}
 
-			if leftSuffix != rightSuffix {
-				return leftSuffix < rightSuffix
+			if order := cmp.Compare(leftSuffix, rightSuffix); order != 0 {
+				return order
 			}
 
-			return ids[i] < ids[j]
+			return cmp.Compare(left, right)
 		}
 
 		if leftOK {
-			return true
+			return -1
 		}
 
 		if rightOK {
-			return false
+			return 1
 		}
 
-		return ids[i] < ids[j]
+		return cmp.Compare(left, right)
 	})
 
 	return ids, nil

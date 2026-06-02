@@ -2,7 +2,7 @@ package points
 
 import (
 	"math/rand"
-	"sort"
+	"slices"
 )
 
 // pointsPerInstance {2:100, 30:5} : gera 100 instancias com 2 pontos, 5 instancias com 30 pontos
@@ -14,7 +14,7 @@ func CreateInstances(seed int64, pointsPerInstace map[int]int) []Points2D {
 	for nPoints := range pointsPerInstace {
 		pointCounts = append(pointCounts, nPoints)
 	}
-	sort.Ints(pointCounts)
+	slices.Sort(pointCounts)
 
 	for _, nPoints := range pointCounts {
 		nInstances := pointsPerInstace[nPoints]

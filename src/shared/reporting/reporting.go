@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"sort"
+	"slices"
 	"strings"
 	"time"
 )
@@ -289,7 +289,7 @@ func canonicalParams(params map[string]any) string {
 	for k := range params {
 		keys = append(keys, k)
 	}
-	sort.Strings(keys)
+	slices.Sort(keys)
 
 	parts := make([]string, 0, len(params))
 	for _, key := range keys {

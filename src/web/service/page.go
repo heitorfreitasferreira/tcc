@@ -1,11 +1,11 @@
 package service
 
 import (
+	"cmp"
 	"context"
 	"encoding/json"
 	"fmt"
 	"slices"
-	"sort"
 	"strings"
 
 	"tcc/points"
@@ -389,12 +389,12 @@ func groupRunsByMethod(runs []RunOption) []MethodGroup {
 
 	groups := make([]MethodGroup, 0, len(grouped))
 	for method, methodRuns := range grouped {
-		sort.Slice(methodRuns, func(i, j int) bool {
-			if methodRuns[i].Seed != methodRuns[j].Seed {
-				return methodRuns[i].Seed < methodRuns[j].Seed
+		slices.SortFunc(methodRuns, func(a, b RunOption) int {
+			if order := cmp.Compare(a.Seed, b.Seed); order != 0 {
+				return order
 			}
 
-			return methodRuns[i].RunID < methodRuns[j].RunID
+			return cmp.Compare(a.RunID, b.RunID)
 		})
 
 		groups = append(groups, MethodGroup{
@@ -403,23 +403,23 @@ func groupRunsByMethod(runs []RunOption) []MethodGroup {
 		})
 	}
 
-	sort.Slice(groups, func(i, j int) bool {
-		rankI, okI := preferredMethods[groups[i].Method]
-		rankJ, okJ := preferredMethods[groups[j].Method]
+	slices.SortFunc(groups, func(a, b MethodGroup) int {
+		rankA, okA := preferredMethods[a.Method]
+		rankB, okB := preferredMethods[b.Method]
 
-		if okI && okJ {
-			return rankI < rankJ
+		if okA && okB {
+			return cmp.Compare(rankA, rankB)
 		}
 
-		if okI {
-			return true
+		if okA {
+			return -1
 		}
 
-		if okJ {
-			return false
+		if okB {
+			return 1
 		}
 
-		return groups[i].Method < groups[j].Method
+		return cmp.Compare(a.Method, b.Method)
 	})
 
 	return groups
