@@ -56,7 +56,7 @@ vault/
 ## Convenções
 
 - **YAML frontmatter** sempre no topo com metadados
-- **[[Wiki links]]** para conectar conceitos/papers
+- Wiki links para conectar conceitos/papers
 - **Tags** em kebab-case: `genetic-algorithms`, `particle-swarm`
 - **Status**: `pendente` | `lido-parcial` | `lido`
 - **Rating**: 1-5 (relevância para o TCC)
