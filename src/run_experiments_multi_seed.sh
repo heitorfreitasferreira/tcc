@@ -158,7 +158,7 @@ for raw_method in "${requested_methods[@]}"; do
   fi
 
   case "${method}" in
-  ga | pso | aco)
+  ga | pso | aco | lowerbound)
     if [[ -z "${seen_methods["${method}"]:-}" ]]; then
       methods+=("${method}")
       seen_methods["${method}"]=1
@@ -169,7 +169,7 @@ for raw_method in "${requested_methods[@]}"; do
     exit 1
     ;;
   *)
-    echo "Invalid method in --methods: ${method}. Allowed: ga,pso,aco" >&2
+    echo "Invalid method in --methods: ${method}. Allowed: ga,pso,aco,lowerbound" >&2
     exit 1
     ;;
   esac

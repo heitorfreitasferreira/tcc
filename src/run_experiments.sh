@@ -47,16 +47,16 @@ if [[ ! -x "${run_all_script}" ]]; then
 	exit 1
 fi
 
-echo "=== Cenario 1: metodos ga, pso, aco com frequencia padrao (seed=${seed}) ==="
-for method in ga pso aco; do
+echo "=== Cenario 1: metodos ga, pso, aco, lowerbound com frequencia padrao (seed=${seed}) ==="
+for method in ga pso aco lowerbound; do
 	echo "-> Rodando metodo: ${method}"
 	"${run_all_script}" "--method=${method}" "--seed=${seed}"
 done
 
 scenario_two_frequency="15:3,20:3,30:3,50:3,100:3"
 
-echo "=== Cenario 2: metodos ga, pso, aco para frequencia ${scenario_two_frequency} (seed=${seed}) ==="
-for method in ga pso aco; do
+echo "=== Cenario 2: metodos ga, pso, aco, lowerbound para frequencia ${scenario_two_frequency} (seed=${seed}) ==="
+for method in ga pso aco lowerbound; do
 	echo "-> Rodando metodo: ${method}"
 	"${run_all_script}" "--method=${method}" "--seed=${seed}" "--frequency=${scenario_two_frequency}"
 done
