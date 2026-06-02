@@ -26,10 +26,15 @@ A **variante implementada neste TCC** (TSP-SD-ATP) está documentada em [[proble
 ## Métodos de Solução
 - Exatos: Programação Linear Inteira, Branch-and-Bound
 - Aproximativos: Christofides, heurísticas LKH
+- Lower Bounds: [[heldkarp1970traveling]], [[fischetti1992additive]], [[lower-bounds]]
 - Metaheurísticas: [[genetic-algorithms]], [[particle-swarm]], [[ant-colony]]
 
 ## Aplicação no TCC
 Problema base para comparação de métodos bio-inspirados (GA, PSO, ACO, busca exaustiva) em cenário de patrulha com drones. A formulação exata implementada está em [[problem-formulation]] e os métodos em [[ga]], [[pso]], [[aco]], [[bruteforce]].
+
+## Conexões
+
+- [[lower-bounds]] — métodos de lower bound e aplicabilidade ao TSP-SD-ATP
 
 ## Papers Relacionados
 
