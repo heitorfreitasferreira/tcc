@@ -1,9 +1,13 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 	"net/http"
+	"os"
+	"os/signal"
 	"strings"
+	"syscall"
 	"tcc/web"
 	"time"
 
@@ -31,7 +35,17 @@ var serveCmd = &cobra.Command{
 			ReadHeaderTimeout: 5 * time.Second,
 		}
 
-		cmd.Printf("web server running at %s\n", formatServerURL(addr))
+		ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+		defer stop()
+
+		go func() {
+			<-ctx.Done()
+			shutdownCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			defer cancel()
+			_ = server.Shutdown(shutdownCtx)
+		}()
+
+		fmt.Fprintf(cmd.ErrOrStderr(), "web server running at %s\n", formatServerURL(addr))
 
 		err = server.ListenAndServe()
 		if err != nil && err != http.ErrServerClosed {

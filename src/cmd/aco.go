@@ -71,39 +71,39 @@ func init() {
 }
 
 func getAcoParams(cmd *cobra.Command) (aco.Params, error) {
-	iterations, err := cmd.Flags().GetInt("iterations")
+	iterations, err := getPositiveIntFlag(cmd, "iterations")
 	if err != nil {
-		return aco.Params{}, fmt.Errorf("get --iterations: %w", err)
+		return aco.Params{}, err
 	}
 
-	population, err := cmd.Flags().GetInt("population")
+	population, err := getPositiveIntFlag(cmd, "population")
 	if err != nil {
-		return aco.Params{}, fmt.Errorf("get --population: %w", err)
+		return aco.Params{}, err
 	}
 
-	alpha, err := cmd.Flags().GetFloat64("alpha")
+	alpha, err := getNonNegativeFloatFlag(cmd, "alpha")
 	if err != nil {
-		return aco.Params{}, fmt.Errorf("get --alpha: %w", err)
+		return aco.Params{}, err
 	}
 
-	beta, err := cmd.Flags().GetFloat64("beta")
+	beta, err := getNonNegativeFloatFlag(cmd, "beta")
 	if err != nil {
-		return aco.Params{}, fmt.Errorf("get --beta: %w", err)
+		return aco.Params{}, err
 	}
 
-	gama, err := cmd.Flags().GetFloat64("gama")
+	gama, err := getNonNegativeFloatFlag(cmd, "gama")
 	if err != nil {
-		return aco.Params{}, fmt.Errorf("get --gama: %w", err)
+		return aco.Params{}, err
 	}
 
-	rho, err := cmd.Flags().GetFloat64("rho")
+	rho, err := getProbabilityFlag(cmd, "rho")
 	if err != nil {
-		return aco.Params{}, fmt.Errorf("get --rho: %w", err)
+		return aco.Params{}, err
 	}
 
-	q, err := cmd.Flags().GetFloat64("q")
+	q, err := getNonNegativeFloatFlag(cmd, "q")
 	if err != nil {
-		return aco.Params{}, fmt.Errorf("get --q: %w", err)
+		return aco.Params{}, err
 	}
 
 	return aco.Params{

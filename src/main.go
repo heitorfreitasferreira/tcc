@@ -3,8 +3,15 @@ Copyright © 2024 HEITOR FREITAS FERREIRA <heitor.ff@hotmail.com>
 */
 package main
 
-import "tcc/cmd"
+import (
+	"fmt"
+	"os"
+	"tcc/cmd"
+)
 
 func main() {
-	cmd.Execute()
+	if err := cmd.Execute(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
 }

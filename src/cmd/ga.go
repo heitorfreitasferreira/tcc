@@ -70,28 +70,28 @@ func getParams(cmd *cobra.Command) (ga.Params, error) {
 	var err error
 	params := ga.Params{}
 
-	iterations, err := cmd.Flags().GetInt("iterations")
+	iterations, err := getPositiveIntFlag(cmd, "iterations")
 	if err != nil {
-		return params, fmt.Errorf("get --iterations: %w", err)
+		return params, err
 	}
-	population, err := cmd.Flags().GetInt("population")
+	population, err := getPositiveIntFlag(cmd, "population")
 	if err != nil {
-		return params, fmt.Errorf("get --population: %w", err)
+		return params, err
 	}
 	params.HyperParams.Iterations = iterations
 	params.HyperParams.PopulationSize = population
 
-	params.Elitism, err = cmd.Flags().GetInt("elitism")
+	params.Elitism, err = getNonNegativeIntFlag(cmd, "elitism")
 	if err != nil {
-		return params, fmt.Errorf("get --elitism: %w", err)
+		return params, err
 	}
-	params.MutationRate, err = cmd.Flags().GetFloat64("mutation-rate")
+	params.MutationRate, err = getProbabilityFlag(cmd, "mutation-rate")
 	if err != nil {
-		return params, fmt.Errorf("get --mutation-rate: %w", err)
+		return params, err
 	}
-	params.TournamentSize, err = cmd.Flags().GetInt("tournament-size")
+	params.TournamentSize, err = getPositiveIntFlag(cmd, "tournament-size")
 	if err != nil {
-		return params, fmt.Errorf("get --tournament-size: %w", err)
+		return params, err
 	}
 	return params, nil
 }

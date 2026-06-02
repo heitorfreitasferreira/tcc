@@ -71,29 +71,29 @@ func init() {
 }
 
 func getPsoParams(cmd *cobra.Command) (pso.Params, error) {
-	iterations, err := cmd.Flags().GetInt("iterations")
+	iterations, err := getPositiveIntFlag(cmd, "iterations")
 	if err != nil {
-		return pso.Params{}, fmt.Errorf("get --iterations: %w", err)
+		return pso.Params{}, err
 	}
 
-	population, err := cmd.Flags().GetInt("population")
+	population, err := getPositiveIntFlag(cmd, "population")
 	if err != nil {
-		return pso.Params{}, fmt.Errorf("get --population: %w", err)
+		return pso.Params{}, err
 	}
 
-	w, err := cmd.Flags().GetFloat64("w")
+	w, err := getNonNegativeFloatFlag(cmd, "w")
 	if err != nil {
-		return pso.Params{}, fmt.Errorf("get --w: %w", err)
+		return pso.Params{}, err
 	}
 
-	c1, err := cmd.Flags().GetFloat64("c1")
+	c1, err := getNonNegativeFloatFlag(cmd, "c1")
 	if err != nil {
-		return pso.Params{}, fmt.Errorf("get --c1: %w", err)
+		return pso.Params{}, err
 	}
 
-	c2, err := cmd.Flags().GetFloat64("c2")
+	c2, err := getNonNegativeFloatFlag(cmd, "c2")
 	if err != nil {
-		return pso.Params{}, fmt.Errorf("get --c2: %w", err)
+		return pso.Params{}, err
 	}
 
 	return pso.Params{
