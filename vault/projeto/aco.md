@@ -6,7 +6,7 @@ tags: [projeto, implementacao, aco, ant-colony]
 
 Implementação em `src/optimization/aco/`. A fundamentação teórica está em [[ant-colony]].
 
-Baseada no **Ant Colony System (ACS)** de [[dorigo1997ant]], com feromônio tridimensional para suportar o tensor de custo.
+Baseada no **Ant System (AS)** de [[dorigo1996ant]], adaptado com feromônio tridimensional para suportar o tensor de custo.
 
 ## Parâmetros
 
@@ -16,9 +16,8 @@ Baseada no **Ant Colony System (ACS)** de [[dorigo1997ant]], com feromônio trid
 | Iterações | `--iterations` | 100 | Nº de iterações |
 | $\alpha$ (feromônio) | `--alpha` | 1.0 | Peso do feromônio na decisão |
 | $\beta$ (heurística) | `--beta` | 2.0 | Peso da visibilidade na decisão |
-| $\gamma$ (GAMA) | `--gama` | 0.0 | (reservado, não usado atualmente) |
-| $\rho$ (evaporação) | `--rho` | 0.1 | Taxa de evaporação do feromônio |
-| $Q$ (depósito) | `--q` | 1.0 | Constante de depósito |
+| $\rho$ (evaporação) | `--rho` | 0.2 | Taxa de evaporação do feromônio |
+| $Q$ (depósito) | `--q` | 100 | Constante de depósito |
 
 ## Feromônio 3D
 
@@ -69,16 +68,16 @@ Mesma dimensionalidade do tensor de custo $G[prev][curr][next]$. Inicializado co
 | **Feromônio 3D** | Feromônio 2D (ACO clássico) | O tensor de custo é 3D (G[prev][curr][next]), então o feromônio precisa da mesma dimensionalidade para modelar dependência de sequência. | [[dorigo1997ant]] usa feromônio 2D para TSP clássico; aqui a variante exige 3D |
 | **Seleção por roleta** | Pseudo-aleatória proporcional (ACS) | Roleta é mais exploratória, não requer calibragem do parâmetro q₀. Escolha conservadora para evitar convergência prematura. | [[dorigo1997ant]] mostra que q₀ alto (0.9) favorece explotação; sem tuning, roleta é mais robusta |
 | **α=1.0, β=2.0** | α≠1, β≠2 | Valores canônicos. β>α prioriza heurística (distância) sobre feromônio, evitando estagnação. | [[dorigo1996ant]] usa α=1, β=2-5; [[dorigo1997ant]] usa β=2 |
-| **ρ=0.1 (evaporação)** | 0.01, 0.5 | 0.1 é o padrão na literatura. Evaporação lenta (0.01) retém feromônio por mais tempo, estagnação. Rápida (0.5) esquece boas soluções. | [[dorigo1997ant]] usa ρ=0.1 |
+| **ρ=0.2 (evaporação)** | 0.1, 0.5 | Compromisso entre reter memória (0.1) e evitar estagnação (0.5). Valor encontrado por calibragem empírica nas instâncias do estudo. | [[dorigo1997ant]] usa ρ=0.1; aqui o feromônio 3D diluído requer evaporação mais agressiva |
 | **Depósito de todas as formigas** | Só a melhor (global-best) | Depósito de todas (estilo AS) mantém diversidade. Global-best acelera convergência mas arrisca estagnação. | [[dorigo1997ant]] usa global-best no ACS; [[stutzle2000mmas]] usa elitismo |
 | **Heurística η=1/G[i][j][k]** | η=1/d(i,j) (só distância) | Usar o custo completo do tensor como heurística já embute a penalidade angular na decisão da formiga. | [[problem-formulation]] — tensor já contém distância+ângulo |
 | **População 100** | n formigas (m=n) | 100 formigas é consistente com GA/PSO para comparação. Dorigo sugere m≈n, mas isso faria m variar por instância. | [[dorigo1996ant]] sugere m≈n; aqui fixamos m=100 por consistência |
 
 ## Detalhes
 
-- ACO clássico com roleta (não pseudo-aleatória proporcional do ACS, apesar da base ser ACS)
+- Ant System adaptado: roleta proporcional + depósito de todas as formigas
 - $\eta = 1/G[i][j][k]$ — já incorpora penalidade angular
-- Feromônio é global-best? Atualmente deposita de todas as formigas (estilo Ant System), não só da melhor
+- Feromônio é global-best? Não: deposita de todas as formigas (estilo Ant System)
 
 ## Limitações Inerentes ao TSP-SD-ATP
 
@@ -107,7 +106,7 @@ Ver `//BUG` no código-fonte. O próximo agente deve resolver:
 
 1. **`src/graph/types.go:10`** — `maxPenalti` como `time.Duration` (int64) causa type confusion no cast para float64
 2. **`src/graph/math.go:28-29`** — TODO antigo reportava valores patológicos ~5e+08; raiz no type confusion acima
-3. **`src/cmd/aco.go:69`** — `--rho` default 0.5 é muito agressivo; literatura usa 0.1-0.3
+3. ~~`src/cmd/aco.go:69` — `--rho` default 0.5 é muito agressivo; literatura usa 0.1-0.3~~ **RESOLVIDO (rho=0.2 desatualizado)**
 4. **`src/optimization/aco/ant.go:16-21`** — evaporação varre N³ inteiro em vez de só triplas válidas
 5. **`src/optimization/aco/ant.go:58`** — `total == 0` retorna -1 sem fallback; tour incompleto perde exploração
 6. **`src/optimization/aco/ant.go:85-90`** — primeiro passo é sorteado uniformemente, sem heurística nem feromônio
@@ -121,7 +120,7 @@ Ver `//NOTE: (pesquisa)` no código-fonte. Aprimoramentos opcionais:
 - **Lista candidata**: nearest-neighbor reduz branching factor de O(N) para O(k)
 - **Global-best deposition (ACS)**: em vez de todas as formigas depositarem, só a melhor iteração + melhor global
 - **ACO 2D alternativo**: τ_{ij} com heurística que fatora o turn cost separadamente (comparação justa)
-- **Parâmetro Gama** (`main.go:12`): declarado mas nunca usado — remover ou implementar
+- ~~**Parâmetro Gama** (`main.go:12`): declarado mas nunca usado — remover ou implementar~~ **RESOLVIDO: gama removido**
 
 ## Conexões
 

@@ -44,26 +44,26 @@ Média dos gaps percentuais entre a melhor solução encontrada e o ótimo, sobr
 
 | Método | Gap médio | Gap min | Gap max | Taxa de acerto do ótimo |
 |--------|:---------:|:-------:|:-------:|:-----------------------:|
-| **ACO** | **0.00%** | 0.00% | 0.00% | **100%** (10a-13c), ~60% (14) |
-| **GA** | 0.04% | 0.00% | 0.58% | ~50% (10a-13c), ~3% (14) |
-| **PSO** | 1.57% | 0.00% | 6.55% | ~15% (10), ~5% (11-12), 0% (13-14) |
+| **ACO** | **0.18%** | 0.00% | 3.78% | **76.86%** |
+| **GA** | 4.36% | 0.00% | 31.57% | 29.41% |
+| **PSO** | 19.02% | 0.00% | 57.89% | 5.10% |
 
-Detalhamento: ACO encontra o ótimo em **100% das sementes** para instâncias até 13c. GA encontra em ~50% das sementes. PSO raramente encontra o ótimo mesmo em n=10.
+Detalhamento: ACO encontra o ótimo em ~77% das sementes (instâncias 10-14). GA acerta ~29%. PSO raramente encontra o ótimo mesmo em n=10.
 
 ## Qualidade da Solução — Instâncias Grandes (50-100)
 
 Comparação do melhor makespan entre os métodos (sem brute-force). 51 sementes:
 
-| Instância | ACO (best) | GA (best) | PSO (best) | ACO (média±dp) |
-|-----------|:----------:|:---------:|:----------:|:--------------:|
-| 50a | **24.37** | 41.01 | 53.77 | 25.86 ± 0.49 |
-| 50b | **26.78** | 42.65 | 57.03 | 27.69 ± 0.61 |
-| 50c | **25.76** | 42.01 | 54.41 | 27.42 ± 0.75 |
-| 100a | **45.64** | 97.59 | 127.40 | 47.53 ± 0.96 |
-| 100b | **48.22** | 97.53 | 126.40 | 50.31 ± 0.89 |
-| 100c | **44.94** | 95.16 | 126.18 | 48.48 ± 1.24 |
+| Instância | ACO (best) | ACO (média±dp) | GA (best) | GA (média±dp) | PSO (best) | PSO (média±dp) |
+|-----------|:----------:|:--------------:|:---------:|:-------------:|:----------:|:--------------:|
+| 50a | **24.67** | 25.65 ± 0.49 | 41.01 | 45.39 ± 2.76 | 53.77 | 59.73 ± 3.46 |
+| 50b | **26.35** | 27.48 ± 0.66 | 42.65 | 48.63 ± 3.84 | 57.03 | 64.32 ± 4.52 |
+| 50c | **26.24** | 27.01 ± 0.72 | 42.01 | 46.94 ± 3.10 | 54.41 | 62.35 ± 4.16 |
+| 100a | **42.67** | 45.35 ± 0.98 | 97.59 | 110.66 ± 5.97 | 127.40 | 136.51 ± 5.07 |
+| 100b | **45.47** | 48.06 ± 1.11 | 97.53 | 110.50 ± 6.80 | 126.40 | 136.00 ± 5.55 |
+| 100c | **45.49** | 46.95 ± 1.03 | 95.16 | 111.32 ± 7.65 | 126.18 | 138.19 ± 6.62 |
 
-ACO domina com folga: makespan **~2× menor que GA**, **~2.7× menor que PSO** em n=100.
+ACO domina com folga: makespan **~2.4× menor que GA**, **~2.9× menor que PSO** em n=100 (médias).
 
 ## Tempo de Execução
 
@@ -71,25 +71,25 @@ Média sobre 51 sementes por instância:
 
 | Instância | GA | PSO | ACO |
 |-----------|:--:|:---:|:---:|
-| 10a | 0.002s | 0.003s | 0.024s |
-| 50a | 0.026s | 0.037s | 0.971s |
-| 100a | 0.038s | 0.075s | 2.859s |
+| 10a | 0.001s | 0.002s | 0.025s |
+| 50a | 0.023s | 0.042s | 1.064s |
+| 100a | 0.039s | 0.076s | 4.262s |
 
-GA é **~75× mais rápido que ACO** em n=100, mas com makespan 2× pior. PSO é ~38× mais rápido que ACO.
+GA é **~110× mais rápido que ACO** em n=100, mas com makespan 2.4× pior. PSO é ~56× mais rápido que ACO.
 
 ## Trade-off Qualidade × Tempo
 
-| Método | n=100 (makespan) | n=100 (tempo) | Gap vs ACO |
-|--------|:----------------:|:-------------:|:----------:|
-| ACO | **47.53** | 2.859s | — |
-| GA | 110.66 | **0.038s** | +133% |
-| PSO | 136.51 | 0.075s | +187% |
+| Método | n=100 (makespan médio) | n=100 (tempo médio) | Gap vs ACO |
+|--------|:---------------------:|:------------------:|:----------:|
+| ACO | **46.79** | 4.268s | — |
+| GA | 110.83 | **0.039s** | +137% |
+| PSO | 136.90 | 0.076s | +193% |
 
 Nenhum método domina: ACO para qualidade, GA para velocidade, PSO intermediário em ambos.
 
 ## Observações
 
-- ACO: qualidade superior mas 2-3s mesmo em n=100. Feromônio 3D e roleta por candidato são caros.
+- ACO: qualidade superior mas ~4s em n=100. Feromônio 3D e roleta por candidato são caros (evaporação O(N³)).
 - GA: ótimo custo-benefício. Encontra ótimo em instâncias pequenas em frações de segundo. Crossover OX + mutação swap são eficientes.
 - PSO: random keys + atualização contínua não se adaptam bem ao TSP-SD-ATP. A decodificação por ordenação perde informação posicional.
 

@@ -12,8 +12,8 @@ Implementação em `src/optimization/pso/`. A fundamentação teórica está em 
 |-----------|----------|---------|-----------|
 | População | `--population` | 100 | Nº de partículas |
 | Iterações | `--iterations` | 100 | Nº de iterações |
-| $C_1$ (cognitivo) | `--c1` | 1.5 | Peso da memória individual |
-| $C_2$ (social) | `--c2` | 1.5 | Peso da informação global |
+| $C_1$ (cognitivo) | `--c1` | 2.0 | Peso da memória individual |
+| $C_2$ (social) | `--c2` | 2.0 | Peso da informação global |
 | $W$ (inércia) | `--w` | 0.7 | Peso da velocidade anterior |
 
 ## Algoritmo
@@ -64,7 +64,7 @@ Enxame (`Swarm` struct) mantém: partículas, $gBest$ (melhor global), referênc
 | Decisão | Alternativas | Por que esta? | Evidência |
 |---------|-------------|---------------|-----------|
 | **Random Keys** | Swap-operator, permutação direta | RK permite usar equação de velocidade do PSO contínuo padrão sem modificações. A decodificação por ordenação é O(n log n). | [[kennedy1995particle]] define PSO para ℝⁿ; [[bean1994genetic]] introduz random keys |
-| **C1=C2=1.5** | C1=C2=2.0, assimétrico | Valores canônicos que equilibram exploração individual e social. 1.5 é mais conservador que 2.0, reduzindo overshooting. | Clerc & Kennedy (2002) mostram que C1+C2 > 4 causa divergência |
+| **C1=C2=2.0** | C1=C2=1.5, assimétrico | Valores canônicos clássicos. C1+C2 = 4.0 é o limite superior típico antes de causar divergência. | Clerc & Kennedy (2002) mostram que C1+C2 > 4 causa divergência |
 | **W=0.7 (inércia)** | W adaptativo, W decrescente | Inércia fixa 0.7 favorece exploração global. Valor abaixo de 1 desacelera partículas gradualmente. | Shi & Eberhart (1998) — valores entre 0.4-0.9 são eficazes |
 | **População 100** | 30, 50, 200 | Consistente com GA/ACO para comparação justa. Dimensão do espaço = n-1, população 100 é suficiente. | — |
 | **Limitação conhecida** | — | Random keys perdem informação de adjacência. Diferente de operadores de permutação, a ordenação não captura arestas. Isto explica o desempenho inferior do PSO no TSP-SD-ATP. | [[clerc2000discretepso]] propõe alternativas (NoHope/ReHope) não implementadas |
