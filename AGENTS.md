@@ -1,0 +1,87 @@
+# AGENTS.md
+
+## Project Context
+
+- This is a TCC/monografia repository comparing bio-inspired optimization methods over a TSP/rTSP base problem; the motivating scenario is patrol drones visiting points of interest with minimal route/time.
+- Keep code, generated experiment data, analysis notebooks, and monograph text aligned: claims in `monografia/` should be supported by outputs under `src/data/results/` or analysis in `scripts/visualizacoes.ipynb`.
+
+## Repository Shape
+
+- `src/` is the Go module (`module tcc`, Go 1.23.7) and Cobra CLI entrypoint; run Go commands from `src/` or use `make -C src ...`.
+- `src/data/` contains checked-in `.points`, `.graph`, and experiment results; the web server embeds `*.graph`, `*.points`, `results/summary`, `results/evolution`, and `results/timing`, but not `results/logs`.
+- `monografia/` is the LaTeX monograph using `ppgco.cls`; chapter files are included by `main_ppgco_ufu.tex` from `cap_*` directories and references live in `monografia/bib/abntex2-references.bib`.
+- `scripts/visualizacoes.ipynb` analyzes `src/data/results` and expects run file names like `<instance>__<method>__s...__h....json`.
+
+## Go CLI Commands
+
+- Build: `make -C src build` creates `src/tcc`; batch scripts require this executable before running.
+- Focused tests: from `src/`, run `go test ./path/to/pkg -run TestName`; full tests: `go test ./...`.
+- `make -C src test` runs `go mod tidy`, `go mod vendor`, then writes `coverage.out` and `report.json`; use it only when those side effects are acceptable.
+- Lint target is `make -C src lint`, but it requires `golangci-lint` and runs `golangci-lint run --enable-all`.
+- CLI examples: `./src/tcc create -s 42 -f ./src/data`, `./src/tcc optimize ga --instance ./src/data/10a.graph --results-dir ./src/data/results`, `./src/tcc serve --addr :8080`.
+
+## Experiment Workflow
+
+- Optimization methods are `bruteforce`, `ga`, `pso`, and `aco`; `ga`, `pso`, and `aco` use `--population` and `--iterations` plus method-specific flags.
+- Structured outputs are written below `--results-dir` as `summary/<run_id>.json`, `evolution/<run_id>.jsonl`, and `timing/<run_id>.json`; `--if-exists` accepts `skip|overwrite|error` and defaults to `skip`.
+- `src/run_all.sh` does not create graphs; it expects files matching the requested `--frequency` such as `10a.graph`, `10b.graph`, etc., and runs jobs through GNU `parallel`.
+- `src/run_experiments_multi_seed.sh` intentionally rejects `bruteforce`; use `src/run_experiments_bruteforce_missing.sh` for missing brute-force baselines.
+- Docker compose builds from `src/Dockerfile`; `docker compose run --rm cli --help` runs the CLI, and `docker compose run --rm run-all --method=ga ...` runs the batch entrypoint with `./src/data` mounted.
+
+## Experiment Data Structure
+
+See [AGENTS-experiments.md](./AGENTS-experiments.md) for the full experiment workflow, artifact schemas, coverage, analysis pipeline, and caveats for agents.
+
+## Knowledge Base — Obsidian Vault (`vault/`)
+
+### Project Skill (`.agents/skills/knowledge-base/SKILL.md`)
+- `knowledge-base` — agent skill for vault expansion: search papers, validate DOIs, add BibTeX, import, enrich notes, update canvas. Full 8-step workflow with quality standards, anti-patterns, and example entry.
+
+### Skills Installed
+
+- `obsidian-markdown` — formatação markdown compatível com Obsidian (callouts, [[links]], etc.)
+- `obsidian-vault` — operações do agente no vault (criar, ler, buscar notas)
+- `obsidian-bases` — queries estruturadas sobre o vault
+- `json-canvas` — criar/atualizar grafos de conhecimento `.canvas`
+- `academic-researcher` — buscar e entender papers acadêmicos
+- `academic-search` — estratégias de busca acadêmica
+
+### MCPs Available
+
+- `scihub` — baixar PDFs e metadados de papers
+- `google-scholar` — buscar artigos acadêmicos
+
+### Vault Structure
+
+```
+vault/
+├── papers/           ← Uma nota markdown por artigo (19 existentes)
+├── areas/            ← Notas sobre áreas de pesquisa
+├── templates/        ← Template para criar novas notas
+├── canvas/           ← Grafo de conhecimento (.canvas)
+└── opencode-vault.md ← Instruções completas para agentes
+```
+
+### Agent Workflow for New References
+
+1. Use `google-scholar` + `academic-search` skill to find papers
+2. Use `scihub` to fetch metadata/PDF
+3. Add entry to `monografia/bib/abntex2-references.bib`
+4. Run `bash scripts/import-bib-to-vault.sh <bibtex-key>` to create note
+5. Use `obsidian-markdown` skill to write resumo/contribuições
+6. Link to existing areas with `[[wiki links]]`
+7. Update canvas at `vault/canvas/tcc-knowledge-graph.canvas`
+
+### Import Existing BibTeX
+
+```bash
+./scripts/import-bib-to-vault.sh                          # all entries
+./scripts/import-bib-to-vault.sh kennedy1995particle      # single entry
+BIB=path/to/file.bib ./scripts/import-bib-to-vault.sh     # custom .bib
+```
+
+## Monograph Notes
+
+- For academic prose, write in Portuguese unless the target section explicitly requires English, and keep the problem framing as drone patrol/TSP comparison rather than a generic optimizer benchmark.
+- Compile from `monografia/` with the BibTeX cycle when references change: `pdflatex main_ppgco_ufu.tex`, `bibtex main_ppgco_ufu`, then `pdflatex main_ppgco_ufu.tex` twice.
+- The current chapter files still contain template text in places; verify claims against actual experiment artifacts before strengthening conclusions.

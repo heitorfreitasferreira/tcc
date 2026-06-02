@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "scihub": {
+      "type": "local",
+      "command": [
+        "/home/heitor/.config/opencode/mcp/Sci-Hub-MCP-Server/.venv/bin/python",
+        "/home/heitor/.config/opencode/mcp/Sci-Hub-MCP-Server/sci_hub_server.py"
+      ],
+      "enabled": true
+    },
+    "google-scholar": {
+      "type": "local",
+      "command": [
+        "/home/heitor/.config/opencode/mcp/Google-Scholar-MCP-Server/.venv/bin/python",
+        "/home/heitor/.config/opencode/mcp/Google-Scholar-MCP-Server/google_scholar_server.py"
+      ],
+      "enabled": true
+    }
+  }
+}
