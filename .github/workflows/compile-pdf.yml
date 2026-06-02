@@ -5,10 +5,12 @@ on:
     branches: [main, master]
     paths:
       - 'monografia/**'
+      - '.github/workflows/compile-pdf.yml'
   pull_request:
     branches: [main, master]
     paths:
       - 'monografia/**'
+      - '.github/workflows/compile-pdf.yml'
   workflow_dispatch:
 
 jobs:
@@ -49,8 +51,46 @@ jobs:
         working-directory: monografia
         run: latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error main_ppgco_ufu.tex
 
-      - name: Upload PDF
+      - name: Upload PDF (Actions artifact)
         uses: actions/upload-artifact@v4
         with:
           name: monografia
           path: monografia/main_ppgco_ufu.pdf
+
+  release:
+    needs: compile
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: monografia
+
+      - name: Prepare release asset
+        run: |
+          PDF="$(find . -name 'main_ppgco_ufu.pdf' -print -quit)"
+          test -n "$PDF"
+          cp "$PDF" monografia.pdf
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: monografia-${{ github.run_number }}
+          name: Monografia — build ${{ github.run_number }}
+          body: |
+            PDF da monografia compilado automaticamente pelo CI.
+
+            | | |
+            |---|---|
+            | **Commit** | `${{ github.sha }}` |
+            | **Branch** | `${{ github.ref_name }}` |
+            | **Workflow** | [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
+
+            **Download direto (última release):**  
+            https://github.com/${{ github.repository }}/releases/latest/download/monografia.pdf
+          files: monografia.pdf
+          make_latest: true
+          draft: false
+          prerelease: false
