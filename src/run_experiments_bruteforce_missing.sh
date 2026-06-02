@@ -186,7 +186,7 @@ for path in "${targets[@]}"; do
 	run_id="${base}__bruteforce__s${seed}__h${path_hash}"
 	log_file="${results_dir}/logs/${run_id}.log"
 
-echo "-> Rodando bruteforce: ${base}"
+echo "-> Rodando bruteforce: ${base}" >&2
 echo "\"${tcc_bin}\" optimize bruteforce --instance \"${path}\" --seed ${seed} --folder \"${data_folder}\" --results-dir \"${results_dir}\" --if-exists \"${if_exists}\" --progress=${progress} 2> \"${log_file}\""
 done | parallel --halt soon,fail=1 -j "${jobs}"
 
