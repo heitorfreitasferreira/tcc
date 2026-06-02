@@ -1,0 +1,35 @@
+name: Compile LaTeX PDF
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'monografia/**'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'monografia/**'
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra \
+            texlive-lang-portuguese texlive-publishers texlive-fonts-recommended \
+            texlive-bibtexextra texlive-pictures
+
+      - name: Compile monograph
+        working-directory: monografia
+        run: latexmk -pdf -interaction=nonstopmode main_ppgco_ufu.tex
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: monografia
+          path: monografia/main_ppgco_ufu.pdf
