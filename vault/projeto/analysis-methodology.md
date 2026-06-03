@@ -1,5 +1,7 @@
 ---
 tags: [projeto, implementacao, analise, estatistica, metodologia]
+status: estatistica-validada
+updated: 2026-06-02
 ---
 
 # Metodologia de Análise — Experimentos
@@ -7,9 +9,9 @@ tags: [projeto, implementacao, analise, estatistica, metodologia]
 ## Pipeline de Dados
 
 ```
-src/data/results/summary/*.json    (4635 runs)
-src/data/results/timing/*.json     (4635 runs)
-src/data/results/evolution/*.jsonl (4635 runs)
+src/data/results/summary/*.json    (4638 runs)
+src/data/results/timing/*.json     (4638 runs)
+src/data/results/evolution/*.jsonl (4638 runs)
        │
        ▼
 scripts/consolidate_results.py     →  LaTeX tables + summary stats
@@ -29,7 +31,7 @@ vault/projeto/resultados.md        →  síntese para monografia
 | PSO | 1530 | 51 (s0..s50) | 30 (10a..100c) |
 | ACO | 1530 | 51 (s0..s50) | 30 (10a..100c) |
 | Lower bound | 30 | 1 (s0) | 30 (10a..100c) |
-| Brute-force | 15 | 1 (s0) | 15 (10a..14c) |
+| Brute-force | 18 | 1 (s0) | 18 (10a..15c) |
 
 ## Notebook de Análise
 
@@ -87,30 +89,40 @@ Com 3 métodos estocásticos × 30 instâncias × 51 sementes, comparar apenas m
 ### Decisões de Implementação
 
 - **Friedman**: usar mediana do makespan por instância como valor-resumo (1 valor por método×instância). Isso dá 30 blocos (instâncias), 3 tratamentos (métodos).
-- **Nemenyi**: p < 0.05. Calcular CD = q_α · √(k(k+1)/6N) onde k = 3 métodos, N = 30 instâncias, q_α (3, ∞) = 3.314.
+- **Nemenyi**: p < 0.05. Calcular CD = q_α · √(k(k+1)/6N) onde k = 3 métodos, N = 30 instâncias. Usar q_α da Tabela 5a de Demšar (2006) para a fórmula CD: q_{3,0.05} = 2.343 (já dividido por √2). Não usar o valor bruto da Studentized range (3.314), que infla o CD por √2.
 - **Wilcoxon**: pareado por instância, com correção Bonferroni-Holm para 3 comparações (GA×PSO, GA×ACO, PSO×ACO).
 - **Exclusão do lower bound**: LB é determinístico (1 execução, sem variabilidade) e não compete — é referência. Não entra nos testes.
-- **Exclusão do brute-force**: apenas 15 instâncias, 1 seed. Subconjunto separado para validação do LB e gap analysis.
+- **Exclusão do brute-force**: apenas 18 instâncias, 1 seed. Subconjunto separado para validação do LB e análise de gap vs ótimo.
 
 ### Script de Análise
 
-Implementado em `scripts/analise-estatistica.py` (a criar) usando `scipy.stats`:
+Implementado em `scripts/analise-estatistica.py` (stdlib puro, sem dependências externas):
 
 ```python
-from scipy.stats import friedmanchisquare, wilcoxon
-import numpy as np
-
-# friedmanchisquare: recebe 3 arrays (GA, PSO, ACO) com 30 valores (mediana por instância)
-# wilcoxon: pareado entre dois métodos sobre as mesmas 30 instâncias
-# CD: calculado a partir da tabela de postos de Friedman
+# Friedman: implementação manual com ranks médios por instância (mediana como valor-resumo)
+# Iman-Davenport: F_F = (N-1)·χ² / (N·(k-1) - χ²)
+# Nemenyi: CD = q_α · √(k(k+1)/6N) com q_α da Tabela 5a de Demšar
+# Wilcoxon: implementação manual com distribuição exata (DP) para n ≤ 30
+# Holm: correção sequencial de Bonferroni para m comparações
 ```
 
-### Saídas esperadas
+### Saídas Validadas em 2026-06-02
 
-- Tabela com p-valor do Friedman
-- Matriz de p-valores Nemenyi (ou ajuste Bonferroni-Holm para Wilcoxon)
-- Diagrama CD exportado para `monografia/figs/diagrama-cd.png` e `.svg`
-- Conclusão textual: "GA/PSO/ACO diferem significativamente (p < 0.05)" ou equivalente, apenas se os testes confirmarem
+| Resultado | Valor |
+|---|---:|
+| N | 30 instâncias |
+| k | 3 métodos |
+| Rank médio ACO | 1.1000 |
+| Rank médio GA | 1.9000 |
+| Rank médio PSO | 3.0000 |
+| χ²_F de Friedman | 54.6000 |
+| F_F de Iman-Davenport | F(2,58) = 293.2222 |
+| p-valor Iman-Davenport | 4.710129e-31 |
+| CD Nemenyi (α=0.05, q=2.343) | 0.6050 |
+
+Todas as comparações Nemenyi são significativas: ACO×GA (Δrank=0.8000), ACO×PSO (Δrank=1.9000) e GA×PSO (Δrank=1.1000). O Wilcoxon signed-rank pareado com correção Bonferroni-Holm também rejeita H₀ nos três pares: ACO×GA (W=1.0, n=26, p=5.960464e-08), ACO×PSO (W=0.0, n=30, p=1.862645e-09) e GA×PSO (W=0.0, n=30, p=1.862645e-09).
+
+O diagrama CD foi regenerado em `monografia/figs/cd-diagram.svg` e `monografia/figs/cd-diagram.png`.
 
 ### Limitações
 
@@ -124,9 +136,9 @@ import numpy as np
 |--------------------|----------------|-------------|
 | "ACO produz makespan médio menor que GA e PSO em todas as 30 instâncias" | Summary: mediana por instância | `src/data/results/summary/` |
 | "ACO é significativamente mais lento que GA e PSO (p < 0.05)" | Timing + Friedman/Wilcoxon | `src/data/results/timing/` |
-| "GA oferece melhor equilíbrio qualidade-tempo em instâncias grandes" | Scatter quality×time | `scripts/visualizacoes.ipynb` |
+| "GA oferece melhor tempo computacional, mas ACO oferece melhor qualidade de solução" | Scatter quality×time + timing | `src/data/results/summary/`, `src/data/results/timing/` |
 | "O lower bound AP é válido (≤ ótimo) mas frouxo (gap ~50%)" | Summary LB vs BF | `src/data/results/summary/` |
-| "Diferenças entre métodos são estatisticamente significativas" | Friedman + Nemenyi | `scripts/analise-estatistica.py` |
+| "Diferenças entre métodos são estatisticamente significativas" | Friedman/Iman-Davenport + Nemenyi + Wilcoxon/Holm | `scripts/analise-estatistica.py`, `monografia/figs/cd-diagram.svg` |
 
 ## Conexões
 

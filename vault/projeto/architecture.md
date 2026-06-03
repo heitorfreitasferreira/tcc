@@ -1,5 +1,7 @@
 ---
 tags: [projeto, implementacao, arquitetura, go, pacotes]
+status: atualizado-pos-p7
+updated: 2026-06-02
 ---
 
 # Arquitetura do Código
@@ -19,6 +21,7 @@ src/
 │   ├── pso.go                     ←   PSO CLI
 │   ├── aco.go                     ←   ACO CLI
 │   ├── bruteforce.go              ←   brute force CLI
+│   ├── lowerbound.go              ←   lower bound AP/Hungarian CLI
 │   ├── reporting.go               ←   persistência de resultados
 │   └── serve.go                   ←   servidor web
 ├── points/                        ← pontos 2D
@@ -41,8 +44,11 @@ src/
 │   ├── aco/                       ← ACO
 │   │   ├── main.go                ←   ACO struct, Optimize()
 │   │   └── ant.go                 ←   formiga, walk, feromônio
-│   └── brute/                     ← exaustiva
-│       └── main.go                ←   Optimize(), Heap permutations
+│   ├── brute/                     ← exaustiva
+│   │   └── main.go                ←   Optimize(), Heap permutations
+│   └── lowerbound/                ← limitante inferior AP
+│       ├── main.go                ←   redução 3D→2D + subtours
+│       └── hungarian.go           ←   algoritmo Hungarian O(n³)
 ├── shared/                        ← tipos compartilhados
 │   ├── types.go                   ←   HyperParams
 │   ├── optimization.go            ←   OptimizationResult, Improvement
@@ -71,7 +77,7 @@ create (CLI)
        │                                Cada célula = distance + turnPenalty
        │
        ▼
-optimize ga|pso|aco|bruteforce
+optimize ga|pso|aco|bruteforce|lowerbound
   │
   ├── g.Makespan(order)           →  float64  (avalia rota)
   │
@@ -85,6 +91,7 @@ optimize ga|pso|aco|bruteforce
 - **Embedded Turn Cost**: penalidade angular pré-computada no tensor (não durante otimização)
 - **Generator**: `generatePermutations` usa canal Go para streaming de permutações
 - **Random Keys**: PSO decodifica posição contínua em permutação via ordenação
+- **Assignment Problem relaxation**: lower bound reduz o tensor 3D para matriz 2D e aplica Hungarian
 
 ## Dependências Externas
 
@@ -101,7 +108,7 @@ optimize ga|pso|aco|bruteforce
 
 - [[experiment-pipeline]] — uso da CLI e scripts
 - [[problem-formulation]] — o tensor que o pipeline processa
-- [[ga]], [[pso]], [[aco]], [[bruteforce]] — otimizadores
+- [[ga]], [[pso]], [[aco]], [[bruteforce]], [[lower-bounds]] — otimizadores e referência por limitante inferior
 - [[bio-inspired-optimization]] — contexto geral dos métodos
 - [[winter2002modeling]] — abordagem alternativa para turn costs (pseudo-dual graph)
 

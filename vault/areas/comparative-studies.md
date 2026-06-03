@@ -1,6 +1,8 @@
 ---
 title: Estudos Comparativos de Metaheurísticas
 tags: [metaheuristic, comparison, benchmark, experimental]
+status: atualizado-pos-p7
+updated: 2026-06-02
 ---
 
 ## Descrição
@@ -19,12 +21,12 @@ tags: [metaheuristic, comparison, benchmark, experimental]
 
 ## Gap na Literatura
 
-Estudos comparativos existentes usam **TSP clássico (matriz de custo 2D simétrica)** em datasets TSPLIB. **Nenhum estudo publicado** compara GA, PSO e ACO na variante **TSP-SD-ATP** (TSP com penalidades angulares dependentes de sequência), que é o objeto deste TCC.
+Estudos comparativos existentes usam majoritariamente **TSP clássico (matriz de custo 2D simétrica)** em datasets TSPLIB. Na revisão organizada neste vault, não foram identificados estudos que comparem sistematicamente GA, PSO e ACO na variante **TSP-SD-ATP** (TSP com penalidades angulares dependentes de sequência), que é o objeto deste TCC.
 
 Isto significa que:
 - Não há baseline na literatura para a qualidade esperada de cada método no TSP-SD-ATP
 - A influência da penalidade angular sobre o ranking dos métodos é desconhecida
-- Este TCC preenche esta lacuna com 4605 execuções em 30 instâncias
+- Este TCC aborda essa lacuna com 4638 summaries em 30 instâncias, incluindo 51 sementes por metaheurística, busca exaustiva em 18 instâncias e lower bound AP em todas as 30
 
 Ver [[problem-formulation]] para a definição da variante e [[resultados]] para os resultados.
 
@@ -34,7 +36,7 @@ Ver [[problem-formulation]] para a definição da variante e [[resultados]] para
 - ACO tende a produzir soluções de maior qualidade em TSPs grandes, com maior custo computacional
 - GA é mais rápido e consistente em instâncias pequenas/médias
 - PSO oferece bom equilíbrio entre qualidade e tempo (mas veja [[resultados]] para a variante TSP-SD-ATP)
-- Estatística (ANOVA/Tukey) é necessária para validar diferenças entre métodos
+- Estatística não-paramétrica pareada (Friedman/Nemenyi e Wilcoxon/Holm) é necessária para validar diferenças entre métodos neste TCC
 
 ## Referências na Base
 

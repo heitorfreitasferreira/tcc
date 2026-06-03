@@ -6,37 +6,41 @@ tags:
   - codigo
   - dados
   - monografia
-status: vault-corrigido-pso-e-aco
+status: atualizado-2026-06-02
 created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Auditoria Código-Dados-Vault
 
-Esta auditoria verifica claims metodológicos e experimentais do `vault/` contra a fonte determinística do projeto: código em `src/` e dados brutos em `src/data/`.
+Esta auditoria compara as notas centrais do `vault/` com a fonte determinística do projeto: implementação em `src/`, dados brutos em `src/data/` e artefatos gerados em `monografia/figs/`.
+
+> [!warning] Regra para escrita
+> Claims metodológicos podem ser usados quando estiverem ancorados no código indicado. Claims experimentais devem ser recalculados a partir de `src/data/results/` antes de entrar em texto final, porque a cobertura atual mudou em relação a notas anteriores.
 
 ## Resultado Executivo
 
-O projeto tem base suficiente para escrita, mas o `vault/` contém inconsistências que precisam ser tratadas antes de agentes escreverem afirmações quantitativas definitivas na `monografia/`.
-
-| Item | Status | Decisão para escrita |
-|---|---|---|---|
+| Item | Status auditado | Decisão para escrita |
+|---|---|---|
 | Formulação TSP-SD-ATP | Confirmada pelo código | Pode ser usada |
 | GA | Confirmado pelo código | Pode ser usado |
-| PSO | Implementação confirmada, defaults corrigidos | Pode ser usado |
-| ACO | Implementação confirmada, notas corrigidas | Pode ser usado |
-| Brute-force | Confirmado pelo código | Pode ser usado |
-| Lower bound AP | Confirmado pelo código | Pode ser usado como limitante inferior (gap 40–65% vs BF, não como bound justo) |
-| Cobertura experimental atual | 4635 summaries (1530 GA, 1530 PSO, 1530 ACO, 30 lowerbound, 15 brute-force) | Confirmado e limpo |
-| Claims numéricos em [[resultados]] | Parcialmente desatualizados | Não usar sem recalcular de `src/data/results/` |
-| Testes estatísticos | Não confirmados nesta auditoria | Não declarar significância ainda |
+| PSO | Confirmado pelo código | Pode ser usado, com limitação da codificação random keys |
+| ACO | Confirmado pelo código | Pode ser descrito como Ant System adaptado com feromônio 3D |
+| Brute-force | Confirmado pelo código e dados atuais | Agora cobre 18 instâncias (`10a..15c`), não 15 |
+| Lower bound AP | Confirmado pelo código | Pode ser usado como limitante inferior, não como rota factível |
+| Cobertura experimental atual | 4638 summaries, 4638 timings, 4638 evolutions | Atualizar notas que ainda dizem 4605 ou 4635 |
+| Resultados agregados em [[resultados]] | Atualizados no vault | Tabelas finais ainda devem ser geradas a partir dos dados brutos |
+| Testes estatísticos | Script existe, mas está metodologicamente inconsistente | Não declarar significância até corrigir/auditar o script |
 
-## Fonte de Verdade
+## Fonte de Verdade Auditada
 
-| Camada | Caminhos auditados | Papel |
+| Camada | Caminhos | Papel |
 |---|---|---|
-| Código | `src/graph/`, `src/optimization/`, `src/cmd/`, `src/shared/reporting/` | Implementação e schemas |
+| Código | `src/graph/`, `src/points/`, `src/optimization/`, `src/cmd/`, `src/shared/reporting/` | Formulação, algoritmos, flags, schemas e persistência |
 | Dados | `src/data/*.points`, `src/data/*.graph`, `src/data/results/{summary,evolution,timing}/` | Instâncias e resultados brutos |
-| Vault | `vault/projeto/*.md`, `vault/writing/*.md` | Síntese a ser corrigida/organizada |
+| Scripts | `scripts/analise-estatistica.py`, `scripts/gerar-graficos-estatisticos.py`, `scripts/gerar-analises.sh` | Análise estatística e geração de figuras |
+| Figuras | `monografia/figs/` | Artefatos visuais disponíveis |
+| Vault | `vault/projeto/*.md`, `vault/writing/*.md` | Síntese intermediária; não é evidência primária |
 
 ## Achados Metodológicos Confirmados
 
@@ -45,79 +49,61 @@ O projeto tem base suficiente para escrita, mas o `vault/` contém inconsistênc
 | Claim | Status | Evidência primária |
 |---|---|---|
 | O grafo é um tensor 3D | Confirmado | `src/graph/types.go:8` define `type Graph [][][]float64` |
-| A indexação é `[anterior][atual][proximo]` | Confirmado | `src/graph/types.go:8`, `src/graph/makespan.go:13` |
-| O custo soma distância euclidiana e penalidade angular | Confirmado | `src/graph/creater.go:24-33` |
-| `droneSpeed = 1` | Confirmado | `src/graph/types.go:5` |
-| `maxPenalti = 1` | Confirmado | `src/graph/types.go:6` |
+| A indexação é `[anterior][atual][proximo]` | Confirmado | `src/graph/types.go:8`, `src/graph/makespan.go:7-19` |
+| O custo soma distância euclidiana e penalidade angular | Confirmado | `src/graph/creater.go:24-33`, `src/graph/math.go:33` |
+| `droneSpeed = 1` e `maxPenalti = 1` | Confirmado | `src/graph/types.go:5-6` |
 | A rota parte do nó 0 e retorna ao nó 0 | Confirmado | `src/graph/makespan.go:7-19` |
+| Existem 30 instâncias `.points` e 30 `.graph` | Confirmado | `src/data/10a..100c.{points,graph}` |
 
-### Algoritmo Genético
+### Métodos de Otimização
 
-| Claim | Status | Evidência primária |
+| Método | Claim confirmado | Evidência primária |
 |---|---|---|
-| Representação por permutação dos nós `1..n-1` | Confirmado | `src/optimization/ga/main.go:57-67` |
-| Seleção por torneio | Confirmado | `src/optimization/ga/main.go:130-139` |
-| Crossover OX | Confirmado | `src/optimization/ga/main.go:141-194` |
-| Mutação swap | Confirmado | `src/optimization/ga/main.go:196-201` |
-| Elitismo | Confirmado | `src/optimization/ga/main.go:75-82` |
-| Defaults: população 100, iterações 100, elitismo 1, mutação 0.05, torneio 2 | Confirmado | `src/cmd/optimize.go:36-37`, `src/cmd/ga.go:64-66` |
+| GA | Representação por permutação dos nós `1..n-1` | `src/optimization/ga/main.go:57-67` |
+| GA | Seleção por torneio, crossover OX, mutação swap e elitismo | `src/optimization/ga/main.go:75-95`, `src/optimization/ga/main.go:130-201` |
+| GA | Defaults: população 100, iterações 100, elitismo 1, mutação 0.05, torneio 2 | `src/cmd/optimize.go:36-37`, `src/cmd/ga.go:64-66` |
+| PSO | Representação por random keys e ordenação de posições contínuas | `src/optimization/pso/particle.go:23-40` |
+| PSO | Atualização contínua com inércia, componente cognitivo e social | `src/optimization/pso/particle.go:42-54` |
+| PSO | Defaults: `c1=2.0`, `c2=2.0`, `w=0.7` | `src/cmd/pso.go:68-70` |
+| ACO | Feromônio 3D `pheromones[prev][curr][next]` | `src/optimization/aco/main.go:21`, `src/optimization/aco/main.go:84-104` |
+| ACO | Seleção por roleta proporcional com `tau^alpha * eta^beta`, `eta=1/G` | `src/optimization/aco/ant.go:42-84` |
+| ACO | Depósito por todas as formigas | `src/optimization/aco/ant.go:27-39` |
+| ACO | Defaults: `alpha=1.0`, `beta=2.0`, `rho=0.2`, `q=100` | `src/cmd/aco.go:66-69` |
+| Brute-force | Enumera permutações dos nós `1..n-1` por algoritmo de Heap | `src/optimization/brute/main.go:9-79` |
+| Lower bound | Reduz tensor 3D para matriz 2D via `c'[j][k] = min_i cost[i][j][k]` | `src/optimization/lowerbound/main.go:42-60` |
+| Lower bound | Aplica Hungarian O(n^3) e retorna bound possivelmente com subtours | `src/optimization/lowerbound/hungarian.go`, `src/optimization/lowerbound/main.go:62-89` |
 
-### PSO
+## Cobertura Experimental Atual
 
-| Claim | Status | Evidência primária |
-|---|---|---|
-| Representação por random keys | Confirmado | `src/optimization/pso/particle.go:23-40` |
-| Atualização contínua com inércia, componente cognitivo e componente social | Confirmado | `src/optimization/pso/particle.go:42-54` |
-| Defaults atuais: `c1=2.0`, `c2=2.0`, `w=0.7` | Confirmado no código | `src/cmd/pso.go:68-70` |
-| Nota [[pso]] registra `c1=c2=1.5` | Divergência | `vault/projeto/pso.md:15-17` |
+Contagem recalculada em `src/data/results/` nesta auditoria:
 
-### ACO
+| Artefato | Quantidade |
+|---|---:|
+| `summary/*.json` | 4638 |
+| `evolution/*.jsonl` | 4638 |
+| `timing/*.json` | 4638 |
+| Links `timing_file` e `evolution_file` ausentes | 0 |
 
-| Claim | Status | Evidência primária |
-|---|---|---|
-| Feromônio 3D `pheromones[prev][curr][next]` | Confirmado | `src/optimization/aco/main.go:21`, `src/optimization/aco/main.go:84-104` |
-| Seleção por roleta proporcional | Confirmado | `src/optimization/aco/ant.go:76-84` |
-| Heurística `eta = 1 / G[prev][curr][next]` | Confirmado | `src/optimization/aco/ant.go:52-55` |
-| Depósito por todas as formigas | Confirmado | `src/optimization/aco/ant.go:27-39` |
-| Defaults atuais: `alpha=1.0`, `beta=2.0`, `rho=0.2`, `q=100` | Confirmado no código | `src/cmd/aco.go:66-69` |
-| Nota [[aco]] registra `gama`, `rho=0.1`, `q=1.0` | Divergência | `vault/projeto/aco.md:17-21` |
-| Nota [[aco]] chama a implementação de ACS | Impreciso | Código implementa roleta e depósito de todas as formigas, mais próximo de Ant System adaptado |
+Distribuição por método nos summaries:
 
-### Brute-force
+| Método | Runs | Instâncias | Sementes |
+|---|---:|---:|---:|
+| ACO | 1530 | 30 | 51 (`s0..s50`) |
+| GA | 1530 | 30 | 51 (`s0..s50`) |
+| PSO | 1530 | 30 | 51 (`s0..s50`) |
+| Lower bound | 30 | 30 | 1 (`s0`) |
+| Brute-force | 18 | 18 | 1 (`s0`) |
 
-| Claim | Status | Evidência primária |
-|---|---|---|
-| Enumera permutações dos nós `1..n-1` | Confirmado | `src/optimization/brute/main.go:9-23` |
-| Geração por algoritmo de Heap | Confirmado | `src/optimization/brute/main.go:55-79` |
-| Retorna melhor makespan exato para instâncias executadas | Confirmado para o espaço enumerado | `src/optimization/brute/main.go:20-52` |
+> [!success] Cobertura normalizada no vault
+> [[resultados]] e [[analysis-methodology]] foram atualizadas após esta auditoria para refletir 4638 summaries e 18 brute-force, incluindo `15a`, `15b` e `15c`.
 
-### Lower Bound AP
+### Observação Sobre Caminhos de Instância
 
-| Claim | Status | Evidência primária |
-|---|---|---|
-| Reduz tensor 3D para matriz 2D via `c'[j][k] = min_i cost[i][j][k]` | Confirmado | `src/optimization/lowerbound/main.go:42-60` |
-| Executa Hungarian O(n³) sobre a matriz reduzida | Confirmado | `src/optimization/lowerbound/hungarian.go` |
-| Retorna bound (pode conter subtours) | Confirmado | `src/optimization/lowerbound/main.go:62-89` |
-| AP bound ≤ makespan ótimo (por construção) | Confirmado para todas as 15 instâncias BF | Verificado: 10a LB=4.86 ≤ BF=8.25, demais idem |
-| Bound é determinístico (~0ms n≤15, 5ms n=100) | Confirmado | Timing: 0ms para instâncias pequenas, 5ms para 100 nós |
+Os summaries usam uma mistura de caminhos absolutos (`/home/heitor/tcc/src/data/10a.graph`) e relativos (`src/data/30a.graph`) no campo `instance`. O `run_id` continua normalizado por nome de instância, e não há duplicatas lógicas para `(instância, método, seed)` quando a instância é normalizada por `Path(instance).stem`.
 
-## Achados Experimentais
+Decisão para análise: scripts e tabelas devem normalizar `instance` pelo nome-base (`10a`, `30b`, etc.) antes de agrupar resultados.
 
-### Cobertura no Diretório
-
-Foram encontrados **4635 arquivos** em `src/data/results/summary/` (após remoção de 1530 resultados ACO legados com `rho=0.5` e `gama=0.1`).
-
-| Método | Quantidade |
-|---|---|---:|
-| GA | 1530 |
-| PSO | 1530 |
-| ACO | 1530 |
-| Lowerbound | 30 |
-| Brute-force | 15 |
-
-Cobertura: 30 instâncias, 51 sementes para GA/PSO/ACO, lowerbound determinístico nas 30 instâncias, brute-force em 15 instâncias pequenas (`10a` a `14c`).
-
-### Baseline Brute-force Confirmada
+## Baseline Brute-force Confirmada
 
 | Instância | Makespan ótimo |
 |---|---:|
@@ -136,23 +122,26 @@ Cobertura: 30 instâncias, 51 sementes para GA/PSO/ACO, lowerbound determinísti
 | 14a | 11.55692517246078 |
 | 14b | 11.466929014715355 |
 | 14c | 11.486447067382262 |
+| 15a | 9.128679854598571 |
+| 15b | 12.184839159096176 |
+| 15c | 12.16021037136399 |
 
-### Gap nas Instâncias com Brute-force
+## Gap vs Brute-force nas 18 Instâncias com Ótimo
 
-Resultados calculados apenas no subconjunto compatível com o código atual.
+Agregado sobre 18 instâncias e 51 sementes por método, normalizando o campo `instance` pelo nome-base.
 
 | Método | Runs | Gap médio | Gap mínimo | Gap máximo | Taxa global de ótimo |
 |---|---:|---:|---:|---:|---:|
-| ACO | 765 | 0.1836% | 0.0000% | 3.7769% | 76.86% |
-| GA | 765 | 4.3564% | 0.0000% | 31.5704% | 29.41% |
-| PSO | 765 | 19.0226% | 0.0000% | 57.8884% | 5.10% |
+| ACO | 918 | 0.4296% | 0.0000% | 9.4445% | 71.79% |
+| GA | 918 | 5.2814% | 0.0000% | 41.4267% | 26.47% |
+| PSO | 918 | 22.2915% | 0.0000% | 76.5549% | 4.25% |
 
-> [!warning] Divergência com [[resultados]]
-> A nota [[resultados]] afirma gap médio de ACO igual a 0.00% e ótimo em 100% para `10a-13c`. Isso não é sustentado pelos dados atuais: ACO falha em algumas instâncias pequenas, como `10b`, `11b`, `12c`, `13a`, `13b`, `14a`, `14b` e `14c`.
+> [!success] Claims experimentais atualizados
+> [[resultados]] e [[claim-evidence-matrix]] foram atualizadas para usar os gaps das 18 instâncias com brute-force (`10a..15c`).
 
-### Instâncias Grandes
+## Instâncias Grandes
 
-Resultados do subconjunto compatível com o código atual.
+Os números abaixo continuam consistentes com [[resultados]] para `50a..100c`, considerando 51 sementes por método.
 
 | Instância | ACO best | ACO média | GA best | GA média | PSO best | PSO média |
 |---|---:|---:|---:|---:|---:|---:|
@@ -163,12 +152,22 @@ Resultados do subconjunto compatível com o código atual.
 | 100b | 45.4689 | 48.0596 | 97.5343 | 110.4959 | 126.3967 | 135.9987 |
 | 100c | 45.4858 | 46.9487 | 95.1632 | 111.3243 | 126.1838 | 138.1908 |
 
-### Lower Bound Validado vs Brute-force (15 instâncias)
+## Tempo de Otimização em n=100
 
-AP bound ≤ BF ótimo em 100% dos casos (validade formal). Gap médio: ~50%, mínimo 40.8% (`11c`), máximo 65.3% (`14a`). O bound é frouxo para o TSP-SD-ATP — a redução 3D→2D perde informação angular significativa.
+Tempos médios em milissegundos, lidos dos `timing_file` ligados aos summaries.
 
-| Instância | BF ótimo | LB bound | Gap LB→BF |
-|---|---|---|---:|---:|
+| Instância | ACO média ms | GA média ms | PSO média ms | Razão ACO/GA | Razão ACO/PSO |
+|---|---:|---:|---:|---:|---:|
+| 100a | 4262.06 | 38.82 | 76.24 | 109.78x | 55.91x |
+| 100b | 4276.55 | 36.27 | 75.25 | 117.89x | 56.83x |
+| 100c | 4266.55 | 39.37 | 73.84 | 108.37x | 57.78x |
+
+## Lower Bound AP vs Brute-force
+
+O AP bound foi encontrado para todas as 30 instâncias e é menor ou igual ao ótimo brute-force em todas as 18 instâncias com BF disponível. O gap abaixo é `(BF - LB) / BF`.
+
+| Instância | BF ótimo | LB bound | Gap LB->BF |
+|---|---:|---:|---:|
 | 10a | 8.251283 | 4.859238 | 41.11% |
 | 10b | 7.906130 | 2.979065 | 62.32% |
 | 10c | 9.545034 | 4.956950 | 48.07% |
@@ -181,55 +180,68 @@ AP bound ≤ BF ótimo em 100% dos casos (validade formal). Gap médio: ~50%, m�
 | 13a | 10.950258 | 5.799255 | 47.04% |
 | 13b | 11.473574 | 6.078440 | 47.02% |
 | 13c | 10.041955 | 5.347435 | 46.75% |
-| 14a | 11.556925 | 4.004625 | **65.35%** |
+| 14a | 11.556925 | 4.004625 | 65.35% |
 | 14b | 11.466929 | 5.675375 | 50.51% |
 | 14c | 11.486447 | 6.420654 | 44.10% |
+| 15a | 9.128680 | 4.716761 | 48.33% |
+| 15b | 12.184839 | 6.102700 | 49.92% |
+| 15c | 12.160210 | 5.259865 | 56.75% |
 
-> [!warning] Bound frouxo para TSP-SD-ATP
-> O roadmap [[roadmap-monografia]] sugere que "gap < 30%" para instâncias pequenas, mas o AP bound via redução 3D→2D apresentou gap entre 40% e 65%. A perda de informação ao tomar `min_i` por sobre o tensor 3D elimina o contexto de curva. O bound é válido, mas não é tight. Na monografia, deve ser descrito como limitante inferior fraco, não como referência justa.
+Resumo: gap médio 51.36%, mínimo 40.79%, máximo 65.35%. O bound é válido, mas frouxo para o TSP-SD-ATP.
 
-### Lower Bound Timing
+## Auditoria dos Scripts de Análise
 
-| Instância | optimize_ms |
-|---|---:|
-| 10a..14c | 0 |
-| 15a..50c | 0–1 |
-| 100a..100c | 5 |
+| Script | Status | Achado |
+|---|---|---|
+| `scripts/analise-estatistica.py` | Existe e executa | Gera `monografia/figs/cd-diagram.svg`; não usa SciPy |
+| `scripts/analise-estatistica.py` | Inconsistente com [[analysis-methodology]] | Usa média por instância, não mediana |
+| `scripts/analise-estatistica.py` | Incompleto para o protocolo declarado | Não implementa Wilcoxon nem ajuste Holm |
+| `scripts/analise-estatistica.py` | Problema numérico/metodológico | A fórmula da estatística Friedman aparenta usar somas de ranks de forma incorreta, gerando `χ²_F = 377640.0000` para 30 blocos e 3 métodos |
+| `scripts/analise-estatistica.py` | Mensagem incorreta | Imprime `Execuções por instância: 30`, mas os métodos estocásticos têm 51 sementes por instância |
+| `scripts/gerar-graficos-estatisticos.py` | Existe | Gera heatmaps, dispersão qualidade-tempo, escalabilidade e estabilidade sem dependências externas |
+| `scripts/gerar-analises.sh` | Existe | Pipeline canônico atual para figuras: build do servidor, diagramas TikZ e figuras compostas |
 
-### Tempo de Otimização em n=100 (metaheurísticas)
+Decisão para escrita: não usar claims de significância estatística ainda. Antes, corrigir o script para seguir o protocolo de [[analysis-methodology]] ou revisar a metodologia para refletir exatamente o script executado.
 
-Tempos médios em milissegundos, lidos por `timing_file` a partir dos summaries compatíveis com o código atual.
+## Artefatos Visuais Disponíveis
 
-| Instância | ACO média ms | GA média ms | PSO média ms | Razão ACO/GA | Razão ACO/PSO |
-|---|---|---|---:|---:|---:|---:|---:|
-| 100a | 4262.06 | 38.82 | 76.24 | 109.78x | 55.91x |
-| 100b | 4276.55 | 36.27 | 75.25 | 117.89x | 56.83x |
-| 100c | 4266.55 | 39.37 | 73.84 | 108.37x | 57.78x |
+Há artefatos em `monografia/figs/`, incluindo:
 
-> [!warning] Divergência com [[resultados]]
-> A nota [[resultados]] registra ACO em `100a` como 2.859s e razão GA/ACO de ~75x. Nos dados atuais, `100a` tem ACO médio de 4.262s e razão ACO/GA de ~110x.
+| Tipo | Exemplos |
+|---|---|
+| Diagrama CD | `cd-diagram.svg`, `cd-diagram.png` |
+| Gráficos estatísticos | `heatmap-success-rate.png`, `heatmap-gap-vs-bf.png`, `scatter-quality-vs-time.png`, `scalability-runtime.png`, `boxplot-estabilidade.png`, `performance-profile.svg` |
+| Rotas renderizadas | `route-10a-aco-s0-iter1.png`, `route-100a-aco-s0.png`, `overlay-100a-methods.png` |
+| Diagramas conceituais | `diagram-tensor-3d.svg`, `diagram-angular-penalty.svg`, `flowchart-ga.tex`, `flowchart-pso.tex`, `flowchart-aco.tex`, `flowchart-lowerbound.tex` |
+
+Esses artefatos existem, mas a seleção final de figuras ainda deve passar por [[figuras-tabelas-monografia]] e pela regra de escala/unidade do roadmap.
 
 ## Divergências Prioritárias no Vault
 
 | Nota | Divergência | Ação recomendada |
-|---|---|---|---|
-| ~~[[pso]] | Defaults `c1=c2=1.5`, mas código usa `2.0`~~ | **RESOLVIDO** |
-| ~~[[aco]] | Registra `gama`, `rho=0.1`, `q=1.0`; código usa `rho=0.2`, `q=100`, sem `gama`~~ | **RESOLVIDO** |
-| ~~[[aco]] | Chama implementação de ACS, mas código tem roleta e depósito por todas as formigas~~ | **RESOLVIDO** |
-| [[resultados]] | Números não batem com os dados atuais | Recalcular (parcialmente atualizado, verificar) |
-| [[analysis-methodology]] | Testes estatísticos aparecem como previstos/implementados de forma ambígua | Confirmar via script/notebook antes de escrever significância |
-| [[roadmap-monografia]] | Claim "AP bound gap < 30%" contradito pelos dados (gap real 40–65%) | Corrigir claim no roadmap; bound é válido mas frouxo |
+|---|---|---|
+| ~~[[resultados]]~~ | ~~Declara 4605 execuções, 15 brute-force e gaps do subconjunto `10a..14c`~~ | Resolvido: atualizado para cobertura P7 |
+| ~~[[analysis-methodology]]~~ | ~~Declara 4635 runs e 15 brute-force~~ | Resolvido quanto à cobertura e estatística |
+| ~~[[claim-evidence-matrix]]~~ | ~~Claims E02, E03, E06, E17 usam cobertura antiga~~ | Resolvido |
+| ~~[[experiment-pipeline]]~~ | ~~Omite `lowerbound`~~ | Resolvido |
+| ~~[[experiment-pipeline]]~~ | ~~Formato de run ID contém `p{pop}__i{iter}`~~ | Resolvido |
+| ~~[[roadmap-monografia]]~~ | ~~P4 aparece resolvido, mas o script estatístico não cumpre integralmente o protocolo~~ | Resolvido após correção e validação de P4 |
 
-## Regras Para Agentes Escritores
+## Claims Permitidos Após Esta Auditoria
 
-1. Para Proposta, usar diretamente o código em `src/` e não confiar apenas em `vault/projeto/*.md`.
-2. Os parâmetros documentados agora correspondem ao código atual; confiar em `vault/projeto/pso.md` e `vault/projeto/aco.md`.
-3. Não usar os números de [[resultados]] sem recalcular a partir de `src/data/results/summary/` e `timing_file` (parcialmente atualizado, mas verificar cada número).
-4. Não declarar significância estatística até que o protocolo estatístico esteja auditado.
-5. Se o agente atualizar uma nota do vault, deve registrar qual arquivo do código ou dado bruto sustenta a correção.
+| Claim | Força | Condição |
+|---|---|---|
+| O TSP-SD-ATP implementado usa custo dependente da sequência com tensor 3D | Forte | Citar `src/graph/` |
+| GA, PSO, ACO, brute-force e lowerbound estão implementados como comandos do `tcc optimize` | Forte | Citar `src/cmd/` |
+| ACO obteve menor makespan médio que GA e PSO nas instâncias avaliadas | Forte descritivo | Usar dados recalculados, sem significância estatística ainda |
+| GA foi muito mais rápido que ACO em n=100 | Forte descritivo | Usar tempos médios por instância |
+| PSO teve desempenho inferior neste desenho experimental | Moderado | Delimitar à implementação random keys e parâmetros fixos |
+| Brute-force fornece ótimo exato para `10a..15c` | Forte | Citar 18 summaries BF |
+| AP bound é válido mas frouxo | Forte | Citar LB ≤ BF e gap médio 51.36% nas 18 instâncias |
 
-## Próximos Passos
+## Pendências Antes da Escrita Definitiva
 
-1. Validar [[resultados]] contra dados brutos e executar protocolo estatístico.
-2. Atualizar [[roadmap-monografia]] com dados reais do AP bound (gap 40–65%, não < 30%).
-3. Incluir lower bound na análise de Experimentos como referência adicional (não como bound tight).
+1. Aguardar/corroborar a correção de `scripts/analise-estatistica.py` antes de liberar claims de significância.
+2. Regerar ou validar tabelas finais com `scripts/consolidate_results.py` contra a cobertura atual.
+3. Normalizar agrupamentos por nome-base de instância em qualquer script novo.
+4. Reescrever os `.tex` conforme [[mapa-capitulos-tex]], evitando reaproveitar resultados antigos.

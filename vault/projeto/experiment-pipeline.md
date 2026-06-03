@@ -1,5 +1,7 @@
 ---
 tags: [projeto, implementacao, experimentos, pipeline, cli]
+status: atualizado-pos-p7
+updated: 2026-06-02
 ---
 
 # Pipeline de Experimentos
@@ -31,7 +33,9 @@ Otimiza uma instância com um método. `src/cmd/optimize.go`:
   --results-dir ./src/data/results
 ```
 
-Métodos: `ga`, `pso`, `aco`, `bruteforce`.
+Métodos: `ga`, `pso`, `aco`, `bruteforce`, `lowerbound`.
+
+`lowerbound` executa a relaxação AP/Hungarian e retorna um limitante inferior, não uma rota factível. Ele entra como referência numérica, não como competidor estocástico.
 
 ### `tcc serve`
 
@@ -76,16 +80,20 @@ results/
 
 ### Run ID
 
-Formato: `{instancia}__{metodo}__s{seed}__p{pop}__i{iter}__h{hash}`
+Formato atual: `{instancia}__{metodo}__s{seed}__h{hash}`
 
-Exemplo: `10a__ga__s42__p100__i100__habc12345`
+Exemplo: `10a__ga__s0__hd186dc51`
+
+O hash é derivado dos parâmetros canônicos da execução. Parâmetros como população e iterações ficam registrados no `summary.params`, mas não aparecem explicitamente no nome do arquivo.
 
 ## Fluxo de Execução
 
 1. Build: `make -C src build` → `src/tcc`
 2. Geração: `tcc create` → `.points` + `.graph`
 3. Otimização: `run_experiments_multi_seed.sh` → resultados estruturados
-4. Análise: `scripts/visualizacoes.ipynb` (Jupyter)
+4. Análise: `scripts/consolidate_results.py`, `scripts/analise-estatistica.py`, `scripts/gerar-graficos-estatisticos.py` e/ou `scripts/visualizacoes.ipynb`
+
+Cobertura auditada atual: 4638 summaries, 4638 timings e 4638 evolutions. Distribuição: 1530 GA, 1530 PSO, 1530 ACO, 30 lowerbound e 18 brute-force. Ver [[auditoria-codigo-dados-vault]].
 
 ## Estruturas de Dados
 
@@ -120,7 +128,7 @@ type Improvement struct {
 ## Conexões
 
 - [[architecture]] — estrutura de pacotes
-- [[ga]], [[pso]], [[aco]], [[bruteforce]] — métodos executados
+- [[ga]], [[pso]], [[aco]], [[bruteforce]], [[lower-bounds]] — métodos e referências executados
 - [[problem-formulation]] — instâncias usadas
 - [[comparative-studies]] — contexto experimental na literatura
 

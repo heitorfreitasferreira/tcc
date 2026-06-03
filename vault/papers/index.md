@@ -1,10 +1,24 @@
 ---
 tags: [papers, catalogo, index]
+status: atualizado
+updated: 2026-06-02
 ---
 
 # Catálogo de Artigos — Base de Conhecimento
 
 61 artigos fichados no vault. Organizados por tema para navegação durante a escrita da monografia.
+
+## Cobertura Atual
+
+| Item | Quantidade | Observação |
+|---|---:|---|
+| Notas em `vault/papers/` | 61 | Exclui este `index.md` |
+| Papers listados neste índice | 61 | Nenhuma nota ficou fora do índice |
+| Chaves no BibTeX da monografia | 50 | `monografia/bib/abntex2-references.bib` |
+| Notas sem entrada BibTeX | 11 | Todas em lower bounds/relaxações |
+
+> [!warning] Pendência bibliográfica
+> Antes de finalizar Fundamentação, Proposta ou Experimentos, adicionar ao `.bib` as notas sem entrada BibTeX listadas em [[#Pendências BibTeX]].
 
 ## TSP Clássico e Fundamentos
 
@@ -126,6 +140,34 @@ Total: 10
 ---
 
 **Total geral: 61 artigos**
+
+## Referências Prioritárias por Capítulo
+
+| Capítulo | Referências centrais | Uso principal |
+|---|---|---|
+| Introdução | [[murray2015flying]], [[agatz2018optimization]], [[rajan2022routing]], [[winter2002modeling]], [[vanhove2012route]], [[wu2020comparative]], [[chandra2022comparative]] | Motivar roteamento com drones, custos de curva e lacuna comparativa |
+| Fundamentação | [[garey1979computers]], [[lawler1985traveling]], [[applegate2006traveling]], [[holland1975adaptation]], [[goldberg1989genetic]], [[kennedy1995particle]], [[dorigo1996ant]], [[dorigo1997ant]], [[stutzle2000mmas]] | Definir TSP, complexidade e metaheurísticas usadas |
+| Proposta | [[winter2002modeling]], [[vanhove2012route]], [[bean1994genetic]], [[oliver1987crossover]], [[clerc2000discretepso]], [[dorigo1996ant]], [[balas1985branch]], [[karp1979patching]] | Justificar tensor de custo, representações dos métodos e lower bound AP |
+| Experimentos | [[demsar2006statistical]], [[halim2019combinatorial]], [[chandra2022comparative]], [[wu2020comparative]], [[haroun2015performance]], [[almufti2025comparative]] | Sustentar protocolo comparativo e estatístico |
+| Conclusão | [[deepaco2023]], [[neufaco2025]], [[gpaco2025]], [[dellamico2021multiple]], [[dellamico2022exact]], [[kinable2017hybrid]], [[leraromero2020dynamic]] | Trabalhos futuros: ACO neural/focado, drones e bounds mais fortes |
+
+## Pendências BibTeX
+
+As seguintes notas existem no vault e aparecem neste índice, mas ainda não têm entrada em `monografia/bib/abntex2-references.bib`:
+
+| Nota | Categoria | Prioridade para monografia |
+|---|---|---|
+| [[aggarwal2000angular]] | Custos de curva e turn restrictions | Média |
+| [[balas1985branch]] | Lower bounds e relaxações | Alta |
+| [[fischetti1992additive]] | Lower bounds e relaxações | Média |
+| [[heldkarp1970traveling]] | Lower bounds e relaxações | Média |
+| [[heldkarp1971traveling]] | Lower bounds e relaxações | Média |
+| [[johnson1996asymptotic]] | Lower bounds e relaxações | Média |
+| [[karp1979patching]] | Lower bounds e relaxações | Alta |
+| [[kinable2017hybrid]] | Lower bounds e relaxações | Alta para trabalhos futuros |
+| [[leraromero2020dynamic]] | Lower bounds e relaxações | Alta para trabalhos futuros |
+| [[righini2021efficient]] | Lower bounds e relaxações | Baixa |
+| [[valenzuela1997estimating]] | Lower bounds e relaxações | Baixa |
 
 ## Por Área
 
