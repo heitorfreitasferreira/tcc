@@ -191,16 +191,16 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 
 | ID | Tarefa | Saída esperada | Prioridade |
 |---|---|---|---|
-| P1 | Criar matriz claim-evidência | Nota `vault/writing/claim-evidence-matrix.md` | Alta |
-| P2 | Atualizar índice de papers | `vault/papers/index.md` com contagem e categorias atuais | Alta |
-| P3 | Criar glossário terminológico | Nota `vault/writing/glossario-monografia.md` | Alta |
-| P4 | Fechar protocolo estatístico | Atualização de [[analysis-methodology]] | Alta |
-| P5 | Listar figuras/tabelas finais | Nota `vault/writing/figuras-tabelas-monografia.md` | Alta |
-| P6 | Mapear cada capítulo para arquivos `.tex` | Nota `vault/writing/mapa-capitulos-tex.md` | Média |
-| P7 | Auditar divergências entre `src/`, `src/data/` e `vault/` | Nota `vault/writing/auditoria-codigo-dados-vault.md` | Alta |
+| P1 | Criar matriz claim-evidência | Nota `vault/writing/claim-evidence-matrix.md` | Concluída |
+| P2 | Atualizar índice de papers | `vault/papers/index.md` com contagem e categorias atuais | Concluída |
+| P3 | Criar glossário terminológico | Nota `vault/writing/glossario-monografia.md` | Concluída |
+| P4 | Fechar protocolo estatístico | Validado em [[analysis-methodology]]; `scripts/analise-estatistica.py` corrigido; `cd-diagram.{svg,png}` regenerado | Concluída |
+| P5 | Listar figuras/tabelas finais | Nota `vault/writing/figuras-tabelas-monografia.md` | Concluída |
+| P6 | Mapear cada capítulo para arquivos `.tex` | Nota `vault/writing/mapa-capitulos-tex.md` | Concluída |
+| P7 | Auditar divergências entre `src/`, `src/data/` e `vault/` | Nota `vault/writing/auditoria-codigo-dados-vault.md` | Concluída |
 | P8 | Implementar e validar lower bound para instâncias grandes (n ≥ 15) | Implementação completa: algoritmo Hungarian O(n³) em Go puro, redução 3D→2D, comando `tcc optimize lowerbound`, 30/30 instâncias executadas, figuras/overlays geradas, integração nos scripts de análise. Bound validado contra brute-force (10a: AP=4.86 ≤ BF=8.25). Documentado em [[lower-bounds]], [[justificativa-lowerbound]] | Concluída |
-| P9 | Estudar efeito da codificação na comparação justa entre métodos | GA (random keys), PSO (SPV), ACO (transições diretas). Investigar se PSO com random keys alteraria ordenação; se sim, ajustar implementações ou explicitar limitação na monografia | Média |
-| P10 | Análise de sensibilidade a hiperparâmetros | Investigar quais metodologias de fine-tuning (grid search, random search, Bayesian) se adequam a cada método no cenário TSP-SD-ATP; verificar se ordenação entre métodos se mantém sob diferentes parametrizações | Baixa (trabalho futuro) |
+| P9 | Estudar efeito da codificação na comparação justa entre métodos | Concluído em [[auditoria-codificacao-metodos]]. GA usa permutação direta; PSO usa random keys; ACO usa transições 3D. Explicitar como ameaça à validade, sem nova implementação nesta monografia. | Concluída |
+| P10 | Análise de sensibilidade a hiperparâmetros | Concluída em [[auditoria-hiperparametros]] como limitação/trabalho futuro. Não bloqueia a escrita; declarar que não houve tuning sistemático. | Concluída como limitação |
 
 ## Protocolo Para Cada Agente Escritor
 
@@ -231,9 +231,9 @@ Após a escrita:
 4. Verificar se não há promessa sem evidência.
 5. Registrar pendências em nota separada ou no topo do capítulo.
 
-## Protocolo de Análise Estatística (P4 — Resolvido)
+## Protocolo de Análise Estatística (P4 — Concluído)
 
-Com 3 métodos estocásticos × 30 instâncias × 51 sementes = 4590 amostras, comparar apenas medianas é insuficiente. O protocolo segue Demšar (2006), detalhado em [[analysis-methodology#Protocolo-de-Análise-Estatística]].
+Com 3 métodos estocásticos × 30 instâncias × 51 sementes = 4590 execuções estocásticas, comparar apenas médias/melhores casos é insuficiente. O protocolo segue Demšar (2006), detalhado em [[analysis-methodology#Protocolo-de-Análise-Estatística]]. O script estatístico foi corrigido e validado em [[auditoria-script-analise-estatistica]].
 
 ### Resumo
 
@@ -246,20 +246,21 @@ Com 3 métodos estocásticos × 30 instâncias × 51 sementes = 4590 amostras, c
 
 ### Implementação
 
-Script `scripts/analise-estatistica.py` (a criar) usando `scipy.stats`:
+Script `scripts/analise-estatistica.py`:
 
 ```python
-from scipy.stats import friedmanchisquare, wilcoxon
-# friedmanchisquare: 3 métodos, 30 instâncias, mediana por instância
-# wilcoxon: pareado por instância entre cada par de métodos
+# Friedman/Iman-Davenport: 3 métodos, 30 instâncias, mediana por instância
+# Nemenyi: CD com q_alpha compatível com Demšar
+# Wilcoxon/Holm: pareado por instância entre cada par de métodos
 ```
 
-### Saídas esperadas
+### Saídas validadas
 
-- Tabela com p-valor do Friedman
-- Matriz de p-valores Nemenyi (ou ajuste Bonferroni-Holm para Wilcoxon)
-- Diagrama CD exportado para `monografia/figs/diagrama-cd.{png,svg}`
-- Conclusão textual: "GA/PSO/ACO diferem significativamente (p < 0.05)", ou equivalente, apenas se os testes confirmarem
+- Friedman/Iman-Davenport: F(2,58)=293.2222, p=4.710129e-31
+- Ranks médios: ACO=1.1000, GA=1.9000, PSO=3.0000
+- Nemenyi: CD=0.6050; todos os pares significativos
+- Wilcoxon/Holm: todos os pares significativos
+- Diagrama CD exportado para `monografia/figs/cd-diagram.{png,svg}`
 
 ## Critério de Pronto Para Escrita Definitiva
 
@@ -272,9 +273,9 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 | Estatística resolvida | Testes executados ou análise descritiva assumida explicitamente |
 | Figuras mínimas disponíveis | Cada figura tem escala, unidade e fonte |
 | Referências centrais selecionadas | Cada capítulo tem bibliografia mínima definida |
-| Terminologia estabilizada | TSP-SD-ATP, makespan, drone/VANT e POI usados de forma consistente |
+| Terminologia estabilizada | TSP-SD-ATP, makespan, drone e POI usados de forma consistente |
 | Limitações declaradas | Parâmetros fixos, instâncias sintéticas e baseline limitado aparecem no texto |
 
 ## Próxima Ação Recomendada
 
-Iniciar por P7 e P1: primeiro auditar divergências entre `src/`, `src/data/` e `vault/`; depois criar a matriz claim-evidência. Isso garante que a Introdução e a Conclusão sejam escritas a partir do que o código implementa e os dados sustentam, não apenas a partir de sínteses intermediárias.
+Com P1–P10 concluídos, a próxima ação é escrever/revisar os capítulos `.tex` usando as notas atualizadas e os artefatos regenerados. Começar por Experimentos ou Proposta, pois são os capítulos que mais dependem dos dados e do código.

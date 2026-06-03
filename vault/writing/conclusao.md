@@ -1,5 +1,7 @@
 ---
 tags: [writing, capitulo, conclusao]
+status: atualizado-pos-p4
+updated: 2026-06-02
 ---
 
 # Conclusão — Scaffold
@@ -7,29 +9,32 @@ tags: [writing, capitulo, conclusao]
 ## Estrutura do Capítulo
 
 ### 5.1 Síntese dos Resultados
-- ACO domina em qualidade (gap 0% em n≤12, ~2× melhor em n=100)
-- GA oferece melhor custo-benefício (ótimo em n≤12 em ~50% runs, 75× mais rápido que ACO)
-- PSO apresenta desempenho consistentemente inferior na variante TSP-SD-ATP
+- ACO apresentou melhor qualidade descritiva nas instâncias avaliadas, tanto nas 18 instâncias com brute-force quanto nas instâncias grandes.
+- GA apresentou melhor tempo computacional, especialmente em n=100, mas com makespan médio pior que ACO.
+- PSO apresentou desempenho inferior nesta implementação com random keys e parâmetros fixos.
+- O lower bound AP foi válido, mas frouxo: gap médio 51.36% vs brute-force nas 18 instâncias auditadas.
 
 ### 5.2 Contribuições
-- Primeiro benchmark multi-método na variante TSP-SD-ATP
+- Benchmark multi-método na variante TSP-SD-ATP dentro da revisão realizada
 - Implementação Go reproduzível com tensor 3D
-- 4605 execuções com análise estatística
-- Demonstração de que ACO é particularmente adequado para problemas com dependência de sequência
+- 4638 summaries com resultados, evolução e timing estruturados
+- Comparação com busca exaustiva em `10a..15c` e lower bound AP nas 30 instâncias
+- Evidência estatística de diferença entre ACO, GA e PSO nas configurações avaliadas, com ACO em melhor rank médio de makespan e custo computacional elevado
 
 ### 5.3 Limitações
 - Apenas 3 métodos (GA, PSO, ACO)
 - Parâmetros fixos (sem tuning sistemático)
 - Instâncias sintéticas em [-1,1]²
 - 51 sementes × 30 instâncias (cobertura limitada)
-- Brute-force apenas até n=14
+- Brute-force apenas nas 18 instâncias `10a..15c`
+- Significância estatística restrita às implementações, parâmetros e instâncias avaliadas
 
 ### 5.4 Trabalhos Futuros
 - Métodos adicionais: ABC, GWO, SA, ILS
-- Tuning de parâmetros (grid search, irace)
+- Tuning de parâmetros e análise de sensibilidade ([[auditoria-hiperparametros]])
 - Instâncias baseadas em cenários reais de patrulha
 - Extensão para múltiplos drones (mTSP)
-- rTSP com recompensas variáveis
+- Variantes do TSP-SD-ATP com prioridades/recompensas variáveis para POIs
 - Deep learning + ACO/GA (DeepACO, NeuFACO)
 
 ## Material de Apoio

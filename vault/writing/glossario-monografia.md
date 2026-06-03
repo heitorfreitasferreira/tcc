@@ -5,8 +5,9 @@ tags:
   - monografia
   - glossario
   - terminologia
-status: inicial
+status: atualizado-pos-p7
 created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Glossário Terminológico da Monografia
@@ -19,6 +20,9 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 - **Uso no código**: como aparece em `src/` quando aplicável
 - **Notas**: observações para o escritor
 
+> [!warning] Regra de consistência
+> Em caso de conflito entre este glossário e uma nota antiga do `vault/`, conferir [[auditoria-codigo-dados-vault]] e o código em `src/`. Este glossário foi atualizado após a auditoria P7.
+
 ---
 
 ## Problema e Formulação
@@ -28,14 +32,14 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 - **Sinônimos/evitar**: rTSP (apelido interno, evitar na monografia)
 - **Definição**: *Traveling Salesman Problem with Sequence-Dependent Angular Turn Penalties* — variante do TSP onde o custo de transição entre dois nós depende do nó anterior, devido à penalidade angular da curva.
 - **Uso no código**: `tcc` (nome do módulo Go), `rTSP` em nomes de arquivos e scripts
-- **Notas**: Definir na primeira ocorrência; usar tradução explicativa "TSP com penalidades angulares dependentes da sequência" em texto corrido
+- **Notas**: Definir na primeira ocorrência; usar tradução explicativa "TSP com penalidades angulares dependentes da sequência" em texto corrido. Não apresentar como variante consolidada na literatura; escrever como formulação adotada neste trabalho.
 
 ### Makespan
 - **Termo preferencial**: makespan
 - **Sinônimos/evitar**: custo total, tempo total de rota, *fitness*
 - **Definição**: tempo total para o drone percorrer a rota completa, partindo da base (nó 0), visitando todos os POIs na sequência determinada, e retornando à base. Soma dos valores do tensor 3D nos passos da rota.
 - **Uso no código**: `g.Makespan(order)`, `BestMakespan` em `shared.OptimizationResult`
-- **Notas**: Métrica objetivo única do problema. Usar sem tradução (consagrado na literatura de otimização)
+- **Notas**: Métrica objetivo única do problema. Definir na primeira ocorrência como tempo/custo total da rota; depois usar `makespan`. Evitar chamar de *fitness* na monografia, pois *fitness* é termo interno de metaheurística e pode inverter a intuição de minimização.
 
 ### Tensor 3D de Custos
 - **Termo preferencial**: tensor 3D de custos
@@ -56,7 +60,7 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 - **Sinônimos/evitar**: nó, vértice, cliente, cidade
 - **Definição**: localização geográfica 2D que o drone deve visitar. Nós 1 a n-1 do grafo.
 - **Uso no código**: `Points2D` em `src/points/types.go`; `pts[i]` no intervalo `[1, n-1]`
-- **Notas**: Escolher uma forma predominante e manter consistência
+- **Notas**: Usar "ponto de interesse" no texto corrido e `POI` em tabelas, figuras ou quando a repetição ficar pesada. Usar "nó" apenas ao discutir grafo/índices matemáticos.
 
 ### Base
 - **Termo preferencial**: base
@@ -66,11 +70,11 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 - **Notas**: A permutação dos métodos contém apenas os POIs (1..n-1); o Makespan adiciona a partida e o retorno
 
 ### Drone
-- **Termo preferencial**: drone (ou VANT na primeira ocorrência formal)
+- **Termo preferencial**: drone
 - **Sinônimos/evitar**: VANT, UAV, veículo aéreo não tripulado
 - **Definição**: veículo aéreo não tripulado que realiza a missão de patrulha. Velocidade constante = 1 unidade de distância por unidade de tempo.
 - **Uso no código**: `droneSpeed metersPerSecond = 1` em `src/graph/types.go`
-- **Notas**: "Drone" é mais direto e amplamente compreendido; "VANT" pode ser usado em contexto formal mas sem alternar
+- **Notas**: Usar "drone" de forma consistente. Se o orientador exigir formalidade, definir na primeira ocorrência como "drone (veículo aéreo não tripulado)"; evitar alternar com VANT/UAV ao longo do texto.
 
 ### Instância
 - **Termo preferencial**: instância
@@ -107,16 +111,23 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 ### Busca Exaustiva
 - **Termo preferencial**: busca exaustiva
 - **Sinônimos/evitar**: brute-force, enumeração completa, *exhaustive search*
-- **Definição**: algoritmo determinístico que gera todas as (n-1)! permutações de POIs via algoritmo de Heap e retorna a rota de menor makespan. Baseline exata para instâncias pequenas (n ≤ 14).
+- **Definição**: algoritmo determinístico que gera todas as (n-1)! permutações de POIs via algoritmo de Heap e retorna a rota de menor makespan. Baseline exata para instâncias pequenas executadas (`10a..15c`).
 - **Uso no código**: `src/optimization/brute/`
-- **Notas**: Complexidade O(n!·n); inviável para n ≥ 15. Serve como ótimo de referência.
+- **Notas**: Complexidade O(n!·n); inviável para instâncias maiores. Serve como ótimo de referência apenas nas 18 instâncias com summary brute-force disponível, conforme [[auditoria-codigo-dados-vault]].
 
 ### Lower Bound (AP)
 - **Termo preferencial**: lower bound ou limitante inferior
 - **Sinônimos/evitar**: cota inferior, *assignment problem bound*
 - **Definição**: limitante inferior para o makespan ótimo, obtido via relaxação do problema de designação (*Assignment Problem*) sobre matriz 2D reduzida do tensor 3D: `c'[j][k] = min_i G[i][j][k]`. Resolvido pelo algoritmo Hungarian O(n³). O bound é válido (≤ makespan ótimo) mas não produz rota factível (pode conter subtours).
 - **Uso no código**: `src/optimization/lowerbound/`
-- **Notas**: Gap de ~50% (40–65%) vs brute-force. Válido mas frouxo para o TSP-SD-ATP. Útil como referência adicional para instâncias grandes onde brute-force é inviável.
+- **Notas**: Gap médio 51.36% (40.79–65.35%) vs brute-force nas 18 instâncias auditadas. Válido mas frouxo para o TSP-SD-ATP. Útil como referência adicional para instâncias grandes onde brute-force é inviável, mas não deve ser descrito como ótimo ou rota.
+
+### Rota Factível
+- **Termo preferencial**: rota factível
+- **Sinônimos/evitar**: solução válida, tour factível
+- **Definição**: sequência que parte da base, visita cada POI exatamente uma vez e retorna à base. GA, PSO, ACO e busca exaustiva retornam rotas factíveis; o lower bound AP retorna um valor de bound e pode conter subtours.
+- **Uso no código**: `BestSequence` em `shared.OptimizationResult`; validação em `src/graph/makespan.go`
+- **Notas**: Usar esta distinção ao comparar lower bound com métodos de otimização.
 
 ---
 
@@ -143,7 +154,7 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 - **Termo preferencial**: random keys
 - **Definição**: codificação contínua [0,1]^d para problemas de permutação. A ordem dos valores, quando ordenados, define a permutação. Usada pelo PSO para mapear posição contínua → rota.
 - **Uso no código**: `src/optimization/pso/particle.go:23-40`
-- **Notas**: Decodificação O(n log n). Perde informação de adjacência — possível causa do desempenho inferior do PSO.
+- **Notas**: Decodificação O(n log n). Não preserva adjacências explicitamente; tratar como possível fator no desempenho inferior do PSO, não como causa demonstrada isoladamente.
 
 ### Feromônio 3D (ACO)
 - **Definição**: matriz τ[prev][curr][next] que representa a atratividade de visitar `next` a partir de `curr` tendo vindo de `prev`. Dimensão n×n×n.
@@ -171,6 +182,13 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 - **Uso no código**: `reporting.BuildRunID()` em `src/shared/reporting/reporting.go`
 - **Notas**: O hash SHA1 previne colisões. A run ID nomeia os três arquivos de saída.
 
+### Nome-base da Instância
+- **Termo preferencial**: nome-base da instância
+- **Sinônimos/evitar**: instância normalizada, ID da instância
+- **Definição**: identificador curto extraído do arquivo de instância, como `10a`, `30b` ou `100c`.
+- **Uso no código/dados**: aparece no `run_id`; o campo `instance` dos summaries pode conter caminho absoluto ou relativo.
+- **Notas**: Em análises e tabelas, agrupar sempre pelo nome-base para evitar separar artificialmente caminhos absolutos e relativos.
+
 ### Summary
 - **Definição**: arquivo JSON com o resultado final de uma execução (schema `tcc.summary.v1`). Contém: método, instância, seed, parâmetros, makespan final, sequência, arquivos de evolução/timing associados.
 - **Uso no código**: `shared.ReportRunSummary` em `src/shared/reporting/reporting.go`
@@ -190,7 +208,7 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 
 ### Gap
 - **Definição**: diferença relativa entre o makespan de uma solução e uma referência (ótimo ou bound). Calculado como `(makespan − referência) / referência × 100%`.
-- **Notas**: Pode ser gap vs brute-force (para n ≤ 14) ou gap vs lower bound AP (para todas as instâncias)
+- **Notas**: Pode ser gap vs brute-force nas 18 instâncias com ótimo (`10a..15c`) ou gap vs lower bound AP para todas as instâncias. Sempre declarar a referência usada.
 
 ### Taxa de Acerto
 - **Termo preferencial**: taxa de acerto
@@ -203,7 +221,7 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 
 ### Teste de Friedman
 - **Definição**: teste não-paramétrico equivalente à ANOVA de duas vias por postos. Usado para rejeitar H₀: "todos os métodos têm desempenho equivalente". Não assume normalidade.
-- **Notas**: Seguir Demšar (2006). Aplicar sobre as medianas por instância.
+- **Notas**: Seguir Demšar (2006). Aplicar sobre as medianas por instância. O script atual foi auditado em [[auditoria-script-analise-estatistica]] e está em correção por outro agente; não usar claims finais até essa correção estar concluída.
 
 ### Teste de Nemenyi
 - **Definição**: teste post-hoc para comparações múltiplas após Friedman. Calcula diferença crítica (CD) entre postos médios. Dois métodos diferem com significância se a distância entre postos excede o CD.
@@ -215,7 +233,7 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 
 ### Significância Estatística
 - **Definição**: conclusão de que a diferença observada entre métodos não é atribuível ao acaso (p < 0.05). Deve ser baseada nos testes acima, não apenas na diferença de médias.
-- **Notas**: Não declarar sem executar o protocolo completo
+- **Notas**: Não declarar sem executar o protocolo completo corrigido. Enquanto isso, usar "diferença descritiva" ou "ordenação observada".
 
 ---
 
@@ -230,7 +248,10 @@ Este glossário padroniza os termos usados na monografia. Sempre que houver alte
 | Números decimais | Ponto como separador decimal (padrão científico internacional) |
 | Milissegundos | ms |
 | Porcentagem | % com um espaço antes (exceto em tabelas) |
-| Drones | "drone" (preferencial) ou "VANT" (consistente no texto todo) |
+| Drones | "drone" |
+| Brute-force | "busca exaustiva" no texto; `BF` em tabelas |
+| Lower bound | "limitante inferior" na primeira ocorrência; `LB` em tabelas |
+| Significância | Usar com os valores validados em [[analysis-methodology]]; delimitar às configurações avaliadas |
 
 ---
 

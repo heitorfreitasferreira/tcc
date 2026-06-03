@@ -5,8 +5,9 @@ tags:
   - claims
   - evidencias
   - monografia
-status: inicial-auditada
+status: atualizada-pos-p7
 created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Matriz Claim-Evidência da Monografia
@@ -63,15 +64,15 @@ Esta matriz lista claims que podem orientar a escrita da monografia. A evidênci
 
 ## Claims Experimentais Auditados
 
-Estes claims usam todos os resultados disponíveis: GA 1530, PSO 1530, ACO 1530, lowerbound 30 e brute-force 15.
+Estes claims usam a cobertura auditada em [[auditoria-codigo-dados-vault]]: GA 1530, PSO 1530, ACO 1530, lowerbound 30 e brute-force 18. Para agrupamentos por instância, normalizar o campo `instance` pelo nome-base (`10a`, `30b`, etc.), pois os summaries misturam caminhos absolutos e relativos.
 
 | ID | Claim | Força | Evidência primária | Vault de apoio | Uso recomendado |
 |---|---|---|---|---|---|
 | E01 | Existem 30 instâncias em `src/data/`, de 10 a 100 nós, com três variantes por tamanho usado. | Forte | `src/data/*.points`, `src/data/*.graph` | [[experiment-pipeline]] | Experimentos |
-| E02 | O diretório contém 4605 execuções: 51 sementes para GA/PSO/ACO em 30 instâncias e 15 brute-force. | Forte | `src/data/results/summary/*.json` | [[auditoria-codigo-dados-vault]] | Experimentos |
-| E03 | Brute-force fornece ótimos para `10a` a `14c`. | Forte | Summaries `*__bruteforce__*.json` | [[auditoria-codigo-dados-vault]] | Experimentos |
+| E02 | O diretório contém 4638 summaries: 51 sementes para GA/PSO/ACO em 30 instâncias, 30 lowerbound e 18 brute-force. | Forte | `src/data/results/summary/*.json` | [[auditoria-codigo-dados-vault]] | Experimentos |
+| E03 | Brute-force fornece ótimos para `10a` a `15c`. | Forte | Summaries `*__bruteforce__*.json` | [[auditoria-codigo-dados-vault]] | Experimentos |
 | E05 | No subconjunto atual, ACO tem menor gap médio que GA e PSO nas instâncias com brute-force. | Forte descritivo | `src/data/results/summary/*.json` filtrado | [[auditoria-codigo-dados-vault]] | Experimentos |
-| E06 | No subconjunto atual, ACO tem gap médio 0.1836%, GA 4.3564% e PSO 19.0226% nas instâncias `10a..14c`. | Forte descritivo | `src/data/results/summary/*.json` filtrado | [[auditoria-codigo-dados-vault]] | Experimentos |
+| E06 | Nas 18 instâncias com brute-force (`10a..15c`), ACO tem gap médio 0.4296%, GA 5.2814% e PSO 22.2915%. | Forte descritivo | `src/data/results/summary/*.json` filtrado e normalizado por nome-base | [[auditoria-codigo-dados-vault]] | Experimentos |
 | E07 | No subconjunto atual, ACO não encontra o ótimo em 100% das execuções até `13c`. | Forte como correção | `src/data/results/summary/*.json` filtrado | [[auditoria-codigo-dados-vault]] | Usar para evitar claim errado |
 | E08 | Em `100a..100c`, ACO apresenta makespan médio substancialmente menor que GA e PSO. | Forte descritivo | `src/data/results/summary/*.json` filtrado | [[auditoria-codigo-dados-vault]] | Experimentos/Conclusão |
 | E09 | Em `100a`, médias de makespan: ACO 45.3528, GA 110.6608, PSO 136.5131. | Forte descritivo | `src/data/results/summary/*.json` filtrado | [[auditoria-codigo-dados-vault]] | Experimentos |
@@ -81,22 +82,27 @@ Estes claims usam todos os resultados disponíveis: GA 1530, PSO 1530, ACO 1530,
 | E13 | Em `100a`, tempos médios: ACO 4262.06 ms, GA 38.82 ms, PSO 76.24 ms. | Forte descritivo | `src/data/results/timing/*.json` via `timing_file` | [[auditoria-codigo-dados-vault]] | Experimentos |
 | E14 | Em `100b`, tempos médios: ACO 4276.55 ms, GA 36.27 ms, PSO 75.25 ms. | Forte descritivo | `src/data/results/timing/*.json` via `timing_file` | [[auditoria-codigo-dados-vault]] | Experimentos |
 | E15 | Em `100c`, tempos médios: ACO 4266.55 ms, GA 39.37 ms, PSO 73.84 ms. | Forte descritivo | `src/data/results/timing/*.json` via `timing_file` | [[auditoria-codigo-dados-vault]] | Experimentos |
-| E16 | O AP bound é um limitante inferior válido para todas as 30 instâncias (determinístico) e ≤ BF ótimo nas 15 com brute-force. | Forte descritivo | `src/data/results/summary/*__lowerbound__*.json` | [[auditoria-codigo-dados-vault]] | Experimentos |
-| E17 | O AP bound é frouxo para o TSP-SD-ATP: gap médio ~50% (min 40.8%, max 65.3%) vs BF ótimo. | Forte descritivo | `src/data/results/summary/*__lowerbound__*.json` vs BF | [[auditoria-codigo-dados-vault]] | Experimentos (bound válido mas não tight) |
+| E16 | O AP bound é um limitante inferior válido para todas as 30 instâncias (determinístico) e ≤ BF ótimo nas 18 com brute-force. | Forte descritivo | `src/data/results/summary/*__lowerbound__*.json` | [[auditoria-codigo-dados-vault]] | Experimentos |
+| E17 | O AP bound é frouxo para o TSP-SD-ATP: gap médio 51.36% (min 40.79%, max 65.35%) vs BF ótimo. | Forte descritivo | `src/data/results/summary/*__lowerbound__*.json` vs BF | [[auditoria-codigo-dados-vault]] | Experimentos (bound válido mas não tight) |
 | E18 | O lower bound é computacionalmente trivial (~0ms n≤15, ~5ms n=100). | Forte descritivo | `src/data/results/timing/*__lowerbound__*.json` | [[auditoria-codigo-dados-vault]] | Experimentos (contraste com metaheurísticas) |
+| E19 | A análise estatística confirma ordenação por makespan mediano: ACO, depois GA, depois PSO. | Forte | `scripts/analise-estatistica.py`, `src/data/results/summary/*.json` | [[analysis-methodology]], [[auditoria-script-analise-estatistica]] | Experimentos |
+| E20 | Com mediana por instância, os ranks médios são ACO 1.1000, GA 1.9000 e PSO 3.0000. | Forte | `scripts/analise-estatistica.py` | [[analysis-methodology]] | Experimentos |
+| E21 | Friedman/Iman-Davenport rejeita equivalência entre métodos: F(2,58)=293.2222, p=4.710129e-31. | Forte | `scripts/analise-estatistica.py` | [[analysis-methodology]] | Experimentos |
+| E22 | Nemenyi e Wilcoxon/Holm indicam diferença significativa nos três pares ACO×GA, ACO×PSO e GA×PSO. | Forte | `scripts/analise-estatistica.py`, `monografia/figs/cd-diagram.svg` | [[analysis-methodology]] | Experimentos |
 
 ## Claims Bloqueados ou Que Exigem Correção
 
 | ID | Claim bloqueado | Motivo | Ação necessária |
 |---|---|---|---|
-| B01 | ACO encontra o ótimo em 100% das sementes para instâncias até `13c`. | Contradiz subconjunto atual filtrado | Remover ou recalcular com critério antigo explicitado |
-| B02 | ACO tem gap médio 0.00% nas instâncias pequenas. | Contradiz subconjunto atual filtrado | Usar 0.1836% ou recalcular com outro filtro declarado |
-| B03 | GA tem gap médio 0.04% nas instâncias pequenas. | Contradiz subconjunto atual filtrado | Usar 4.3564% ou recalcular com outro filtro declarado |
-| B04 | PSO tem gap médio 1.57% nas instâncias pequenas. | Contradiz subconjunto atual filtrado | Usar 19.0226% ou recalcular com outro filtro declarado |
+| B01 | ACO encontra o ótimo em 100% das sementes para instâncias pequenas. | Contradiz dados atuais com 18 instâncias BF | Remover ou recalcular com subconjunto explicitado |
+| B02 | ACO tem gap médio 0.00% nas instâncias pequenas. | Contradiz dados atuais com 18 instâncias BF | Usar 0.4296% para `10a..15c` ou explicitar outro subconjunto |
+| B03 | GA tem gap médio 0.04% nas instâncias pequenas. | Contradiz dados atuais com 18 instâncias BF | Usar 5.2814% para `10a..15c` ou explicitar outro subconjunto |
+| B04 | PSO tem gap médio 1.57% nas instâncias pequenas. | Contradiz dados atuais com 18 instâncias BF | Usar 22.2915% para `10a..15c` ou explicitar outro subconjunto |
 | B05 | GA é ~75x mais rápido que ACO em n=100. | Subconjunto atual indica ~108x a ~118x em `100a..100c` | Atualizar para razão calculada ou reportar por instância |
 | B06 | ACO em `100a` leva cerca de 2.859s. | Subconjunto atual indica média 4.262s | Atualizar com dados filtrados |
-| B07 | Diferenças entre métodos são estatisticamente significativas. | Testes estatísticos não foram auditados nesta etapa | Executar/auditar protocolo estatístico |
-| B08 | "AP bound tem gap < 30% nas instâncias pequenas." | Dados mostram gap real 40–65% | Substituir por "AP bound é válido mas frouxo (gap ~50%)" |
+| ~~B07~~ | ~~Diferenças entre métodos são estatisticamente significativas.~~ | Resolvido: script corrigido e validado | Usar E21/E22 com os valores atuais |
+| B08 | "AP bound tem gap < 30% nas instâncias pequenas." | Dados mostram gap real 40.79–65.35% nas 18 instâncias BF | Substituir por "AP bound é válido mas frouxo (gap 51.36% médio)" |
+| ~~B09~~ | ~~O diagrama CD atual é evidência final.~~ | Resolvido: `cd-diagram.{svg,png}` regenerado após correção | Usar com E22 |
 
 ## Claims Interpretativos Permitidos com Cautela
 
@@ -105,13 +111,12 @@ Estes claims usam todos os resultados disponíveis: GA 1530, PSO 1530, ACO 1530,
 | I01 | ACO parece mais adequado à dependência de sequência do TSP-SD-ATP porque modela feromônio em triplas. | Moderado | Apresentar como interpretação apoiada por desempenho e estrutura, não como prova causal |
 | I02 | GA oferece melhor custo computacional, mas sacrifica qualidade em instâncias grandes. | Moderado | Usar dados de makespan e tempo lado a lado |
 | I03 | PSO com random keys teve desempenho inferior neste desenho experimental. | Moderado | Delimitar à implementação atual e aos parâmetros usados |
-| I04 | A ausência de tuning sistemático limita generalizações. | Forte | Consta do desenho experimental; mencionar em limitações |
+| I04 | A ausência de tuning sistemático limita generalizações. | Forte | Consta do desenho experimental; mencionar em limitações com apoio em [[auditoria-hiperparametros]] |
 | I05 | O lower bound AP via redução 3D→2D é válido mas pouco informativo para o TSP-SD-ATP (gap ~50%). Métodos 3D-nativos (MDD, ng-path) poderiam produzir bounds mais justos. | Moderado | Dados mostram gap 40–65%; literatura indica MDD como alternativa | Apresentar como limitação do método e direção futura |
+| I06 | As diferenças de representação entre GA, PSO e ACO são ameaça à validade externa da comparação. | Forte | Apoiar em [[auditoria-codificacao-metodos]]; usar como limitação, não como explicação causal definitiva |
 
 ## Próximas Tarefas
 
-1. ~~Atualizar [[pso]] e [[aco]] para refletirem o código atual.~~ **RESOLVIDO**
-2. Validar [[resultados]] contra dados brutos (parcialmente atualizado).
-3. Auditar ou implementar testes estatísticos antes de qualquer claim de significância.
-4. Gerar figuras e tabelas finais.
-5. Corrigir [[roadmap-monografia]] claim de "gap < 30%" para "gap ~50% (bound válido mas frouxo)".
+1. Usar [[auditoria-codificacao-metodos]] para redigir limitações sobre comparabilidade entre representações.
+2. Usar [[auditoria-hiperparametros]] para redigir limitações sobre parâmetros fixos.
+3. Escrever os capítulos `.tex` evitando reaproveitar parágrafos com cobertura antiga.

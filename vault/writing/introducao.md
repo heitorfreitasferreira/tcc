@@ -1,5 +1,7 @@
 ---
 tags: [writing, capitulo, introducao]
+status: atualizado-pos-p7
+updated: 2026-06-02
 ---
 
 # Introdução — Scaffold
@@ -18,18 +20,19 @@ tags: [writing, capitulo, introducao]
 
 3. **Lacuna na Literatura**
    - Benchmarks existentes usam TSP clássico (matriz 2D simétrica)
-   - Nenhum estudo comparativo sistemático na variante TSP-SD-ATP
-   - Três metaheurísticas canônicas nunca comparadas nesta variante
+   - Não foram identificados, na revisão realizada, estudos que comparem sistematicamente GA, PSO e ACO na variante TSP-SD-ATP
+   - Três metaheurísticas canônicas ainda precisam ser avaliadas nessa formulação com dependência angular de sequência
 
 4. **Objetivos**
    - Implementar GA, PSO, ACO para TSP-SD-ATP
    - Comparar qualidade e tempo em 30 instâncias, 51 sementes
-   - Determinar qual método oferece melhor trade-off
+   - Analisar trade-off entre qualidade de solução e tempo computacional
 
 5. **Contribuições**
-   - Primeiro benchmark multi-método na variante TSP-SD-ATP
+   - Benchmark multi-método na variante TSP-SD-ATP dentro da revisão realizada
    - Implementação Go reproduzível com tensor 3D
-   - Análise estatística com 4605 execuções
+   - Base experimental com 4638 summaries, 51 sementes por metaheurística e 30 instâncias
+   - Comparação com busca exaustiva em 18 instâncias e lower bound AP em 30 instâncias
 
 6. **Organização da Monografia**
    - Capítulo 2: Fundamentação teórica
@@ -42,4 +45,5 @@ tags: [writing, capitulo, introducao]
 - [[rajan2022routing]] — patrulha com UAV (motivação direta)
 - [[murray2015flying]] — FSTSP (contexto drone routing)
 - [[tsp-variants]] — classificação da variante
-- [[results]] — dados experimentais (para mencionar na introdução)
+- [[resultados]] — dados experimentais (para mencionar na introdução)
+- [[claim-evidence-matrix]] — claims liberados e bloqueados

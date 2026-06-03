@@ -26,7 +26,7 @@ tags: [writing, capitulo, proposta]
 ### 3.4 Particle Swarm Optimization
 - Random keys para codificação contínua→discreta ([[pso]])
 - Atualização de velocidade com inércia W
-- Design rationale: por que random keys? C1=C2=1.5? W=0.7?
+- Design rationale: por que random keys? C1=C2=2.0? W=0.7?
 
 ### 3.5 Ant Colony Optimization
 - Feromônio 3D (τ[i][j][k]) ([[aco]])
@@ -36,7 +36,7 @@ tags: [writing, capitulo, proposta]
 
 ### 3.6 Busca Exaustiva
 - Heap's algorithm para permutações ([[bruteforce]])
-- Uso como baseline ótima para n ≤ 14
+- Uso como baseline ótima nas instâncias executadas `10a..15c`
 
 ### 3.7 Pipeline Experimental
 - CLI em Cobra ([[experiment-pipeline]])
@@ -51,8 +51,8 @@ tags: [writing, capitulo, proposta]
 | Torneio tamanho 2 | Roleta, ranking | Baixa pressão seletiva → mantém diversidade |
 | Mutação swap 5% | Inversão, deslocamento | Swap é a mais simples e suficiente |
 | Random keys (PSO) | Swap-operator | RK permite usar PSO contínuo padrão sem modificar equação |
-| C1=C2=1.5, W=0.7 | Diversos da literatura | Valores canônicos; sem tuning específico (limitação) |
-| ACS com roleta | Pseudo-aleatória proporcional | Mais exploratória; sem q₀ para calibragem |
+| C1=C2=2.0, W=0.7 | Diversos da literatura | Valores canônicos; sem tuning específico (limitação) |
+| Ant System com roleta | Pseudo-aleatória proporcional | Mais exploratória; sem q₀ para calibragem |
 | Tensor 3D | Pseudo-dual graph (Winter) | Pré-computação O(n³) → avaliação O(n); simples de implementar |
 
 ## Material de Apoio

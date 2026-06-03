@@ -5,154 +5,153 @@ tags:
   - monografia
   - figuras
   - tabelas
-status: inicial
+status: regenerado-pos-p4
 created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Figuras e Tabelas da Monografia
 
-Catálogo de todos os artefatos visuais disponíveis em `monografia/figs/` e tabelas geradas por `scripts/consolidate_results.py`. Organizado por capítulo.
+Catálogo operacional das figuras e tabelas candidatas para a monografia. A seleção abaixo está alinhada com [[auditoria-codigo-dados-vault]], [[claim-evidence-matrix]], [[glossario-monografia]] e [[auditoria-script-analise-estatistica]].
 
-Referência cruzada com as figuras/tabelas mínimas listadas em [[roadmap-monografia#Capítulo-4-—-Experimentos-e-Resultados]].
+> [!warning] Regra de uso
+> Não citar figura ou tabela no texto final sem conferir se o arquivo existe, se a escala/unidade aparece, e se o dado usado está coerente com a cobertura atual: 4638 summaries, 30 instâncias, 51 sementes para GA/PSO/ACO, 30 lowerbound e 18 brute-force (`10a..15c`).
 
----
+## Inventário Atual de Artefatos
 
-## Capítulo 1 — Introdução
+Arquivos existentes em `monografia/figs/` nesta auditoria:
 
-| ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| Fig1 | ilustração | Diagrama do cenário de patrulha com drone (a criar) | — | Pendente |
+| Tipo | Quantidade | Exemplos |
+|---|---:|---|
+| SVG | 22 | `heatmap-makespan-median.svg`, `scalability-runtime.svg`, `cd-diagram.svg` |
+| PNG | 29 | previews de gráficos, route panels e logos |
+| TEX | 6 | `flowchart-*.tex`, `fig-route-small-multiples.tex` |
+| PDF | 6 | `flowchart-*.pdf`, logos |
+| Total | 57 | inclui logos institucionais |
 
-> Nenhuma figura obrigatória para Introdução. Opcional: figura conceitual do cenário.
+Artefatos principais existentes:
 
----
+| Família | Arquivos existentes | Status |
+|---|---|---|
+| Diagramas conceituais | `diagram-angular-penalty.{png,svg}`, `diagram-tensor-3d.{png,svg}` | Prontos |
+| Fluxogramas | `flowchart-ga`, `flowchart-pso`, `flowchart-aco`, `flowchart-bruteforce`, `flowchart-lowerbound` em `.tex/.pdf/.png/.svg` | Prontos |
+| Heatmaps | `heatmap-makespan-median`, `heatmap-gap-vs-bf`, `heatmap-success-rate` em `.png/.svg` | Regenerados após BF `15a..15c` |
+| Qualidade/tempo | `fig-quality-distribution`, `scalability-runtime`, `scatter-quality-vs-time`, `boxplot-estabilidade` em `.png/.svg` | Prontos |
+| Convergência | `fig-runtime-convergence`, `convergence-last-improvement`, `convergence-overlay-{10a,30a,50a,100a}` | Prontos |
+| Rotas | `route-panel-{10a,30a,100a}.png`, `fig-route-small-multiples.tex` | Regenerados |
+| Estatística | `cd-diagram.{png,svg}` | Regenerado e validado após P4 |
 
-## Capítulo 2 — Fundamentação Teórica
+## Seleção Recomendada Para o Corpo
 
-| ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| Fig2 | diagrama | Penalidade angular: ângulo de virada entre dois segmentos | `diagram-angular-penalty.{png,svg}` | Pronto |
-| Fig3 | diagrama | Tensor 3D de custo G[prev][curr][next] | `diagram-tensor-3d.{png,svg}` | Pronto |
-| Fig4 | fluxograma | Algoritmo Genético (GA) | `flowchart-ga.{tex,pdf,png,svg}` | Pronto |
-| Fig5 | fluxograma | PSO | `flowchart-pso.{tex,pdf,png,svg}` | Pronto |
-| Fig6 | fluxograma | ACO | `flowchart-aco.{tex,pdf,png,svg}` | Pronto |
-| Fig7 | fluxograma | Busca exaustiva (brute-force) | `flowchart-bruteforce.{tex,pdf,png,svg}` | Pronto |
-| Fig8 | fluxograma | Lower bound AP (Hungarian) | `flowchart-lowerbound.{tex,pdf,png,svg}` | Pronto |
+Usar poucas figuras no corpo principal. Colocar o restante em apêndice ou omitir se não sustentar claim direto.
 
-> Fig2–3 na seção de TSP-SD-ATP e custos de curva. Fig4–8 na seção de métodos.
+| ID | Capítulo | Claim suportado | Artefato | Status | Observação |
+|---|---|---|---|---|---|
+| F1 | Fundamentação/Proposta | O custo depende da sequência de três nós, não apenas da aresta atual. | `diagram-angular-penalty.svg` | Pronto | Usar com explicação da penalidade angular. |
+| F2 | Proposta | O tensor 3D pré-computa custo `G[anterior][atual][próximo]`. | `diagram-tensor-3d.svg` | Pronto | Associar à avaliação O(n) após pré-computação O(n^3). |
+| F3 | Proposta | Os métodos têm fluxos distintos mas compartilham a mesma função objetivo. | `flowchart-ga.tex`, `flowchart-pso.tex`, `flowchart-aco.tex`, `flowchart-lowerbound.tex` | Pronto | Preferir `.tex`/PDF em LaTeX; não usar todos se ficar repetitivo. |
+| F4 | Experimentos | ACO apresenta menor makespan mediano que GA e PSO na maioria/todas as instâncias auditadas. | `heatmap-makespan-median.svg` | Regenerado | Usa cobertura atual. |
+| F5 | Experimentos | Nas instâncias com ótimo, ACO tem menor gap e maior taxa de acerto que GA/PSO. | `heatmap-gap-vs-bf.svg` + `heatmap-success-rate.svg` | Regenerado | Reflete BF `10a..15c`. |
+| F6 | Experimentos | ACO melhora qualidade, mas custa muito mais tempo de otimização. | `scatter-quality-vs-time.svg` | Pronto | Figura central de trade-off. |
+| F7 | Experimentos | O tempo cresce por ordens de grandeza entre métodos e tamanhos. | `scalability-runtime.svg` | Pronto | Deve ter eixo/legenda em ms ou escala log explícita. |
+| F8 | Experimentos | Métodos estocásticos têm variabilidade distinta entre sementes. | `boxplot-estabilidade.svg` ou `fig-quality-distribution.svg` | Pronto | Preferir uma das duas, não ambas, salvo se cada uma responder pergunta diferente. |
+| F9 | Experimentos | A convergência difere entre métodos ao longo das avaliações/iterações. | `fig-runtime-convergence.svg` ou `convergence-overlay-*.svg` | Pronto | Preferir uma figura agregada; overlays por instância podem ir ao apêndice. |
+| F10 | Experimentos | As rotas finais diferem qualitativamente entre métodos. | `route-panel-10a.png`, `route-panel-30a.png`, `route-panel-100a.png`, `fig-route-small-multiples.tex` | Regenerado | Painéis compostos em LaTeX. |
+| F11 | Experimentos | Diferenças estatísticas entre métodos. | `cd-diagram.svg` | Regenerado e validado | Usar com os valores P4 atuais. |
 
----
+## Figuras Por Capítulo
 
-## Capítulo 3 — Proposta
-
-| ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| — | — | Nenhuma figura específica (a formulação usa equações, não figuras) | — | — |
-
-> Opcional: incluir Fig2–3 da Fundamentação se não usadas lá, ou referenciar como "conforme visto na Seção 2".
-
----
-
-## Capítulo 4 — Experimentos e Resultados
-
-### Seção: Configuração e Baseline
-
-| ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| T1 | tabela | Instâncias: nome, n, variante, nº POIs | gerada por `consolidate_results.py` | Gerável |
-| T2 | tabela | Ótimos brute-force (10a..14c) com makespan | gerada por `consolidate_results.py` | Gerável |
-| T3 | tabela | Parâmetros dos métodos (pop, iter, defaults) | manual | Rascunho |
-| T4 | tabela | AP bound vs brute-force: bound, ótimo, gap % (10a..14c) | gerada por `consolidate_results.py` | Gerável |
-
-### Seção: Qualidade das Soluções
+### Capítulo 1 — Introdução
 
 | ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| Fig9 | heatmap | Makespan mediano por instância×método | `heatmap-makespan-median.{png,svg}` | Pronto |
-| Fig10 | heatmap | Gap % vs brute-force (instâncias 10a..14c) | `heatmap-gap-vs-bf.{png,svg}` | Pronto |
-| Fig11 | heatmap | Taxa de acerto (% sementes que encontram ótimo) | `heatmap-success-rate.{png,svg}` | Pronto |
-| Fig12 | boxplot | Distribuição de qualidade (makespan) por método e instância | `boxplot-estabilidade.{png,svg}` | Pronto |
-| Fig13 | gráfico | Distribuição de qualidade agregada (método × n) | `fig-quality-distribution.{png,svg}` | Pronto |
-| T5 | tabela | Gap médio, min, max por método (instâncias com BF) | gerada por `consolidate_results.py` | Gerável |
-| T6 | tabela | Makespan médio por método e instância (grandes: 50a..100c) | gerada por `consolidate_results.py` | Gerável |
-| T7 | tabela | Taxa de acerto por método e instância (10a..14c) | gerada por `consolidate_results.py` | Gerável |
+|---|---|---|---|---|
+| I1 | ilustração conceitual | Cenário de patrulha com drone e POIs | — | Opcional; não criar se for decorativa |
 
-### Seção: Tempo Computacional
+Decisão: a Introdução pode funcionar sem figura. Se uma ilustração for criada, ela deve explicar a missão de patrulha e não virar imagem decorativa de drone.
+
+### Capítulo 2 — Fundamentação Teórica
 
 | ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| Fig14 | gráfico | Escalabilidade: tempo de otimização por n (escala log) | `scalability-runtime.{png,svg}` | Pronto |
-| Fig15 | scatter | Trade-off qualidade×tempo (média por método×instância) | `scatter-quality-vs-time.{png,svg}` | Pronto |
-| T8 | tabela | Tempo médio (ms) por método e instância (n=50, 100) | gerada por `consolidate_results.py` | Gerável |
-| T9 | tabela | Razão ACO/GA e ACO/PSO em n=100 | gerada por `consolidate_results.py` | Gerável |
+|---|---|---|---|---|
+| FT1 | diagrama | Penalidade angular entre segmentos consecutivos | `diagram-angular-penalty.{png,svg}` | Pronto |
+| FT2 | diagrama | Tensor 3D de custo | `diagram-tensor-3d.{png,svg}` | Pronto |
 
-### Seção: Convergência
+Decisão: usar no máximo um desses no Capítulo 2 se o Capítulo 3 já for usar ambos. Evitar duplicação.
 
-| ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| Fig16 | curva | Convergência: fração de avaliações × gap mediano (3 métodos) | `fig-runtime-convergence.{png,svg}` | Pronto |
-| Fig17 | curva | Última iteração com melhoria por método | `convergence-last-improvement.{png,svg}` | Pronto |
-| Fig18 | overlay | Curvas de convergência sobrepostas (10a, 30a, 50a, 100a) | `convergence-overlay-{10a,30a,50a,100a}.{png,svg}` | Pronto |
-
-### Seção: Rotas
+### Capítulo 3 — Proposta
 
 | ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| Fig19 | rota | Rota ótima BF + rotas GA/PSO/ACO/LB para 10a | `overlay-10a-methods.png` | Pronto |
-| Fig20 | rota | Rota ótima BF + rotas GA/PSO/ACO/LB para 10b | `overlay-10b-methods.png` | Pronto |
-| Fig21 | rota | Rota ótima BF + rotas GA/PSO/ACO/LB para 10c | `overlay-10c-methods.png` | Pronto |
-| Fig22 | rota | Rotas GA/PSO/ACO/LB para 14a | `overlay-14a-methods.png` | Pronto |
-| Fig23 | rota | Rotas GA/PSO/ACO/LB para 15a | `overlay-15a-methods.png` | Pronto |
-| Fig24 | rota | Rotas GA/PSO/ACO/LB para 20a | `overlay-20a-methods.png` | Pronto |
-| Fig25 | rota | Rotas GA/PSO/ACO/LB para 30a | `overlay-30a-methods.png` | Pronto |
-| Fig26 | rota | Rotas GA/PSO/ACO/LB para 50a | `overlay-50a-methods.png` | Pronto |
-| Fig27 | rota | Rotas GA/PSO/ACO/LB para 100a | `overlay-100a-methods.png` | Pronto |
-| Fig28 | painel | Painel multi-instância (10a, 30a, 100a) com 4 métodos cada | `route-panel-{10a,30a,100a}.png` | Pronto |
-| Fig29 | tex | Small multiples: rotas de todas as instâncias | `fig-route-small-multiples.tex` | Pronto |
+|---|---|---|---|---|
+| P1 | diagrama | Tensor 3D e função objetivo | `diagram-tensor-3d.svg` | Pronto |
+| P2 | fluxograma | Fluxo do GA | `flowchart-ga.tex` | Pronto |
+| P3 | fluxograma | Fluxo do PSO | `flowchart-pso.tex` | Pronto |
+| P4 | fluxograma | Fluxo do ACO | `flowchart-aco.tex` | Pronto |
+| P5 | fluxograma | Lower bound AP/Hungarian | `flowchart-lowerbound.tex` | Pronto |
+| P6 | fluxograma | Busca exaustiva | `flowchart-bruteforce.tex` | Pronto |
 
-> Selecionar 3–5 overlays representativos para o corpo da monografia; os demais podem ir para apêndice.
+Decisão: se o capítulo ficar visualmente pesado, agrupar fluxogramas de GA/PSO/ACO em apêndice e manter apenas o tensor + lower bound no corpo.
 
-### Seção: Estatística
+### Capítulo 4 — Experimentos e Resultados
 
 | ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| T10 | tabela | Resultado do teste de Friedman (χ², p-valor) | gerada por `scripts/analise-estatistica.py` | Pendente |
-| T11 | tabela | Matriz de p-valores Nemenyi ou Wilcoxon+Bonferroni | gerada por `scripts/analise-estatistica.py` | Pendente |
-| Fig30 | diagrama | Diagrama de diferença crítica (CD) | `monografia/figs/diagrama-cd.{png,svg}` | Pendente |
+|---|---|---|---|---|
+| ER1 | heatmap | Makespan mediano por instância e método | `heatmap-makespan-median.{png,svg}` | Regenerado |
+| ER2 | heatmap | Gap mediano ou agregado vs brute-force | `heatmap-gap-vs-bf.{png,svg}` | Regenerado com BF `10a..15c` |
+| ER3 | heatmap | Taxa de acerto do ótimo | `heatmap-success-rate.{png,svg}` | Regenerado com BF `10a..15c` |
+| ER4 | distribuição | Estabilidade/variabilidade entre sementes | `boxplot-estabilidade.{png,svg}` | Pronto |
+| ER5 | distribuição | Qualidade agregada por método | `fig-quality-distribution.{png,svg}` | Pronto |
+| ER6 | escala temporal | Tempo de otimização por tamanho | `scalability-runtime.{png,svg}` | Pronto |
+| ER7 | dispersão | Trade-off qualidade-tempo | `scatter-quality-vs-time.{png,svg}` | Pronto |
+| ER8 | convergência | Convergência agregada por avaliações | `fig-runtime-convergence.{png,svg}` | Pronto |
+| ER9 | convergência | Última iteração com melhoria | `convergence-last-improvement.{png,svg}` | Pronto |
+| ER10 | rotas | Painéis representativos por método | `route-panel-{10a,30a,100a}.png`, `fig-route-small-multiples.tex` | Regenerado |
+| ER11 | estatística | Diagrama de diferença crítica | `cd-diagram.{png,svg}` | Regenerado e validado |
 
-> A seção de estatística e as tabelas T10–T11 e Fig30 dependem da execução de `scripts/analise-estatistica.py`.
+### Capítulo 5 — Conclusão
 
----
+Nenhuma figura nova. Referenciar achados do Capítulo 4 sem introduzir resultado novo.
 
-## Capítulo 5 — Conclusão
+## Tabelas Finais Recomendadas
 
-| ID | Tipo | Descrição | Arquivo | Status |
-|----|------|-----------|---------|--------|
-| — | — | Nenhuma figura ou tabela nova | — | — |
+| ID | Capítulo | Claim suportado | Conteúdo | Fonte/Geração | Status |
+|---|---|---|---|---|---|
+| T1 | Proposta/Experimentos | O estudo usa 30 instâncias sintéticas com tamanhos definidos. | Instância, n, variante, arquivo `.points/.graph` | `src/data/` ou script simples | A criar/gerar |
+| T2 | Proposta/Experimentos | Parâmetros foram fixos e reproduzíveis. | GA, PSO, ACO, BF, LB; flags e defaults | `src/cmd/*.go`, [[glossario-monografia]] | Manual auditada |
+| T3 | Experimentos | BF fornece ótimos para 18 instâncias pequenas. | Ótimos brute-force `10a..15c` | `src/data/results/summary/*__bruteforce__*.json` | A gerar |
+| T4 | Experimentos | AP bound é válido mas frouxo. | BF ótimo, LB, gap LB->BF nas 18 instâncias | [[auditoria-codigo-dados-vault]] e summaries | A gerar |
+| T5 | Experimentos | ACO tem menor gap médio que GA/PSO nas instâncias com BF. | Runs, gap médio, min, max, taxa de ótimo por método | [[auditoria-codigo-dados-vault]] | A gerar |
+| T6 | Experimentos | ACO domina qualidade em instâncias grandes. | Best, média, dp por método em `50a..100c` | summaries | A gerar |
+| T7 | Experimentos | ACO é muito mais lento em n=100. | Tempo médio ms e razão ACO/GA, ACO/PSO | timings ligados por `timing_file` | A gerar |
+| T8 | Experimentos | Teste estatístico global e pós-teste. | Friedman/Iman-Davenport, Nemenyi, Wilcoxon/Holm | `scripts/analise-estatistica.py` | Validado |
 
-> Conclusão não apresenta novos resultados. Pode referenciar figuras dos capítulos anteriores.
+> [!note] `consolidate_results.py`
+> Executado após P4 com `4638` summaries. As estatísticas foram validadas operacionalmente, mas o script ainda imprime tabelas no stdout; para uso final em LaTeX, selecionar/formatar apenas as tabelas necessárias.
 
----
+## Pendências Bloqueantes
 
-## Resumo por Status
+| Pendência | Afeta | Ação |
+|---|---|---|
+| Seleção final de tabelas ainda não foi incorporada aos `.tex` | T1–T8 | Copiar/adaptar tabelas após escrita do Capítulo 4 |
+| `consolidate_results.py` imprime tabelas no stdout | T1–T7 | Transformar em arquivo `.tex` dedicado se for usado diretamente |
+| Figura opcional da Introdução não existe | I1 | Só criar se apoiar argumento; caso contrário, omitir |
 
-| Status | Quantidade |
-|--------|-----------:|
-| Pronto (PNG+SVG) | 20+ figuras de publicação + 30+ rotas + 6 fluxogramas + 2 diagramas conceituais |
-| Gerável (script existe) | Tabelas T1–T9 via `consolidate_results.py` |
-| Pendente (a criar) | T10, T11, Fig30 (dependem de `scripts/analise-estatistica.py`); Fig1 (cenário de patrulha) |
-| A selecionar | Escolher ~5 overlays de rota para corpo, restante para apêndice |
+## Critérios de Aceite Para Figura/Tabela Final
 
-## Legenda de Nomenclatura
+Cada artefato aprovado para a monografia deve atender aos critérios abaixo:
 
-- **heatmap-***: mapas de calor 2D (instância × método)
-- **scatter-***: gráfico de dispersão
-- **boxplot-***: gráfico de caixa
-- **convergence-***: curvas de evolução do makespan
-- **scalability-***: tempo × tamanho da instância
-- **overlay-***: rotas sobrepostas no mesmo mapa
-- **route-panel-***: painéis comparativos lado a lado
-- **diagram-***: conceitos abstratos (tensor, ângulo)
-- **flowchart-***: diagrama de fluxo do algoritmo
-- **graph-***-bare: grafo sem rota sobreposta
-- **fig-***: figuras de alta qualidade para publicação
+| Critério | Como verificar |
+|---|---|
+| Claim explícito | A legenda ou seção deve dizer que comparação/achado a figura sustenta |
+| Fonte rastreável | Deve apontar para `src/data/results/`, `scripts/` ou render endpoint Go |
+| Escala e unidades | Eixos, ticks, unidades (`makespan`, `%`, `ms`, `n`) e legenda devem aparecer |
+| Variabilidade | Gráficos de métodos estocásticos devem mostrar distribuição, dp, boxplot ou n=51 quando necessário |
+| Cobertura correta | BF deve ser `10a..15c`; métodos estocásticos devem usar 51 sementes por instância |
+| Texto em pt-BR | Títulos/legendas/captions finais devem estar em português acadêmico |
+| Composição LaTeX | Painéis e explicações longas devem ser compostos em `.tex`, não embutidos em PNG denso |
+| Estatística corrigida | Qualquer figura/tabela de significância depende do script estatístico corrigido |
+
+## Ordem Recomendada de Finalização
+
+1. Escolher as figuras do corpo: F1/F2, F6/F7/F8, F10 e F11.
+2. Transformar T1–T8 em tabelas LaTeX finais durante a escrita do Capítulo 4.
+3. Deixar painéis extras e small multiples para apêndice, se necessário.

@@ -111,7 +111,7 @@ Esta observação é correta e importante. O ACO tridimensional sofre de uma dil
 
 ## Pergunta 7 — Baseline Brute-Force
 
-**Banca:** Você executou brute-force só até instâncias pequenas (n ≤ 14). Para instâncias maiores, você não tem o ótimo global. Como você mede a qualidade absoluta das soluções encontradas por GA, PSO e ACO em instâncias de 30, 50 e 100 nós? Gap relativo entre os métodos é suficiente, ou você precisa de um lower bound para dizer "estamos a X% do ótimo"?
+**Banca:** Você executou brute-force só até `15c`. Para instâncias maiores, você não tem o ótimo global. Como você mede a qualidade absoluta das soluções encontradas por GA, PSO e ACO em instâncias de 30, 50 e 100 nós? Gap relativo entre os métodos é suficiente, ou você precisa de um lower bound para dizer "estamos a X% do ótimo"?
 
 **Resposta bruta:**
 
@@ -145,7 +145,7 @@ A distinção entre significância estatística e prática é crucial. Uma difer
 
 ## Pergunta 9 — Representação e Codificação das Soluções
 
-**Banca:** GA usa random keys, PSO usa codificação contínua com smallest position value, ACO constrói rotas por transições probabilísticas. Cada método representa uma rota de forma diferente. Como você garante que está comparando algoritmos e não efeito colateral da codificação? Em outras palavras, o PSO seria melhor se usasse random keys em vez de SPV?
+**Banca:** GA usa permutação direta, PSO usa codificação contínua por random keys, e ACO constrói rotas por transições probabilísticas. Cada método representa uma rota de forma diferente. Como você garante que está comparando algoritmos e não efeito colateral da codificação?
 
 **Resposta bruta:**
 
@@ -153,13 +153,13 @@ A distinção entre significância estatística e prática é crucial. Uma difer
 
 **Expansão para a monografia:**
 
-Esta é uma ameaça à validade da comparação que precisa ser investigada. Cada método usa uma codificação diferente para representar rotas:
+Esta é uma ameaça à validade da comparação que precisa ser reconhecida. Cada método usa uma codificação diferente para representar rotas:
 
-- **GA**: random keys (vetor de `[0,1]` ordenado para gerar permutação)
-- **PSO**: smallest position value (posição contínua convertida em permutação por ranking)
-- **ACO**: transições probabilísticas diretas sobre os nós
+- **GA**: permutação direta dos nós `1..n-1`, com OX e mutação swap
+- **PSO**: random keys/SPV, isto é, posição contínua convertida em permutação por ranking
+- **ACO**: transições probabilísticas condicionadas a triplas `prev,curr,next`
 
-Não é possível afirmar a priori que a codificação não favorece ou desfavorece um método específico. Esta questão foi registrada como tarefa P9 no roadmap para estudo futuro: investigar se PSO com random keys (em vez de SPV) alteraria a ordenação relativa dos métodos. Se houver evidência de que sim, as implementações devem ser ajustadas para codificação uniforme, ou a limitação deve ser explicitada na monografia.
+Não é possível afirmar que a codificação não favorece ou desfavorece um método específico. A auditoria P9 foi registrada em [[auditoria-codificacao-metodos]]: os resultados devem ser apresentados como comparação entre implementações concretas, sob parâmetros e orçamento comuns, e não como prova de superioridade universal de uma metaheurística. Variantes alternativas, como PSO discreto com operadores de permutação ou GA com operadores mais orientados a arestas, ficam como trabalho futuro.
 
 ---
 

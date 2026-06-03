@@ -77,7 +77,7 @@ A redução `c'[j][k] = min_i cost[i][j][k]` subestima o custo real de cada tran
 | Força do bound | Forte | Muito forte (W-dependente) | Muito forte |
 | Validade formal | Garantida | Garantida | Garantida |
 
-Para este estudo, adotamos a relaxação AP sobre a matriz reduzida como método primário de lower bound. A implementação em Go puro é viável, o bound é formalmente válido, e o algoritmo Hungaro em O(n³) escala para todas as instâncias analisadas. A análise dos gaps obtidos — confrontados com os ótimos conhecidos do brute-force para n ≤ 14 — permite calibrar a interpretação dos resultados para instâncias maiores. Os refinamentos via MDD, additive bounding ou subgradiente HK são identificados como direções de trabalhos futuros, caso o bound AP se mostre insuficientemente apertado.
+Para este estudo, adotamos a relaxação AP sobre a matriz reduzida como método primário de lower bound. A implementação em Go puro é viável, o bound é formalmente válido, e o algoritmo Hungaro em O(n³) escala para todas as instâncias analisadas. A análise dos gaps obtidos, confrontados com os ótimos conhecidos do brute-force para `10a..15c`, permite calibrar a interpretação dos resultados para instâncias maiores. Os refinamentos via MDD, additive bounding ou subgradiente HK são identificados como direções de trabalhos futuros, já que o bound AP auditado é válido, mas frouxo para o TSP-SD-ATP.
 
 ---
 
