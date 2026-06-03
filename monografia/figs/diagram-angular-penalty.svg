@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#333"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#303030}.title{font-size:23px;font-weight:700}.label{font-size:14px}.small{font-size:11px}.box{fill:#f6f8fa;stroke:#6b7280;stroke-width:1.4}.arrow{stroke:#333;stroke-width:1.8;fill:none;marker-end:url(#arrow)}.math{font-size:16px;font-style:italic}</style>
+<text class="title" x="380.0" y="36" text-anchor="middle">Penalidade angular dependente da sequência</text>
+<line class="arrow" x1="160" y1="300" x2="360" y2="230"/>
+<line class="arrow" x1="360" y1="230" x2="600" y2="170"/>
+<circle cx="160" cy="300" r="8" fill="#0a66c2"/>
+<text class="label" x="174" y="290">k</text>
+<circle cx="360" cy="230" r="8" fill="#d62828"/>
+<text class="label" x="374" y="220">i</text>
+<circle cx="600" cy="170" r="8" fill="#0a66c2"/>
+<text class="label" x="614" y="160">j</text>
+<path d="M327 242 A56 56 0 0 0 410 218" fill="none" stroke="#e07810" stroke-width="3"/>
+<text class="label" x="360" y="185" fill="#e07810">θ</text>
+<text class="math" x="110" y="390">G[k][i][j] = distância(i,j) + (θ / π)</text>
+<text class="small" x="110" y="418">O custo de i → j depende do nó anterior k; por isso o tensor precisa de três índices.</text>
+</svg>

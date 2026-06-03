@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="520" viewBox="0 0 860 520">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#303030}.title{font-size:22px;font-weight:700}.label{font-size:12px}.small{font-size:10px}.axis{stroke:#444;stroke-width:1}.grid{stroke:#e5e5e5;stroke-width:1}.legend{font-size:13px}</style>
+<text class="title" x="430.0" y="32" text-anchor="middle">Escalabilidade: tempo de otimizacao vs n</text>
+<line class="axis" x1="80" y1="430" x2="800" y2="430"/>
+<line class="axis" x1="80" y1="70" x2="80" y2="430"/>
+<line class="grid" x1="80" y1="430.0" x2="800" y2="430.0"/>
+<text class="small" x="72" y="434.0" text-anchor="end">0</text>
+<line class="grid" x1="80" y1="358.0" x2="800" y2="358.0"/>
+<text class="small" x="72" y="362.0" text-anchor="end">837</text>
+<line class="grid" x1="80" y1="286.0" x2="800" y2="286.0"/>
+<text class="small" x="72" y="290.0" text-anchor="end">1674</text>
+<line class="grid" x1="80" y1="214.0" x2="800" y2="214.0"/>
+<text class="small" x="72" y="218.0" text-anchor="end">2510</text>
+<line class="grid" x1="80" y1="142.0" x2="800" y2="142.0"/>
+<text class="small" x="72" y="146.0" text-anchor="end">3347</text>
+<line class="grid" x1="80" y1="70.0" x2="800" y2="70.0"/>
+<text class="small" x="72" y="74.0" text-anchor="end">4184</text>
+<line x1="80.0" y1="430" x2="80.0" y2="435" stroke="#444"/>
+<text class="small" x="80.0" y="448" text-anchor="middle">10</text>
+<line x1="296.7" y1="430" x2="296.7" y2="435" stroke="#444"/>
+<text class="small" x="296.7" y="448" text-anchor="middle">20</text>
+<line x1="423.5" y1="430" x2="423.5" y2="435" stroke="#444"/>
+<text class="small" x="423.5" y="448" text-anchor="middle">30</text>
+<line x1="583.3" y1="430" x2="583.3" y2="435" stroke="#444"/>
+<text class="small" x="583.3" y="448" text-anchor="middle">50</text>
+<line x1="800.0" y1="430" x2="800.0" y2="435" stroke="#444"/>
+<text class="small" x="800.0" y="448" text-anchor="middle">100</text>
+<path d="M 80.0 179.2 L 109.8 171.4 L 137.0 166.6 L 162.0 161.7 L 185.2 157.0 L 206.8 152.7 L 296.7 135.5 L 423.5 117.1 L 583.3 97.5 L 800.0 70.0" fill="none" stroke="#e07810" stroke-width="3"/>
+<circle cx="80.0" cy="179.2" r="4" fill="#e07810"/>
+<circle cx="109.8" cy="171.4" r="4" fill="#e07810"/>
+<circle cx="137.0" cy="166.6" r="4" fill="#e07810"/>
+<circle cx="162.0" cy="161.7" r="4" fill="#e07810"/>
+<circle cx="185.2" cy="157.0" r="4" fill="#e07810"/>
+<circle cx="206.8" cy="152.7" r="4" fill="#e07810"/>
+<circle cx="296.7" cy="135.5" r="4" fill="#e07810"/>
+<circle cx="423.5" cy="117.1" r="4" fill="#e07810"/>
+<circle cx="583.3" cy="97.5" r="4" fill="#e07810"/>
+<circle cx="800.0" cy="70.0" r="4" fill="#e07810"/>
+<path d="M 80.0 241.0 L 109.8 241.0 L 137.0 241.0 L 162.0 234.2 L 185.2 234.2 L 206.8 228.9 L 296.7 217.8 L 423.5 203.0 L 583.3 190.0 L 800.0 182.3" fill="none" stroke="#0a66c2" stroke-width="3"/>
+<circle cx="80.0" cy="241.0" r="4" fill="#0a66c2"/>
+<circle cx="109.8" cy="241.0" r="4" fill="#0a66c2"/>
+<circle cx="137.0" cy="241.0" r="4" fill="#0a66c2"/>
+<circle cx="162.0" cy="234.2" r="4" fill="#0a66c2"/>
+<circle cx="185.2" cy="234.2" r="4" fill="#0a66c2"/>
+<circle cx="206.8" cy="228.9" r="4" fill="#0a66c2"/>
+<circle cx="296.7" cy="217.8" r="4" fill="#0a66c2"/>
+<circle cx="423.5" cy="203.0" r="4" fill="#0a66c2"/>
+<circle cx="583.3" cy="190.0" r="4" fill="#0a66c2"/>
+<circle cx="800.0" cy="182.3" r="4" fill="#0a66c2"/>
+<path d="M 80.0 241.0 L 109.8 241.0 L 137.0 234.2 L 162.0 228.9 L 185.2 228.9 L 206.8 224.6 L 296.7 212.5 L 423.5 196.2 L 583.3 181.6 L 800.0 165.9" fill="none" stroke="#20913c" stroke-width="3"/>
+<circle cx="80.0" cy="241.0" r="4" fill="#20913c"/>
+<circle cx="109.8" cy="241.0" r="4" fill="#20913c"/>
+<circle cx="137.0" cy="234.2" r="4" fill="#20913c"/>
+<circle cx="162.0" cy="228.9" r="4" fill="#20913c"/>
+<circle cx="185.2" cy="228.9" r="4" fill="#20913c"/>
+<circle cx="206.8" cy="224.6" r="4" fill="#20913c"/>
+<circle cx="296.7" cy="212.5" r="4" fill="#20913c"/>
+<circle cx="423.5" cy="196.2" r="4" fill="#20913c"/>
+<circle cx="583.3" cy="181.6" r="4" fill="#20913c"/>
+<circle cx="800.0" cy="165.9" r="4" fill="#20913c"/>
+<path d="M 80.0 430.0 L 109.8 430.0 L 137.0 430.0 L 162.0 430.0 L 185.2 430.0 L 206.8 430.0 L 296.7 430.0 L 423.5 430.0 L 583.3 430.0 L 800.0 228.9" fill="none" stroke="#7b2d8e" stroke-width="3"/>
+<circle cx="80.0" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="109.8" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="137.0" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="162.0" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="185.2" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="206.8" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="296.7" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="423.5" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="583.3" cy="430.0" r="4" fill="#7b2d8e"/>
+<circle cx="800.0" cy="228.9" r="4" fill="#7b2d8e"/>
+<rect x="620" y="77" width="14" height="14" fill="#e07810"/>
+<text class="legend" x="640" y="88">ACO</text>
+<rect x="620" y="99" width="14" height="14" fill="#0a66c2"/>
+<text class="legend" x="640" y="110">GA</text>
+<rect x="620" y="121" width="14" height="14" fill="#20913c"/>
+<text class="legend" x="640" y="132">PSO</text>
+<rect x="620" y="143" width="14" height="14" fill="#7b2d8e"/>
+<text class="legend" x="640" y="154">LB</text>
+<text class="label" x="440.0" y="475" text-anchor="middle">n (escala log)</text>
+<text class="label" x="18" y="250.0" transform="rotate(-90 18 250.0)" text-anchor="middle">ms (escala log)</text>
+</svg>

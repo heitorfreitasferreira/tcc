@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="582" height="970" viewBox="0 0 582 970">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#303030}.title{font-size:22px;font-weight:700}.label{font-size:12px}.small{font-size:10px}.axis{stroke:#444;stroke-width:1}.grid{stroke:#e5e5e5;stroke-width:1}.legend{font-size:13px}</style>
+<text class="title" x="291.0" y="32" text-anchor="middle">Makespan mediano por instancia e metodo</text>
+<text class="label" x="179.0" y="58" text-anchor="middle">ACO</text>
+<text class="label" x="277.0" y="58" text-anchor="middle">GA</text>
+<text class="label" x="375.0" y="58" text-anchor="middle">PSO</text>
+<text class="label" x="473.0" y="58" text-anchor="middle">LB</text>
+<text class="label" x="122" y="88" text-anchor="end">10a</text>
+<rect x="130" y="70" width="98" height="28" fill="#35a05a" stroke="white"/>
+<text class="small" x="179.0" y="88" text-anchor="middle">8.25</text>
+<rect x="228" y="70" width="98" height="28" fill="#35a05a" stroke="white"/>
+<text class="small" x="277.0" y="88" text-anchor="middle">8.25</text>
+<rect x="326" y="70" width="98" height="28" fill="#37a05a" stroke="white"/>
+<text class="small" x="375.0" y="88" text-anchor="middle">9.43</text>
+<rect x="424" y="70" width="98" height="28" fill="#30a25b" stroke="white"/>
+<text class="small" x="473.0" y="88" text-anchor="middle">4.86</text>
+<text class="label" x="122" y="116" text-anchor="end">10b</text>
+<rect x="130" y="98" width="98" height="28" fill="#35a05a" stroke="white"/>
+<text class="small" x="179.0" y="116" text-anchor="middle">7.91</text>
+<rect x="228" y="98" width="98" height="28" fill="#35a05a" stroke="white"/>
+<text class="small" x="277.0" y="116" text-anchor="middle">8.19</text>
+<rect x="326" y="98" width="98" height="28" fill="#36a05a" stroke="white"/>
+<text class="small" x="375.0" y="116" text-anchor="middle">8.53</text>
+<rect x="424" y="98" width="98" height="28" fill="#2ea45c" stroke="white"/>
+<text class="small" x="473.0" y="116" text-anchor="middle">2.98</text>
+<text class="label" x="122" y="144" text-anchor="end">10c</text>
+<rect x="130" y="126" width="98" height="28" fill="#379f5a" stroke="white"/>
+<text class="small" x="179.0" y="144" text-anchor="middle">9.55</text>
+<rect x="228" y="126" width="98" height="28" fill="#379f5a" stroke="white"/>
+<text class="small" x="277.0" y="144" text-anchor="middle">9.55</text>
+<rect x="326" y="126" width="98" height="28" fill="#399f5a" stroke="white"/>
+<text class="small" x="375.0" y="144" text-anchor="middle">10.94</text>
+<rect x="424" y="126" width="98" height="28" fill="#30a25b" stroke="white"/>
+<text class="small" x="473.0" y="144" text-anchor="middle">4.96</text>
+<text class="label" x="122" y="172" text-anchor="end">11a</text>
+<rect x="130" y="154" width="98" height="28" fill="#379f5a" stroke="white"/>
+<text class="small" x="179.0" y="172" text-anchor="middle">9.49</text>
+<rect x="228" y="154" width="98" height="28" fill="#379f5a" stroke="white"/>
+<text class="small" x="277.0" y="172" text-anchor="middle">9.57</text>
+<rect x="326" y="154" width="98" height="28" fill="#399f5a" stroke="white"/>
+<text class="small" x="375.0" y="172" text-anchor="middle">10.69</text>
+<rect x="424" y="154" width="98" height="28" fill="#30a35b" stroke="white"/>
+<text class="small" x="473.0" y="172" text-anchor="middle">4.53</text>
+<text class="label" x="122" y="200" text-anchor="end">11b</text>
+<rect x="130" y="182" width="98" height="28" fill="#36a05a" stroke="white"/>
+<text class="small" x="179.0" y="200" text-anchor="middle">8.82</text>
+<rect x="228" y="182" width="98" height="28" fill="#37a05a" stroke="white"/>
+<text class="small" x="277.0" y="200" text-anchor="middle">9.41</text>
+<rect x="326" y="182" width="98" height="28" fill="#389f5a" stroke="white"/>
+<text class="small" x="375.0" y="200" text-anchor="middle">10.19</text>
+<rect x="424" y="182" width="98" height="28" fill="#2fa35b" stroke="white"/>
+<text class="small" x="473.0" y="200" text-anchor="middle">4.16</text>
+<text class="label" x="122" y="228" text-anchor="end">11c</text>
+<rect x="130" y="210" width="98" height="28" fill="#389f5a" stroke="white"/>
+<text class="small" x="179.0" y="228" text-anchor="middle">10.26</text>
+<rect x="228" y="210" width="98" height="28" fill="#389f5a" stroke="white"/>
+<text class="small" x="277.0" y="228" text-anchor="middle">10.26</text>
+<rect x="326" y="210" width="98" height="28" fill="#3a9e59" stroke="white"/>
+<text class="small" x="375.0" y="228" text-anchor="middle">11.73</text>
+<rect x="424" y="210" width="98" height="28" fill="#32a25b" stroke="white"/>
+<text class="small" x="473.0" y="228" text-anchor="middle">6.08</text>
+<text class="label" x="122" y="256" text-anchor="end">12a</text>
+<rect x="130" y="238" width="98" height="28" fill="#379f5a" stroke="white"/>
+<text class="small" x="179.0" y="256" text-anchor="middle">9.50</text>
+<rect x="228" y="238" width="98" height="28" fill="#379f5a" stroke="white"/>
+<text class="small" x="277.0" y="256" text-anchor="middle">9.50</text>
+<rect x="326" y="238" width="98" height="28" fill="#3a9e59" stroke="white"/>
+<text class="small" x="375.0" y="256" text-anchor="middle">11.78</text>
+<rect x="424" y="238" width="98" height="28" fill="#30a35b" stroke="white"/>
+<text class="small" x="473.0" y="256" text-anchor="middle">4.55</text>
+<text class="label" x="122" y="284" text-anchor="end">12b</text>
+<rect x="130" y="266" width="98" height="28" fill="#379f5a" stroke="white"/>
+<text class="small" x="179.0" y="284" text-anchor="middle">9.77</text>
+<rect x="228" y="266" width="98" height="28" fill="#389f5a" stroke="white"/>
+<text class="small" x="277.0" y="284" text-anchor="middle">9.99</text>
+<rect x="326" y="266" width="98" height="28" fill="#3a9e59" stroke="white"/>
+<text class="small" x="375.0" y="284" text-anchor="middle">11.76</text>
+<rect x="424" y="266" width="98" height="28" fill="#2fa35b" stroke="white"/>
+<text class="small" x="473.0" y="284" text-anchor="middle">4.09</text>
+<text class="label" x="122" y="312" text-anchor="end">12c</text>
+<rect x="130" y="294" width="98" height="28" fill="#399f5a" stroke="white"/>
+<text class="small" x="179.0" y="312" text-anchor="middle">10.58</text>
+<rect x="228" y="294" width="98" height="28" fill="#399f5a" stroke="white"/>
+<text class="small" x="277.0" y="312" text-anchor="middle">10.67</text>
+<rect x="326" y="294" width="98" height="28" fill="#3b9e59" stroke="white"/>
+<text class="small" x="375.0" y="312" text-anchor="middle">11.99</text>
+<rect x="424" y="294" width="98" height="28" fill="#2fa35b" stroke="white"/>
+<text class="small" x="473.0" y="312" text-anchor="middle">4.09</text>
+<text class="label" x="122" y="340" text-anchor="end">13a</text>
+<rect x="130" y="322" width="98" height="28" fill="#399f5a" stroke="white"/>
+<text class="small" x="179.0" y="340" text-anchor="middle">10.95</text>
+<rect x="228" y="322" width="98" height="28" fill="#3a9e59" stroke="white"/>
+<text class="small" x="277.0" y="340" text-anchor="middle">11.59</text>
+<rect x="326" y="322" width="98" height="28" fill="#3c9d59" stroke="white"/>
+<text class="small" x="375.0" y="340" text-anchor="middle">13.24</text>
+<rect x="424" y="322" width="98" height="28" fill="#32a25b" stroke="white"/>
+<text class="small" x="473.0" y="340" text-anchor="middle">5.80</text>
+<text class="label" x="122" y="368" text-anchor="end">13b</text>
+<rect x="130" y="350" width="98" height="28" fill="#3a9e5a" stroke="white"/>
+<text class="small" x="179.0" y="368" text-anchor="middle">11.47</text>
+<rect x="228" y="350" width="98" height="28" fill="#3b9e59" stroke="white"/>
+<text class="small" x="277.0" y="368" text-anchor="middle">11.98</text>
+<rect x="326" y="350" width="98" height="28" fill="#3d9d59" stroke="white"/>
+<text class="small" x="375.0" y="368" text-anchor="middle">13.93</text>
+<rect x="424" y="350" width="98" height="28" fill="#32a25b" stroke="white"/>
+<text class="small" x="473.0" y="368" text-anchor="middle">6.08</text>
+<text class="label" x="122" y="396" text-anchor="end">13c</text>
+<rect x="130" y="378" width="98" height="28" fill="#389f5a" stroke="white"/>
+<text class="small" x="179.0" y="396" text-anchor="middle">10.04</text>
+<rect x="228" y="378" width="98" height="28" fill="#399f5a" stroke="white"/>
+<text class="small" x="277.0" y="396" text-anchor="middle">10.70</text>
+<rect x="326" y="378" width="98" height="28" fill="#3d9d59" stroke="white"/>
+<text class="small" x="375.0" y="396" text-anchor="middle">13.52</text>
+<rect x="424" y="378" width="98" height="28" fill="#31a25b" stroke="white"/>
+<text class="small" x="473.0" y="396" text-anchor="middle">5.35</text>
+<text class="label" x="122" y="424" text-anchor="end">14a</text>
+<rect x="130" y="406" width="98" height="28" fill="#3a9e59" stroke="white"/>
+<text class="small" x="179.0" y="424" text-anchor="middle">11.62</text>
+<rect x="228" y="406" width="98" height="28" fill="#3b9e59" stroke="white"/>
+<text class="small" x="277.0" y="424" text-anchor="middle">12.14</text>
+<rect x="326" y="406" width="98" height="28" fill="#3e9d59" stroke="white"/>
+<text class="small" x="375.0" y="424" text-anchor="middle">14.28</text>
+<rect x="424" y="406" width="98" height="28" fill="#2fa35b" stroke="white"/>
+<text class="small" x="473.0" y="424" text-anchor="middle">4.00</text>
+<text class="label" x="122" y="452" text-anchor="end">14b</text>
+<rect x="130" y="434" width="98" height="28" fill="#3a9e5a" stroke="white"/>
+<text class="small" x="179.0" y="452" text-anchor="middle">11.48</text>
+<rect x="228" y="434" width="98" height="28" fill="#3b9e59" stroke="white"/>
+<text class="small" x="277.0" y="452" text-anchor="middle">12.31</text>
+<rect x="326" y="434" width="98" height="28" fill="#3d9d59" stroke="white"/>
+<text class="small" x="375.0" y="452" text-anchor="middle">13.62</text>
+<rect x="424" y="434" width="98" height="28" fill="#31a25b" stroke="white"/>
+<text class="small" x="473.0" y="452" text-anchor="middle">5.68</text>
+<text class="label" x="122" y="480" text-anchor="end">14c</text>
+<rect x="130" y="462" width="98" height="28" fill="#3a9e5a" stroke="white"/>
+<text class="small" x="179.0" y="480" text-anchor="middle">11.49</text>
+<rect x="228" y="462" width="98" height="28" fill="#3b9e59" stroke="white"/>
+<text class="small" x="277.0" y="480" text-anchor="middle">12.21</text>
+<rect x="326" y="462" width="98" height="28" fill="#3f9c59" stroke="white"/>
+<text class="small" x="375.0" y="480" text-anchor="middle">14.82</text>
+<rect x="424" y="462" width="98" height="28" fill="#33a15b" stroke="white"/>
+<text class="small" x="473.0" y="480" text-anchor="middle">6.42</text>
+<text class="label" x="122" y="508" text-anchor="end">15a</text>
+<rect x="130" y="490" width="98" height="28" fill="#36a05a" stroke="white"/>
+<text class="small" x="179.0" y="508" text-anchor="middle">9.13</text>
+<rect x="228" y="490" width="98" height="28" fill="#399f5a" stroke="white"/>
+<text class="small" x="277.0" y="508" text-anchor="middle">10.56</text>
+<rect x="326" y="490" width="98" height="28" fill="#3d9d59" stroke="white"/>
+<text class="small" x="375.0" y="508" text-anchor="middle">13.87</text>
+<rect x="424" y="490" width="98" height="28" fill="#30a25b" stroke="white"/>
+<text class="small" x="473.0" y="508" text-anchor="middle">4.72</text>
+<text class="label" x="122" y="536" text-anchor="end">15b</text>
+<rect x="130" y="518" width="98" height="28" fill="#3b9e59" stroke="white"/>
+<text class="small" x="179.0" y="536" text-anchor="middle">12.41</text>
+<rect x="228" y="518" width="98" height="28" fill="#3d9d59" stroke="white"/>
+<text class="small" x="277.0" y="536" text-anchor="middle">13.60</text>
+<rect x="326" y="518" width="98" height="28" fill="#419b58" stroke="white"/>
+<text class="small" x="375.0" y="536" text-anchor="middle">16.40</text>
+<rect x="424" y="518" width="98" height="28" fill="#32a25b" stroke="white"/>
+<text class="small" x="473.0" y="536" text-anchor="middle">6.10</text>
+<text class="label" x="122" y="564" text-anchor="end">15c</text>
+<rect x="130" y="546" width="98" height="28" fill="#3c9e59" stroke="white"/>
+<text class="small" x="179.0" y="564" text-anchor="middle">12.66</text>
+<rect x="228" y="546" width="98" height="28" fill="#3c9e59" stroke="white"/>
+<text class="small" x="277.0" y="564" text-anchor="middle">12.64</text>
+<rect x="326" y="546" width="98" height="28" fill="#409c58" stroke="white"/>
+<text class="small" x="375.0" y="564" text-anchor="middle">15.79</text>
+<rect x="424" y="546" width="98" height="28" fill="#31a25b" stroke="white"/>
+<text class="small" x="473.0" y="564" text-anchor="middle">5.26</text>
+<text class="label" x="122" y="592" text-anchor="end">20a</text>
+<rect x="130" y="574" width="98" height="28" fill="#3d9d59" stroke="white"/>
+<text class="small" x="179.0" y="592" text-anchor="middle">13.93</text>
+<rect x="228" y="574" width="98" height="28" fill="#419b58" stroke="white"/>
+<text class="small" x="277.0" y="592" text-anchor="middle">16.19</text>
+<rect x="326" y="574" width="98" height="28" fill="#499857" stroke="white"/>
+<text class="small" x="375.0" y="592" text-anchor="middle">21.85</text>
+<rect x="424" y="574" width="98" height="28" fill="#33a15b" stroke="white"/>
+<text class="small" x="473.0" y="592" text-anchor="middle">6.82</text>
+<text class="label" x="122" y="620" text-anchor="end">20b</text>
+<rect x="130" y="602" width="98" height="28" fill="#3e9c59" stroke="white"/>
+<text class="small" x="179.0" y="620" text-anchor="middle">14.50</text>
+<rect x="228" y="602" width="98" height="28" fill="#419b58" stroke="white"/>
+<text class="small" x="277.0" y="620" text-anchor="middle">16.56</text>
+<rect x="326" y="602" width="98" height="28" fill="#4a9757" stroke="white"/>
+<text class="small" x="375.0" y="620" text-anchor="middle">22.46</text>
+<rect x="424" y="602" width="98" height="28" fill="#33a15b" stroke="white"/>
+<text class="small" x="473.0" y="620" text-anchor="middle">6.61</text>
+<text class="label" x="122" y="648" text-anchor="end">20c</text>
+<rect x="130" y="630" width="98" height="28" fill="#3e9d59" stroke="white"/>
+<text class="small" x="179.0" y="648" text-anchor="middle">14.31</text>
+<rect x="228" y="630" width="98" height="28" fill="#419b58" stroke="white"/>
+<text class="small" x="277.0" y="648" text-anchor="middle">16.61</text>
+<rect x="326" y="630" width="98" height="28" fill="#489857" stroke="white"/>
+<text class="small" x="375.0" y="648" text-anchor="middle">21.18</text>
+<rect x="424" y="630" width="98" height="28" fill="#32a25b" stroke="white"/>
+<text class="small" x="473.0" y="648" text-anchor="middle">6.14</text>
+<text class="label" x="122" y="676" text-anchor="end">30a</text>
+<rect x="130" y="658" width="98" height="28" fill="#439b58" stroke="white"/>
+<text class="small" x="179.0" y="676" text-anchor="middle">17.46</text>
+<rect x="228" y="658" width="98" height="28" fill="#4f9556" stroke="white"/>
+<text class="small" x="277.0" y="676" text-anchor="middle">25.81</text>
+<rect x="326" y="658" width="98" height="28" fill="#5d8f54" stroke="white"/>
+<text class="small" x="375.0" y="676" text-anchor="middle">35.48</text>
+<rect x="424" y="658" width="98" height="28" fill="#34a15a" stroke="white"/>
+<text class="small" x="473.0" y="676" text-anchor="middle">7.50</text>
+<text class="label" x="122" y="704" text-anchor="end">30b</text>
+<rect x="130" y="686" width="98" height="28" fill="#439a58" stroke="white"/>
+<text class="small" x="179.0" y="704" text-anchor="middle">17.95</text>
+<rect x="228" y="686" width="98" height="28" fill="#4e9656" stroke="white"/>
+<text class="small" x="277.0" y="704" text-anchor="middle">25.40</text>
+<rect x="326" y="686" width="98" height="28" fill="#5b9054" stroke="white"/>
+<text class="small" x="375.0" y="704" text-anchor="middle">33.91</text>
+<rect x="424" y="686" width="98" height="28" fill="#35a05a" stroke="white"/>
+<text class="small" x="473.0" y="704" text-anchor="middle">8.07</text>
+<text class="label" x="122" y="732" text-anchor="end">30c</text>
+<rect x="130" y="714" width="98" height="28" fill="#449a58" stroke="white"/>
+<text class="small" x="179.0" y="732" text-anchor="middle">18.08</text>
+<rect x="228" y="714" width="98" height="28" fill="#4f9556" stroke="white"/>
+<text class="small" x="277.0" y="732" text-anchor="middle">25.95</text>
+<rect x="326" y="714" width="98" height="28" fill="#5c9054" stroke="white"/>
+<text class="small" x="375.0" y="732" text-anchor="middle">34.80</text>
+<rect x="424" y="714" width="98" height="28" fill="#34a15a" stroke="white"/>
+<text class="small" x="473.0" y="732" text-anchor="middle">7.28</text>
+<text class="label" x="122" y="760" text-anchor="end">50a</text>
+<rect x="130" y="742" width="98" height="28" fill="#4f9656" stroke="white"/>
+<text class="small" x="179.0" y="760" text-anchor="middle">25.66</text>
+<rect x="228" y="742" width="98" height="28" fill="#6b8a52" stroke="white"/>
+<text class="small" x="277.0" y="760" text-anchor="middle">44.81</text>
+<rect x="326" y="742" width="98" height="28" fill="#81804e" stroke="white"/>
+<text class="small" x="375.0" y="760" text-anchor="middle">59.90</text>
+<rect x="424" y="742" width="98" height="28" fill="#34a15a" stroke="white"/>
+<text class="small" x="473.0" y="760" text-anchor="middle">7.56</text>
+<text class="label" x="122" y="788" text-anchor="end">50b</text>
+<rect x="130" y="770" width="98" height="28" fill="#519456" stroke="white"/>
+<text class="small" x="179.0" y="788" text-anchor="middle">27.50</text>
+<rect x="228" y="770" width="98" height="28" fill="#708851" stroke="white"/>
+<text class="small" x="277.0" y="788" text-anchor="middle">48.23</text>
+<rect x="326" y="770" width="98" height="28" fill="#877e4d" stroke="white"/>
+<text class="small" x="375.0" y="788" text-anchor="middle">64.52</text>
+<rect x="424" y="770" width="98" height="28" fill="#37a05a" stroke="white"/>
+<text class="small" x="473.0" y="788" text-anchor="middle">9.21</text>
+<text class="label" x="122" y="816" text-anchor="end">50c</text>
+<rect x="130" y="798" width="98" height="28" fill="#519556" stroke="white"/>
+<text class="small" x="179.0" y="816" text-anchor="middle">26.99</text>
+<rect x="228" y="798" width="98" height="28" fill="#6e8851" stroke="white"/>
+<text class="small" x="277.0" y="816" text-anchor="middle">46.93</text>
+<rect x="326" y="798" width="98" height="28" fill="#847f4e" stroke="white"/>
+<text class="small" x="375.0" y="816" text-anchor="middle">62.26</text>
+<rect x="424" y="798" width="98" height="28" fill="#37a05a" stroke="white"/>
+<text class="small" x="473.0" y="816" text-anchor="middle">9.24</text>
+<text class="label" x="122" y="844" text-anchor="end">100a</text>
+<rect x="130" y="826" width="98" height="28" fill="#6b8952" stroke="white"/>
+<text class="small" x="179.0" y="844" text-anchor="middle">45.40</text>
+<rect x="228" y="826" width="98" height="28" fill="#cb6142" stroke="white"/>
+<text class="small" x="277.0" y="844" text-anchor="middle">110.63</text>
+<rect x="326" y="826" width="98" height="28" fill="#f0513c" stroke="white"/>
+<text class="small" x="375.0" y="844" text-anchor="middle">136.43</text>
+<rect x="424" y="826" width="98" height="28" fill="#3c9d59" stroke="white"/>
+<text class="small" x="473.0" y="844" text-anchor="middle">13.12</text>
+<text class="label" x="122" y="872" text-anchor="end">100b</text>
+<rect x="130" y="854" width="98" height="28" fill="#6f8851" stroke="white"/>
+<text class="small" x="179.0" y="872" text-anchor="middle">48.15</text>
+<rect x="228" y="854" width="98" height="28" fill="#cc6142" stroke="white"/>
+<text class="small" x="277.0" y="872" text-anchor="middle">111.38</text>
+<rect x="326" y="854" width="98" height="28" fill="#f0523c" stroke="white"/>
+<text class="small" x="375.0" y="872" text-anchor="middle">135.93</text>
+<rect x="424" y="854" width="98" height="28" fill="#3d9d59" stroke="white"/>
+<text class="small" x="473.0" y="872" text-anchor="middle">13.47</text>
+<text class="label" x="122" y="900" text-anchor="end">100c</text>
+<rect x="130" y="882" width="98" height="28" fill="#6e8851" stroke="white"/>
+<text class="small" x="179.0" y="900" text-anchor="middle">47.06</text>
+<rect x="228" y="882" width="98" height="28" fill="#cb6142" stroke="white"/>
+<text class="small" x="277.0" y="900" text-anchor="middle">110.92</text>
+<rect x="326" y="882" width="98" height="28" fill="#f5503c" stroke="white"/>
+<text class="small" x="375.0" y="900" text-anchor="middle">139.25</text>
+<rect x="424" y="882" width="98" height="28" fill="#3b9e59" stroke="white"/>
+<text class="small" x="473.0" y="900" text-anchor="middle">12.02</text>
+</svg>

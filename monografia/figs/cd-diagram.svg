@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="245" viewBox="0 0 700 245">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#303030}.title{font-size:20px;font-weight:700}.label{font-size:13px}.small{font-size:11px}.axis{stroke:#444;stroke-width:1.5}</style>
+<text class="title" x="350.0" y="30" text-anchor="middle">Diagrama de diferenças críticas (CD = 0.605, α = 0.05)</text>
+<line x1="110" y1="48" x2="630" y2="48" class="axis"/>
+<line x1="207.5" y1="43" x2="207.5" y2="53" stroke="#444" stroke-width="1.2"/>
+<text class="label" x="207.5" y="68" text-anchor="middle">1</text>
+<line x1="370.0" y1="43" x2="370.0" y2="53" stroke="#444" stroke-width="1.2"/>
+<text class="label" x="370.0" y="68" text-anchor="middle">2</text>
+<line x1="532.5" y1="43" x2="532.5" y2="53" stroke="#444" stroke-width="1.2"/>
+<text class="label" x="532.5" y="68" text-anchor="middle">3</text>
+<text class="small" x="110" y="83" text-anchor="middle">melhor</text>
+<text class="small" x="630" y="83" text-anchor="middle">pior</text>
+<line x1="531.7" y1="90" x2="630" y2="90" stroke="#555" stroke-width="2"/>
+<line x1="531.7" y1="86" x2="531.7" y2="94" stroke="#555" stroke-width="1.5"/>
+<line x1="630" y1="86" x2="630" y2="94" stroke="#555" stroke-width="1.5"/>
+<text class="small" x="580.8" y="84" text-anchor="middle">CD</text>
+<line x1="223.8" y1="48" x2="223.8" y2="104" stroke="#bbb" stroke-width="1" stroke-dasharray="3,3"/>
+<circle cx="223.8" cy="104" r="7" fill="#e07810" stroke="white" stroke-width="2"/>
+<text class="label" x="239.75" y="109" text-anchor="start">ACO (rank médio 1.100)</text>
+<line x1="353.8" y1="48" x2="353.8" y2="149" stroke="#bbb" stroke-width="1" stroke-dasharray="3,3"/>
+<circle cx="353.8" cy="149" r="7" fill="#0a66c2" stroke="white" stroke-width="2"/>
+<text class="label" x="369.75" y="154" text-anchor="start">GA (rank médio 1.900)</text>
+<line x1="532.5" y1="48" x2="532.5" y2="194" stroke="#bbb" stroke-width="1" stroke-dasharray="3,3"/>
+<circle cx="532.5" cy="194" r="7" fill="#20913c" stroke="white" stroke-width="2"/>
+<text class="label" x="548.5" y="199" text-anchor="start">PSO (rank médio 3.000)</text>
+</svg>

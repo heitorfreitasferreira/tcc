@@ -1,0 +1,15 @@
+% Fragmento gerado automaticamente por scripts/gerar-figuras-publicacao.py.
+% Incluir a partir de monografia/ com: \input{figs/fig-route-small-multiples.tex}
+\newcommand{\rotapainel}[4]{%
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{#3}
+\caption{#1: #2. Todos os painéis de rota foram gerados pelo renderizador Go e incluem ticks de coordenadas e barra de escala de 0,5 unidade.}
+\label{#4}
+\end{figure}%
+}
+
+% Afirmação: as rotas devem ser comparadas no mesmo sistema de coordenadas para evidenciar diferenças entre métodos.
+\rotapainel{Painel A}{10a: ACO, GA, PSO e ótimo}{figs/route-panel-10a.png}{fig:rota-10a}
+\rotapainel{Painel B}{30a: métodos estocásticos}{figs/route-panel-30a.png}{fig:rota-30a}
+\rotapainel{Painel C}{100a: métodos estocásticos}{figs/route-panel-100a.png}{fig:rota-100a}

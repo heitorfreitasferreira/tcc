@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#303030}.title{font-size:22px;font-weight:700}.label{font-size:12px}.small{font-size:10px}.axis{stroke:#444;stroke-width:1}.grid{stroke:#e5e5e5;stroke-width:1}.legend{font-size:13px}</style>
+<text class="title" x="500.0" y="32" text-anchor="middle">Distribuicao de makespan por metodo</text>
+<text class="label" x="130.0" y="58" text-anchor="middle">10a</text>
+<line class="axis" x1="55" y1="290" x2="205" y2="290"/>
+<line class="axis" x1="55" y1="70" x2="55" y2="290"/>
+<line class="grid" x1="55" y1="290.0" x2="205" y2="290.0"/>
+<text class="small" x="47" y="294.0" text-anchor="end">4.9</text>
+<line class="grid" x1="55" y1="235.0" x2="205" y2="235.0"/>
+<text class="small" x="47" y="239.0" text-anchor="end">6.4</text>
+<line class="grid" x1="55" y1="180.0" x2="205" y2="180.0"/>
+<text class="small" x="47" y="184.0" text-anchor="end">8.0</text>
+<line class="grid" x1="55" y1="125.0" x2="205" y2="125.0"/>
+<text class="small" x="47" y="129.0" text-anchor="end">9.5</text>
+<line class="grid" x1="55" y1="70.0" x2="205" y2="70.0"/>
+<text class="small" x="47" y="74.0" text-anchor="end">11.1</text>
+<line x1="85" y1="170.1" x2="85" y2="170.1" stroke="#e07810"/>
+<rect x="73" y="170.1" width="24" height="1.0" fill="#e07810" opacity="0.45" stroke="#e07810"/>
+<line x1="72" y1="170.1" x2="98" y2="170.1" stroke="#e07810" stroke-width="2"/>
+<text class="small" x="85" y="306" text-anchor="middle">ACO</text>
+<line x1="130" y1="170.1" x2="130" y2="138.9" stroke="#0a66c2"/>
+<rect x="118" y="163.5" width="24" height="6.6" fill="#0a66c2" opacity="0.45" stroke="#0a66c2"/>
+<line x1="117" y1="170.1" x2="143" y2="170.1" stroke="#0a66c2" stroke-width="2"/>
+<text class="small" x="130" y="306" text-anchor="middle">GA</text>
+<line x1="175" y1="170.1" x2="175" y2="70.0" stroke="#20913c"/>
+<rect x="163" y="115.4" width="24" height="35.1" fill="#20913c" opacity="0.45" stroke="#20913c"/>
+<line x1="162" y1="128.4" x2="188" y2="128.4" stroke="#20913c" stroke-width="2"/>
+<text class="small" x="175" y="306" text-anchor="middle">PSO</text>
+<line x1="220" y1="290.0" x2="220" y2="290.0" stroke="#7b2d8e"/>
+<rect x="208" y="290.0" width="24" height="1.0" fill="#7b2d8e" opacity="0.45" stroke="#7b2d8e"/>
+<line x1="207" y1="290.0" x2="233" y2="290.0" stroke="#7b2d8e" stroke-width="2"/>
+<text class="small" x="220" y="306" text-anchor="middle">LB</text>
+<text class="label" x="445.0" y="58" text-anchor="middle">15a</text>
+<line class="axis" x1="370" y1="290" x2="520" y2="290"/>
+<line class="axis" x1="370" y1="70" x2="370" y2="290"/>
+<line class="grid" x1="370" y1="290.0" x2="520" y2="290.0"/>
+<text class="small" x="362" y="294.0" text-anchor="end">4.7</text>
+<line class="grid" x1="370" y1="235.0" x2="520" y2="235.0"/>
+<text class="small" x="362" y="239.0" text-anchor="end">7.6</text>
+<line class="grid" x1="370" y1="180.0" x2="520" y2="180.0"/>
+<text class="small" x="362" y="184.0" text-anchor="end">10.4</text>
+<line class="grid" x1="370" y1="125.0" x2="520" y2="125.0"/>
+<text class="small" x="362" y="129.0" text-anchor="end">13.3</text>
+<line class="grid" x1="370" y1="70.0" x2="520" y2="70.0"/>
+<text class="small" x="362" y="74.0" text-anchor="end">16.1</text>
+<line x1="400" y1="204.9" x2="400" y2="188.2" stroke="#e07810"/>
+<rect x="388" y="204.9" width="24" height="1.0" fill="#e07810" opacity="0.45" stroke="#e07810"/>
+<line x1="387" y1="204.9" x2="413" y2="204.9" stroke="#e07810" stroke-width="2"/>
+<text class="small" x="400" y="306" text-anchor="middle">ACO</text>
+<line x1="445" y1="204.9" x2="445" y2="131.9" stroke="#0a66c2"/>
+<rect x="433" y="168.7" width="24" height="24.0" fill="#0a66c2" opacity="0.45" stroke="#0a66c2"/>
+<line x1="432" y1="177.2" x2="458" y2="177.2" stroke="#0a66c2" stroke-width="2"/>
+<text class="small" x="445" y="306" text-anchor="middle">GA</text>
+<line x1="490" y1="176.7" x2="490" y2="70.0" stroke="#20913c"/>
+<rect x="478" y="94.1" width="24" height="36.5" fill="#20913c" opacity="0.45" stroke="#20913c"/>
+<line x1="477" y1="113.4" x2="503" y2="113.4" stroke="#20913c" stroke-width="2"/>
+<text class="small" x="490" y="306" text-anchor="middle">PSO</text>
+<line x1="535" y1="290.0" x2="535" y2="290.0" stroke="#7b2d8e"/>
+<rect x="523" y="290.0" width="24" height="1.0" fill="#7b2d8e" opacity="0.45" stroke="#7b2d8e"/>
+<line x1="522" y1="290.0" x2="548" y2="290.0" stroke="#7b2d8e" stroke-width="2"/>
+<text class="small" x="535" y="306" text-anchor="middle">LB</text>
+<text class="label" x="760.0" y="58" text-anchor="middle">20a</text>
+<line class="axis" x1="685" y1="290" x2="835" y2="290"/>
+<line class="axis" x1="685" y1="70" x2="685" y2="290"/>
+<line class="grid" x1="685" y1="290.0" x2="835" y2="290.0"/>
+<text class="small" x="677" y="294.0" text-anchor="end">6.8</text>
+<line class="grid" x1="685" y1="235.0" x2="835" y2="235.0"/>
+<text class="small" x="677" y="239.0" text-anchor="end">11.6</text>
+<line class="grid" x1="685" y1="180.0" x2="835" y2="180.0"/>
+<text class="small" x="677" y="184.0" text-anchor="end">16.4</text>
+<line class="grid" x1="685" y1="125.0" x2="835" y2="125.0"/>
+<text class="small" x="677" y="129.0" text-anchor="end">21.1</text>
+<line class="grid" x1="685" y1="70.0" x2="835" y2="70.0"/>
+<text class="small" x="677" y="74.0" text-anchor="end">25.9</text>
+<line x1="715" y1="208.9" x2="715" y2="205.5" stroke="#e07810"/>
+<rect x="703" y="208.0" width="24" height="1.0" fill="#e07810" opacity="0.45" stroke="#e07810"/>
+<line x1="702" y1="208.0" x2="728" y2="208.0" stroke="#e07810" stroke-width="2"/>
+<text class="small" x="715" y="306" text-anchor="middle">ACO</text>
+<line x1="760" y1="204.5" x2="760" y2="143.8" stroke="#0a66c2"/>
+<rect x="748" y="170.2" width="24" height="19.0" fill="#0a66c2" opacity="0.45" stroke="#0a66c2"/>
+<line x1="747" y1="181.9" x2="773" y2="181.9" stroke="#0a66c2" stroke-width="2"/>
+<text class="small" x="760" y="306" text-anchor="middle">GA</text>
+<line x1="805" y1="147.2" x2="805" y2="70.0" stroke="#20913c"/>
+<rect x="793" y="107.2" width="24" height="17.4" fill="#20913c" opacity="0.45" stroke="#20913c"/>
+<line x1="792" y1="116.7" x2="818" y2="116.7" stroke="#20913c" stroke-width="2"/>
+<text class="small" x="805" y="306" text-anchor="middle">PSO</text>
+<line x1="850" y1="290.0" x2="850" y2="290.0" stroke="#7b2d8e"/>
+<rect x="838" y="290.0" width="24" height="1.0" fill="#7b2d8e" opacity="0.45" stroke="#7b2d8e"/>
+<line x1="837" y1="290.0" x2="863" y2="290.0" stroke="#7b2d8e" stroke-width="2"/>
+<text class="small" x="850" y="306" text-anchor="middle">LB</text>
+<text class="label" x="130.0" y="328" text-anchor="middle">30a</text>
+<line class="axis" x1="55" y1="560" x2="205" y2="560"/>
+<line class="axis" x1="55" y1="340" x2="55" y2="560"/>
+<line class="grid" x1="55" y1="560.0" x2="205" y2="560.0"/>
+<text class="small" x="47" y="564.0" text-anchor="end">7.5</text>
+<line class="grid" x1="55" y1="505.0" x2="205" y2="505.0"/>
+<text class="small" x="47" y="509.0" text-anchor="end">15.6</text>
+<line class="grid" x1="55" y1="450.0" x2="205" y2="450.0"/>
+<text class="small" x="47" y="454.0" text-anchor="end">23.8</text>
+<line class="grid" x1="55" y1="395.0" x2="205" y2="395.0"/>
+<text class="small" x="47" y="399.0" text-anchor="end">31.9</text>
+<line class="grid" x1="55" y1="340.0" x2="205" y2="340.0"/>
+<text class="small" x="47" y="344.0" text-anchor="end">40.1</text>
+<line x1="85" y1="495.7" x2="85" y2="484.4" stroke="#e07810"/>
+<rect x="73" y="491.6" width="24" height="2.1" fill="#e07810" opacity="0.45" stroke="#e07810"/>
+<line x1="72" y1="492.7" x2="98" y2="492.7" stroke="#e07810" stroke-width="2"/>
+<text class="small" x="85" y="576" text-anchor="middle">ACO</text>
+<line x1="130" y1="462.1" x2="130" y2="412.7" stroke="#0a66c2"/>
+<rect x="118" y="431.0" width="24" height="13.0" fill="#0a66c2" opacity="0.45" stroke="#0a66c2"/>
+<line x1="117" y1="436.3" x2="143" y2="436.3" stroke="#0a66c2" stroke-width="2"/>
+<text class="small" x="130" y="576" text-anchor="middle">GA</text>
+<line x1="175" y1="404.0" x2="175" y2="340.0" stroke="#20913c"/>
+<rect x="163" y="361.4" width="24" height="21.1" fill="#20913c" opacity="0.45" stroke="#20913c"/>
+<line x1="162" y1="371.0" x2="188" y2="371.0" stroke="#20913c" stroke-width="2"/>
+<text class="small" x="175" y="576" text-anchor="middle">PSO</text>
+<line x1="220" y1="560.0" x2="220" y2="560.0" stroke="#7b2d8e"/>
+<rect x="208" y="560.0" width="24" height="1.0" fill="#7b2d8e" opacity="0.45" stroke="#7b2d8e"/>
+<line x1="207" y1="560.0" x2="233" y2="560.0" stroke="#7b2d8e" stroke-width="2"/>
+<text class="small" x="220" y="576" text-anchor="middle">LB</text>
+<text class="label" x="445.0" y="328" text-anchor="middle">50a</text>
+<line class="axis" x1="370" y1="560" x2="520" y2="560"/>
+<line class="axis" x1="370" y1="340" x2="370" y2="560"/>
+<line class="grid" x1="370" y1="560.0" x2="520" y2="560.0"/>
+<text class="small" x="362" y="564.0" text-anchor="end">7.6</text>
+<line class="grid" x1="370" y1="505.0" x2="520" y2="505.0"/>
+<text class="small" x="362" y="509.0" text-anchor="end">21.7</text>
+<line class="grid" x1="370" y1="450.0" x2="520" y2="450.0"/>
+<text class="small" x="362" y="454.0" text-anchor="end">35.8</text>
+<line class="grid" x1="370" y1="395.0" x2="520" y2="395.0"/>
+<text class="small" x="362" y="399.0" text-anchor="end">50.0</text>
+<line class="grid" x1="370" y1="340.0" x2="520" y2="340.0"/>
+<text class="small" x="362" y="344.0" text-anchor="end">64.1</text>
+<line x1="400" y1="493.4" x2="400" y2="486.6" stroke="#e07810"/>
+<rect x="388" y="488.4" width="24" height="1.9" fill="#e07810" opacity="0.45" stroke="#e07810"/>
+<line x1="387" y1="489.6" x2="413" y2="489.6" stroke="#e07810" stroke-width="2"/>
+<text class="small" x="400" y="576" text-anchor="middle">ACO</text>
+<line x1="445" y1="429.9" x2="445" y2="376.3" stroke="#0a66c2"/>
+<rect x="433" y="405.3" width="24" height="17.4" fill="#0a66c2" opacity="0.45" stroke="#0a66c2"/>
+<line x1="432" y1="415.1" x2="458" y2="415.1" stroke="#0a66c2" stroke-width="2"/>
+<text class="small" x="445" y="576" text-anchor="middle">GA</text>
+<line x1="490" y1="380.2" x2="490" y2="340.0" stroke="#20913c"/>
+<rect x="478" y="351.3" width="24" height="12.6" fill="#20913c" opacity="0.45" stroke="#20913c"/>
+<line x1="477" y1="356.4" x2="503" y2="356.4" stroke="#20913c" stroke-width="2"/>
+<text class="small" x="490" y="576" text-anchor="middle">PSO</text>
+<line x1="535" y1="560.0" x2="535" y2="560.0" stroke="#7b2d8e"/>
+<rect x="523" y="560.0" width="24" height="1.0" fill="#7b2d8e" opacity="0.45" stroke="#7b2d8e"/>
+<line x1="522" y1="560.0" x2="548" y2="560.0" stroke="#7b2d8e" stroke-width="2"/>
+<text class="small" x="535" y="576" text-anchor="middle">LB</text>
+<text class="label" x="760.0" y="328" text-anchor="middle">100a</text>
+<line class="axis" x1="685" y1="560" x2="835" y2="560"/>
+<line class="axis" x1="685" y1="340" x2="685" y2="560"/>
+<line class="grid" x1="685" y1="560.0" x2="835" y2="560.0"/>
+<text class="small" x="677" y="564.0" text-anchor="end">13.1</text>
+<line class="grid" x1="685" y1="505.0" x2="835" y2="505.0"/>
+<text class="small" x="677" y="509.0" text-anchor="end">46.1</text>
+<line class="grid" x1="685" y1="450.0" x2="835" y2="450.0"/>
+<text class="small" x="677" y="454.0" text-anchor="end">79.1</text>
+<line class="grid" x1="685" y1="395.0" x2="835" y2="395.0"/>
+<text class="small" x="677" y="399.0" text-anchor="end">112.1</text>
+<line class="grid" x1="685" y1="340.0" x2="835" y2="340.0"/>
+<text class="small" x="677" y="344.0" text-anchor="end">145.1</text>
+<line x1="715" y1="510.8" x2="715" y2="503.9" stroke="#e07810"/>
+<rect x="703" y="505.2" width="24" height="1.9" fill="#e07810" opacity="0.45" stroke="#e07810"/>
+<line x1="702" y1="506.2" x2="728" y2="506.2" stroke="#e07810" stroke-width="2"/>
+<text class="small" x="715" y="576" text-anchor="middle">ACO</text>
+<line x1="760" y1="419.2" x2="760" y2="374.3" stroke="#0a66c2"/>
+<rect x="748" y="390.4" width="24" height="14.4" fill="#0a66c2" opacity="0.45" stroke="#0a66c2"/>
+<line x1="747" y1="397.5" x2="773" y2="397.5" stroke="#0a66c2" stroke-width="2"/>
+<text class="small" x="760" y="576" text-anchor="middle">GA</text>
+<line x1="805" y1="369.5" x2="805" y2="340.0" stroke="#20913c"/>
+<rect x="793" y="349.7" width="24" height="8.8" fill="#20913c" opacity="0.45" stroke="#20913c"/>
+<line x1="792" y1="354.5" x2="818" y2="354.5" stroke="#20913c" stroke-width="2"/>
+<text class="small" x="805" y="576" text-anchor="middle">PSO</text>
+<line x1="850" y1="560.0" x2="850" y2="560.0" stroke="#7b2d8e"/>
+<rect x="838" y="560.0" width="24" height="1.0" fill="#7b2d8e" opacity="0.45" stroke="#7b2d8e"/>
+<line x1="837" y1="560.0" x2="863" y2="560.0" stroke="#7b2d8e" stroke-width="2"/>
+<text class="small" x="850" y="576" text-anchor="middle">LB</text>
+</svg>
