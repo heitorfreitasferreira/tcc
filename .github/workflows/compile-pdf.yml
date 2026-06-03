@@ -17,17 +17,7 @@ jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Cache apt packages
-        uses: actions/cache@v4
-        with:
-          path: |
-            /var/cache/apt/archives
-            /var/lib/apt/lists
-          key: ${{ runner.os }}-apt-tex-${{ hashFiles('.github/workflows/compile-pdf.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-apt-tex-
+      - uses: actions/checkout@v6
 
       - name: Install TeX Live
         env:
@@ -52,7 +42,7 @@ jobs:
         run: latexmk -pdf -interaction=nonstopmode -file-line-error -halt-on-error main_ppgco_ufu.tex
 
       - name: Upload PDF (Actions artifact)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: monografia
           path: monografia/main_ppgco_ufu.pdf
@@ -64,7 +54,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v7
         with:
           name: monografia
 
@@ -75,7 +65,7 @@ jobs:
           cp "$PDF" monografia.pdf
 
       - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: monografia-${{ github.run_number }}
           name: Monografia — build ${{ github.run_number }}
