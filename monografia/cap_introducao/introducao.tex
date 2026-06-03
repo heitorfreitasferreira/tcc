@@ -1,56 +1,59 @@
 \chapter[Introdução]{Introdução}
 
-Veículos aéreos não tripulados (VANTs) oferecem uma alternativa operacional para missões em que pontos de interesse precisam ser visitados com rapidez, regularidade e baixo custo de deslocamento. Em cenários de patrulhamento, inspeção e monitoramento, a tarefa computacional central é definir a ordem de visita desses pontos. Quando se considera um único veículo que parte de uma base, visita todos os pontos uma vez e retorna à origem, a formulação se aproxima do Problema do Caixeiro Viajante (\textit{Traveling Salesman Problem}, TSP), um dos problemas clássicos de otimização combinatória \cite{lawler1985traveling,applegate2006traveling}.
+Missões de patrulhamento com drones exigem que um conjunto de pontos de interesse seja visitado de forma eficiente, recorrente e com tempo de deslocamento reduzido. Em aplicações de inspeção, vigilância ambiental e monitoramento de infraestrutura, a qualidade de uma rota não depende apenas da distância total percorrida. Curvas bruscas podem aumentar o tempo de voo, o consumo de energia e a dificuldade de execução da trajetória. Esse detalhe operacional torna insuficiente uma modelagem que trate cada deslocamento apenas como uma aresta independente entre dois pontos.
 
-O TSP é computacionalmente difícil: sua versão de decisão pertence ao conjunto dos problemas NP-completos \cite{garey1979computers}. Essa característica torna inviável a enumeração exaustiva de soluções em instâncias de tamanho moderado, pois o número de rotas cresce fatorialmente com a quantidade de pontos. Por esse motivo, heurísticas e meta-heurísticas são empregadas quando o objetivo é obter boas soluções em tempo computacional controlado, ainda que sem garantia de otimalidade global.
+O Problema do Caixeiro Viajante (\textit{Traveling Salesman Problem}, TSP) fornece uma abstração clássica para rotas que partem de uma origem, visitam todos os pontos exatamente uma vez e retornam à origem \cite{lawler1985traveling,applegate2006traveling}. A versão de decisão do TSP é NP-completa \cite{garey1979computers}; por isso, a enumeração completa das rotas deixa de ser prática à medida que o número de pontos cresce. Essa dificuldade justifica o uso de heurísticas e meta-heurísticas quando a meta é obter boas soluções em tempo computacional controlado.
 
-A literatura registra dezenas de estudos comparativos entre meta-heurísticas aplicadas ao TSP. Wu \cite{wu2020comparative} comparou GA, ACO e PSO em instâncias TSPLIB e observou que o GA apresenta melhor desempenho médio em instâncias de até 100 cidades. Haroun et al. \cite{haroun2015performance} relataram vantagem do ACO sobre o GA em termos de qualidade de solução, porém com maior custo computacional. Almufti e Shaban \cite{almufti2025comparative} avaliaram nove meta-heurísticas e concluíram que nenhum método domina todas as classes de instância, em linha com o teorema \textit{No Free Lunch}. Chandra e Naro \cite{chandra2022comparative} aplicaram ANOVA aos resultados de oito métodos e identificaram diferenças estatisticamente significativas entre GA, PSO e ACO. Halim e Ismail \cite{halim2019combinatorial} revisaram seis heurísticas para otimização combinatória e apontaram que a escolha da representação da solução é tão determinante quanto o método de busca. Estudos mais recentes, como o de Hossain e Yilmaz Acar \cite{hossain2024comparison}, confirmam que a qualidade relativa entre métodos clássicos e modernos depende fortemente do tamanho e da estrutura da instância.
-
-Este trabalho investiga o problema de roteamento para patrulhamento com drones, modelado como uma variante do TSP com custo dependente da sequência de visita. A implementação desenvolvida compara uma busca exaustiva, usada como referência exata em instâncias pequenas, com três meta-heurísticas bioinspiradas: Algoritmo Genético (\textit{Genetic Algorithm}, GA), Otimização por Enxame de Partículas (\textit{Particle Swarm Optimization}, PSO) e Otimização por Colônia de Formigas (\textit{Ant Colony Optimization}, ACO). Todos os métodos otimizam a mesma função objetivo, denominada \textit{makespan}, que representa o tempo total de uma rota iniciada e encerrada na base.
-
-O modelo adotado acrescenta uma particularidade ao TSP euclidiano usual: o custo para seguir de um ponto atual para um próximo depende também do ponto visitado imediatamente antes. Essa dependência permite incorporar uma penalização de curva, compatível com a ideia de que mudanças bruscas de direção afetam o tempo de voo de um drone. Representa-se a instância por um grafo tridimensional de custos, indexado por nó anterior, nó atual e próximo nó.
+Este trabalho estuda uma variante do TSP motivada por patrulhamento aéreo com drones: o TSP com penalidades angulares dependentes da sequência, chamado aqui de TSP-SD-ATP (\textit{Traveling Salesman Problem with Sequence-Dependent Angular Turn Penalties}). Nessa formulação, o custo de seguir de um ponto atual para um próximo ponto depende também do ponto visitado imediatamente antes. A instância deixa de ser representada por uma matriz bidimensional de arestas e passa a usar um tensor tridimensional de custos, indexado por nó anterior, nó atual e próximo nó. O objetivo é minimizar o \textit{makespan}, definido como o tempo/custo total da rota iniciada e encerrada na base.
 
 \section{Motivação}
 
-Aplicações de roteamento com drones mostram que pequenas mudanças no modelo físico ou operacional alteram substancialmente a estrutura do problema. O problema do caixeiro viajante com drone, introduzido por Murray e Chu \cite{murray2015flying} como \textit{Flying Sidekick Traveling Salesman Problem} (FSTSP), e posteriormente estendido por Agatz, Bouman e Schmidt \cite{agatz2018optimization} e Dell'Amico et al. \cite{dellamico2021multiple,dellamico2022exact}, combina decisões de roteamento terrestre e aéreo. Rajan, Sundar e Gautam \cite{rajan2022routing} abordaram especificamente o roteamento de VANTs em missões de patrulha, propondo um algoritmo de \textit{progressive hedging} para instâncias com horizonte de planejamento finito.
+O roteamento com drones tem recebido atenção em diferentes formulações. Murray e Chu \cite{murray2015flying} introduziram o \textit{Flying Sidekick Traveling Salesman Problem}, no qual caminhão e drone cooperam em entregas. Agatz, Bouman e Schmidt \cite{agatz2018optimization} estudaram o TSP com drone por meio de formulações e heurísticas, enquanto Dell'Amico et al. \cite{dellamico2021multiple,dellamico2022exact} avançaram variantes com múltiplos drones e métodos exatos. No contexto de patrulha, Rajan, Sundar e Gautam \cite{rajan2022routing} modelaram missões de VANTs com horizonte finito e decisões recorrentes de visita.
 
-Embora este trabalho não trate de entrega com caminhão e drone, essa literatura reforça a relevância de estudar variantes do TSP quando restrições reais de operação são incorporadas. No caso de patrulhamento aéreo, a ordem de visita não afeta apenas a distância percorrida: a sequência também influencia a suavidade do trajeto, a quantidade de manobras e, por consequência, o tempo estimado de deslocamento. A motivação deste trabalho é avaliar como três meta-heurísticas bioinspiradas se comportam quando aplicadas a essa variante sequencial, usando uma implementação reprodutível e registros estruturados de desempenho.
+Esses trabalhos mostram que pequenas alterações operacionais geram variantes distintas do TSP. O problema investigado nesta monografia não combina caminhão e drone nem modela múltiplos veículos; ele isola o caso de um único drone que deve visitar todos os pontos de interesse e retornar à base. A contribuição está em avaliar o impacto de uma função de custo dependente da sequência, na qual a transição anterior--atual--próximo incorpora distância euclidiana e penalidade angular.
+
+A literatura contém comparações entre Algoritmo Genético (GA), Otimização por Enxame de Partículas (PSO) e Otimização por Colônia de Formigas (ACO) no TSP clássico e em variantes próximas \cite{wu2020comparative,haroun2015performance,chandra2022comparative,halim2019combinatorial}. Na revisão realizada para este trabalho, não foram identificados estudos que comparem sistematicamente esses três métodos especificamente no TSP-SD-ATP. Essa lacuna motiva uma avaliação experimental controlada, com a mesma função objetivo, as mesmas instâncias e registros estruturados de qualidade, evolução e tempo de execução.
 
 \section{Objetivos e Desafios da Pesquisa}
 
-O objetivo geral é analisar o desempenho de meta-heurísticas bioinspiradas na otimização de rotas de patrulhamento por drones modeladas como uma variante do TSP com custo dependente da sequência.
+O objetivo geral deste trabalho é analisar o desempenho de meta-heurísticas bioinspiradas na otimização de rotas de patrulhamento com drones modeladas como TSP-SD-ATP.
 
 Os objetivos específicos são:
 \begin{itemize}
-  \item formalizar a função objetivo usada para avaliar uma rota de patrulhamento com penalização de curva;
-  \item implementar e comparar busca exaustiva, GA, PSO e ACO sobre o mesmo conjunto de instâncias;
-  \item medir qualidade da solução, quantidade de avaliações e tempo de execução;
-  \item analisar a escalabilidade dos métodos quando o número de pontos de interesse aumenta;
-  \item identificar limitações experimentais e oportunidades de melhoria nos métodos implementados.
+  \item formalizar a função objetivo baseada em distância euclidiana e penalidade angular dependente da sequência;
+  \item implementar e comparar GA, PSO e ACO sobre a mesma representação de instância e a mesma função objetivo;
+  \item usar busca exaustiva como referência ótima nas instâncias pequenas em que a enumeração completa foi executada;
+  \item implementar um limitante inferior por relaxação do problema de designação para apoiar a análise em instâncias maiores;
+  \item medir qualidade da solução, tempo de otimização, estabilidade entre sementes e comportamento de convergência;
+  \item discutir limitações metodológicas associadas a instâncias sintéticas, parâmetros fixos e diferenças de codificação entre métodos.
 \end{itemize}
+
+O principal desafio computacional é combinar duas fontes de complexidade. A primeira é combinatória: a quantidade de rotas cresce fatorialmente com o número de pontos. A segunda é estrutural: o custo de uma transição depende de três nós consecutivos, não apenas da aresta atual. Como consequência, métodos projetados para o TSP clássico precisam ser adaptados para avaliar rotas em um tensor de custos tridimensional.
 
 \section{Hipótese}
 
-A hipótese principal é que as meta-heurísticas bioinspiradas obtêm rotas de baixo \textit{makespan} com custo computacional inferior ao da busca exaustiva em instâncias nas quais a enumeração completa se torna impraticável.
-A hipótese secundária é que o comportamento dos métodos difere conforme o tamanho da instância: GA e ACO tendem a explorar diretamente a estrutura permutacional do problema, enquanto PSO depende da qualidade da representação contínua por chaves aleatórias para produzir boas permutações.
+A hipótese principal é que meta-heurísticas bioinspiradas conseguem produzir rotas factíveis de baixo \textit{makespan} em instâncias nas quais a busca exaustiva se torna inviável. A hipótese secundária é que a qualidade e o tempo de execução variam substancialmente conforme a forma como cada método representa e explora a dependência de sequência do TSP-SD-ATP.
 
 As perguntas de pesquisa são:
 \begin{itemize}
-  \item Em instâncias pequenas, quão próximas as soluções das meta-heurísticas ficam da solução ótima obtida por busca exaustiva?
-  \item Em instâncias maiores, qual método apresenta melhor compromisso entre \textit{makespan} e tempo de execução?
-  \item As diferenças de convergência e estabilidade entre os métodos explicam seu desempenho relativo?
+  \item Nas instâncias pequenas, qual é o gap das meta-heurísticas em relação ao ótimo obtido por busca exaustiva?
+  \item Nas 30 instâncias avaliadas, qual método apresenta menor \textit{makespan} mediano?
+  \item Qual é o custo temporal de obter soluções de melhor qualidade?
+  \item As diferenças observadas entre GA, PSO e ACO são estatisticamente consistentes quando os métodos são comparados por instância?
+  \item O limitante inferior por relaxação do problema de designação é informativo para esta variante com penalidade angular?
 \end{itemize}
 
 \section{Contribuições}
 
 As contribuições deste trabalho são:
 \begin{itemize}
-  \item uma formulação computacional de rotas de patrulhamento com custo dependente da sequência anterior--atual--próximo;
-  \item uma implementação comparativa de quatro métodos de otimização sobre a mesma função objetivo;
-  \item uma base experimental com saídas estruturadas de resumo, evolução e tempo de execução;
-  \item uma análise empírica do comportamento de GA, PSO e ACO em instâncias de diferentes tamanhos.
+  \item a formulação computacional do TSP-SD-ATP para rotas de patrulhamento com drones, usando tensor 3D de custos;
+  \item uma implementação em Go de GA, PSO, ACO, busca exaustiva e lower bound por relaxação AP/Hungarian sobre a mesma função objetivo;
+  \item uma base experimental com 4638 arquivos de resumo, evolução e tempo, cobrindo 30 instâncias e 51 sementes por meta-heurística;
+  \item a comparação com ótimo exato em 18 instâncias pequenas e com lower bound em todas as 30 instâncias;
+  \item uma análise empírica e estatística do trade-off entre qualidade de solução e tempo computacional.
 \end{itemize}
 
-\section{Organização do Documento}
+\section{Organização da Dissertação ou Tese}
 
-O Capítulo~\ref{fundamentacao} apresenta os conceitos necessários para compreender o problema e os métodos de otimização avaliados. O Capítulo~\ref{proposta} descreve o modelo matemático e as adaptações algorítmicas realizadas. O Capítulo~\ref{experimentos} detalha o desenho experimental e a análise dos resultados. O Capítulo~\ref{conclusao} reúne as conclusões, limitações e possibilidades de trabalhos futuros.
+O Capítulo~\ref{fundamentacao} apresenta a fundamentação teórica sobre TSP, custos dependentes da sequência, roteamento com drones e meta-heurísticas bioinspiradas. O Capítulo~\ref{proposta} descreve a formulação adotada, a arquitetura da implementação, os métodos comparados, o lower bound e o pipeline experimental. O Capítulo~\ref{experimentos} apresenta a configuração dos experimentos, os resultados, os testes estatísticos e a discussão das limitações. O Capítulo~\ref{conclusao} sintetiza as conclusões, contribuições e trabalhos futuros.

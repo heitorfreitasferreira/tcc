@@ -1,95 +1,91 @@
 \chapter[Proposta]{Formulação do Problema e Métodos}
-
 \label{proposta}
 
-Este capítulo formaliza o modelo matemático adotado e descreve como cada método de otimização foi adaptado ao problema de roteamento de patrulhamento com custo dependente da sequência. O modelo baseia-se no Problema do Caixeiro Viajante (TSP), estendido para incorporar penalização angular nas transições entre pontos consecutivos.
+Este capítulo descreve a proposta computacional avaliada nesta monografia. O foco é formalizar o TSP-SD-ATP, apresentar a estrutura de implementação e detalhar como GA, PSO, ACO, busca exaustiva e lower bound foram integrados ao mesmo pipeline experimental. Conforme a orientação do template institucional, a revisão bibliográfica fica concentrada no Capítulo~\ref{fundamentacao}; aqui são descritas as escolhas efetivamente implementadas.
 
-\section{Modelo Matemático}
+\section{Formulação do Problema}
 
-O problema é definido sobre um conjunto de nós $V = \{0, 1, \ldots, n-1\}$, em que $0$ é a base de origem e retorno. Os demais nós $V' = V \setminus \{0\}$ representam os pontos de interesse (\textit{points of interest}, POIs) a serem visitados exatamente uma vez. Uma rota é uma permutação $\pi = (\pi_1, \pi_2, \ldots, \pi_{n-1})$ de $V'$, e o \textit{makespan} total é calculado conforme a Equação~(\ref{eq:objetivo}).
+Uma instância é definida por um conjunto de pontos bidimensionais $V=\{0,1,\ldots,n-1\}$. O nó $0$ é a base de partida e retorno do drone. Os demais nós, $V'=V\setminus\{0\}$, são pontos de interesse que devem ser visitados exatamente uma vez. Uma rota factível é uma permutação $\pi$ dos nós de $V'$.
 
-O tensor de custo $G[\text{anterior}][\text{atual}][\text{próximo}]$ é pré-calculado a partir das coordenadas dos pontos no plano bidimensional. Diferentemente do TSP clássico, em que o custo depende apenas do par origem--destino, aqui cada transição $(j \to k)$ tem seu custo modulado pelo ângulo de chegada ao nó $j$ vindo do nó $i$. Esse modelo captura o efeito de manobras de drone: mudanças bruscas de direção aumentam o tempo de deslocamento em relação a trajetórias aproximadamente retilíneas.
+O diferencial do TSP-SD-ATP está na avaliação da rota. Em vez de uma matriz $D[j][k]$, a implementação usa um tensor 3D $G[anterior][atual][proximo]$. Cada entrada armazena o custo de seguir de `atual' para `proximo' considerando que o nó visitado imediatamente antes foi `anterior'. O custo soma distância euclidiana e penalidade angular normalizada, conforme a Equação~\ref{eq:custo}.
 
-\subsection{Tensor de Custos}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.76\textwidth]{figs/diagram-tensor-3d.png}
+  \caption{Representação do tensor 3D de custos usado para avaliar transições dependentes da sequência. Fonte: elaborado pelo autor.}
+  \label{fig:tensor-3d}
+\end{figure}
 
-Para cada terna $(i,j,k) \in V^3$ com $i \neq j$ e $j \neq k$, calcula-se:
+A função objetivo percorre a permutação de pontos de interesse, soma a partida da base, as transições internas e o retorno à base. Após a pré-computação do tensor, uma rota é avaliada em $O(n)$, pois cada passo consulta diretamente uma entrada de $G$. A pré-computação exige $O(n^3)$ entradas, custo aceitável para as instâncias estudadas.
 
-\begin{equation}
-G[i][j][k] = \frac{d(j,k)}{v} + \frac{1}{\pi} \cdot \arccos\left( \frac{\vec{v}_{i,j} \cdot \vec{v}_{j,k}}{\|\vec{v}_{i,j}\| \, \|\vec{v}_{j,k}\|} \right),
-\label{eq:tensor}
-\end{equation}
+\section{Arquitetura da Implementação}
 
-em que $d(j,k)$ é a distância euclidiana, $v$ é a velocidade do drone (normalizada para 1), $\vec{v}_{i,j} = (x_j - x_i, y_j - y_i)$ e $\vec{v}_{j,k} = (x_k - x_j, y_k - y_j)$. Para o primeiro movimento (partida da base sem nó anterior), adota-se $i = 0$ e $\vec{v}_{0,0} = \vec{0}$, resultando em $\tau = 0$ e $G[0][0][\pi_1] = d(0, \pi_1)$. O mesmo se aplica ao retorno: $G[\pi_{n-2}][\pi_{n-1}][0] = d(\pi_{n-1}, 0)$.
+A implementação foi desenvolvida em Go e organizada em pacotes. O pacote `points' representa os pontos bidimensionais e a geração de instâncias. O pacote `graph' cria o tensor de custos e calcula o \textit{makespan}. O pacote `optimization' contém os métodos de otimização. O pacote `cmd' expõe a interface de linha de comando baseada em Cobra, e `shared/reporting' registra os resultados estruturados.
 
-\begin{algorithm}[htbp]
-\caption{Cálculo do makespan}
-\label{alg:objetivo}
-\begin{algorithmic}
-\STATE \textbf{Entrada:} permutação $\pi$, tensor $G$,
-\STATE \quad \quad \quad \quad número de pontos $n$
-\STATE \textbf{Saída:} makespan $f$
-\STATE $f \gets 0$
-\STATE $anterior \gets 0$
-\STATE $atual \gets 0$
-\FOR{$t = 1$ \TO $n-1$}
-    \STATE $proximo \gets \pi[t]$
-    \STATE $f \gets f + G[anterior][atual][proximo]$
-    \STATE $anterior \gets atual$
-    \STATE $atual \gets proximo$
-\ENDFOR
-\STATE $f \gets f + G[anterior][atual][0]$ \COMMENT{Retorno à base}
-\RETURN $f$
-\end{algorithmic}
-\end{algorithm}
+O fluxo experimental parte de arquivos `.points', gera ou carrega arquivos `.graph' e executa um comando de otimização. Cada execução produz três artefatos: um resumo final (`summary'), um histórico de melhorias (`evolution') e uma decomposição temporal (`timing'). O identificador da execução combina instância, método, semente e hash dos parâmetros, reduzindo o risco de sobrescrever resultados de configurações distintas.
 
-O Algoritmo~\ref{alg:objetivo} detalha o cálculo do \textit{makespan} para uma permutação $\pi$.
+\section{Algoritmo Genético}
 
-\section{Adaptação dos Métodos}
+No GA, cada indivíduo é uma permutação direta dos pontos de interesse, isto é, dos nós $1$ a $n-1$. A população inicial é gerada aleatoriamente. A cada geração, pais são selecionados por torneio de tamanho 2; o crossover OX produz descendentes preservando a validade da permutação; a mutação \textit{swap} troca dois pontos com probabilidade 0,05; e o elitismo preserva o melhor indivíduo.
 
-Os quatro métodos compartilham a mesma função objetivo (\ref{eq:objetivo}) e a mesma representação de instância (tensor $G$). A seguir descreve-se como cada método foi adaptado ao modelo proposto.
+Os parâmetros usados nos experimentos são população 100, 100 iterações, elitismo 1, taxa de mutação 0,05 e torneio de tamanho 2. Esses valores foram mantidos fixos para todas as instâncias. A decisão favorece reprodutibilidade e comparação direta, mas não equivale a um ajuste fino por instância.
 
-\subsection{Busca Exaustiva}
+\section{Otimização por Enxame de Partículas}
 
-A busca exaustiva gera todas as $(n-1)!$ permutações dos POIs usando o algoritmo de Heap. Para cada permutação, calcula-se o \textit{makespan} e registra-se a melhor solução. O método é determinístico e serve como referência exata para instâncias com até 15 pontos.
+O PSO implementado usa \textit{random keys}. Cada partícula mantém um vetor real de dimensão $n-1$; a rota é obtida ordenando os índices pelo valor correspondente no vetor. Assim, uma atualização contínua de posição e velocidade é convertida em uma permutação factível para avaliação pelo tensor $G$.
 
-\subsection{Algoritmo Genético}
-
-Cada indivíduo representa uma permutação direta dos POIs. A população inicial é gerada aleatoriamente. A função de aptidão é o inverso do \textit{makespan}. A seleção de pais usa torneio de tamanho 2. O cruzamento ordenado (OX) preserva a ordem relativa dos pontos e é aplicado com probabilidade~1. A mutação por troca (\textit{swap}) é aplicada com probabilidade~0,05, trocando dois genes aleatórios. A estratégia de elitismo preserva o melhor indivíduo entre gerações.
-
-\subsection{Otimização por Enxame de Partículas}
-
-Cada partícula mantém um vetor real de dimensão $n$. A rota é obtida ordenando os índices do vetor em ordem crescente (\textit{random keys}). A velocidade é atualizada por:
+A velocidade é atualizada por:
 
 \begin{equation}
-v_{i,d}^{t+1} = w \cdot v_{i,d}^{t} + c_1 r_1 (p_{i,d} - x_{i,d}^{t}) + c_2 r_2 (g_{d} - x_{i,d}^{t}),
+v_{i,d}^{t+1} = w v_{i,d}^{t} + c_1 r_1(p_{i,d}-x_{i,d}^{t}) + c_2 r_2(g_d-x_{i,d}^{t}),
 \label{eq:pso}
 \end{equation}
 
-em que $w = 0{,}7$, $c_1 = c_2 = 2$, $r_1, r_2 \sim U(0,1)$, $p_i$ é a melhor posição da partícula e $g$ a melhor posição global. A posição é atualizada por $x_{i,d}^{t+1} = x_{i,d}^{t} + v_{i,d}^{t+1}$.
+em que $w=0{,}7$, $c_1=2{,}0$, $c_2=2{,}0$, $p_i$ é a melhor posição histórica da partícula e $g$ é a melhor posição global. Após a atualização, a posição contínua é reordenada para produzir a rota. A principal limitação dessa codificação é que pequenas mudanças no vetor contínuo podem alterar a permutação de forma não local, o que afeta a exploração de adjacências relevantes para o TSP-SD-ATP.
 
-\subsection{Otimização por Colônia de Formigas}
+\section{Otimização por Colônia de Formigas}
 
-Cada formiga constrói uma rota incrementalmente. No nó $j$, a probabilidade de escolher o nó $k$ como próximo é:
+No ACO, cada formiga constrói uma rota incrementalmente a partir da base. Como o custo depende de três nós, a estrutura de feromônio também é tridimensional. No estado definido por nó anterior $i$ e nó atual $j$, a probabilidade de escolher o próximo nó $k$ é proporcional a:
 
 \begin{equation}
-p_{ijk} = \frac{[\tau_{ijk}]^{\alpha} \cdot [\eta_{ijk}]^{\beta}}{\sum_{l \in \mathcal{N}} [\tau_{ijl}]^{\alpha} \cdot [\eta_{ijl}]^{\beta}},
+p_{i,j,k} \propto [\tau_{i,j,k}]^{\alpha}[\eta_{i,j,k}]^{\beta},
 \label{eq:aco}
 \end{equation}
 
-em que $\tau_{ijk}$ é o feromônio associado à transição $i \to j \to k$, $\eta_{ijk} = 1 / c_{i,j,k}$ é a informação heurística, $\alpha = 1$ e $\beta = 2$ controlam a importância relativa, e $\mathcal{N}$ é o conjunto de nós ainda não visitados. Após todas as formigas construírem suas rotas, o feromônio é atualizado por:
+em que $\tau_{i,j,k}$ é o feromônio e $\eta_{i,j,k}=1/G[i][j][k]$ é a informação heurística. A seleção usa roleta proporcional entre os pontos ainda não visitados. Após a construção das rotas, ocorre evaporação global e depósito de feromônio pelas formigas que usaram cada transição.
 
-\begin{equation}
-\tau_{ijk} \gets (1 - \rho) \cdot \tau_{ijk} + \sum_{k=1}^{m} \Delta\tau_{ijk}^{k},
-\quad \Delta\tau_{ijk}^{k} = 
-\begin{cases}
-Q / L_k, & \text{se a formiga } k \text{ usou } (i,j,k), \\
-0, & \text{caso contrário},
-\end{cases}
-\label{eq:feromonio}
-\end{equation}
+Os parâmetros usados foram população 100, 100 iterações, $\alpha=1{,}0$, $\beta=2{,}0$, $\rho=0{,}2$ e $Q=100$. A adaptação por feromônio 3D preserva a dependência de sequência da função objetivo, mas aumenta o número de trilhas de feromônio em relação ao ACO aplicado ao TSP clássico.
 
-com $\rho = 0{,}5$ e $Q = 100$.
+\section{Busca Exaustiva}
 
-\section{Desenho Experimental}
+A busca exaustiva enumera todas as permutações dos pontos de interesse usando o algoritmo de Heap. Para cada permutação, calcula-se o \textit{makespan} pelo mesmo tensor de custos usado pelas meta-heurísticas. O método retorna o ótimo global, mas seu custo fatorial restringe seu uso. No conjunto de dados deste trabalho, a busca exaustiva foi executada nas 18 instâncias de 10 a 15 pontos.
 
-Todas as meta-heurísticas usam população~100 e 100 iterações. A busca exaustiva não tem hiperparâmetros. Instâncias são geradas com coordenadas aleatórias em $[-1, 1]$, com tamanhos 10, 11, 12, 13, 14, 15, 20, 30, 50 e 100 pontos, três instâncias por tamanho. Para cada combinação instância--método, executam-se 55 sementes (GA, PSO, ACO) ou uma execução determinística (busca exaustiva). O total de execuções é de 5029 arquivos de resumo registrados.
+\section{Lower Bound por Relaxação AP}
+
+Além dos métodos que retornam rotas factíveis, foi implementado um lower bound baseado na relaxação do problema de designação. O tensor 3D é reduzido para uma matriz 2D por $c'_{j,k}=\min_i G[i][j][k]$. Em seguida, o problema de designação é resolvido pelo algoritmo Hungarian em $O(n^3)$.
+
+O valor retornado é um limitante inferior: ele não excede o ótimo do TSP-SD-ATP, pois cada transição reduzida escolhe o menor custo possível entre contextos anteriores. Entretanto, a solução do problema de designação pode conter subtours e não representa necessariamente uma rota única que parte da base, visita todos os pontos e retorna. Por isso, o lower bound é usado como referência numérica, não como método concorrente de construção de rotas.
+
+\section{Pipeline Experimental}
+
+O pipeline experimental foi executado sobre 30 instâncias sintéticas, com tamanhos 10, 11, 12, 13, 14, 15, 20, 30, 50 e 100 pontos, três variantes por tamanho. Para GA, PSO e ACO, foram usadas 51 sementes, de 0 a 50. A busca exaustiva tem execução determinística e aparece apenas nas 18 instâncias pequenas. O lower bound também é determinístico e foi executado nas 30 instâncias.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Métodos implementados e parâmetros usados nos experimentos.}
+  \label{tab:metodos-parametros}
+  \scriptsize
+  \begin{tabularx}{\textwidth}{llX}
+    \toprule
+    Método & Representação & Parâmetros principais \\
+    \midrule
+    Busca exaustiva & Permutação direta & Sem hiperparâmetros; ótimo para `10a'--`15c' \\
+    GA & Permutação direta & população=100, iterações=100, elitismo=1, mutação=0{,}05, torneio=2 \\
+    PSO & Random keys & população=100, iterações=100, $w=0{,}7$, $c_1=2{,}0$, $c_2=2{,}0$ \\
+    ACO & Feromônio 3D & população=100, iterações=100, $\alpha=1{,}0$, $\beta=2{,}0$, $\rho=0{,}2$, $Q=100$ \\
+    Lower bound & Relaxação AP & redução 3D$\to$2D, Hungarian $O(n^3)$ \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+O conjunto final contém 4638 arquivos de resumo: 1530 para GA, 1530 para PSO, 1530 para ACO, 30 para lower bound e 18 para busca exaustiva. A mesma quantidade de arquivos de evolução e de tempo foi registrada, permitindo analisar qualidade final, trajetória de convergência e custo computacional.
