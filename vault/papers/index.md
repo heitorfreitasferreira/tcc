@@ -1,201 +1,164 @@
 ---
-tags: [papers, catalogo, index]
+tags: [papers, catalogo, index, tracker]
 status: atualizado
-updated: 2026-06-02
+updated: 2026-06-03
+pdf-script: scripts/download-pdfs.sh
 ---
 
 # Catálogo de Artigos — Base de Conhecimento
 
-61 artigos fichados no vault. Organizados por tema para navegação durante a escrita da monografia.
+61 artigos fichados no vault.
 
-## Cobertura Atual
+## Status Geral
 
-| Item | Quantidade | Observação |
-|---|---:|---|
-| Notas em `vault/papers/` | 61 | Exclui este `index.md` |
-| Papers listados neste índice | 61 | Nenhuma nota ficou fora do índice |
-| Chaves no BibTeX da monografia | 50 | `monografia/bib/abntex2-references.bib` |
-| Notas sem entrada BibTeX | 11 | Todas em lower bounds/relaxações |
+| Métrica | Valor |
+|---|---:|
+| Notas no vault | 61 |
+| **PDF íntegro** | **43 (70.5%)** |
+| PDF corrompido (`corrupted/`) | 5 |
+| Sem PDF local | 13 |
+| Notas **lido/lido-parcial** (com inventário) | 43 |
+| Notas **pendente** (sem resumo) | **18** |
+| Com BibTeX na monografia | 50 |
+| Sem BibTeX | 11 |
 
-> [!warning] Pendência bibliográfica
-> Antes de finalizar Fundamentação, Proposta ou Experimentos, adicionar ao `.bib` as notas sem entrada BibTeX listadas em [[#Pendências BibTeX]].
+> [!note] Critério de leitura
+> **`status:` no frontmatter** = `pendente` (sem resumo), `lido-parcial` ou `lido` (seção `## Resumo` com ≥ 40 caracteres). Índice e notas usam o mesmo valor.
+>
+> [!tip] Acesso UFU
+> 🏛️ = Portal de Periódicos CAPES (login UFU). 🔍 = busca manual. https://www.periodicos.capes.gov.br/
 
-## TSP Clássico e Fundamentos
+## Tabelão
 
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[garey1979computers]] | 1979 | NP-completude do TSP | ⭐5 |
-| [[lawler1985traveling]] | 1985 | Survey clássico do TSP (edited volume) | ⭐5 |
-| [[applegate2006traveling]] | 2006 | Estudo computacional — solver Concorde | ⭐5 |
-| [[lin1973effective]] | 1973 | Heurística Lin-Kernighan (LK) | ⭐5 |
-| [[bock2025survey]] | 2025 | Survey variantes TSP em warehousing | ⭐3 |
-| [[pop2024comprehensive]] | 2024 | Survey GTSP (invited review, EJOR) | ⭐5 |
+| # | Nota | Ano | PDF | UFU | Status | ⭐ | Categoria | Tags |
+|---|------|:---:|:---:|:---:|:------:|:--:|----------|------|
+| 1 | [[garey1979computers]] | 1979 | ✅ | — | lido-parcial | 5 | TSP Clássico | complexity foundational |
+| 2 | [[lin1973effective]] | 1973 | ✅ | — | lido | 5 | TSP Clássico | tsp metaheuristic |
+| 3 | [[lawler1985traveling]] | 1985 | ❌ | 🏛️ | pendente | 5 | TSP Clássico | tsp metaheuristic |
+| 4 | [[applegate2006traveling]] | 2006 | ✅ | — | lido | 5 | TSP Clássico | tsp |
+| 5 | [[bock2025survey]] | 2025 | ✅ | — | lido | 3 | TSP Clássico | tsp tsp-variants warehousing complexity |
+| 6 | [[winter2002modeling]] | 2002 | ✅ | — | lido | 0 | TSP Clássico | routing |
+| 7 | [[aggarwal2000angular]] | 2000 | ❌ | 🏛️ | pendente | 4 | TSP Clássico | tsp, angular-cost, turn-penalty, approximation |
+| 8 | [[oliver1987crossover]] | 1987 | ✅ | — | lido-parcial | 4 | GA | ga tsp |
+| 9 | [[bean1994genetic]] | 1994 | ✅ | — | lido-parcial | 0 | GA | ga metaheuristic |
+| 10 | [[potvin1996ga]] | 1996 | ✅ | — | lido-parcial | 4 | GA | ga tsp survey |
+| 11 | [[larranaga1999ga]] | 1999 | ✅ | — | lido-parcial | 5 | GA | ga tsp survey |
+| 12 | [[nagata2006eax]] | 2006 | ⚠️ | 🔍 | pendente | 5 | GA | ga tsp metaheuristic |
+| 13 | [[hga2024hybrid]] | 2024 | ❌ | 🏛️ | pendente | 4 | GA | ga aco tsp metaheuristic hybrid |
+| 14 | [[holland1975adaptation]] | 1975 | ✅ | — | lido-parcial | 4 | GA | ga foundational |
+| 15 | [[goldberg1989genetic]] | 1989 | ✅ | — | lido-parcial | 5 | GA | ga metaheuristic |
+| 16 | [[wu2020comparative]] | 2020 | ✅ | — | lido-parcial | 4 | GA | tsp, ga, aco, pso, comparison, metaheuristic |
+| 17 | [[alexander2020comparison]] | 2020 | ✅ | — | lido | 2 | GA | tsp, ga, aco, comparison, tradeoff |
+| 18 | [[kennedy1995particle]] | 1995 | ✅ | — | lido | 5 | PSO | pso metaheuristic |
+| 19 | [[clerc2000discretepso]] | 2000 | ✅ | — | lido-parcial | 5 | PSO | pso tsp survey |
+| 20 | [[sun2024hybrid]] | 2024 | ❌ | 🏛️ | pendente | 3 | PSO | pso tsp metaheuristic |
+| 21 | [[araujo2025pso]] | 2025 | ✅ | — | lido-parcial | 3 | PSO | pso tsp metaheuristic |
+| 22 | [[huang2025matrix]] | 2025 | ❌ | 🏛️ | pendente | 3 | PSO | pso tsp metaheuristic |
+| 23 | [[kappagantula2025dpso]] | 2025 | ❌ | 🔍 | pendente | 4 | PSO | pso tsp |
+| 24 | [[dorigo1996ant]] | 1996 | ✅ | — | lido | 5 | ACO | aco metaheuristic |
+| 25 | [[dorigo1997ant]] | 1997 | ✅ | — | lido | 5 | ACO | aco tsp |
+| 26 | [[stutzle2000mmas]] | 2000 | ✅ | — | lido | 4 | ACO | aco tsp |
+| 27 | [[dorigo2004book]] | 2004 | ✅ | — | lido | 5 | ACO | aco survey book |
+| 28 | [[dorigo2005acotheory]] | 2005 | ✅ | — | lido | 4 | ACO | aco survey theory |
+| 29 | [[blum2005acointro]] | 2005 | ✅ | — | lido-parcial | 5 | ACO | aco survey |
+| 30 | [[wang2021ant]] | 2021 | ✅ | — | lido | 0 | ACO | aco tsp metaheuristic |
+| 31 | [[deepaco2023]] | 2023 | ⚠️ | 🏛️ | pendente | 4 | ACO | aco metaheuristic tsp deep-learning |
+| 32 | [[ppaco2024]] | 2024 | ✅ | — | lido-parcial | 4 | ACO | aco metaheuristic rl |
+| 33 | [[neufaco2025]] | 2025 | ✅ | — | lido | 5 | ACO | aco metaheuristic tsp deep-learning |
+| 34 | [[gpaco2025]] | 2025 | ✅ | — | lido | 4 | ACO | aco metaheuristic gp |
+| 35 | [[murray2015flying]] | 2015 | ✅ | — | lido | 5 | Drone | tsp drone metaheuristic |
+| 36 | [[agatz2018optimization]] | 2018 | ✅ | — | lido | 5 | Drone | tsp drone metaheuristic |
+| 37 | [[dellamico2021multiple]] | 2021 | ⚠️ | 🏛️ | pendente | 4 | Drone | tsp drone |
+| 38 | [[dellamico2022exact]] | 2022 | ⚠️ | 🏛️ | pendente | 4 | Drone | tsp drone |
+| 39 | [[freitas2020vns]] | 2020 | ✅ | — | lido | 4 | Drone | tsp drone |
+| 40 | [[rajan2022routing]] | 2022 | ✅ | — | lido | 5 | Drone | drone routing |
+| 41 | [[ahmed2024receding]] | 2024 | ❌ | 🏛️ | pendente | 3 | Drone | drone metaheuristic routing |
+| 42 | [[vanhove2012route]] | 2012 | ⚠️ | 🏛️ | pendente | 0 | Drone | routing |
+| 43 | [[heldkarp1970traveling]] | 1970 | ✅ | — | lido | 5 | Lower Bounds | tsp, lower-bound, lagrangean |
+| 44 | [[heldkarp1971traveling]] | 1971 | ❌ | 🏛️ | pendente | 5 | Lower Bounds | tsp, lower-bound, lagrangean |
+| 45 | [[balas1985branch]] | 1985 | ❌ | 🏛️ | pendente | 5 | Lower Bounds | tsp, atsp, lower-bound, branch-and-bound, survey |
+| 46 | [[fischetti1992additive]] | 1992 | ❌ | 🏛️ | pendente | 5 | Lower Bounds | atsp, lower-bound, additive-bounding |
+| 47 | [[johnson1996asymptotic]] | 1996 | ✅ | — | lido | 5 | Lower Bounds | tsp, lower-bound, held-karp, experimental |
+| 48 | [[valenzuela1997estimating]] | 1997 | ❌ | 🏛️ | pendente | 4 | Lower Bounds | tsp, lower-bound, held-karp, lagrangean |
+| 49 | [[karp1979patching]] | 1979 | ✅ | — | lido-parcial | 4 | Lower Bounds | atsp, assignment, patching |
+| 50 | [[righini2021efficient]] | 2021 | ✅ | — | lido | 4 | Lower Bounds | tsp, lower-bound, held-karp, algorithm |
+| 51 | [[kinable2017hybrid]] | 2017 | ✅ | — | lido | 5 | Lower Bounds | tdtsp, lower-bound, decision-diagram, constraint-programming |
+| 52 | [[leraromero2020dynamic]] | 2020 | ❌ | 🏛️ | pendente | 4 | Lower Bounds | tdtsp, lower-bound, labeling, ng-path |
+| 53 | [[toaza2023review]] | 2023 | ❌ | 🏛️ | pendente | 4 | Survey/Comparativo | tsp metaheuristic review scheduling |
+| 54 | [[halim2019combinatorial]] | 2019 | ✅ | — | lido-parcial | 4 | Survey/Comparativo | tsp, ga, sa, ts, aco, heuristic, comparison, survey, tpo |
+| 55 | [[chandra2022comparative]] | 2022 | ✅ | — | lido | 4 | Survey/Comparativo | tsp, ga, sa, ts, aco, pso, abc, comparison, statistics, metaheuristic |
+| 56 | [[haroun2015performance]] | 2015 | ✅ | — | lido-parcial | 4 | Survey/Comparativo | tsp, ga, aco, comparison, metaheuristic |
+| 57 | [[almufti2025comparative]] | 2025 | ✅ | — | lido | 3 | Survey/Comparativo | tsp, aco, gwo, abc, cso, metaheuristic, comparison |
+| 58 | [[hossain2024comparison]] | 2024 | ✅ | — | lido-parcial | 4 | Survey/Comparativo | tsp, ga, aco, sa, abc, gwo, ssa, comparison, benchmark |
+| 59 | [[wadi2025charting]] | 2025 | ✅ | — | lido-parcial | 3 | Survey/Comparativo | tsp, pso, aco, eho, swarm, comparison |
+| 60 | [[rajwar2023exhaustive]] | 2023 | ✅ | — | lido | 4 | Survey/Comparativo | metaheuristic |
+| 61 | [[pop2024comprehensive]] | 2024 | ✅ | — | lido | 5 | Survey/Comparativo | tsp gtsp survey combinatorial-optimization drone-routing |
 
-Total: 6
+### Legenda
 
-## Custos de Curva e Turn Restrictions
+| Símbolo | Significado |
+|:-------:|-------------|
+| ✅ | PDF íntegro em `papers/pdfs/<bibtex-key>.pdf` |
+| ⚠️ | PDF em `corrupted/` |
+| ❌ | Sem PDF local |
+| 🏛️ | Acesso via Portal CAPES (UFU) |
+| 🔍 | Busca manual |
+| pendente / lido-parcial / lido | Igual ao frontmatter da nota |
 
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[winter2002modeling]] | 2002 | Pseudo-dual graph para turn costs | ⭐4 |
-| [[vanhove2012route]] | 2012 | Experimentos computacionais com turn restrictions | ⭐3 |
-| [[aggarwal2000angular]] | 2000 | Angular-Metric TSP (NP-hardness) | ⭐4 |
+## PDFs Íntegros (43)
 
-Total: 3
+[[garey1979computers]] • [[lin1973effective]] • [[applegate2006traveling]] • [[bock2025survey]] • [[winter2002modeling]] • [[oliver1987crossover]] • [[bean1994genetic]] • [[potvin1996ga]] • [[larranaga1999ga]] • [[holland1975adaptation]] • [[goldberg1989genetic]] • [[wu2020comparative]] • [[alexander2020comparison]] • [[kennedy1995particle]] • [[clerc2000discretepso]] • [[araujo2025pso]] • [[dorigo1996ant]] • [[dorigo1997ant]] • [[stutzle2000mmas]] • [[dorigo2004book]] • [[dorigo2005acotheory]] • [[blum2005acointro]] • [[wang2021ant]] • [[ppaco2024]] • [[neufaco2025]] • [[gpaco2025]] • [[murray2015flying]] • [[agatz2018optimization]] • [[freitas2020vns]] • [[rajan2022routing]] • [[heldkarp1970traveling]] • [[johnson1996asymptotic]] • [[karp1979patching]] • [[righini2021efficient]] • [[kinable2017hybrid]] • [[halim2019combinatorial]] • [[chandra2022comparative]] • [[haroun2015performance]] • [[almufti2025comparative]] • [[hossain2024comparison]] • [[wadi2025charting]] • [[rajwar2023exhaustive]] • [[pop2024comprehensive]]
 
-## Algoritmos Genéticos para TSP
+## Pendentes — sem resumo (18)
 
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[holland1975adaptation]] | 1975 | GA fundacional | ⭐5 |
-| [[goldberg1989genetic]] | 1989 | Textbook GA — Schema Theorem | ⭐5 |
-| [[oliver1987crossover]] | 1987 | Operadores PMX, OX, CX para TSP | ⭐4 |
-| [[bean1994genetic]] | 1994 | Random Keys para sequenciamento | ⭐4 |
-| [[potvin1996ga]] | 1996 | Survey de crossover GA para TSP | ⭐4 |
-| [[larranaga1999ga]] | 1999 | Survey exaustivo GA+TSP | ⭐5 |
-| [[nagata2006eax]] | 2006 | EAX — crossover estado-da-arte | ⭐5 |
-| [[hga2024hybrid]] | 2024 | GA-ACO híbrido para TSP | ⭐4 |
+[[lawler1985traveling]] • [[aggarwal2000angular]] • [[nagata2006eax]] • [[hga2024hybrid]] • [[sun2024hybrid]] • [[huang2025matrix]] • [[kappagantula2025dpso]] • [[deepaco2023]] • [[dellamico2021multiple]] • [[dellamico2022exact]] • [[ahmed2024receding]] • [[vanhove2012route]] • [[heldkarp1971traveling]] • [[balas1985branch]] • [[fischetti1992additive]] • [[valenzuela1997estimating]] • [[leraromero2020dynamic]] • [[toaza2023review]]
 
-Total: 8
+## Obter via Biblioteca UFU / CAPES (16)
 
-## PSO para TSP
+Login UFU → [Portal de Periódicos CAPES](https://www.periodicos.capes.gov.br/).
 
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[kennedy1995particle]] | 1995 | PSO original (fundacional) | ⭐5 |
-| [[clerc2000discretepso]] | 2000 | PSO discreto (NoHope/ReHope) | ⭐5 |
-| [[sun2024hybrid]] | 2024 | HPSO: greedy + Metropolis + 2-opt | ⭐3 |
-| [[araujo2025pso]] | 2025 | PSO discreto com 2-opt/3-opt | ⭐3 |
-| [[huang2025matrix]] | 2025 | Matrix-PSO para mTSP | ⭐3 |
-| [[kappagantula2025dpso]] | 2025 | DPSO-Q: PSO + RL (Ant-Q) | ⭐4 |
+| Nota | PDF | Plataforma | DOI |
+|------|:---:|------------|-----|
+| [[lawler1985traveling]] | ❌ | Wiley Online Library | `10.1002/net.3230170210` |
+| [[aggarwal2000angular]] | ❌ | SIAM Journals | `10.1137/S0097539796312719` |
+| [[hga2024hybrid]] | ❌ | SpringerLink | `10.1007/978-3-031-64067-4_22` |
+| [[sun2024hybrid]] | ❌ | Elsevier / ScienceDirect | `10.1016/j.procs.2024.09.151` |
+| [[huang2025matrix]] | ❌ | SpringerLink | `10.1007/s12065-025-01082-2` |
+| [[deepaco2023]] | ⚠️ | Conferência — buscar no CAPES | `—` |
+| [[dellamico2021multiple]] | ⚠️ | Wiley Online Library | `10.1002/net.22022` |
+| [[dellamico2022exact]] | ⚠️ | Wiley Online Library | `10.1111/itor.13030` |
+| [[ahmed2024receding]] | ❌ | Elsevier / ScienceDirect | `10.1016/j.procs.2024.11.079` |
+| [[vanhove2012route]] | ⚠️ | Elsevier / ScienceDirect | `10.1016/j.orl.2012.06.001` |
+| [[heldkarp1971traveling]] | ❌ | SpringerLink | `10.1007/BF01584070` |
+| [[balas1985branch]] | ❌ | INFORMS / relatório CMU | `—` |
+| [[fischetti1992additive]] | ❌ | SpringerLink | `10.1007/BF01585642` |
+| [[valenzuela1997estimating]] | ❌ | Elsevier / ScienceDirect | `10.1016/S0377-2217(97)00360-1` |
+| [[leraromero2020dynamic]] | ❌ | SpringerLink | `10.1007/s10288-020-00450-x` |
+| [[toaza2023review]] | ❌ | Elsevier / ScienceDirect | `10.1016/j.asoc.2023.110908` |
 
-Total: 6
+### Verificar manualmente
 
-## ACO para TSP
-
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[dorigo1996ant]] | 1996 | Ant System (fundacional) | ⭐5 |
-| [[dorigo1997ant]] | 1997 | Ant Colony System para TSP | ⭐5 |
-| [[stutzle2000mmas]] | 2000 | MAX-MIN Ant System | ⭐5 |
-| [[dorigo2004book]] | 2004 | Livro ACO (MIT Press) | ⭐5 |
-| [[dorigo2005acotheory]] | 2005 | Survey teórico ACO | ⭐4 |
-| [[blum2005acointro]] | 2005 | Introdução e variantes ACO | ⭐5 |
-| [[wang2021ant]] | 2021 | SOS-ACO: otimização de parâmetros | ⭐4 |
-| [[deepaco2023]] | 2023 | DeepACO: neural-enhanced ACO | ⭐4 |
-| [[ppaco2024]] | 2024 | PGACO/PPOACO: policy gradient ACO | ⭐4 |
-| [[neufaco2025]] | 2025 | NeuFACO: focused ACO | ⭐5 |
-| [[gpaco2025]] | 2025 | GP-ACO: projeto automático de regras | ⭐4 |
-
-Total: 11
-
-## Drone Routing e FSTSP/TSP-D
-
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[murray2015flying]] | 2015 | FSTSP + PDSTSP (seminal) | ⭐5 |
-| [[agatz2018optimization]] | 2018 | TSP-D: truck+drone cooperation | ⭐5 |
-| [[dellamico2021multiple]] | 2021 | FSTSP com múltiplos drones | ⭐4 |
-| [[dellamico2022exact]] | 2022 | Modelos exatos para FSTSP | ⭐4 |
-| [[freitas2020vns]] | 2020 | VNS para FSTSP | ⭐4 |
-| [[rajan2022routing]] | 2022 | PH Algorithm para patrulha UAV | ⭐5 |
-| [[ahmed2024receding]] | 2024 | RHC + PSO para UAV | ⭐3 |
-
-Total: 7
-
-## Lower Bounds e Relaxações
-
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[heldkarp1970traveling]] | 1970 | Relaxação Lagrangiana 1-tree para TSP (seminal) | ⭐5 |
-| [[heldkarp1971traveling]] | 1971 | Programação dinâmica O(n²2ⁿ) + subgradiente HK | ⭐5 |
-| [[balas1985branch]] | 1985 | B&B para ATSP com relaxação Assignment Problem | ⭐5 |
-| [[fischetti1992additive]] | 1992 | Additive bounding: AP + arborescências combinadas | ⭐5 |
-| [[johnson1996asymptotic]] | 1996 | HK bound < 0.8% do ótimo — validação empírica | ⭐5 |
-| [[valenzuela1997estimating]] | 1997 | Implementação prática do subgradiente HK | ⭐4 |
-| [[karp1979patching]] | 1979 | Patching heuristic + AP bound para ATSP | ⭐4 |
-| [[righini2021efficient]] | 2021 | Otimização da escolha do vértice no bound HK | ⭐4 |
-| [[kinable2017hybrid]] | 2017 | MDD + LP para TDTSP posição-dependente | ⭐5 |
-| [[leraromero2020dynamic]] | 2020 | Labeling + ng-path relaxation para TDTSP | ⭐4 |
-
-Total: 10
-
-## Surveys e Estudos Comparativos
-
-| Paper | Ano | Tags | Rating |
-|-------|-----|------|:------:|
-| [[toaza2023review]] | 2023 | Revisão bibliométrica de 120 metaheurísticas | ⭐4 |
-| [[halim2019combinatorial]] | 2019 | Comparativo de 6 heurísticas em TSP | ⭐4 |
-| [[chandra2022comparative]] | 2022 | 8 metaheurísticas + ANOVA/Tukey | ⭐4 |
-| [[wu2020comparative]] | 2020 | GA vs ACO vs PSO em TSPLIB | ⭐4 |
-| [[haroun2015performance]] | 2015 | GA vs ACO em TSP | ⭐4 |
-| [[almufti2025comparative]] | 2025 | 9 metaheurísticas em TSPLIB | ⭐3 |
-| [[hossain2024comparison]] | 2024 | Clássicos vs modernos em TSP | ⭐4 |
-| [[wadi2025charting]] | 2025 | Swarm-based para TSP | ⭐3 |
-| [[alexander2020comparison]] | 2020 | GA vs ACO | ⭐2 |
-| [[rajwar2023exhaustive]] | 2023 | Survey exaustivo de metaheurísticas | ⭐4 |
-
-Total: 10
-
----
-
-**Total geral: 61 artigos**
-
-## Referências Prioritárias por Capítulo
-
-| Capítulo | Referências centrais | Uso principal |
-|---|---|---|
-| Introdução | [[murray2015flying]], [[agatz2018optimization]], [[rajan2022routing]], [[winter2002modeling]], [[vanhove2012route]], [[wu2020comparative]], [[chandra2022comparative]] | Motivar roteamento com drones, custos de curva e lacuna comparativa |
-| Fundamentação | [[garey1979computers]], [[lawler1985traveling]], [[applegate2006traveling]], [[holland1975adaptation]], [[goldberg1989genetic]], [[kennedy1995particle]], [[dorigo1996ant]], [[dorigo1997ant]], [[stutzle2000mmas]] | Definir TSP, complexidade e metaheurísticas usadas |
-| Proposta | [[winter2002modeling]], [[vanhove2012route]], [[bean1994genetic]], [[oliver1987crossover]], [[clerc2000discretepso]], [[dorigo1996ant]], [[balas1985branch]], [[karp1979patching]] | Justificar tensor de custo, representações dos métodos e lower bound AP |
-| Experimentos | [[demsar2006statistical]], [[halim2019combinatorial]], [[chandra2022comparative]], [[wu2020comparative]], [[haroun2015performance]], [[almufti2025comparative]] | Sustentar protocolo comparativo e estatístico |
-| Conclusão | [[deepaco2023]], [[neufaco2025]], [[gpaco2025]], [[dellamico2021multiple]], [[dellamico2022exact]], [[kinable2017hybrid]], [[leraromero2020dynamic]] | Trabalhos futuros: ACO neural/focado, drones e bounds mais fortes |
+| Nota | PDF | Observação |
+|------|:---:|--------------|
+| [[nagata2006eax]] | ⚠️ | Conferência — sem DOI |
+| [[kappagantula2025dpso]] | ❌ | Hindawi/Wiley |
 
 ## Pendências BibTeX
 
-As seguintes notas existem no vault e aparecem neste índice, mas ainda não têm entrada em `monografia/bib/abntex2-references.bib`:
-
-| Nota | Categoria | Prioridade para monografia |
-|---|---|---|
-| [[aggarwal2000angular]] | Custos de curva e turn restrictions | Média |
-| [[balas1985branch]] | Lower bounds e relaxações | Alta |
-| [[fischetti1992additive]] | Lower bounds e relaxações | Média |
-| [[heldkarp1970traveling]] | Lower bounds e relaxações | Média |
-| [[heldkarp1971traveling]] | Lower bounds e relaxações | Média |
-| [[johnson1996asymptotic]] | Lower bounds e relaxações | Média |
-| [[karp1979patching]] | Lower bounds e relaxações | Alta |
-| [[kinable2017hybrid]] | Lower bounds e relaxações | Alta para trabalhos futuros |
-| [[leraromero2020dynamic]] | Lower bounds e relaxações | Alta para trabalhos futuros |
-| [[righini2021efficient]] | Lower bounds e relaxações | Baixa |
-| [[valenzuela1997estimating]] | Lower bounds e relaxações | Baixa |
+| Nota | PDF | Status | Prioridade |
+|------|:---:|:------:|------------|
+| [[aggarwal2000angular]] | ❌ | pendente | Média |
+| [[balas1985branch]] | ❌ | pendente | Alta |
+| [[fischetti1992additive]] | ❌ | pendente | Média |
+| [[heldkarp1970traveling]] | ✅ | lido | Média |
+| [[heldkarp1971traveling]] | ❌ | pendente | Média |
+| [[johnson1996asymptotic]] | ✅ | lido | Média |
+| [[karp1979patching]] | ✅ | lido-parcial | Alta |
+| [[kinable2017hybrid]] | ✅ | lido | Alta |
+| [[leraromero2020dynamic]] | ❌ | pendente | Alta |
+| [[righini2021efficient]] | ✅ | lido | Baixa |
+| [[valenzuela1997estimating]] | ❌ | pendente | Baixa |
 
 ## Por Área
 
-Cada nota de área sintetiza e conecta os papers relevantes:
-
-- [[tsp]] — TSP clássico e variantes
-- [[tsp-variants]] — classificação de variantes
-- [[genetic-algorithms]] — GA na literatura
-- [[particle-swarm]] — PSO na literatura
-- [[ant-colony]] — ACO na literatura
-- [[drone-routing]] — roteamento de drones
-- [[bio-inspired-optimization]] — visão geral
-- [[comparative-studies]] — estudos comparativos
-- [[lower-bounds]] — métodos de limitante inferior
-
-## Distribuição Temporal
-
-| Década | Papers |
-|:------:|:------:|
-| 1970s | 4 |
-| 1980s | 3 |
-| 1990s | 8 |
-| 2000s | 10 |
-| 2010s | 6 |
-| 2020s | 30 |
-
-## Notas
-
-- Rankings: ⭐5 (seminal/referência obrigatória), ⭐4 (relevante), ⭐3 (apoio), ⭐2 (menção tangencial)
-- Papers sem DOI ou PDF registrado estão marcados como `pendente` no frontmatter
-- Esta lista deve ser mantida atualizada conforme novos artigos são adicionados ao vault
+[[tsp]] • [[tsp-variants]] • [[genetic-algorithms]] • [[particle-swarm]] • [[ant-colony]] • [[drone-routing]] • [[bio-inspired-optimization]] • [[comparative-studies]] • [[lower-bounds]]
