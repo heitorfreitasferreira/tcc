@@ -22,8 +22,9 @@
 | `ga` | `--elitism`, `--mutation-rate`, `--tournament-size` |
 | `pso` | `--c1`, `--c2`, `--w` |
 | `aco` | `--alpha`, `--beta`, `--gama`, `--rho`, `--q` |
+| `lowerbound` | nenhum (determinístico, 1 avaliação) |
 
-Todos os heurísticos aceitam `--population` (padrão 100) e `--iterations` (padrão 100).
+Métodos heurísticos (ga, pso, aco) aceitam `--population` (padrão 100) e `--iterations` (padrão 100). `lowerbound` ignora esses flags por ser determinístico. `bruteforce` também ignora.
 
 ## Artefatos de saída (por run)
 Gerados em `<results-dir>/` (padrão `src/data/results`):
@@ -40,6 +41,7 @@ Formato: `<instance>__<method>__s<seed>__h<hash8>` (versão atual) ou `<instance
 
 ## Cobertura atual
 - Heurísticas (ga, pso, aco): 51 seeds para 30 instâncias (10a–100c) = 1.530 runs por método
+- `lowerbound`: 1 seed (determinístico) para toda instância `.graph` disponível
 - Bruteforce: 4 seeds (n ≤ 13) ou 1 seed (n = 14), ausente para n ≥ 15
 - Total bruto ~5016 arquivos, ~4641 runs únicas após dedup por `(instance, method, seed)`
 
