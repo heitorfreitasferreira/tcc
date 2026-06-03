@@ -12,50 +12,52 @@ rating: 2
 
 ## PDF
 
-[[papers/pdfs/alexander2020comparison.pdf]]
+![[alexander2020comparison.pdf]]
 
 ## Resumo
 
-Compara Genetic Algorithm (GA) e Ant Colony Optimization (ACO) na resolução do TSP simétrico com tamanhos de 10 a 100 cidades (aleatórias). O ACO encontra rotas mais curtas que o GA em todas as configurações testadas, enquanto o GA apresenta tempo de execução significativamente menor. O GA utiliza ordered crossover e mutação recíproca como operadores de permutação. O estudo quantifica o trade-off clássico entre qualidade da solução e velocidade computacional.
+Alexander e Sriwindono comparam [[genetic-algorithms]] e [[ant-colony]] para resolver o [[tsp]]. O estudo usa dados com 10, 20, ..., 100 cidades, executa cada configuração 10 vezes e compara distância percorrida e tempo de processamento. O GA usa seleção por roleta, Order Crossover e mutação reciprocal-exchange; o ACO é descrito como ACS, com parâmetros fixos. O resultado central é um trade-off: ACS encontra rotas mais curtas, mas GA tende a ser mais rápido em instâncias acima de 20 cidades.
 
 ## Contribuições Principais
 
-- Avaliação sistemática do trade-off qualidade vs. tempo em 10 cenários (10–100 cidades)
-- GA com operadores de permutação adaptados para TSP (ordered crossover + reciprocal mutation)
-- Confirmação quantitativa da superioridade do ACO em qualidade de rota e do GA em velocidade
+- Comparação empírica direta entre GA e ACO/ACS no TSP.
+- Mostra que qualidade de solução e tempo computacional podem favorecer algoritmos diferentes.
+- Aplica um desenho experimental simples com tamanhos crescentes de instância.
+- Explicita operadores de GA usados: roleta, Ordered Crossover e mutação reciprocal-exchange.
+- Usa distância total e tempo médio como métricas de comparação.
 
 ## Relevância para o TCC
 
-Corrobora diretamente o trade-off qualidade vs. velocidade entre GA e ACO, que é central para a escolha do método de otimização no cenário de patrulha com drones. Em aplicações com restrições de tempo real, GA pode ser preferível; em planejamento off-line, ACO pode oferecer rotas mais curtas.
+O artigo reforça uma premissa importante para os resultados do TCC: não basta comparar apenas makespan ou qualidade da solução; o custo computacional também muda o ranking prático dos métodos. Para patrulha com drones, uma rota ligeiramente melhor pode não compensar se o tempo de otimização for muito maior. A conclusão “ACO melhor em distância, GA melhor em tempo” dialoga diretamente com a análise de trade-off entre [[ga]], [[aco]], [[pso]] e [[bruteforce]].
 
 ## Métodos e Abordagens
 
-- GA: ordered crossover (OX), reciprocal mutation, seleção por torneio
-- ACO: modelo clássico com parâmetros α, β, ρ, Q
-- Cidades geradas aleatoriamente em 10 tamanhos de problema (10 a 100)
-- Métricas: distância total do tour e tempo de execução
-- Implementação em MATLAB
+- Instâncias com 10 a 100 cidades.
+- Cada conjunto de dados foi testado 10 vezes.
+- GA com população inicial de 10 cromossomos.
+- Seleção por roulette wheel.
+- Crossover: Order Crossover.
+- Mutação: reciprocal-exchange.
+- ACS com `alpha = 1`, `beta = 0.5` e `rho = 0.9`.
 
 ## Conexões
 
-- [[tsp]] — problema-alvo
-- [[comparative-studies]] — área temática
-- [[genetic-algorithms]] — GA comparado
-- [[ant-colony]] — ACO comparado
-- [[chandra2022comparative]] — estudo com 8 metaheurísticas (inclui GA, ACO, PSO)
-- [[halim2019combinatorial]] — survey comparativo com 6 heurísticas
-- [[toaza2023review]] — evidência bibliométrica: ACO mais citado, GA mais aplicado
+- [[haroun2015performance]]
+- [[chandra2022comparative]]
+- [[wu2020comparative]]
+- [[comparative-studies]]
+- [[genetic-algorithms]]
+- [[ant-colony]]
+- [[tsp]]
 
 ## Notas e Insights
 
-- Estudo simples e limitado (apenas 2 métodos, cidades aleatórias sem benchmark padronizado)
-- Resultado consistente com a literatura: ACO geralmente produz melhores rotas que GA em TSP
-- GA é 2–5x mais rápido que ACO dependendo do tamanho do problema
-- O trade-off identificado é relevante para decidir entre otimização on-line (GA) e off-line (ACO) em sistemas de drones
-- Falta análise estatística (não usa ANOVA ou testes de significância como [[chandra2022comparative]])
+- O artigo é útil para discutir trade-offs, mas a metodologia tem poucos detalhes sobre geração das cidades, controle de sementes e significância estatística.
+- A população pequena do GA sugere cautela ao interpretar a diferença de qualidade entre GA e ACS.
+- A conclusão final é equilibrada: não declara ACS universalmente melhor, pois GA vence em tempo em parte das instâncias.
 
 ## Citações-chave
 
-> "Ant colony algorithm is able to find a shorter distance than the genetic algorithm, but the genetic algorithm shows a better speed of completion."
+> “the ant colony algorithm is able to find a shorter distance than the genetic algorithm, but the genetic algorithm shows a better speed of completion than the ant colony algorithm”
 
-> "GA can complete the TSP faster than ACO, but ACO can find a shorter route."
+> “Generally, it cannot be ascertained that the ACS is better than GA and vice versa.”

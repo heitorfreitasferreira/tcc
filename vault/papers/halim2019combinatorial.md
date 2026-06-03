@@ -6,64 +6,55 @@ doi: "10.1007/s11831-017-9247-y"
 bibtex-key: halim2019combinatorial
 pdf: "papers/pdfs/halim2019combinatorial.pdf"
 tags: [tsp, ga, sa, ts, aco, heuristic, comparison, survey, tpo]
-status: lido
+status: lido-parcial
 rating: 4
 ---
 
 ## PDF
 
-[[papers/pdfs/halim2019combinatorial.pdf]]
+![[halim2019combinatorial.pdf]]
 
 ## Resumo
 
-Survey comparativo publicado na *Archives of Computational Methods in Engineering* (fator de impacto elevado) que analisa 6 heurísticas aplicadas ao TSP: Nearest Neighbor (construtivo), Genetic Algorithm (GA), Simulated Annealing (SA), Tabu Search (TS), Ant Colony Optimization (ACO) e Tree Physiology Optimization (TPO). O estudo avalia precisão das soluções, velocidade de convergência e tempo computacional utilizando instâncias da TSPLIB. O GA apresentou o melhor equilíbrio entre precisão e velocidade, enquanto o ACO demonstrou boa capacidade de encontrar soluções de qualidade mas com maior custo computacional. O TPO é introduzido como método bio-inspirado recente.
+O PDF local de Halim e Ismail, “Combinatorial Optimization: Comparison of Heuristic Algorithms in Travelling Salesman Problem”, está registrado como artigo da *Archives of Computational Methods in Engineering* e trata de comparação de heurísticas para o [[tsp]]. Pela entrada BibTeX e pela nota existente, o artigo cobre métodos como [[genetic-algorithms]], simulated annealing, tabu search, [[ant-colony]] e outras heurísticas aplicadas ao Problema do Caixeiro Viajante.
+
+> [!warning] Leitura parcial
+> O arquivo local não retornou texto e falhou também em tentativas de OCR/rasterização. Portanto, não foi possível confirmar detalhes internos, tabelas, conclusões ou citações diretas a partir do corpo do PDF local.
 
 ## Contribuições Principais
 
-- Survey comparativo cobrindo 6 classes de algoritmos em um mesmo arcabouço experimental
-- Inclusão do Tree Physiology Optimization (TPO), método bio-inspirado pouco explorado na literatura de TSP
-- Métricas padronizadas de comparação: precisão (desvio da solução ótima), convergência (iterações) e tempo
-- Experimentos em instâncias clássicas da TSPLIB permitindo reprodutibilidade
+- Sistematiza a comparação de algoritmos heurísticos para o [[tsp]], conforme título e metadados.
+- Serve como referência de revisão/comparação para métodos clássicos e bio-inspirados.
+- Apoia a leitura do TSP como problema-base para avaliar famílias de metaheurísticas.
+- Não foi possível confirmar rankings, tabelas ou protocolo experimental pelo PDF local.
 
 ## Relevância para o TCC
 
-Survey consolidado em periódico de alto impacto. Útil para fundamentar a escolha dos métodos — GA, ACO e SA — que também são utilizados no projeto. A inclusão de NN como baseline construtivo fornece referência inferior para comparação. A análise de convergência informa a escolha do número de iterações nos experimentos do TCC.
+O artigo é relevante como estudo comparativo anterior ao recorte do TCC, que compara [[genetic-algorithms]], [[particle-swarm]] e [[ant-colony]] em um problema de roteamento inspirado em patrulha com drones. A referência ajuda a justificar que o TSP é um benchmark adequado para testar metaheurísticas, mas não deve sustentar números ou conclusões específicas enquanto o PDF local estiver ilegível.
 
 ## Métodos e Abordagens
 
-- Nearest Neighbor (NN): heurística construtiva gulosa
-- GA: codificação de permutação, crossover OX, mutação por troca
-- SA: cooling schedule geométrico, perturbação 2-opt
-- TS: lista tabu, critério de aspiração
-- ACO: modelo clássico (Dorigo), parâmetros α, β, ρ
-- TPO: modelagem de competição por luz em árvores
-- Benchmarks: instâncias selecionadas da TSPLIB
-- Métricas: desvio percentual do ótimo, iterações até convergência, tempo de CPU
+- Comparação bibliográfica/experimental de heurísticas para TSP, segundo título, BibTeX e tags da nota.
+- Métodos identificados pela nota: GA, SA, TS, ACO e heurísticas relacionadas.
+- Não foi possível extrair com segurança instâncias, métricas, tabelas ou protocolo experimental do PDF local.
 
 ## Conexões
 
-- [[tsp]] — problema-alvo
-- [[comparative-studies]] — área temática
-- [[genetic-algorithms]] — GA incluído
-- [[ant-colony]] — ACO incluído
-- [[simulated-annealing]] — SA incluído
-- [[tabu-search]] — TS incluído
-- [[alexander2020comparison]] — comparação específica GA vs. ACO
-- [[chandra2022comparative]] — estudo comparativo com 8 metaheurísticas
-- [[toaza2023review]] — revisão bibliométrica de metaheurísticas TSP
+- [[tsp]]
+- [[comparative-studies]]
+- [[genetic-algorithms]]
+- [[ant-colony]]
+- [[wu2020comparative]]
+- [[chandra2022comparative]]
+- [[haroun2015performance]]
+- [[almufti2025comparative]]
 
 ## Notas e Insights
 
-- GA apresentou o melhor equilíbrio geral entre qualidade de solução e tempo — consistente com a adoção massiva de GA na literatura (confirmado por [[toaza2023review]])
-- ACO tende a encontrar boas soluções mas com convergência mais lenta
-- SA é competitivo em qualidade mas sensível ao resfriamento
-- NN serve como baseline inferior rápido mas de baixa qualidade
-- TPO mostrou potencial mas requer mais estudos para validação
-- Publicado em 2019 — dados podem estar desatualizados para o estado da arte
-- Survey útil como referência de linha de base, mas não inclui PSO (relevante para o TCC)
+- Útil como referência de fundamentação, mas o PDF local precisa ser substituído por cópia íntegra para uso forte em citações.
+- No estado atual, pode apoiar afirmações gerais já registradas no projeto, mas não resultados específicos.
+- A limitação é de arquivo local corrompido/ilegível, não apenas de OCR ruim.
 
 ## Citações-chave
 
-> "Meta-heuristic algorithms are an optimization algorithm that able to solve TSP problem towards a satisfactory solution."
-
-> "Genetic algorithm achieves the best balance between solution quality and computational time among the tested methods."
+Não foi possível extrair citações diretas confiáveis do PDF local.

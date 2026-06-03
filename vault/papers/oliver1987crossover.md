@@ -4,53 +4,53 @@ authors: [Oliver, Ian M., Smith, D. J., Holland, John R. C.]
 year: 1987
 doi: ""
 bibtex-key: oliver1987crossover
+pdf: "papers/pdfs/oliver1987crossover.pdf"
 tags: [ga tsp]
-status: lido
+status: lido-parcial
 rating: 4
 ---
 
+## PDF
+
+![[oliver1987crossover.pdf]]
+
 ## Resumo
 
-Artigo seminal que analisa três operadores de cruzamento por permutação — Parcialmente Mapeado (PMX), Order Crossover (OX) e Cycle Crossover (CX) — para aplicação de Algoritmos Genéticos ao Problema do Caixeiro Viajante (TSP). Os autores caracterizam como cada operador amostra o espaço de o-schemas (esquemas de ordem) e, portanto, a que tipos de problema cada um é mais adequado. Experimentos em instâncias TSP corroboram a análise teórica, estabelecendo a base para o uso de GAs em problemas de permutação.
+O PDF local não contém o corpo do artigo “A Study of Permutation Crossover Operators on the Traveling Salesman Problem”. O arquivo mostra capa, sumário do proceedings e, após a entrada que lista Oliver, Smith e Holland nas páginas 224--230, passa para outro artigo: “On Using Genetic Algorithms to Search Program Spaces”, de Kenneth De Jong. Portanto, não há base textual local suficiente para resumir o artigo de Oliver et al. pelo PDF disponível.
 
 ## Contribuições Principais
 
-- Definição e análise formal dos operadores PMX, OX e CX para representação por permutação
-- Introdução do conceito de o-schema para análise teórica de operadores de ordem
-- Demonstração experimental de que OX é superior para TSP entre os três operadores
-- Estabelecimento da agenda de pesquisa para operadores de cruzamento em GAs para problemas combinatórios
-- Mais de 1.000 citações, tornando-se referência obrigatória em GA para TSP
+- Não foi possível confirmar contribuições diretamente pelo PDF local.
+- O sumário confirma a existência do artigo no proceedings e sua associação a operadores de cruzamento por permutação para TSP.
+- O corpo do artigo não está presente no arquivo local, impedindo leitura de métodos, resultados ou conclusões.
 
 ## Relevância para o TCC
 
-O operador OX (Order Crossover) é utilizado na implementação de GA do repositório (`src/pkg/ga/`). A análise comparativa dos operadores de cruzamento justifica a escolha de OX como operador padrão. Os conceitos de preservação de ordem e posição são relevantes para o rTSP, onde a sequência de visitação dos pontos de interesse é a variável de decisão.
+A referência é relevante para justificar operadores de cruzamento em [[genetic-algorithms]] aplicados ao [[tsp]], especialmente quando a solução é uma permutação de pontos. Para o TCC, ela deveria fundamentar escolhas como cruzamento ordenado ou operadores permutacionais, mas o PDF local atual não sustenta essa fundamentação textual sem substituição do arquivo.
 
 ## Métodos e Abordagens
 
-- Representação por permutação (path representation) para tours TSP
-- Operador PMX (Partially Mapped Crossover) — preserva posições absolutas
-- Operador OX (Order Crossover) — preserva ordem relativa
-- Operador CX (Cycle Crossover) — preserva posição absoluta de subconjuntos
-- Análise de o-schemas (esquemas de ordem)
-- Experimentos em instâncias TSP
+- Não recuperável a partir do PDF local.
+- O arquivo local permite apenas confirmar que o artigo está listado na sessão “Applications I” do proceedings.
+- O texto efetivamente presente depois do sumário pertence a outro artigo.
 
 ## Conexões
 
-- [[holland1975adaptation]] — GA, fundação teórica (esquemas e crossovers)
-- [[goldberg1989genetic]] — textbook que sistematizou GAs e expandiu análise de crossover
-- [[bean1994genetic]] — random keys (outra representação para TSP em GA)
-- [[lin1973effective]] — TSP, benchmark para operadores de cruzamento
 - [[genetic-algorithms]]
+- [[tsp]]
+- [[potvin1996ga]]
+- [[larranaga1999ga]]
+- [[goldberg1989genetic]]
+- [[holland1975adaptation]]
 
 ## Notas e Insights
 
-- OX é o operador mais utilizado em GAs para TSP até hoje
-- PMX tende a preservar posições absolutas, OX preserva ordem relativa, CX preserva posições de ciclo
-- A escolha do operador de crossover impacta significativamente a convergência e qualidade da solução
-- O artigo não aborda mutação — foco exclusivo em crossover
+- Limitação crítica: PDF incorreto ou incompleto para a chave BibTeX.
+- Não usar este PDF como evidência para afirmações específicas sobre operadores de cruzamento.
+- Antes de citar no texto da monografia, substituir o PDF ou obter cópia que contenha as páginas 224--230.
 
 ## Citações-chave
 
-> "Three permutation crossovers are analyzed to characterize how they sample the o-schema space, and hence what type of problems they may be applicable to."
+> “A study of permutation crossover operators on the traveling salesman problem” aparece no sumário do proceedings, associado a I. M. Oliver, D. J. Smith e J. R. C. Holland, páginas 224--230.
 
-> "Experiments performed on the Traveling Salesman Problem go some way to support the theoretical analysis."
+> Limitação: não há citação literal do corpo do artigo, porque o corpo não está presente no PDF local.

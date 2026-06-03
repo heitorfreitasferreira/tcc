@@ -16,46 +16,49 @@ pdf: "papers/pdfs/agatz2018optimization.pdf"
 
 ## Resumo
 
-Propõe e formaliza o TSP-D (Travelling Salesman Problem with Drone), variante do TSP onde um veículo terrestre (caminhão) e um drone realizam entregas em cooperação. O problema difere do FSTSP de Murray e Chu (2015) ao permitir que o drone realize múltiplas entregas por lançamento e que o caminhão possa atender clientes enquanto o drone está em voo. São apresentadas formulações de programação inteira mista (MILP), heurísticas baseadas em busca local e programação dinâmica, além de experimentos computacionais em instâncias derivadas de benchmarks TSPLIB. O trabalho é referência obrigatória na literatura de otimização de entregas com drones, estabelecendo o TSP-D como problema de pesquisa ativo.
+Agatz, Bouman e Schmidt estudam o Traveling Salesman Problem with Drone (TSP-D), formulação em que um caminhão e um drone colaboram para atender clientes. O caminhão tem maior capacidade e alcance; o drone é mais rápido, mas atende um cliente por operação e precisa sincronizar com o caminhão. O objetivo é minimizar o tempo total da rota colaborativa. O artigo propõe um modelo de programação inteira e heurísticas route first-cluster second: primeiro se constrói uma rota de caminhão que visita todos os nós; depois a rota é particionada em operações de caminhão e drone.
 
 ## Contribuições Principais
 
-- Definição formal do TSP-D (TSP with Drone) com múltiplas entregas por voo do drone
-- Duas formulações MILP para o TSP-D
-- Heurística de roteirização e reassinalmento com busca local
-- Abordagem baseada em programação dinâmica para partição de clientes entre caminhão e drone
-- Experimentos em instâncias TSPLIB de até 100 clientes, demonstrando reduções de 10-40% no tempo de entrega comparado ao caminhão isolado
+- Formula um modelo IP para o TSP-D.
+- Propõe heurísticas rápidas route first-cluster second.
+- Apresenta algoritmo de programação dinâmica para encontrar a melhor atribuição caminhão-drone para uma sequência fixa.
+- Prova garantias de aproximação baseadas em TSP e MST.
+- Compara heurísticas contra soluções ótimas em instâncias pequenas.
 
 ## Relevância para o TCC
 
-Estabelece o TSP-D como variante central para entregas com drones, diretamente relacionada ao cenário de patrulha com drones do TCC. A modelagem de otimização cooperativa entre veículos terrestres e aéreos informa o design do problema rTSP usado no TCC. Suas heurísticas (busca local + programação dinâmica) são comparáveis às metaheurísticas bio-inspiradas (GA, PSO, ACO) implementadas no código do TCC.
+Este artigo conecta diretamente o TSP clássico ao cenário de drones preservando uma estrutura algorítmica analisável. Para o TCC, ele fornece ponte entre o modelo simplificado TSP/rTSP e aplicações mais realistas de drones de patrulha ou entrega. A ideia route first-cluster second também é útil como interpretação: primeiro encontra-se uma boa sequência de visitação, depois adapta-se a rota para restrições operacionais.
 
 ## Métodos e Abordagens
 
-- Programação Inteira Mista (MILP) com Gurobi
-- Heurística de roteirização: constrói rota TSP para o caminhão e reassinala clientes para o drone via busca local
-- Programação dinâmica para particionamento ótimo entre caminhão e drone
-- Instâncias derivadas de TSPLIB (10–100 clientes)
-- Métricas: tempo total de entrega (makespan), redução percentual vs. TSP clássico
+- Modelo em grafo com depósito e clientes.
+- Tempos de viagem distintos para caminhão e drone.
+- Objetivo de minimizar o tempo total, considerando esperas por sincronização.
+- Construção inicial por TSP ótimo via Concorde ou por MST.
+- Particionamento guloso com operações MakeFly, PushLeft e PushRight.
+- Particionamento exato por programação dinâmica em `O(n^3)` para uma rota fixa.
 
 ## Conexões
 
-- [[murray2015flying]] — FSTSP (problema predecessor que inspirou o TSP-D)
-- [[dellamico2021multiple]] — extensão para múltiplos drones
-- [[dellamico2022exact]] — modelos exatos para FSTSP
-- [[freitas2020vns]] — VNS para FSTSP
-- [[rajan2022routing]] — roteamento estocástico para patrulha UAV
+- [[murray2015flying]]
+- [[dellamico2021multiple]]
+- [[dellamico2022exact]]
+- [[freitas2020vns]]
+- [[rajan2022routing]]
+- [[lin1973effective]]
+- [[applegate2006traveling]]
 - [[drone-routing]]
-- [[tsp]]
-- [[bio-inspired-optimization]]
 
 ## Notas e Insights
 
-- O TSP-D difere do FSTSP na assunção de múltiplas entregas do drone por lançamento vs. uma única entrega no FSTSP
-- Reduções de 10-40% no makespan vs. truck-only, dependendo da densidade de clientes elegíveis e velocidade do drone
-- A heurística de reassinalmento é simples mas eficaz; metaheurísticas mais sofisticadas (GA/PSO/ACO) podem oferecer melhorias adicionais
-- Tradeoff entre qualidade da solução do TSP base (LK vs. vizinho mais próximo) e desempenho global da heurística
+- Uma boa rota TSP não é necessariamente uma boa rota TSP-D, porque o caminhão pode precisar facilitar bons voos do drone.
+- O particionamento exato supera o guloso, mas cresce em custo computacional.
+- A busca local é essencial para explorar bem o benefício do drone; sem adaptar a sequência, há mais espera e menor paralelismo.
+- O artigo é boa base para explicar por que o TCC começa com TSP/rTSP: mesmo uma extensão com um drone acoplado já exige modelos e heurísticas mais complexos.
 
 ## Citações-chave
 
-> "Our computational study indicates that using a drone can reduce the total operational time by 10% to 40% compared to a traditional truck-only operation."
+> “An innovative last-mile delivery concept in which a truck collaborates with a drone to make deliveries gives rise to a new variant of the traveling salesman problem (TSP) that we call the TSP with drone.”
+
+> “The exact partitioning algorithm has minimal time duration among all solutions (R, D) to the TSP-D with R and D both subsequences of R1. This solution can be found in time O(n3).”

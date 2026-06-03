@@ -6,46 +6,51 @@ doi: "10.1023/A:1006529012972"
 bibtex-key: larranaga1999ga
 pdf: "papers/pdfs/larranaga1999ga.pdf"
 tags: [ga tsp survey]
-status: lido
+status: lido-parcial
 rating: 5
 ---
 
 ## PDF
 
-[[papers/pdfs/larranaga1999ga.pdf]]
+![[larranaga1999ga.pdf]]
 
 ## Resumo
 
-This paper is the result of a literature study carried out by the authors. It is a review of the different attempts made to solve the Travelling Salesman Problem with Genetic Algorithms. We present crossover and mutation operators, developed to tackle the TSP with Genetic Algorithms with different representations such as: binary representation, path representation, adjacency representation, ordinal representation and matrix representation. Likewise, we show the experimental results obtained with different standard examples using combinations of crossover and mutation operators in relation with path representation.
-
-**Operadores de crossover cobertos:** PMX (Partially Mapped Crossover), OX (Order Crossover), CX (Cycle Crossover), ERX (Edge Recombination Crossover), Heuristic Crossover, SCX (Sequential Constructive Crossover).
-
-**Operadores de mutação cobertos:** Swap (exchange), Insertion, Inversion (reversal), Displacement, Scramble.
+O PDF local tem metadados válidos para “Genetic Algorithms for the Travelling Salesman Problem: A Review of Representations and Operators”, publicado em Artificial Intelligence Review, mas não possui texto extraível. Tentativas de OCR e renderização também resultaram em páginas sem conteúdo útil. Não foi possível ler o corpo do artigo a partir do arquivo local.
 
 ## Contribuições Principais
 
-- Revisão exaustiva e sistemática de representações e operadores de GA para TSP
-- Experimentos comparativos: PMX + Swap/Inversion se destacam como combinação mais robusta
-- Categorização clara de operadores em grupos (preservação de posição, ordem, arestas)
+- Pelo título e metadados, a contribuição esperada é uma revisão de representações e operadores de GAs para o [[tsp]].
+- A referência é relevante para organizar famílias de representação e operadores de cruzamento/mutação.
+- Não foi possível confirmar taxonomia, tabelas ou conclusões no PDF local.
 
 ## Relevância para o TCC
 
-Artigo de referência para justificar a escolha de operadores de crossover (e.g., PMX, OX, ERX) e mutação (e.g., swap, inversão) em GAs para TSP/rTSP. Os experimentos comparativos fornecem evidência empírica para decisões de implementação.
+Esta referência é forte para justificar decisões de implementação do GA no TCC, sobretudo a escolha de representação e operadores compatíveis com permutações. Ela também ajuda a distinguir o GA de métodos como [[particle-swarm]] e [[ant-colony]], pois o gargalo do GA no TSP está fortemente ligado à codificação e ao crossover. No estado atual, essa relevância é bibliográfica; o PDF local não permite sustentar detalhes.
 
 ## Métodos e Abordagens
 
-- Crossover: PMX, OX, CX, ERX, SCX, Heuristic Crossover
-- Mutação: Swap, Insertion, Inversion, Displacement, Scramble
-- Representações: binária, path (permutação), adjacência, ordinal, matricial
-- Experimentos em benchmarks TSP (Oliver30, KroA100, etc.)
+- Não recuperável pelo PDF local.
+- Provável foco indicado pelo título: revisão de representações e operadores, incluindo cruzamento, mutação e avaliação para tours.
+- Para uso no texto da monografia, recuperar PDF legível antes de afirmar classificações específicas.
 
 ## Conexões
 
-- [[holland1975adaptation]] — GA fundacional
-- [[goldberg1989genetic]] — GA textbook
-- [[oliver1987crossover]] — crossover operators (PMX, OX, CX)
-- [[bean1994genetic]] — random keys
-- [[nagata2006eax]] — EAX (crossover estado-da-arte, evolução posterior)
-- [[potvin1996ga]] — survey anterior focado em categorização de crossover
 - [[genetic-algorithms]]
 - [[tsp]]
+- [[oliver1987crossover]]
+- [[potvin1996ga]]
+- [[nagata2006eax]]
+- [[goldberg1989genetic]]
+
+## Notas e Insights
+
+- O arquivo local existe, mas não é operacional para leitura textual.
+- A chave é importante para a base teórica, mas a evidência local precisa ser corrigida.
+- Não usar como suporte de taxonomias específicas até recuperar uma cópia legível.
+
+## Citações-chave
+
+> “Genetic Algorithms for the Travelling Salesman Problem: A Review of Representations and Operators.”
+
+> Limitação: nenhuma citação literal do corpo pôde ser extraída do PDF local.

@@ -12,35 +12,51 @@ pdf: "papers/pdfs/dorigo2005acotheory.pdf"
 
 ## PDF
 
-[[papers/pdfs/dorigo2005acotheory.pdf]]
+![[dorigo2005acotheory.pdf]]
 
 ## Resumo
 
-Survey dos resultados teóricos sobre Ant Colony Optimization. Aborda: (1) provas de convergência de algoritmos ACO (Gutjahr, 2000 — convergência em probabilidade para o ótimo global), (2) relações entre ACO e Model-Based Search (MBS), Cross-Entropy (CE), Estimation of Distribution Algorithms (EDAs), (3) análise de comportamento (parâmetros, feromônio, estagnação). O artigo mostra que ACO é um caso particular de Model-Based Search, onde a distribuição de probabilidade sobre soluções é iterativamente atualizada.
+Dorigo e Blum fazem um survey teórico de [[ant-colony]], deslocando o foco de aplicações de prova de conceito para perguntas formais sobre como e por que ACO funciona. O artigo revisa resultados de convergência, aproxima ACO de métodos de busca baseada em modelos, discute relações com stochastic gradient ascent e cross-entropy, e analisa vieses de busca. O TSP aparece como aplicação inicial e como exemplo natural para definir modelos de problema, componentes de solução e trilhas de feromônio.
 
 ## Contribuições Principais
 
-- Conexão formal entre ACO e Model-Based Search (MBS, CE, EDAs)
-- Revisão das provas de convergência dos algoritmos ACO
-- Análise do papel dos parâmetros (α, β, ρ) no comportamento do ACO
-- Framework Hyper-Cube (HCF) como generalização
+- Organiza resultados teóricos de convergência para ACO.
+- Distingue convergência em valor e convergência em solução.
+- Formaliza ACO como procedimento estocástico baseado em modelo probabilístico parametrizado por feromônios.
+- Relaciona ACO a model-based search, stochastic gradient ascent e cross-entropy.
+- Discute vieses negativos de busca, incluindo competição injusta entre componentes e selection fix-points.
 
 ## Relevância para o TCC
 
-Suporte teórico para justificar a escolha do ACO. Permite afirmar que (1) ACO converge em probabilidade para o ótimo, (2) tem fundamentos alinhados com busca baseada em modelo, (3) os parâmetros têm interpretação clara.
+É uma referência central para fundamentar [[aco]] além da metáfora das formigas. O TCC implementa ACO como metaheurística para TSP/rTSP; este artigo fornece linguagem formal para descrever construção probabilística de soluções, atualização de feromônio, informação heurística, evaporação e exploração/explotação. Também ajuda a evitar afirmações fortes demais: convergência assintótica não implica desempenho prático em tempo finito.
 
 ## Métodos e Abordagens
 
-- Graph-based Ant System (GBAS) e GBAS*/GBAS† (algoritmos com prova de convergência)
-- Hyper-Cube Framework (HCF): normalização do feromônio para [0,1]
-- Relação com Cross-Entropy (CE) e Estimation of Distribution Algorithms (EDAs)
-- Análise de estagnação: quando τ_max/τ_min → ∞
+- Define problema de otimização combinatória como espaço finito de soluções, restrições e função objetivo.
+- Define componentes de solução e parâmetros de feromônio associados a esses componentes.
+- Apresenta o framework básico de ACO: inicialização, construção de soluções, busca local opcional, atualização de feromônio e retorno da melhor solução.
+- Discute transição probabilística combinando feromônio e informação heurística.
+- Analisa ACO com limites inferiores de feromônio para garantir probabilidade positiva de construir qualquer solução.
 
 ## Conexões
 
-- [[dorigo1996ant]] — Ant System (ACO original)
-- [[dorigo1997ant]] — ACO aplicado ao TSP (ACS)
-- [[blum2005acointro]] — introdução e variantes práticas
-- [[stutzle2000mmas]] — MMAS (convergência + limites de feromônio)
 - [[ant-colony]]
+- [[aco]]
+- [[dorigo1996ant]]
+- [[dorigo1997ant]]
+- [[dorigo2004book]]
+- [[blum2005acointro]]
+- [[stutzle2000mmas]]
 - [[tsp]]
+
+## Notas e Insights
+
+- A distinção entre garantia assintótica e desempenho experimental é essencial para o TCC.
+- A formalização por componentes de solução combina bem com TSP, pois arestas ou decisões de próximo nó podem receber feromônio.
+- A discussão sobre viés ajuda a interpretar resultados ruins de ACO como efeito de representação e construção, não apenas de parâmetros.
+
+## Citações-chave
+
+> “candidate solutions are constructed using a pheromone model, that is, a parametrized probability distribution over the solution space”
+
+> “The proofs that were presented in this section do not say anything about the time required to find an optimal solution, which can be astronomically large.”

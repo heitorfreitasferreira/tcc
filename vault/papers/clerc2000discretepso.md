@@ -4,40 +4,54 @@ authors: [Clerc, Maurice]
 year: 2000
 doi: ""
 bibtex-key: clerc2000discretepso
+pdf: "papers/pdfs/clerc2000discretepso.pdf"
 tags: [pso tsp survey]
-status: lido
+status: lido-parcial
 rating: 5
 ---
 
+## PDF
+
+![[clerc2000discretepso.pdf]]
+
 ## Resumo
 
-O artigo seminal que estende o PSO clássico (contínuo) para problemas discretos/combinatórios, usando o TSP como caso de estudo. Define formalmente os elementos do PSO discreto: posições como permutações (tours), velocidade como lista de transposições, e operações de subtração/adição de permutações. Introduz os conceitos de NoHope/ReHope para evitar estagnação: quando o swarm não melhora, ele é reexpandido usando métodos como Lazy Descent Method (LDM), Deep Descent Method (DDM) e Local Iterative Levelling (LIL). A abordagem é apresentada como genérica: "se você não tem um algoritmo específico para seu problema discreto, use PSO — funciona".
+Clerc propõe, pelo título e enquadramento local, uma adaptação discreta do [[particle-swarm]] para o [[tsp]], problema em que a representação contínua original do PSO não se aplica diretamente. O PDF local tem 18 páginas, mas não forneceu texto extraível; portanto, a descrição detalhada dos operadores e experimentos não pôde ser validada diretamente pelo corpo do PDF.
 
 ## Contribuições Principais
 
-- Primeira formalização matemática de PSO discreto para problemas de permutação
-- Definição das operações de velocidade (transposições) e posição (permutações) para TSP
-- Mecanismo NoHope/ReHope para escape de ótimos locais
-- Demonstração prática em instâncias TSP de até 100 cidades
+- Trata explicitamente a adaptação do PSO para um domínio combinatório.
+- Usa o TSP como exemplo de problema em permutações.
+- Serve como ponte entre o PSO contínuo de [[kennedy1995particle]] e aplicações discretas recentes.
+- Não foi possível confirmar operadores, parâmetros ou resultados pelo PDF local.
 
 ## Relevância para o TCC
 
-Referência fundamental para justificar a escolha de PSO discreto para TSP/rTSP. A definição de velocidade como lista de transposições e o mecanismo NoHope/ReHope são implementados diretamente.
+Esta referência é importante para justificar por que o PSO do TCC precisa de escolhas específicas de representação. No TSP/rTSP, uma partícula não pode simplesmente somar velocidade a uma posição contínua; ela precisa codificar tours, trocas, prioridades ou permutações. Essa afirmação é compatível com o título e escopo do arquivo, mas os detalhes técnicos dependem de recuperar um PDF legível.
 
 ## Métodos e Abordagens
 
-- Posição: permutação (tour) — vetor de inteiros
-- Velocidade: lista ordenada de transposições (swap operators) com prioridades
-- Operações: subtração (diferença entre duas permutações), adição (aplicar transposições)
-- NoHope: detecta estagnação e reexpande o swarm
-- ReHope: reexpansão via LDM, DDM, ou LIL
-- Coeficientes: c1 (cognitive), c2 (social), w (inércia) adaptados para o discreto
+- PSO discreto aplicado ao TSP.
+- Representação baseada em tours/permutação, inferida pelo título.
+- Não foi possível extrair equações, pseudocódigo, parâmetros ou resultados experimentais.
 
 ## Conexões
 
-- [[kennedy1995particle]] — PSO original, base conceitual
-- [[araujo2025pso]] — PSO discreto moderno para TSP (DPSO+2-opt/3-opt)
-- [[sun2024hybrid]] — PSO híbrido com busca local greedy+Metropolis
-- [[kappagantula2025dpso]] — DPSO com RL
+- [[kennedy1995particle]]
 - [[particle-swarm]]
+- [[pso]]
 - [[tsp]]
+- [[araujo2025pso]]
+- [[sun2024hybrid]]
+- [[huang2025matrix]]
+- [[kappagantula2025dpso]]
+
+## Notas e Insights
+
+- A principal utilidade para o TCC é conceitual: mostrar que PSO discreto não é aplicação trivial do algoritmo original.
+- Deve ser citado ao discutir a necessidade de adaptação de representação para permutações.
+- Limitação de extração: PDF sem texto recuperável; OCR local resultou vazio.
+
+## Citações-chave
+
+Não extraídas. O PDF local não forneceu texto legível.

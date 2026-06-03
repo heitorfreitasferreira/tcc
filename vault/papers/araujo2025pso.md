@@ -4,51 +4,54 @@ authors: [Araújo, Kael Silva, Barboza, Francisco Márcio]
 year: 2025
 doi: ""
 bibtex-key: araujo2025pso
+pdf: "papers/pdfs/araujo2025pso.pdf"
 tags: [pso tsp metaheuristic]
-status: lido
+status: lido-parcial
 rating: 3
 ---
 
+## PDF
+
+![[araujo2025pso.pdf]]
+
 ## Resumo
 
-Explora a aplicação de Particle Swarm Optimization (PSO) ao TSP, adaptando o algoritmo originalmente contínuo para o domínio discreto via representação por permutação. Incorpora busca local (2-opt e 3-opt) para melhoria das soluções. Resultados mostram bom desempenho para instâncias pequenas, mas degradação em problemas maiores.
+Araújo e Barboza apresentam, pelo título e metadados locais, uma referência recente sobre PSO aplicado ao [[tsp]]. O PDF local tem 6 páginas, mas renderizou como páginas vazias no OCR, então não foi possível validar detalhes experimentais pelo corpo do arquivo.
 
 ## Contribuições Principais
 
-- Adaptação de PSO para TSP com representação por permutação
-- Uso de 2-opt e 3-opt como busca local
-- Comparação com GA e Simulated Annealing em benchmarks
+- Atualiza a discussão de PSO para TSP em literatura recente.
+- Reforça o uso de PSO como alternativa bio-inspirada para roteamento combinatório.
+- Complementa [[clerc2000discretepso]] com uma referência contemporânea.
+- Não foi possível recuperar metodologia, parâmetros ou resultados pelo PDF local.
 
 ## Relevância para o TCC
 
-Referência direta para a implementação de PSO para TSP no repositório. A análise de limitações (desempenho reduzido em instâncias grandes) é relevante para discussão dos resultados experimentais.
+O artigo é relevante para contextualizar o [[pso]] implementado no projeto como parte de uma linha ativa de pesquisa, não apenas uma adaptação histórica. Para o TCC, ele ajuda a motivar a necessidade de representar rotas de forma compatível com partículas, mas não deve sustentar afirmações quantitativas enquanto o PDF local estiver ilegível.
 
 ## Métodos e Abordagens
 
-- PSO discreto com permutações
-- Busca local: 2-opt e 3-opt
-- Benchmarks TSPLIB
+- PSO aplicado ao Traveling Salesman Problem.
+- Provável formulação discreta ou codificação de permutação, inferida pelo tema.
+- Não foi possível extrair parâmetros, benchmarks, métricas ou resultados do PDF.
 
 ## Conexões
 
-- [[kennedy1995particle]] — PSO original, base do método
-- [[sun2024hybrid]] — PSO híbrido para TSP (mesma linha)
-- [[kappagantula2025dpso]] — DPSO com RL para TSP
-- [[huang2025matrix]] — PSO matricial para mTSP
-- [[lin1973effective]] — busca local 2-opt e 3-opt usada aqui
 - [[particle-swarm]]
+- [[kennedy1995particle]]
+- [[clerc2000discretepso]]
+- [[lin1973effective]]
+- [[sun2024hybrid]]
+- [[huang2025matrix]]
+- [[kappagantula2025dpso]]
 - [[tsp]]
 
 ## Notas e Insights
 
-- PSO funciona bem para TSPs pequenos/médios mas sofre em grandes instâncias
-- Hibridização com busca local (2-opt/3-opt) é essencial para desempenho competitivo
-- Limitação em escala motivou abordagens híbridas como DPSO-Q e matrix-PSO
-- O artigo confirma a importância de mecanismos de diversidade para evitar ótimos locais em TSP
-- Preprint disponível no arXiv (2501.15319) — publicado como preprint no Qeios
+- Útil como referência recente, mas não como fonte de resultados até recuperar texto legível.
+- Pode motivar futuras melhorias do PSO do TCC, como busca local ou operadores que preservem adjacência.
+- Limitação de extração: PDF sem texto recuperável; OCR indicou páginas vazias.
 
 ## Citações-chave
 
-> "PSO performs well for small to medium-sized problems, though its performance diminishes for larger instances due to difficulties in escaping local optima."
-
-> "PSO is a promising approach for solving TSP, with potential for further improvement through hybridization with other optimization techniques."
+Não extraídas. O PDF local não forneceu texto legível.

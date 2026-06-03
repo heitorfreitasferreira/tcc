@@ -4,39 +4,62 @@ authors: [Sheppard, John, et al.]
 year: 2024
 doi: ""
 bibtex-key: ppaco2024
+pdf: "papers/pdfs/ppaco2024.pdf"
 tags: [aco metaheuristic rl]
-status: lido
+status: lido-parcial
 rating: 4
 ---
 
+## PDF
+
+![[ppaco2024.pdf]]
+
 ## Resumo
 
-Integra princípios de RL (Policy Gradient e PPO) ao ACO tradicional. PGACO e PPOACO substituem a atualização de feromônio por gradientes de política, usando experience replay como generalização de estratégias elitistas. Experimentos em 8 instâncias TSPLIB mostram que PPOACO supera consistentemente variantes clássicas (AS, MMAS) e baseadas em gradiente (ACOSGD, ADACO). A unificação de otimização populacional com RL melhora significativamente a capacidade de busca.
+O PDF local associado a `ppaco2024` tem título de metadados “Ant Colony Optimization with Policy Gradients and Replay”, enquanto a nota registra “Policy Gradient and Experience Replay in Ant Colony Optimization”. Pelos metadados, o trabalho situa-se em construção automática ou aprendizado de funções heurísticas para [[ant-colony]], com associação a aprendizado por reforço e abordagens bio-inspiradas. A ideia central indicada pelo título é aproximar ACO de técnicas de aprendizado por reforço, em especial gradiente de política e reaproveitamento de experiências.
+
+> [!warning] Leitura parcial
+> Não foi possível recuperar resumo, metodologia, resultados ou conclusões do corpo do PDF local. A nota se limita aos metadados extraídos e não deve sustentar afirmações específicas.
 
 ## Contribuições Principais
 
-- Substituição da atualização de feromônio por gradientes de política (PGACO)
-- PPOACO: PPO + ACO com experience replay
-- Experience replay como generalização natural do elitismo ACO
-- Vantagem estatisticamente significativa sobre AS, MMAS, ACOSGD, ADACO em TSPLIB
+- Integração conceitual entre [[ant-colony]] e gradiente de política, inferida pelo título/metadados.
+- Uso indicado de replay/experiência para reaproveitar informação obtida durante execuções anteriores.
+- Enquadramento em construção de funções heurísticas, conforme metadado do PDF.
+- Relevância potencial para ACO aprendido, na mesma linha geral de [[deepaco2023]], [[gpaco2025]] e [[neufaco2025]].
 
 ## Relevância para o TCC
 
-Terceira abordagem neural+ACO (com DeepACO e NeuFACO) que demonstra a tendência de hibridização swarm + deep RL. Útil para discussão de estado-da-arte e trabalhos futuros. Abordagem mais simple que DeepACO (sem GNN), usando apenas policy gradient.
+A referência é relevante para contextualizar extensões modernas de [[dorigo1996ant]] e [[dorigo1997ant]], especialmente quando o TCC discute ACO como metaheurística bio-inspirada que pode ser parametrizada ou aprendida. Para o TCC atual, que compara GA, PSO e ACO sobre TSP/rTSP de drones de patrulha, o artigo serve mais como fronteira de pesquisa do que como base direta da implementação.
 
 ## Métodos e Abordagens
 
-- Policy Gradient (REINFORCE) aplicado à seleção de arestas
-- PPO (Proximal Policy Optimization) para treinamento estável
-- Experience replay buffer armazena transições (estado, ação, recompensa)
-- Grafo TSP completo como estado observável
-- Função de recompensa: tour length negativo (minimização)
+- ACO como base algorítmica.
+- Gradiente de política, inferido pelo título.
+- Experience replay, inferido pelo título.
+- Construção de heurísticas, conforme metadado local.
+- Abordagem bio-inspirada e possivelmente multiagente, conforme metadados.
 
 ## Conexões
 
-- [[dorigo1996ant]] — ACO original
-- [[dorigo1997ant]] — ACO para TSP
-- [[deepaco2023]] — DeepACO (GNN + PPO, abordagem neural alternativa)
-- [[neufaco2025]] — NeuFACO (focused ACO neural, estado-da-arte)
-- [[kappagantula2025dpso]] — DPSO-Q, swarm+RL paralela no PSO
-- [[ant-colony]]
+- [[dorigo1996ant]]
+- [[dorigo1997ant]]
+- [[blum2005acointro]]
+- [[dorigo2005acotheory]]
+- [[deepaco2023]]
+- [[neufaco2025]]
+- [[gpaco2025]]
+
+## Notas e Insights
+
+- A referência parece representar uma linha contemporânea de “ACO aprendido”.
+- Para a monografia, é útil como exemplo de tendência recente, mas não como evidência de desempenho.
+- Recomenda-se substituir ou reparar o PDF antes de usar esta referência em revisão bibliográfica.
+
+## Citações-chave
+
+Não recuperável a partir do PDF local. Metadados extraídos:
+
+> “Ant Colony Optimization with Policy Gradients and Replay”
+
+> “Computing methodologies -> Heuristic function construction. Multi-agent reinforcement learning. Bio-inspired approaches.”

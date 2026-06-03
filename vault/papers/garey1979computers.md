@@ -6,7 +6,7 @@ doi: ""
 bibtex-key: garey1979computers
 pdf: "papers/pdfs/garey1979computers.pdf"
 tags: [complexity foundational]
-status: lido
+status: lido-parcial
 rating: 5
 ---
 
@@ -16,36 +16,50 @@ rating: 5
 
 ## Resumo
 
-Livro clássico e referência definitiva sobre NP-completude. Apresenta a teoria da NP-completude de forma acessível: o que significa um problema ser NP-completo, como provar NP-completude, e uma enciclopédia de mais de 300 problemas NP-completos organizados por categoria (grafos, redes, particionamento, programação inteira, etc.). O TSP está entre os problemas originalmente catalogados como NP-difícil. O livro fornece a base teórica que justifica porque problemas como TSP (e suas variantes como rTSP, FSTSP) exigem heurísticas e metaheurísticas — não se conhece algoritmo polinomial para resolvê-los exatamente.
+Garey e Johnson apresentam a teoria de NP-completude como ferramenta prática para reconhecer problemas computacionalmente intratáveis, especialmente quando não se encontra algoritmo polinomial para problemas de otimização combinatória. O PDF enfatiza a distinção entre algoritmos polinomiais e exponenciais, formaliza a passagem de problemas de otimização para problemas de decisão e usa `TRAVELING SALESMAN` como exemplo recorrente: dado um conjunto de cidades, distâncias e um limite `B`, pergunta-se se existe uma rota com comprimento total no máximo `B`. A obra mostra que provar NP-completude não encerra o estudo de um problema, mas redireciona a estratégia para casos especiais, algoritmos heurísticos, aproximações ou relaxações.
+
+> [!warning] Leitura parcial
+> O PDF local parece ser scan sem camada textual confiável. A extração exigiu OCR seletivo e apresentou erros frequentes em fórmulas, caracteres e colunas; por isso a nota fica como `lido-parcial`.
 
 ## Contribuições Principais
 
-- Organização e catalogação de centenas de problemas NP-completos em uma referência unificada
-- Metodologia clara para provar NP-completude por redução polinomial
-- Estabelecimento do TSP como problema NP-difícil de referência
+- Consolida a teoria de NP-completude como método para classificar problemas computacionalmente difíceis.
+- Define a intratabilidade operacionalmente pela ausência esperada de algoritmo polinomial para o problema geral.
+- Mostra como problemas de otimização, como TSP, podem ser analisados por versões decisórias com limite `B`.
+- Inclui `TRAVELING SALESMAN`, `GEOMETRIC TRAVELING SALESMAN` e `BOTTLENECK TRAVELING SALESMAN` no catálogo de problemas difíceis.
+- Explica que a prova de NP-completude orienta a busca por heurísticas, casos especiais e relaxações.
 
 ## Relevância para o TCC
 
-Justificativa teórica fundamental para o uso de metaheurísticas (GA, PSO, ACO) em vez de métodos exatos. O rTSP (patrulha com drones) herda a NP-dificuldade do TSP clássico, tornando heurísticas a abordagem adequada.
+A obra fundamenta a justificativa central do TCC: o TSP/rTSP usado como base para rotas de drones pertence a uma classe de problemas em que soluções exatas gerais não escalam bem. Isso legitima a comparação experimental entre força bruta e metaheurísticas bio-inspiradas, pois a dificuldade estrutural do problema torna natural estudar métodos aproximados, estocásticos e dependentes de parametrização.
 
 ## Métodos e Abordagens
 
-- Redução polinomial entre problemas
-- Classes de complexidade: P, NP, NP-completo, NP-difícil
-- Teorema de Cook-Levin (SAT é NP-completo) como base
+- Formalização de problemas de decisão por instância e pergunta `sim/não`.
+- Uso de codificações razoáveis e análise de complexidade em tempo polinomial.
+- Definição de `NP` via verificabilidade polinomial e algoritmos não determinísticos.
+- Reduções para demonstrar que um problema é pelo menos tão difícil quanto outro.
+- Tratamento de problemas de otimização por sua versão decisória com limite de custo.
 
 ## Conexões
 
-- [[lawler1985traveling]] — survey do TSP (reafirma NP-dificuldade)
-- [[applegate2006traveling]] — estudo computacional do TSP (mostra que instâncias grandes são intratáveis exatamente)
-- [[lin1973effective]] — LKH heurística eficiente para TSP (necessária exatamente por ser NP-difícil)
-- [[murray2015flying]] — FSTSP (NP-difícil por generalizar TSP)
+- [[halim2019combinatorial]]
+- [[lawler1985traveling]]
+- [[applegate2006traveling]]
+- [[karp1979patching]]
+- [[heldkarp1970traveling]]
+- [[balas1985branch]]
 - [[tsp]]
 
 ## Notas e Insights
 
-O TSP é listado no Apêndice do livro como problema ND22 (TSP direcionado) e ND23 (TSP não-direcionado). A NP-dificuldade do TSP se reduz ao problema do Ciclo Hamiltoniano. Esta referência é a mais citada em qualquer paper que mencione "NP-difícil" ou "NP-completo".
+- A obra não apresenta heurísticas para TSP como foco principal; sua função é justificar por que heurísticas e casos especiais são necessários.
+- A passagem sobre TSP separa claramente dificuldade de decisão e dificuldade de otimização.
+- O texto recomenda mudar o foco após uma prova de NP-completude: procurar casos especiais, algoritmos úteis na prática ou relaxações.
+- Para o TCC, a referência deve sustentar a base de complexidade, não resultados experimentais.
 
 ## Citações-chave
 
-> The traveling salesman problem is NP-hard, meaning that no polynomial-time algorithm is known for its solution.
+Paráfrase baseada em OCR ruim: NP-completude permite provar que um problema é tão difícil quanto muitos problemas já reconhecidos como difíceis.
+
+Paráfrase baseada em OCR ruim: se `TRAVELING SALESMAN` é NP-completo em sua forma decisória, então o problema de otimização correspondente é pelo menos tão difícil.

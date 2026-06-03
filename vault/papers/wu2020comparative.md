@@ -4,7 +4,7 @@ authors: [Wu, Zefeng]
 year: 2020
 doi: "10.1145/3450292.3450308"
 bibtex-key: wu2020comparative
-pdf: "papers/pdfs/wu2020.pdf"
+pdf: "papers/pdfs/wu2020comparative.pdf"
 tags: [tsp, ga, aco, pso, comparison, metaheuristic]
 status: lido-parcial
 rating: 4
@@ -12,36 +12,47 @@ rating: 4
 
 ## PDF
 
-![[wu2020.pdf]]
+![[wu2020comparative.pdf]]
 
 ## Resumo
 
-Compara GA, ACO e PSO na resolução do TSP. Simulações mostram que PSO produz soluções mais estáveis e de melhor qualidade, ACO tem o menor tempo de execução, e GA é menos influenciado pela escala do problema.
+O PDF local confirma pelo título, assunto e palavras-chave que o artigo compara Genetic Algorithm, Ant Colony Algorithm e Particle Swarm Optimization para resolver o Traveling Salesman Problem, com foco em análise de algoritmos de grafos e caminhos curtos. A extração textual do corpo falhou completamente, então não foi possível confirmar metodologia experimental, instâncias, parâmetros ou resultados numéricos diretamente pelo texto do artigo.
 
 ## Contribuições Principais
 
-- Comparação head-to-head dos três métodos mais populares no mesmo framework experimental
-- Análise de estabilidade das soluções vs. escala do problema
+- Reúne GA, ACO e PSO em um mesmo enquadramento comparativo para TSP.
+- Serve como referência direta para estudos que avaliam qualidade de rota e desempenho computacional entre metaheurísticas bio-inspiradas.
+- Posiciona o TSP como problema de teste para algoritmos de busca em grafos.
+- Ajuda a justificar a escolha dos três métodos implementados no TCC: [[ga]], [[aco]] e [[pso]].
 
 ## Relevância para o TCC
 
-Comparação direta dos três métodos implementados no projeto (GA, PSO, ACO) com as mesmas métricas.
+O artigo é relevante porque tem a mesma estrutura comparativa central do TCC: comparar métodos bio-inspirados sobre uma formulação baseada em TSP. Como o PDF local não forneceu texto legível, ele deve ser usado apenas como referência contextual de comparação GA/ACO/PSO, não como suporte para valores, parâmetros ou conclusões específicas.
 
 ## Métodos e Abordagens
 
-- GA com crossover e mutação
-- ACO com depósito/evaporação de feromônio
-- PSO com atualização de velocidade/posição
-- Benchmarks TSPLIB
+- Comparação entre GA, ACO e PSO.
+- Problema-alvo: Traveling Salesman Problem.
+- Pelo metadado do PDF, o escopo envolve análise de algoritmos em grafos e caminhos curtos.
+- Não foi possível extrair detalhes de codificação, operadores, parâmetros, número de execuções, instâncias ou métricas.
 
 ## Conexões
 
-- [[tsp]] — problema-alvo
-- [[genetic-algorithms]] — método comparado
-- [[particle-swarm]] — método comparado
-- [[ant-colony]] — método comparado
-- [[comparative-studies]] — área temática
+- [[comparative-studies]]
+- [[bio-inspired-optimization]]
+- [[tsp]]
+- [[genetic-algorithms]]
+- [[particle-swarm]]
+- [[ant-colony]]
+- [[chandra2022comparative]]
+- [[halim2019combinatorial]]
+
+## Notas e Insights
+
+- Boa referência para a motivação comparativa, mas fraca para sustentação empírica enquanto o PDF local permanecer ilegível.
+- Deve ser citada com cuidado: como exemplo de comparação GA/ACO/PSO em TSP, não como suporte para resultados específicos.
+- Limitação de extração: PDF com erros estruturais; páginas renderizadas não produziram texto via OCR.
 
 ## Citações-chave
 
-> PSO provided a better and more stable solution, ACO took the shortest running time and GA is less influenced by the problem scale.
+Não extraídas. O PDF local não forneceu texto legível.

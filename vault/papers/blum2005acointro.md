@@ -4,41 +4,54 @@ authors: [Blum, Christian]
 year: 2005
 doi: "10.1016/j.plrev.2005.10.001"
 bibtex-key: blum2005acointro
+pdf: "papers/pdfs/blum2005acointro.pdf"
 tags: [aco survey]
-status: lido
+status: lido-parcial
 rating: 5
 ---
 
+## PDF
+
+![[blum2005acointro.pdf]]
+
 ## Resumo
 
-Uma introdução completa ao ACO e suas variantes mais bem-sucedidas. Apresenta: (1) inspiração biológica (forrageamento de formigas), (2) Ant System (AS) aplicado ao TSP, (3) a metaheurística ACO formalizada, (4) variantes: Elitist AS, Rank-based AS, MAX-MIN Ant System (MMAS) e Ant Colony System (ACS), (5) resultados teóricos de convergência, (6) extensão para otimização contínua, (7) hibridização com AI/OR.
+Blum é uma introdução e revisão de tendências recentes em [[ant-colony]], segundo título, BibTeX e conexões locais. O PDF local tem 21 páginas, mas está danificado e sem texto extraível; portanto, a síntese detalhada do corpo do artigo não pôde ser validada diretamente pelo arquivo.
 
 ## Contribuições Principais
 
-- Comparação sistemática das variantes ACO (AS, EAS, RAS, MMAS, ACS)
-- Framework unificado da metaheurística ACO com componentes identificáveis
-- Discussão de convergência, parâmetros e quando usar cada variante
-- Cobertura de aplicações além do TSP (routing em redes, scheduling, etc.)
+- Apresenta ACO como metaheurística bio-inspirada baseada em trilhas de feromônio, conforme escopo indicado pelo título.
+- Serve como introdução acessível complementar ao tratamento mais teórico de [[dorigo2005acotheory]].
+- Conecta a metáfora biológica de forrageamento de formigas à construção probabilística de soluções em problemas discretos.
+- Não foi possível recuperar variantes, pseudocódigo ou resultados diretamente do PDF local.
 
 ## Relevância para o TCC
 
-Artigo ideal para a seção de fundamentação teórica do ACO. Explica de forma clara as diferenças entre variantes (AS, ACS, MMAS) e fornece diretrizes para escolha — MMAS é robusto para instâncias grandes, ACS é mais rápido para convergência.
+O artigo é útil como referência introdutória para a fundamentação de [[aco]] no capítulo teórico, especialmente para explicar formigas artificiais, feromônio, evaporação, informação heurística e construção incremental de rotas. Para resultados formais, a nota deve priorizar [[dorigo2005acotheory]], pois o PDF local de Blum não foi legível.
 
 ## Métodos e Abordagens
 
-- Ant System (AS): todas as formigas depositam feromônio
-- Elitist AS (EAS): reforço extra para a melhor solução
-- Rank-based AS (RAS): top-k formigas depositam
-- MAX-MIN Ant System (MMAS): limites [τ_min, τ_max]
-- Ant Colony System (ACS): regra pseudo-aleatória + atualização local
-- Busca local 2-opt/3-opt como componente opcional
+- Introdução conceitual à ACO.
+- Aplicação a problemas de otimização combinatória, inferida pelo título e contexto bibliográfico.
+- Não foi possível extrair pseudocódigo, exemplos, seções específicas ou citações do PDF local.
 
 ## Conexões
 
-- [[dorigo1996ant]] — Ant System (AS)
-- [[dorigo1997ant]] — ACS (Ant Colony System)
-- [[dorigo2005acotheory]] — teoria ACO
-- [[stutzle2000mmas]] — MMAS
-- [[dorigo2004book]] — livro referência
 - [[ant-colony]]
-- [[tsp]]
+- [[aco]]
+- [[dorigo1996ant]]
+- [[dorigo1997ant]]
+- [[dorigo2004book]]
+- [[dorigo2005acotheory]]
+- [[stutzle2000mmas]]
+- [[wang2021ant]]
+
+## Notas e Insights
+
+- Deve ser usado como referência pedagógica para introduzir ACO; para resultados formais, prefira [[dorigo2005acotheory]].
+- É uma peça de ligação entre a ACO clássica dos anos 1990 e variantes modernas presentes no vault.
+- Limitação de extração: PDF com erros estruturais; OCR não recuperou texto.
+
+## Citações-chave
+
+Não extraídas. O PDF local não forneceu texto legível.

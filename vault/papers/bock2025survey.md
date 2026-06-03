@@ -10,47 +10,53 @@ status: lido
 rating: 3
 ---
 
+## PDF
+
+![[bock2025survey.pdf]]
+
 ## Resumo
 
-Survey publicado no *European Journal of Operational Research* que sistematiza variantes do TSP no contexto de armazéns e centros de distribuição, motivado por e-commerce e fast-delivery. Aborda o Clustered TSP, Generalized TSP e Prize-Collecting TSP, analisando a complexidade computacional sob a estrutura de corredores paralelos (*parallel-aisle warehouse*). O artigo apresenta novos resultados de complexidade, identificando casos polinomiais tratáveis e variantes que permanecem NP-difíceis, além de propor uma agenda de pesquisa para a área.
+Bock et al. fazem um survey específico sobre o TSP e variantes em armazéns com estrutura de corredores paralelos. O artigo parte do problema clássico de roteamento de separadores, modelável como TSP, mas mostra que processos modernos de e-commerce, robôs móveis, picking assistido por AMR, armazenamento disperso, múltiplos depósitos, prazos e inventário automatizado exigem variantes como TSP com precedência, clustered TSP, generalized TSP, prize-collecting TSP, orienteering, traveling repairman, TSPTW e covering salesman. A principal contribuição é cruzar três dimensões: uso operacional em armazém, literatura existente e status de complexidade quando o grafo tem estrutura de blocos.
 
 ## Contribuições Principais
 
-- Primeira sistematização unificada de variantes TSP em contexto logístico de armazéns
-- Novos resultados de complexidade para a topologia *parallel-aisle*
-- Distinção clara entre casos polinomiais e NP-difíceis
-- Agenda de pesquisa com direções para extensões dinâmicas e estocásticas
+- Identifica dez variantes de TSP relevantes para problemas de roteamento em armazéns.
+- Diferencia a complexidade do TSP em grafos gerais da complexidade em layouts de corredores paralelos.
+- Mostra que o TSP clássico em armazéns de um bloco, dois blocos e múltiplos blocos com número limitado de corredores transversais é polinomial.
+- Apresenta resultados de complexidade para variantes como prize-collecting TSP, orienteering e TSP com janelas de tempo em armazéns.
+- Organiza casos de uso reais: picking básico, AMR-assisted picking, scattered storage, stowing, perecíveis, coordenação de equipe e stock-taking robótico.
 
 ## Relevância para o TCC
 
-Embora o foco seja armazéns, a metodologia de classificação de complexidade para variantes do TSP (clustered, generalized, prize-collecting) é diretamente transferível para o contexto de roteirização de drones. As estruturas de clusterização do GTSP e CTSP têm paralelos diretos com zonas de patrulha no rTSP.
+O artigo é útil para enquadrar o TCC como problema de roteamento em ambiente físico estruturado. Embora o cenário do TCC seja patrulha de drones, a lógica de visitar posições de interesse com custo de deslocamento mínimo é análoga ao roteamento de pickers e robôs em armazém. O survey também ajuda a defender a escolha do TSP/rTSP como base experimental: o TSP clássico pode ter casos estruturados tratáveis, mas variantes com restrições operacionais recuperam dificuldade computacional.
 
 ## Métodos e Abordagens
 
-- Survey com análise formal de complexidade computacional
-- Classificação de variantes TSP por aplicabilidade em *warehousing*
-- Novas provas de complexidade para casos específicos com topologia *parallel-aisle*
-- Análise de algoritmos exatos, heurísticos e de aproximação
+- Survey de variantes de TSP filtradas por aplicabilidade a armazéns.
+- Formulações matemáticas para ATSP e variantes, com variáveis de arco, posição, seleção e tempo.
+- Análise de complexidade específica para layouts `1B`, `2B` e `MB`.
+- Discussão de programas dinâmicos para TSP em corredores paralelos.
+- Classificação de variantes por caso de uso e status: polinomial, NP-difícil binário, NP-difícil forte ou aberto.
 
 ## Conexões
 
-- [[tsp]]
+- [[garey1979computers]]
+- [[lawler1985traveling]]
+- [[applegate2006traveling]]
+- [[winter2002modeling]]
+- [[murray2015flying]]
+- [[agatz2018optimization]]
 - [[tsp-variants]]
-- [[pop2024comprehensive]] — survey GTSP (contemporâneo)
-- [[lawler1985traveling]] — survey clássico do TSP
-- [[garey1979computers]] — NP-completude
-- [[chandra2022comparative]] — estudo comparativo de metaheurísticas TSP
 
 ## Notas e Insights
 
-- PDF obtido via RWTH Aachen institutional repository (open access): https://publications.rwth-aachen.de/record/985849
-- O TSP clássico é tratável em corredores paralelos, mas variantes como GTSP e CTSP permanecem NP-difíceis
-- A metodologia de classificação pode inspirar abordagem similar para variantes de drone routing
-- A ausência de aplicações diretas em drones limita a transferibilidade imediata, mas os conceitos de clusterização são úteis
-- Survey de 2025 muito recente; não captura desenvolvimentos posteriores
+- O artigo corrige uma generalização comum: TSP geral é NP-difícil, mas o TSP clássico em certos layouts de armazém é polinomial.
+- A tabela final resume variantes, usos e complexidade de forma útil para a monografia.
+- O texto defende que complexidade ainda importa na prática, pois algoritmos eficientes viram sub-rotinas em decomposições maiores.
+- A distinção entre problemas estáticos/determinísticos e extensões dinâmicas/estocásticas é relevante para posicionar o rTSP do TCC.
 
 ## Citações-chave
 
-> "The classical TSP is polynomially solvable in parallel-aisle warehouses, but its variants remain NP-hard in the same setting."
+> “Traditional picker routing, in which a single picker has to visit a given set of picking positions in a picker-to-parts process, can be modeled as the classical Traveling Salesman Problem (TSP).”
 
-> "Understanding the complexity of TSP variants in structured environments is essential for designing efficient logistics systems."
+> “It is amazing to see that such an old-established field like routing in warehouses still offers so many unexplored use cases and unresolved methodological research challenges.”

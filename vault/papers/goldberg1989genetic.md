@@ -6,7 +6,7 @@ doi: ""
 bibtex-key: goldberg1989genetic
 pdf: "papers/pdfs/goldberg1989genetic.pdf"
 tags: [ga metaheuristic]
-status: lido
+status: lido-parcial
 rating: 5
 ---
 
@@ -16,47 +16,50 @@ rating: 5
 
 ## Resumo
 
-Livro-texto clássico que sistematizou e popularizou os Algoritmos Genéticos (GAs), apresentando-os como ferramentas práticas de busca, otimização e aprendizado de máquina. Goldberg expande o trabalho fundacional de Holland (1975) com uma abordagem tutorial que inclui fundamentos matemáticos (teorema dos esquemas, blocos construtores), implementação computacional (SGA — Simple Genetic Algorithm em Pascal) e aplicações em engenharia e ciência da computação. É a referência mais citada na literatura de GAs.
+Goldberg apresenta GAs como procedimentos de busca baseados nos mecanismos da seleção natural e da genética natural. O livro organiza a metodologia para busca, otimização e aprendizado de máquina, explicando o algoritmo genético simples, o teorema dos esquemas, operadores de reprodução, crossover e mutação, além de aplicações. O PDF local é escaneado; OCR em páginas selecionadas funcionou, embora com erros típicos de reconhecimento.
+
+> [!warning] Leitura parcial
+> O OCR é utilizável em trechos centrais, mas há caracteres trocados e fórmulas degradadas. Citações literais devem ser conferidas visualmente.
 
 ## Contribuições Principais
 
-- Sistematização do Algoritmo Genético Simples (SGA) com implementação completa
-- Formalização do Teorema dos Esquemas (*Schema Theorem*) e da Hipótese dos Blocos Construtores
-- Introdução de técnicas avançadas (dominância, diploidia, inversão, nicho, compartilhamento)
-- Demonstração de aplicações reais (otimização de gasodutos, estruturas, aprendizado classificador)
-- Estabelecimento dos GAs como técnica de otimização reconhecida na academia e indústria
+- Consolida GAs como método de busca e otimização.
+- Apresenta o Simple Genetic Algorithm.
+- Explica schemata, ordem, comprimento definidor e teorema fundamental dos GAs.
+- Discute o efeito combinado de reprodução, crossover e mutação.
+- Liga GAs, otimização e sistemas classificadores.
 
 ## Relevância para o TCC
 
-O GA implementado no repositório (`src/pkg/ga/`) segue a arquitetura SGA descrita por Goldberg — população, seleção por roleta, crossover e mutação. O Teorema dos Esquemas fornece a justificativa teórica para o funcionamento do GA aplicado ao TSP. A discussão sobre nicho e compartilhamento é relevante para manter diversidade populacional em problemas de roteamento.
+Goldberg é a referência prática para descrever o GA implementado no TCC: população, aptidão, seleção probabilística, crossover, mutação e iterações. Para o problema de patrulha com drones, ele ajuda a explicar por que soluções parciais de boa qualidade podem se propagar: esquemas curtos, de baixa ordem e acima da média tendem a receber mais amostras em gerações posteriores.
 
 ## Métodos e Abordagens
 
-- Algoritmo Genético Simples (SGA): seleção por roleta, crossover de um ponto, mutação bit-flip
-- Teorema dos Esquemas e Hipótese dos Blocos Construtores
-- Mapeamento de código binário para parâmetros reais (fixed-point coding)
-- Operadores avançados: inversão, dominância/diploidia, nicho e compartilhamento
-- Sistemas Classificadores (Learning Classifier Systems) com Bucket Brigade
-- Aplicações em otimização de funções, pipeline, estruturas e jogos
+- Formulação de GAs como busca em populações de strings.
+- Seleção proporcional à aptidão, incluindo exemplo de roulette wheel.
+- Definição de schema com símbolo wildcard.
+- Análise de ordem do schema e comprimento definidor.
+- Crossover como troca estruturada e aleatória de informação entre strings.
+- Mutação como alteração aleatória de alelos.
 
 ## Conexões
 
-- [[holland1975adaptation]] — obra fundamental que este livro expande e torna acessível
-- [[oliver1987crossover]] — operadores de cruzamento para TSP (aplicação direta dos conceitos)
-- [[bean1994genetic]] — random keys (diretamente relacionado)
-- [[applegate2006traveling]] — métodos exatos contrastam com a abordagem heurística dos GAs
+- [[holland1975adaptation]]
 - [[genetic-algorithms]]
+- [[tsp]]
+- [[oliver1987crossover]]
+- [[bean1994genetic]]
+- [[potvin1996ga]]
+- [[larranaga1999ga]]
 
 ## Notas e Insights
 
-- A implementação SGA em Pascal (Apêndice) serviu de template para inúmeras implementações posteriores
-- O livro foca em codificação binária; para TSP, a representação por permutação exige adaptações (PMX, OX)
-- O Teorema dos Esquemas é a principal justificativa teórica para a eficácia dos GAs
-- A seção sobre Sistemas Classificadores abriu caminho para GA-based machine learning
-- O GA do repositório usa seleção por torneio e elitismo (não roleta), variações justificadas pela literatura posterior
+- Goldberg sacrifica parte do rigor formal para construir intuição; isso torna a obra útil para fundamentação metodológica do TCC.
+- A análise por esquemas fornece justificativa mais forte para crossover do que a simples analogia com reprodução biológica.
+- O livro deve ser usado para explicar o GA canônico, não operadores específicos de TSP.
 
 ## Citações-chave
 
-> "Genetic algorithms are search algorithms based on the mechanics of natural selection and natural genetics."
+> “This book is about genetic algorithms (GAs)—search procedures based on the mechanics of natural selection and natural genetics.”
 
-> "Unlike most optimization methods, that work from a single point in the decision space [...] genetic algorithms work from an entire 'population' of points simultaneously."
+> “Crossover is a structured yet randomized information exchange between strings.”

@@ -12,56 +12,51 @@ pdf: "papers/pdfs/murray2015flying.pdf"
 
 ## PDF
 
-[[papers/pdfs/murray2015flying.pdf]]
+![[murray2015flying.pdf]]
 
 ## Resumo
 
-Artigo seminal que define dois novos problemas de otimização de entregas com drones: o FSTSP (Flying Sidekick Traveling Salesman Problem) e o PDSTSP (Parallel Drone Scheduling TSP). No FSTSP, um único drone opera em sincronia com um caminhão de entregas, sendo lançado e recuperado pelo caminhão em pontos de encontro (clientes). No PDSTSP, múltiplos drones partem diretamente do depósito para atender clientes dentro do raio de voo, enquanto o caminhão atende os demais. Ambos os problemas são formalizados como MILP, e heurísticas eficientes (route-and-reassign) são propostas e validadas em instâncias de até 75 clientes. A análise numérica mostra que a velocidade do drone é mais crítica que a autonomia de voo para redução do tempo de entrega.
+Murray e Chu introduzem o Flying Sidekick Traveling Salesman Problem (FSTSP), variante do TSP em que um caminhão de entrega opera em conjunto com um drone. O caminhão pode lançar o drone durante sua rota; o drone entrega a um cliente elegível e depois retorna ao caminhão ou ao depósito. O objetivo é minimizar o tempo total até que todos os clientes sejam atendidos e ambos os veículos retornem. O artigo também define o Parallel Drone Scheduling TSP (PDSTSP), cenário em que uma frota de drones sai diretamente do centro de distribuição enquanto um caminhão atende os demais clientes.
 
 ## Contribuições Principais
 
-- Definição formal do FSTSP (drone lançado de caminhão) e PDSTSP (drones a partir do depósito)
-- Formulações MILP para ambos os problemas
-- Heurística route-and-reassign para FSTSP: constrói rota TSP, reassinala clientes ao drone iterativamente
-- Heurística para PDSTSP: particiona clientes entre TSP (caminhão) e PMS (parallel machine scheduling, drones)
-- Análise de tradeoff velocidade vs. autonomia: velocidade é fator mais determinante
+- Introduz formalmente o FSTSP como variante do TSP com caminhão e drone sincronizados.
+- Introduz o PDSTSP para casos em que drones atendem clientes diretamente a partir do depósito.
+- Formula modelos MILP para os dois problemas.
+- Propõe heurística route and re-assign para FSTSP.
+- Analisa velocidade versus endurance e mostra que nem sempre é ótimo atribuir todos os clientes elegíveis aos drones.
 
 ## Relevância para o TCC
 
-Fundação de toda a literatura de otimização de rotas com drones. O conceito de sincronização entre veículos e a modelagem de restrições de autonomia informam diretamente o rTSP do TCC. A estrutura de heurística route-and-reassign (resolver TSP base + ajustar atribuições) é análoga ao fluxo de trabalho do TCC (gerar rota TSP, aplicar metaheurísticas). A análise de tradeoff velocidade-autonomia pode ser transportada para o cenário de patrulha com drones.
+Este é um dos artigos mais importantes para conectar [[tsp]] e drones. Embora o TCC trate patrulha de drones, e não entrega de pacotes, o artigo fornece motivação logística para variantes de TSP com veículos aéreos, restrições operacionais e objetivo de minimizar tempo total. Ele ajuda a posicionar o modelo atual como uma base controlada antes de avançar para variantes com sincronização, endurance, elegibilidade de pontos e paralelismo.
 
 ## Métodos e Abordagens
 
-- Programação Inteira Mista (MILP) resolvida com Gurobi
-- Heurística FSTSP: TSP → cálculo de savings → reassinalmento iterativo de clientes ao drone
-- Heurística PDSTSP: TSP (caminhão) + algoritmo LPT (parallel machine scheduling) para drones
-- TSPs resolvidos com: solver IP, Clarke-Wright savings, nearest neighbor, sweep
-- Instâncias: 10, 20, 25, 50, 75 clientes; 1-3 drones; velocidades 15-40 mph; autonomia 20-40 min
+- Formulação MILP para FSTSP.
+- Formulação MILP para PDSTSP.
+- Heurística FSTSP baseada em rota inicial de TSP e realocação iterativa de clientes para drone quando há economia positiva.
+- Heurísticas de TSP testadas: IP, Clarke-Wright savings, nearest neighbor e sweep.
+- Para PDSTSP, combinação de rota TSP para caminhão com escalonamento em máquinas paralelas idênticas para drones.
 
 ## Conexões
 
-- [[agatz2018optimization]] — TSP-D, variante do problema definido aqui
-- [[freitas2020vns]] — VNS aplicado ao FSTSP
-- [[dellamico2021multiple]] — extensão para múltiplos drones
-- [[dellamico2022exact]] — modelos exatos para o FSTSP
-- [[rajan2022routing]] — roteamento de drones em patrulha (contexto diferente)
-- [[lin1973effective]] — heurísticas LK usadas como base nos métodos
-- [[garey1979computers]] — FSTSP é NP-difícil (generalização do TSP)
-- [[drone-routing]]
+- [[agatz2018optimization]]
+- [[dellamico2021multiple]]
+- [[dellamico2022exact]]
+- [[freitas2020vns]]
+- [[rajan2022routing]]
 - [[tsp]]
-- [[bio-inspired-optimization]]
+- [[drone-routing]]
 
 ## Notas e Insights
 
-- A heurística de savings para TSP (Clarke-Wright) mostrou o melhor equilíbrio qualidade/tempo no FSTSP
-- A formulação MILP do FSTSP não conseguiu resolver nenhuma instância à otimalidade no limite de 30 min (72 instâncias de 10 clientes)
-- PDSTSP com heurística Savings+LPT teve gap médio < 4% com tempo de frações de segundo
-- Velocidade do drone importa mais que autonomia: drone mais rápido com menos bateria supera drone lento com mais bateria
-- Limitações importantes: drone visita 1 cliente por sortie, drone não pode relançar do depósito, pontos de encontro apenas em clientes
-- Futuras direções sugeridas: múltiplos drones, relaxar restrições de ponto de encontro, combinar FSTSP + PDSTSP
+- A formulação FSTSP é mais próxima de sincronização caminhão-drone; o PDSTSP é mais próximo de paralelização a partir do depósito.
+- O artigo mostra que velocidade pode ser mais importante que endurance, especialmente quando múltiplos drones estão disponíveis.
+- A heurística FSTSP depende bastante da qualidade da rota TSP inicial; isso conecta diretamente com o TCC.
+- Para patrulha, a analogia mais forte não é “entregar pacote”, mas “usar autonomia aérea para reduzir makespan sob restrições operacionais”.
 
 ## Citações-chave
 
-> "The primary contribution of this paper is to introduce a new variant of the traditional traveling salesman problem (TSP) that addresses the challenge of determining optimal customer assignments for a UAV working in tandem with a delivery truck."
+> “The primary contribution of this paper is to introduce a new variant of the traditional traveling salesman problem (TSP) that addresses the challenge of determining optimal customer assignments for a UAV working in tandem with a delivery truck.”
 
-> "Speed, even at the expense of endurance, is a critical factor in leveraging UAVs in last-mile delivery operations."
+> “As an extension of the TSP, it is clear that the FSTSP is NP-hard.”

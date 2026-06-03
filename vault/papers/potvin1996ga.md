@@ -6,43 +6,51 @@ doi: "10.1007/BF02125403"
 bibtex-key: potvin1996ga
 pdf: "papers/pdfs/potvin1996ga.pdf"
 tags: [ga tsp survey]
-status: lido
+status: lido-parcial
 rating: 4
 ---
 
 ## PDF
 
-[[papers/pdfs/potvin1996ga.pdf]]
+![[potvin1996ga.pdf]]
 
 ## Resumo
 
-This paper surveys the genetic algorithm (GA) approach for solving the traveling salesman problem (TSP). It categorizes crossover operators into three groups based on their emphasis on relative order, absolute position, or edge preservation. Key findings include: edge-preserving crossover outperforms other crossover operators; local hill-climbing is crucial for good performance; separation of the population into subpopulations helps prevent premature convergence; larger populations correspond to better solutions. The paper also prominently features matrix-based encoding and mentions that parallel GAs will greatly improve solutions in the future.
-
-**Categorias de crossover:** (1) Ordem relativa (e.g., OX1), (2) Posição absoluta (e.g., PMX), (3) Preservação de arestas (e.g., ERX).
+O PDF local tem metadados válidos para “Genetic Algorithms for the Traveling Salesman Problem”, publicado em Annals of Operations Research, mas não possui texto extraível pelas ferramentas locais. Tentativas de leitura e OCR produziram páginas sem conteúdo útil. A leitura substantiva do artigo não foi possível a partir do arquivo local.
 
 ## Contribuições Principais
 
-- Taxonomia dos operadores de crossover para TSP em 3 categorias
-- Evidência empírica de que edge-preserving crossover (ERX) supera as demais categorias
-- Demonstração da importância de hibridização com busca local (hill-climbing)
-- Discussão sobre mitigação de convergência prematura via subpopulações
+- Pelo título, periódico e posição na bibliografia, trata-se de uma revisão ou apresentação de algoritmos genéticos para o [[tsp]].
+- A referência é pertinente para discutir representações, operadores e escolhas de projeto em GAs para rotas.
+- Não foi possível verificar, no PDF local, quais operadores, resultados ou recomendações Potvin apresenta.
 
 ## Relevância para o TCC
 
-Útil para justificar a escolha de edge-preserving crossover e a importância de incluir busca local (e.g., 2-opt) no GA. A taxonomia dos operadores é útil para a seção de fundamentação teórica.
+A referência é central para a fundamentação do método GA no TCC, porque o problema-base é TSP/rTSP e a implementação depende de representação por permutação, seleção, cruzamento, mutação e avaliação por custo de rota. Porém, o PDF local atual não sustenta afirmações específicas sobre desempenho comparativo ou superioridade de operadores.
 
 ## Métodos e Abordagens
 
-- Crossover: PMX, OX, CX, ERX (categorizados por ênfase)
-- Busca local: hill-climbing (2-opt)
-- Estratégias populacionais: subpopulações para diversidade
-- Encoding: path representation (permutations) e matrix-based
+- Não recuperável pelo PDF local.
+- Provável escopo indicado pelo título: representação de tours, operadores genéticos para permutações, estratégias híbridas e avaliação em instâncias TSP.
+- Para uso acadêmico rigoroso, substituir o PDF ou obter texto legível antes de citar detalhes.
 
 ## Conexões
 
-- [[larranaga1999ga]] — review mais abrangente (1999)
-- [[oliver1987crossover]] — crossover operators
-- [[lin1973effective]] — busca local LKH
-- [[nagata2006eax]] — EAX (edge-preserving crossover, estado-da-arte)
 - [[genetic-algorithms]]
 - [[tsp]]
+- [[oliver1987crossover]]
+- [[larranaga1999ga]]
+- [[goldberg1989genetic]]
+- [[holland1975adaptation]]
+
+## Notas e Insights
+
+- O PDF está presente, mas ilegível nas ferramentas locais.
+- Use apenas como referência bibliográfica geral até recuperar uma cópia legível.
+- Não usar para sustentar detalhes de operadores ou resultados experimentais.
+
+## Citações-chave
+
+> “Genetic Algorithms for the Traveling Salesman Problem.”
+
+> Limitação: nenhuma citação literal do corpo pôde ser extraída do PDF local.
