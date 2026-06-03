@@ -12,7 +12,7 @@ pdf: "papers/pdfs/kennedy1995particle.pdf"
 
 ## PDF
 
-[[papers/pdfs/kennedy1995particle.pdf]]
+![[kennedy1995particle.pdf]]
 
 ## Resumo
 

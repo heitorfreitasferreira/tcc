@@ -4,7 +4,7 @@ authors: [Haroun, Sabry Ahmed, Jamal, Benhra, Hicham, El Hassani]
 year: 2015
 doi: "10.5120/20674-3466"
 bibtex-key: haroun2015performance
-pdf: "papers/pdfs/haroun2015.pdf"
+pdf: "papers/pdfs/haroun2015performance.pdf"
 tags: [tsp, ga, aco, comparison, metaheuristic]
 status: lido-parcial
 rating: 4
@@ -12,7 +12,7 @@ rating: 4
 
 ## PDF
 
-![[haroun2015.pdf]]
+![[haroun2015performance.pdf]]
 
 ## Resumo
 
@@ -39,6 +39,15 @@ Comparação GA vs ACO com dados concretos de erro e runtime. Resultados corrobo
 - [[genetic-algorithms]] — método comparado
 - [[ant-colony]] — método comparado
 - [[comparative-studies]] — área temática
+
+## Notas e Insights
+
+- O estudo compara GA e ACO em 4 instâncias, mas a análise estatística é limitada — apenas médias e desvios, sem testes de significância (como Wilcoxon ou t-pareado)
+- A inclusão de um caso real assimétrico (Casablanca40) é um diferencial em relação a benchmarks puramente sintéticos
+- A conclusão de que ACO é melhor para problemas grandes e GA para problemas pequenos/médios é consistente com a literatura, mas o estudo não explora PSO, que é o terceiro método implementado no TCC
+- Para o TCC, os resultados corroboram a necessidade de comparar GA e ACO no contexto do rTSP, onde o tamanho da instância pode influenciar a escolha do método
+- A ausência de busca local (2-opt) em ambos os métodos limita a generalização dos resultados para implementações híbridas como as do TCC
+- O artigo não detalha a parametrização usada (taxa de crossover, mutação, evaporação), dificultando a reprodução dos experimentos
 
 ## Citações-chave
 

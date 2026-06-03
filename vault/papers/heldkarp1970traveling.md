@@ -4,6 +4,7 @@ authors: [Held, Michael, Karp, Richard M.]
 year: 1970
 doi: "10.1287/opre.18.6.1138"
 bibtex-key: heldkarp1970traveling
+pdf: "papers/pdfs/heldkarp1970traveling.pdf"
 tags: [tsp, lower-bound, lagrangean]
 status: lido
 rating: 5
@@ -55,3 +56,5 @@ O Held-Karp bound é o lower bound mais utilizado para TSP simétrico, com gap e
 > "We describe a method for computing lower bounds for the traveling-salesman problem which is based on the concept of a minimum spanning 1-tree."
 
 > "The method proceeds by maximizing a concave function defined on a certain convex polytope; the value of this function is a lower bound on the cost of an optimal tour."
+
+![[heldkarp1970traveling.pdf]]

@@ -16,29 +16,29 @@ Objeto: `vault/writing/roadmap-monografia.md`
 
 ## Estrutura FACOM vs. Roadmap Atual
 
-| Elemento FACOM | No roadmap? | Situação |
-|---|---|---|
-| **Pré-textuais** | | |
-| Capa | ❌ | Ausente. Criar folha de rosto LaTeX |
-| Folha de Rosto | ❌ | Ausente. Criar com natureza do TCC, área, orientador |
-| Dedicatória | ❌ | Opcional, mas sem task definida |
-| Agradecimentos | ❌ | Opcional, mas sem task definida |
-| Epígrafe | ❌ | Opcional, mas sem task definida |
-| Resumo (pt-BR) | ❌ | Sem task de escrita. Deve conter objetivo, método, resultados, conclusões |
-| Abstract (en) | ❌ | Sem task de escrita. Versão inglesa do resumo |
-| Lista de Ilustrações | ❌ | Automática via LaTeX (`\listoffigures`), mas precisa ser verificada |
-| Lista de Tabelas | ❌ | Automática via LaTeX (`\listoftables`), mas precisa ser verificada |
-| Lista de Siglas/Abrav | ❌ | Automática via `abntex2` (`\siglas`), mas precisa ser alimentada |
-| Sumário | ❌ | Automático (`\tableofcontents`), sem ação necessária |
-| **Capítulos** | | |
-| 1. Introdução | ✅ | Estrutura bate (Motivação, Problema, Hipótese, Objetivos, Contribuições, Organização) |
-| 2. Fundamentação Teórica | ✅ | Cobre conceitos + trabalhos correlatos |
-| 3. Experimentos | ⚠️ | Modelo FACOM unifica **método + experimentos + avaliação** em UM capítulo. Roadmap separa em "Proposta" (cap. 3) e "Experimentos" (cap. 4), totalizando 5 capítulos. **Divergência estrutural.** |
-| 4. Conclusão | ✅ | Principais Contribuições, Trabalhos Futuros, Produção Bibliográfica |
-| **Pós-textuais** | | |
-| Referências | ✅ | Automático via BibTeX |
-| Apêndices | ❌ | Sem task. Material produzido pelo autor (código, tabelas extras, questionários) |
-| Anexos | ❌ | Sem task. Material de terceiros (artigos, documentações) |
+| Elemento FACOM           | No roadmap? | Situação                                                                                                                                                                                         |
+| ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Pré-textuais**         |             |                                                                                                                                                                                                  |
+| Capa                     | ❌           | Ausente. Criar folha de rosto LaTeX                                                                                                                                                              |
+| Folha de Rosto           | ❌           | Ausente. Criar com natureza do TCC, área, orientador                                                                                                                                             |
+| Dedicatória              | ❌           | Opcional, mas sem task definida                                                                                                                                                                  |
+| Agradecimentos           | ❌           | Opcional, mas sem task definida                                                                                                                                                                  |
+| Epígrafe                 | ❌           | Opcional, mas sem task definida                                                                                                                                                                  |
+| Resumo (pt-BR)           | ❌           | Sem task de escrita. Deve conter objetivo, método, resultados, conclusões                                                                                                                        |
+| Abstract (en)            | ❌           | Sem task de escrita. Versão inglesa do resumo                                                                                                                                                    |
+| Lista de Ilustrações     | ❌           | Automática via LaTeX (`\listoffigures`), mas precisa ser verificada                                                                                                                              |
+| Lista de Tabelas         | ❌           | Automática via LaTeX (`\listoftables`), mas precisa ser verificada                                                                                                                               |
+| Lista de Siglas/Abrav    | ❌           | Automática via `abntex2` (`\siglas`), mas precisa ser alimentada                                                                                                                                 |
+| Sumário                  | ❌           | Automático (`\tableofcontents`), sem ação necessária                                                                                                                                             |
+| **Capítulos**            |             |                                                                                                                                                                                                  |
+| 1. Introdução            | ✅           | Estrutura bate (Motivação, Problema, Hipótese, Objetivos, Contribuições, Organização)                                                                                                            |
+| 2. Fundamentação Teórica | ✅           | Cobre conceitos + trabalhos correlatos                                                                                                                                                           |
+| 3. Experimentos          | ⚠️          | Modelo FACOM unifica **método + experimentos + avaliação** em UM capítulo. Roadmap separa em "Proposta" (cap. 3) e "Experimentos" (cap. 4), totalizando 5 capítulos. **Divergência estrutural.** |
+| 4. Conclusão             | ✅           | Principais Contribuições, Trabalhos Futuros, Produção Bibliográfica                                                                                                                              |
+| **Pós-textuais**         |             |                                                                                                                                                                                                  |
+| Referências              | ✅           | Automático via BibTeX                                                                                                                                                                            |
+| Apêndices                | ❌           | Sem task. Material produzido pelo autor (código, tabelas extras, questionários)                                                                                                                  |
+| Anexos                   | ❌           | Sem task. Material de terceiros (artigos, documentações)                                                                                                                                         |
 
 ## Resumo das Lacunas
 

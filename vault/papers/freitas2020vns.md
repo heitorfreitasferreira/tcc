@@ -10,6 +10,10 @@ status: lido
 rating: 4
 ---
 
+## PDF
+
+![[freitas2020vns.pdf]]
+
 ## Resumo
 
 Propõe uma heurística híbrida (HGVNS) para o *Flying Sidekick Traveling Salesman Problem* (FSTSP), variante do TSP onde um caminhão e um drone realizam entregas colaborativamente. A solução inicial é obtida resolvendo o TSP clássico de forma exata (com o solver Concorde) e, em seguida, um *General Variable Neighborhood Search* (GVNS) com *Randomized Variable Neighborhood Descent* (RVND) otimiza as rotas combinadas de caminhão e drone. Experimentos mostram redução de até 67,79% no tempo total de entrega, estabelecendo novos *best-known solutions* (BKS) para todas as instâncias da literatura.

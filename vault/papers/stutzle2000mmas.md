@@ -12,7 +12,7 @@ pdf: "papers/pdfs/stutzle2000mmas.pdf"
 
 ## PDF
 
-[[papers/pdfs/stutzle2000mmas.pdf]]
+![[stutzle2000mmas.pdf]]
 
 ## Resumo
 
@@ -45,3 +45,20 @@ Justifica a escolha do MMAS como variante ACO, especialmente relevante para inst
 - [[dorigo2004book]] — livro referência
 - [[ant-colony]]
 - [[tsp]]
+
+## Notas e Insights
+
+- MMAS introduz três inovações simples mas eficazes: (1) apenas a melhor formiga deposita feromônio, (2) limites [τ_min, τ_max] para evitar estagnação, (3) inicialização em τ_max para exploração máxima
+- O mecanismo de limites de feromônio é a principal contribuição e é amplamente adotado em implementações ACO modernas
+- A análise de fitness-distance correlation (FDC) para TSP e QAP mostra que a correlação entre qualidade e distância do ótimo justifica a exploração das melhores soluções
+- Para o TCC, MMAS é a variante ACO mais adequada para o rTSP, pois instâncias grandes e complexas se beneficiam dos limites de feromônio para evitar convergência prematura
+- A fórmula τ_max = 1/(ρ·L_best) e τ_min = τ_max / (2n) é implementada diretamente no código ACO do TCC
+- O artigo mostra que MMAS combinado com busca local 2-opt atinge resultados competitivos com ACS, validando a escolha de MMAS+2-opt para o TCC
+
+## Citações-chave
+
+> "The use of a rather simple mechanism for limiting the strengths of the pheromone trails effectively avoids premature convergence of the search."
+
+> "MMAS achieves a strongly improved performance compared to AS and is among the best available algorithms for the QAP."
+
+> "The exploitation of the best solutions found during the search strongly improves performance, but must be combined with effective mechanisms for search space exploration to avoid premature convergence."

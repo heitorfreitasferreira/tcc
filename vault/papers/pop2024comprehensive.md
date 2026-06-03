@@ -4,7 +4,7 @@ authors: [Pop, Petrică C.]
 year: 2024
 doi: "10.1016/j.ejor.2023.07.022"
 bibtex-key: pop2024comprehensive
-pdf: "papers/pdfs/pop2024.pdf"
+pdf: "papers/pdfs/pop2024comprehensive.pdf"
 tags: [tsp gtsp survey combinatorial-optimization drone-routing]
 status: lido
 rating: 5
@@ -12,7 +12,7 @@ rating: 5
 
 ## PDF
 
-![[pop2024.pdf]]
+![[pop2024comprehensive.pdf]]
 
 ## Resumo
 

@@ -4,6 +4,7 @@ authors: [Johnson, David S., McGeoch, Lyle A., Rothberg, Edward E., Schreiber, R
 year: 1996
 doi: "10.1137/1.9781611971486"
 bibtex-key: johnson1996asymptotic
+pdf: "papers/pdfs/johnson1996asymptotic.pdf"
 tags: [tsp, lower-bound, held-karp, experimental]
 status: lido
 rating: 5
@@ -54,3 +55,5 @@ Estabelece que, para qualquer método de lower bound implementado, o gap em rela
 > "We provide empirical evidence in support of using the HK bound as a stand-in for the optimal tour length when evaluating the quality of near-optimal tours."
 
 > "For a wide variety of randomly generated instance types the optimal tour length averages less than 0.8% over the HK bound, and even for the real-world instances in TSPLIB the gap is almost always less than 2%."
+
+![[johnson1996asymptotic.pdf]]

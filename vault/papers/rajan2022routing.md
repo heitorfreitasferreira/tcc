@@ -10,6 +10,10 @@ status: lido
 rating: 5
 ---
 
+## PDF
+
+![[rajan2022routing.pdf]]
+
 ## Resumo
 
 Apresenta um modelo de programação estocástica de dois estágios para roteirização de UAVs em missões de patrulha. Dado um conjunto de alvos e alvos suplementares, as decisões de primeiro estágio definem a sequência de visita; ao chegar em cada alvo, se a informação coletada for insuficiente, o UAV visita alvos suplementares. Resolvido via Progressive Hedging Algorithm.

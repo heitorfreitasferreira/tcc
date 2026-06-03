@@ -12,7 +12,7 @@ pdf: "papers/pdfs/lin1973effective.pdf"
 
 ## PDF
 
-[[papers/pdfs/lin1973effective.pdf]]
+![[lin1973effective.pdf]]
 
 ## Resumo
 

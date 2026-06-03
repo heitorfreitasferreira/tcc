@@ -4,6 +4,7 @@ authors: [Righini, Giovanni]
 year: 2021
 doi: "10.5802/ojmo.11"
 bibtex-key: righini2021efficient
+pdf: "papers/pdfs/righini2021efficient.pdf"
 tags: [tsp, lower-bound, held-karp, algorithm]
 status: lido
 rating: 4
@@ -48,3 +49,5 @@ O bound HK otimizado é útil como referência para avaliar a qualidade das solu
 ## Citações-chave
 
 > "The algorithm presented here shows that the vertex p that Held and Karp selected in an arbitrary way can be selected in an optimal way with the same worst-case time complexity required to compute a minimum spanning tree."
+
+![[righini2021efficient.pdf]]

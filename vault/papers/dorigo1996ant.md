@@ -12,7 +12,7 @@ pdf: "papers/pdfs/dorigo1996ant.pdf"
 
 ## PDF
 
-[[papers/pdfs/dorigo1996ant.pdf]]
+![[dorigo1996ant.pdf]]
 
 ## Resumo
 

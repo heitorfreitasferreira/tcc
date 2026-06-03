@@ -12,7 +12,7 @@ rating: 4
 
 ## PDF
 
-[[papers/pdfs/chandra2022comparative.pdf]]
+![[chandra2022comparative.pdf]]
 
 ## Resumo
 

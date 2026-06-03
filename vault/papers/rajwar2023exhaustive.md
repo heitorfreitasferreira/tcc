@@ -4,7 +4,7 @@ authors: [Rajwar, Kanchan]
 year: 2023
 doi: "10.1007/s10462-023-10470-y"
 bibtex-key: rajwar2023exhaustive
-pdf: "papers/pdfs/rajwar2023.pdf"
+pdf: "papers/pdfs/rajwar2023exhaustive.pdf"
 tags: [metaheuristic]
 status: lido
 rating: 4
@@ -12,7 +12,7 @@ rating: 4
 
 ## PDF
 
-![[rajwar2023.pdf]]
+![[rajwar2023exhaustive.pdf]]
 
 ## Resumo
 

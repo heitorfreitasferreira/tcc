@@ -4,13 +4,15 @@ authors: [Wang, Yong]
 year: 2021
 doi: "10.1016/j.asoc.2021.107439"
 bibtex-key: wang2021ant
-pdf: pdfs/wang2021.pdf
+pdf: "papers/pdfs/wang2021ant.pdf"
 tags: [aco tsp metaheuristic]
 status: lido
 rating: 0
 ---
 
-![[pdfs/wang2021.pdf]]
+## PDF
+
+![[wang2021ant.pdf]]
 
 ## Resumo
 
