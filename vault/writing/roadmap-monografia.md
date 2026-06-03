@@ -77,6 +77,10 @@ Escrever em português acadêmico, com foco no cenário de patrulha com drones e
 | Padronização terminológica | Criada antes de qualquer capítulo | [[problem-formulation]], [[tsp-variants]] |
 | Figuras/tabelas mínimas de resultados | Criadas antes de Experimentos | `scripts/`, `monografia/figs/` |
 | Protocolo estatístico final | Fechado antes de Experimentos | [[analysis-methodology]] |
+| **Resumo + Abstract** | Escritos antes da introdução, revisados por último | [[validacao-modelo-facom]] |
+| **Capa + Folha de Rosto** | Dados preenchidos antes da compilação final | autor, orientador, título, data |
+| **Lista de Siglas** | Levantamento antes da escrita de qualquer capítulo | `vault/writing/lista-siglas.md` |
+| **Apêndices** | Estrutura definida antes de Experimentos | `vault/writing/apendices.md` |
 
 ## Protocolo de Validação Antes de Escrever
 
@@ -152,21 +156,27 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 
 **Objetivo:** descrever o problema implementado, a representação computacional e os algoritmos usados no benchmark.
 
-**Entradas obrigatórias:** código em `src/graph/`, `src/points/`, `src/optimization/`, `src/cmd/`, `src/shared/`; depois [[proposta]], [[problem-formulation]], [[architecture]], [[ga]], [[pso]], [[aco]], [[bruteforce]], [[lower-bounds]], [[experiment-pipeline]].
+> [!note] Decisão estrutural
+> O modelo FACOM prescreve 4 capítulos com "Método para Avaliação" dentro de Experimentos. Este roadmap adota **5 capítulos** porque a formulação matemática do TSP-SD-ATP (tensor 3D, função objetivo) e a descrição dos algoritmos têm densidade técnica que justifica capítulo próprio. A seção de **Método para Avaliação** (instâncias, parâmetros, métricas, baselines) permanece no capítulo de Experimentos, conforme o modelo.
 
-**Estrutura sugerida:** formulação do TSP-SD-ATP; geração de instâncias; tensor 3D de custos; função objetivo; arquitetura da implementação; GA; PSO; ACO; busca exaustiva; lower bound via relaxação AP; pipeline experimental; política de reprodutibilidade.
+**Entradas obrigatórias:** código em `src/graph/`, `src/points/`, `src/optimization/`, `src/cmd/`, `src/shared/`; depois [[proposta]], [[problem-formulation]], [[architecture]], [[ga]], [[pso]], [[aco]], [[bruteforce]], [[lower-bounds]].
 
-**Critérios de aceite:** a formulação matemática bate com o código real em `src/`; parâmetros são explicitados conforme flags e defaults implementados; decisões de design são apresentadas como escolhas pragmáticas, não como ótimos universais; busca exaustiva aparece como baseline para instâncias pequenas; lower bound AP (redução 3D→2D + Hungarian) é justificado teoricamente e sua implementação descrita; o capítulo permite reproduzir o experimento em alto nível.
+**Estrutura sugerida:** formulação do TSP-SD-ATP; tensor 3D de custos; função objetivo; representação de soluções (permutação, random keys, trilha de feromônio); arquitetura da implementação; GA (codificação, operadores); PSO (codificação random keys, atualização); ACO (construção 3D, atualização de feromônio); busca exaustiva; lower bound via relaxação AP (redução 3D→2D + Hungarian); política de reprodutibilidade.
 
-**Riscos:** misturar descrição da proposta com resultados; justificar parâmetros sem evidência; omitir que não houve tuning sistemático; não explicar a distinção entre lower bound AP (bound numérico) e os métodos que produzem rotas completas.
+**Critérios de aceite:** a formulação matemática bate com o código real em `src/`; o tensor 3D é explicado com clareza; cada algoritmo é descrito em nível de implementação, não apenas conceitual; lower bound AP é justificado teoricamente; **não inclui instâncias, parâmetros ou métricas de avaliação** (esses vão no capítulo de Experimentos, seção Método para Avaliação).
+
+**Riscos:** descrever GA/PSO/ACO de forma genérica sem conexão com a implementação real; não explicar a redução 3D→2D do lower bound; omitir a diferença entre a busca exaustiva (para validação, n ≤ 10) e os métodos estocásticos.
 
 ### Capítulo 4 — Experimentos e Resultados
 
 **Objetivo:** apresentar configuração experimental, dados coletados, análise de qualidade, análise de tempo e discussão dos resultados.
 
-**Entradas obrigatórias:** arquivos em `src/data/`, `src/data/results/`, código/scripts que geram resultados e figuras; depois [[experimentos]], [[resultados]], [[analysis-methodology]], [[experiment-pipeline]], figuras em `monografia/figs/`.
+**Entradas obrigatórias:** arquivos em `src/data/`, `src/data/results/`, código/scripts que geram resultados e figuras; depois [[experimentos]], [[resultados]], [[analysis-methodology]], [[experiment-pipeline]], [[experiment-pipeline]], figuras em `monografia/figs/`.
 
-**Estrutura sugerida:** configuração experimental; instâncias e sementes; métodos e parâmetros; baseline por brute-force; lower bound para instâncias grandes (relaxação AP via Hungarian, redução 3D→2D); qualidade das soluções com gap vs AP bound; tempo computacional; trade-off qualidade-tempo; análise estatística; discussão por método; ameaças à validade.
+**Estrutura sugerida:**
+- **4.1 Método para Avaliação** (conforme modelo FACOM): instâncias e sementes; parâmetros dos métodos; métricas de avaliação (gap vs AP bound, tempo); baseline brute-force (n ≤ 10); lower bound AP como referência para instâncias grandes; plataforma e ambiente computacional
+- **4.2 Experimentos**: qualidade das soluções com gap vs AP bound; tempo computacional; trade-off qualidade-tempo; curvas de convergência
+- **4.3 Avaliação dos Resultados**: análise estatística (Friedman + Nemenyi + Wilcoxon); discussão por método; visualização de rotas selecionadas; ameaças à validade
 
 **Figuras e tabelas mínimas:** tabela de ótimos brute-force; tabela comparativa AP bound vs ótimo (instâncias pequenas); tabela de gap médio (AP bound como referência); gráfico de qualidade por método e tamanho; gráfico de tempo por método e tamanho (incluindo lower bound, ∼0ms); gráfico qualidade versus tempo; curvas de convergência; visualização de rotas selecionadas.
 
@@ -202,6 +212,11 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P8 | Implementar e validar lower bound para instâncias grandes (n ≥ 15) | Implementação completa: algoritmo Hungarian O(n³) em Go puro, redução 3D→2D, comando `tcc optimize lowerbound`, 30/30 instâncias executadas, figuras/overlays geradas, integração nos scripts de análise. Bound validado contra brute-force (10a: AP=4.86 ≤ BF=8.25). Documentado em [[lower-bounds]], [[justificativa-lowerbound]] | Concluída |
 | P9 | Estudar efeito da codificação na comparação justa entre métodos | Concluído em [[auditoria-codificacao-metodos]]. GA usa permutação direta; PSO usa random keys; ACO usa transições 3D. Explicitar como ameaça à validade, sem nova implementação nesta monografia. | Concluída |
 | P10 | Análise de sensibilidade a hiperparâmetros | Concluída em [[auditoria-hiperparametros]] como limitação/trabalho futuro. Não bloqueia a escrita; declarar que não houve tuning sistemático. | Concluída como limitação |
+| P11 | Escrever Resumo (pt-BR) e Abstract (en) | Nota `vault/writing/resumo-abstract.md` com texto final de 150–500 palavras cada, destacando objetivo, método, resultados e conclusões | Pendente |
+| P12 | Preencher Capa e Folha de Rosto | Dados do autor, título definitivo, orientador, área de concentração, data em `monografia/` (via template LaTeX) | Pendente |
+| P13 | Levantar e definir Lista de Siglas | Nota `vault/writing/lista-siglas.md` com todas as siglas usadas (TSP, GA, PSO, ACO, AP, POI, VANT, etc.) e suas definições | Pendente |
+| P14 | Definir estrutura dos Apêndices | Nota `vault/writing/apendices.md` listando o que vai em cada apêndice (resultados completos, pseudocódigo, instâncias exemplo) | Pendente |
+| P15 | Verificar formatação ABNT no template LaTeX | Conferir citações longas (>3 linhas), alíneas, remissões internas e ambiente de siglas na classe `ppgco.cls` | Pendente |
 
 ## Protocolo Para Cada Agente Escritor
 
@@ -230,7 +245,8 @@ Após a escrita:
 2. Marcar claims que ainda precisam de validação.
 3. Listar figuras/tabelas citadas e verificar se existem.
 4. Verificar se não há promessa sem evidência.
-5. Registrar pendências em nota separada ou no topo do capítulo.
+5. Conferir formatação ABNT no capítulo: citações diretas (>3 linhas com recuo 4cm), alíneas/subalíneas, remissões internas (`\ref`/`\pageref`), uso correto de siglas (`\ac`/`\acs`/`\acl`).
+6. Registrar pendências em nota separada ou no topo do capítulo.
 
 ## Protocolo de Análise Estatística (P4 — Concluído)
 
@@ -276,7 +292,10 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 | Referências centrais selecionadas | Cada capítulo tem bibliografia mínima definida |
 | Terminologia estabilizada | TSP-SD-ATP, makespan, drone e POI usados de forma consistente |
 | Limitações declaradas | Parâmetros fixos, instâncias sintéticas e baseline limitado aparecem no texto |
+| **Pré-textuais prontos** | Capa, Folha de Rosto, Resumo, Abstract, Lista de Siglas escritos e revisados |
+| **Apêndices estruturados** | Conteúdo mínimo definido (resultados completos, pseudocódigo) |
+| **Formatação ABNT verificada** | Citações longas (>3 linhas), alíneas, remissões internas e siglas funcionando no template `ppgco.cls` |
 
 ## Próxima Ação Recomendada
 
-Com P1–P10 concluídos, a próxima ação é escrever/revisar os capítulos `.tex` usando as notas atualizadas e os artefatos regenerados. Começar por Experimentos ou Proposta, pois são os capítulos que mais dependem dos dados e do código.
+Executar primeiro as tarefas **P11–P15** (pré-textuais, apêndices e formatação), depois escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão.
