@@ -1,0 +1,119 @@
+\chapter[Pseudocódigo dos Métodos]{Pseudocódigo dos Métodos de Otimização}
+\label{ape:pseudocodigo}
+
+Este apêndice apresenta o pseudocódigo dos três métodos meta-heurísticos implementados para o TSP-SD-ATP. Todos os algoritmos compartilham a mesma função objetivo baseada no tensor tridimensional de custos $G[anterior][atual][proximo]$ e o mesmo critério de parada (número máximo de iterações).
+
+\section{Algoritmo Genético}
+
+O Algoritmo Genético utiliza permutação direta dos pontos de interesse, seleção por torneio, crossover OX, mutação \textit{swap} e elitismo. Cada indivíduo é uma permutação dos nós $1$ a $n-1$.
+
+\begin{algorithm}[htbp]
+\caption{Algoritmo Genético para TSP-SD-ATP}
+\label{alg:ga}
+\begin{algorithmic}[1]
+\REQUIRE $N$ (população), $G$ (max iterações), $p_m$ (taxa de mutação), $k$ (tamanho do torneio)
+\ENSURE Melhor rota $\pi^*$ encontrada
+\STATE $P \leftarrow \{\pi_1, \pi_2, \ldots, \pi_N\}$ com permutações aleatórias de $V'$
+\STATE Avaliar $f(\pi)$ para cada $\pi \in P$ usando o tensor $G$
+\STATE $\pi^* \leftarrow \arg\min_{\pi \in P} f(\pi)$
+\FOR{$g \leftarrow 1$ \TO $G$}
+  \STATE $Q \leftarrow \varnothing$
+  \WHILE{$|Q| < N$}
+    \STATE $a \leftarrow$ SelecionarPorTorneio$(P, k)$
+    \STATE $b \leftarrow$ SelecionarPorTorneio$(P, k)$
+    \IF{$\text{rand}() < 0{,}5$}
+      \STATE $(q_a, q_b) \leftarrow \text{CrossoverOX}(a, b)$
+    \ELSE
+      \STATE $(q_a, q_b) \leftarrow (a, b)$
+    \ENDIF
+    \STATE $q_a \leftarrow \text{MutaçãoSwap}(q_a, p_m)$
+    \STATE $q_b \leftarrow \text{MutaçãoSwap}(q_b, p_m)$
+    \STATE $Q \leftarrow Q \cup \{q_a, q_b\}$
+  \ENDWHILE
+  \STATE Avaliar $f(q)$ para cada $q \in Q$
+  \STATE Substituir pior indivíduo de $Q$ pelo melhor de $P$ (elitismo)
+  \STATE $P \leftarrow Q$
+  \STATE $\pi^* \leftarrow \arg\min\{\pi^*, \arg\min_{\pi \in P} f(\pi)\}$
+\ENDFOR
+\RETURN $\pi^*$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Otimização por Enxame de Partículas}
+
+O PSO utiliza codificação por \textit{random keys}: cada partícula mantém um vetor real de dimensão $n-1$, e a rota é obtida ordenando os índices pelos valores do vetor. A atualização segue a equação clássica de velocidade com inércia, componente cognitiva e componente social.
+
+\begin{algorithm}[htbp]
+\caption{PSO com Random Keys para TSP-SD-ATP}
+\label{alg:pso}
+\begin{algorithmic}[1]
+\REQUIRE $N$ (enxame), $G$ (iterações), $w$, $c_1$, $c_2$
+\ENSURE Melhor rota $\pi^*$ encontrada
+\STATE Inicializar posições $x_i \in \mathbb{R}^{n-1}$ uniformemente em $[0,1]^d$
+\STATE Inicializar velocidades $v_i \leftarrow \mathbf{0}$
+\FOR{cada partícula $i$}
+  \STATE $\pi_i \leftarrow \text{OrdenarÍndices}(x_i)$
+  \STATE $f_i \leftarrow f(\pi_i)$ via tensor $G$
+  \STATE $p_i \leftarrow x_i$ \COMMENT{melhor posição individual}
+\ENDFOR
+\STATE $g \leftarrow \arg\min_{p_i} f(p_i)$ \COMMENT{melhor posição global}
+\FOR{$t \leftarrow 1$ \TO $G$}
+  \FOR{cada partícula $i$}
+    \STATE $r_1, r_2 \leftarrow \text{rand}()$
+    \STATE $v_i \leftarrow w\,v_i + c_1 r_1 (p_i - x_i) + c_2 r_2 (g - x_i)$
+    \STATE $x_i \leftarrow x_i + v_i$
+    \STATE $\pi_i \leftarrow \text{OrdenarÍndices}(x_i)$
+    \STATE $f_i \leftarrow f(\pi_i)$
+    \IF{$f_i < f(p_i)$}
+      \STATE $p_i \leftarrow x_i$
+    \ENDIF
+    \IF{$f_i < f(g)$}
+      \STATE $g \leftarrow x_i$
+    \ENDIF
+  \ENDFOR
+\ENDFOR
+\STATE $\pi^* \leftarrow \text{OrdenarÍndices}(g)$
+\RETURN $\pi^*$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Otimização por Colônia de Formigas}
+
+O ACO utiliza feromônio tridimensional $\tau_{i,j,k}$, onde $i$ é o nó anterior, $j$ o nó atual e $k$ o próximo nó candidato. Cada formiga constrói uma rota incrementalmente, selecionando o próximo ponto por roleta proporcional ponderada por feromônio e informação heurística.
+
+\begin{algorithm}[htbp]
+\caption{ACO com Feromônio 3D para TSP-SD-ATP}
+\label{alg:aco}
+\begin{algorithmic}[1]
+\REQUIRE $N$ (formigas), $G$ (iterações), $\alpha$, $\beta$, $\rho$, $Q$, $\tau_0$
+\ENSURE Melhor rota $\pi^*$ encontrada
+\STATE Inicializar $\tau[i][j][k] \leftarrow \tau_0$ para todas as tripletas $(i,j,k)$
+\STATE $\pi^* \leftarrow \varnothing$, $f^* \leftarrow \infty$
+\FOR{$t \leftarrow 1$ \TO $G$}
+  \FOR{cada formiga $m$}
+    \STATE $i \leftarrow 0$, $j \leftarrow 0$ \COMMENT{partida da base}
+    \STATE $V_{\textit{rest}} \leftarrow V'$ \COMMENT{pontos não visitados}
+    \STATE $\pi_m \leftarrow ()$
+    \WHILE{$V_{\textit{rest}} \neq \varnothing$}
+      \STATE Calcular $p_{i,j,k} \propto [\tau_{i,j,k}]^\alpha [\eta_{i,j,k}]^\beta$ para $k \in V_{\textit{rest}}$
+      \STATE $k \leftarrow$ SelecionarPorRoleta$(p)$
+      \STATE $\pi_m \leftarrow \pi_m \cup \{k\}$
+      \STATE $V_{\textit{rest}} \leftarrow V_{\textit{rest}} \setminus \{k\}$
+      \STATE $i \leftarrow j$, $j \leftarrow k$
+    \ENDWHILE
+    \STATE $f_m \leftarrow f(\pi_m)$ via tensor $G$
+    \IF{$f_m < f^*$}
+      \STATE $\pi^* \leftarrow \pi_m$, $f^* \leftarrow f_m$
+    \ENDIF
+  \ENDFOR
+  \STATE Evaporação: $\tau[i][j][k] \leftarrow (1-\rho)\,\tau[i][j][k]$ para todas as tripletas
+  \FOR{cada formiga $m$}
+    \STATE $\Delta \leftarrow Q / f_m$
+    \FOR{cada transição $(i,j,k)$ em $\pi_m$}
+      \STATE $\tau[i][j][k] \leftarrow \tau[i][j][k] + \Delta$
+    \ENDFOR
+  \ENDFOR
+\ENDFOR
+\RETURN $\pi^*$
+\end{algorithmic}
+\end{algorithm}
