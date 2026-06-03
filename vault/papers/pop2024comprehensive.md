@@ -40,7 +40,7 @@ Altamente relevante: o GTSP modela diretamente o cenário de patrulha com drones
 
 ## Conexões
 
-- [[TSP]]
+- [[tsp]]
 - [[gtsp]]
 - [[drone-routing]]
 - [[bock2025survey]] — survey de variantes TSP em warehousing (contemporâneo)

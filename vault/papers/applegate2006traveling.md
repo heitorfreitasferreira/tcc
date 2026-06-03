@@ -46,7 +46,7 @@ O Concorde serve como referência ótima para validação de meta-heurísticas e
 - [[lin1973effective]] — heurística Lin-Kernighan, base das buscas locais do livro
 - [[dellamico2022exact]] — modelos exatos para FSTSP (inspirados em branch-and-cut)
 - [[goldberg1989genetic]] — GAs como alternativa heurística contrastada com métodos exatos
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

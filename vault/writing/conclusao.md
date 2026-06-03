@@ -1,6 +1,7 @@
 ---
 tags: [writing, capitulo, conclusao]
 status: atualizado-pos-p4
+created: 2026-06-02
 updated: 2026-06-02
 ---
 

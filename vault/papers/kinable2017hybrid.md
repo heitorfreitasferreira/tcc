@@ -39,7 +39,7 @@ O TSP-SD-ATP com tensor 3D é um caso particular de TDTSP/sequenciamento posiç�
 - [[heldkarp1970traveling]] — bound HK como alternativa de relaxação contínua
 - [[leraromero2020dynamic]] — abordagem alternativa com labeling para TDTSP
 - [[aggarwal2000angular]] — angular-metric TSP, problema similar
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights

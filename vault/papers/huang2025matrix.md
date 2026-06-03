@@ -37,7 +37,7 @@ Extensão natural do TSP para múltiplos agentes (múltiplos drones). A abordage
 - [[sun2024hybrid]] — PSO híbrido para TSP
 - [[kappagantula2025dpso]] — DPSO com RL para TSP
 - [[particle-swarm]]
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

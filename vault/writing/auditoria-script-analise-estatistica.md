@@ -8,6 +8,7 @@ tags:
   - monografia
 status: validado
 created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Auditoria do Script de Análise Estatística

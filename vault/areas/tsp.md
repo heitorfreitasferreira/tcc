@@ -1,5 +1,7 @@
 ---
 tags: [area, problema-classico]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Traveling Salesman Problem (TSP)

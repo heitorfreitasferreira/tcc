@@ -38,7 +38,7 @@ O additive bounding é a abordagem mais robusta para ATSP na literatura. Para o 
 - [[heldkarp1970traveling]] — arborescência como generalização de 1-tree para ATSP
 - [[karp1979patching]] — patching heuristic para converter AP em TSP
 - [[lawler1985traveling]] — survey que descreve relaxações do ATSP
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights

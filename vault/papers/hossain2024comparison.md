@@ -40,7 +40,7 @@ Fornece evidência estatística fundamental para o TCC: GA e ACO (implementados 
 
 ## Conexões
 
-- [[TSP]] — problema-alvo
+- [[tsp]] — problema-alvo
 - [[comparative-studies]] — área temática
 - [[genetic-algorithms]] — GA incluído e melhor em médias
 - [[ant-colony]] — ACO incluído

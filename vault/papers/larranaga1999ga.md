@@ -48,4 +48,4 @@ Artigo de referência para justificar a escolha de operadores de crossover (e.g.
 - [[nagata2006eax]] — EAX (crossover estado-da-arte, evolução posterior)
 - [[potvin1996ga]] — survey anterior focado em categorização de crossover
 - [[genetic-algorithms]]
-- [[TSP]]
+- [[tsp]]

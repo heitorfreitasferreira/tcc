@@ -1,5 +1,7 @@
 ---
 tags: [area, variante-tsp, classificacao]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Variantes do Problema do Caixeiro Viajante (TSP)
@@ -93,7 +95,7 @@ A **variante implementada neste projeto** combina distância euclidiana + penali
 
 ## Conexões
 
-- [[TSP]] — nota principal sobre o TSP clássico
+- [[tsp]] — nota principal sobre o TSP clássico
 - [[problem-formulation]] — implementação da variante TSP-SD-ATP no projeto
 - [[routing]] — classe geral de problemas de roteamento
 - [[drone-routing]] — roteamento de drones (contexto de aplicação)

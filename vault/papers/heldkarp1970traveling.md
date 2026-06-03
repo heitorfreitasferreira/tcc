@@ -40,7 +40,7 @@ O Held-Karp bound é o lower bound mais utilizado para TSP simétrico, com gap e
 - [[righini2021efficient]] — otimização da seleção de vértice p no bound HK
 - [[lawler1985traveling]] — survey que consolida o método
 - [[applegate2006traveling]] — Concorde usa subtour LP (=HK bound) como relaxação
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights

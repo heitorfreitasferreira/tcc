@@ -1,5 +1,7 @@
 ---
 tags: [area, lower-bound, otimizacao]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Lower Bounds para TSP — Abordagens e Aplicabilidade ao TSP-SD-ATP

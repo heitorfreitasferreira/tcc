@@ -37,7 +37,7 @@ A programação dinâmica O(n²2ⁿ) é exata para TSP clássico e serve como re
 - [[johnson1996asymptotic]] — implementação prática e validação empírica
 - [[righini2021efficient]] — otimização da seleção de vértice p
 - [[balas1985branch]] — branch-and-bound baseado em relaxação assignment (ATSP)
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

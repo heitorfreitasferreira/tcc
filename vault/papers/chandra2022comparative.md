@@ -40,7 +40,7 @@ Demonstra como ANOVA e Tukey podem validar diferenças entre metaheurísticas no
 
 ## Conexões
 
-- [[TSP]] — problema-alvo
+- [[tsp]] — problema-alvo
 - [[comparative-studies]] — área temática
 - [[genetic-algorithms]] — GA incluído
 - [[particle-swarm]] — PSO incluído

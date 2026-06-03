@@ -7,6 +7,7 @@ tags:
   - agentes
 status: pronto-para-execucao
 created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Roadmap de Escrita da Monografia
@@ -137,7 +138,7 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 
 **Objetivo:** dar suporte conceitual para o problema, os métodos e a comparação experimental.
 
-**Entradas obrigatórias:** [[fundamentacao]], [[TSP]], [[tsp-variants]], [[bio-inspired-optimization]], [[genetic-algorithms]], [[particle-swarm]], [[ant-colony]], [[drone-routing]], [[comparative-studies]].
+**Entradas obrigatórias:** [[fundamentacao]], [[tsp]], [[tsp-variants]], [[bio-inspired-optimization]], [[genetic-algorithms]], [[particle-swarm]], [[ant-colony]], [[drone-routing]], [[comparative-studies]].
 
 **Estrutura sugerida:** TSP clássico e complexidade; variantes relevantes do TSP; custos de curva e dependência de sequência; roteamento de drones; metaheurísticas bio-inspiradas; GA para TSP; PSO para TSP; ACO para TSP; estudos comparativos relacionados.
 

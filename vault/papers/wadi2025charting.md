@@ -41,7 +41,7 @@ Demonstra que metaheurísticas menos convencionais (EHO) podem superar as cláss
 
 ## Conexões
 
-- [[TSP]] — problema-alvo
+- [[tsp]] — problema-alvo
 - [[comparative-studies]] — área temática
 - [[particle-swarm]] — PSO incluído e analisado
 - [[ant-colony]] — ACO incluído e analisado

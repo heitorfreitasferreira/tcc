@@ -42,7 +42,7 @@ Abordagem state-of-the-art de hibridização PSO-RL para TSP, diretamente aplic�
 - [[huang2025matrix]] — PSO matricial para mTSP
 - [[particle-swarm]]
 - [[ant-colony]]
-- [[TSP]]
+- [[tsp]]
 - [[bio-inspired-optimization]]
 
 ## Notas e Insights

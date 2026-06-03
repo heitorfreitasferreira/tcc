@@ -43,4 +43,4 @@ Suporte teórico para justificar a escolha do ACO. Permite afirmar que (1) ACO c
 - [[blum2005acointro]] — introdução e variantes práticas
 - [[stutzle2000mmas]] — MMAS (convergência + limites de feromônio)
 - [[ant-colony]]
-- [[TSP]]
+- [[tsp]]

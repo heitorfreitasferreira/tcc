@@ -36,7 +36,7 @@ O bound HK otimizado é útil como referência para avaliar a qualidade das solu
 - [[heldkarp1970traveling]] — bound HK original com escolha arbitrária de p
 - [[johnson1996asymptotic]] — validação empírica
 - [[valenzuela1997estimating]] — implementação de subgradiente
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights

@@ -35,7 +35,7 @@ Comparação GA vs ACO com dados concretos de erro e runtime. Resultados corrobo
 
 ## Conexões
 
-- [[TSP]] — problema-alvo
+- [[tsp]] — problema-alvo
 - [[genetic-algorithms]] — método comparado
 - [[ant-colony]] — método comparado
 - [[comparative-studies]] — área temática

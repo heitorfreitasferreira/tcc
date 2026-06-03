@@ -1,3 +1,9 @@
+---
+tags: [writing, auditoria, estatistica, metodologia]
+created: 2026-06-02
+updated: 2026-06-02
+---
+
 # Auditoria P10 — Sensibilidade a Hiperparâmetros
 
 Status: `concluida-como-limitacao`

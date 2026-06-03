@@ -1,5 +1,7 @@
 ---
 tags: [area, aplicacao]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Roteamento de Drones

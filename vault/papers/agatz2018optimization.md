@@ -46,7 +46,7 @@ Estabelece o TSP-D como variante central para entregas com drones, diretamente r
 - [[freitas2020vns]] — VNS para FSTSP
 - [[rajan2022routing]] — roteamento estocástico para patrulha UAV
 - [[drone-routing]]
-- [[TSP]]
+- [[tsp]]
 - [[bio-inspired-optimization]]
 
 ## Notas e Insights

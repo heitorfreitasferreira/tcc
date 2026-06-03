@@ -29,7 +29,7 @@ Este diretório documenta a **implementação em Go** do TCC. Cada nota reflete 
 
 ## Conexões
 
-- [[TSP]] — o problema clássico que esta implementação estende
+- [[tsp]] — o problema clássico que esta implementação estende
 - [[tsp-variants]] — classificação da variante TSP-SD-ATP na literatura
 - [[drone-routing]] — contexto de aplicação
 - [[bio-inspired-optimization]] — metaheurísticas implementadas

@@ -1,5 +1,7 @@
 ---
 tags: [writing, capitulo, experimentos]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Experimentos — Scaffold

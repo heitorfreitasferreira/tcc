@@ -36,7 +36,7 @@ Comparação direta dos três métodos implementados no projeto (GA, PSO, ACO) c
 
 ## Conexões
 
-- [[TSP]] — problema-alvo
+- [[tsp]] — problema-alvo
 - [[genetic-algorithms]] — método comparado
 - [[particle-swarm]] — método comparado
 - [[ant-colony]] — método comparado

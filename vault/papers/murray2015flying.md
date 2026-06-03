@@ -48,7 +48,7 @@ Fundação de toda a literatura de otimização de rotas com drones. O conceito 
 - [[lin1973effective]] — heurísticas LK usadas como base nos métodos
 - [[garey1979computers]] — FSTSP é NP-difícil (generalização do TSP)
 - [[drone-routing]]
-- [[TSP]]
+- [[tsp]]
 - [[bio-inspired-optimization]]
 
 ## Notas e Insights

@@ -1,5 +1,7 @@
 ---
 tags: [area, metaheuristica, bio-inspirado]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Algoritmos Genéticos (GA)
@@ -16,7 +18,7 @@ Método de otimização inspirado na seleção natural ([[holland1975adaptation]
 ## Conexões
 - [[particle-swarm]] — outra populacional
 - [[ant-colony]] — outra bio-inspirada
-- [[TSP]]
+- [[tsp]]
 - [[ga]] — implementação no projeto (Go)
 
 ## Papers Relacionados

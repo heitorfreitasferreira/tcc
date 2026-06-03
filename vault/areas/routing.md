@@ -1,5 +1,7 @@
 ---
 tags: [area, problema-classico]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Roteamento (Routing)
@@ -9,7 +11,7 @@ Problemas de encontrar caminhos ótimos em grafos, considerando restrições com
 
 ## Conexões
 - [[drone-routing]] — roteamento de drones (extensão para UAVs)
-- [[TSP]] — caso especial de roteamento
+- [[tsp]] — caso especial de roteamento
 - [[problem-formulation]] — formulação do problema de roteamento no projeto
 
 ## Papers Relacionados

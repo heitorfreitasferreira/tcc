@@ -40,7 +40,7 @@ Justificativa teórica fundamental para o uso de metaheurísticas (GA, PSO, ACO)
 - [[applegate2006traveling]] — estudo computacional do TSP (mostra que instâncias grandes são intratáveis exatamente)
 - [[lin1973effective]] — LKH heurística eficiente para TSP (necessária exatamente por ser NP-difícil)
 - [[murray2015flying]] — FSTSP (NP-difícil por generalizar TSP)
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

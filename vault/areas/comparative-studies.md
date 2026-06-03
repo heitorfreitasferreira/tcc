@@ -2,6 +2,7 @@
 title: Estudos Comparativos de Metaheurísticas
 tags: [metaheuristic, comparison, benchmark, experimental]
 status: atualizado-pos-p7
+created: 2026-06-02
 updated: 2026-06-02
 ---
 
@@ -11,7 +12,7 @@ updated: 2026-06-02
 
 ## Conexões
 
-- [[TSP]] — problema-alvo da maioria dos benchmarks
+- [[tsp]] — problema-alvo da maioria dos benchmarks
 - [[bio-inspired-optimization]] — metaheurísticas comparadas
 - [[genetic-algorithms]] — método frequentemente incluído
 - [[particle-swarm]] — método frequentemente incluído

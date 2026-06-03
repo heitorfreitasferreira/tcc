@@ -32,7 +32,7 @@ rating: 0
 
 ## Conexões
 
-- [[TSP]] —
+- [[tsp]] —
 
 ## Notas e Insights
 

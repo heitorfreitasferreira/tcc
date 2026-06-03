@@ -7,6 +7,7 @@ tags:
   - capitulos
 status: auditado-com-bloqueios
 created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Mapa Capítulos-TeX da Monografia
@@ -67,7 +68,7 @@ Esta nota mapeia a estrutura real de `monografia/` para os capítulos planejados
 | Ponto forte | TSP, custo dependente, drones, GA, PSO, ACO e comparativos já aparecem | Revisar citações e conexão com proposta |
 | Divergência | Busca exaustiva diz “até 15 pontos”, o que é aceitável, mas deve ser amarrado a `10a..15c` | Ajustar para “instâncias executadas `10a..15c`” |
 | Divergência | Pode estar faltando lower bound AP como método/relaxação na fundamentação | Incluir seção curta sobre relaxação AP, Hungarian e limites inferiores |
-| Entradas do vault | [[fundamentacao]], [[TSP]], [[tsp-variants]], [[bio-inspired-optimization]], [[genetic-algorithms]], [[particle-swarm]], [[ant-colony]], [[lower-bounds]] | Revalidar citações |
+| Entradas do vault | [[fundamentacao]], [[tsp]], [[tsp-variants]], [[bio-inspired-optimization]], [[genetic-algorithms]], [[particle-swarm]], [[ant-colony]], [[lower-bounds]] | Revalidar citações |
 | Figuras | `diagram-angular-penalty.svg`, talvez `diagram-tensor-3d.svg` | Usar com parcimônia |
 
 ### Capítulo 3 — Proposta

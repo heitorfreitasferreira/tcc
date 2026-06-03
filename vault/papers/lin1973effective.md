@@ -48,7 +48,7 @@ O LK é o padrão-ouro contra o qual metaheurísticas como GA, PSO e ACO são co
 - [[araujo2025pso]] — usa 2-opt e 3-opt como busca local
 - [[sun2024hybrid]] — usa 2-opt como busca local
 - [[freitas2020vns]] — VNS usa busca local inspirada em LK
-- [[TSP]]
+- [[tsp]]
 - [[dorigo1997ant]] — ACS compara resultados com LK como baseline
 
 ## Notas e Insights

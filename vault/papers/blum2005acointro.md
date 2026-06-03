@@ -41,4 +41,4 @@ Artigo ideal para a seção de fundamentação teórica do ACO. Explica de forma
 - [[stutzle2000mmas]] — MMAS
 - [[dorigo2004book]] — livro referência
 - [[ant-colony]]
-- [[TSP]]
+- [[tsp]]

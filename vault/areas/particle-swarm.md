@@ -1,5 +1,7 @@
 ---
 tags: [area, metaheuristica, bio-inspirado]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Particle Swarm Optimization (PSO)
@@ -14,7 +16,7 @@ Método de otimização inspirado no comportamento social de pássaros/peixes ([
 
 ## Conexões
 - [[genetic-algorithms]] — outra populacional
-- [[TSP]]
+- [[tsp]]
 - [[pso]] — implementação no projeto (Go)
 
 ## Papers Relacionados

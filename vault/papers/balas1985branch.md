@@ -36,7 +36,7 @@ Estabelece a relaxação AP como o padrão-ouro para ATSP. Para o TSP-SD-ATP (as
 - [[heldkarp1970traveling]] — 1-tree Lagrangiana
 - [[karp1979patching]] — patching heuristic para converter AP em tour
 - [[lawler1985traveling]] — survey volume onde este capítulo está inserido
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights

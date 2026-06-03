@@ -39,7 +39,7 @@ Fornece contexto amplo de comparação entre múltiplas metaheurísticas, inclui
 
 ## Conexões
 
-- [[TSP]] — problema-alvo
+- [[tsp]] — problema-alvo
 - [[comparative-studies]] — área temática
 - [[ant-colony]] — ACO incluído e bem-sucedido
 - [[particle-swarm]] — PSO análogo (não incluso na comparação)

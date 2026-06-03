@@ -50,7 +50,7 @@ vault/
 3. Use `vault/templates/paper-note.md` como template
 4. Preencha: YAML frontmatter (título, autores, ano, DOI, tags)
 5. Escreva resumo e contribuições
-6. Link para notas de área existentes: `[[TSP]]`, `[[genetic-algorithms]]`
+6. Link para notas de área existentes: `[[tsp]]`, `[[genetic-algorithms]]`
 7. Adicione tags: `tsp`, `ga`, `pso`, `aco`, `drone`, `metaheuristic`
 
 ## Convenções

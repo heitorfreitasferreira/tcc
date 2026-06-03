@@ -34,7 +34,7 @@ Embora o foco seja armazéns, a metodologia de classificação de complexidade p
 
 ## Conexões
 
-- [[TSP]]
+- [[tsp]]
 - [[tsp-variants]]
 - [[pop2024comprehensive]] — survey GTSP (contemporâneo)
 - [[lawler1985traveling]] — survey clássico do TSP

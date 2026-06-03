@@ -173,7 +173,7 @@ As seguintes notas existem no vault e aparecem neste índice, mas ainda não tê
 
 Cada nota de área sintetiza e conecta os papers relevantes:
 
-- [[TSP]] — TSP clássico e variantes
+- [[tsp]] — TSP clássico e variantes
 - [[tsp-variants]] — classificação de variantes
 - [[genetic-algorithms]] — GA na literatura
 - [[particle-swarm]] — PSO na literatura

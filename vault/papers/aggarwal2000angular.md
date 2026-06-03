@@ -38,7 +38,7 @@ O AM-TSP é a variante mais próxima do componente de ângulo no TSP-SD-ATP. A d
 - [[vanhove2012route]] — experimentos computacionais com turn restrictions
 - [[fischetti1992additive]] — additive bounding para ATSP (aplicável à redução)
 - [[kinable2017hybrid]] — MDD para sequenciamento (generaliza AM-TSP)
-- [[TSP]]
+- [[tsp]]
 - [[tsp-variants]]
 - [[lower-bounds]]
 

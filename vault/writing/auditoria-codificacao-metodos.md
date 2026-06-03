@@ -1,3 +1,9 @@
+---
+tags: [writing, auditoria, codigo, metodologia]
+created: 2026-06-02
+updated: 2026-06-02
+---
+
 # Auditoria P9 — Codificação dos Métodos
 
 Status: `concluida-com-limitacao`

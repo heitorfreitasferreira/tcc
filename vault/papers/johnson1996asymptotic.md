@@ -39,7 +39,7 @@ Estabelece que, para qualquer método de lower bound implementado, o gap em rela
 - [[valenzuela1997estimating]] — implementação prática alternativa de subgradiente
 - [[righini2021efficient]] — otimização da seleção de vértice
 - [[applegate2006traveling]] — Concorde e computação exata do subtour LP
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights

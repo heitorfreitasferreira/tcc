@@ -24,5 +24,5 @@ Propõe um algoritmo de patching para converter uma solução do Assignment Prob
 - [[balas1985branch]] — B&B para ATSP com relaxação AP
 - [[fischetti1992additive]] — additive bounding usa AP como primeiro componente
 - [[heldkarp1970traveling]] — bound HK alternativo para TSP simétrico
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]

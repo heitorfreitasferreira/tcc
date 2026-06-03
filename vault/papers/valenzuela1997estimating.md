@@ -37,7 +37,7 @@ Fornece um blueprint de implementação do subgradiente HK bound em código. A a
 - [[heldkarp1971traveling]] — subgradiente
 - [[johnson1996asymptotic]] — validação empírica em larga escala
 - [[righini2021efficient]] — otimização da escolha do vértice p
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights

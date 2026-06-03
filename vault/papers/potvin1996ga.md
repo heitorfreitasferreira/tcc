@@ -45,4 +45,4 @@ This paper surveys the genetic algorithm (GA) approach for solving the traveling
 - [[lin1973effective]] — busca local LKH
 - [[nagata2006eax]] — EAX (edge-preserving crossover, estado-da-arte)
 - [[genetic-algorithms]]
-- [[TSP]]
+- [[tsp]]

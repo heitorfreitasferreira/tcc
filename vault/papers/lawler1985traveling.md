@@ -43,7 +43,7 @@ Como obra de referência, fornece a base teórica completa para entender o TSP e
 - [[oliver1987crossover]] — operadores de cruzamento para GA em TSP (constrói sobre este survey)
 - [[goldberg1989genetic]] — GAs como alternativa às heurísticas clássicas aqui descritas
 - [[rajan2022routing]] — extensão estocástica do TSP para patrulha com UAV
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

@@ -1,5 +1,7 @@
 ---
 tags: [area, metodologia]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Otimização Bio-Inspirada
@@ -16,7 +18,7 @@ Classe de algoritmos de otimização que se inspiram em fenômenos biológicos/n
 | [[ant-colony]] | Comportamento de formigas | Dorigo et al. | 1996 |
 
 ## Problema-alvo
-[[TSP]] e [[drone-routing]] — patrulha com drones (ver [[problem-formulation]])
+[[tsp]] e [[drone-routing]] — patrulha com drones (ver [[problem-formulation]])
 
 ## Implementação no Projeto
 Os três métodos estão implementados em Go: [[ga]], [[pso]], [[aco]]. Ver também [[architecture]] e [[experiment-pipeline]].

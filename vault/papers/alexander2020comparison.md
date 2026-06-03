@@ -38,7 +38,7 @@ Corrobora diretamente o trade-off qualidade vs. velocidade entre GA e ACO, que �
 
 ## Conexões
 
-- [[TSP]] — problema-alvo
+- [[tsp]] — problema-alvo
 - [[comparative-studies]] — área temática
 - [[genetic-algorithms]] — GA comparado
 - [[ant-colony]] — ACO comparado

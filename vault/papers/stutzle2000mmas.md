@@ -44,4 +44,4 @@ Justifica a escolha do MMAS como variante ACO, especialmente relevante para inst
 - [[blum2005acointro]] — introduction covering MMAS
 - [[dorigo2004book]] — livro referência
 - [[ant-colony]]
-- [[TSP]]
+- [[tsp]]

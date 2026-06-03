@@ -1,5 +1,7 @@
 ---
 tags: [area, metaheuristica, bio-inspirado]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Ant Colony Optimization (ACO)
@@ -16,7 +18,7 @@ Método de otimização inspirado no comportamento de formigas ([[dorigo1996ant]
 ## Conexões
 - [[genetic-algorithms]]
 - [[particle-swarm]]
-- [[TSP]]
+- [[tsp]]
 - [[aco]] — implementação no projeto (Go)
 
 ## Papers Relacionados

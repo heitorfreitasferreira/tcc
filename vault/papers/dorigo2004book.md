@@ -47,4 +47,4 @@ Referência máxima para justificar e implementar ACO. Contém todas as diretriz
 - [[blum2005acointro]] — introduction and trends
 - [[stutzle2000mmas]] — MMAS (artigo original)
 - [[ant-colony]]
-- [[TSP]]
+- [[tsp]]

@@ -36,7 +36,7 @@ Altamente relevante: aborda exatamente o cenário de patrulha com drones sobre p
 - [[agatz2018optimization]] — TSP-D (entrega com drone)
 - [[ahmed2024receding]] — planejamento de caminho para UAVs
 - [[drone-routing]] [[drone-routing]]
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

@@ -1,5 +1,7 @@
 ---
 tags: [writing, capitulo, fundamentacao]
+created: 2026-06-02
+updated: 2026-06-02
 ---
 
 # Fundamentação Teórica — Scaffold
@@ -42,7 +44,7 @@ tags: [writing, capitulo, fundamentacao]
 
 ## Material de Apoio
 
-- [[TSP]] — visão geral
+- [[tsp]] — visão geral
 - [[tsp-variants]] — classificação completa
 - [[genetic-algorithms]] — GA na literatura
 - [[particle-swarm]] — PSO na literatura

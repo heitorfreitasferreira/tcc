@@ -38,7 +38,7 @@ Abordagem de tuning automático de parâmetros é relevante para a implementaç�
 - [[dorigo1997ant]] — primeira aplicação do ACO ao TSP
 - [[kappagantula2025dpso]] — DPSO-Q (outra hibridização swarm+RL)
 - [[ant-colony]] [[ant-colony]]
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

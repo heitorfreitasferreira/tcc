@@ -27,7 +27,7 @@ Esta matriz lista claims que podem orientar a escrita da monografia. A evidênci
 
 | ID | Claim | Força | Evidência primária | Vault de apoio | Uso recomendado |
 |---|---|---|---|---|---|
-| C01 | O TSP clássico modela a busca por uma rota que visita todos os pontos e retorna à origem com custo mínimo. | Forte | Literatura | [[TSP]], [[garey1979computers]], [[lawler1985traveling]] | Fundamentação e Introdução |
+| C01 | O TSP clássico modela a busca por uma rota que visita todos os pontos e retorna à origem com custo mínimo. | Forte | Literatura | [[tsp]], [[garey1979computers]], [[lawler1985traveling]] | Fundamentação e Introdução |
 | C02 | O TSP é computacionalmente difícil e motiva o uso de heurísticas/metaheurísticas em instâncias maiores. | Forte | Literatura | [[garey1979computers]], [[applegate2006traveling]] | Fundamentação |
 | C03 | Problemas de roteamento com drones aparecem em patrulha, inspeção, monitoramento e entrega, mas FSTSP/TSP-D não são o mesmo problema deste trabalho. | Forte | Literatura | [[drone-routing]], [[murray2015flying]], [[agatz2018optimization]], [[rajan2022routing]] | Introdução e Fundamentação |
 | C04 | GA, PSO e ACO são metaheurísticas canônicas aplicadas ao TSP e variantes. | Forte | Literatura | [[genetic-algorithms]], [[particle-swarm]], [[ant-colony]], [[comparative-studies]] | Fundamentação |

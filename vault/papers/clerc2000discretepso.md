@@ -40,4 +40,4 @@ Referência fundamental para justificar a escolha de PSO discreto para TSP/rTSP.
 - [[sun2024hybrid]] — PSO híbrido com busca local greedy+Metropolis
 - [[kappagantula2025dpso]] — DPSO com RL
 - [[particle-swarm]]
-- [[TSP]]
+- [[tsp]]

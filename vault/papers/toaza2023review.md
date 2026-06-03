@@ -34,7 +34,7 @@ Fornece justificativa bibliométrica para a escolha de GA, PSO e ACO como metahe
 
 ## Conexões
 
-- [[TSP]]
+- [[tsp]]
 - [[genetic-algorithms]]
 - [[particle-swarm]]
 - [[ant-colony]]

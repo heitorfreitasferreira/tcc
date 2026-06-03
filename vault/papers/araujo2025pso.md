@@ -37,7 +37,7 @@ Referência direta para a implementação de PSO para TSP no repositório. A an�
 - [[huang2025matrix]] — PSO matricial para mTSP
 - [[lin1973effective]] — busca local 2-opt e 3-opt usada aqui
 - [[particle-swarm]]
-- [[TSP]]
+- [[tsp]]
 
 ## Notas e Insights
 

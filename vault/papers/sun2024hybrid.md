@@ -41,7 +41,7 @@ Ilustra abordagem híbrida relevante para PSO aplicado a TSP, com técnicas tran
 - [[huang2025matrix]] — PSO matricial para mTSP
 - [[lin1973effective]] — 2-opt usado como busca local
 - [[particle-swarm]]
-- [[TSP]]
+- [[tsp]]
 - [[bio-inspired-optimization]]
 
 ## Notas e Insights

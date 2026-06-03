@@ -37,7 +37,7 @@ A relaxação ti (time-dependent) e o ng-path relaxation são adaptáveis ao ten
 - [[kinable2017hybrid]] — abordagem alternativa com MDD + LP para TDTSP
 - [[fischetti1992additive]] — additive bounding (combinável com labeling)
 - [[heldkarp1970traveling]] — bound HK como referência de qualidade
-- [[TSP]]
+- [[tsp]]
 - [[lower-bounds]]
 
 ## Notas e Insights
