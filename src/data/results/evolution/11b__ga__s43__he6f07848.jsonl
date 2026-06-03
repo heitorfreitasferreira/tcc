@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":0,"eval_count":1,"best_makespan":18.093035020841487,"delta":0,"best_sequence":[10,9,4,7,3,6,5,1,8,2]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":0,"eval_count":2,"best_makespan":15.028229935070128,"delta":-3.0648050857713596,"best_sequence":[2,10,9,7,8,5,4,3,1,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":0,"eval_count":8,"best_makespan":14.688985239181468,"delta":-0.33924469588865946,"best_sequence":[7,5,4,8,2,1,10,9,3,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":0,"eval_count":52,"best_makespan":13.923961612161495,"delta":-0.7650236270199731,"best_sequence":[2,10,6,3,9,1,7,8,4,5]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":1,"eval_count":152,"best_makespan":12.167933659180326,"delta":-1.756027952981169,"best_sequence":[1,6,2,3,4,7,8,5,9,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":2,"eval_count":224,"best_makespan":11.377118582929826,"delta":-0.7908150762504995,"best_sequence":[5,9,2,3,6,1,7,8,4,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":4,"eval_count":477,"best_makespan":11.311292977649755,"delta":-0.06582560528007164,"best_sequence":[10,1,6,2,3,4,7,8,5,9]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":4,"eval_count":492,"best_makespan":9.97114188220236,"delta":-1.3401510954473945,"best_sequence":[2,3,9,5,7,8,4,10,1,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":5,"eval_count":534,"best_makespan":9.017583441422623,"delta":-0.9535584407797373,"best_sequence":[3,2,9,5,7,8,4,10,1,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s43__he6f07848","method":"ga","iter":16,"eval_count":1685,"best_makespan":8.823027373557352,"delta":-0.19455606786527113,"best_sequence":[3,2,9,7,8,4,5,10,1,6]}

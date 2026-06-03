@@ -1,0 +1,11 @@
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":0,"eval_count":1,"best_makespan":16.932918225810237,"delta":0,"best_sequence":[1,9,3,6,7,4,5,2,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":0,"eval_count":2,"best_makespan":14.847254269313236,"delta":-2.085663956497001,"best_sequence":[9,3,1,8,4,7,6,5,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":0,"eval_count":4,"best_makespan":14.55760077035421,"delta":-0.2896534989590265,"best_sequence":[6,3,5,4,7,9,8,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":0,"eval_count":5,"best_makespan":14.076504419686481,"delta":-0.4810963506677286,"best_sequence":[8,7,1,5,3,2,4,9,6]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":0,"eval_count":8,"best_makespan":13.762989717250925,"delta":-0.31351470243555646,"best_sequence":[5,3,2,7,6,1,4,9,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":0,"eval_count":17,"best_makespan":11.595598100996003,"delta":-2.167391616254921,"best_sequence":[7,1,8,4,3,5,9,2,6]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":1,"eval_count":107,"best_makespan":11.564346585667405,"delta":-0.0312515153285986,"best_sequence":[7,1,4,2,3,5,9,6,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":1,"eval_count":123,"best_makespan":10.989870416702978,"delta":-0.5744761689644271,"best_sequence":[6,2,7,1,8,4,3,5,9]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":4,"eval_count":403,"best_makespan":9.098586524700757,"delta":-1.891283892002221,"best_sequence":[6,7,2,3,5,9,4,8,1]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":8,"eval_count":836,"best_makespan":8.438193470640751,"delta":-0.6603930540600054,"best_sequence":[6,7,2,3,5,9,1,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10a__ga__s13__h5b9ea21c","method":"ga","iter":25,"eval_count":2568,"best_makespan":8.251282810997422,"delta":-0.18691065964332942,"best_sequence":[6,9,5,3,2,7,1,8,4]}

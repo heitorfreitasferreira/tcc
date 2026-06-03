@@ -1,5 +1,0 @@
-{"schema":"tcc.evolution.v1","run_id":"20c__pso__s30__ha288888a","method":"pso","iter":0,"eval_count":1,"best_makespan":29.879914425798813,"delta":0,"best_sequence":[15,10,14,3,11,8,9,17,2,13,18,5,6,19,4,1,12,7,16]}
-{"schema":"tcc.evolution.v1","run_id":"20c__pso__s30__ha288888a","method":"pso","iter":0,"eval_count":6,"best_makespan":23.960197394962027,"delta":-5.919717030836786,"best_sequence":[9,17,19,8,14,11,15,16,7,10,18,3,1,4,13,5,12,6,2]}
-{"schema":"tcc.evolution.v1","run_id":"20c__pso__s30__ha288888a","method":"pso","iter":1,"eval_count":162,"best_makespan":23.900736418972844,"delta":-0.05946097598918243,"best_sequence":[9,17,19,14,8,11,15,16,7,10,18,3,1,4,13,5,12,6,2]}
-{"schema":"tcc.evolution.v1","run_id":"20c__pso__s30__ha288888a","method":"pso","iter":4,"eval_count":500,"best_makespan":23.85309590604477,"delta":-0.04764051292807281,"best_sequence":[9,17,19,14,8,11,15,16,7,1,18,10,3,4,12,13,2,5,6]}
-{"schema":"tcc.evolution.v1","run_id":"20c__pso__s30__ha288888a","method":"pso","iter":5,"eval_count":533,"best_makespan":23.42627304659186,"delta":-0.426822859452912,"best_sequence":[9,17,19,14,8,11,15,16,7,1,10,18,3,4,12,13,2,5,6]}

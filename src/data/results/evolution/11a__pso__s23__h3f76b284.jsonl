@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":0,"eval_count":1,"best_makespan":21.392096516254277,"delta":0,"best_sequence":[8,4,3,5,2,7,9,1,6,10]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":0,"eval_count":2,"best_makespan":17.37343857799484,"delta":-4.018657938259437,"best_sequence":[5,8,7,10,3,1,9,2,4,6]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":0,"eval_count":4,"best_makespan":15.32390260580844,"delta":-2.0495359721863995,"best_sequence":[7,5,3,6,10,4,1,2,9,8]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":0,"eval_count":5,"best_makespan":13.272908282473816,"delta":-2.050994323334624,"best_sequence":[5,1,7,3,8,4,10,2,6,9]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":1,"eval_count":137,"best_makespan":13.241522788953368,"delta":-0.03138549352044784,"best_sequence":[3,1,5,7,4,8,6,10,2,9]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":1,"eval_count":150,"best_makespan":12.747887034628572,"delta":-0.4936357543247958,"best_sequence":[5,1,7,3,8,2,10,4,6,9]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":1,"eval_count":180,"best_makespan":12.04389437806628,"delta":-0.703992656562292,"best_sequence":[5,7,1,3,8,4,10,2,9,6]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":2,"eval_count":218,"best_makespan":11.809690217256644,"delta":-0.2342041608096359,"best_sequence":[5,1,7,3,8,2,4,10,9,6]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":7,"eval_count":741,"best_makespan":11.050093678744577,"delta":-0.7595965385120671,"best_sequence":[5,1,7,3,8,4,10,2,9,6]}
+{"schema":"tcc.evolution.v1","run_id":"11a__pso__s23__h3f76b284","method":"pso","iter":40,"eval_count":4097,"best_makespan":10.91989001312057,"delta":-0.13020366562400731,"best_sequence":[5,1,7,3,8,9,2,10,4,6]}

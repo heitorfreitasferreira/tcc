@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":1,"eval_count":1,"best_makespan":16.073216363850936,"delta":0,"best_sequence":[7,5,1,8,4,2,6,9,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":1,"eval_count":2,"best_makespan":14.10389647947537,"delta":-1.9693198843755653,"best_sequence":[1,6,4,7,2,9,3,5,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":1,"eval_count":5,"best_makespan":12.006155138132488,"delta":-2.097741341342882,"best_sequence":[9,5,1,8,4,6,7,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":1,"eval_count":7,"best_makespan":11.78458046286174,"delta":-0.22157467527074814,"best_sequence":[6,7,4,8,1,3,5,9,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":1,"eval_count":12,"best_makespan":11.126130688100421,"delta":-0.6584497747613192,"best_sequence":[7,2,3,5,6,4,8,1,9]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":1,"eval_count":23,"best_makespan":9.402170903577616,"delta":-1.7239597845228047,"best_sequence":[4,8,1,2,3,5,9,6,7]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":1,"eval_count":79,"best_makespan":9.13501333586158,"delta":-0.26715756771603694,"best_sequence":[4,8,1,6,7,2,3,5,9]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":2,"eval_count":134,"best_makespan":8.438193470640751,"delta":-0.696819865220828,"best_sequence":[6,7,2,3,5,9,1,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":2,"eval_count":156,"best_makespan":8.418961291510684,"delta":-0.019232179130067806,"best_sequence":[6,7,9,5,3,2,1,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10a__aco__s49__h121b39c6","method":"aco","iter":4,"eval_count":303,"best_makespan":8.251282810997422,"delta":-0.16767848051326162,"best_sequence":[4,8,1,7,2,3,5,9,6]}

@@ -1,0 +1,11 @@
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":0,"eval_count":1,"best_makespan":17.926288031798855,"delta":0,"best_sequence":[6,9,7,8,2,1,4,5,3]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":0,"eval_count":3,"best_makespan":17.55778761311682,"delta":-0.36850041868203576,"best_sequence":[8,1,2,5,7,3,9,6,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":0,"eval_count":7,"best_makespan":17.54693256845931,"delta":-0.010855044657507307,"best_sequence":[4,8,1,9,5,3,2,7,6]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":0,"eval_count":8,"best_makespan":14.189564342628229,"delta":-3.357368225831083,"best_sequence":[7,5,9,4,1,6,8,3,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":0,"eval_count":10,"best_makespan":13.587778049128731,"delta":-0.6017862934994973,"best_sequence":[2,6,7,5,9,1,3,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":1,"eval_count":162,"best_makespan":13.403461367416647,"delta":-0.18431668171208493,"best_sequence":[2,6,9,7,5,1,3,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":2,"eval_count":246,"best_makespan":13.225319523699314,"delta":-0.17814184371733255,"best_sequence":[2,9,5,7,6,1,3,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":2,"eval_count":250,"best_makespan":12.251559582511717,"delta":-0.9737599411875966,"best_sequence":[2,6,5,7,9,1,3,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":4,"eval_count":446,"best_makespan":11.889101057082303,"delta":-0.3624585254294139,"best_sequence":[2,9,7,5,6,1,3,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":6,"eval_count":606,"best_makespan":11.810088057104537,"delta":-0.0790129999777669,"best_sequence":[2,9,7,5,6,3,1,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s3__h9e4faf1c","method":"pso","iter":19,"eval_count":1993,"best_makespan":11.512510742951514,"delta":-0.29757731415302224,"best_sequence":[2,9,7,5,6,3,8,4,1]}

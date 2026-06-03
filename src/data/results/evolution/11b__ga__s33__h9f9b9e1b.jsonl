@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":0,"eval_count":1,"best_makespan":18.467611586785804,"delta":0,"best_sequence":[2,1,7,6,4,8,10,3,9,5]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":0,"eval_count":4,"best_makespan":17.60826662713358,"delta":-0.8593449596522227,"best_sequence":[2,3,6,7,9,10,4,1,5,8]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":0,"eval_count":5,"best_makespan":17.052450263678843,"delta":-0.5558163634547384,"best_sequence":[1,8,3,5,7,4,9,6,10,2]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":0,"eval_count":7,"best_makespan":15.048263017268045,"delta":-2.0041872464107975,"best_sequence":[2,3,1,10,6,7,9,5,4,8]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":0,"eval_count":13,"best_makespan":13.502039910028856,"delta":-1.5462231072391894,"best_sequence":[2,1,6,5,7,8,4,10,3,9]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":0,"eval_count":16,"best_makespan":11.262841564666285,"delta":-2.2391983453625706,"best_sequence":[10,9,5,4,8,7,1,6,3,2]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":3,"eval_count":304,"best_makespan":10.989081165699735,"delta":-0.2737603989665498,"best_sequence":[9,10,1,6,5,4,7,8,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":4,"eval_count":413,"best_makespan":9.82258822783602,"delta":-1.1664929378637154,"best_sequence":[10,1,6,5,4,7,8,9,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":9,"eval_count":946,"best_makespan":9.528021723811847,"delta":-0.29456650402417317,"best_sequence":[5,4,8,7,9,2,3,10,1,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s33__h9f9b9e1b","method":"ga","iter":12,"eval_count":1290,"best_makespan":9.406380608045334,"delta":-0.12164111576651315,"best_sequence":[5,4,8,7,9,2,3,6,1,10]}

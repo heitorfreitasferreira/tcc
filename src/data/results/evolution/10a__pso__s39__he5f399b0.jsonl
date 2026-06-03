@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":0,"eval_count":1,"best_makespan":14.770036328115319,"delta":0,"best_sequence":[5,4,1,7,6,9,3,2,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":0,"eval_count":10,"best_makespan":13.38306145675233,"delta":-1.3869748713629892,"best_sequence":[8,1,9,4,6,7,3,5,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":0,"eval_count":58,"best_makespan":12.722917356196882,"delta":-0.6601441005554474,"best_sequence":[6,2,3,5,8,1,9,7,4]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":0,"eval_count":74,"best_makespan":12.56466739953245,"delta":-0.15824995666443264,"best_sequence":[6,5,3,9,7,4,8,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":1,"eval_count":106,"best_makespan":12.515384131633429,"delta":-0.049283267899021155,"best_sequence":[6,9,5,3,7,8,1,4,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":1,"eval_count":115,"best_makespan":11.50537823430994,"delta":-1.010005897323488,"best_sequence":[6,3,5,9,7,4,8,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":1,"eval_count":193,"best_makespan":10.77788442013259,"delta":-0.7274938141773504,"best_sequence":[6,9,5,3,7,4,8,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":3,"eval_count":328,"best_makespan":10.711449312417198,"delta":-0.0664351077153924,"best_sequence":[6,9,5,3,7,1,2,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":4,"eval_count":428,"best_makespan":9.77839254028504,"delta":-0.9330567721321579,"best_sequence":[6,9,5,3,7,2,1,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s39__he5f399b0","method":"pso","iter":8,"eval_count":883,"best_makespan":8.251282810997422,"delta":-1.5271097292876181,"best_sequence":[6,9,5,3,2,7,1,8,4]}

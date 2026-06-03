@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":0,"eval_count":1,"best_makespan":17.744943379324244,"delta":0,"best_sequence":[7,10,1,6,8,5,3,2,4,9]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":0,"eval_count":2,"best_makespan":15.140543733107211,"delta":-2.6043996462170327,"best_sequence":[8,9,2,4,3,1,6,10,7,5]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":0,"eval_count":4,"best_makespan":13.58540633878982,"delta":-1.5551373943173914,"best_sequence":[3,1,4,10,2,8,5,7,9,6]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":0,"eval_count":37,"best_makespan":12.312773742016775,"delta":-1.272632596773045,"best_sequence":[6,5,3,7,4,10,2,9,8,1]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":6,"eval_count":631,"best_makespan":11.81543424634344,"delta":-0.49733949567333546,"best_sequence":[5,1,4,10,2,9,7,3,8,6]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":7,"eval_count":745,"best_makespan":11.408113929940232,"delta":-0.407320316403208,"best_sequence":[5,7,1,3,4,10,2,9,6,8]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":8,"eval_count":839,"best_makespan":11.278298318706641,"delta":-0.12981561123359064,"best_sequence":[6,3,7,1,5,8,10,4,2,9]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":8,"eval_count":878,"best_makespan":10.45530522897733,"delta":-0.8229930897293105,"best_sequence":[7,1,5,3,4,10,2,9,6,8]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":14,"eval_count":1495,"best_makespan":9.907007364632497,"delta":-0.5482978643448337,"best_sequence":[7,1,5,3,4,10,2,9,8,6]}
+{"schema":"tcc.evolution.v1","run_id":"11a__ga__s8__h1d27d86d","method":"ga","iter":22,"eval_count":2207,"best_makespan":9.493457779404203,"delta":-0.413549585228294,"best_sequence":[3,5,1,7,4,10,2,9,8,6]}

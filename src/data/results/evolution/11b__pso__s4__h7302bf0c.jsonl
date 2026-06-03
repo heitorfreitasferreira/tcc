@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":0,"eval_count":1,"best_makespan":20.60294836454921,"delta":0,"best_sequence":[2,1,5,3,6,8,10,7,9,4]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":0,"eval_count":2,"best_makespan":16.607855168639716,"delta":-3.9950931959094937,"best_sequence":[10,3,4,5,9,1,8,7,2,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":0,"eval_count":3,"best_makespan":14.034461242905353,"delta":-2.573393925734363,"best_sequence":[1,10,7,8,4,9,3,6,2,5]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":0,"eval_count":8,"best_makespan":12.680486658346554,"delta":-1.3539745845587987,"best_sequence":[9,4,7,8,3,2,6,1,10,5]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":0,"eval_count":39,"best_makespan":12.406386589820896,"delta":-0.2741000685256587,"best_sequence":[2,8,7,4,5,9,3,1,10,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":0,"eval_count":52,"best_makespan":12.104581653760818,"delta":-0.3018049360600781,"best_sequence":[10,4,8,7,1,6,2,3,9,5]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":0,"eval_count":92,"best_makespan":10.738462790387395,"delta":-1.3661188633734227,"best_sequence":[5,8,7,4,10,6,1,9,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":1,"eval_count":145,"best_makespan":10.479690183507644,"delta":-0.25877260687975046,"best_sequence":[5,8,7,4,10,1,6,9,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":1,"eval_count":193,"best_makespan":10.472199708874747,"delta":-0.007490474632897204,"best_sequence":[5,4,8,7,10,6,1,9,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"11b__pso__s4__h7302bf0c","method":"pso","iter":2,"eval_count":228,"best_makespan":10.159881745810841,"delta":-0.31231796306390613,"best_sequence":[5,4,8,7,10,1,6,9,2,3]}

@@ -1,0 +1,32 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "13c__lowerbound__s0__h1a75f05a",
+  "method": "lowerbound",
+  "instance": "/home/heitor/tcc/src/data/13c.graph",
+  "seed": 0,
+  "params": {},
+  "status": "ok",
+  "result": {
+    "best_makespan": 5.347434988494695,
+    "best_sequence": [
+      4,
+      1,
+      9,
+      2,
+      5,
+      6,
+      3,
+      8,
+      7,
+      10,
+      11,
+      12
+    ],
+    "iterations_completed": 1,
+    "evaluations": 1
+  },
+  "timing_file": "timing/13c__lowerbound__s0__h1a75f05a.json",
+  "evolution_file": "evolution/13c__lowerbound__s0__h1a75f05a.jsonl",
+  "started_at": "2026-06-02T19:16:09.408096701Z",
+  "finished_at": "2026-06-02T19:16:09.409093516Z"
+}

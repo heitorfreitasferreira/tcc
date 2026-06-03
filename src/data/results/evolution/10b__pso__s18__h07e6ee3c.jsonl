@@ -1,0 +1,3 @@
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s18__h07e6ee3c","method":"pso","iter":0,"eval_count":1,"best_makespan":10.042474190926248,"delta":0,"best_sequence":[3,1,8,4,5,2,6,7,9]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s18__h07e6ee3c","method":"pso","iter":0,"eval_count":20,"best_makespan":9.53138236226834,"delta":-0.5110918286579071,"best_sequence":[4,8,3,5,6,2,9,1,7]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s18__h07e6ee3c","method":"pso","iter":1,"eval_count":114,"best_makespan":9.141235667024151,"delta":-0.390146695244189,"best_sequence":[4,8,3,5,6,2,1,9,7]}

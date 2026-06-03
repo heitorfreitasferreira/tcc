@@ -1,0 +1,41 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "15a__aco__s14__h79dd30ae",
+  "method": "aco",
+  "instance": "/home/heitor/tcc/src/data/15a.graph",
+  "seed": 14,
+  "params": {
+    "alpha": 1,
+    "beta": 2,
+    "iterations": 100,
+    "population": 100,
+    "q": 100,
+    "rho": 0.2
+  },
+  "status": "ok",
+  "result": {
+    "best_makespan": 9.393153925648717,
+    "best_sequence": [
+      4,
+      8,
+      1,
+      11,
+      13,
+      2,
+      10,
+      3,
+      12,
+      5,
+      9,
+      14,
+      7,
+      6
+    ],
+    "iterations_completed": 100,
+    "evaluations": 10000
+  },
+  "timing_file": "timing/15a__aco__s14__h79dd30ae.json",
+  "evolution_file": "evolution/15a__aco__s14__h79dd30ae.jsonl",
+  "started_at": "2026-06-02T15:27:36.567865428Z",
+  "finished_at": "2026-06-02T15:27:36.704455902Z"
+}

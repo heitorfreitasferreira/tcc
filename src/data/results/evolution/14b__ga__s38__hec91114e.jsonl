@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":0,"eval_count":1,"best_makespan":20.43003683539257,"delta":0,"best_sequence":[10,2,1,7,13,5,4,9,12,11,8,6,3]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":0,"eval_count":4,"best_makespan":18.368218289739907,"delta":-2.061818545652663,"best_sequence":[10,3,6,2,13,8,1,5,11,12,9,7,4]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":0,"eval_count":74,"best_makespan":18.11108782899879,"delta":-0.25713046074111645,"best_sequence":[3,8,4,6,13,2,9,12,1,5,7,11,10]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":1,"eval_count":106,"best_makespan":16.36061283312132,"delta":-1.7504749958774717,"best_sequence":[10,6,7,2,12,1,4,13,3,8,9,5,11]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":3,"eval_count":391,"best_makespan":16.068764398055638,"delta":-0.29184843506568114,"best_sequence":[11,5,9,1,8,13,4,2,6,12,7,3,10]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":4,"eval_count":430,"best_makespan":15.835555754000296,"delta":-0.2332086440553418,"best_sequence":[5,8,13,2,9,12,1,6,4,7,10,3,11]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":5,"eval_count":552,"best_makespan":14.762596683136634,"delta":-1.0729590708636625,"best_sequence":[11,5,8,1,12,9,7,13,4,6,2,10,3]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":6,"eval_count":649,"best_makespan":13.729635242748605,"delta":-1.0329614403880285,"best_sequence":[11,5,8,1,12,9,7,13,4,2,6,10,3]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":8,"eval_count":844,"best_makespan":12.23805582269312,"delta":-1.4915794200554853,"best_sequence":[11,5,8,9,7,13,4,2,6,1,12,10,3]}
+{"schema":"tcc.evolution.v1","run_id":"14b__ga__s38__hec91114e","method":"ga","iter":19,"eval_count":2000,"best_makespan":12.183112337860535,"delta":-0.05494348483258449,"best_sequence":[11,5,8,9,4,13,7,2,6,1,12,10,3]}

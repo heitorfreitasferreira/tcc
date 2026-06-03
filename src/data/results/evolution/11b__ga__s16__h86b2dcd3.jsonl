@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":0,"eval_count":1,"best_makespan":14.495188472667405,"delta":0,"best_sequence":[3,6,2,5,1,10,4,7,8,9]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":0,"eval_count":16,"best_makespan":13.521139623925437,"delta":-0.9740488487419672,"best_sequence":[3,8,7,5,4,9,2,6,10,1]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":1,"eval_count":116,"best_makespan":13.40147393700626,"delta":-0.119665686919177,"best_sequence":[6,2,5,7,8,4,9,10,1,3]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":1,"eval_count":182,"best_makespan":13.273121026558012,"delta":-0.12835291044824793,"best_sequence":[6,3,9,2,4,8,7,5,1,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":2,"eval_count":239,"best_makespan":12.643823700466251,"delta":-0.6292973260917609,"best_sequence":[6,1,10,4,8,7,9,2,5,3]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":2,"eval_count":243,"best_makespan":11.362637750584993,"delta":-1.2811859498812588,"best_sequence":[8,7,5,4,9,2,3,10,1,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":2,"eval_count":294,"best_makespan":10.873166078841429,"delta":-0.4894716717435639,"best_sequence":[6,3,2,9,4,8,7,5,1,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":3,"eval_count":315,"best_makespan":10.288030445318565,"delta":-0.5851356335228637,"best_sequence":[6,3,2,9,4,8,7,5,10,1]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":17,"eval_count":1785,"best_makespan":8.893397391379928,"delta":-1.3946330539386373,"best_sequence":[3,2,9,4,8,7,5,10,1,6]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s16__h86b2dcd3","method":"ga","iter":27,"eval_count":2714,"best_makespan":8.823027373557352,"delta":-0.0703700178225759,"best_sequence":[3,2,9,7,8,4,5,10,1,6]}

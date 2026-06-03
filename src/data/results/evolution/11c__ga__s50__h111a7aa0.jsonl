@@ -1,0 +1,14 @@
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":0,"eval_count":1,"best_makespan":17.983691621237675,"delta":0,"best_sequence":[10,8,6,3,1,5,9,4,7,2]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":0,"eval_count":4,"best_makespan":17.365567101539142,"delta":-0.618124519698533,"best_sequence":[6,1,7,4,5,9,10,3,8,2]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":0,"eval_count":8,"best_makespan":17.102077735409154,"delta":-0.2634893661299884,"best_sequence":[5,1,8,7,4,10,3,9,6,2]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":0,"eval_count":20,"best_makespan":14.87798254619939,"delta":-2.2240951892097627,"best_sequence":[3,9,10,8,2,7,5,4,6,1]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":1,"eval_count":151,"best_makespan":14.863142248438548,"delta":-0.014840297760843058,"best_sequence":[5,1,3,9,6,2,8,7,4,10]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":1,"eval_count":153,"best_makespan":13.586820160476293,"delta":-1.2763220879622548,"best_sequence":[9,8,4,10,5,1,7,6,2,3]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":4,"eval_count":445,"best_makespan":13.407832788994028,"delta":-0.17898737148226473,"best_sequence":[3,1,7,6,4,5,9,10,2,8]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":6,"eval_count":686,"best_makespan":12.720285179159237,"delta":-0.687547609834791,"best_sequence":[1,7,6,4,9,10,5,2,8,3]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":11,"eval_count":1186,"best_makespan":12.37584366531337,"delta":-0.34444151384586696,"best_sequence":[3,1,7,6,8,2,4,10,5,9]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":13,"eval_count":1394,"best_makespan":12.142170527198765,"delta":-0.23367313811460555,"best_sequence":[3,1,8,2,6,7,10,4,5,9]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":14,"eval_count":1429,"best_makespan":11.88690241332409,"delta":-0.2552681138746742,"best_sequence":[1,7,5,9,10,4,6,2,8,3]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":17,"eval_count":1794,"best_makespan":11.654665754060073,"delta":-0.23223665926401793,"best_sequence":[3,1,7,6,2,8,9,10,4,5]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":20,"eval_count":2014,"best_makespan":11.568490267462126,"delta":-0.08617548659794672,"best_sequence":[3,1,5,7,8,2,6,4,10,9]}
+{"schema":"tcc.evolution.v1","run_id":"11c__ga__s50__h111a7aa0","method":"ga","iter":25,"eval_count":2503,"best_makespan":11.14312094526525,"delta":-0.4253693221968753,"best_sequence":[3,1,7,6,2,8,5,4,10,9]}

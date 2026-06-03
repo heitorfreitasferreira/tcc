@@ -1,0 +1,37 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "12c__ga__s32__h026fe5f4",
+  "method": "ga",
+  "instance": "/home/heitor/tcc/src/data/12c.graph",
+  "seed": 32,
+  "params": {
+    "elitism": 1,
+    "iterations": 100,
+    "mutation_rate": 0.05,
+    "population": 100,
+    "tournament_size": 2
+  },
+  "status": "ok",
+  "result": {
+    "best_makespan": 11.063358424622932,
+    "best_sequence": [
+      8,
+      1,
+      7,
+      4,
+      6,
+      10,
+      11,
+      3,
+      9,
+      2,
+      5
+    ],
+    "iterations_completed": 100,
+    "evaluations": 10100
+  },
+  "timing_file": "timing/12c__ga__s32__h026fe5f4.json",
+  "evolution_file": "evolution/12c__ga__s32__h026fe5f4.jsonl",
+  "started_at": "2026-06-02T12:11:16.091603249Z",
+  "finished_at": "2026-06-02T12:11:16.094933995Z"
+}

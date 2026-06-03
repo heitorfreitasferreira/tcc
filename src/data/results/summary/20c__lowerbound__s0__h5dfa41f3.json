@@ -1,0 +1,39 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "20c__lowerbound__s0__h5dfa41f3",
+  "method": "lowerbound",
+  "instance": "src/data/20c.graph",
+  "seed": 0,
+  "params": {},
+  "status": "ok",
+  "result": {
+    "best_makespan": 6.144893827501278,
+    "best_sequence": [
+      16,
+      17,
+      1,
+      15,
+      2,
+      7,
+      18,
+      3,
+      10,
+      4,
+      14,
+      5,
+      11,
+      6,
+      9,
+      8,
+      19,
+      12,
+      13
+    ],
+    "iterations_completed": 1,
+    "evaluations": 1
+  },
+  "timing_file": "timing/20c__lowerbound__s0__h5dfa41f3.json",
+  "evolution_file": "evolution/20c__lowerbound__s0__h5dfa41f3.jsonl",
+  "started_at": "2026-06-02T19:16:20.727515674Z",
+  "finished_at": "2026-06-02T19:16:20.731780249Z"
+}

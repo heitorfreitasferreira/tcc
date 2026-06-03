@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":0,"eval_count":1,"best_makespan":15.835526883157218,"delta":0,"best_sequence":[1,5,2,3,7,6,8,4,9]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":0,"eval_count":2,"best_makespan":13.779494810668863,"delta":-2.056032072488355,"best_sequence":[4,7,2,3,9,6,1,5,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":0,"eval_count":8,"best_makespan":13.021803257536542,"delta":-0.7576915531323216,"best_sequence":[8,7,2,9,3,5,1,4,6]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":0,"eval_count":41,"best_makespan":11.792107011165168,"delta":-1.2296962463713736,"best_sequence":[6,2,3,5,9,1,4,7,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":1,"eval_count":124,"best_makespan":10.724473950732769,"delta":-1.0676330604323994,"best_sequence":[6,2,3,5,9,7,4,1,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":2,"eval_count":240,"best_makespan":10.501279486602954,"delta":-0.22319446412981492,"best_sequence":[6,2,3,5,9,7,4,8,1]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":2,"eval_count":263,"best_makespan":10.18508141331075,"delta":-0.3161980732922043,"best_sequence":[6,2,3,5,9,4,7,1,8]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":3,"eval_count":392,"best_makespan":9.60229515210594,"delta":-0.5827862612048094,"best_sequence":[6,2,3,5,9,4,8,1,7]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":36,"eval_count":3699,"best_makespan":9.595472161556234,"delta":-0.006822990549705921,"best_sequence":[6,7,1,8,4,9,5,3,2]}
+{"schema":"tcc.evolution.v1","run_id":"10a__pso__s9__h435ee858","method":"pso","iter":37,"eval_count":3793,"best_makespan":8.493417994124128,"delta":-1.1020541674321063,"best_sequence":[6,2,3,5,9,7,1,8,4]}

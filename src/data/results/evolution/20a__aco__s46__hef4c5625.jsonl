@@ -1,5 +1,0 @@
-{"schema":"tcc.evolution.v1","run_id":"20a__aco__s46__hef4c5625","method":"aco","iter":1,"eval_count":1,"best_makespan":31.342098758668634,"delta":0,"best_sequence":[11,12,4,17,15,7,14,19,2,6,10,16,9,18,13,8,5,3,1]}
-{"schema":"tcc.evolution.v1","run_id":"20a__aco__s46__hef4c5625","method":"aco","iter":1,"eval_count":3,"best_makespan":29.832513578354924,"delta":-1.5095851803137101,"best_sequence":[16,8,5,7,12,2,4,11,1,17,9,14,18,13,15,6,10,19,3]}
-{"schema":"tcc.evolution.v1","run_id":"20a__aco__s46__hef4c5625","method":"aco","iter":1,"eval_count":21,"best_makespan":26.909451121254794,"delta":-2.92306245710013,"best_sequence":[1,6,12,13,11,4,3,18,16,19,17,15,10,9,8,5,2,14,7]}
-{"schema":"tcc.evolution.v1","run_id":"20a__aco__s46__hef4c5625","method":"aco","iter":22,"eval_count":2113,"best_makespan":26.898286425063894,"delta":-0.011164696190899548,"best_sequence":[12,18,13,9,3,14,4,16,17,19,7,6,10,8,2,11,1,15,5]}
-{"schema":"tcc.evolution.v1","run_id":"20a__aco__s46__hef4c5625","method":"aco","iter":27,"eval_count":2664,"best_makespan":26.55576139374209,"delta":-0.34252503132180223,"best_sequence":[12,18,16,19,17,7,5,3,14,4,15,10,6,2,8,9,1,13,11]}

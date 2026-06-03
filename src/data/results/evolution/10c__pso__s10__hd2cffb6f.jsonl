@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":0,"eval_count":1,"best_makespan":19.915590516981883,"delta":0,"best_sequence":[7,2,4,5,1,8,9,6,3]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":0,"eval_count":2,"best_makespan":14.838027119457031,"delta":-5.077563397524852,"best_sequence":[1,3,9,7,5,4,2,8,6]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":0,"eval_count":11,"best_makespan":14.633919852523917,"delta":-0.20410726693311432,"best_sequence":[2,6,9,4,8,3,1,7,5]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":0,"eval_count":79,"best_makespan":14.316190411595489,"delta":-0.3177294409284279,"best_sequence":[8,4,7,6,3,1,5,9,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":3,"eval_count":368,"best_makespan":14.136876610023894,"delta":-0.17931380157159538,"best_sequence":[8,6,1,4,5,7,9,3,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":5,"eval_count":576,"best_makespan":12.832979522660459,"delta":-1.3038970873634348,"best_sequence":[4,8,3,6,7,5,9,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":6,"eval_count":676,"best_makespan":12.558020764233362,"delta":-0.27495875842709694,"best_sequence":[4,8,3,6,5,7,9,2,1]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":7,"eval_count":798,"best_makespan":12.540077805069075,"delta":-0.01794295916428723,"best_sequence":[4,6,8,3,5,7,9,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":11,"eval_count":1193,"best_makespan":12.086658791318282,"delta":-0.45341901375079274,"best_sequence":[4,3,8,6,5,7,9,1,2]}
+{"schema":"tcc.evolution.v1","run_id":"10c__pso__s10__hd2cffb6f","method":"pso","iter":12,"eval_count":1266,"best_makespan":11.496761056043447,"delta":-0.5898977352748354,"best_sequence":[4,8,3,6,5,7,9,1,2]}

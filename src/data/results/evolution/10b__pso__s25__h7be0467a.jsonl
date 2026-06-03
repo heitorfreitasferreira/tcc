@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":1,"best_makespan":15.515411631693434,"delta":0,"best_sequence":[7,3,6,8,2,9,5,4,1]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":2,"best_makespan":14.788911862981035,"delta":-0.7264997687123991,"best_sequence":[1,7,3,2,4,8,6,9,5]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":3,"best_makespan":14.691118402368064,"delta":-0.09779346061297112,"best_sequence":[9,7,3,4,1,6,5,8,2]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":4,"best_makespan":13.061469014793909,"delta":-1.6296493875741547,"best_sequence":[9,7,5,6,4,2,3,1,8]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":22,"best_makespan":12.962271534375898,"delta":-0.09919748041801135,"best_sequence":[4,6,5,7,9,8,2,1,3]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":25,"best_makespan":12.608817594524663,"delta":-0.3534539398512351,"best_sequence":[8,7,1,4,3,9,2,6,5]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":33,"best_makespan":10.891381965994247,"delta":-1.7174356285304153,"best_sequence":[2,5,9,6,7,3,1,8,4]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":0,"eval_count":34,"best_makespan":9.557606150155655,"delta":-1.3337758158385924,"best_sequence":[1,3,7,5,9,8,4,6,2]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":1,"eval_count":178,"best_makespan":9.322810565280665,"delta":-0.23479558487498942,"best_sequence":[1,3,7,5,9,8,4,2,6]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s25__h7be0467a","method":"pso","iter":100,"eval_count":10085,"best_makespan":9.257537058055842,"delta":-0.06527350722482339,"best_sequence":[3,4,8,1,9,7,5,6,2]}

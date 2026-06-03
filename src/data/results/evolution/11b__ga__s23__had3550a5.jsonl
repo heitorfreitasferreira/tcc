@@ -1,0 +1,10 @@
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":0,"eval_count":1,"best_makespan":14.405572199976048,"delta":0,"best_sequence":[5,4,7,9,3,1,10,6,2,8]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":0,"eval_count":6,"best_makespan":13.495030730147105,"delta":-0.9105414698289422,"best_sequence":[5,7,3,2,6,1,10,9,4,8]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":0,"eval_count":81,"best_makespan":13.147103843557058,"delta":-0.3479268865900469,"best_sequence":[3,6,1,10,5,9,8,7,4,2]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":1,"eval_count":130,"best_makespan":11.358070477851742,"delta":-1.7890333657053166,"best_sequence":[9,10,1,6,2,3,5,4,8,7]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":2,"eval_count":287,"best_makespan":11.020287664283382,"delta":-0.33778281356836004,"best_sequence":[5,8,7,4,9,2,3,1,6,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":6,"eval_count":644,"best_makespan":10.41445648585039,"delta":-0.6058311784329913,"best_sequence":[6,1,5,4,7,8,9,2,3,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":8,"eval_count":805,"best_makespan":9.919928449975103,"delta":-0.4945280358752875,"best_sequence":[5,8,7,4,9,2,3,6,1,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":9,"eval_count":923,"best_makespan":9.682203584789864,"delta":-0.23772486518523905,"best_sequence":[5,7,8,4,9,2,3,6,1,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":15,"eval_count":1517,"best_makespan":9.545038906315785,"delta":-0.13716467847407898,"best_sequence":[7,8,4,5,9,2,3,6,1,10]}
+{"schema":"tcc.evolution.v1","run_id":"11b__ga__s23__had3550a5","method":"ga","iter":17,"eval_count":1800,"best_makespan":9.406380608045334,"delta":-0.1386582982704514,"best_sequence":[5,4,8,7,9,2,3,6,1,10]}

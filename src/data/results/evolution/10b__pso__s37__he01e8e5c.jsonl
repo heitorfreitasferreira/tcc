@@ -1,0 +1,2 @@
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s37__he01e8e5c","method":"pso","iter":0,"eval_count":1,"best_makespan":8.744658996737183,"delta":0,"best_sequence":[2,6,4,8,9,1,3,5,7]}
+{"schema":"tcc.evolution.v1","run_id":"10b__pso__s37__he01e8e5c","method":"pso","iter":6,"eval_count":625,"best_makespan":8.509863411862195,"delta":-0.23479558487498764,"best_sequence":[6,2,4,8,9,1,3,5,7]}

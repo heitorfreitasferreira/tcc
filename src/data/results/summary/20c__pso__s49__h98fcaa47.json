@@ -1,0 +1,45 @@
+{
+  "schema": "tcc.summary.v1",
+  "run_id": "20c__pso__s49__h98fcaa47",
+  "method": "pso",
+  "instance": "/home/heitor/tcc/src/data/20c.graph",
+  "seed": 49,
+  "params": {
+    "c1": 2,
+    "c2": 2,
+    "iterations": 100,
+    "population": 100,
+    "w": 0.7
+  },
+  "status": "ok",
+  "result": {
+    "best_makespan": 20.372735407681258,
+    "best_sequence": [
+      8,
+      19,
+      3,
+      16,
+      17,
+      6,
+      15,
+      5,
+      11,
+      14,
+      1,
+      7,
+      2,
+      18,
+      10,
+      12,
+      13,
+      4,
+      9
+    ],
+    "iterations_completed": 100,
+    "evaluations": 10100
+  },
+  "timing_file": "timing/20c__pso__s49__h98fcaa47.json",
+  "evolution_file": "evolution/20c__pso__s49__h98fcaa47.jsonl",
+  "started_at": "2026-06-02T12:12:43.581709823Z",
+  "finished_at": "2026-06-02T12:12:43.595582671Z"
+}
