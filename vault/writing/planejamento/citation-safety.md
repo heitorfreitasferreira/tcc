@@ -22,7 +22,7 @@ Cada referência citada na monografia recebe uma de quatro classes:
 
 ## Tabela de Classificação (35 chaves)
 
-### Seguras (17)
+### Seguras (24)
 
 | Key | Status | PDF |
 |-----|--------|-----|
