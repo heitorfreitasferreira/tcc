@@ -1,5 +1,11 @@
 ---
-tags: [area, problema-classico]
+tags: [area, problema-classico, siglas]
+sigla: "TSP"
+definicao: "Problema do Caixeiro Viajante (Traveling Salesman Problem)"
+incluir: sim
+ocorrencias_ac: 0
+ocorrencias_texto: 0
+arquivos_ac: ""
 created: 2026-06-02
 updated: 2026-06-02
 ---

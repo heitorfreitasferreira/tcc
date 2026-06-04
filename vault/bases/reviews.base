@@ -1,0 +1,85 @@
+filters:
+  and:
+    - file.inFolder("writing/review-solicitacoes")
+    - file.ext == "md"
+    - file.basename != "index"
+formulas:
+  pendencia: if(date_closed, if(date_closed, "resolvido", status), status)
+  urgente: if(priority == "alta" and status != "resolvido" and status != "cancelado", "sim", "nao")
+properties:
+  file.name:
+    displayName: ID
+  title:
+    displayName: Descricao
+  formula.pendencia:
+    displayName: Situacao
+  priority:
+    displayName: Prioridade
+  status:
+    displayName: Estado
+  source:
+    displayName: Fonte
+  target_chapter:
+    displayName: Capitulo
+  evidence_layer:
+    displayName: Evidencia
+  correction_layers:
+    displayName: Correcao
+  date_opened:
+    displayName: Abertura
+  date_closed:
+    displayName: Fechamento
+  claim_ids:
+    displayName: Claims
+views:
+  - type: table
+    name: Visao Geral
+    order:
+      - file.name
+      - title
+      - formula.pendencia
+      - priority
+      - status
+      - source
+      - target_chapter
+      - evidence_layer
+  - type: table
+    name: Pendentes por Prioridade
+    filters:
+      and:
+        - status != "resolvido"
+        - status != "cancelado"
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - status
+      - source
+      - target_chapter
+      - date_opened
+  - type: table
+    name: Alta Urgencia
+    filters:
+      and:
+        - formula.urgente == "sim"
+    order:
+      - file.name
+      - title
+      - status
+      - source
+      - target_chapter
+      - date_opened
+  - type: table
+    name: Por Capitulo
+    groupBy:
+      property: target_chapter
+      direction: ASC
+    order:
+      - file.name
+      - title
+      - status
+      - priority
+      - evidence_layer
+      - correction_layers

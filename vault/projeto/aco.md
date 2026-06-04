@@ -1,5 +1,11 @@
 ---
-tags: [projeto, implementacao, aco, ant-colony]
+tags: [projeto, implementacao, aco, ant-colony, siglas]
+sigla: "ACO"
+definicao: "Otimização por Colônia de Formigas (Ant Colony Optimization)"
+incluir: sim
+ocorrencias_ac: 0
+ocorrencias_texto: 1
+arquivos_ac: ""
 ---
 
 # Ant Colony Optimization — Implementação

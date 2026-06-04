@@ -1,0 +1,64 @@
+filters:
+  and:
+    - file.hasTag("siglas")
+formulas:
+  tem_uso: if(ocorrencias_ac > 0, "sim", if(ocorrencias_texto > 0, "texto", "nao"))
+properties:
+  file.name:
+    displayName: Sigla
+  definicao:
+    displayName: Definicao
+  incluir:
+    displayName: Incluir
+  formula.tem_uso:
+    displayName: Em Uso
+  ocorrencias_ac:
+    displayName: "\U0001F4CB \\ac"
+  ocorrencias_texto:
+    displayName: "\U0001F4DD Texto"
+  arquivos_ac:
+    displayName: Arquivos
+views:
+  - type: table
+    name: "Todas as Siglas"
+    order:
+      - file.name
+      - definicao
+      - incluir
+      - formula.tem_uso
+      - ocorrencias_ac
+      - ocorrencias_texto
+      - arquivos_ac
+  - type: table
+    name: "Incluir na Lista Final"
+    filters:
+      and:
+        - incluir == "sim"
+    order:
+      - file.name
+      - definicao
+      - formula.tem_uso
+      - ocorrencias_ac
+      - ocorrencias_texto
+      - arquivos_ac
+  - type: table
+    name: "Pendentes de Decisao"
+    filters:
+      and:
+        - incluir != "sim"
+        - incluir != "nao"
+    order:
+      - file.name
+      - definicao
+      - formula.tem_uso
+      - ocorrencias_ac
+      - ocorrencias_texto
+  - type: table
+    name: "Excluidas"
+    filters:
+      and:
+        - incluir == "nao"
+    order:
+      - file.name
+      - definicao
+      - formula.tem_uso

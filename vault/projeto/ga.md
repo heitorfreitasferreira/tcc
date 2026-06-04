@@ -1,5 +1,11 @@
 ---
-tags: [projeto, implementacao, ga, algoritmo-genetico]
+tags: [projeto, implementacao, ga, algoritmo-genetico, siglas]
+sigla: "GA"
+definicao: "Algoritmo Genético (Genetic Algorithm)"
+incluir: sim
+ocorrencias_ac: 0
+ocorrencias_texto: 1
+arquivos_ac: ""
 ---
 
 # Algoritmo Genético — Implementação

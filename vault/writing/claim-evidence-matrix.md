@@ -1,18 +1,53 @@
 ---
 title: Matriz Claim-Evidência da Monografia
+type: claim-registry
 tags:
-  - writing
+  - tipo/writing
+  - tipo/auditoria
   - claims
   - evidencias
   - monografia
+  - evidencia/auditoria
+  - capitulo/experimentos
+writing_status: revisar
+validation_status: validado
 status: atualizada-pos-p7
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-03
+last_verified: 2026-06-03
 ---
 
 # Matriz Claim-Evidência da Monografia
 
-Esta matriz lista claims que podem orientar a escrita da monografia. A evidência primária é sempre `src/` para claims metodológicos e `src/data/` para claims experimentais. O `vault/` aparece como camada de organização, não como fonte primária.
+Esta matriz lista claims que podem orientar a escrita da monografia. Ela é a fonte canônica para IDs, força e estado dos claims. A evidência primária é sempre `src/` para claims metodológicos e `src/data/` ou scripts de análise para claims experimentais. O `vault/` aparece como camada de organização, não como fonte primária.
+
+> [!warning] Regra de fonte primária
+> Não usar uma nota do `vault/` como evidência suficiente para claims metodológicos ou experimentais. A nota pode apontar para o código, dados, script ou figura que sustentam o claim.
+
+## Schema Mínimo de Claim
+
+Quando um claim novo for adicionado à matriz, registre os campos abaixo. Use notas individuais de claim apenas para claims complexos ou de alto risco; mesmo nesses casos, esta matriz continua sendo a fonte de verdade.
+
+| Campo | Uso |
+|---|---|
+| `claim_id` | ID estável usado em notas, templates e texto de apoio. Ex.: `E19`, `M02`, `I06`. |
+| `claim` | Formulação exata que pode ou não entrar na monografia. |
+| `claim_type` | `conceitual`, `metodologico`, `experimental`, `interpretativo` ou `bloqueado`. |
+| `status` | `validado`, `requer-validacao`, `bloqueado` ou `substituido`. |
+| `strength` | `forte`, `moderado`, `fraco` ou `bloqueado`. |
+| `primary_evidence` | Código, dados, script, figura/tabela ou literatura que sustenta o claim. |
+| `vault_support` | Notas do vault que organizam a evidência. |
+| `monografia_section` | Capítulo/seção recomendada. |
+| `last_verified` | Data da última checagem contra a fonte primária. |
+
+## Vocabulário Controlado
+
+| Dimensão | Valores recomendados |
+|---|---|
+| Tipo | `conceitual`, `metodologico`, `experimental`, `interpretativo`, `bloqueado` |
+| Status | `validado`, `requer-validacao`, `bloqueado`, `substituido` |
+| Força | `forte`, `moderado`, `fraco`, `bloqueado` |
+| Evidência primária | `literatura`, `src/`, `src/data/results/`, `scripts/`, `monografia/figs/` |
 
 ## Legenda
 

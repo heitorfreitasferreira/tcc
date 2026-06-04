@@ -3,16 +3,33 @@ title: ""
 authors: []
 year: 
 doi: ""
+bibtex_key: ""
 bibtex-key: ""
 pdf: ""
-tags: []
-status: pendente
+type: paper
+reading_status: pendente
+validation_status: nao-validado
+pdf_status: ausente
 rating: 0
+role: ""
+areas: []
+methods: []
+chapters: []
+claim_support: []
+aliases: []
+tags:
+  - tipo/paper
+  - status/pendente
+  - evidencia/referencia
 ---
 
 ## PDF
 
 <!-- Se disponível, link para o PDF local: [[papers/pdfs/<bibtex-key>.pdf]] -->
+
+## Tese Central
+
+<!-- Qual e a afirmacao principal do artigo em 1-3 frases? -->
 
 ## Resumo
 
@@ -26,13 +43,32 @@ rating: 0
 
 -
 
+## Uso no TCC
+
+- Capitulo(s):
+- Claim(s) apoiado(s):
+- Como citar na monografia:
+
 ## Métodos e Abordagens
 
 -
 
+## Evidência / Resultado Relevante
+
+-
+
+## Limitações de Uso
+
+> [!warning] Limitação
+> Registrar escopo, ameaça à validade, diferença entre o problema do paper e o TSP-SD-ATP, ou motivo para não generalizar.
+
 ## Conexões
 
-- [[tsp]] —
+- Fundamenta: [[tsp]] —
+- Relacionado a:
+- Contrasta com:
+- Apoia claim:
+- Usado em capítulo:
 
 ## Notas e Insights
 

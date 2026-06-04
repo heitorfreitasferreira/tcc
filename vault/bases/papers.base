@@ -1,0 +1,88 @@
+filters:
+  and:
+    - file.inFolder("papers")
+    - file.ext == "md"
+    - file.basename != "index"
+formulas:
+  leitura: if(reading_status, reading_status, status)
+  pdf: if(pdf_status, pdf_status, "")
+  prioridade: if(rating >= 5, "alta", if(rating >= 3, "media", "baixa"))
+properties:
+  file.name:
+    displayName: Nota
+  title:
+    displayName: Titulo
+  year:
+    displayName: Ano
+  formula.leitura:
+    displayName: Leitura
+  rating:
+    displayName: Relevancia
+  formula.prioridade:
+    displayName: Prioridade
+  formula.pdf:
+    displayName: PDF
+  role:
+    displayName: Papel
+  areas:
+    displayName: Areas
+  methods:
+    displayName: Metodos
+  chapters:
+    displayName: Capitulos
+  claim_support:
+    displayName: Claims
+  doi:
+    displayName: DOI
+views:
+  - type: table
+    name: Papers - Visao Geral
+    order:
+      - file.name
+      - year
+      - formula.leitura
+      - rating
+      - formula.pdf
+      - role
+      - areas
+      - methods
+      - chapters
+  - type: table
+    name: Prioridade de Leitura
+    filters:
+      and:
+        - formula.leitura != "lido"
+    groupBy:
+      property: formula.prioridade
+      direction: ASC
+    order:
+      - file.name
+      - year
+      - formula.leitura
+      - rating
+      - formula.prioridade
+      - role
+      - areas
+      - methods
+  - type: table
+    name: Sem PDF Integro
+    filters:
+      and:
+        - formula.pdf != "integro"
+    order:
+      - file.name
+      - year
+      - formula.pdf
+      - formula.leitura
+      - rating
+      - doi
+  - type: table
+    name: Uso Na Monografia
+    order:
+      - file.name
+      - role
+      - chapters
+      - claim_support
+      - areas
+      - methods
+      - rating

@@ -1,5 +1,11 @@
 ---
-tags: [projeto, implementacao, pso, particle-swarm]
+tags: [projeto, implementacao, pso, particle-swarm, siglas]
+sigla: "PSO"
+definicao: "Otimização por Enxame de Partículas (Particle Swarm Optimization)"
+incluir: sim
+ocorrencias_ac: 0
+ocorrencias_texto: 1
+arquivos_ac: ""
 ---
 
 # Particle Swarm Optimization — Implementação

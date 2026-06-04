@@ -1,5 +1,11 @@
 ---
-tags: [projeto, implementacao, brute-force, exaustivo]
+tags: [projeto, implementacao, brute-force, exaustivo, siglas]
+sigla: "BF"
+definicao: "Busca Exaustiva (Brute Force)"
+incluir: sim
+ocorrencias_ac: 0
+ocorrencias_texto: 0
+arquivos_ac: ""
 ---
 
 # Busca Exaustiva — Implementação

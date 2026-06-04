@@ -1,0 +1,72 @@
+filters:
+  or:
+    - type == "claim"
+    - type == "claim-registry"
+    - file.hasTag("tipo/claim")
+    - and:
+        - file.inFolder("writing")
+        - file.basename == "claim-evidence-matrix"
+formulas:
+  estado: if(validation_status, validation_status, status)
+  forca: if(strength, strength, "")
+  secao: if(monografia_section, monografia_section, "")
+properties:
+  file.name:
+    displayName: Nota
+  claim_id:
+    displayName: Claim ID
+  claim:
+    displayName: Claim
+  claim_type:
+    displayName: Tipo
+  formula.estado:
+    displayName: Validacao
+  formula.forca:
+    displayName: Forca
+  primary_evidence:
+    displayName: Evidencia Primaria
+  vault_support:
+    displayName: Apoio Vault
+  formula.secao:
+    displayName: Secao
+  last_verified:
+    displayName: Ultima Verificacao
+views:
+  - type: table
+    name: Claims - Registro
+    order:
+      - file.name
+      - claim_id
+      - claim_type
+      - formula.estado
+      - formula.forca
+      - primary_evidence
+      - vault_support
+      - formula.secao
+      - last_verified
+  - type: table
+    name: Requer Validacao
+    filters:
+      and:
+        - formula.estado != "validado"
+    order:
+      - file.name
+      - claim_id
+      - claim
+      - claim_type
+      - formula.estado
+      - formula.forca
+      - primary_evidence
+      - last_verified
+  - type: table
+    name: Claims Experimentais
+    filters:
+      and:
+        - claim_type == "experimental"
+    order:
+      - file.name
+      - claim_id
+      - claim
+      - formula.estado
+      - primary_evidence
+      - formula.secao

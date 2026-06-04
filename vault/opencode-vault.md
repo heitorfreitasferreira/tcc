@@ -16,6 +16,7 @@ vault/
 │   ├── experiment-pipeline.md ← pipeline experimental
 │   └── architecture.md ← estrutura de pacotes Go
 ├── templates/        ← Templates para criar novas notas
+├── bases/            ← Views estruturadas do Obsidian Bases
 └── canvas/           ← Grafos de conhecimento visuais (.canvas)
 ```
 
@@ -30,6 +31,9 @@ vault/
 - `json-canvas` — criar/atualizar grafos de conhecimento .canvas
 - `academic-researcher` — buscar e entender papers acadêmicos
 - `academic-search` — estratégias de busca acadêmica
+- `vault-tagger` — padronização de tags hierárquicas para grafo e buscas
+- `vault-semantic-schema` — manutenção de properties, templates, relações tipadas e claims
+- `vault-bases-maintainer` — manutenção de `vault/bases/*.base`
 
 ## MCPs Disponíveis
 
@@ -48,19 +52,39 @@ vault/
 1. Use Google Scholar para buscar o paper
 2. (Opcional) Use SciHub para obter metadados/PDF
 3. Use `vault/templates/paper-note.md` como template
-4. Preencha: YAML frontmatter (título, autores, ano, DOI, tags)
+4. Preencha: YAML frontmatter (título, autores, ano, DOI, propriedades e tags)
 5. Escreva resumo e contribuições
 6. Link para notas de área existentes: `[[tsp]]`, `[[genetic-algorithms]]`
-7. Adicione tags: `tsp`, `ga`, `pso`, `aco`, `drone`, `metaheuristic`
+7. Adicione tags hierárquicas: `tipo/paper`, `area/tsp`, `metodo/ga`, `papel/comparativo`
 
-## Convenções
+## Convenções Semânticas
 
 - **YAML frontmatter** sempre no topo com metadados
 - Wiki links para conectar conceitos/papers
-- **Tags** em kebab-case: `genetic-algorithms`, `particle-swarm`
-- **Status**: `pendente` | `lido-parcial` | `lido`
+- **Properties** guardam fatos consultáveis: `year`, `rating`, `reading_status`, `pdf_status`, `areas`, `methods`, `chapters`
+- **Tags** guardam navegação visual e filtros de grafo: `tipo/paper`, `area/tsp`, `metodo/aco`, `papel/comparativo`
+- **Status de leitura**: `pendente` | `lido-parcial` | `lido`
+- **Status de escrita**: `rascunho` | `revisar` | `pronto` | `bloqueado` | `desatualizado`
+- **Status de validação**: `nao-validado` | `validado` | `requer-validacao` | `bloqueado`
 - **Rating**: 1-5 (relevância para o TCC)
 - Nome do arquivo = bibtex-key normalizada: `kennedy1995particle.md`
+
+### Prefixos de Tags
+
+- `tipo/`: tipo da nota (`tipo/paper`, `tipo/area`, `tipo/projeto`, `tipo/writing`, `tipo/index`)
+- `status/`: estado visível no grafo (`status/pendente`, `status/lido`, `status/revisar`)
+- `area/`: área temática (`area/tsp`, `area/drone-routing`, `area/lower-bound`)
+- `metodo/`: método (`metodo/ga`, `metodo/pso`, `metodo/aco`, `metodo/bruteforce`)
+- `papel/`: papel na monografia (`papel/fundacional`, `papel/comparativo`, `papel/metodologico`)
+- `capitulo/`: capítulo alimentado pela nota (`capitulo/fundamentacao`, `capitulo/experimentos`)
+- `evidencia/`: tipo de suporte (`evidencia/referencia`, `evidencia/codigo`, `evidencia/resultado`)
+
+### Claims e Evidências
+
+- `vault/writing/claim-evidence-matrix.md` é a fonte canônica dos claims.
+- Todo claim forte deve ter `ID`, força, evidência primária e apoio no vault.
+- Claims metodológicos apontam para `src/`; claims experimentais apontam para `src/data/results/` ou scripts de análise.
+- Notas de paper podem usar `claim_support` para listar IDs da matriz, mas a matriz continua sendo a fonte de verdade.
 
 ## Workflow de Busca
 
@@ -75,3 +99,10 @@ vault/
 
 O arquivo `canvas/tcc-knowledge-graph.canvas` contém o grafo de conhecimento.
 Agentes podem lê-lo e modificá-lo para refletir conexões entre papers e áreas.
+
+## Bases
+
+- `bases/papers.base` — visão tabular de papers, prioridade de leitura, PDF e uso na monografia.
+- `bases/claims.base` — visão de auditoria para a matriz de claims e eventuais notas individuais de claim.
+
+Use Bases para localizar pendências; não duplique evidências nelas. A evidência primária continua nos arquivos indicados pela matriz de claims.

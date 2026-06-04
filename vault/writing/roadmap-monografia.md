@@ -5,9 +5,10 @@ tags:
   - monografia
   - roadmap
   - agentes
-status: pronto-para-execucao
+status: pronto-com-pendencias-bibliograficas-rastreabilidade-e-validacao
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-03
+concluded: 2026-06-03
 ---
 
 # Roadmap de Escrita da Monografia
@@ -77,9 +78,12 @@ Escrever em português acadêmico, com foco no cenário de patrulha com drones e
 | Padronização terminológica | Criada antes de qualquer capítulo | [[problem-formulation]], [[tsp-variants]] |
 | Figuras/tabelas mínimas de resultados | Criadas antes de Experimentos | `scripts/`, `monografia/figs/` |
 | Protocolo estatístico final | Fechado antes de Experimentos | [[analysis-methodology]] |
+| Pipeline de métricas TeX auditáveis | Criado antes de Experimentos, Resumo, Abstract e Conclusão | `scripts/gerar-metricas-monografia.py`, `monografia/generated/` |
+| Gate formal anti-alucinação | Executado antes da versão final e antes de qualquer entrega para banca | `scripts/check-monografia.sh`, `vault/writing/citation-safety.md`, [[claim-evidence-matrix]] |
+| Auditoria bibliográfica pós-council | Referências centrais com PDF/nota validada; periféricas classificadas como download manual, análise posterior ou descarte | `vault/papers/index.md`, seção [[#Correções Bibliográficas Pós-Auditoria]] |
 | **Resumo + Abstract** | Escritos antes da introdução, revisados por último | [[validacao-modelo-facom]] |
 | **Capa + Folha de Rosto** | Dados preenchidos antes da compilação final | autor, orientador, título, data |
-| **Lista de Siglas** | Levantamento antes da escrita de qualquer capítulo | `vault/writing/lista-siglas.md` |
+| **Lista de Siglas** | Levantamento antes da escrita de qualquer capítulo | `vault/siglas/` (notas individuais) + `vault/bases/siglas.base` |
 | **Apêndices** | Estrutura definida antes de Experimentos | `vault/writing/apendices.md` |
 
 ## Protocolo de Validação Antes de Escrever
@@ -94,6 +98,192 @@ Todo agente deve executar esta sequência antes de produzir texto para a monogra
 6. Usar o `vault/` validado como base de escrita para `monografia/`.
 
 O agente não deve tratar uma nota do `vault/` como evidência suficiente quando a afirmação depender de implementação ou resultado experimental. Nesses casos, a nota deve apontar para o código ou para o dado bruto que sustenta a afirmação.
+
+## Correções Bibliográficas Pós-Auditoria
+
+Auditoria realizada em 2026-06-03 sobre `vault/papers/`: 61 notas de paper, 43 PDFs íntegros com chave correspondente, 18 notas sem PDF íntegro correspondente e 1 PDF duplicado/extra (`haroun2015.pdf`). A monografia não deve esperar que todas as 61 referências sejam completadas. O critério operacional é mais estreito: toda referência usada para sustentar claim conceitual forte, fundamentação central ou comparação metodológica precisa ter PDF íntegro, metadados corretos e nota coerente com o conteúdo do PDF.
+
+### Política de Uso das Referências Auditadas
+
+| Classe | Critério | Uso na monografia |
+|---|---|---|
+| **Usar agora** | PDF íntegro, nota coerente e metadados suficientes | Pode entrar no texto, respeitando a força do claim |
+| **Corrigir antes de usar** | PDF existe, mas há erro de autores, título, DOI, status ou leitura parcial | Não citar até corrigir a nota ou o BibTeX |
+| **Solicitar download manual** | Referência é relevante para argumento central, mas PDF está ausente/corrompido | Pedir download manual, analisar depois e só então citar |
+| **Manter para análise posterior** | Referência é útil para trabalhos futuros ou estado da arte, mas não sustenta claim central | Não bloqueia escrita; pode ficar fora do texto final |
+| **Descartar do escopo imediato** | Referência é redundante, periférica ou não altera argumento da monografia | Remover da lista de referências centrais e não bloquear escrita |
+
+> [!warning] Regra prática
+> PDF ausente não implica automaticamente corrigir agora. Se o paper não sustenta Introdução, Fundamentação, Proposta ou Experimentos, classificar como análise posterior ou descarte é preferível a atrasar a escrita.
+
+### Correções Obrigatórias de Exatidão
+
+| Item | Problema | Ação |
+|---|---|---|
+| [[gpaco2025]] | Autores na nota não batem com o PDF; PDF indica Bo-Cheng Lin, Yi Mei e Mengjie Zhang | Corrigir autores antes de usar em trabalhos futuros ou revisão de ACO moderna |
+| [[neufaco2025]] | Autores na nota não batem com o PDF; PDF indica Dat Thanh Tran, Khai Quang Tran, Khoi Anh Pham, Van Khu Vu e Dong Duc Do | Corrigir autores antes de citar como estado da arte |
+| [[ppaco2024]] | PDF local quase não permite extração textual; nota está corretamente limitada a `lido-parcial` | Manter apenas como fronteira de pesquisa; não usar para resultados ou metodologia |
+| [[applegate2006traveling]], [[dorigo2004book]] | Livros longos marcados como `lido`, mas notas parecem leitura seletiva | Qualificar como leitura seletiva ou `lido-parcial` se a nota não for expandida |
+| `haroun2015.pdf` | PDF extra/duplicado sem nota correspondente; já existe [[haroun2015performance]] | Manter apenas o arquivo correspondente à chave usada ou registrar duplicata como obsoleta |
+| [[demsar2006statistical]] | Referência estatística é usada na metodologia, mas a nota do vault está vazia e fora de `vault/papers/` | Criar/preencher `vault/papers/demsar2006statistical.md` ou mover/enriquecer a nota existente antes de escrever Experimentos |
+
+### Triagem dos PDFs Faltantes
+
+| Decisão | Referências | Encaminhamento |
+|---|---|---|
+| **Download manual prioritário se forem citadas** | [[lawler1985traveling]], [[aggarwal2000angular]], [[vanhove2012route]] | Fundamentam TSP clássico, AM-TSP e turn costs. Se o texto depender delas, solicitar PDF manualmente e revisar a nota antes da citação. Se não houver tempo, usar referências já validadas como [[garey1979computers]], [[applegate2006traveling]], [[winter2002modeling]] e [[kinable2017hybrid]]. |
+| **Download manual condicionado à seção de lower bounds** | [[heldkarp1971traveling]], [[balas1985branch]], [[fischetti1992additive]], [[valenzuela1997estimating]], [[leraromero2020dynamic]] | Não bloquear a monografia se o texto limitar a discussão ao lower bound AP implementado, [[heldkarp1970traveling]], [[johnson1996asymptotic]], [[righini2021efficient]], [[kinable2017hybrid]] e [[justificativa-lowerbound]]. Baixar manualmente apenas se o capítulo aprofundar bounds clássicos ou ng-path. |
+| **Download manual para análise posterior** | [[dellamico2021multiple]], [[dellamico2022exact]], [[deepaco2023]], [[ahmed2024receding]], [[nagata2006eax]] | Relevantes para trabalhos relacionados ou futuros, mas não indispensáveis para demonstrar o que foi implementado. Não usar para claims fortes até recuperar PDF íntegro. |
+| **Candidatas a descarte do escopo imediato** | [[hga2024hybrid]], [[sun2024hybrid]], [[huang2025matrix]], [[kappagantula2025dpso]], [[toaza2023review]] | Manter no catálogo apenas se houver intenção explícita de revisar estado da arte recente. Para a monografia atual, podem ser omitidas sem enfraquecer o argumento central. |
+
+### Lacunas Bibliográficas que Merecem Reforço
+
+| Lacuna | Ação recomendada | Prioridade |
+|---|---|---|
+| Patrulha UAV / persistent surveillance | Buscar 2 ou 3 referências diretamente sobre patrulha, vigilância persistente, monitoramento ou inspeção com UAVs; não depender apenas de TSP-D/FSTSP de entrega | Alta para Introdução |
+| Metodologia estatística para metaheurísticas | Preencher [[demsar2006statistical]] e considerar Derrac et al. (2011) para testes não-paramétricos em algoritmos evolucionários | Alta para Experimentos |
+| PSO discreto/permutacional | Reforçar a ponte entre PSO contínuo, random keys e permutações; [[clerc2000discretepso]] ajuda, mas a nota é parcial | Média para Fundamentação |
+| Turn costs / angular routing | Usar [[winter2002modeling]] como base segura e baixar manualmente [[aggarwal2000angular]] ou [[vanhove2012route]] se a discussão angular for expandida | Média para Fundamentação |
+
+## Rastreabilidade de Valores Quantitativos
+
+Os valores quantitativos derivados de `src/data/results/` não devem permanecer copiados manualmente na monografia. A meta é que todo número experimental, estatístico ou tabular usado para sustentar uma conclusão seja gerado por scripts determinísticos auditáveis e incorporado ao LaTeX por macros ou fragmentos `.tex`.
+
+O escopo não é transformar toda a prosa em saída de script. O texto interpretativo, as limitações, as justificativas metodológicas, as captions discursivas e números conceituais como $O(n^3)$ continuam manuais. O alvo de automação é o conjunto de valores que mudaria se os arquivos em `src/data/results/` fossem regenerados.
+
+### Arquitetura Recomendada
+
+| Artefato | Função |
+|---|---|
+| `scripts/gerar-metricas-monografia.py` | Carregar summaries, timing e evolution; validar cobertura esperada; calcular agregados; emitir TeX determinístico |
+| `monografia/generated/metrics.tex` | Macros para valores citados no texto, resumo, abstract, experimentos e conclusão |
+| `monografia/generated/tables/*.tex` | Fragmentos `tabular` para tabelas numéricas incluídas com `\input` |
+| `monografia/generated/manifest.json` | Registro auditável de contagens, hashes ou timestamps dos dados usados, versão do script e arquivos gerados |
+
+Uso esperado no LaTeX:
+
+```tex
+\input{generated/metrics.tex}
+
+A avaliação usou \ExpTotalRuns{} execuções estruturadas.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Gap percentual em relação ao ótimo nas instâncias pequenas.}
+  \label{tab:gap-bf}
+  \input{generated/tables/tab-gap-bf.tex}
+\end{table}
+```
+
+### Valores que Devem Ser Gerados
+
+| Classe | Exemplos | Saída recomendada |
+|---|---|---|
+| Cobertura experimental | total de summaries/evolution/timing, runs por método, número de instâncias, sementes | Macros e tabela de cobertura |
+| Busca exaustiva | ótimos das instâncias `10a`--`15c`, número de instâncias com ótimo conhecido | Tabela `.tex` e macros de contagem |
+| Gap vs. ótimo | gap médio, mínimo, máximo e taxa de acerto por método | Tabela `.tex` e macros centrais |
+| Instâncias grandes | melhor e média de makespan em `50a`--`50c` e `100a`--`100c` | Tabela `.tex` |
+| Lower bound AP | gap médio/mínimo/máximo LB→BF, violações LB $\leq$ BF, tempo do bound | Tabela `.tex` e macros |
+| Tempo computacional | médias em ms, razão ACO/GA, razão ACO/PSO, conversão para segundos no texto | Tabela `.tex` e macros |
+| Estatística | Friedman/Iman-Davenport, p-valor, ranks médios, CD de Nemenyi, Wilcoxon/Holm | Macros emitidas pelo script estatístico ou por camada comum |
+
+### Regras de Implementação
+
+| Regra | Justificativa |
+|---|---|
+| Ordenar arquivos, instâncias e métodos explicitamente | Garante saída determinística e diffs estáveis |
+| Validar cobertura esperada antes de gerar | Evita atualizar o texto com dataset incompleto |
+| Padronizar arredondamento em um único lugar | Evita divergências entre texto, tabelas e figuras |
+| Gerar vírgula decimal LaTeX como `{,}` e percentual como `\%` | Preserva tipografia correta em pt-BR |
+| Gerar apenas o `tabular` quando possível | Mantém caption, label e posicionamento sob controle do capítulo |
+| Oferecer modo `--check` | Falha quando os `.tex` gerados estão desatualizados em relação aos dados |
+| Reusar a lógica estatística já validada em `scripts/analise-estatistica.py` | Evita duplicar Friedman, Nemenyi e Wilcoxon em outro script |
+
+> [!warning] Anti-overengineering
+> Não automatizar texto interpretativo nem cada número conceitual da monografia. Automatizar os valores que sustentam tabelas, conclusões quantitativas e testes estatísticos; manter a argumentação acadêmica sob edição humana.
+
+## Validação Formal Anti-Alucinação
+
+A monografia precisa de um gate explícito contra alucinações de IA. Compilar o PDF não basta: é necessário validar que citações existem e são adequadas, que claims fortes têm evidência, que números experimentais vêm de dados/scripts, que artefatos citados existem e que a conclusão não extrapola o que foi medido.
+
+Essa etapa deve ser híbrida. Checks determinísticos bloqueiam erros objetivos; revisão humana guiada decide casos semânticos, como se uma citação realmente sustenta a frase ou se uma conclusão está forte demais.
+
+### Comando Canônico
+
+| Comando | Função |
+|---|---|
+| `scripts/check-monografia.sh` | Executa os checks automáticos e gera relatório final |
+| `make check-monografia` | Atalho opcional para o script canônico |
+
+O comando deve retornar:
+
+| Saída | Significado |
+|---|---|
+| `PASS` | Sem erro bloqueante; warnings revisados ou ausentes |
+| `WARN` | Texto compila, mas há pendências que exigem revisão humana documentada |
+| `FAIL` | Há erro bloqueante: citação inválida, claim bloqueado, número desatualizado, artefato ausente ou referência frágil em claim forte |
+
+### Checks Automáticos Bloqueantes
+
+| Classe | Check |
+|---|---|
+| LaTeX/BibTeX | Compilar com BibTeX; falhar em citações indefinidas, referências indefinidas, arquivos ausentes, `??`, `TODO`, `FIXME` ou `lipsum` ativo |
+| Citações | Extrair `\cite{...}` dos `.tex`; verificar chave no BibTeX, nota em `vault/papers/`, status de leitura/PDF e classificação em `citation-safety.md` |
+| Figuras e tabelas | Verificar se todo `\includegraphics` e todo `\input` existe; quando gerado, conferir origem em `scripts/`, `src/web/` ou `monografia/generated/manifest.json` |
+| Métricas | Rodar `scripts/gerar-metricas-monografia.py --check`; falhar se `monografia/generated/` estiver ausente ou desatualizado |
+| Números hardcoded | Alertar ou falhar quando Resumo, Abstract, Experimentos ou Conclusão contiverem números experimentais literais que deveriam vir de macros |
+| Claims bloqueados | Procurar padrões associados a claims `Bxx` da [[claim-evidence-matrix]], como ótimo em 100\%, gaps antigos, tempos antigos e superioridade universal |
+| Placeholders | Falhar em conteúdo de template, texto incompleto ou marcadores de revisão não resolvidos |
+
+### Política de Segurança de Citações
+
+Criar `vault/writing/citation-safety.md` para classificar cada referência citada na monografia.
+
+| Classe | Critério | Uso permitido |
+|---|---|---|
+| `segura` | BibTeX correto, nota validada, PDF íntegro ou fonte bibliográfica confiável, conteúdo coerente com o uso | Pode sustentar claim forte |
+| `condicional` | Referência real, mas nota parcial, PDF ausente controlado ou uso apenas contextual | Pode sustentar claim fraco ou contextual, com ressalva |
+| `frágil` | PDF ausente/corrompido, metadados incompletos ou nota não validada | Não pode sustentar claim forte |
+| `bloqueada` | Metadados incorretos, PDF errado, referência não conferida ou incompatível com a frase | Remover ou corrigir antes de citar |
+
+Referências já identificadas como sensíveis devem entrar nessa classificação antes da versão final: `lawler1985traveling`, `vanhove2012route`, `dellamico2021multiple`, `dellamico2022exact`, `deepaco2023`, `nagata2006eax`, `demsar2006statistical`, `gpaco2025` e `neufaco2025`.
+
+### Vínculo Entre Texto e Claims
+
+Claims fortes do `.tex` devem ser conectados à matriz, no mínimo por comentários LaTeX próximos ao parágrafo:
+
+```tex
+% claim: E06
+Nas 18 instâncias com busca exaustiva, o ACO apresentou o menor gap médio...
+```
+
+Alternativamente, uma macro invisível pode ser criada depois, por exemplo `\claimref{E06}`. O requisito mínimo é que um revisor consiga localizar qual claim da matriz sustenta cada trecho forte.
+
+### Revisão Humana Guiada
+
+O relatório do gate deve listar itens que nenhum script decide sozinho:
+
+| Item | Pergunta de revisão |
+|---|---|
+| Citação semântica | A referência citada sustenta exatamente a frase? |
+| Lacuna bibliográfica | A frase “não foram identificados estudos...” está limitada à revisão realizada? |
+| Conclusão | A conclusão é proporcional aos dados e às limitações? |
+| Claims interpretativos | O texto distingue interpretação de fato demonstrado? |
+| Referências condicionais | A referência pode permanecer como contexto ou deve ser removida? |
+| Estilo acadêmico | O trecho evita generalizações, causalidade indevida e linguagem promocional? |
+
+### Critério de Aprovação
+
+Antes da versão final, o gate anti-alucinação deve produzir um relatório arquivado no vault, por exemplo `vault/writing/validacao-anti-alucinacao.md`, contendo:
+
+| Seção | Conteúdo mínimo |
+|---|---|
+| Resultado do gate | PASS/WARN/FAIL, data, commit ou estado dos arquivos |
+| Citações | Lista de chaves usadas, classificação e pendências |
+| Claims | Claims fortes encontrados, IDs correspondentes e evidências |
+| Números | Confirmação de que valores experimentais vêm de `monografia/generated/` |
+| Figuras/tabelas | Conferência de existência e origem |
+| Revisão humana | Decisões tomadas sobre warnings semânticos |
 
 ## Terminologia Oficial
 
@@ -146,7 +336,7 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 
 **Estrutura sugerida:** TSP clássico e complexidade; variantes relevantes do TSP; custos de curva e dependência de sequência; roteamento de drones; metaheurísticas bio-inspiradas; GA para TSP; PSO para TSP; ACO para TSP; estudos comparativos relacionados.
 
-**Referências centrais:** [[garey1979computers]], [[lawler1985traveling]], [[applegate2006traveling]], [[winter2002modeling]], [[vanhove2012route]], [[holland1975adaptation]], [[goldberg1989genetic]], [[kennedy1995particle]], [[clerc2000discretepso]], [[dorigo1996ant]], [[dorigo1997ant]], [[stutzle2000mmas]], [[murray2015flying]], [[agatz2018optimization]], [[chandra2022comparative]], [[wu2020comparative]], [[halim2019combinatorial]], Demšar (2006) para protocolo estatístico.
+**Referências centrais seguras:** [[garey1979computers]], [[applegate2006traveling]], [[winter2002modeling]], [[holland1975adaptation]], [[goldberg1989genetic]], [[kennedy1995particle]], [[clerc2000discretepso]], [[dorigo1996ant]], [[dorigo1997ant]], [[stutzle2000mmas]], [[murray2015flying]], [[agatz2018optimization]], [[chandra2022comparative]], [[wu2020comparative]], [[halim2019combinatorial]]. Referências condicionais: [[lawler1985traveling]], [[vanhove2012route]] e [[aggarwal2000angular]] só devem ser usadas após download manual ou substituídas por fontes já validadas; [[demsar2006statistical]] precisa de nota preenchida em `vault/papers/` antes de sustentar a seção estatística.
 
 **Critérios de aceite:** cada método tem origem, mecanismo básico e relação com TSP; a variante TSP-SD-ATP é posicionada sem inventar uma taxonomia não suportada; trabalhos relacionados são sintetizados, não listados; o capítulo prepara diretamente a proposta.
 
@@ -171,18 +361,18 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 
 **Objetivo:** apresentar configuração experimental, dados coletados, análise de qualidade, análise de tempo e discussão dos resultados.
 
-**Entradas obrigatórias:** arquivos em `src/data/`, `src/data/results/`, código/scripts que geram resultados e figuras; depois [[experimentos]], [[resultados]], [[analysis-methodology]], [[experiment-pipeline]], [[experiment-pipeline]], figuras em `monografia/figs/`.
+**Entradas obrigatórias:** arquivos em `src/data/`, `src/data/results/`, código/scripts que geram resultados e figuras; depois [[experimentos]], [[resultados]], [[analysis-methodology]], [[experiment-pipeline]], figuras em `monografia/figs/` e fragmentos gerados em `monografia/generated/`.
 
 **Estrutura sugerida:**
 - **4.1 Método para Avaliação** (conforme modelo FACOM): instâncias e sementes; parâmetros dos métodos; métricas de avaliação (gap vs AP bound, tempo); baseline brute-force (n ≤ 10); lower bound AP como referência para instâncias grandes; plataforma e ambiente computacional
 - **4.2 Experimentos**: qualidade das soluções com gap vs AP bound; tempo computacional; trade-off qualidade-tempo; curvas de convergência
 - **4.3 Avaliação dos Resultados**: análise estatística (Friedman + Nemenyi + Wilcoxon); discussão por método; visualização de rotas selecionadas; ameaças à validade
 
-**Figuras e tabelas mínimas:** tabela de ótimos brute-force; tabela comparativa AP bound vs ótimo (instâncias pequenas); tabela de gap médio (AP bound como referência); gráfico de qualidade por método e tamanho; gráfico de tempo por método e tamanho (incluindo lower bound, ∼0ms); gráfico qualidade versus tempo; curvas de convergência; visualização de rotas selecionadas.
+**Figuras e tabelas mínimas:** tabela de cobertura experimental; tabela de ótimos brute-force; tabela comparativa AP bound vs ótimo (instâncias pequenas); tabela de gap médio (AP bound como referência); tabela de tempo nas instâncias de 100 pontos; gráfico de qualidade por método e tamanho; gráfico de tempo por método e tamanho (incluindo lower bound, ∼0ms); gráfico qualidade versus tempo; curvas de convergência; visualização de rotas selecionadas. Tabelas numéricas devem vir de `monografia/generated/tables/*.tex` quando derivadas dos resultados.
 
-**Critérios de aceite:** todos os números têm fonte rastreável em `src/data/results/`; gráficos têm escala, unidade e legenda; testes estatísticos são reportados apenas se executados; conclusões são proporcionais aos dados brutos; limitações experimentais aparecem antes da conclusão final.
+**Critérios de aceite:** todos os números derivados de resultados têm fonte rastreável em `src/data/results/` e aparecem no capítulo por macros ou `\input` gerados; gráficos têm escala, unidade e legenda; testes estatísticos são reportados apenas se executados; conclusões são proporcionais aos dados brutos; limitações experimentais aparecem antes da conclusão final.
 
-**Riscos:** declarar significância sem teste; comparar médias sem variabilidade; usar apenas melhor caso para métodos estocásticos; esquecer que brute-force só cobre instâncias pequenas; usar AP bound como se fosse ótimo verdadeiro em vez de limitante inferior.
+**Riscos:** declarar significância sem teste; comparar médias sem variabilidade; usar apenas melhor caso para métodos estocásticos; esquecer que brute-force só cobre instâncias pequenas; usar AP bound como se fosse ótimo verdadeiro em vez de limitante inferior; copiar manualmente valores que deveriam vir de `monografia/generated/`.
 
 ### Capítulo 5 — Conclusão
 
@@ -214,9 +404,19 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P10 | Análise de sensibilidade a hiperparâmetros | Concluída em [[auditoria-hiperparametros]] como limitação/trabalho futuro. Não bloqueia a escrita; declarar que não houve tuning sistemático. | Concluída como limitação |
 | P11 | Escrever Resumo (pt-BR) e Abstract (en) | Nota `vault/writing/resumo-abstract.md` com texto final de 150–500 palavras cada, destacando objetivo, método, resultados e conclusões | Pendente |
 | P12 | Preencher Capa e Folha de Rosto | Dados do autor, título definitivo, orientador, área de concentração, data em `monografia/` (via template LaTeX) | Pendente |
-| P13 | Levantar e definir Lista de Siglas | Nota `vault/writing/lista-siglas.md` com todas as siglas usadas (TSP, GA, PSO, ACO, AP, POI, VANT, etc.) e suas definições | Pendente |
+| P13 | Levantar e definir Lista de Siglas | Notas individuais em `vault/siglas/` (24 gerenciadas) + notas existentes em `vault/projeto/` e `vault/areas/` com tag `siglas` (GA, PSO, ACO, BF, TSP, TSP-SD-ATP). Base Obsidian em `vault/bases/siglas.base`. Script `scripts/gerar-lista-siglas.py` (scan/generate/validate). 30 siglas catalogadas (15 incluir, 5 excluir, 10 pendentes). `monografia/abrev/Abreviaturas.tex` gerado com 15 entradas | Concluída |
 | P14 | Definir estrutura dos Apêndices | Nota `vault/writing/apendices.md` listando o que vai em cada apêndice (resultados completos, pseudocódigo, instâncias exemplo) | Pendente |
 | P15 | Verificar formatação ABNT no template LaTeX | Conferir citações longas (>3 linhas), alíneas, remissões internas e ambiente de siglas na classe `ppgco.cls` | Pendente |
+| P16 | Corrigir exatidão bibliográfica crítica | Ajustar autores de [[gpaco2025]] (Lin, Mei, Zhangjie) e [[neufaco2025]] (Tran et al.), qualificar leituras seletivas em livros longos (applegate2006traveling, dorigo2004book → lido-parcial) e remover duplicata `haroun2015.pdf` | Concluída |
+| P17 | Triar PDFs faltantes por decisão editorial | Para cada referência sem PDF íntegro: baixar manualmente se central, marcar como análise posterior se útil para futuro, ou descartar do escopo imediato se periférica | Pendente |
+| P18 | Fechar bibliografia mínima por capítulo | Cada capítulo deve ter referências suficientes com PDF/nota validada; referências condicionais não podem aparecer no texto final sem validação | Pendente |
+| P19 | Criar pipeline de métricas TeX auditáveis | Script `scripts/gerar-metricas-monografia.py` gerando `monografia/generated/metrics.tex`, `monografia/generated/tables/*.tex` e `manifest.json` a partir de `src/data/results/` | Concluída |
+| P20 | Substituir valores quantitativos hardcoded | Experimentos, Resumo, Abstract, Introdução e Conclusão usam macros/fragmentos gerados para valores experimentais, estatísticos e tabulares | Concluída |
+| P21 | Adicionar verificação de atualização dos artefatos gerados | Modo `--check` ou comando equivalente falha se `monografia/generated/` estiver desatualizado em relação aos dados/scripts | Concluída |
+| P22 | Criar política de segurança de citações | Nota `vault/writing/citation-safety.md` classificando cada referência citada como `segura`, `condicional`, `frágil` ou `bloqueada` | Pendente |
+| P23 | Implementar gate anti-alucinação | Script `scripts/check-monografia.sh` ou alvo `make check-monografia` validando LaTeX/BibTeX, citações, figuras, placeholders, métricas, claims bloqueados e números hardcoded | Concluída |
+| P24 | Vincular claims fortes ao texto | Comentários `% claim: <ID>` ou mecanismo equivalente nos trechos fortes da monografia, conectando `.tex` à [[claim-evidence-matrix]] | Pendente |
+| P25 | Gerar relatório final de validação anti-alucinação | Nota `vault/writing/validacao-anti-alucinacao.md` com resultado PASS/WARN/FAIL, citações, claims, números, artefatos e decisões humanas | Pendente |
 
 ## Protocolo Para Cada Agente Escritor
 
@@ -230,6 +430,9 @@ Antes de escrever:
 6. Verificar se cada claim metodológico tem fonte no código.
 7. Verificar se cada claim experimental tem fonte em `src/data/results/`.
 8. Atualizar ou sinalizar qualquer nota do `vault/` que não reflita código ou dados atuais.
+9. Conferir se cada referência citada está classificada como segura ou foi baixada/analisada manualmente após a auditoria bibliográfica.
+10. Conferir se valores experimentais, estatísticos ou tabulares são macros/fragmentos gerados, não cópias manuais.
+11. Conferir se claims fortes têm ID da [[claim-evidence-matrix]] ou evidência explícita indicada no trecho.
 
 Durante a escrita:
 
@@ -246,7 +449,8 @@ Após a escrita:
 3. Listar figuras/tabelas citadas e verificar se existem.
 4. Verificar se não há promessa sem evidência.
 5. Conferir formatação ABNT no capítulo: citações diretas (>3 linhas com recuo 4cm), alíneas/subalíneas, remissões internas (`\ref`/`\pageref`), uso correto de siglas (`\ac`/`\acs`/`\acl`).
-6. Registrar pendências em nota separada ou no topo do capítulo.
+6. Rodar ou atualizar o relatório de `scripts/check-monografia.sh` quando o capítulo alterar claims, citações, números, figuras ou tabelas.
+7. Registrar pendências em nota separada ou no topo do capítulo.
 
 ## Protocolo de Análise Estatística (P4 — Concluído)
 
@@ -289,7 +493,13 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 | Código e dados auditados | Claims metodológicos conferidos em `src/`; claims experimentais conferidos em `src/data/` |
 | Estatística resolvida | Testes executados ou análise descritiva assumida explicitamente |
 | Figuras mínimas disponíveis | Cada figura tem escala, unidade e fonte |
-| Referências centrais selecionadas | Cada capítulo tem bibliografia mínima definida |
+| Métricas TeX auditáveis | Valores experimentais, estatísticos e tabelas numéricas derivadas dos dados são gerados por script determinístico |
+| Artefatos gerados atualizados | `monografia/generated/` passa no modo de checagem contra `src/data/results/` e scripts de análise |
+| Gate anti-alucinação aprovado | `scripts/check-monografia.sh` ou `make check-monografia` executado com resultado PASS, ou WARN com decisões humanas registradas |
+| Citações classificadas | Toda referência citada consta em `citation-safety.md`; referências frágeis/bloqueadas não sustentam claims fortes |
+| Claims fortes rastreados | Claims centrais do `.tex` apontam para IDs da matriz ou evidência explícita |
+| Referências centrais selecionadas | Cada capítulo tem bibliografia mínima definida, sem depender de paper sem PDF íntegro |
+| Pendências bibliográficas triadas | PDFs ausentes foram classificados como download manual, análise posterior ou descarte do escopo imediato |
 | Terminologia estabilizada | TSP-SD-ATP, makespan, drone e POI usados de forma consistente |
 | Limitações declaradas | Parâmetros fixos, instâncias sintéticas e baseline limitado aparecem no texto |
 | **Pré-textuais prontos** | Capa, Folha de Rosto, Resumo, Abstract, Lista de Siglas escritos e revisados |
@@ -298,4 +508,4 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 
 ## Próxima Ação Recomendada
 
-Executar primeiro as tarefas **P11–P15** (pré-textuais, apêndices e formatação), depois escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão.
+Executar primeiro **P16–P25** para não levar referência frágil, valor quantitativo manual ou claim sem evidência ao texto final. Em paralelo, executar **P11–P15** (pré-textuais, apêndices e formatação). Depois escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão.
