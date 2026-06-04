@@ -37,7 +37,7 @@ A hipótese principal é que meta-heurísticas bioinspiradas conseguem produzir 
 As perguntas de pesquisa são:
 \begin{itemize}
   \item Nas instâncias pequenas, qual é o gap das meta-heurísticas em relação ao ótimo obtido por busca exaustiva?
-  \item Nas 30 instâncias avaliadas, qual método apresenta menor \textit{makespan} mediano?
+  \item Nas \TotalInstancias{} instâncias avaliadas, qual método apresenta menor \textit{makespan} mediano?
   \item Qual é o custo temporal de obter soluções de melhor qualidade?
   \item As diferenças observadas entre GA, PSO e ACO são estatisticamente consistentes quando os métodos são comparados por instância?
   \item O limitante inferior por relaxação do problema de designação é informativo para esta variante com penalidade angular?
@@ -49,8 +49,8 @@ As contribuições deste trabalho são:
 \begin{itemize}
   \item a formulação computacional do TSP-SD-ATP para rotas de patrulhamento com drones, usando tensor 3D de custos;
   \item uma implementação em Go de GA, PSO, ACO, busca exaustiva e lower bound por relaxação AP/Hungarian sobre a mesma função objetivo;
-  \item uma base experimental com 4638 arquivos de resumo, evolução e tempo, cobrindo 30 instâncias e 51 sementes por meta-heurística;
-  \item a comparação com ótimo exato em 18 instâncias pequenas e com lower bound em todas as 30 instâncias;
+  \item uma base experimental com \TotalExecucoes{} arquivos de resumo, evolução e tempo, cobrindo \TotalInstancias{} instâncias e \TotalSementesGA{} sementes por meta-heurística;
+  \item a comparação com ótimo exato em \TotalInstanciasComOtimo{} instâncias pequenas e com lower bound em todas as \TotalInstancias{} instâncias;
   \item uma análise empírica e estatística do trade-off entre qualidade de solução e tempo computacional.
 \end{itemize}
 

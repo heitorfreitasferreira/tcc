@@ -1,7 +1,7 @@
 \chapter[Conclusão]{Conclusão}
 \label{conclusao}
 
-Este trabalho investigou a otimização de rotas de patrulhamento com drones por meio do TSP-SD-ATP, uma formulação em que o custo de transição depende da sequência anterior--atual--próximo e inclui penalidade angular. Foram implementados e avaliados GA, PSO, ACO, busca exaustiva e um lower bound por relaxação AP/Hungarian. A avaliação usou 30 instâncias sintéticas, 51 sementes por meta-heurística e 4638 arquivos estruturados de resumo, evolução e tempo.
+Este trabalho investigou a otimização de rotas de patrulhamento com drones por meio do TSP-SD-ATP, uma formulação em que o custo de transição depende da sequência anterior--atual--próximo e inclui penalidade angular. Foram implementados e avaliados GA, PSO, ACO, busca exaustiva e um lower bound por relaxação AP/Hungarian. A avaliação usou \TotalInstancias{} instâncias sintéticas, \TotalSementesGA{} sementes por meta-heurística e \TotalExecucoes{} arquivos estruturados de resumo, evolução e tempo.
 
 \section{Principais Contribuições}
 
@@ -9,11 +9,11 @@ A primeira contribuição foi a formalização computacional do TSP-SD-ATP com t
 
 A segunda contribuição foi a implementação comparativa de métodos distintos sobre a mesma função objetivo. O GA usa permutação direta, OX, mutação \textit{swap}, torneio e elitismo. O PSO usa \textit{random keys}. O ACO usa feromônio 3D e heurística local baseada em $1/G[i][j][k]$. A busca exaustiva fornece ótimos para as instâncias pequenas, e o lower bound AP fornece referência inferior para todas as instâncias.
 
-A terceira contribuição foi a análise experimental. Nas 18 instâncias com ótimo conhecido, o ACO apresentou gap médio de 0{,}4296\% e taxa global de acerto de 71{,}79\%. O GA obteve gap médio de 5{,}2814\%, e o PSO 22{,}2915\%. Nas instâncias de 50 e 100 pontos, o ACO manteve makespan médio substancialmente menor que GA e PSO. A análise estatística por Friedman/Iman--Davenport, Nemenyi e Wilcoxon/Holm indicou diferenças significativas entre os três métodos, com ranks médios ACO=1{,}1000, GA=1{,}9000 e PSO=3{,}0000.
+A terceira contribuição foi a análise experimental. Nas \TotalInstanciasComOtimo{} instâncias com ótimo conhecido, o ACO apresentou gap médio de \GapMedioOtimoACO{} e taxa global de acerto de \TaxaAcertoOtimoACO{}. O GA obteve gap médio de \GapMedioOtimoGA{}, e o PSO \GapMedioOtimoPSO{}. Nas instâncias de 50 e 100 pontos, o ACO manteve makespan médio substancialmente menor que GA e PSO. A análise estatística por Friedman/Iman--Davenport, Nemenyi e Wilcoxon/Holm indicou diferenças significativas entre os três métodos, com ranks médios ACO=\RankMedioACO{}, GA=\RankMedioGA{} e PSO=\RankMedioPSO{}.
 
-O principal trade-off observado foi qualidade versus tempo. Em instâncias de 100 pontos, o ACO levou em média cerca de 4{,}26 segundos de otimização, enquanto o GA ficou abaixo de 40 milissegundos e o PSO abaixo de 77 milissegundos. Assim, o ACO foi o método de melhor qualidade no desenho experimental, mas o GA foi muito mais rápido. O PSO teve desempenho inferior em qualidade, resultado delimitado à implementação por \textit{random keys} e aos parâmetros usados.
+O principal trade-off observado foi qualidade versus tempo. Em instâncias de 100 pontos, o ACO levou em média cerca de \TempoOtimizacaoACOCemMedioSegundos{} de otimização, enquanto a maior média por instância do GA foi \TempoOtimizacaoGAMaxCemMs{} e a do PSO foi \TempoOtimizacaoPSOMaxCemMs{}. Assim, o ACO foi o método de melhor qualidade no desenho experimental, mas o GA foi muito mais rápido. O PSO teve desempenho inferior em qualidade, resultado delimitado à implementação por \textit{random keys} e aos parâmetros usados.
 
-O lower bound AP foi válido, mas frouxo. Nas 18 instâncias com busca exaustiva, ele nunca excedeu o ótimo, mas apresentou gap médio de 51{,}36\%. Esse resultado confirma sua utilidade como referência inferior barata e, ao mesmo tempo, mostra que a redução 3D$\to$2D perde informação angular relevante.
+O lower bound AP foi válido, mas frouxo. Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, ele nunca excedeu o ótimo, mas apresentou gap médio de \GapLBMedio{}. Esse resultado confirma sua utilidade como referência inferior barata e, ao mesmo tempo, mostra que a redução 3D$\to$2D perde informação angular relevante.
 
 \section{Limitações}
 

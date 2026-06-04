@@ -58,7 +58,7 @@ Os parâmetros usados foram população 100, 100 iterações, $\alpha=1{,}0$, $\
 
 \section{Busca Exaustiva}
 
-A busca exaustiva enumera todas as permutações dos pontos de interesse usando o algoritmo de Heap. Para cada permutação, calcula-se o \textit{makespan} pelo mesmo tensor de custos usado pelas meta-heurísticas. O método retorna o ótimo global, mas seu custo fatorial restringe seu uso. No conjunto de dados deste trabalho, a busca exaustiva foi executada nas 18 instâncias de 10 a 15 pontos.
+A busca exaustiva enumera todas as permutações dos pontos de interesse usando o algoritmo de Heap. Para cada permutação, calcula-se o \textit{makespan} pelo mesmo tensor de custos usado pelas meta-heurísticas. O método retorna o ótimo global, mas seu custo fatorial restringe seu uso. No conjunto de dados deste trabalho, a busca exaustiva foi executada nas \TotalInstanciasComOtimo{} instâncias de 10 a 15 pontos.
 
 \section{Lower Bound por Relaxação AP}
 
@@ -68,7 +68,7 @@ O valor retornado é um limitante inferior: ele não excede o ótimo do TSP-SD-A
 
 \section{Pipeline Experimental}
 
-O pipeline experimental foi executado sobre 30 instâncias sintéticas, com tamanhos 10, 11, 12, 13, 14, 15, 20, 30, 50 e 100 pontos, três variantes por tamanho. Para GA, PSO e ACO, foram usadas 51 sementes, de 0 a 50. A busca exaustiva tem execução determinística e aparece apenas nas 18 instâncias pequenas. O lower bound também é determinístico e foi executado nas 30 instâncias.
+O pipeline experimental foi executado sobre \TotalInstancias{} instâncias sintéticas, com \TotalTamanhosInstancia{} tamanhos e \TotalVariantesPorTamanho{} variantes por tamanho. Para GA, PSO e ACO, foram usadas \TotalSementesGA{} sementes. A busca exaustiva tem execução determinística e aparece apenas nas \TotalInstanciasComOtimo{} instâncias pequenas. O lower bound também é determinístico e foi executado nas \TotalInstancias{} instâncias.
 
 \begin{table}[htbp]
   \centering
@@ -88,4 +88,4 @@ O pipeline experimental foi executado sobre 30 instâncias sintéticas, com tama
   \end{tabularx}
 \end{table}
 
-O conjunto final contém 4638 arquivos de resumo: 1530 para GA, 1530 para PSO, 1530 para ACO, 30 para lower bound e 18 para busca exaustiva. A mesma quantidade de arquivos de evolução e de tempo foi registrada, permitindo analisar qualidade final, trajetória de convergência e custo computacional.
+O conjunto final contém \TotalArquivosResumo{} arquivos de resumo: \TotalExecucoesGA{} para GA, \TotalExecucoesPSO{} para PSO, \TotalExecucoesACO{} para ACO, \TotalExecucoesLB{} para lower bound e \TotalExecucoesBF{} para busca exaustiva. A mesma quantidade de arquivos de evolução e de tempo foi registrada, permitindo analisar qualidade final, trajetória de convergência e custo computacional.

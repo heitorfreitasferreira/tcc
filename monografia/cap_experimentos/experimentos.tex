@@ -1,14 +1,14 @@
 \chapter[Experimentos e Análise dos Resultados]{Experimentos e Análise dos Resultados}
 \label{experimentos}
 
-Este capítulo apresenta a avaliação experimental dos métodos descritos no Capítulo~\ref{proposta}. A análise usa os arquivos estruturados produzidos pela implementação: 4638 resumos, 4638 históricos de evolução e 4638 arquivos de tempo. Os resultados são discutidos em termos de qualidade da solução, tempo computacional, estabilidade entre sementes, significância estatística e limitações metodológicas.
+Este capítulo apresenta a avaliação experimental dos métodos descritos no Capítulo~\ref{proposta}. A análise usa os arquivos estruturados produzidos pela implementação: \TotalArquivosResumo{} resumos, \TotalArquivosEvolucao{} históricos de evolução e \TotalArquivosTempo{} arquivos de tempo. Os resultados são discutidos em termos de qualidade da solução, tempo computacional, estabilidade entre sementes, significância estatística e limitações metodológicas.
 
 \section{Método para a Avaliação}
 \label{metodo}
 
 Todas as execuções otimizam a mesma função objetivo: o \textit{makespan} da rota de patrulhamento. Uma solução factível parte da base, visita cada ponto de interesse exatamente uma vez e retorna à base. A avaliação usa o tensor $G[anterior][atual][proximo]$, que incorpora distância euclidiana e penalidade angular.
 
-As instâncias são sintéticas, com coordenadas no intervalo $[-1,1]$. Foram usados 10 tamanhos de instância: 10, 11, 12, 13, 14, 15, 20, 30, 50 e 100 pontos. Para cada tamanho há três variantes, identificadas por letras (`a', `b' e `c'), totalizando 30 instâncias. GA, PSO e ACO foram executados com 51 sementes em cada instância. A busca exaustiva foi executada nas 18 instâncias de 10 a 15 pontos. O lower bound AP foi executado em todas as 30 instâncias.
+As instâncias são sintéticas, com coordenadas no intervalo $[-1,1]$. Foram usados \TotalTamanhosInstancia{} tamanhos de instância, com \TotalVariantesPorTamanho{} variantes por tamanho, totalizando \TotalInstancias{} instâncias. GA, PSO e ACO foram executados com \TotalSementesGA{} sementes em cada instância. A busca exaustiva foi executada nas \TotalInstanciasComOtimo{} instâncias de 10 a 15 pontos. O lower bound AP foi executado em todas as \TotalInstancias{} instâncias.
 
 As métricas principais são:
 \begin{itemize}
@@ -23,17 +23,7 @@ As métricas principais são:
   \centering
   \caption{Cobertura experimental dos métodos avaliados.}
   \label{tab:cobertura-experimental}
-  \begin{tabular}{lrrr}
-    \toprule
-    Método & Runs & Instâncias & Sementes \\
-    \midrule
-    ACO & 1530 & 30 & 51 \\
-    GA & 1530 & 30 & 51 \\
-    PSO & 1530 & 30 & 51 \\
-    Lower bound & 30 & 30 & 1 \\
-    Busca exaustiva & 18 & 18 & 1 \\
-    \bottomrule
-  \end{tabular}
+  \input{generated/tables/tab-cobertura-experimental.tex}
 \end{table}
 
 \section{Experimentos}
@@ -47,18 +37,7 @@ A busca exaustiva fornece o ótimo global nas instâncias em que foi executada. 
   \caption{Ótimos obtidos por busca exaustiva nas 18 instâncias pequenas.}
   \label{tab:otimos-bf}
   \scriptsize
-  \begin{tabular}{rrrrrr}
-    \toprule
-    Instância & Ótimo & Instância & Ótimo & Instância & Ótimo \\
-    \midrule
-    10a & 8{,}251 & 12a & 9{,}501 & 14a & 11{,}557 \\
-    10b & 7{,}906 & 12b & 9{,}769 & 14b & 11{,}467 \\
-    10c & 9{,}545 & 12c & 10{,}480 & 14c & 11{,}486 \\
-    11a & 9{,}493 & 13a & 10{,}950 & 15a & 9{,}129 \\
-    11b & 8{,}823 & 13b & 11{,}474 & 15b & 12{,}185 \\
-    11c & 10{,}260 & 13c & 10{,}042 & 15c & 12{,}160 \\
-    \bottomrule
-  \end{tabular}
+  \input{generated/tables/tab-otimos-bf.tex}
 \end{table}
 
 \section{Avaliação dos Resultados}
@@ -66,21 +45,13 @@ A busca exaustiva fornece o ótimo global nas instâncias em que foi executada. 
 
 \subsection{Qualidade nas Instâncias com Ótimo Conhecido}
 
-Nas 18 instâncias com busca exaustiva, o ACO apresentou o menor gap médio em relação ao ótimo. A Tabela~\ref{tab:gap-bf} resume os resultados agregados sobre 918 execuções por método nesse subconjunto. O ACO obteve gap médio de 0{,}4296\% e taxa global de acerto de 71{,}79\%. O GA obteve gap médio de 5{,}2814\% e taxa de acerto de 26{,}47\%. O PSO obteve gap médio de 22{,}2915\% e taxa de acerto de 4{,}25\%.
+Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, o ACO apresentou o menor gap médio em relação ao ótimo. A Tabela~\ref{tab:gap-bf} resume os resultados agregados sobre \TotalExecucoesOtimoPorMetodo{} execuções por método nesse subconjunto. O ACO obteve gap médio de \GapMedioOtimoACO{} e taxa global de acerto de \TaxaAcertoOtimoACO{}. O GA obteve gap médio de \GapMedioOtimoGA{} e taxa de acerto de \TaxaAcertoOtimoGA{}. O PSO obteve gap médio de \GapMedioOtimoPSO{} e taxa de acerto de \TaxaAcertoOtimoPSO{}.
 
 \begin{table}[htbp]
   \centering
   \caption{Gap percentual em relação ao ótimo nas instâncias `10a'--`15c'.}
   \label{tab:gap-bf}
-  \begin{tabular}{lrrrrr}
-    \toprule
-    Método & Runs & Gap médio & Gap mín. & Gap máx. & Taxa de acerto \\
-    \midrule
-    ACO & 918 & 0{,}4296\% & 0{,}0000\% & 9{,}4445\% & 71{,}79\% \\
-    GA & 918 & 5{,}2814\% & 0{,}0000\% & 41{,}4267\% & 26{,}47\% \\
-    PSO & 918 & 22{,}2915\% & 0{,}0000\% & 76{,}5549\% & 4{,}25\% \\
-    \bottomrule
-  \end{tabular}
+  \input{generated/tables/tab-gap-bf.tex}
 \end{table}
 
 \begin{figure}[htbp]
@@ -99,25 +70,14 @@ Nas 18 instâncias com busca exaustiva, o ACO apresentou o menor gap médio em r
 
 \subsection{Qualidade nas Instâncias Maiores}
 
-Para instâncias acima de 15 pontos, a busca exaustiva não foi usada como ótimo de referência. A análise passa a comparar as meta-heurísticas entre si e com o lower bound. Nas instâncias de 50 e 100 pontos, o ACO apresentou \textit{makespan} médio substancialmente menor que GA e PSO, como mostra a Tabela~\ref{tab:grandes}. Em `100a', por exemplo, a média do ACO foi 45{,}3528, enquanto GA e PSO obtiveram 110{,}6608 e 136{,}5131, respectivamente.
+Para instâncias acima de 15 pontos, a busca exaustiva não foi usada como ótimo de referência. A análise passa a comparar as meta-heurísticas entre si e com o lower bound. Nas instâncias de 50 e 100 pontos, o ACO apresentou \textit{makespan} médio substancialmente menor que GA e PSO, como mostra a Tabela~\ref{tab:grandes}.
 
 \begin{table}[htbp]
   \centering
   \caption{Melhor e média de makespan nas instâncias de 50 e 100 pontos.}
   \label{tab:grandes}
   \scriptsize
-  \begin{tabular}{lrrrrrr}
-    \toprule
-    Instância & ACO best & ACO média & GA best & GA média & PSO best & PSO média \\
-    \midrule
-    50a & 24{,}6688 & 25{,}6475 & 41{,}0120 & 45{,}3925 & 53{,}7651 & 59{,}7284 \\
-    50b & 26{,}3528 & 27{,}4843 & 42{,}6487 & 48{,}6345 & 57{,}0330 & 64{,}3194 \\
-    50c & 26{,}2372 & 27{,}0062 & 42{,}0122 & 46{,}9438 & 54{,}4114 & 62{,}3455 \\
-    100a & 42{,}6718 & 45{,}3528 & 97{,}5921 & 110{,}6608 & 127{,}4034 & 136{,}5131 \\
-    100b & 45{,}4689 & 48{,}0596 & 97{,}5343 & 110{,}4959 & 126{,}3967 & 135{,}9987 \\
-    100c & 45{,}4858 & 46{,}9487 & 95{,}1632 & 111{,}3243 & 126{,}1838 & 138{,}1908 \\
-    \bottomrule
-  \end{tabular}
+  \input{generated/tables/tab-grandes.tex}
 \end{table}
 
 \begin{figure}[htbp]
@@ -131,45 +91,27 @@ Esse resultado favorece a interpretação de que a construção probabilística 
 
 \subsection{Lower Bound AP}
 
-O lower bound AP foi válido nas 18 instâncias com ótimo conhecido: em todos os casos, o valor do bound foi menor ou igual ao ótimo por busca exaustiva. Entretanto, o bound foi frouxo. O gap médio entre o lower bound e o ótimo foi 51{,}36\%, com mínimo de 40{,}79\% e máximo de 65{,}35\%.
+O lower bound AP foi válido nas \TotalInstanciasComOtimo{} instâncias com ótimo conhecido: em todos os casos, o valor do bound foi menor ou igual ao ótimo por busca exaustiva. Entretanto, o bound foi frouxo. O gap médio entre o lower bound e o ótimo foi \GapLBMedio{}, com mínimo de \GapLBMinimo{} e máximo de \GapLBMaximo{}.
 
 \begin{table}[htbp]
   \centering
   \caption{Resumo do gap entre lower bound AP e ótimo por busca exaustiva.}
   \label{tab:lb-gap}
-  \begin{tabular}{lr}
-    \toprule
-    Métrica & Valor \\
-    \midrule
-    Gap médio LB$\to$BF & 51{,}36\% \\
-    Gap mínimo & 40{,}79\% \\
-    Gap máximo & 65{,}35\% \\
-    Instâncias avaliadas & 18 \\
-    Violações LB $\leq$ BF & 0 \\
-    \bottomrule
-  \end{tabular}
+  \input{generated/tables/tab-lb-gap.tex}
 \end{table}
 
 A frouxidão é esperada: a redução $c'_{j,k}=\min_i G[i][j][k]$ remove parte do contexto angular, escolhendo para cada transição o melhor nó anterior possível. Isso torna o bound barato e válido, mas pouco informativo como aproximação do ótimo do TSP-SD-ATP.
 
 \subsection{Tempo Computacional}
 
-O ganho de qualidade do ACO vem acompanhado de maior custo computacional. Nas instâncias de 100 pontos, o tempo médio de otimização do ACO ficou em torno de 4{,}26 segundos, enquanto o GA ficou entre 36 e 39 milissegundos e o PSO entre 73 e 76 milissegundos. A Tabela~\ref{tab:tempo-100} mostra as razões por instância.
+O ganho de qualidade do ACO vem acompanhado de maior custo computacional. Nas instâncias de 100 pontos, o tempo médio de otimização do ACO ficou em torno de \TempoOtimizacaoACOCemMedioSegundos{}, enquanto a maior média por instância do GA foi \TempoOtimizacaoGAMaxCemMs{} e a do PSO foi \TempoOtimizacaoPSOMaxCemMs{}. A Tabela~\ref{tab:tempo-100} mostra as razões por instância.
 
 \begin{table}[htbp]
   \centering
   \caption{Tempo médio de otimização em instâncias de 100 pontos.}
   \label{tab:tempo-100}
   \scriptsize
-  \begin{tabular}{lrrrrr}
-    \toprule
-    Instância & ACO ms & GA ms & PSO ms & ACO/GA & ACO/PSO \\
-    \midrule
-    100a & 4262{,}06 & 38{,}82 & 76{,}24 & 109{,}78x & 55{,}91x \\
-    100b & 4276{,}55 & 36{,}27 & 75{,}25 & 117{,}89x & 56{,}83x \\
-    100c & 4266{,}55 & 39{,}37 & 73{,}84 & 108{,}37x & 57{,}78x \\
-    \bottomrule
-  \end{tabular}
+  \input{generated/tables/tab-tempo-100.tex}
 \end{table}
 
 \begin{figure}[htbp]
@@ -208,9 +150,9 @@ A variabilidade entre sementes também difere entre os métodos. O ACO apresento
 
 \subsection{Análise Estatística}
 
-A comparação estatística seguiu Demšar \cite{demsar2006statistical}. Para cada uma das 30 instâncias, foi calculada a mediana do makespan por método; em seguida, os métodos foram ranqueados por instância. O teste de Friedman com correção de Iman--Davenport rejeitou a hipótese nula de equivalência entre os métodos: $F(2,58)=293{,}2222$, com $p=4{,}710129\times10^{-31}$.
+A comparação estatística seguiu Demšar \cite{demsar2006statistical}. Para cada uma das \TotalInstancias{} instâncias, foi calculada a mediana do makespan por método; em seguida, os métodos foram ranqueados por instância. O teste de Friedman com correção de Iman--Davenport rejeitou a hipótese nula de equivalência entre os métodos: $F(\FriedmanDFOne{},\FriedmanDFTwo{})=\FriedmanStatistic{}$, com $p=\PValorImanDavenport{}$.
 
-Os ranks médios foram ACO=1{,}1000, GA=1{,}9000 e PSO=3{,}0000. O pós-teste de Nemenyi, com diferença crítica $CD=0{,}6050$ para $\alpha=0{,}05$, indicou diferença significativa nos três pares: ACO--GA, ACO--PSO e GA--PSO. O teste de Wilcoxon pareado com correção de Bonferroni--Holm também rejeitou a hipótese nula nos três pares.
+Os ranks médios foram ACO=\RankMedioACO{}, GA=\RankMedioGA{} e PSO=\RankMedioPSO{}. O pós-teste de Nemenyi, com diferença crítica $CD=\CDNemenyi{}$ para $\alpha=0{,}05$, indicou diferença significativa nos três pares: ACO--GA, ACO--PSO e GA--PSO. O teste de Wilcoxon pareado com correção de Bonferroni--Holm também rejeitou a hipótese nula nos três pares.
 
 \begin{figure}[htbp]
   \centering
