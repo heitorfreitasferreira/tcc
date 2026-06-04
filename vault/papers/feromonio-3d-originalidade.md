@@ -77,7 +77,7 @@ Problemas com dependência de sequência existem na literatura, mas são resolvi
 
 Problemas de scheduling (job shop, flow shop) frequentemente usam formulações com 3 índices (máquina × job × posição). O dorigo2004book lista scheduling como domínio de aplicação. Se algum paper de ACO para scheduling usou feromônio $\tau(m, j, p)$ para representar "máquina m processa job j na posição p", isso seria um precedente estrutural para $\tau(i,j,k)$.
 
-**Ação**: buscar `"ant colony" scheduling "pheromone" three-index` ou similar.
+**Status**: **Não investigado.** Esta avenida foi identificada como risco real mas não foi coberta pelas buscas realizadas. As APIs de busca retornaram erros de rate-limiting e as consultas usaram termos TSP-cêntricos. Fica como limitação conhecida desta verificação.
 
 ### 2. ACO para VRP com time windows
 
@@ -165,8 +165,10 @@ O claim deve ser **qualificado**, não absoluto. Três camadas, da mais segura p
 - [x] Buscar `ant colony scheduling three-index pheromone` — OpenAlex retornou CPACO 2013 (task allocation)
 - [x] Buscar `ant colony time-dependent TSP pheromone` — não encontrado nos resultados
 - [x] Buscar `ant colony three dimensional pheromone` no OpenAlex — 6.993 resultados, 4 precedentes identificados
-- [x] Adicionar BibTeX e notas no vault para: wang2013aco, wang2015aco, geng2025mdaco
+- [x] Adicionar BibTeX e notas no vault para: wang2013aco, wang2015aco, geng2025mdaco, starzec2026motsp
 - [x] Citar os precedentes no parágrafo do P32 (qualificação do claim)
+- [x] Documentar limitação do gap de scheduling
+- [x] Adicionar nota de rodapé sobre escopo e limitações da busca no LaTeX
 
 ## Conexões
 

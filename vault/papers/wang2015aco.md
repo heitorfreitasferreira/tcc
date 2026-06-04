@@ -5,7 +5,7 @@ year: 2016
 doi: "10.1109/tevc.2015.2457437"
 bibtex_key: wang2015aco
 tags: [aco, network-coding, feromonio-3d]
-status: nao-lido
+status: resumo-lido
 rating: 3
 ---
 

@@ -5,7 +5,7 @@ year: 2025
 doi: "10.1109/ccdc65474.2025.11090784"
 bibtex_key: geng2025mdaco
 tags: [aco, vrp, feromonio-3d]
-status: nao-lido
+status: resumo-lido
 rating: 2
 ---
 

@@ -5,7 +5,7 @@ year: 2013
 doi: "10.1109/cc.2013.6488841"
 bibtex_key: wang2013aco
 tags: [aco, task-allocation, feromonio-3d]
-status: nao-lido
+status: resumo-lido
 rating: 2
 ---
 
