@@ -81,7 +81,7 @@ vault/
 
 ### Claims e Evidências
 
-- `vault/writing/claim-evidence-matrix.md` é a fonte canônica dos claims.
+- `vault/writing/planejamento/claim-evidence-matrix.md` é a fonte canônica dos claims.
 - Todo claim forte deve ter `ID`, força, evidência primária e apoio no vault.
 - Claims metodológicos apontam para `src/`; claims experimentais apontam para `src/data/results/` ou scripts de análise.
 - Notas de paper podem usar `claim_support` para listar IDs da matriz, mas a matriz continua sendo a fonte de verdade.

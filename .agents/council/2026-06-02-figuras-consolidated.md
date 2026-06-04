@@ -1,7 +1,7 @@
 # Council Report: Figures/Tables Plan Review
 
 **Date:** 2026-06-02
-**Target:** `vault/writing/figuras-tabelas-monografia.md`
+**Target:** `vault/writing/planejamento/figuras-tabelas-monografia.md`
 **Mode:** validate (2 judges)
 
 ## Verdict: FAIL (HIGH confidence)
@@ -110,8 +110,8 @@
 
 ## Files Reviewed
 
-- `vault/writing/figuras-tabelas-monografia.md` (target)
-- `vault/writing/roadmap-monografia.md` (acceptance criteria)
+- `vault/writing/planejamento/figuras-tabelas-monografia.md` (target)
+- `vault/writing/planejamento/roadmap-monografia.md` (acceptance criteria)
 - `monografia/figs/*` (artifact inventory)
 - `scripts/consolidate_results.py` (pipeline)
 - `scripts/analise-estatistica.py` (missing)

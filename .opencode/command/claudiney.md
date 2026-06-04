@@ -13,13 +13,13 @@ You are running the /claudiney command to register advisor feedback about the mo
    - \`src/data/results/\` — check if relevant experiment data exists
    - \`vault/\` — read notes in \`vault/writing/\`, \`vault/papers/\`, \`vault/areas/\` for context
    - \`monografia/\` — search .tex files for current text on the topic
-   - \`vault/writing/claim-evidence-matrix.md\` — check if existing claims are affected
+    - \`vault/writing/planejamento/claim-evidence-matrix.md\` — check if existing claims are affected
 
 4. **Edit the note** — fill in:
    - YAML \`title:\` with a short PT-BR description
    - YAML \`priority:\` based on impact (alta/media/baixa)
    - YAML \`target_chapter:\` which chapter is affected (fundamentacao/proposta/experimentos/introducao/conclusao/todos)
-   - YAML \`evidence_layer:\` where the truth lives (codigo/dados/literatura/vault/monografia) — use the hierarchy from \`vault/writing/review-roadmap.md\`
+    - YAML \`evidence_layer:\` where the truth lives (codigo/dados/literatura/vault/monografia) — use the hierarchy from \`vault/writing/planejamento/review-roadmap.md\`
    - YAML \`correction_layers:\` which layers the fix will likely touch
    - YAML \`claim_ids:\` if the feedback maps to specific claim IDs from the claim-evidence-matrix
    - Section "Solicitação Original" with a clear restatement of the feedback

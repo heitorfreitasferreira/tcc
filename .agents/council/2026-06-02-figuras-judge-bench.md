@@ -1,6 +1,6 @@
 # Bench Judge — Literature Benchmark Analyst
 
-**Target:** `vault/writing/figuras-tabelas-monografia.md`
+**Target:** `vault/writing/planejamento/figuras-tabelas-monografia.md`
 **Date:** 2026-06-02
 **Role:** Literature Benchmark Analyst — evaluates the figure/table plan against what comparable TSP metaheuristic comparison papers publish.
 

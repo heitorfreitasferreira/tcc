@@ -79,12 +79,12 @@ Escrever em português acadêmico, com foco no cenário de patrulha com drones e
 | Figuras/tabelas mínimas de resultados | Criadas antes de Experimentos | `scripts/`, `monografia/figs/` |
 | Protocolo estatístico final | Fechado antes de Experimentos | [[analysis-methodology]] |
 | Pipeline de métricas TeX auditáveis | Criado antes de Experimentos, Resumo, Abstract e Conclusão | `scripts/gerar-metricas-monografia.py`, `monografia/generated/` |
-| Gate formal anti-alucinação | Executado antes da versão final e antes de qualquer entrega para banca | `scripts/check-monografia.sh`, `vault/writing/citation-safety.md`, [[claim-evidence-matrix]] |
+| Gate formal anti-alucinação | Executado antes da versão final e antes de qualquer entrega para banca | `scripts/check-monografia.sh`, `vault/writing/planejamento/citation-safety.md`, [[claim-evidence-matrix]] |
 | Auditoria bibliográfica pós-council | Referências centrais com PDF/nota validada; periféricas classificadas como download manual, análise posterior ou descarte | `vault/papers/index.md`, seção [[#Correções Bibliográficas Pós-Auditoria]] |
 | **Resumo + Abstract** | Escritos antes da introdução, revisados por último | [[validacao-modelo-facom]] |
 | **Capa + Folha de Rosto** | Dados preenchidos antes da compilação final | autor, orientador, título, data |
 | **Lista de Siglas** | Levantamento antes da escrita de qualquer capítulo | `vault/siglas/` (notas individuais) + `vault/bases/siglas.base` |
-| **Apêndices** | Estrutura definida antes de Experimentos | `vault/writing/apendices.md` |
+| **Apêndices** | Estrutura definida antes de Experimentos | `vault/writing/planejamento/apendices.md` |
 
 ## Protocolo de Validação Antes de Escrever
 
@@ -237,7 +237,7 @@ O comando deve retornar:
 
 ### Política de Segurança de Citações
 
-Criar `vault/writing/citation-safety.md` para classificar cada referência citada na monografia.
+Criar `vault/writing/planejamento/citation-safety.md` para classificar cada referência citada na monografia.
 
 | Classe | Critério | Uso permitido |
 |---|---|---|
@@ -274,7 +274,7 @@ O relatório do gate deve listar itens que nenhum script decide sozinho:
 
 ### Critério de Aprovação
 
-Antes da versão final, o gate anti-alucinação deve produzir um relatório arquivado no vault, por exemplo `vault/writing/validacao-anti-alucinacao.md`, contendo:
+Antes da versão final, o gate anti-alucinação deve produzir um relatório arquivado no vault, por exemplo `vault/writing/planejamento/validacao-anti-alucinacao.md`, contendo:
 
 | Seção | Conteúdo mínimo |
 |---|---|
@@ -392,20 +392,20 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 
 | ID | Tarefa | Saída esperada | Prioridade |
 |---|---|---|---|
-| P1 | Criar matriz claim-evidência | Nota `vault/writing/claim-evidence-matrix.md` | Concluída |
+| P1 | Criar matriz claim-evidência | Nota `vault/writing/planejamento/claim-evidence-matrix.md` | Concluída |
 | P2 | Atualizar índice de papers | `vault/papers/index.md` com contagem e categorias atuais | Concluída |
-| P3 | Criar glossário terminológico | Nota `vault/writing/glossario-monografia.md` | Concluída |
+| P3 | Criar glossário terminológico | Nota `vault/writing/planejamento/glossario-monografia.md` | Concluída |
 | P4 | Fechar protocolo estatístico | Validado em [[analysis-methodology]]; `scripts/analise-estatistica.py` corrigido; `cd-diagram.{svg,png}` regenerado | Concluída |
-| P5 | Listar figuras/tabelas finais | Nota `vault/writing/figuras-tabelas-monografia.md` | Concluída |
-| P6 | Mapear cada capítulo para arquivos `.tex` | Nota `vault/writing/mapa-capitulos-tex.md` | Concluída |
-| P7 | Auditar divergências entre `src/`, `src/data/` e `vault/` | Nota `vault/writing/auditoria-codigo-dados-vault.md` | Concluída |
+| P5 | Listar figuras/tabelas finais | Nota `vault/writing/planejamento/figuras-tabelas-monografia.md` | Concluída |
+| P6 | Mapear cada capítulo para arquivos `.tex` | Nota `vault/writing/planejamento/mapa-capitulos-tex.md` | Concluída |
+| P7 | Auditar divergências entre `src/`, `src/data/` e `vault/` | Nota `vault/writing/auditorias/auditoria-codigo-dados-vault.md` | Concluída |
 | P8 | Implementar e validar lower bound para instâncias grandes (n ≥ 15) | Implementação completa: algoritmo Hungarian O(n³) em Go puro, redução 3D→2D, comando `tcc optimize lowerbound`, 30/30 instâncias executadas, figuras/overlays geradas, integração nos scripts de análise. Bound validado contra brute-force (10a: AP=4.86 ≤ BF=8.25). Documentado em [[lower-bounds]], [[justificativa-lowerbound]] | Concluída |
 | P9 | Estudar efeito da codificação na comparação justa entre métodos | Concluído em [[auditoria-codificacao-metodos]]. GA usa permutação direta; PSO usa random keys; ACO usa transições 3D. Explicitar como ameaça à validade, sem nova implementação nesta monografia. | Concluída |
 | P10 | Análise de sensibilidade a hiperparâmetros | Concluída em [[auditoria-hiperparametros]] como limitação/trabalho futuro. Não bloqueia a escrita; declarar que não houve tuning sistemático. | Concluída como limitação |
-| P11 | Escrever Resumo (pt-BR) e Abstract (en) | Nota `vault/writing/resumo-abstract.md` com texto final de 150–500 palavras cada, destacando objetivo, método, resultados e conclusões | Pendente |
+| P11 | Escrever Resumo (pt-BR) e Abstract (en) | Nota `vault/writing/planejamento/resumo-abstract.md` com texto final de 150–500 palavras cada, destacando objetivo, método, resultados e conclusões | Pendente |
 | P12 | Preencher Capa e Folha de Rosto | Dados do autor, título definitivo, orientador, área de concentração, data em `monografia/` (via template LaTeX) | Pendente |
 | P13 | Levantar e definir Lista de Siglas | Notas individuais em `vault/siglas/` (24 gerenciadas) + notas existentes em `vault/projeto/` e `vault/areas/` com tag `siglas` (GA, PSO, ACO, BF, TSP, TSP-SD-ATP). Base Obsidian em `vault/bases/siglas.base`. Script `scripts/gerar-lista-siglas.py` (scan/generate/validate). 30 siglas catalogadas (15 incluir, 5 excluir, 10 pendentes). `monografia/abrev/Abreviaturas.tex` gerado com 15 entradas | Concluída |
-| P14 | Definir estrutura dos Apêndices | Nota `vault/writing/apendices.md` listando o que vai em cada apêndice (resultados completos, pseudocódigo, instâncias exemplo) | Pendente |
+| P14 | Definir estrutura dos Apêndices | Nota `vault/writing/planejamento/apendices.md` listando o que vai em cada apêndice (resultados completos, pseudocódigo, instâncias exemplo) | Pendente |
 | P15 | Verificar formatação ABNT no template LaTeX | Conferir citações longas (>3 linhas), alíneas, remissões internas e ambiente de siglas na classe `ppgco.cls` | Pendente |
 | P16 | Corrigir exatidão bibliográfica crítica | Ajustar autores de [[gpaco2025]] (Lin, Mei, Zhangjie) e [[neufaco2025]] (Tran et al.), qualificar leituras seletivas em livros longos (applegate2006traveling, dorigo2004book → lido-parcial) e remover duplicata `haroun2015.pdf` | Concluída |
 | P17 | Triar PDFs faltantes por decisão editorial | Para cada referência sem PDF íntegro: baixar manualmente se central, marcar como análise posterior se útil para futuro, ou descartar do escopo imediato se periférica | Pendente |
@@ -413,10 +413,10 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P19 | Criar pipeline de métricas TeX auditáveis | Script `scripts/gerar-metricas-monografia.py` gerando `monografia/generated/metrics.tex`, `monografia/generated/tables/*.tex` e `manifest.json` a partir de `src/data/results/` | Concluída |
 | P20 | Substituir valores quantitativos hardcoded | Experimentos, Resumo, Abstract, Introdução e Conclusão usam macros/fragmentos gerados para valores experimentais, estatísticos e tabulares | Concluída |
 | P21 | Adicionar verificação de atualização dos artefatos gerados | Modo `--check` ou comando equivalente falha se `monografia/generated/` estiver desatualizado em relação aos dados/scripts | Concluída |
-| P22 | Criar política de segurança de citações | Nota `vault/writing/citation-safety.md` classificando cada referência citada como `segura`, `condicional`, `frágil` ou `bloqueada` | Pendente |
+| P22 | Criar política de segurança de citações | Nota `vault/writing/planejamento/citation-safety.md` classificando cada referência citada como `segura`, `condicional`, `frágil` ou `bloqueada` | Pendente |
 | P23 | Implementar gate anti-alucinação | Script `scripts/check-monografia.sh` ou alvo `make check-monografia` validando LaTeX/BibTeX, citações, figuras, placeholders, métricas, claims bloqueados e números hardcoded | Concluída |
 | P24 | Vincular claims fortes ao texto | Comentários `% claim: <ID>` ou mecanismo equivalente nos trechos fortes da monografia, conectando `.tex` à [[claim-evidence-matrix]] | Pendente |
-| P25 | Gerar relatório final de validação anti-alucinação | Nota `vault/writing/validacao-anti-alucinacao.md` com resultado PASS/WARN/FAIL, citações, claims, números, artefatos e decisões humanas | Pendente |
+| P25 | Gerar relatório final de validação anti-alucinação | Nota `vault/writing/planejamento/validacao-anti-alucinacao.md` com resultado PASS/WARN/FAIL, citações, claims, números, artefatos e decisões humanas | Pendente |
 
 ## Protocolo Para Cada Agente Escritor
 
@@ -424,7 +424,7 @@ Antes de escrever:
 
 1. Ler este roadmap.
 2. Ler o código e/ou dados brutos relacionados ao capítulo em `src/` e `src/data/`.
-3. Ler a nota-base do capítulo em `vault/writing/`.
+3. Ler a nota-base do capítulo em `vault/writing/capitulos/`.
 4. Ler as notas de projeto e área exigidas para o capítulo.
 5. Separar claims em três classes: conceituais, metodológicos e experimentais.
 6. Verificar se cada claim metodológico tem fonte no código.

@@ -40,7 +40,7 @@ Esta auditoria compara as notas centrais do `vault/` com a fonte determinística
 | Dados | `src/data/*.points`, `src/data/*.graph`, `src/data/results/{summary,evolution,timing}/` | Instâncias e resultados brutos |
 | Scripts | `scripts/analise-estatistica.py`, `scripts/gerar-graficos-estatisticos.py`, `scripts/gerar-analises.sh` | Análise estatística e geração de figuras |
 | Figuras | `monografia/figs/` | Artefatos visuais disponíveis |
-| Vault | `vault/projeto/*.md`, `vault/writing/*.md` | Síntese intermediária; não é evidência primária |
+| Vault | `vault/projeto/*.md`, `vault/writing/**/*.md` | Síntese intermediária; não é evidência primária |
 
 ## Achados Metodológicos Confirmados
 

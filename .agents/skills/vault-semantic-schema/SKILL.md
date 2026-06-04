@@ -12,7 +12,7 @@ Use esta skill para criar, revisar ou corrigir notas do `vault/` seguindo o sche
 - Convenções gerais: `vault/opencode-vault.md`
 - Template de paper: `vault/templates/paper-note.md`
 - Template opcional de claim: `vault/templates/claim-note.md`
-- Registro canonico de claims: `vault/writing/claim-evidence-matrix.md`
+- Registro canonico de claims: `vault/writing/planejamento/claim-evidence-matrix.md`
 - Bases de consulta: `vault/bases/papers.base` e `vault/bases/claims.base`
 - Importador de BibTeX: `scripts/import-bib-to-vault.sh`
 
@@ -104,7 +104,7 @@ Notas de projeto devem apontar para arquivos reais em `src/` quando descrevem co
 
 ### Notas De Writing
 
-Use para `vault/writing/*.md`:
+Use para `vault/writing/**/*.md` (inclui subdiretórios):
 
 ```yaml
 ---

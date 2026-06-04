@@ -51,7 +51,7 @@ Mapeamento por caminho:
 - `vault/papers/*.md`: `tipo/paper`
 - `vault/areas/*.md`: `tipo/area`
 - `vault/projeto/*.md`: `tipo/projeto`
-- `vault/writing/*.md`: `tipo/writing`
+- `vault/writing/**/*.md`: `tipo/writing`
 - `*/index.md`: `tipo/index`
 - `vault/templates/*.md`: `tipo/template`
 
@@ -172,7 +172,7 @@ Regras rapidas:
 
 ### Forca Da Evidencia
 
-Use especialmente em `writing/claim-evidence-matrix.md`, auditorias e notas de resultados:
+Use especialmente em `writing/planejamento/claim-evidence-matrix.md`, auditorias e notas de resultados:
 
 ```yaml
 tags:

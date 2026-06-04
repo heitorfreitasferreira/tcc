@@ -12,7 +12,7 @@ created: 2026-06-03
 # Validação do Roadmap vs. Modelo FACOM
 
 Fonte: `modelo_de_monografia_da_facom.pdf` (FACOM/UFU, abnTeX2)
-Objeto: `vault/writing/roadmap-monografia.md`
+Objeto: `vault/writing/planejamento/roadmap-monografia.md`
 
 ## Estrutura FACOM vs. Roadmap Atual
 

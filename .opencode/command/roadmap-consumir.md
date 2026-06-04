@@ -40,7 +40,7 @@ If verdict is FAIL or WARN with actionable issues, report to the user and stop. 
 
 ## Fase 5: Marcar no roadmap
 
-1. Edit `vault/writing/roadmap-monografia.md`
+1. Edit `vault/writing/planejamento/roadmap-monografia.md`
 2. Change status from `Pendente` to `Concluída`
 3. Update `updated` in frontmatter to today
 

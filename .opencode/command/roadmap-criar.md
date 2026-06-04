@@ -18,7 +18,7 @@ Continue asking until you have all three pieces.
 
 ### 2. Determinar o próximo ID
 
-1. Read `vault/writing/roadmap-monografia.md`
+1. Read `vault/writing/planejamento/roadmap-monografia.md`
 2. Find all `| P<number>` rows in the `## Tarefas Preparatórias Para Agentes` section
 3. Get the highest P number, increment by 1
 4. If no P rows exist, start at P1
@@ -38,10 +38,10 @@ Show the user what was added and suggest:
 ## Pacote de Commit
 
 ### Arquivo alterado
-- vault/writing/roadmap-monografia.md — adicionado P<N>: <título>
+- vault/writing/planejamento/roadmap-monografia.md — adicionado P<N>: <título>
 
 ### Commands
-git add vault/writing/roadmap-monografia.md
+git add vault/writing/planejamento/roadmap-monografia.md
 git diff --cached
 git commit -m "roadmap: adiciona P<N> — <título>"
 ```
