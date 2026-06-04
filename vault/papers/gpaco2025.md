@@ -1,6 +1,6 @@
 ---
 title: "Automated Design of State Transition Rules in Ant Colony Optimization by Genetic Programming"
-authors: [Liu, Xiao, Chen, Yu, Zhang, Meng]
+authors: [Lin, Bo-Cheng, Mei, Yi, Zhang, Mengjie]
 year: 2025
 doi: "10.1007/s12293-025-00435-9"
 bibtex-key: gpaco2025

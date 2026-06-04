@@ -5,7 +5,7 @@ year: 2004
 doi: ""
 bibtex-key: dorigo2004book
 tags: [aco survey book]
-status: lido
+status: lido-parcial
 rating: 5
 pdf: "papers/pdfs/dorigo2004book.pdf"
 ---

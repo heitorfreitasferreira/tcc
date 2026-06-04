@@ -6,7 +6,7 @@ doi: "10.1515/9781400841103"
 bibtex-key: applegate2006traveling
 pdf: "papers/pdfs/applegate2006traveling.pdf"
 tags: [tsp]
-status: lido
+status: lido-parcial
 rating: 5
 ---
 
