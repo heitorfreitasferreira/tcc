@@ -3,6 +3,7 @@ title: "MAX-MIN Ant System"
 authors: [Stützle, Thomas, Hoos, Holger H.]
 year: 2000
 doi: "10.1016/S0167-739X(00)00043-1"
+bibtex_key: stutzle2000mmas
 bibtex-key: stutzle2000mmas
 tags: [aco tsp]
 status: lido
@@ -27,7 +28,7 @@ Apresenta o MAX-MIN Ant System (MMAS), uma das variantes ACO mais bem-sucedidas.
 
 ## Relevância para o TCC
 
-Justifica a escolha do MMAS como variante ACO, especialmente relevante para instâncias grandes ou com muitos ótimos locais (rTSP). Os limites de feromônio são a principal inovação para balanceamento exploração/explotation.
+O código implementa Ant System (todas as formigas depositam, sem bounds), e não MMAS. Este artigo é referência para possíveis trabalhos futuros com limites de feromônio e depósito seletivo, e não descreve a implementação atual.
 
 ## Métodos e Abordagens
 
@@ -51,9 +52,9 @@ Justifica a escolha do MMAS como variante ACO, especialmente relevante para inst
 - MMAS introduz três inovações simples mas eficazes: (1) apenas a melhor formiga deposita feromônio, (2) limites [τ_min, τ_max] para evitar estagnação, (3) inicialização em τ_max para exploração máxima
 - O mecanismo de limites de feromônio é a principal contribuição e é amplamente adotado em implementações ACO modernas
 - A análise de fitness-distance correlation (FDC) para TSP e QAP mostra que a correlação entre qualidade e distância do ótimo justifica a exploração das melhores soluções
-- Para o TCC, MMAS é a variante ACO mais adequada para o rTSP, pois instâncias grandes e complexas se beneficiam dos limites de feromônio para evitar convergência prematura
-- A fórmula τ_max = 1/(ρ·L_best) e τ_min = τ_max / (2n) é implementada diretamente no código ACO do TCC
-- O artigo mostra que MMAS combinado com busca local 2-opt atinge resultados competitivos com ACS, validando a escolha de MMAS+2-opt para o TCC
+- MMAS pode ser relevante para trabalhos futuros no rTSP, pois instâncias grandes e complexas se beneficiariam dos limites de feromônio para evitar convergência prematura
+- O código do TCC implementa Ant System (todas as formigas depositam, sem bounds de feromônio); as fórmulas τ_max e τ_min do MMAS não estão implementadas
+- O artigo mostra que MMAS combinado com busca local 2-opt atinge resultados competitivos com ACS, o que motiva testar MMAS como trabalho futuro
 
 ## Citações-chave
 

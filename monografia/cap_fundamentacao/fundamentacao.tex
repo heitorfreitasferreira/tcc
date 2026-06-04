@@ -6,7 +6,7 @@ Este capítulo apresenta os conceitos necessários para compreender a formulaç�
 \section{Problema do Caixeiro Viajante}
 \label{sec:tsp}
 
-O Problema do Caixeiro Viajante define a busca por um ciclo de menor custo que visita cada cidade exatamente uma vez e retorna à cidade inicial. Apesar da formulação simples, o TSP ocupa posição central em otimização combinatória por combinar dificuldade computacional, relevância prática e grande variedade de técnicas de solução \cite{lawler1985traveling,applegate2006traveling}. A versão de decisão do problema é NP-completa \cite{garey1979computers}.
+O Problema do Caixeiro Viajante define a busca por um ciclo de menor custo que visita cada cidade exatamente uma vez e retorna à cidade inicial. Apesar da formulação simples, o TSP ocupa posição central em otimização combinatória por combinar dificuldade computacional, relevância prática e grande variedade de técnicas de solução \cite{applegate2006traveling}. A versão de decisão do problema é NP-completa \cite{garey1979computers}.
 
 Em uma instância com $n$ nós, fixada a origem, existem $(n-1)!$ permutações possíveis para a ordem de visita. A busca exaustiva é, portanto, apropriada apenas para instâncias pequenas. Para instâncias maiores, heurísticas e meta-heurísticas buscam soluções de boa qualidade sem percorrer todo o espaço de soluções. A heurística Lin--Kernighan, por exemplo, tornou-se uma referência histórica para o TSP por explorar trocas de arestas de forma eficiente \cite{lin1973effective}.
 
@@ -71,7 +71,7 @@ Clerc \cite{clerc2000discretepso} formalizou uma versão discreta do PSO para pe
 \section{Otimização por Colônia de Formigas}
 \label{sec:aco}
 
-A Otimização por Colônia de Formigas modela a construção incremental de soluções por agentes que combinam trilhas de feromônio e informação heurística \cite{dorigo1996ant}. O TSP foi uma das primeiras aplicações de referência da ACO \cite{dorigo1997ant}. Dorigo e Stützle \cite{dorigo2004book} apresentam o framework da meta-heurística, enquanto Stützle e Hoos \cite{stutzle2000mmas} propõem o MAX-MIN Ant System, que controla a estagnação por limites nos níveis de feromônio.
+A Otimização por Colônia de Formigas modela a construção incremental de soluções por agentes que combinam trilhas de feromônio e informação heurística \cite{dorigo1996ant}. O TSP foi uma das primeiras aplicações de referência da ACO \cite{dorigo1997ant}. Dorigo e Stützle \cite{dorigo2004book} apresentam o framework da meta-heurística e suas variantes canônicas (Ant System, ACS, MMAS). A implementação deste trabalho baseia-se no Ant System original: todas as formigas depositam feromônio ao final de cada iteração, proporcionalmente ao inverso do custo da rota construída.
 
 No TSP clássico, o feromônio costuma ser associado a arestas. No TSP-SD-ATP, a decisão de visitar o próximo nó depende da tripleta anterior--atual--próximo. Por isso, a implementação deste trabalho usa feromônio tridimensional $\tau_{i,j,k}$ e informação heurística $\eta_{i,j,k}=1/c_{i,j,k}$. Essa escolha preserva a estrutura da função objetivo, mas aumenta o espaço de parâmetros de feromônio em relação a uma ACO bidimensional.
 

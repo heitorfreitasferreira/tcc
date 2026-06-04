@@ -3,6 +3,7 @@ title: "Ant System: Optimization by a Colony of Cooperating Agents"
 authors: [Dorigo, Marco]
 year: 1996
 doi: "10.1109/3477.484436"
+bibtex_key: dorigo1996ant
 bibtex-key: dorigo1996ant
 tags: [aco metaheuristic]
 status: lido
@@ -29,7 +30,7 @@ O artigo fundacional do Ant System (AS) propõe um novo paradigma computacional 
 
 ## Relevância para o TCC
 
-O ACO é um dos três métodos implementados no TCC para comparação sobre TSP/rTSP. Este artigo estabelece a base conceitual do Ant System, que evoluiu para o Ant Colony System ([[dorigo1997ant]]) efetivamente usado no código de otimização. A capacidade do AS de lidar com ATSP é particularmente relevante para cenários de patrulha com drones, onde assimetrias podem surgir de vento, terreno ou limites operacionais.
+O código do TCC implementa o Ant System original (todas as formigas depositam feromônio, sem bounds), com adaptação para feromônio tridimensional $\tau_{i,j,k}$ exigida pelo TSP-SD-ATP. Este artigo estabelece a base conceitual do Ant System e é a referência primária para descrever o método na monografia. A capacidade do AS de lidar com ATSP é particularmente relevante para cenários de patrulha com drones, onde assimetrias podem surgir de vento, terreno ou limites operacionais.
 
 ## Métodos e Abordagens
 

@@ -3,6 +3,7 @@ title: "Ant Colonies for the Travelling Salesman Problem"
 authors: [Dorigo, Marco]
 year: 1997
 doi: "10.1016/S0303-2647(97)01708-5"
+bibtex_key: dorigo1997ant
 bibtex-key: dorigo1997ant
 tags: [tsp]
 status: lido
@@ -29,7 +30,7 @@ O artigo apresenta o Ant Colony System (ACS), uma evolução significativa do An
 
 ## Relevância para o TCC
 
-O ACS é a versão do ACO implementada no código de otimização do TCC (referenciada como "aco" nos experimentos). O artigo mostra que o ACS encontra soluções de alta qualidade para TSP com complexidade O(n²·t), diretamente comparável aos outros métodos (GA, PSO) do estudo. A capacidade de lidar com TSP assimétrico é relevante para cenários de patrulha onde custos de deslocamento podem variar com direção (vento, elevação). As listas candidatas são uma técnica de otimização prática para instâncias maiores.
+O código do TCC implementa Ant System (todas as formigas depositam, sem bounds de feromônio), e não ACS. Este artigo é referência para a fundamentação teórica do ACO e para possíveis trabalhos futuros com ACS. A capacidade de lidar com TSP assimétrico documentada no artigo é relevante para cenários de patrulha onde custos de deslocamento podem variar com direção (vento, elevação).
 
 ## Métodos e Abordagens
 
