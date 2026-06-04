@@ -165,8 +165,8 @@ O claim deve ser **qualificado**, não absoluto. Três camadas, da mais segura p
 - [x] Buscar `ant colony scheduling three-index pheromone` — OpenAlex retornou CPACO 2013 (task allocation)
 - [x] Buscar `ant colony time-dependent TSP pheromone` — não encontrado nos resultados
 - [x] Buscar `ant colony three dimensional pheromone` no OpenAlex — 6.993 resultados, 4 precedentes identificados
-- [ ] Adicionar BibTeX e notas no vault para: wang2013cpaco, wang2015multidim, mdaco2025, starzec2026motsp
-- [ ] Citar os precedentes no parágrafo do P32 (qualificação do claim)
+- [x] Adicionar BibTeX e notas no vault para: wang2013aco, wang2015aco, geng2025mdaco
+- [x] Citar os precedentes no parágrafo do P32 (qualificação do claim)
 
 ## Conexões
 
