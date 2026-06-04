@@ -13,14 +13,14 @@ properties:
   formula.tem_uso:
     displayName: Em Uso
   ocorrencias_ac:
-    displayName: "\U0001F4CB \\ac"
+    displayName: 📋 \ac
   ocorrencias_texto:
-    displayName: "\U0001F4DD Texto"
+    displayName: 📝 Texto
   arquivos_ac:
     displayName: Arquivos
 views:
   - type: table
-    name: "Todas as Siglas"
+    name: Todas as Siglas
     order:
       - file.name
       - definicao
@@ -30,7 +30,7 @@ views:
       - ocorrencias_texto
       - arquivos_ac
   - type: table
-    name: "Incluir na Lista Final"
+    name: Incluir na Lista Final
     filters:
       and:
         - incluir == "sim"
@@ -42,7 +42,7 @@ views:
       - ocorrencias_texto
       - arquivos_ac
   - type: table
-    name: "Pendentes de Decisao"
+    name: Pendentes de Decisao
     filters:
       and:
         - incluir != "sim"
@@ -54,7 +54,7 @@ views:
       - ocorrencias_ac
       - ocorrencias_texto
   - type: table
-    name: "Excluidas"
+    name: Excluidas
     filters:
       and:
         - incluir == "nao"
