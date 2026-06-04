@@ -96,21 +96,20 @@ bash scripts/import-bib-to-vault.sh
 Verify the note was created at `vault/papers/<key>.md`.
 
 ### Step 6 — Download PDF (when available)
-After importing, attempt to download the PDF:
+Use the batch script (validates with `pdfinfo`, normalizes `papers/pdfs/<bibtex-key>.pdf`):
 ```bash
-mkdir -p vault/papers/pdfs
+bash scripts/download-pdfs.sh --dry-run --min-rating 4          # prévia
+bash scripts/download-pdfs.sh --rename-only                   # renomear PDFs válidos já no vault
+bash scripts/download-pdfs.sh --limit 10 --min-rating 4 --use-scihub
+bash scripts/download-pdfs.sh --keys toaza2023review,larranaga1999ga
 ```
-**Primary method** — Sci-Hub: use `scihub_search_scihub_by_doi` to find the URL, then `scihub_download_scihub_pdf` to save to `vault/papers/pdfs/<bibtex-key>.pdf`.
+Sources: Unpaywall → Semantic Scholar → OpenAlex → Sci-Hub (`--use-scihub`, opcional).
 
-**Fallback (Sci-Hub offline)** — try Unpaywall API (open-access):
-```
-webfetch https://api.unpaywall.org/v2/{doi}?email=agent@opencode
-```
-If a free PDF URL is found in `best_oa_location.url_for_pdf`, download with `curl -Lo vault/papers/pdfs/<key>.pdf "<url>"`.
+**Agent/MCP fallback** — Sci-Hub MCP: `scihub_search_scihub_by_doi` + `scihub_download_scihub_pdf`.
 
-If PDF obtained, update the note's YAML frontmatter with `pdf: papers/pdfs/<key>.pdf` and add a local link in the note body. If unavailable, set `pdf: ""` and move on — never use fake/open-access URLs.
+If PDF obtained, frontmatter must be `pdf: "papers/pdfs/<bibtex-key>.pdf"` (caminho relativo à raiz do `vault/`). If unavailable, set `pdf: ""` and move on.
 
-> **Current note (Jun 2026):** Sci-Hub domains are unreachable from this environment. Fallback to Unpaywall or skip PDF download; the vault and BibTeX remain fully functional without PDFs.
+> **Current note (Jun 2026):** Sci-Hub mirrors are often down in CI/automation; the script still recovers many papers via OA APIs and by renaming mis-pathed valid PDFs from `pdfs/corrupted/`.
 
 ### Step 7 — Enrich Note
 Use `Read` to load the generated note, then `Edit` to fill every section:

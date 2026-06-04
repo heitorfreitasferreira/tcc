@@ -38,15 +38,23 @@ infer_tags() {
     local tags=""
     local lower
     lower=$(echo "$entry" | tr '[:upper:]' '[:lower:]')
-    echo "$lower" | grep -q "genetic\|mutation\|crossover\|selection" && tags="${tags}ga " || true
-    echo "$lower" | grep -q "particle swarm\|pso\|swarm" && tags="${tags}pso " || true
-    echo "$lower" | grep -q "ant colony\|aco\|ferom\|ant system" && tags="${tags}aco " || true
-    echo "$lower" | grep -q "traveling\|tsp\|tsp-d\|fstsp\|salesman" && tags="${tags}tsp " || true
-    echo "$lower" | grep -q "drone\|uav\|unmanned\|flying sidekick\|aerial" && tags="${tags}drone " || true
-    echo "$lower" | grep -q "heuristic\|metaheuristic\|optimization" && tags="${tags}metaheuristic " || true
-    echo "$lower" | grep -q "np-complet\|intractability\|computacional" && tags="${tags}complexity " || true
-    echo "$lower" | grep -q "route\|path\|patrol\|routing" && tags="${tags}routing " || true
+    echo "$lower" | grep -q "genetic\|mutation\|crossover\|selection" && tags="${tags}metodo/ga " || true
+    echo "$lower" | grep -q "particle swarm\|pso\|swarm" && tags="${tags}metodo/pso " || true
+    echo "$lower" | grep -q "ant colony\|aco\|ferom\|ant system" && tags="${tags}metodo/aco " || true
+    echo "$lower" | grep -q "traveling\|tsp\|tsp-d\|fstsp\|salesman" && tags="${tags}area/tsp " || true
+    echo "$lower" | grep -q "drone\|uav\|unmanned\|flying sidekick\|aerial" && tags="${tags}area/drone-routing " || true
+    echo "$lower" | grep -q "heuristic\|metaheuristic\|optimization" && tags="${tags}area/bio-inspired " || true
+    echo "$lower" | grep -q "np-complet\|intractability\|computacional" && tags="${tags}papel/fundacional " || true
+    echo "$lower" | grep -q "route\|path\|patrol\|routing" && tags="${tags}area/routing " || true
     echo "$tags" | sed 's/ $//'
+}
+
+yaml_tag_lines() {
+    local tags="$1"
+    printf '  - tipo/paper\n  - status/pendente\n  - evidencia/referencia\n'
+    for tag in $tags; do
+        printf '  - %s\n' "$tag"
+    done
 }
 
 # Normaliza nome do arquivo a partir da bibtex-key
@@ -84,6 +92,9 @@ generate_note() {
     local tags
     tags=$(infer_tags "$raw_entry")
 
+    local tag_lines
+    tag_lines=$(yaml_tag_lines "$tags")
+
     local first_author
     first_author=$(echo "$authors" | sed 's/ and.*//' | sed 's/{//g;s/}//g')
 
@@ -93,11 +104,30 @@ title: "${title}"
 authors: [${first_author}]
 year: ${year}
 doi: "${doi}"
+bibtex_key: ${key}
 bibtex-key: ${key}
-tags: [${tags}]
-status: pendente
+type: paper
+reading_status: pendente
+validation_status: nao-validado
+pdf_status: ausente
 rating: 0
+role: ""
+areas: []
+methods: []
+chapters: []
+claim_support: []
+aliases: []
+tags:
+${tag_lines}
 ---
+
+## PDF
+
+<!-- Se disponível, link para o PDF local: [[papers/pdfs/${key}.pdf]] -->
+
+## Tese Central
+
+<!-- Qual é a afirmação principal do artigo em 1-3 frases? -->
 
 ## Resumo
 
@@ -111,13 +141,32 @@ rating: 0
 
 -
 
+## Uso no TCC
+
+- Capítulo(s):
+- Claim(s) apoiado(s):
+- Como citar na monografia:
+
 ## Métodos e Abordagens
 
 -
 
-## Conexões
+## Evidência / Resultado Relevante
 
 -
+
+## Limitações de Uso
+
+> [!warning] Limitação
+> Registrar escopo, ameaça à validade, diferença entre o problema do paper e o TSP-SD-ATP, ou motivo para não generalizar.
+
+## Conexões
+
+- Fundamenta:
+- Relacionado a:
+- Contrasta com:
+- Apoia claim:
+- Usado em capítulo:
 
 ## Notas e Insights
 

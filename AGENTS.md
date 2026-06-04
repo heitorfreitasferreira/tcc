@@ -83,7 +83,7 @@ vault/
 ### Agent Workflow for New References
 
 1. Use `google-scholar` + `academic-search` skill to find papers
-2. Use `scihub` to fetch metadata/PDF
+2. Use `scihub` to fetch metadata/PDF (ou `bash scripts/download-pdfs.sh` para lote com Unpaywall/Semantic Scholar/OpenAlex e validação `pdfinfo`)
 3. Add entry to `monografia/bib/abntex2-references.bib`
 4. Run `bash scripts/import-bib-to-vault.sh <bibtex-key>` to create note
 5. Use `obsidian-markdown` skill to write resumo/contribuições
