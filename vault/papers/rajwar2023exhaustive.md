@@ -3,6 +3,7 @@ title: "An Exhaustive Review of the Metaheuristic Algorithms for Search and Opti
 authors: [Rajwar, Kanchan]
 year: 2023
 doi: "10.1007/s10462-023-10470-y"
+bibtex_key: rajwar2023exhaustive
 bibtex-key: rajwar2023exhaustive
 pdf: "papers/pdfs/rajwar2023exhaustive.pdf"
 tags: [metaheuristic]

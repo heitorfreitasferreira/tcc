@@ -3,6 +3,7 @@ title: "Adaptation in Natural and Artificial Systems"
 authors: [Holland, John H.]
 year: 1975
 doi: ""
+bibtex_key: holland1975adaptation
 bibtex-key: holland1975adaptation
 pdf: "papers/pdfs/holland1975adaptation.pdf"
 tags: [ga foundational]

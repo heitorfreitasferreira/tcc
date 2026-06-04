@@ -3,6 +3,7 @@ title: "Automated Design of State Transition Rules in Ant Colony Optimization by
 authors: [Lin, Bo-Cheng, Mei, Yi, Zhang, Mengjie]
 year: 2025
 doi: "10.1007/s12293-025-00435-9"
+bibtex_key: gpaco2025
 bibtex-key: gpaco2025
 pdf: "papers/pdfs/gpaco2025.pdf"
 tags: [aco metaheuristic gp]

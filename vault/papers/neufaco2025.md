@@ -3,6 +3,7 @@ title: "NeuFACO: Neural Focused Ant Colony Optimization for Traveling Salesman P
 authors: [Tran, Dat Thanh, Tran, Khai Quang, Pham, Khoi Anh, Vu, Van Khu, Do, Dong Duc]
 year: 2025
 doi: "10.48550/arXiv.2503.08812"
+bibtex_key: neufaco2025
 bibtex-key: neufaco2025
 pdf: "papers/pdfs/neufaco2025.pdf"
 tags: [aco metaheuristic tsp deep-learning]

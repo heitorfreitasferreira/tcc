@@ -3,6 +3,7 @@ title: "Particle Swarm Optimization"
 authors: [Kennedy, James]
 year: 1995
 doi: "10.1109/ICNN.1995.488968"
+bibtex_key: kennedy1995particle
 bibtex-key: kennedy1995particle
 tags: [pso metaheuristic]
 status: lido

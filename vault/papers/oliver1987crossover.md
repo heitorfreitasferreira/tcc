@@ -3,6 +3,7 @@ title: "A Study of Permutation Crossover Operators on the Traveling Salesman Pro
 authors: [Oliver, Ian M., Smith, D. J., Holland, John R. C.]
 year: 1987
 doi: ""
+bibtex_key: oliver1987crossover
 bibtex-key: oliver1987crossover
 pdf: "papers/pdfs/oliver1987crossover.pdf"
 tags: [ga tsp]

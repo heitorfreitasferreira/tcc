@@ -3,6 +3,7 @@ title: "Policy Gradient and Experience Replay in Ant Colony Optimization"
 authors: [Sheppard, John, et al.]
 year: 2024
 doi: ""
+bibtex_key: ppaco2024
 bibtex-key: ppaco2024
 pdf: "papers/pdfs/ppaco2024.pdf"
 tags: [aco metaheuristic rl]

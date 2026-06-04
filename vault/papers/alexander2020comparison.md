@@ -3,6 +3,7 @@ title: "The Comparison of Genetic Algorithm and Ant Colony Optimization in Compl
 authors: [Alexander, Alexander, Sriwindono, Haris]
 year: 2020
 doi: "10.4108/eai.20-9-2019.2292121"
+bibtex_key: alexander2020comparison
 bibtex-key: alexander2020comparison
 pdf: "papers/pdfs/alexander2020comparison.pdf"
 tags: [tsp, ga, aco, comparison, tradeoff]
@@ -28,7 +29,7 @@ Alexander e Sriwindono comparam [[genetic-algorithms]] e [[ant-colony]] para res
 
 ## Relevância para o TCC
 
-O artigo reforça uma premissa importante para os resultados do TCC: não basta comparar apenas makespan ou qualidade da solução; o custo computacional também muda o ranking prático dos métodos. Para patrulha com drones, uma rota ligeiramente melhor pode não compensar se o tempo de otimização for muito maior. A conclusão “ACO melhor em distância, GA melhor em tempo” dialoga diretamente com a análise de trade-off entre [[ga]], [[aco]], [[pso]] e [[bruteforce]].
+O artigo reforça uma premissa importante para os resultados do TCC: não basta comparar apenas makespan ou qualidade da solução; o custo computacional também muda o ranking prático dos métodos. Para patrulha com drones, uma rota ligeiramente melhor pode não compensar se o tempo de otimização for muito maior. A conclusão “ACO melhor em distância, GA melhor em tempo” dialoga diretamente com a análise de trade-off entre [[ga]], [[ant-colony]], [[particle-swarm]] e [[bruteforce]].
 
 ## Métodos e Abordagens
 

@@ -3,6 +3,7 @@ title: "A Comparative Study of Metaheuristics Methods for Solving Traveling Sale
 authors: [Chandra, Agung, Naro, Aulia]
 year: 2022
 doi: "10.57675/IMIST.PRSM/ijist-v6i2.211"
+bibtex_key: chandra2022comparative
 bibtex-key: chandra2022comparative
 pdf: "papers/pdfs/chandra2022comparative.pdf"
 tags: [tsp, ga, sa, ts, aco, pso, abc, comparison, statistics, metaheuristic]

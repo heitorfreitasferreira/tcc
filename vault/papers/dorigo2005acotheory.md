@@ -3,6 +3,7 @@ title: "Ant Colony Optimization Theory: A Survey"
 authors: [Dorigo, Marco, Blum, Christian]
 year: 2005
 doi: "10.1016/j.tcs.2005.05.020"
+bibtex_key: dorigo2005acotheory
 bibtex-key: dorigo2005acotheory
 tags: [aco survey theory]
 status: lido
@@ -28,7 +29,7 @@ Dorigo e Blum fazem um survey teórico de [[ant-colony]], deslocando o foco de a
 
 ## Relevância para o TCC
 
-É uma referência central para fundamentar [[aco]] além da metáfora das formigas. O TCC implementa ACO como metaheurística para TSP/rTSP; este artigo fornece linguagem formal para descrever construção probabilística de soluções, atualização de feromônio, informação heurística, evaporação e exploração/explotação. Também ajuda a evitar afirmações fortes demais: convergência assintótica não implica desempenho prático em tempo finito.
+É uma referência central para fundamentar [[ant-colony]] além da metáfora das formigas. O TCC implementa ACO como metaheurística para TSP/rTSP; este artigo fornece linguagem formal para descrever construção probabilística de soluções, atualização de feromônio, informação heurística, evaporação e exploração/explotação. Também ajuda a evitar afirmações fortes demais: convergência assintótica não implica desempenho prático em tempo finito.
 
 ## Métodos e Abordagens
 
@@ -41,7 +42,7 @@ Dorigo e Blum fazem um survey teórico de [[ant-colony]], deslocando o foco de a
 ## Conexões
 
 - [[ant-colony]]
-- [[aco]]
+- [[ant-colony]]
 - [[dorigo1996ant]]
 - [[dorigo1997ant]]
 - [[dorigo2004book]]

@@ -3,6 +3,7 @@ title: "Comparison of New and Old Optimization Algorithms for Traveling Salesman
 authors: [Hossain, Md Al Amin, Yılmaz Acar, Züleyha]
 year: 2024
 doi: "10.17798/bitlisfen.1380086"
+bibtex_key: hossain2024comparison
 bibtex-key: hossain2024comparison
 pdf: "papers/pdfs/hossain2024comparison.pdf"
 tags: [tsp, ga, aco, sa, abc, gwo, ssa, comparison, benchmark]

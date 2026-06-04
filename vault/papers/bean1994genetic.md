@@ -3,6 +3,7 @@ title: "Genetic Algorithms and Random Keys for Sequencing and Optimization"
 authors: [Bean, James C.]
 year: 1994
 doi: "10.1287/ijoc.6.2.154"
+bibtex_key: bean1994genetic
 bibtex-key: bean1994genetic
 pdf: "papers/pdfs/bean1994genetic.pdf"
 tags: [ga metaheuristic]

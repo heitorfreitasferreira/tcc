@@ -3,9 +3,11 @@ title: "An Additive Bounding Procedure for the Asymmetric Traveling Salesman Pro
 authors: [Fischetti, Matteo, Toth, Paolo]
 year: 1992
 doi: "10.1007/BF01585642"
+bibtex_key: fischetti1992additive
 bibtex-key: fischetti1992additive
 pdf: ""
 tags: [atsp, lower-bound, additive-bounding]
-status: pendente
+status: analise-posterior
 rating: 5
+classificacao: condicionado-lower-bounds
 ---

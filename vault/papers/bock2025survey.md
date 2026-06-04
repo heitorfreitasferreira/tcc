@@ -3,6 +3,7 @@ title: "A Survey on the Traveling Salesman Problem and its Variants in a Warehou
 authors: [Bock, Stefan]
 year: 2025
 doi: "10.1016/j.ejor.2024.04.014"
+bibtex_key: bock2025survey
 bibtex-key: bock2025survey
 pdf: "papers/pdfs/bock2025survey.pdf"
 tags: [tsp tsp-variants warehousing complexity]

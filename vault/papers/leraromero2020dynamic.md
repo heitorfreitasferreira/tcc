@@ -3,9 +3,11 @@ title: "A Dynamic Programming Algorithm for the Time-Dependent Traveling Salesma
 authors: [Lera-Romero, Gonzalo, Miranda-Bront, Juan José, Soulignac, Francisco J.]
 year: 2020
 doi: "10.1007/s10288-020-00450-x"
+bibtex_key: leraromero2020dynamic
 bibtex-key: leraromero2020dynamic
 pdf: ""
 tags: [tdtsp, lower-bound, labeling, ng-path]
-status: pendente
+status: analise-posterior
 rating: 4
+classificacao: condicionado-lower-bounds
 ---

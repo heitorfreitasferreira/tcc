@@ -3,9 +3,11 @@ title: "Modeling the Flying Sidekick Traveling Salesman Problem with Multiple Dr
 authors: [Dell'Amico, Mauro]
 year: 2021
 doi: "10.1002/net.22022"
+bibtex_key: dellamico2021multiple
 bibtex-key: dellamico2021multiple
 tags: [tsp drone]
-status: pendente
+status: disponível
 rating: 4
-pdf: ""
+classificacao: recuperado
+pdf: "papers/pdfs/dellamico2021multiple.pdf"
 ---

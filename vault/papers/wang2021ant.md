@@ -3,6 +3,7 @@ title: "Ant Colony Optimization for Traveling Salesman Problem Based on Paramete
 authors: [Wang, Yong]
 year: 2021
 doi: "10.1016/j.asoc.2021.107439"
+bibtex_key: wang2021ant
 bibtex-key: wang2021ant
 pdf: "papers/pdfs/wang2021ant.pdf"
 tags: [aco tsp metaheuristic]

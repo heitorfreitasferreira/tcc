@@ -3,6 +3,7 @@ title: "A Patching Algorithm for the Nonsymmetric Traveling-Salesman Problem"
 authors: [Karp, Richard M.]
 year: 1979
 doi: "10.1137/0208007"
+bibtex_key: karp1979patching
 bibtex-key: karp1979patching
 pdf: "papers/pdfs/karp1979patching.pdf"
 tags: [atsp, assignment, patching]

@@ -3,6 +3,7 @@ title: "The Flying Sidekick Traveling Salesman Problem: Optimization of Drone-As
 authors: [Murray, Chase C.]
 year: 2015
 doi: "10.1016/j.trc.2015.03.005"
+bibtex_key: murray2015flying
 bibtex-key: murray2015flying
 tags: [tsp drone metaheuristic]
 status: lido

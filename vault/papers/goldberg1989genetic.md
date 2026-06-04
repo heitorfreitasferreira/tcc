@@ -3,6 +3,7 @@ title: "Genetic Algorithms in Search, Optimization, and Machine Learning"
 authors: [Goldberg, David E.]
 year: 1989
 doi: ""
+bibtex_key: goldberg1989genetic
 bibtex-key: goldberg1989genetic
 pdf: "papers/pdfs/goldberg1989genetic.pdf"
 tags: [ga metaheuristic]

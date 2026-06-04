@@ -3,6 +3,7 @@ title: "Ant Colony Optimization: Introduction and Recent Trends"
 authors: [Blum, Christian]
 year: 2005
 doi: "10.1016/j.plrev.2005.10.001"
+bibtex_key: blum2005acointro
 bibtex-key: blum2005acointro
 pdf: "papers/pdfs/blum2005acointro.pdf"
 tags: [aco survey]
@@ -27,7 +28,7 @@ Blum é uma introdução e revisão de tendências recentes em [[ant-colony]], s
 
 ## Relevância para o TCC
 
-O artigo é útil como referência introdutória para a fundamentação de [[aco]] no capítulo teórico, especialmente para explicar formigas artificiais, feromônio, evaporação, informação heurística e construção incremental de rotas. Para resultados formais, a nota deve priorizar [[dorigo2005acotheory]], pois o PDF local de Blum não foi legível.
+O artigo é útil como referência introdutória para a fundamentação de [[ant-colony]] no capítulo teórico, especialmente para explicar formigas artificiais, feromônio, evaporação, informação heurística e construção incremental de rotas. Para resultados formais, a nota deve priorizar [[dorigo2005acotheory]], pois o PDF local de Blum não foi legível.
 
 ## Métodos e Abordagens
 
@@ -38,7 +39,7 @@ O artigo é útil como referência introdutória para a fundamentação de [[aco
 ## Conexões
 
 - [[ant-colony]]
-- [[aco]]
+- [[ant-colony]]
 - [[dorigo1996ant]]
 - [[dorigo1997ant]]
 - [[dorigo2004book]]

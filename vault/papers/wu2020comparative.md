@@ -3,6 +3,7 @@ title: "A Comparative Study of Solving Traveling Salesman Problem with Genetic A
 authors: [Wu, Zefeng]
 year: 2020
 doi: "10.1145/3450292.3450308"
+bibtex_key: wu2020comparative
 bibtex-key: wu2020comparative
 pdf: "papers/pdfs/wu2020comparative.pdf"
 tags: [tsp, ga, aco, pso, comparison, metaheuristic]
@@ -23,7 +24,7 @@ O PDF local confirma pelo título, assunto e palavras-chave que o artigo compara
 - Reúne GA, ACO e PSO em um mesmo enquadramento comparativo para TSP.
 - Serve como referência direta para estudos que avaliam qualidade de rota e desempenho computacional entre metaheurísticas bio-inspiradas.
 - Posiciona o TSP como problema de teste para algoritmos de busca em grafos.
-- Ajuda a justificar a escolha dos três métodos implementados no TCC: [[ga]], [[aco]] e [[pso]].
+- Ajuda a justificar a escolha dos três métodos implementados no TCC: [[ga]], [[ant-colony]] e [[particle-swarm]].
 
 ## Relevância para o TCC
 

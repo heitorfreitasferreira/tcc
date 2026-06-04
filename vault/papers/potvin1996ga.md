@@ -3,6 +3,7 @@ title: "Genetic Algorithms for the Traveling Salesman Problem"
 authors: [Potvin, Jean-Yves]
 year: 1996
 doi: "10.1007/BF02125403"
+bibtex_key: potvin1996ga
 bibtex-key: potvin1996ga
 pdf: "papers/pdfs/potvin1996ga.pdf"
 tags: [ga tsp survey]

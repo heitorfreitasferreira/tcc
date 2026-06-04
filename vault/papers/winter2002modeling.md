@@ -3,6 +3,7 @@ title: "Modeling Costs of Turns in Route Planning"
 authors: [Winter, Stephan]
 year: 2002
 doi: "10.1023/A:1020853410145"
+bibtex_key: winter2002modeling
 bibtex-key: winter2002modeling
 pdf: "papers/pdfs/winter2002modeling.pdf"
 tags: [routing]

@@ -3,6 +3,7 @@ title: "A Performance Comparison of GA and ACO Applied to TSP"
 authors: [Haroun, Sabry Ahmed, Jamal, Benhra, Hicham, El Hassani]
 year: 2015
 doi: "10.5120/20674-3466"
+bibtex_key: haroun2015performance
 bibtex-key: haroun2015performance
 pdf: "papers/pdfs/haroun2015performance.pdf"
 tags: [tsp, ga, aco, comparison, metaheuristic]

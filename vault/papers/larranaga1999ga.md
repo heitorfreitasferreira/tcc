@@ -3,6 +3,7 @@ title: "Genetic Algorithms for the Travelling Salesman Problem: A Review of Repr
 authors: [Larrañaga, Pedro, Kuijpers, C. M. H., Murga, R. H., Inza, I., Dizdarevic, S.]
 year: 1999
 doi: "10.1023/A:1006529012972"
+bibtex_key: larranaga1999ga
 bibtex-key: larranaga1999ga
 pdf: "papers/pdfs/larranaga1999ga.pdf"
 tags: [ga tsp survey]

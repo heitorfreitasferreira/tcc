@@ -3,6 +3,7 @@ title: "Combinatorial Optimization: Comparison of Heuristic Algorithms in Travel
 authors: [Halim, A. Hanif, Ismail, I.]
 year: 2019
 doi: "10.1007/s11831-017-9247-y"
+bibtex_key: halim2019combinatorial
 bibtex-key: halim2019combinatorial
 pdf: "papers/pdfs/halim2019combinatorial.pdf"
 tags: [tsp, ga, sa, ts, aco, heuristic, comparison, survey, tpo]

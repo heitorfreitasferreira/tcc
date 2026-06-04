@@ -3,6 +3,7 @@ title: "Ant Colony Optimization"
 authors: [Dorigo, Marco, Stützle, Thomas]
 year: 2004
 doi: ""
+bibtex_key: dorigo2004book
 bibtex-key: dorigo2004book
 tags: [aco survey book]
 status: lido-parcial

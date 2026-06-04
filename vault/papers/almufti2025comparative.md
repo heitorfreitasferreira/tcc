@@ -3,6 +3,7 @@ title: "Comparative Analysis of Metaheuristic Algorithms for Solving the Travell
 authors: [Almufti, Saman M., Shaban, Awaz Ahmed]
 year: 2025
 doi: "10.14419/7fk7k945"
+bibtex_key: almufti2025comparative
 bibtex-key: almufti2025comparative
 pdf: "papers/pdfs/almufti2025comparative.pdf"
 tags: [tsp, aco, gwo, abc, cso, metaheuristic, comparison]

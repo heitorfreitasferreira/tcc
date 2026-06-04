@@ -3,6 +3,7 @@ title: "Routing Problem for Unmanned Aerial Vehicle Patrolling Missions -- A Pro
 authors: [Rajan, Sudarshan, Sundar, Kaarthik, Gautam, Natarajan]
 year: 2022
 doi: "10.1016/j.cor.2022.105702"
+bibtex_key: rajan2022routing
 bibtex-key: rajan2022routing
 pdf: "papers/pdfs/rajan2022routing.pdf"
 tags: [drone routing]

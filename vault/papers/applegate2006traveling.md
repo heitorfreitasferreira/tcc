@@ -3,6 +3,7 @@ title: "The Traveling Salesman Problem: A Computational Study"
 authors: [Applegate, David L., Bixby, Robert E., Chvátal, Vašek, Cook, William J.]
 year: 2006
 doi: "10.1515/9781400841103"
+bibtex_key: applegate2006traveling
 bibtex-key: applegate2006traveling
 pdf: "papers/pdfs/applegate2006traveling.pdf"
 tags: [tsp]

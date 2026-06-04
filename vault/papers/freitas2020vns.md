@@ -3,6 +3,7 @@ title: "A Variable Neighborhood Search for Flying Sidekick Traveling Salesman Pr
 authors: [de Freitas, Júlia Cária, Penna, Puca Huachi Vaz]
 year: 2020
 doi: "10.1111/itor.12671"
+bibtex_key: freitas2020vns
 bibtex-key: freitas2020vns
 pdf: "papers/pdfs/freitas2020vns.pdf"
 tags: [tsp drone]

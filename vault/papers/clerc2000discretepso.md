@@ -3,6 +3,7 @@ title: "Discrete Particle Swarm Optimization, Illustrated by the Traveling Sales
 authors: [Clerc, Maurice]
 year: 2000
 doi: ""
+bibtex_key: clerc2000discretepso
 bibtex-key: clerc2000discretepso
 pdf: "papers/pdfs/clerc2000discretepso.pdf"
 tags: [pso tsp survey]
@@ -39,7 +40,7 @@ Esta referência é importante para justificar por que o PSO do TCC precisa de e
 
 - [[kennedy1995particle]]
 - [[particle-swarm]]
-- [[pso]]
+- [[particle-swarm]]
 - [[tsp]]
 - [[araujo2025pso]]
 - [[sun2024hybrid]]

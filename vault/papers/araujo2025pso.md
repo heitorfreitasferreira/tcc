@@ -3,11 +3,13 @@ title: "{PSO} and the Traveling Salesman Problem: An Intelligent Optimization Ap
 authors: [Araújo, Kael Silva, Barboza, Francisco Márcio]
 year: 2025
 doi: ""
+bibtex_key: araujo2025pso
 bibtex-key: araujo2025pso
-pdf: "papers/pdfs/araujo2025pso.pdf"
+pdf: ""
 tags: [pso tsp metaheuristic]
-status: lido-parcial
+status: analise-posterior
 rating: 3
+classificacao: analise-posterior
 ---
 
 ## PDF
@@ -27,7 +29,7 @@ Araújo e Barboza apresentam, pelo título e metadados locais, uma referência r
 
 ## Relevância para o TCC
 
-O artigo é relevante para contextualizar o [[pso]] implementado no projeto como parte de uma linha ativa de pesquisa, não apenas uma adaptação histórica. Para o TCC, ele ajuda a motivar a necessidade de representar rotas de forma compatível com partículas, mas não deve sustentar afirmações quantitativas enquanto o PDF local estiver ilegível.
+O artigo é relevante para contextualizar o [[particle-swarm]] implementado no projeto como parte de uma linha ativa de pesquisa, não apenas uma adaptação histórica. Para o TCC, ele ajuda a motivar a necessidade de representar rotas de forma compatível com partículas, mas não deve sustentar afirmações quantitativas enquanto o PDF local estiver ilegível.
 
 ## Métodos e Abordagens
 
