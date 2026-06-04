@@ -7,7 +7,7 @@ tags:
   - agentes
 status: pronto-com-pendencias-bibliograficas-rastreabilidade-e-validacao
 created: 2026-06-02
-updated: 2026-06-03
+updated: 2026-06-05
 concluded: 2026-06-03
 ---
 
@@ -124,7 +124,7 @@ Auditoria realizada em 2026-06-03 sobre `vault/papers/`: 61 notas de paper, 43 P
 | [[neufaco2025]] | Autores na nota não batem com o PDF; PDF indica Dat Thanh Tran, Khai Quang Tran, Khoi Anh Pham, Van Khu Vu e Dong Duc Do | Corrigir autores antes de citar como estado da arte |
 | [[ppaco2024]] | PDF local quase não permite extração textual; nota está corretamente limitada a `lido-parcial` | Manter apenas como fronteira de pesquisa; não usar para resultados ou metodologia |
 | [[applegate2006traveling]], [[dorigo2004book]] | Livros longos marcados como `lido`, mas notas parecem leitura seletiva | Qualificar como leitura seletiva ou `lido-parcial` se a nota não for expandida |
-| `haroun2015.pdf` | PDF extra/duplicado sem nota correspondente; já existe [[haroun2015performance]] | Manter apenas o arquivo correspondente à chave usada ou registrar duplicata como obsoleta |
+| `haroun2015.pdf` | PDF extra/duplicado sem nota correspondente; já existe [[haroun2015performance]] | ~~Manter apenas o arquivo correspondente à chave usada ou registrar duplicata como obsoleta~~ **Resolvido em P17 (2026-06-04):** arquivo `haroun2015.pdf` não existe; apenas `haroun2015performance.pdf` está presente e é válido. Nenhuma ação necessária. |
 | [[demsar2006statistical]] | Referência estatística é usada na metodologia, mas a nota do vault está vazia e fora de `vault/papers/` | Criar/preencher `vault/papers/demsar2006statistical.md` ou mover/enriquecer a nota existente antes de escrever Experimentos |
 
 ### Triagem dos PDFs Faltantes
@@ -403,12 +403,12 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P9 | Estudar efeito da codificação na comparação justa entre métodos | Concluído em [[auditoria-codificacao-metodos]]. GA usa permutação direta; PSO usa random keys; ACO usa transições 3D. Explicitar como ameaça à validade, sem nova implementação nesta monografia. | Concluída |
 | P10 | Análise de sensibilidade a hiperparâmetros | Concluída em [[auditoria-hiperparametros]] como limitação/trabalho futuro. Não bloqueia a escrita; declarar que não houve tuning sistemático. | Concluída como limitação |
 | P11 | Escrever Resumo (pt-BR) e Abstract (en) | Nota `vault/writing/planejamento/resumo-abstract.md` com texto final de 150–500 palavras cada, destacando objetivo, método, resultados e conclusões | Pendente |
-| P12 | Preencher Capa e Folha de Rosto | Dados do autor, título definitivo, orientador, área de concentração, data em `monografia/` (via template LaTeX) | Pendente |
+| P12 | Preencher Capa e Folha de Rosto | Dados do autor, título definitivo, orientador, área de concentração, data em `monografia/` (via template LaTeX) | Concluída |
 | P13 | Levantar e definir Lista de Siglas | Notas individuais em `vault/siglas/` (24 gerenciadas) + notas existentes em `vault/projeto/` e `vault/areas/` com tag `siglas` (GA, PSO, ACO, BF, TSP, TSP-SD-ATP). Base Obsidian em `vault/bases/siglas.base`. Script `scripts/gerar-lista-siglas.py` (scan/generate/validate). 30 siglas catalogadas (15 incluir, 5 excluir, 10 pendentes). `monografia/abrev/Abreviaturas.tex` gerado com 15 entradas | Concluída |
 | P14 | Definir estrutura dos Apêndices | Nota `vault/writing/planejamento/apendices.md` listando o que vai em cada apêndice (resultados completos, pseudocódigo, instâncias exemplo) | Pendente |
 | P15 | Verificar formatação ABNT no template LaTeX | Conferir citações longas (>3 linhas), alíneas, remissões internas e ambiente de siglas na classe `ppgco.cls` | Pendente |
 | P16 | Corrigir exatidão bibliográfica crítica | Ajustar autores de [[gpaco2025]] (Lin, Mei, Zhangjie) e [[neufaco2025]] (Tran et al.), qualificar leituras seletivas em livros longos (applegate2006traveling, dorigo2004book → lido-parcial) e remover duplicata `haroun2015.pdf` | Concluída |
-| P17 | Triar PDFs faltantes por decisão editorial | Para cada referência sem PDF íntegro: baixar manualmente se central, marcar como análise posterior se útil para futuro, ou descartar do escopo imediato se periférica | Pendente |
+| P17 | Triar PDFs faltantes por decisão editorial | Para cada referência sem PDF íntegro: baixar manualmente se central, marcar como análise posterior se útil para futuro, ou descartar do escopo imediato se periférica | Concluída |
 | P18 | Fechar bibliografia mínima por capítulo | Cada capítulo deve ter referências suficientes com PDF/nota validada; referências condicionais não podem aparecer no texto final sem validação | Pendente |
 | P19 | Criar pipeline de métricas TeX auditáveis | Script `scripts/gerar-metricas-monografia.py` gerando `monografia/generated/metrics.tex`, `monografia/generated/tables/*.tex` e `manifest.json` a partir de `src/data/results/` | Concluída |
 | P20 | Substituir valores quantitativos hardcoded | Experimentos, Resumo, Abstract, Introdução e Conclusão usam macros/fragmentos gerados para valores experimentais, estatísticos e tabulares | Concluída |
@@ -417,6 +417,15 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P23 | Implementar gate anti-alucinação | Script `scripts/check-monografia.sh` ou alvo `make check-monografia` validando LaTeX/BibTeX, citações, figuras, placeholders, métricas, claims bloqueados e números hardcoded | Concluída |
 | P24 | Vincular claims fortes ao texto | Comentários `% claim: <ID>` ou mecanismo equivalente nos trechos fortes da monografia, conectando `.tex` à [[claim-evidence-matrix]] | Pendente |
 | P25 | Gerar relatório final de validação anti-alucinação | Nota `vault/writing/planejamento/validacao-anti-alucinacao.md` com resultado PASS/WARN/FAIL, citações, claims, números, artefatos e decisões humanas | Pendente |
+| P26 | Adicionar BibTeX Held-Karp e revisar Seção 2.8 (Lower Bounds) | BibTeX para heldkarp1970traveling (DOI: 10.1287/opre.18.6.1138), heldkarp1971traveling, johnson1996asymptotic, kinable2017hybrid, righini2021efficient, valenzuela1997estimating; revisar Seção 2.8 para citar Held-Karp como referência canônica e justificar AP vs HK para TSP-SD-ATP | Pendente |
+| P27 | Corrigir documentação ACO para Ant System (não MMAS) | Código (`src/optimization/aco/ant.go`) implementa Ant System (todas as formigas depositam, sem bounds). Corrigir nota `stutzle2000mmas.md` (remover afirmação falsa) e ajustar texto da fundamentação para documentar Ant System 3D, citando apenas Dorigo (1996, 1997). OU implementar bounds MMAS no código | Pendente |
+| P28 | Adicionar referências ATSP/TDTSP ao BibTeX e referencial | Entradas BibTeX para pelo menos 1 survey de ATSP (ex: Öncan et al. 2009 ou Roberti & Toth 2012) + 1 referência TDTSP (Kinable 2017 já fichado); citar na Seção 2.1 ou 2.2 para enquadrar TSP-SD-ATP como instância de classes bem estudadas | Pendente |
+| P29 | Obter PDF legível de Bean (1994) e atualizar avaliação | PDF atual contém apenas metadados INFORMS; obter cópia íntegra (Sci-Hub / interlibrary loan), ler corpo do artigo (random keys), atualizar nota `bean1994genetic.md` e rating (0→≥4) | Pendente |
+| P30 | Corrigir ratings inconsistentes (0→3) em artigos citados | Atualizar `bean1994genetic` ≥3 (base da codificação PSO), `winter2002modeling` ≥3 (contexto custos de curva), `vanhove2012route` ≥3, `wang2021ant` ≥3 (tuning ACO). Ratings originais são 0 para artigos citados na fundamentação | Pendente |
+| P31 | Criar nota Demšar (2006) + BibTeX dos 6 lower bounds restantes | `vault/papers/demsar2006statistical.md` com resumo, avaliação de adequação ao contexto TSP e rating; BibTeX para aggarwal2000angular, balas1985branch, fischetti1992additive, karp1979patching, leraromero2020dynamic, lawler1985traveling | Pendente |
+| P32 | Documentar feromônio 3D como contribuição algorítmica original | Incluir parágrafo na Seção 2.7 explicitando que τ(i,j,k) tridimensional é adaptação inédita para ACO em TSP (literatura canônica usa τ(i,j) 2D), motivada pela dependência de triplas do TSP-SD-ATP. Buscar precedentes de feromônio n-dimensional em scheduling/routing | Pendente |
+| P33 | Adicionar literatura de tuning de hiperparâmetros ao referencial | 2–3 referências sobre metodologia de tuning (irace, SMAC, F-Race ou similar); citar na Seção 4.1 (Método para Avaliação) para fundamentar parâmetros fixos como escolha metodológica deliberada. Reavaliar `wang2021ant` e citar se relevante | Pendente |
+| P34 | Citar shami2022pso e gad2022pso na Seção 2.6 (PSO) | Ambos estão no BibTeX mas não citados; adicionar citações na Seção 2.6 para reforçar a revisão de PSO, balanceando a cobertura ACO (13) vs PSO (5 ativos). Documentar em [[particle-swarm]] | Pendente |
 
 ## Protocolo Para Cada Agente Escritor
 
