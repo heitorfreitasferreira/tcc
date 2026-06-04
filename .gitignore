@@ -558,5 +558,9 @@ TSWLatexianTemp*
 #*Notes.bib
 src/tcc
 
+# Generated monograph PDFs (build artifacts)
+monografia/main_ppgco_ufu.pdf
+monografia/monografia_anotada.pdf
+
 # Obsidian vault auto-generated config
 .obsidian/
