@@ -188,7 +188,7 @@
 }
 
 \preambulo{
-    Trabalho de Conclus\~ao de Curso apresentado à Faculdade de Computação da Universidade Federal de Uberlândia, como parte dos requisitos exigidos para a obtenção título de Bacharel em Ciência da Computação.
+    Trabalho de Conclus\~ao de Curso apresentado à Faculdade de Computação da Universidade Federal de Uberlândia, como parte dos requisitos exigidos para a obtenção do título de Bacharel em Ciência da Computação.
 }
 
 % ---
