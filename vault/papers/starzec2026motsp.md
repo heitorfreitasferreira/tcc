@@ -5,7 +5,7 @@ year: 2026
 doi: "10.58032/agh/3gokaq"
 bibtex_key: starzec2026motsp
 tags: [aco, tsp, multi-objetivo, feromonio-3d]
-status: nao-lido
+status: resumo-lido
 rating: 1
 ---
 

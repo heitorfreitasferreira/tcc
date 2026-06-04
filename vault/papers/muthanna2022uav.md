@@ -11,13 +11,16 @@ status: disponivel
 rating: 3
 classificacao: nova-referencia
 ---
-title: "Cluster Based Branching for the Asymmetric Traveling Salesman Problem"
-authors: [Lysgaard, Jens]
-year: 1999
-doi: "10.1016/S0377-2217(99)00133-2"
-bibtex-key: lysgaard1999cluster
-pdf: "papers/pdfs/lysgaard1999cluster.pdf"
-tags: [atsp, tsp, branch-and-bound, lower-bound, clustering]
-status: disponivel
-rating: 4
-classificacao: nova-referencia
+
+## Resumo
+
+Propõe uma abordagem para posicionamento ótimo e escalonamento energeticamente eficiente de trajetórias de UAVs em aplicações de Internet das Coisas (IoT). O artigo modela o problema de cobertura e roteamento de múltiplos drones considerando restrições de energia, posicionamento de estações base e latência de comunicação. Publicado na Computer Communications (Elsevier).
+
+## Relevância para o TCC
+
+Referência de contexto para o cenário de patrulha com drones em IoT. Não trata diretamente de TSP ou meta-heurísticas bioinspiradas, mas fornece modelagem de restrições energéticas e de posicionamento relevantes para a justificativa prática do TSP-SD-ATP.
+
+## Conexões
+
+- [[tsp]]
+- [[uav]]

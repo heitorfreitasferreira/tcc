@@ -6,7 +6,7 @@ doi: "10.1007/s11831-021-09694-4"
 bibtex_key: gad2022pso
 bibtex-key: gad2022pso
 type: paper
-reading_status: pendente
+reading_status: resumo-lido
 validation_status: nao-validado
 pdf_status: ausente
 rating: 4
@@ -22,7 +22,7 @@ claim_support: []
 aliases: []
 tags:
   - tipo/paper
-  - status/pendente
+  - status/resumo-lido
   - evidencia/referencia
   - metodo/pso
   - area/bio-inspired-optimization

@@ -7,7 +7,7 @@ doi: "10.1016/j.plrev.2024.09.014"
 bibtex_key: blum2024acobibliometric
 bibtex-key: blum2024acobibliometric
 type: paper
-reading_status: pendente
+reading_status: resumo-lido
 validation_status: nao-validado
 pdf_status: ausente
 rating: 5
@@ -24,7 +24,7 @@ claim_support: []
 aliases: []
 tags:
   - tipo/paper
-  - status/pendente
+  - status/resumo-lido
   - evidencia/referencia
   - metodo/aco
   - area/ant-colony

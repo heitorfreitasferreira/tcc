@@ -6,7 +6,7 @@ doi: "10.3390/info10120390"
 bibtex_key: hassanat2019crossover
 bibtex-key: hassanat2019crossover
 type: paper
-reading_status: pendente
+reading_status: resumo-lido
 validation_status: nao-validado
 pdf_status: ausente
 rating: 4
@@ -23,7 +23,7 @@ claim_support: []
 aliases: []
 tags:
   - tipo/paper
-  - status/pendente
+  - status/resumo-lido
   - evidencia/referencia
   - metodo/ga
   - area/genetic-algorithms
