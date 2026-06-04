@@ -4,7 +4,7 @@ authors: [Nagata, Yuichi]
 year: 2006
 doi: ""
 bibtex-key: nagata2006eax
-pdf: "papers/pdfs/corrupted/nagata2006eax.pdf"
+pdf: ""
 tags: [ga tsp metaheuristic]
 status: pendente
 rating: 5

@@ -7,5 +7,5 @@ bibtex-key: dellamico2022exact
 tags: [tsp drone]
 status: pendente
 rating: 4
-pdf: "papers/pdfs/corrupted/dellamico2022exact.pdf"
+pdf: ""
 ---
