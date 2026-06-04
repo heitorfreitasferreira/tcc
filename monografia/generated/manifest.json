@@ -1,0 +1,84 @@
+{
+  "data": {
+    "instances": [
+      "10a",
+      "10b",
+      "10c",
+      "11a",
+      "11b",
+      "11c",
+      "12a",
+      "12b",
+      "12c",
+      "13a",
+      "13b",
+      "13c",
+      "14a",
+      "14b",
+      "14c",
+      "15a",
+      "15b",
+      "15c",
+      "20a",
+      "20b",
+      "20c",
+      "30a",
+      "30b",
+      "30c",
+      "50a",
+      "50b",
+      "50c",
+      "100a",
+      "100b",
+      "100c"
+    ],
+    "method_counts": {
+      "aco": 1530,
+      "bruteforce": 18,
+      "ga": 1530,
+      "lowerbound": 30,
+      "pso": 1530
+    },
+    "methods": [
+      "aco",
+      "bruteforce",
+      "ga",
+      "lowerbound",
+      "pso"
+    ],
+    "seed_counts": {
+      "aco": 51,
+      "ga": 51,
+      "pso": 51
+    },
+    "valid_summary_rows": 4638
+  },
+  "inputs": {
+    "evolution_count": 4638,
+    "input_digest": "45ab506d66ba42b21eaf26e3c20590a87326e75d62273984315cf7b5972cef03",
+    "results_dir": "src/data/results",
+    "summary_count": 4638,
+    "timing_count": 4638
+  },
+  "output_hashes": {
+    "metrics.tex": "6b22b3dc634d4cd66c3deb0a96809fe33827558a5d9b890cde7b1ef8ba52d23c",
+    "tables/tab-cobertura-experimental.tex": "31acb3adebe8fe84321eb6d8befad4b9f9d91b31b8255a3815fb68e46d71c9f3",
+    "tables/tab-gap-bf.tex": "249aad15ba32f46d37af34613c0af81831cfe706022e6e2618f52b6bf573dec8",
+    "tables/tab-grandes.tex": "ae8d2c1e0df8bb9256a98b92a76963b3214ba414a3f0a1dea0ddd5f40e8906ae",
+    "tables/tab-lb-gap.tex": "58316a17f0de6ce1e2aac8795f3e22a2b839c1db6b5a0e6dfc9627f4377bf8f6",
+    "tables/tab-otimos-bf.tex": "abe44524fd12751489e5e9e4010d2dbd81f9ba66b99d5ca465888b3c1e39dd57",
+    "tables/tab-tempo-100.tex": "ca374568cc71fa49540e17a8c0692ef0a59851530adb48a494975a09e49dc0ba"
+  },
+  "outputs": [
+    "metrics.tex",
+    "tables/tab-cobertura-experimental.tex",
+    "tables/tab-gap-bf.tex",
+    "tables/tab-grandes.tex",
+    "tables/tab-lb-gap.tex",
+    "tables/tab-otimos-bf.tex",
+    "tables/tab-tempo-100.tex"
+  ],
+  "script": "gerar-metricas-monografia.py",
+  "script_sha256": "6118c927473df8ebe2a149fcb5572c6fdc0af2a683fff15efad6d4f75da35e47",
+  "script_version": "2"
+}
