@@ -57,7 +57,7 @@ A busca exaustiva enumera todas as permutações dos pontos de interesse e avali
 \section{Algoritmos Genéticos}
 \label{sec:ga}
 
-Algoritmos Genéticos são meta-heurísticas populacionais inspiradas em seleção, recombinação e mutação de indivíduos \cite{holland1975adaptation,goldberg1989genetic}. Em problemas de permutação como o TSP, a representação da solução e o operador de cruzamento são decisivos. Potvin \cite{potvin1996ga} revisou operadores de crossover para TSP, incluindo operadores que preservam ordem relativa, posição absoluta ou arestas. Larrañaga et al. \cite{larranaga1999ga} sistematizaram representações e operadores para o TSP, e Nagata \cite{nagata2006eax} propôs o operador EAX, referência de alta qualidade para recombinação baseada em arestas.
+Algoritmos Genéticos são meta-heurísticas populacionais inspiradas em seleção, recombinação e mutação de indivíduos \cite{holland1975adaptation,goldberg1989genetic}. Em problemas de permutação como o TSP, a representação da solução e o operador de cruzamento são decisivos. Potvin \cite{potvin1996ga} revisou operadores de crossover para TSP, incluindo operadores que preservam ordem relativa, posição absoluta ou arestas, e Nagata \cite{nagata2006eax} propôs o operador EAX, referência de alta qualidade para recombinação baseada em arestas.
 
 Na família de operadores por ordem, o OX preserva a sequência relativa de parte dos pontos e produz filhos que continuam sendo permutações válidas. Essa propriedade é útil quando a função objetivo depende da ordem de visita. Neste trabalho, o GA usa permutação direta dos pontos de interesse, seleção por torneio, crossover OX, mutação por troca e elitismo.
 
@@ -92,6 +92,6 @@ Como cada entrada reduzida escolhe o menor custo possível entre todos os nós a
 \section{Estudos Comparativos}
 \label{sec:comparativos}
 
-Comparações entre meta-heurísticas no TSP mostram que o desempenho relativo depende da instância, da representação e dos parâmetros. Wu \cite{wu2020comparative} comparou GA, PSO e ACO em instâncias TSPLIB e observou vantagem do GA em instâncias de até 100 cidades. Haroun et al. \cite{haroun2015performance} relataram vantagem do ACO em qualidade, com maior custo computacional. Chandra e Naro \cite{chandra2022comparative} aplicaram análise estatística a métodos bioinspirados no TSP e identificaram diferenças significativas entre algoritmos. Halim e Ismail \cite{halim2019combinatorial} destacaram que a escolha da representação pode ser tão determinante quanto a escolha da meta-heurística.
+Comparações entre meta-heurísticas no TSP mostram que o desempenho relativo depende da instância, da representação e dos parâmetros. Haroun et al. \cite{haroun2015performance} relataram vantagem do ACO em qualidade, com maior custo computacional. Chandra e Naro \cite{chandra2022comparative} aplicaram análise estatística a métodos bioinspirados no TSP e identificaram diferenças significativas entre algoritmos.
 
 O protocolo estatístico adotado nesta monografia segue a recomendação de Demšar \cite{demsar2006statistical} para comparar múltiplos algoritmos sobre múltiplas bases de dados: teste de Friedman, pós-teste de Nemenyi e análise pareada complementar. Essa escolha evita assumir normalidade dos resultados e compara os métodos por postos médios nas instâncias avaliadas.

@@ -51,20 +51,21 @@ Cada referência citada na monografia recebe uma de quatro classes:
 | nagata2006eax | resumo-lido | Legível |
 | vanhove2012route | resumo-lido | Legível |
 
-### Condicionais (10)
+### Condicionais (7 — 3 removidos da monografia)
 
 | Key | Status | Problema |
 |-----|--------|----------|
-| bean1994genetic | lido-parcial | PDF corpo ilegível (só metadados INFORMS) |
-| clerc2000discretepso | lido-parcial | PDF sem texto extraível |
+| bean1994genetic | resumo-lido | PDF corpo ilegível (só metadados INFORMS) — resumo reconstruído |
+| clerc2000discretepso | lido-parcial | PDF sem texto extraível — canônico, mantido |
 | geng2025mdaco | resumo-lido | Sem PDF, resumo de metadados |
-| halim2019combinatorial | lido-parcial | PDF corrompido |
-| larranaga1999ga | lido-parcial | PDF com xref corrompido |
-| potvin1996ga | lido-parcial | PDF scan (imagens, sem texto) |
+| potvin1996ga | lido-parcial | PDF scan (imagens, sem texto) — canônico, mantido |
 | starzec2026motsp | resumo-lido | Dataset, sem PDF |
 | wang2013aco | resumo-lido | Sem PDF |
 | wang2015aco | resumo-lido | Sem PDF |
-| wu2020comparative | lido-parcial | PDF danificado (xref errors) |
+
+~~halim2019combinatorial~~ — removido da monografia (substituído por haroun + chandra)
+~~larranaga1999ga~~ — removido da monografia (redundante com potvin)
+~~wu2020comparative~~ — removido da monografia (substituído por haroun + chandra)
 
 ### Frágeis (0 — todos resolvidos em 2026-06-05)
 
