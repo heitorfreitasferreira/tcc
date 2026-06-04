@@ -15,10 +15,10 @@ Cada referência citada na monografia recebe uma de quatro classes:
 
 | Classe | Critério | Exigência para citação |
 |--------|----------|----------------------|
-| **segura** | PDF legível + nota com resumo substancial + status lido/resumo-lido | Pode sustentar qualquer claim |
-| **condicional** | PDF ilegível OU nota incompleta, mas conteúdo verificável por metadados/abstract | Pode sustentar claims contextuais/de revisão, não claims fortes |
-| **frágil** | PDF ausente/corrompido E nota sem resumo OU nota/vault ausente | Não pode sustentar claims; uso restrito a menções contextuais |
-| **bloqueada** | Chave não resolve no BibTeX | Não pode ser citada |
+| **segura** (23) | PDF legível + nota com resumo substancial + status lido/resumo-lido | Pode sustentar qualquer claim |
+| **condicional** (10) | PDF ilegível OU nota incompleta, mas conteúdo verificável por metadados/abstract | Pode sustentar claims contextuais/de revisão, não claims fortes |
+| **frágil** (0) | PDF ausente/corrompido E nota sem resumo OU nota/vault ausente | Não pode sustentar claims; uso restrito a menções contextuais |
+| **bloqueada** (0) | Chave não resolve no BibTeX | Não pode ser citada |
 
 ## Tabela de Classificação (35 chaves)
 
@@ -44,6 +44,12 @@ Cada referência citada na monografia recebe uma de quatro classes:
 | neufaco2025 | lido | Legível |
 | rajan2022routing | lido | Legível |
 | winter2002modeling | lido | Legível |
+| deepaco2023 | resumo-lido | Legível |
+| dellamico2021multiple | resumo-lido | Legível |
+| dellamico2022exact | resumo-lido | Legível |
+| demsar2006statistical | resumo-lido | Legível |
+| nagata2006eax | resumo-lido | Legível |
+| vanhove2012route | resumo-lido | Legível |
 
 ### Condicionais (10)
 
@@ -60,16 +66,16 @@ Cada referência citada na monografia recebe uma de quatro classes:
 | wang2015aco | resumo-lido | Sem PDF |
 | wu2020comparative | lido-parcial | PDF danificado (xref errors) |
 
-### Frágeis (7)
+### Frágeis (0 — todos resolvidos em 2026-06-05)
 
 | Key | Status | Problema | Onde é citado |
 |-----|--------|----------|---------------|
-| deepaco2023 | disponível | Sem resumo (frontmatter-only) | Conclusão (futuro) |
-| dellamico2021multiple | disponível | Sem resumo (frontmatter-only) | Fund. + Intro |
-| dellamico2022exact | disponível | Sem resumo (frontmatter-only) | Fund. + Intro |
-| demsar2006statistical | — | Sem vault note, sem PDF | Fund. + Exp. |
-| nagata2006eax | disponível | Sem resumo (frontmatter-only) | Fund. |
-| vanhove2012route | disponível | Sem resumo (frontmatter-only) | Fund. |
+| ~~deepaco2023~~ | → resumo-lido | ~~Sem resumo~~ | Conclusão (futuro) |
+| ~~dellamico2021multiple~~ | → resumo-lido | ~~Sem resumo~~ | Fund. + Intro |
+| ~~dellamico2022exact~~ | → resumo-lido | ~~Sem resumo~~ | Fund. + Intro |
+| ~~demsar2006statistical~~ | → resumo-lido | ~~Sem vault note, sem PDF~~ | Fund. + Exp. |
+| ~~nagata2006eax~~ | → resumo-lido | ~~Sem resumo~~ | Fund. |
+| ~~vanhove2012route~~ | → resumo-lido | ~~Sem resumo~~ | Fund. |
 
 ### Bloqueadas (0)
 
@@ -85,16 +91,16 @@ Nenhuma. Todas as 34 chaves acadêmicas resolvem no BibTeX.
 |-------|----------|-------------|
 | 9 | applegate2006traveling, garey1979computers | ✅ seguro |
 | 11 | lin1973effective | ✅ seguro |
-| 18 | winter2002modeling, vanhove2012route | ⚠️ vanhove é frágil |
-| 48 | murray2015flying, agatz2018optimization, dellamico2021multiple, dellamico2022exact, freitas2020vns | ⚠️ 2 frágeis |
+| 18 | winter2002modeling, vanhove2012route | ✅ seguro |
+| 48 | murray2015flying, agatz2018optimization, dellamico2021multiple, dellamico2022exact, freitas2020vns | ✅ seguro |
 | 50 | rajan2022routing | ✅ seguro |
-| 60 | holland1975adaptation, goldberg1989genetic, potvin1996ga, larranaga1999ga, nagata2006eax | ⚠️ 3 condicionais + 1 frágil |
+| 60 | holland1975adaptation, goldberg1989genetic, potvin1996ga, larranaga1999ga, nagata2006eax | ⚠️ 2 condicionais (potvin, larranaga) |
 | 67 | kennedy1995particle | ✅ seguro |
 | 69 | clerc2000discretepso, bean1994genetic | ⚠️ 2 condicionais |
 | 74 | dorigo1996ant, dorigo1997ant, dorigo2004book | ✅ seguro |
 | 78 | dorigo1996ant, dorigo1997ant, wang2013aco, wang2015aco, geng2025mdaco, starzec2026motsp | ⚠️ 4 condicionais |
-| 95 | wu2020comparative, haroun2015performance, chandra2022comparative, halim2019combinatorial | ⚠️ 1 condicional + 1 condicional |
-| 97 | demsar2006statistical | 🔴 frágil |
+| 95 | wu2020comparative, haroun2015performance, chandra2022comparative, halim2019combinatorial | ⚠️ 2 condicionais (wu, halim) |
+| 97 | demsar2006statistical | ✅ seguro |
 
 ### Introdução
 
