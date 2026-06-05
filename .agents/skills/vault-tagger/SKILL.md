@@ -68,7 +68,7 @@ tags:
   - tipo/writing      # writing/ (capitulos, planejamento, decisoes)
   - tipo/auditoria    # writing/auditorias/
   - tipo/revisao      # writing/review-solicitacoes/
-  - tipo/claim        # templates/claim-note.md, claim-evidence-matrix
+  - tipo/claim        # claims/*.md, templates/claim-note.md
   - tipo/index        # */index.md (catalogos)
   - tipo/template     # templates/
 ```

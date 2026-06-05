@@ -10,7 +10,8 @@ Use esta skill para manter os arquivos `.base` do Obsidian em `vault/bases/`. El
 ## Arquivos Atuais
 
 - `vault/bases/papers.base`: consulta papers, prioridade de leitura, PDF e uso na monografia.
-- `vault/bases/claims.base`: consulta a matriz canonica de claims e eventuais notas individuais de claim.
+- `vault/bases/claims.base`: sumario consultavel dos claims individuais em `vault/claims/`.
+- `vault/bases/siglas.base`: sumario consultavel das siglas em `vault/siglas/`.
 
 ## Regra Principal
 
@@ -89,9 +90,7 @@ Escopo recomendado:
 ```yaml
 filters:
   or:
-    - 'type == "claim"'
-    - 'type == "claim-registry"'
-    - 'file.hasTag("tipo/claim")'
+    - 'file.inFolder("claims")'
     - and:
         - 'file.inFolder("writing")'
         - 'file.basename == "claim-evidence-matrix"'
@@ -99,9 +98,11 @@ filters:
 
 Views uteis:
 
-- `Claims - Registro`: mostra registro canonico e notas individuais.
+- `Sumario de Claims`: mostra as notas individuais em `vault/claims/`.
+- `Guia do Schema`: mostra `claim-evidence-matrix.md` como guia, nao como tabela de itens.
 - `Requer Validacao`: claims/notas cujo estado nao e `validado`.
 - `Claims Experimentais`: filtra `claim_type == "experimental"`.
+- `Claims Bloqueados`: filtra `claim_type == "bloqueado"` e mostra motivo/acao.
 
 Propriedades esperadas em notas individuais de claim:
 
@@ -115,6 +116,9 @@ strength: moderada
 primary_evidence: []
 vault_support: []
 monografia_section: ""
+usage_guidance: ""
+rationale: ""
+action_required: ""
 last_verified: ""
 ```
 

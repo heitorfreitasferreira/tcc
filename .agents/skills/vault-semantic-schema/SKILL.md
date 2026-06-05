@@ -1,6 +1,6 @@
 ---
 name: vault-semantic-schema
-description: Ensina a manter o schema semantico do vault Obsidian do TCC. Use quando editar vault/, templates, papers, claims, claim-evidence-matrix, propriedades YAML, aliases, relacoes tipadas ou rastreabilidade monografia-evidencia.
+description: Ensina a manter o schema semantico do vault Obsidian do TCC. Use quando editar vault/, templates, papers, claims individuais, Bases, propriedades YAML, aliases, relacoes tipadas ou rastreabilidade monografia-evidencia.
 ---
 
 # Vault Semantic Schema
@@ -12,8 +12,10 @@ Use esta skill para criar, revisar ou corrigir notas do `vault/` seguindo o sche
 - Convenções gerais: `vault/opencode-vault.md`
 - Template de paper: `vault/templates/paper-note.md`
 - Template opcional de claim: `vault/templates/claim-note.md`
-- Registro canonico de claims: `vault/writing/planejamento/claim-evidence-matrix.md`
-- Bases de consulta: `vault/bases/papers.base` e `vault/bases/claims.base`
+- Claims individuais: `vault/claims/*.md`
+- Sumario de claims: `vault/bases/claims.base`
+- Guia de schema de claims: `vault/writing/planejamento/claim-evidence-matrix.md`
+- Bases de consulta: `vault/bases/papers.base`, `vault/bases/claims.base` e `vault/bases/siglas.base`
 - Importador de BibTeX: `scripts/import-bib-to-vault.sh`
 - Migrador de tags (flat→structured): `scripts/migrate-tags.py`
 - Taxonomia de tags: `vault-tagger` skill
@@ -32,7 +34,7 @@ Nao transforme o vault em fonte primaria para claims metodologicos ou experiment
 - Claims metodologicos apontam para `src/`.
 - Claims experimentais apontam para `src/data/results/`, `scripts/` ou `monografia/figs/`.
 - Notas do vault organizam e explicam evidencias, mas nao substituem codigo/dados.
-- `claim-evidence-matrix.md` e a fonte canonica de IDs, forca e status dos claims.
+- As notas individuais em `vault/claims/` sao a fonte dos IDs, forca, status e evidencias dos claims; `claims.base` e o sumario consultavel.
 
 ## Workflow Para Editar Nota
 
@@ -43,7 +45,7 @@ Nao transforme o vault em fonte primaria para claims metodologicos ou experiment
 5. Use **apenas tags hierarquicas** `namespace/valor`. Flat tags nao sao mais aceitas.
 6. Para migracao/limpeza em lote, execute `python3 scripts/migrate-tags.py`.
 7. Padronize secoes somente quando isso melhorar busca, escrita ou rastreabilidade.
-8. Se a nota sustenta claim forte, conecte ao ID da matriz em `claim_support` ou em secao textual.
+8. Se a nota sustenta claim forte, conecte ao ID existente em `vault/claims/` por `claim_support` ou em secao textual.
 9. Valide YAML/frontmatter quando alterar muitas propriedades.
 
 ## Schema Minimo Por Tipo
@@ -88,7 +90,7 @@ Campos importantes:
 - `areas`: valores sem prefixo, ex: `tsp`, `drone-routing`, `lower-bound`, `ant-colony`, `genetic-algorithms`
 - `methods`: valores sem prefixo, ex: `ga`, `pso`, `aco`, `exact`, `metaheuristic`, `held-karp`, `machine-learning`
 - `chapters`: `introducao`, `fundamentacao`, `proposta`, `experimentos`, `conclusao`
-- `claim_support`: IDs da matriz, ex: `C04`, `A08`, `E22`
+- `claim_support`: IDs existentes em `vault/claims/`, ex: `C04`, `A08`, `E22`
 
 As tags hierarquicas complementam estas propriedades; use `scripts/migrate-tags.py` para sincronizar `areas`, `methods`, `chapters` e `role` a partir das tags existentes.
 
@@ -151,9 +153,7 @@ Se for auditoria, inclua `tipo/auditoria` e `evidencia/auditoria`.
 
 ### Claims
 
-Nao crie uma pasta de claims por padrao. A matriz e suficiente para claims simples.
-
-Use `vault/templates/claim-note.md` somente quando um claim precisar de nota propria por ser complexo, controverso ou de alto risco.
+Use uma nota individual em `vault/claims/` para cada claim. `vault/bases/claims.base` centraliza a visualizacao; `claim-evidence-matrix.md` fica apenas como guia de schema e protocolo.
 
 Schema minimo:
 
@@ -168,11 +168,14 @@ strength: moderada
 primary_evidence: []
 vault_support: []
 monografia_section: ""
+usage_guidance: ""
+rationale: ""
+action_required: ""
 last_verified: ""
 tags:
   - tipo/claim
-  - evidencia/auditoria
-  - forca/requer-validacao
+  - claim/experimental
+  - status/requer-validacao
 ---
 ```
 
@@ -245,7 +248,7 @@ aliases:
 
 ## Como Atualizar Claims
 
-Ao adicionar claim em `claim-evidence-matrix.md`:
+Ao adicionar claim em `vault/claims/`:
 
 1. Escolha prefixo por tipo: `C` conceitual, `M` metodologico, `A` algoritmo, `E` experimental, `I` interpretativo, `B` bloqueado.
 2. Escreva o claim com escopo delimitado.
@@ -253,15 +256,17 @@ Ao adicionar claim em `claim-evidence-matrix.md`:
 4. Aponte para fonte primaria verificavel.
 5. Aponte para apoio no vault.
 6. Indique uso recomendado na monografia.
-7. Atualize `last_verified` se a checagem foi feita agora.
+7. Atualize `usage_guidance`, `rationale` e `action_required` quando o claim exigir cautela, estiver bloqueado ou tiver sido substituido.
+8. Atualize `last_verified` se a checagem foi feita agora.
+9. Confirme que `vault/bases/claims.base` lista o novo registro.
 
 Nao promova claim interpretativo para forte sem evidencia primaria.
 
 ## Anti-Patterns
 
-- Criar `vault/claims/` para todo claim simples.
 - Usar canvas como evidencia primaria.
 - Trocar `bibtex-key` por `bibtex_key` removendo compatibilidade com scripts.
+- Recriar uma tabela centralizada de claims em `claim-evidence-matrix.md` em vez de usar notas individuais e `claims.base`.
 - Duplicar a mesma verdade em paper, claim note, Base e canvas com valores divergentes.
 - **Adicionar flat tags** (`ga`, `pso`, `drone`) — o vault usa exclusivamente tags hierarquicas.
 - Retagear o vault inteiro manualmente — use `scripts/migrate-tags.py` para operacoes em lote.
