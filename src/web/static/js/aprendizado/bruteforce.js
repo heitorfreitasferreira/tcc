@@ -9,7 +9,7 @@ function f(x) {
   return Math.sin(2.5 * x) * Math.cos(1.8 * x) + 0.4 * Math.sin(0.7 * x + 1) + 0.6;
 }
 
-let ctx, yMin, yMax, yRange;
+let ctx, yMin, yMax, yRange, stepsCache;
 
 function mx(x) { return 60 + ((x - XL) / (XR - XL)) * (W - 120); }
 function my(y) {
@@ -123,7 +123,7 @@ function drawCurve() {
 
 function drawEvaluated(s) {
   for (let i = 0; i < s.step; i++) {
-    const si = genSteps()[i];
+    const si = stepsCache[i];
     const px = mx(si.x), py = my(si.y);
     ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2);
     ctx.fillStyle = "rgba(150,150,150,0.5)";
@@ -136,7 +136,7 @@ function drawEvaluated(s) {
   ctx.beginPath();
   let started = false;
   for (let i = 0; i <= s.step; i++) {
-    const si = genSteps()[i];
+    const si = stepsCache[i];
     const px = mx(si.bestX), py = my(si.bestY);
     if (!started) { ctx.moveTo(px, py); started = true; }
     else ctx.lineTo(px, py);
@@ -176,7 +176,8 @@ function drawBestPoint(s) {
 
 const init = () => {
   setupCanvases();
-  const steps = genSteps();
+  stepsCache = genSteps();
+  const steps = stepsCache;
   createPlayer({
     genFrames: () => steps,
     drawAll: (s) => drawAll(s),

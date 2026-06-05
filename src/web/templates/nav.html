@@ -49,7 +49,7 @@
     {{ if .SelectedMethod }}
     <div class="nav-dropdown" id="dd-run">
       <button class="nav-dropdown-btn" onclick="toggleDropdown('dd-run')">
-        {{ if .SelectedRun }}Execução{{ else }}Execução{{ end }} ▾
+        {{ if .SelectedRun }}Execução: <strong>{{ .SelectedRun }}</strong>{{ else }}Execução{{ end }} ▾
       </button>
       <div class="nav-dropdown-menu">
         {{ range .MethodGroups }}
