@@ -5,137 +5,207 @@ description: Padroniza tags hierarquicas no vault Obsidian do TCC. Use quando o 
 
 # Vault Tagger
 
-Use esta skill para adicionar, revisar ou normalizar tags nas notas Markdown do `vault/` do TCC. O objetivo e melhorar buscas, Graph View, Bases/Dataview e rastreabilidade entre literatura, projeto, escrita e evidencias.
+Use esta skill para adicionar, revisar ou normalizar tags nas notas Markdown do `vault/` do TCC. O objetivo e melhorar buscas, Graph View, Bases e rastreabilidade entre literatura, projeto, escrita e evidencias.
 
 Para propriedades YAML, relacoes tipadas, templates, aliases e claims, use tambem `vault-semantic-schema`. Para editar arquivos `.base`, use `vault-bases-maintainer`.
+
+## Estado Atual Do Vault
+
+- **156 notas** com frontmatter, **zero flat tags** — todas usam exclusivamente tags hierarquicas `namespace/valor`.
+- Migracao completa executada por `scripts/migrate-tags.py` (idempotente, seguro reexecutar).
+- Color groups do Graph View configurados em `vault/.obsidian/graph.json` por `tipo/*`.
 
 ## Principios
 
 - Preserve o conteudo das notas; altere apenas frontmatter/tags, salvo pedido explicito.
-- Prefira tags hierarquicas com prefixo: `tipo/`, `status/`, `area/`, `metodo/`, `papel/`, `capitulo/`, `evidencia/`, `forca/`, `pdf/`, `relevancia/`, `escrita/`, `artefato/`.
-- Evite tags soltas novas como `ga`, `pso`, `drone`, `review`, `paper`; normalize para `metodo/ga`, `metodo/pso`, `area/drone-routing`, `papel/revisao`, `tipo/paper`.
-- Mantenha tags existentes quando ainda forem usadas por outras notas, mas acrescente a forma nova hierarquica.
-- Nao reclassifique status academico, rating, PDF ou evidencia sem inspecionar a nota/indice correspondente.
-- Exclua `index.md` dos grafos com `tipo/index` ou `index`; nao apague indices.
+- **Apenas tags hierarquicas** `namespace/valor`. Nunca adicione flat tags como `ga`, `pso`, `drone`, `review`.
+- Cada nota deve ter pelo menos um `tipo/*` como tag primaria de classificacao.
+- Tags complementam propriedades YAML (`status`, `rating`, `areas`, `methods`, `chapters`, `role`); nao as substituem.
+- Nao reclassifique status academico, rating, ou evidencia sem inspecionar a nota.
+- `index.md` usa `tipo/index` para exclusao de grafos; nao apague indices.
+- Para migracao em lote, use `python3 scripts/migrate-tags.py` (cobre path→tipo, flat→structured, enriquecimento de propriedades).
 
 ## Workflow
 
-1. Identifique o escopo pedido: uma nota, uma pasta (`papers/`, `areas/`, `projeto/`, `writing/`) ou o vault inteiro.
-2. Leia o frontmatter da nota e, se necessario, as secoes `Resumo`, `Conexoes`, `Relevancia`, `BibTeX`, `PDF`, `Status` e links `[[...]]`.
-3. Aplique tags minimas por tipo de nota.
-4. Aplique tags tematicas por area/metodo/papel.
-5. Aplique tags operacionais: status, relevancia, PDF, capitulo, evidencia, escrita.
-6. Preserve campos estruturados ja existentes (`year`, `status`, `rating`, `doi`, `bibtex`, etc.); tags complementam estes campos para busca/grafo.
-7. Ao editar em lote, faca alteracoes pequenas e verificaveis; nunca invente classificacoes incertas.
+1. Identifique o escopo pedido: uma nota, uma pasta (`papers/`, `areas/`, `projeto/`, `siglas/`, `writing/`) ou o vault inteiro.
+2. Leia o frontmatter da nota e, se necessario, as secoes `Resumo`, `Conexoes`, `Relevancia` e links `[[...]]`.
+3. Aplique tags minimas por tipo de nota (`tipo/*` obrigatorio).
+4. Aplique tags tematicas por area/metodo/papel com base no conteudo.
+5. Aplique tags operacionais: status, relevancia, capitulo, evidencia.
+6. Preserve campos estruturados (`year`, `status`, `rating`, `doi`, `bibtex-key`, `areas`, `methods`, `role`, `reading_status`, `validation_status`, `pdf_status`, `chapters`, `claim_support`).
+7. Ao editar em lote, prefira `scripts/migrate-tags.py`; faca alteracoes pequenas e verificaveis.
 
-## Taxonomia Recomendada
+## Taxonomia — Namespaces Ativos
 
-### Tipo De Nota
+Os unicos namespaces em uso no vault (pos-migracao):
 
-Use exatamente uma ou mais quando fizer sentido:
+| Namespace | Uso | Exemplo |
+|-----------|-----|---------|
+| `tipo/` | Classificacao primaria da nota | `tipo/paper` |
+| `area/` | Dominio de pesquisa | `area/tsp` |
+| `metodo/` | Metodo/tecnica/algoritmo | `metodo/aco` |
+| `papel/` | Funcao do paper na monografia | `papel/revisao` |
+| `status/` | Estado de leitura/escrita | `status/lido` |
+| `evidencia/` | Tipo de evidencia/material | `evidencia/referencia` |
+| `capitulo/` | Capitulo alimentado pela nota | `capitulo/fundamentacao` |
+| `relevancia/` | Espelha `rating:` (1–5) | `relevancia/5` |
+| `incluir/` | Inclusao na monografia (siglas/projeto) | `incluir/sim` |
+| `topico/` | Topico transversal (implementacao, monografia, ferramenta) | `topico/implementacao` |
+| `forca/` | Forca da evidencia (claims) | `forca/requer-validacao` |
+
+Namespaces obsoletos removidos: `pdf/`, `escrita/`, `artefato/` (substituidos por propriedades YAML: `pdf_status`, `writing_status`, atributos em `primary_evidence`).
+
+### Tipo De Nota (`tipo/*`)
+
+Uma ou mais por nota. Valores canonicos:
 
 ```yaml
 tags:
-  - tipo/paper
-  - tipo/area
-  - tipo/projeto
-  - tipo/writing
-  - tipo/index
-  - tipo/template
-  - tipo/auditoria
-  - tipo/capitulo
+  - tipo/paper        # papers/, templates/paper-note.md
+  - tipo/area         # areas/
+  - tipo/projeto      # projeto/
+  - tipo/sigla        # siglas/
+  - tipo/writing      # writing/ (capitulos, planejamento, decisoes)
+  - tipo/auditoria    # writing/auditorias/
+  - tipo/revisao      # writing/review-solicitacoes/
+  - tipo/claim        # templates/claim-note.md, claim-evidence-matrix
+  - tipo/index        # */index.md (catalogos)
+  - tipo/template     # templates/
 ```
 
-Mapeamento por caminho:
+Mapeamento canonico por caminho:
 
-- `vault/papers/*.md`: `tipo/paper`
-- `vault/areas/*.md`: `tipo/area`
-- `vault/projeto/*.md`: `tipo/projeto`
-- `vault/writing/**/*.md`: `tipo/writing`
-- `*/index.md`: `tipo/index`
-- `vault/templates/*.md`: `tipo/template`
+| Caminho | `tipo/*` primario |
+|---------|-------------------|
+| `papers/*.md` | `tipo/paper` |
+| `areas/*.md` | `tipo/area` |
+| `projeto/*.md` | `tipo/projeto` |
+| `siglas/*.md` | `tipo/sigla` |
+| `writing/auditorias/*.md` | `tipo/auditoria` |
+| `writing/review-solicitacoes/*.md` | `tipo/revisao` |
+| `writing/**/*.md` (demais) | `tipo/writing` |
+| `*/index.md` | `tipo/index` |
+| `templates/*.md` | `tipo/template` |
 
-### Status
-
-Use junto com o campo `status:` quando existir:
+### Status (`status/*`)
 
 ```yaml
 tags:
   - status/pendente
+  - status/resumo-lido
   - status/lido-parcial
   - status/lido
-  - status/revisar
+  - status/descartado
+  - status/removido
+  - status/analise-posterior
+  - status/validado
+  - status/concluido
+  - status/rascunho
+  - status/ativo
+  - status/aberto
+  - status/resolvido
   - status/atualizado
-  - status/desatualizado
-  - status/bloqueado
+  - status/pronto-revisao
+  - status/pronto-com-pendencias
+  - status/auditado-bloqueios
+  - status/verificado
 ```
 
-### Areas
+Derivado da propriedade YAML `status` ou `reading_status`. Use o script de migracao para mapeamento automatico.
+
+### Areas (`area/*`)
 
 ```yaml
 tags:
   - area/tsp
+  - area/atsp
+  - area/tdtsp
+  - area/fstsp
+  - area/gtsp
   - area/tsp-variants
   - area/routing
+  - area/vrp
   - area/drone-routing
-  - area/bio-inspired
+  - area/bio-inspired-optimization
+  - area/ant-colony
+  - area/genetic-algorithms
+  - area/particle-swarm
   - area/comparative-studies
   - area/lower-bound
-  - area/statistical-analysis
-  - area/combinatorial-optimization
+  - area/lower-bounds
 ```
 
-Regras rapidas:
+Regras:
 
-- TSP classico, complexidade, heuristicas TSP: `area/tsp`
-- FSTSP, TSP-D, UAV, drones: `area/drone-routing`
+- TSP classico, complexidade: `area/tsp`
+- ATSP: `area/atsp`
+- TDTSP: `area/tdtsp`
+- FSTSP, TSP-D, drones, UAV: `area/drone-routing`
 - Roteamento geral/grafos: `area/routing`
-- Comparacoes GA/PSO/ACO/outros: `area/comparative-studies`
-- Held-Karp, AP relaxation, branch-and-bound, bounding: `area/lower-bound`
+- VRP: `area/vrp`
+- Otimizacao bio-inspirada generica: `area/bio-inspired-optimization`
+- ACO especifico: `area/ant-colony`
+- GA especifico: `area/genetic-algorithms`
+- PSO especifico: `area/particle-swarm`
+- Comparacoes empiricas entre metodos: `area/comparative-studies`
+- Lower bounds, Held-Karp, branch-and-bound: `area/lower-bound` ou `area/lower-bounds`
 
-### Metodos
+### Metodos (`metodo/*`)
 
 ```yaml
 tags:
+  - metodo/exact
+  - metodo/heuristic
+  - metodo/metaheuristic
+  - metodo/hybrid
+  - metodo/approximation
+  - metodo/aco
   - metodo/ga
   - metodo/pso
-  - metodo/aco
-  - metodo/bruteforce
+  - metodo/sa
+  - metodo/ts
+  - metodo/abc
+  - metodo/gwo
+  - metodo/cso
+  - metodo/ssa
+  - metodo/eho
+  - metodo/gp
+  - metodo/vns
   - metodo/lower-bound
-  - metodo/hungarian
   - metodo/held-karp
+  - metodo/lagrangean
   - metodo/branch-and-bound
-  - metodo/local-search
-  - metodo/lin-kernighan
-  - metodo/simulated-annealing
+  - metodo/branch-and-cut
+  - metodo/milp
+  - metodo/machine-learning
+  - metodo/constraint-programming
+  - metodo/clustering
+  - metodo/crossover
+  - metodo/encoding
 ```
 
-Use `metodo/lower-bound` para a abordagem geral e tags especificas (`metodo/hungarian`, `metodo/held-karp`) quando o texto tratar do metodo concreto.
+Combine tags genericas e especificas: um paper sobre ACO deve ter `metodo/metaheuristic` + `metodo/aco`.
 
-### Papel Na Monografia
+### Papel Na Monografia (`papel/*`)
 
 ```yaml
 tags:
   - papel/fundacional
   - papel/revisao
   - papel/comparativo
-  - papel/metodologico
-  - papel/aplicacao
   - papel/benchmark
-  - papel/limitacao
-  - papel/trabalho-futuro
+  - papel/teorico
+  - papel/livro
 ```
 
-Regras rapidas:
+Regras:
 
-- Obras classicas: `papel/fundacional`
-- Surveys/books/reviews: `papel/revisao`
+- Obras classicas (Dorigo 1996, Holland 1975, Kennedy 1995): `papel/fundacional`
+- Surveys, reviews, livros: `papel/revisao`
 - Estudos de comparacao empirica: `papel/comparativo`
-- Justifica decisao de modelagem/algoritmo: `papel/metodologico`
-- Aplica em drones/patrulha/roteamento operacional: `papel/aplicacao`
-- Usado para discutir ameacas, ausencia de tuning, generalizacao: `papel/limitacao`
+- Resultados experimentais/benchmark: `papel/benchmark`
 
-### Capitulos
+### Capitulos (`capitulo/*`)
 
 ```yaml
 tags:
@@ -144,119 +214,109 @@ tags:
   - capitulo/proposta
   - capitulo/experimentos
   - capitulo/conclusao
-  - capitulo/apendice
 ```
 
 Use em notas `writing/`, `projeto/` e `papers/` quando a nota alimenta diretamente um capitulo.
 
-### Evidencia
+### Evidencia (`evidencia/*`)
 
 ```yaml
 tags:
-  - evidencia/codigo
-  - evidencia/dados
-  - evidencia/resultado
-  - evidencia/figura
-  - evidencia/tabela
-  - evidencia/referencia
-  - evidencia/auditoria
+  - evidencia/referencia    # papers, bibliografia
+  - evidencia/codigo        # projeto/, src/
+  - evidencia/dados         # src/data/results/
+  - evidencia/auditoria     # writing/auditorias/
+  - evidencia/estatistica   # analise estatistica
+  - evidencia/metodologia   # decisoes metodologicas
+  - evidencia/validacao     # verificacao, claims
 ```
 
-Regras rapidas:
+### Inclusao Na Monografia (`incluir/*`)
 
-- Notas que apontam para `src/`: `evidencia/codigo`
-- Notas que apontam para `src/data/results/`: `evidencia/dados` ou `evidencia/resultado`
-- Notas sobre `monografia/figs/`: `evidencia/figura`
-- Artigos/papers: `evidencia/referencia`
-- Auditorias em `writing/`: `evidencia/auditoria`
-
-### Forca Da Evidencia
-
-Use especialmente em `writing/planejamento/claim-evidence-matrix.md`, auditorias e notas de resultados:
+Usado em `siglas/` e `projeto/` (espelha propriedade YAML `incluir`):
 
 ```yaml
 tags:
-  - forca/forte
-  - forca/moderada
-  - forca/fraca
-  - forca/bloqueada
+  - incluir/sim
+  - incluir/pendente
+  - incluir/nao
+```
+
+### Topico Transversal (`topico/*`)
+
+Topicos que cruzam tipos de nota — implementacao, escrita, ferramentas:
+
+```yaml
+tags:
+  - topico/implementacao
+  - topico/arquitetura
+  - topico/ferramenta
+  - topico/experimentos
+  - topico/monografia
+  - topico/formatacao
+  - topico/formulacao
+  - topico/visao-geral
+  - topico/classificacao
+  - topico/glossario
+  - topico/figuras
+  - topico/tabelas
+  - topico/citacoes
+  - topico/roadmap
+  - topico/revisao
+  - topico/originalidade
+  - topico/multi-objetivo
+```
+
+### Relevancia (`relevancia/*`)
+
+Espelha `rating:` para uso no Graph View:
+
+```yaml
+tags:
+  - relevancia/5    # rating: 5
+  - relevancia/4    # rating: 4
+  - relevancia/3    # rating: 3
+```
+
+Ratings 0–2 nao geram tag de relevancia.
+
+### Forca Da Evidencia (`forca/*`)
+
+Uso restrito a claims e auditorias:
+
+```yaml
+tags:
   - forca/requer-validacao
 ```
 
-### Escrita
-
-Use para controlar maturidade das notas de escrita:
-
-```yaml
-tags:
-  - escrita/rascunho
-  - escrita/revisar
-  - escrita/pronto
-  - escrita/bloqueado
-  - escrita/desatualizado
-```
-
-### Artefatos
-
-```yaml
-tags:
-  - artefato/src
-  - artefato/data
-  - artefato/resultados
-  - artefato/figuras
-  - artefato/tabelas
-  - artefato/latex
-  - artefato/bibtex
-```
-
-### PDF
-
-Use somente quando houver evidencia no indice de papers ou na nota:
-
-```yaml
-tags:
-  - pdf/integro
-  - pdf/ausente
-  - pdf/corrompido
-  - pdf/capes
-  - pdf/busca-manual
-```
-
-### Relevancia
-
-Espelhe `rating:` para uso no Graph View:
-
-```yaml
-tags:
-  - relevancia/5
-  - relevancia/4
-  - relevancia/3
-  - relevancia/baixa
-```
-
-Use `relevancia/baixa` para `rating: 0`, `1` ou `2`.
-
-## Exemplos
+## Exemplos Atualizados
 
 ### Paper Fundacional De ACO
 
 ```yaml
 ---
-title: Dorigo et al. (1996)
+title: "Ant system: optimization by a colony of cooperating agents"
+authors: [Dorigo, Marco and Maniezzo, Vittorio and Colorni, Alberto]
 year: 1996
 status: lido
 rating: 5
+type: paper
+reading_status: lido
+role: fundacional
+areas: [tsp]
+methods: [aco, metaheuristic]
 tags:
   - tipo/paper
   - status/lido
   - area/tsp
-  - area/bio-inspired
+  - area/ant-colony
+  - area/bio-inspired-optimization
   - metodo/aco
+  - metodo/metaheuristic
   - papel/fundacional
   - evidencia/referencia
   - capitulo/fundamentacao
   - relevancia/5
-  - pdf/integro
 ---
 ```
 
@@ -264,31 +324,46 @@ tags:
 
 ```yaml
 ---
+type: projeto
+areas: []
+methods: [ga]
 tags:
   - tipo/projeto
   - metodo/ga
-  - area/bio-inspired
-  - area/tsp
+  - area/genetic-algorithms
+  - area/bio-inspired-optimization
   - evidencia/codigo
-  - capitulo/proposta
-  - artefato/src
+  - topico/implementacao
 ---
 ```
 
-### Nota De Experimentos
+### Nota De Auditoria
 
 ```yaml
 ---
+type: writing
+status: validado
 tags:
+  - tipo/auditoria
   - tipo/writing
-  - tipo/capitulo
-  - capitulo/experimentos
-  - evidencia/resultado
-  - evidencia/tabela
-  - evidencia/figura
-  - artefato/resultados
-  - artefato/figuras
-  - escrita/revisar
+  - evidencia/auditoria
+  - evidencia/estatistica
+  - evidencia/metodologia
+  - topico/monografia
+  - status/validado
+---
+```
+
+### Sigla
+
+```yaml
+---
+sigla: "ACO"
+definicao: "Ant Colony Optimization"
+incluir: sim
+tags:
+  - tipo/sigla
+  - incluir/sim
 ---
 ```
 
@@ -299,55 +374,66 @@ tags:
 tags:
   - tipo/index
   - tipo/paper
-  - catalogo
-  - tracker
   - status/atualizado
 ---
 ```
 
 ## Filtros Uteis No Obsidian Graph
 
-Excluir indices:
+Excluir indices e templates:
 
 ```text
--tag:#tipo/index
+-tag:#tipo/index -tag:#tipo/template
 ```
 
 Literatura essencial:
 
 ```text
-tag:#tipo/paper -tag:#tipo/index tag:#relevancia/5
+tag:#tipo/paper tag:#relevancia/5
 ```
 
-Papers pendentes:
+Papers pendentes de leitura:
 
 ```text
-tag:#tipo/paper tag:#status/pendente -tag:#tipo/index
+tag:#tipo/paper tag:#status/pendente
 ```
 
 Metodo ACO:
 
 ```text
-tag:#metodo/aco -tag:#tipo/index
+tag:#metodo/aco
+```
+
+Area de drone-routing:
+
+```text
+tag:#area/drone-routing
 ```
 
 Capitulo de experimentos:
 
 ```text
-tag:#capitulo/experimentos -tag:#tipo/index
+tag:#capitulo/experimentos
 ```
 
-Claims com evidencia fraca:
+Auditorias concluidas:
 
 ```text
-tag:#forca/fraca OR tag:#forca/requer-validacao OR tag:#forca/bloqueada
+tag:#tipo/auditoria tag:#status/concluido
+```
+
+Projeto com evidencias de codigo:
+
+```text
+tag:#tipo/projeto tag:#evidencia/codigo
 ```
 
 ## Checklist Antes De Finalizar
 
-- A nota tem `tipo/...` correto?
+- A nota tem pelo menos um `tipo/*`?
 - Se for `index.md`, tem `tipo/index`?
-- Se for paper, `status/...`, `relevancia/...`, `papel/...` e `evidencia/referencia` refletem campos existentes?
-- Tags soltas antigas foram mantidas apenas se necessario, mas acompanhadas por tags hierarquicas?
+- Se for paper, `status/*`, `relevancia/*`, `papel/*` e `evidencia/referencia` refletem as propriedades YAML?
+- Se for sigla ou projeto com `incluir:`, tem `incluir/*` correspondente?
+- **Nao ha flat tags** na lista de tags?
 - A classificacao tem suporte no texto da nota, no indice ou nos links?
-- O filtro `-tag:#tipo/index` remove indices da visualizacao?
+- O filtro `-tag:#tipo/index -tag:#tipo/template` remove ruido da visualizacao?
