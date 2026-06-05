@@ -1,12 +1,15 @@
 ---
-tags: [area, catalogo, index]
+tags:
+- tipo/area
+- tipo/index
 created: 2026-06-02
 updated: 2026-06-02
+type: area
 ---
 
 # Catálogo de Áreas — Base de Conhecimento
 
-10 notas de área organizando o conhecimento da literatura por tema. Cada área agrega [[papers]] relacionados e se conecta à implementação em [[projeto/index|projeto]].
+10 notas de área organizando o conhecimento da literatura por tema. Cada área agrega artigos em [[papers/index]] e se conecta à implementação em [[projeto/index]].
 
 ## Áreas
 
@@ -32,4 +35,4 @@ updated: 2026-06-02
 ## Convenções
 
 - Tags: prefixo `area` + tema específico
-- Cada área conecta-se aos [[papers]] que a fundamentam e às notas de [[projeto/index|projeto]] que a implementam
+- Cada área conecta-se aos artigos em [[papers/index]] que a fundamentam e às notas de [[projeto/index]] que a implementam

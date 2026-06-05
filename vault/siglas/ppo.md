@@ -1,12 +1,13 @@
 ---
-sigla: "PPO"
-definicao: "Proximal Policy Optimization"
+sigla: PPO
+definicao: Proximal Policy Optimization
 incluir: nao
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/nao
+- tipo/sigla
 ---
 
 # PPO

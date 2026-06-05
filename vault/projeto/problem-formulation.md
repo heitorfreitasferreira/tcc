@@ -1,11 +1,18 @@
 ---
-tags: [projeto, implementacao, formulacao, tsp, tensor, siglas]
-sigla: "TSP-SD-ATP"
-definicao: "Traveling Salesman Problem with Sequence-Dependent Angular Turn Penalties"
+tags:
+- area/tsp
+- evidencia/codigo
+- incluir/sim
+- tipo/projeto
+- topico/formulacao
+- topico/implementacao
+sigla: TSP-SD-ATP
+definicao: Traveling Salesman Problem with Sequence-Dependent Angular Turn Penalties
 incluir: sim
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
+type: projeto
 ---
 
 # Formulação do Problema — TSP-SD-ATP

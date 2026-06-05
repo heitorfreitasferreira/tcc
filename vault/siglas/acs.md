@@ -1,12 +1,13 @@
 ---
-sigla: "ACS"
-definicao: "Ant Colony System"
+sigla: ACS
+definicao: Ant Colony System
 incluir: pendente
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/pendente
+- tipo/sigla
 ---
 
 # ACS

@@ -1,7 +1,14 @@
 ---
-tags: [projeto, implementacao, arquitetura, go, pacotes]
+tags:
+- evidencia/codigo
+- status/atualizado
+- tipo/projeto
+- topico/arquitetura
+- topico/ferramenta
+- topico/implementacao
 status: atualizado-pos-p7
 updated: 2026-06-02
+type: projeto
 ---
 
 # Arquitetura do Código
@@ -100,7 +107,7 @@ optimize ga|pso|aco|bruteforce|lowerbound
 
 ## Padrões de Projeto (Comentários)
 
-- **Strategy**: CLI escolhe pacote otimizador em runtime → análogo ao padrão Strategy de [[gamma1994designpatterns]]. Cada método (GA, PSO, ACO) implementa a mesma interface implícita.
+- **Strategy**: CLI escolhe pacote otimizador em runtime → análogo ao padrão Strategy (Gamma et al., 1994). Cada método (GA, PSO, ACO) implementa a mesma interface implícita.
 - **Embedded Turn Cost**: pré-computação da penalidade angular no tensor → análogo ao pseudo-dual graph de [[winter2002modeling]], mas adaptado para TSP (shortest-path vs permutação).
 - **Generator (permutações)**: `generatePermutations` usa canal Go para streaming → evita alocar O(n!) na memória.
 

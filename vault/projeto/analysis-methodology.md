@@ -1,7 +1,14 @@
 ---
-tags: [projeto, implementacao, analise, estatistica, metodologia]
+tags:
+- evidencia/codigo
+- evidencia/estatistica
+- evidencia/metodologia
+- status/validado
+- tipo/projeto
+- topico/implementacao
 status: estatistica-validada
 updated: 2026-06-02
+type: projeto
 ---
 
 # Metodologia de Análise — Experimentos

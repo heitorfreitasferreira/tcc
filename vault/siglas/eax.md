@@ -1,12 +1,13 @@
 ---
-sigla: "EAX"
-definicao: "Edge Assembly Crossover"
+sigla: EAX
+definicao: Edge Assembly Crossover
 incluir: pendente
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/pendente
+- tipo/sigla
 ---
 
 # EAX

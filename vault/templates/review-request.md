@@ -1,20 +1,22 @@
 ---
-title: ""
+title: ''
 tags:
-  - tipo/revisao
-  - status/aberto
-review_id: ""
+- status/aberto
+- tipo/revisao
+- tipo/template
+review_id: ''
 status: aberto
-priority: ""
-source: ""
-date_opened: ""
-date_closed: ""
-target_chapter: ""
+priority: ''
+source: ''
+date_opened: ''
+date_closed: ''
+target_chapter: ''
 correction_layers: []
-evidence_layer: ""
+evidence_layer: ''
 claim_ids: []
-verified_by_script: ""
+verified_by_script: ''
 aliases: []
+type: template
 ---
 
 <!--

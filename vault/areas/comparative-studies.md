@@ -1,9 +1,15 @@
 ---
 title: Estudos Comparativos de Metaheurísticas
-tags: [metaheuristic, comparison, benchmark, experimental]
+tags:
+- metodo/metaheuristic
+- papel/benchmark
+- papel/comparativo
+- status/atualizado
+- tipo/area
 status: atualizado-pos-p7
 created: 2026-06-02
 updated: 2026-06-02
+type: area
 ---
 
 ## Descrição
@@ -31,13 +37,7 @@ Isto significa que:
 
 Ver [[problem-formulation]] para a definição da variante e [[resultados]] para os resultados.
 
-## Principais Insights
-
-- Nenhum algoritmo domina universalmente ("No Free Lunch Theorem")
-- ACO tende a produzir soluções de maior qualidade em TSPs grandes, com maior custo computacional
-- GA é mais rápido e consistente em instâncias pequenas/médias
-- PSO oferece bom equilíbrio entre qualidade e tempo (mas veja [[resultados]] para a variante TSP-SD-ATP)
-- Estatística não-paramétrica pareada (Friedman/Nemenyi e Wilcoxon/Holm) é necessária para validar diferenças entre métodos neste TCC
+> Para resultados empíricos na variante TSP-SD-ATP, ver [[analysis-methodology]] e [[resultados]].
 
 ## Referências na Base
 

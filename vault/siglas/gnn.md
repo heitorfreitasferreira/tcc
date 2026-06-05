@@ -1,12 +1,13 @@
 ---
-sigla: "GNN"
-definicao: "Graph Neural Network"
+sigla: GNN
+definicao: Graph Neural Network
 incluir: nao
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/nao
+- tipo/sigla
 ---
 
 # GNN

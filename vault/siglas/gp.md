@@ -1,12 +1,13 @@
 ---
-sigla: "GP"
-definicao: "Programação Genética (Genetic Programming)"
+sigla: GP
+definicao: Programação Genética (Genetic Programming)
 incluir: nao
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/nao
+- tipo/sigla
 ---
 
 # GP

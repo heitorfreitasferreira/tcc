@@ -1,7 +1,14 @@
 ---
-tags: [projeto, implementacao, resultados, experimentos]
+tags:
+- capitulo/experimentos
+- evidencia/codigo
+- status/atualizado
+- tipo/projeto
+- topico/experimentos
+- topico/implementacao
 status: atualizado-pos-p7
 updated: 2026-06-02
+type: projeto
 ---
 
 # Resultados dos Experimentos

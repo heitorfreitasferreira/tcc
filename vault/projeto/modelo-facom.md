@@ -1,9 +1,10 @@
 ---
 tags:
-  - facom
-  - monografia
-  - modelo
-  - abnt
+- evidencia/codigo
+- tipo/projeto
+- topico/formatacao
+- topico/monografia
+type: projeto
 ---
 
 # Modelo de Monografia FACOM/UFU

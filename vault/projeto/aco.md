@@ -1,11 +1,18 @@
 ---
-tags: [projeto, implementacao, aco, ant-colony, siglas]
-sigla: "ACO"
-definicao: "Otimização por Colônia de Formigas (Ant Colony Optimization)"
+tags:
+- area/ant-colony
+- evidencia/codigo
+- incluir/sim
+- metodo/aco
+- tipo/projeto
+- topico/implementacao
+sigla: ACO
+definicao: Otimização por Colônia de Formigas (Ant Colony Optimization)
 incluir: sim
 ocorrencias_ac: 0
 ocorrencias_texto: 1
-arquivos_ac: ""
+arquivos_ac: ''
+type: projeto
 ---
 
 # Ant Colony Optimization — Implementação
@@ -113,10 +120,10 @@ Ver `//BUG` no código-fonte. O próximo agente deve resolver:
 1. **`src/graph/types.go:10`** — `maxPenalti` como `time.Duration` (int64) causa type confusion no cast para float64
 2. **`src/graph/math.go:28-29`** — TODO antigo reportava valores patológicos ~5e+08; raiz no type confusion acima
 3. ~~`src/cmd/aco.go:69` — `--rho` default 0.5 é muito agressivo; literatura usa 0.1-0.3~~ **RESOLVIDO (rho=0.2 desatualizado)**
-4. **`src/optimization/aco/ant.go:16-21`** — evaporação varre N³ inteiro em vez de só triplas válidas
-5. **`src/optimization/aco/ant.go:58`** — `total == 0` retorna -1 sem fallback; tour incompleto perde exploração
-6. **`src/optimization/aco/ant.go:85-90`** — primeiro passo é sorteado uniformemente, sem heurística nem feromônio
-7. **`src/optimization/aco/ant.go:96-98`** — tour incompleto (next==-1) contribui 0 feromônio
+4. **`src/optimization/aco/ant.go:16-25`** — evaporação varre N³ inteiro em vez de só triplas válidas
+5. ~~**`src/optimization/aco/ant.go:61`** — `total == 0` retorna -1 sem fallback; tour incompleto perde exploração~~ **RESOLVIDO: fallback guloso implementado nas linhas 62-73**
+6. **`src/optimization/aco/ant.go:99-102`** — primeiro passo é sorteado uniformemente, sem heurística nem feromônio
+7. **`src/optimization/aco/ant.go:110-112`** — tour incompleto (next==-1) contribui 0 feromônio; skip em `updatePheromones` linha 29
 
 ## Direções de Pesquisa
 

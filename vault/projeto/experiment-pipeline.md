@@ -1,7 +1,14 @@
 ---
-tags: [projeto, implementacao, experimentos, pipeline, cli]
+tags:
+- capitulo/experimentos
+- evidencia/codigo
+- status/atualizado
+- tipo/projeto
+- topico/ferramenta
+- topico/implementacao
 status: atualizado-pos-p7
 updated: 2026-06-02
+type: projeto
 ---
 
 # Pipeline de Experimentos

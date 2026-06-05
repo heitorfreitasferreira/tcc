@@ -1,7 +1,10 @@
 ---
-tags: [area, problema-classico]
+tags:
+- area/tsp
+- tipo/area
 created: 2026-06-02
 updated: 2026-06-02
+type: area
 ---
 
 # Roteamento (Routing)

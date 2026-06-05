@@ -1,7 +1,11 @@
 ---
-tags: [area, metaheuristica, bio-inspirado]
+tags:
+- area/bio-inspired-optimization
+- metodo/metaheuristic
+- tipo/area
 created: 2026-06-02
 updated: 2026-06-02
+type: area
 ---
 
 # Particle Swarm Optimization (PSO)

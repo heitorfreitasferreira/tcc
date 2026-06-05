@@ -1,5 +1,10 @@
 ---
-tags: [projeto, implementacao, visao-geral]
+tags:
+- evidencia/codigo
+- tipo/projeto
+- topico/implementacao
+- topico/visao-geral
+type: projeto
 ---
 
 # Projeto — Otimização Bio-Inspirada para Patrulha com Drones
@@ -23,8 +28,8 @@ Este diretório documenta a **implementação em Go** do TCC. Cada nota reflete 
 ## Convenções
 
 - Tags: `projeto`, `implementacao`, `go`, `tcc`
-- [[Links]] para `areas/` quando um conceito da literatura é usado
-- [[Links]] para `papers/` quando um artigo específico fundamenta uma decisão
+- Links para `areas/` quando um conceito da literatura é usado
+- Links para `papers/` quando um artigo específico fundamenta uma decisão
 - Caminhos de código relativos a `src/`
 
 ## Conexões

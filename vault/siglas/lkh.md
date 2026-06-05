@@ -1,12 +1,13 @@
 ---
-sigla: "LKH"
-definicao: "Heurística Lin--Kernighan (Lin--Kernighan Heuristic)"
+sigla: LKH
+definicao: Heurística Lin--Kernighan (Lin--Kernighan Heuristic)
 incluir: pendente
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/pendente
+- tipo/sigla
 ---
 
 # LKH

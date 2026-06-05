@@ -1,12 +1,13 @@
 ---
-sigla: "POI"
-definicao: "Ponto de Interesse (Point of Interest)"
+sigla: POI
+definicao: Ponto de Interesse (Point of Interest)
 incluir: sim
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/sim
+- tipo/sigla
 ---
 
 # POI

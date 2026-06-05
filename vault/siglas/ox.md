@@ -1,12 +1,13 @@
 ---
-sigla: "OX"
-definicao: "Crossover por Ordem (Order Crossover)"
+sigla: OX
+definicao: Crossover por Ordem (Order Crossover)
 incluir: sim
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/sim
+- tipo/sigla
 ---
 
 # OX

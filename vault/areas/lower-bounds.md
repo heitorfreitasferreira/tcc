@@ -1,7 +1,11 @@
 ---
-tags: [area, lower-bound, otimizacao]
+tags:
+- area/bio-inspired-optimization
+- metodo/lower-bound
+- tipo/area
 created: 2026-06-02
 updated: 2026-06-02
+type: area
 ---
 
 # Lower Bounds para TSP — Abordagens e Aplicabilidade ao TSP-SD-ATP

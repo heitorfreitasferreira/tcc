@@ -1,7 +1,11 @@
 ---
-tags: [area, variante-tsp, classificacao]
+tags:
+- area/tsp-variants
+- tipo/area
+- topico/classificacao
 created: 2026-06-02
 updated: 2026-06-02
+type: area
 ---
 
 # Variantes do Problema do Caixeiro Viajante (TSP)

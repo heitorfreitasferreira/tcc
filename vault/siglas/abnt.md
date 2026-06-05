@@ -1,12 +1,13 @@
 ---
-sigla: "ABNT"
-definicao: "Associação Brasileira de Normas Técnicas"
+sigla: ABNT
+definicao: Associação Brasileira de Normas Técnicas
 incluir: sim
 ocorrencias_ac: 1
 ocorrencias_texto: 0
-arquivos_ac: "sobre.tex"
+arquivos_ac: sobre.tex
 tags:
-  - siglas
+- incluir/sim
+- tipo/sigla
 ---
 
 # ABNT

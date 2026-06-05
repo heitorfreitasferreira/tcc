@@ -1,31 +1,32 @@
 ---
-title: ""
+title: ''
 authors: []
-year: 
-doi: ""
-bibtex_key: ""
-bibtex-key: ""
-pdf: ""
+year: null
+doi: ''
+bibtex_key: ''
+bibtex-key: ''
+pdf: ''
 type: paper
 reading_status: pendente
 validation_status: nao-validado
 pdf_status: ausente
 rating: 0
-role: ""
+role: revisao
 areas: []
 methods: []
 chapters: []
 claim_support: []
 aliases: []
 tags:
-  - tipo/paper
-  - status/pendente
-  - evidencia/referencia
+- evidencia/referencia
+- status/pendente
+- tipo/paper
+- tipo/template
 ---
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/<bibtex-key>.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

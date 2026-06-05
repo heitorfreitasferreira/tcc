@@ -1,12 +1,13 @@
 ---
-sigla: "VNS"
-definicao: "Busca em Vizinhança Variável (Variable Neighborhood Search)"
+sigla: VNS
+definicao: Busca em Vizinhança Variável (Variable Neighborhood Search)
 incluir: pendente
 ocorrencias_ac: 0
 ocorrencias_texto: 0
-arquivos_ac: ""
+arquivos_ac: ''
 tags:
-  - siglas
+- incluir/pendente
+- tipo/sigla
 ---
 
 # VNS

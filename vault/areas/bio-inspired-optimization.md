@@ -1,7 +1,10 @@
 ---
-tags: [area, metodologia]
+tags:
+- evidencia/metodologia
+- tipo/area
 created: 2026-06-02
 updated: 2026-06-02
+type: area
 ---
 
 # Otimização Bio-Inspirada

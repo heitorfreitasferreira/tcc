@@ -1,18 +1,19 @@
 ---
 type: claim
-claim_id: ""
-claim: ""
+claim_id: ''
+claim: ''
 claim_type: experimental
 status: requer-validacao
 strength: moderada
 primary_evidence: []
 vault_support: []
-monografia_section: ""
-last_verified: ""
+monografia_section: ''
+last_verified: ''
 tags:
-  - tipo/claim
-  - evidencia/auditoria
-  - forca/requer-validacao
+- evidencia/auditoria
+- forca/requer-validacao
+- tipo/claim
+- tipo/template
 ---
 
 # Claim: 
