@@ -1,14 +1,29 @@
 ---
-title: "A Variable Neighborhood Search for Flying Sidekick Traveling Salesman Problem"
-authors: [de Freitas, Júlia Cária, Penna, Puca Huachi Vaz]
+title: A Variable Neighborhood Search for Flying Sidekick Traveling Salesman Problem
+authors:
+- de Freitas
+- Júlia Cária
+- Penna
+- Puca Huachi Vaz
 year: 2020
-doi: "10.1111/itor.12671"
+doi: 10.1111/itor.12671
 bibtex_key: freitas2020vns
 bibtex-key: freitas2020vns
-pdf: "papers/pdfs/freitas2020vns.pdf"
-tags: [tsp drone]
+pdf: papers/pdfs/freitas2020vns.pdf
+tags:
+- area/drone-routing
+- area/tsp
+- evidencia/referencia
+- status/lido
+- tipo/paper
 status: lido
 rating: 4
+type: paper
+areas:
+- drone-routing
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

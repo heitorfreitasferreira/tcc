@@ -1,14 +1,32 @@
 ---
-title: "Routing Problem for Unmanned Aerial Vehicle Patrolling Missions -- A Progressive Hedging Algorithm"
-authors: [Rajan, Sudarshan, Sundar, Kaarthik, Gautam, Natarajan]
+title: Routing Problem for Unmanned Aerial Vehicle Patrolling Missions -- A Progressive Hedging Algorithm
+authors:
+- Rajan
+- Sudarshan
+- Sundar
+- Kaarthik
+- Gautam
+- Natarajan
 year: 2022
-doi: "10.1016/j.cor.2022.105702"
+doi: 10.1016/j.cor.2022.105702
 bibtex_key: rajan2022routing
 bibtex-key: rajan2022routing
-pdf: "papers/pdfs/rajan2022routing.pdf"
-tags: [drone routing]
+pdf: papers/pdfs/rajan2022routing.pdf
+tags:
+- area/drone-routing
+- area/routing
+- evidencia/referencia
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
+type: paper
+areas:
+- drone-routing
+- routing
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

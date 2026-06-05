@@ -1,12 +1,37 @@
 ---
-title: "A Modified Ant Colony Optimization Algorithm for Network Coding Resource Minimization"
-authors: [Wang, Zhaoyuan, Xing, Huanlai, Li, Tianrui, Yang, Yan, Qu, Rong, Pan, Yi]
+title: A Modified Ant Colony Optimization Algorithm for Network Coding Resource Minimization
+authors:
+- Wang
+- Zhaoyuan
+- Xing
+- Huanlai
+- Li
+- Tianrui
+- Yang
+- Yan
+- Qu
+- Rong
+- Pan
+- Yi
 year: 2016
-doi: "10.1109/tevc.2015.2457437"
+doi: 10.1109/tevc.2015.2457437
 bibtex_key: wang2015aco
-tags: [aco, network-coding, feromonio-3d]
+tags:
+- area/drone-routing
+- evidencia/referencia
+- metodo/aco
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 3
+type: paper
+areas:
+- drone-routing
+methods:
+- aco
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

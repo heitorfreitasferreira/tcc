@@ -1,14 +1,32 @@
 ---
-title: "The Comparison of Genetic Algorithm and Ant Colony Optimization in Completing Travelling Salesman Problem"
-authors: [Alexander, Alexander, Sriwindono, Haris]
+title: The Comparison of Genetic Algorithm and Ant Colony Optimization in Completing Travelling Salesman Problem
+authors:
+- Alexander
+- Alexander
+- Sriwindono
+- Haris
 year: 2020
-doi: "10.4108/eai.20-9-2019.2292121"
+doi: 10.4108/eai.20-9-2019.2292121
 bibtex_key: alexander2020comparison
 bibtex-key: alexander2020comparison
-pdf: "papers/pdfs/alexander2020comparison.pdf"
-tags: [tsp, ga, aco, comparison, tradeoff]
+pdf: papers/pdfs/alexander2020comparison.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/aco
+- metodo/ga
+- papel/comparativo
+- status/lido
+- tipo/paper
 status: lido
 rating: 2
+type: paper
+methods:
+- aco
+- ga
+role: comparativo
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

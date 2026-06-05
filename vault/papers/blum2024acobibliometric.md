@@ -37,7 +37,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/blum2024acobibliometric.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

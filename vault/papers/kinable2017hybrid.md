@@ -1,14 +1,37 @@
 ---
-title: "Hybrid Optimization Methods for Time-Dependent Sequencing Problems"
-authors: [Kinable, Joris, Cire, Andre A., van Hoeve, Willem-Jan]
+title: Hybrid Optimization Methods for Time-Dependent Sequencing Problems
+authors:
+- Kinable
+- Joris
+- Cire
+- Andre A.
+- van Hoeve
+- Willem-Jan
 year: 2017
-doi: "10.1016/j.ejor.2016.11.035"
+doi: 10.1016/j.ejor.2016.11.035
 bibtex_key: kinable2017hybrid
 bibtex-key: kinable2017hybrid
-pdf: "papers/pdfs/kinable2017hybrid.pdf"
-tags: [tdtsp, lower-bound, decision-diagram, constraint-programming]
+pdf: papers/pdfs/kinable2017hybrid.pdf
+tags:
+- area/tdtsp
+- evidencia/referencia
+- metodo/constraint-programming
+- metodo/exact
+- metodo/lower-bound
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
+type: paper
+areas:
+- tdtsp
+methods:
+- constraint-programming
+- exact
+- lower-bound
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

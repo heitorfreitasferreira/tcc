@@ -1,14 +1,27 @@
 ---
-title: "An Effective Heuristic Algorithm for the Traveling-Salesman Problem"
-authors: [Lin, Shen]
+title: An Effective Heuristic Algorithm for the Traveling-Salesman Problem
+authors:
+- Lin
+- Shen
 year: 1973
-doi: "10.1287/opre.21.2.498"
+doi: 10.1287/opre.21.2.498
 bibtex_key: lin1973effective
 bibtex-key: lin1973effective
-tags: [tsp metaheuristic]
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/metaheuristic
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
-pdf: "papers/pdfs/lin1973effective.pdf"
+pdf: papers/pdfs/lin1973effective.pdf
+type: paper
+methods:
+- metaheuristic
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

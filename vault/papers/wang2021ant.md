@@ -1,14 +1,29 @@
 ---
-title: "Ant Colony Optimization for Traveling Salesman Problem Based on Parameters Optimization"
-authors: [Wang, Yong]
+title: Ant Colony Optimization for Traveling Salesman Problem Based on Parameters Optimization
+authors:
+- Wang
+- Yong
 year: 2021
-doi: "10.1016/j.asoc.2021.107439"
+doi: 10.1016/j.asoc.2021.107439
 bibtex_key: wang2021ant
 bibtex-key: wang2021ant
-pdf: "papers/pdfs/wang2021ant.pdf"
-tags: [aco tsp metaheuristic]
+pdf: papers/pdfs/wang2021ant.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/aco
+- metodo/metaheuristic
+- status/lido
+- tipo/paper
 status: lido
-rating: 0
+rating: 3
+type: paper
+methods:
+- aco
+- metaheuristic
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

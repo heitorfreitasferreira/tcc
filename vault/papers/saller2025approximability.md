@@ -41,7 +41,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/saller2025approximability.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

@@ -1,14 +1,30 @@
 ---
-title: "The Flying Sidekick Traveling Salesman Problem: Optimization of Drone-Assisted Parcel Delivery"
-authors: [Murray, Chase C.]
+title: 'The Flying Sidekick Traveling Salesman Problem: Optimization of Drone-Assisted Parcel Delivery'
+authors:
+- Murray
+- Chase C.
 year: 2015
-doi: "10.1016/j.trc.2015.03.005"
+doi: 10.1016/j.trc.2015.03.005
 bibtex_key: murray2015flying
 bibtex-key: murray2015flying
-tags: [tsp drone metaheuristic]
+tags:
+- area/drone-routing
+- area/tsp
+- evidencia/referencia
+- metodo/metaheuristic
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
-pdf: "papers/pdfs/murray2015flying.pdf"
+pdf: papers/pdfs/murray2015flying.pdf
+type: paper
+areas:
+- drone-routing
+methods:
+- metaheuristic
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

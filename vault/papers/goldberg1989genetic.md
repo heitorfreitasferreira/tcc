@@ -1,14 +1,28 @@
 ---
-title: "Genetic Algorithms in Search, Optimization, and Machine Learning"
-authors: [Goldberg, David E.]
+title: Genetic Algorithms in Search, Optimization, and Machine Learning
+authors:
+- Goldberg
+- David E.
 year: 1989
-doi: ""
+doi: ''
 bibtex_key: goldberg1989genetic
 bibtex-key: goldberg1989genetic
-pdf: "papers/pdfs/goldberg1989genetic.pdf"
-tags: [ga metaheuristic]
+pdf: papers/pdfs/goldberg1989genetic.pdf
+tags:
+- evidencia/referencia
+- metodo/ga
+- metodo/metaheuristic
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 5
+type: paper
+methods:
+- ga
+- metaheuristic
+role: revisao
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF

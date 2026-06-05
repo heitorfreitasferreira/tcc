@@ -1,8 +1,14 @@
 ---
-title: "Traveling Salesman Problem"
-authors: [Hoffman, Karla L., Padberg, Manfred, Rinaldi, Giovanni]
+title: Traveling Salesman Problem
+authors:
+- Hoffman
+- Karla L.
+- Padberg
+- Manfred
+- Rinaldi
+- Giovanni
 year: 2013
-doi: "10.1007/978-1-4419-1153-7_1068"
+doi: 10.1007/978-1-4419-1153-7_1068
 bibtex_key: hoffman2013tspencyclopedia
 bibtex-key: hoffman2013tspencyclopedia
 type: paper
@@ -10,30 +16,35 @@ reading_status: pendente
 validation_status: nao-validado
 pdf_status: ausente
 rating: 5
-role: "revisao"
+role: revisao
 areas:
-  - tsp, "lower-bounds"]
-methods: ["exact", "branch-and-bound", "linear-programming"]
+- lower-bound
+- tsp, "lower-bounds"]
+methods:
+- branch-and-bound
+- exact
+- linear-programming
+- lower-bound
 chapters:
-  - fundamentacao
+- fundamentacao
 claim_support: []
 aliases: []
 tags:
-  - tipo/paper
-  - status/pendente
-  - evidencia/referencia
-  - area/tsp
-  - area/lower-bound
-  - metodo/exact
-  - metodo/lower-bound
-  - capitulo/fundamentacao
-  - papel/revisao
-  - relevancia/5
+- area/lower-bound
+- area/tsp
+- capitulo/fundamentacao
+- evidencia/referencia
+- metodo/exact
+- metodo/lower-bound
+- papel/revisao
+- relevancia/5
+- status/pendente
+- tipo/paper
 ---
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/hoffman2013tspencyclopedia.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

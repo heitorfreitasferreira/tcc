@@ -1,14 +1,27 @@
 ---
-title: "An Exhaustive Review of the Metaheuristic Algorithms for Search and Optimization: Taxonomy, Applications, and Open Challenges"
-authors: [Rajwar, Kanchan]
+title: 'An Exhaustive Review of the Metaheuristic Algorithms for Search and Optimization: Taxonomy, Applications, and Open
+  Challenges'
+authors:
+- Rajwar
+- Kanchan
 year: 2023
-doi: "10.1007/s10462-023-10470-y"
+doi: 10.1007/s10462-023-10470-y
 bibtex_key: rajwar2023exhaustive
 bibtex-key: rajwar2023exhaustive
-pdf: "papers/pdfs/rajwar2023exhaustive.pdf"
-tags: [metaheuristic]
+pdf: papers/pdfs/rajwar2023exhaustive.pdf
+tags:
+- evidencia/referencia
+- metodo/metaheuristic
+- status/lido
+- tipo/paper
 status: lido
 rating: 4
+type: paper
+methods:
+- metaheuristic
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

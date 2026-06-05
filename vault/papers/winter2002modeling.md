@@ -1,14 +1,26 @@
 ---
-title: "Modeling Costs of Turns in Route Planning"
-authors: [Winter, Stephan]
+title: Modeling Costs of Turns in Route Planning
+authors:
+- Winter
+- Stephan
 year: 2002
-doi: "10.1023/A:1020853410145"
+doi: 10.1023/A:1020853410145
 bibtex_key: winter2002modeling
 bibtex-key: winter2002modeling
-pdf: "papers/pdfs/winter2002modeling.pdf"
-tags: [routing]
+pdf: papers/pdfs/winter2002modeling.pdf
+tags:
+- area/routing
+- evidencia/referencia
+- status/lido
+- tipo/paper
 status: lido
-rating: 0
+rating: 3
+type: paper
+areas:
+- routing
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

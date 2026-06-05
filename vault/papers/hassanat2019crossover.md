@@ -1,8 +1,14 @@
 ---
-title: "Choosing Mutation and Crossover Ratios for Genetic Algorithms—A Review with a New Dynamic Approach"
-authors: ["Hassanat, Ahmad", "Almohammadi, Khalid", "Alkafaween, Esra'a", "Abunawas, Eman", "Hammouri, Awni", "Prasath, V. B. Surya"]
+title: Choosing Mutation and Crossover Ratios for Genetic Algorithms—A Review with a New Dynamic Approach
+authors:
+- Hassanat, Ahmad
+- Almohammadi, Khalid
+- Alkafaween, Esra'a
+- Abunawas, Eman
+- Hammouri, Awni
+- Prasath, V. B. Surya
 year: 2019
-doi: "10.3390/info10120390"
+doi: 10.3390/info10120390
 bibtex_key: hassanat2019crossover
 bibtex-key: hassanat2019crossover
 type: paper
@@ -10,34 +16,35 @@ reading_status: resumo-lido
 validation_status: nao-validado
 pdf_status: ausente
 rating: 4
-role: "revisao"
+role: revisao
 areas:
-  - genetic-algorithms
-  - tsp
+- bio-inspired-optimization
+- genetic-algorithms
+- tsp
 methods:
-  - ga
+- ga
 chapters:
-  - fundamentacao
-  - proposta
+- fundamentacao
+- proposta
 claim_support: []
 aliases: []
 tags:
-  - tipo/paper
-  - status/resumo-lido
-  - evidencia/referencia
-  - metodo/ga
-  - area/genetic-algorithms
-  - area/tsp
-  - area/bio-inspired-optimization
-  - capitulo/fundamentacao
-  - capitulo/proposta
-  - papel/revisao
-  - relevancia/4
+- area/bio-inspired-optimization
+- area/genetic-algorithms
+- area/tsp
+- capitulo/fundamentacao
+- capitulo/proposta
+- evidencia/referencia
+- metodo/ga
+- papel/revisao
+- relevancia/4
+- status/resumo-lido
+- tipo/paper
 ---
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/hassanat2019crossover.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

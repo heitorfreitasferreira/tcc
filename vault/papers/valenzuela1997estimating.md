@@ -1,37 +1,48 @@
 ---
-title: "Estimating the Held-Karp Lower Bound for the Geometric TSP"
-authors: [Valenzuela, Christine L., Jones, Antonia J.]
+title: Estimating the Held-Karp Lower Bound for the Geometric TSP
+authors:
+- Valenzuela
+- Christine L.
+- Jones
+- Antonia J.
 year: 1997
-doi: "10.1016/S0377-2217(96)00214-7"
+doi: 10.1016/S0377-2217(96)00214-7
 bibtex_key: valenzuela1997estimating
 bibtex-key: valenzuela1997estimating
-pdf: "papers/pdfs/valenzuela1997estimating.pdf"
+pdf: papers/pdfs/valenzuela1997estimating.pdf
 type: paper
 reading_status: pendente
 validation_status: nao-validado
 pdf_status: disponivel
 rating: 4
-role: "revisao"
+role: revisao
 areas:
-  - tsp, "lower-bounds"]
-methods: ["held-karp", "linear-programming", "estimation"]
+- lower-bound
+- tsp, "lower-bounds"]
+methods:
+- estimation
+- exact
+- held-karp
+- lagrangean
+- linear-programming
+- lower-bound
 chapters:
-  - fundamentacao
+- fundamentacao
 claim_support: []
 aliases: []
 tags:
-  - tipo/paper
-  - status/pendente
-  - evidencia/referencia
-  - area/tsp
-  - area/lower-bound
-  - metodo/exact
-  - metodo/lower-bound
-  - metodo/held-karp
-  - metodo/lagrangean
-  - capitulo/fundamentacao
-  - papel/revisao
-  - relevancia/4
+- area/lower-bound
+- area/tsp
+- capitulo/fundamentacao
+- evidencia/referencia
+- metodo/exact
+- metodo/held-karp
+- metodo/lagrangean
+- metodo/lower-bound
+- papel/revisao
+- relevancia/4
+- status/pendente
+- tipo/paper
 ---
 
 ## PDF

@@ -1,14 +1,27 @@
 ---
-title: "Adaptation in Natural and Artificial Systems"
-authors: [Holland, John H.]
+title: Adaptation in Natural and Artificial Systems
+authors:
+- Holland
+- John H.
 year: 1975
-doi: ""
+doi: ''
 bibtex_key: holland1975adaptation
 bibtex-key: holland1975adaptation
-pdf: "papers/pdfs/holland1975adaptation.pdf"
-tags: [ga foundational]
+pdf: papers/pdfs/holland1975adaptation.pdf
+tags:
+- evidencia/referencia
+- metodo/ga
+- papel/fundacional
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 4
+type: paper
+methods:
+- ga
+role: fundacional
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF

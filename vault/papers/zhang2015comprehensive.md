@@ -34,7 +34,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/zhang2015comprehensive.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

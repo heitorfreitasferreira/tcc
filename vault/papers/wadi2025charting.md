@@ -1,14 +1,36 @@
 ---
-title: "Charting New Routes: Comparing Swarm-Based Approaches to the Traveling Salesman Problem"
-authors: [Wadi, Ali Hassan Ahmed, Umar, Shahla Uthman]
+title: 'Charting New Routes: Comparing Swarm-Based Approaches to the Traveling Salesman Problem'
+authors:
+- Wadi
+- Ali Hassan Ahmed
+- Umar
+- Shahla Uthman
 year: 2025
-doi: "10.18280/ijcmem.130214"
+doi: 10.18280/ijcmem.130214
 bibtex_key: wadi2025charting
 bibtex-key: wadi2025charting
-pdf: "papers/pdfs/wadi2025charting.pdf"
-tags: [tsp, pso, aco, eho, swarm, comparison]
+pdf: papers/pdfs/wadi2025charting.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/aco
+- metodo/eho
+- metodo/metaheuristic
+- metodo/pso
+- papel/comparativo
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 3
+type: paper
+methods:
+- aco
+- eho
+- metaheuristic
+- pso
+role: comparativo
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF

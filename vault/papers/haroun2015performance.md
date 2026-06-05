@@ -1,14 +1,36 @@
 ---
-title: "A Performance Comparison of GA and ACO Applied to TSP"
-authors: [Haroun, Sabry Ahmed, Jamal, Benhra, Hicham, El Hassani]
+title: A Performance Comparison of GA and ACO Applied to TSP
+authors:
+- Haroun
+- Sabry Ahmed
+- Jamal
+- Benhra
+- Hicham
+- El Hassani
 year: 2015
-doi: "10.5120/20674-3466"
+doi: 10.5120/20674-3466
 bibtex_key: haroun2015performance
 bibtex-key: haroun2015performance
-pdf: "papers/pdfs/haroun2015performance.pdf"
-tags: [tsp, ga, aco, comparison, metaheuristic]
+pdf: papers/pdfs/haroun2015performance.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/aco
+- metodo/ga
+- metodo/metaheuristic
+- papel/comparativo
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 4
+type: paper
+methods:
+- aco
+- ga
+- metaheuristic
+role: comparativo
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF

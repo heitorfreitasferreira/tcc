@@ -1,14 +1,25 @@
 ---
-title: "Statistical Comparisons of Classifiers over Multiple Data Sets"
-authors: [Demšar, Janez]
+title: Statistical Comparisons of Classifiers over Multiple Data Sets
+authors:
+- Demšar
+- Janez
 year: 2006
-doi: ""
+doi: ''
 bibtex_key: demsar2006statistical
 bibtex-key: demsar2006statistical
-pdf: "papers/pdfs/demsar2006statistical.pdf"
-tags: [statistics, friedman, nemenyi, methodology]
+pdf: papers/pdfs/demsar2006statistical.pdf
+tags:
+- evidencia/estatistica
+- evidencia/metodologia
+- evidencia/referencia
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 5
+type: paper
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

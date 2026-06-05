@@ -1,14 +1,31 @@
 ---
-title: "The Traveling-Salesman Problem and Minimum Spanning Trees"
-authors: [Held, Michael, Karp, Richard M.]
+title: The Traveling-Salesman Problem and Minimum Spanning Trees
+authors:
+- Held
+- Michael
+- Karp
+- Richard M.
 year: 1970
-doi: "10.1287/opre.18.6.1138"
+doi: 10.1287/opre.18.6.1138
 bibtex_key: heldkarp1970traveling
 bibtex-key: heldkarp1970traveling
-pdf: "papers/pdfs/heldkarp1970traveling.pdf"
-tags: [tsp, lower-bound, lagrangean]
+pdf: papers/pdfs/heldkarp1970traveling.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/lagrangean
+- metodo/lower-bound
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
+type: paper
+methods:
+- lagrangean
+- lower-bound
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## Resumo

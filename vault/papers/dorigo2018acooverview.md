@@ -36,7 +36,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/dorigo2018acooverview.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 
@@ -85,7 +85,7 @@ Fonte primária e autoritativa para o capítulo de referencial teórico sobre AC
 ## Conexões
 
 - Fundamenta: [[ant-colony]], ant-colony, [[dorigo1996ant]], bio-inspired-optimization
-- Relacionado a: [[blum2024acobibliometric]], [[abdulghani2024comprehensive]], [[misra2024acorecent]], [[pathak2025acoprinciples]]
+- Relacionado a: [[blum2024acobibliometric]], [[abdulghani2024comprehensive]], [[misra2024acorecent]]
 - Contrasta com: [[gad2022pso]] (PSO), [[alhijawi2024genetic]] (GA) — métodos alternativos no referencial
 - Apoia claim: ACO com *local search* é competitivo para TSP; parâmetros de feromônio controlam *exploration vs exploitation*
 - Usado em capítulo: cap_referencial_teorico

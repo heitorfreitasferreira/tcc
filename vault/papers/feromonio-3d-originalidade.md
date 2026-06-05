@@ -1,9 +1,21 @@
 ---
-title: "Verificação de Originalidade — Feromônio 3D τ(i,j,k) para ACO no TSP-SD-ATP"
-tags: [aco, tsp, feromonio-3d, originalidade, verificacao]
+title: Verificação de Originalidade — Feromônio 3D τ(i,j,k) para ACO no TSP-SD-ATP
+tags:
+- area/tsp
+- evidencia/referencia
+- evidencia/validacao
+- metodo/aco
+- status/verificado
+- tipo/paper
+- topico/originalidade
 status: verificado-externo-encontrou-precedentes
 created: 2026-06-05
 updated: 2026-06-05
+type: paper
+methods:
+- aco
+role: revisao
+validation_status: nao-validado
 ---
 
 ## Pergunta de Pesquisa

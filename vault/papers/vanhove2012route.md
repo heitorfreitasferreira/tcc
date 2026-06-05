@@ -1,14 +1,33 @@
 ---
-title: "Route Planning with Turn Restrictions: A Computational Experiment"
-authors: [Vanhove, Stéphanie, Fack, Veerle]
+title: 'Route Planning with Turn Restrictions: A Computational Experiment'
+authors:
+- Vanhove
+- Stéphanie
+- Fack
+- Veerle
 year: 2012
-doi: "10.1016/j.orl.2012.06.001"
+doi: 10.1016/j.orl.2012.06.001
 bibtex_key: vanhove2012route
 bibtex-key: vanhove2012route
-pdf: "papers/pdfs/vanhove2012route.pdf"
-tags: [routing, turn-cost, shortest-path, graph-algorithm]
+pdf: papers/pdfs/vanhove2012route.pdf
+tags:
+- area/routing
+- area/tsp-variants
+- evidencia/referencia
+- metodo/heuristic
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 3
+type: paper
+areas:
+- routing
+- tsp-variants
+methods:
+- heuristic
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

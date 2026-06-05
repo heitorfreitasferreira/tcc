@@ -1,8 +1,10 @@
 ---
-title: "Fantastic Relaxations of the TSP and How to Bound Them"
-authors: [Gutekunst, Samuel C.]
+title: Fantastic Relaxations of the TSP and How to Bound Them
+authors:
+- Gutekunst
+- Samuel C.
 year: 2020
-doi: ""
+doi: ''
 bibtex_key: gutekunst2020relaxations
 bibtex-key: gutekunst2020relaxations
 type: paper
@@ -10,30 +12,36 @@ reading_status: pendente
 validation_status: nao-validado
 pdf_status: ausente
 rating: 4
-role: "revisao"
+role: revisao
 areas:
-  - tsp, "lower-bounds"]
-methods: ["linear-programming", "held-karp", "semidefinite-programming"]
+- lower-bound
+- tsp, "lower-bounds"]
+methods:
+- exact
+- held-karp
+- linear-programming
+- lower-bound
+- semidefinite-programming
 chapters:
-  - fundamentacao
+- fundamentacao
 claim_support: []
 aliases: []
 tags:
-  - tipo/paper
-  - status/pendente
-  - evidencia/referencia
-  - area/tsp
-  - area/lower-bound
-  - metodo/exact
-  - metodo/lower-bound
-  - capitulo/fundamentacao
-  - papel/revisao
-  - relevancia/4
+- area/lower-bound
+- area/tsp
+- capitulo/fundamentacao
+- evidencia/referencia
+- metodo/exact
+- metodo/lower-bound
+- papel/revisao
+- relevancia/4
+- status/pendente
+- tipo/paper
 ---
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/gutekunst2020relaxations.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

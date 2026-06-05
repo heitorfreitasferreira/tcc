@@ -1,14 +1,43 @@
 ---
-title: "A Comparative Study of Metaheuristics Methods for Solving Traveling Salesman Problem"
-authors: [Chandra, Agung, Naro, Aulia]
+title: A Comparative Study of Metaheuristics Methods for Solving Traveling Salesman Problem
+authors:
+- Chandra
+- Agung
+- Naro
+- Aulia
 year: 2022
-doi: "10.57675/IMIST.PRSM/ijist-v6i2.211"
+doi: 10.57675/IMIST.PRSM/ijist-v6i2.211
 bibtex_key: chandra2022comparative
 bibtex-key: chandra2022comparative
-pdf: "papers/pdfs/chandra2022comparative.pdf"
-tags: [tsp, ga, sa, ts, aco, pso, abc, comparison, statistics, metaheuristic]
+pdf: papers/pdfs/chandra2022comparative.pdf
+tags:
+- area/tsp
+- evidencia/estatistica
+- evidencia/referencia
+- metodo/abc
+- metodo/aco
+- metodo/ga
+- metodo/metaheuristic
+- metodo/pso
+- metodo/sa
+- metodo/ts
+- papel/comparativo
+- status/lido
+- tipo/paper
 status: lido
 rating: 4
+type: paper
+methods:
+- abc
+- aco
+- ga
+- metaheuristic
+- pso
+- sa
+- ts
+role: comparativo
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF
@@ -46,9 +75,9 @@ Demonstra como ANOVA e Tukey podem validar diferenças entre metaheurísticas no
 - [[genetic-algorithms]] — GA incluído
 - [[particle-swarm]] — PSO incluído
 - [[ant-colony]] — ACO incluído
-- [[simulated-annealing]] — SA incluído
-- [[tabu-search]] — TS incluído
-- [[artificial-bee-colony]] — ABC (melhor método)
+- Simulated Annealing — SA incluído
+- Tabu Search — TS incluído
+- Artificial Bee Colony — ABC (melhor método)
 - [[alexander2020comparison]] — comparação GA vs. ACO
 - [[halim2019combinatorial]] — survey comparativo de heurísticas TSP
 - [[toaza2023review]] — revisão bibliométrica de metaheurísticas

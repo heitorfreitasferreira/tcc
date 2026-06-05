@@ -45,7 +45,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/khoufi2019survey.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

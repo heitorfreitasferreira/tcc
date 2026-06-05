@@ -1,14 +1,28 @@
 ---
-title: "A Comprehensive Survey on the Generalized Traveling Salesman Problem"
-authors: [Pop, Petrică C.]
+title: A Comprehensive Survey on the Generalized Traveling Salesman Problem
+authors:
+- Pop
+- Petrică C.
 year: 2024
-doi: "10.1016/j.ejor.2023.07.022"
+doi: 10.1016/j.ejor.2023.07.022
 bibtex_key: pop2024comprehensive
 bibtex-key: pop2024comprehensive
-pdf: "papers/pdfs/pop2024comprehensive.pdf"
-tags: [tsp gtsp survey combinatorial-optimization drone-routing]
+pdf: papers/pdfs/pop2024comprehensive.pdf
+tags:
+- area/drone-routing
+- area/tsp
+- evidencia/referencia
+- papel/revisao
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
+type: paper
+areas:
+- drone-routing
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF
@@ -42,7 +56,6 @@ Altamente relevante: o GTSP modela diretamente o cenário de patrulha com drones
 ## Conexões
 
 - [[tsp]]
-- [[gtsp]]
 - [[drone-routing]]
 - [[bock2025survey]] — survey de variantes TSP em warehousing (contemporâneo)
 - [[lawler1985traveling]] — survey clássico do TSP

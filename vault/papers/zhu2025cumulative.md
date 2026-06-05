@@ -34,7 +34,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/zhu2025cumulative.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

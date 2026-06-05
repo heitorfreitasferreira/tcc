@@ -1,14 +1,37 @@
 ---
-title: "Exact Models for the Flying Sidekick Traveling Salesman Problem"
-authors: ["Dell'Amico, Mauro", "Montemanni, Roberto", "Novellani, Stefano"]
+title: Exact Models for the Flying Sidekick Traveling Salesman Problem
+authors:
+- Dell'Amico, Mauro
+- Montemanni, Roberto
+- Novellani, Stefano
 year: 2022
-doi: "10.1111/itor.13030"
+doi: 10.1111/itor.13030
 bibtex_key: dellamico2022exact
 bibtex-key: dellamico2022exact
-pdf: "papers/pdfs/dellamico2022exact.pdf"
-tags: [drone, tsp, fstsp, exact-methods, milp, branch-and-cut]
+pdf: papers/pdfs/dellamico2022exact.pdf
+tags:
+- area/drone-routing
+- area/fstsp
+- area/tsp
+- evidencia/referencia
+- metodo/branch-and-cut
+- metodo/exact
+- metodo/milp
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 4
+type: paper
+areas:
+- drone-routing
+- fstsp
+methods:
+- branch-and-cut
+- exact
+- milp
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

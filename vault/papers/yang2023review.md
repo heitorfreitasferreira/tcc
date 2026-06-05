@@ -45,7 +45,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/yang2023review.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

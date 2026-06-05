@@ -1,14 +1,29 @@
 ---
-title: "Efficient Optimization of the Held–Karp Lower Bound"
-authors: [Righini, Giovanni]
+title: Efficient Optimization of the Held–Karp Lower Bound
+authors:
+- Righini
+- Giovanni
 year: 2021
-doi: "10.5802/ojmo.11"
+doi: 10.5802/ojmo.11
 bibtex_key: righini2021efficient
 bibtex-key: righini2021efficient
-pdf: "papers/pdfs/righini2021efficient.pdf"
-tags: [tsp, lower-bound, held-karp, algorithm]
+pdf: papers/pdfs/righini2021efficient.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/held-karp
+- metodo/lower-bound
+- status/lido
+- tipo/paper
 status: lido
 rating: 4
+type: paper
+methods:
+- held-karp
+- lower-bound
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## Resumo

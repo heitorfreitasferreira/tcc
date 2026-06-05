@@ -1,14 +1,38 @@
 ---
-title: "Comparative Analysis of Metaheuristic Algorithms for Solving the Travelling Salesman Problems"
-authors: [Almufti, Saman M., Shaban, Awaz Ahmed]
+title: Comparative Analysis of Metaheuristic Algorithms for Solving the Travelling Salesman Problems
+authors:
+- Almufti
+- Saman M.
+- Shaban
+- Awaz Ahmed
 year: 2025
-doi: "10.14419/7fk7k945"
+doi: 10.14419/7fk7k945
 bibtex_key: almufti2025comparative
 bibtex-key: almufti2025comparative
-pdf: "papers/pdfs/almufti2025comparative.pdf"
-tags: [tsp, aco, gwo, abc, cso, metaheuristic, comparison]
+pdf: papers/pdfs/almufti2025comparative.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/abc
+- metodo/aco
+- metodo/cso
+- metodo/gwo
+- metodo/metaheuristic
+- papel/comparativo
+- status/lido
+- tipo/paper
 status: lido
 rating: 3
+type: paper
+methods:
+- abc
+- aco
+- cso
+- gwo
+- metaheuristic
+role: comparativo
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

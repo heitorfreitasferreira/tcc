@@ -1,8 +1,10 @@
 ---
-title: "Crossover Operators in Genetic Algorithms: A Review"
-authors: ["Umbarkar, A. J.", "Sheth, P. D."]
+title: 'Crossover Operators in Genetic Algorithms: A Review'
+authors:
+- Umbarkar, A. J.
+- Sheth, P. D.
 year: 2015
-doi: "10.21917/ijsc.2015.0150"
+doi: 10.21917/ijsc.2015.0150
 bibtex_key: umbarkar2015crossover
 bibtex-key: umbarkar2015crossover
 type: paper
@@ -10,30 +12,31 @@ reading_status: pendente
 validation_status: nao-validado
 pdf_status: ausente
 rating: 3
-role: "revisao"
+role: revisao
 areas:
-  - genetic-algorithms
+- bio-inspired-optimization
+- genetic-algorithms
 methods:
-  - ga
+- ga
 chapters:
-  - fundamentacao
+- fundamentacao
 claim_support: []
 aliases: []
 tags:
-  - tipo/paper
-  - status/pendente
-  - evidencia/referencia
-  - metodo/ga
-  - area/genetic-algorithms
-  - area/bio-inspired-optimization
-  - capitulo/fundamentacao
-  - papel/revisao
-  - relevancia/3
+- area/bio-inspired-optimization
+- area/genetic-algorithms
+- capitulo/fundamentacao
+- evidencia/referencia
+- metodo/ga
+- papel/revisao
+- relevancia/3
+- status/pendente
+- tipo/paper
 ---
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/umbarkar2015crossover.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

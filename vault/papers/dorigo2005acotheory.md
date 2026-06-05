@@ -1,14 +1,30 @@
 ---
-title: "Ant Colony Optimization Theory: A Survey"
-authors: [Dorigo, Marco, Blum, Christian]
+title: 'Ant Colony Optimization Theory: A Survey'
+authors:
+- Dorigo
+- Marco
+- Blum
+- Christian
 year: 2005
-doi: "10.1016/j.tcs.2005.05.020"
+doi: 10.1016/j.tcs.2005.05.020
 bibtex_key: dorigo2005acotheory
 bibtex-key: dorigo2005acotheory
-tags: [aco survey theory]
+tags:
+- evidencia/referencia
+- metodo/aco
+- papel/revisao
+- papel/teorico
+- status/lido
+- tipo/paper
 status: lido
 rating: 4
-pdf: "papers/pdfs/dorigo2005acotheory.pdf"
+pdf: papers/pdfs/dorigo2005acotheory.pdf
+type: paper
+methods:
+- aco
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

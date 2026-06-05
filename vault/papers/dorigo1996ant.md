@@ -1,14 +1,28 @@
 ---
-title: "Ant System: Optimization by a Colony of Cooperating Agents"
-authors: [Dorigo, Marco]
+title: 'Ant System: Optimization by a Colony of Cooperating Agents'
+authors:
+- Dorigo
+- Marco
 year: 1996
-doi: "10.1109/3477.484436"
+doi: 10.1109/3477.484436
 bibtex_key: dorigo1996ant
 bibtex-key: dorigo1996ant
-tags: [aco metaheuristic]
+tags:
+- evidencia/referencia
+- metodo/aco
+- metodo/metaheuristic
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
-pdf: "papers/pdfs/dorigo1996ant.pdf"
+pdf: papers/pdfs/dorigo1996ant.pdf
+type: paper
+methods:
+- aco
+- metaheuristic
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

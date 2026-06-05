@@ -1,14 +1,35 @@
 ---
-title: "Modeling the Flying Sidekick Traveling Salesman Problem with Multiple Drones"
-authors: ["Dell'Amico, Mauro", "Montemanni, Roberto", "Novellani, Stefano"]
+title: Modeling the Flying Sidekick Traveling Salesman Problem with Multiple Drones
+authors:
+- Dell'Amico, Mauro
+- Montemanni, Roberto
+- Novellani, Stefano
 year: 2021
-doi: "10.1002/net.22022"
+doi: 10.1002/net.22022
 bibtex_key: dellamico2021multiple
 bibtex-key: dellamico2021multiple
-pdf: "papers/pdfs/dellamico2021multiple.pdf"
-tags: [drone, tsp, fstsp, milp, routing]
+pdf: papers/pdfs/dellamico2021multiple.pdf
+tags:
+- area/drone-routing
+- area/fstsp
+- area/routing
+- area/tsp
+- evidencia/referencia
+- metodo/milp
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 4
+type: paper
+areas:
+- drone-routing
+- fstsp
+- routing
+methods:
+- milp
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

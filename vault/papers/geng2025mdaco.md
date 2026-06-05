@@ -1,12 +1,31 @@
 ---
-title: "Multi-Dimensional Ant Colony Algorithm for Multi-Compartment Vehicle Routing Problem with Fuzzy Demand"
-authors: [Geng, Yan, Guo, Ning, Qian, Bin]
+title: Multi-Dimensional Ant Colony Algorithm for Multi-Compartment Vehicle Routing Problem with Fuzzy Demand
+authors:
+- Geng
+- Yan
+- Guo
+- Ning
+- Qian
+- Bin
 year: 2025
-doi: "10.1109/ccdc65474.2025.11090784"
+doi: 10.1109/ccdc65474.2025.11090784
 bibtex_key: geng2025mdaco
-tags: [aco, vrp, feromonio-3d]
+tags:
+- area/vrp
+- evidencia/referencia
+- metodo/aco
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 2
+type: paper
+areas:
+- vrp
+methods:
+- aco
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

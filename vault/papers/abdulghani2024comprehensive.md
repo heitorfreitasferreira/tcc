@@ -38,7 +38,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/abdulghani2024comprehensive.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 
@@ -87,7 +87,7 @@ Fornece resultados comparativos de ACO em TSP que servem como *baseline* para o 
 ## Conexões
 
 - Fundamenta: [[ant-colony]], [[tsp]], ant-colony, bio-inspired-optimization
-- Relacionado a: [[dorigo2018acooverview]], [[blum2024acobibliometric]], [[misra2024acorecent]], [[pathak2025acoprinciples]]
+- Relacionado a: [[dorigo2018acooverview]], [[blum2024acobibliometric]], [[misra2024acorecent]]
 - Contrasta com: [[gad2022pso]] (comparação experimental ACO vs PSO em TSP)
 - Apoia claim: ACO é competitivo para TSP; *local search* é componente crítico de desempenho
 - Usado em capítulo: cap_referencial_teorico

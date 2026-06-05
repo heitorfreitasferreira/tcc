@@ -1,8 +1,15 @@
 ---
-tags: [papers, catalogo, index, tracker]
+tags:
+- evidencia/referencia
+- status/atualizado
+- tipo/index
+- tipo/paper
 status: atualizado
 updated: 2026-06-03
 pdf-script: scripts/download-pdfs.sh
+type: paper
+role: revisao
+validation_status: nao-validado
 ---
 
 # Catálogo de Artigos — Base de Conhecimento

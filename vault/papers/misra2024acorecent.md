@@ -38,7 +38,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/misra2024acorecent.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

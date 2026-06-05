@@ -1,14 +1,29 @@
 ---
-title: "MAX-MIN Ant System"
-authors: [Stützle, Thomas, Hoos, Holger H.]
+title: MAX-MIN Ant System
+authors:
+- Stützle
+- Thomas
+- Hoos
+- Holger H.
 year: 2000
-doi: "10.1016/S0167-739X(00)00043-1"
+doi: 10.1016/S0167-739X(00)00043-1
 bibtex_key: stutzle2000mmas
 bibtex-key: stutzle2000mmas
-tags: [aco tsp]
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/aco
+- status/lido
+- tipo/paper
 status: lido
 rating: 4
-pdf: "papers/pdfs/stutzle2000mmas.pdf"
+pdf: papers/pdfs/stutzle2000mmas.pdf
+type: paper
+methods:
+- aco
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

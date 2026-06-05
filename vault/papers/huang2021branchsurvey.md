@@ -1,8 +1,16 @@
 ---
-title: "Branch and Bound in Mixed Integer Linear Programming Problems: A Survey of Techniques and Trends"
-authors: [Huang, Lingying; Chen, Xiaomeng; Huo, Wenhao; Wang, Jiazheng; Zhang, Fan; Bai, Bo; Shi, Ling]
+title: 'Branch and Bound in Mixed Integer Linear Programming Problems: A Survey of Techniques and Trends'
+authors:
+- Huang
+- Lingying; Chen
+- Xiaomeng; Huo
+- Wenhao; Wang
+- Jiazheng; Zhang
+- Fan; Bai
+- Bo; Shi
+- Ling
 year: 2021
-doi: "10.48550/arXiv.2111.06257"
+doi: 10.48550/arXiv.2111.06257
 bibtex_key: huang2021branchsurvey
 bibtex-key: huang2021branchsurvey
 type: paper
@@ -10,29 +18,36 @@ reading_status: pendente
 validation_status: nao-validado
 pdf_status: ausente
 rating: 3
-role: "revisao"
-areas: ["lower-bounds", "TSP"]
-methods: ["branch-and-bound", "mixed-integer-programming"]
+role: revisao
+areas:
+- TSP
+- lower-bound
+- lower-bounds
+methods:
+- branch-and-bound
+- exact
+- lower-bound
+- mixed-integer-programming
 chapters:
-  - fundamentacao
+- fundamentacao
 claim_support: []
 aliases: []
 tags:
-  - tipo/paper
-  - status/pendente
-  - evidencia/referencia
-  - area/tsp
-  - area/lower-bound
-  - metodo/exact
-  - metodo/lower-bound
-  - capitulo/fundamentacao
-  - papel/revisao
-  - relevancia/3
+- area/lower-bound
+- area/tsp
+- capitulo/fundamentacao
+- evidencia/referencia
+- metodo/exact
+- metodo/lower-bound
+- papel/revisao
+- relevancia/3
+- status/pendente
+- tipo/paper
 ---
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/huang2021branchsurvey.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

@@ -36,7 +36,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/ilavarasi2014variants.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

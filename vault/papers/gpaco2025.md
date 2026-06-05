@@ -1,14 +1,34 @@
 ---
-title: "Automated Design of State Transition Rules in Ant Colony Optimization by Genetic Programming"
-authors: [Lin, Bo-Cheng, Mei, Yi, Zhang, Mengjie]
+title: Automated Design of State Transition Rules in Ant Colony Optimization by Genetic Programming
+authors:
+- Lin
+- Bo-Cheng
+- Mei
+- Yi
+- Zhang
+- Mengjie
 year: 2025
-doi: "10.1007/s12293-025-00435-9"
+doi: 10.1007/s12293-025-00435-9
 bibtex_key: gpaco2025
 bibtex-key: gpaco2025
-pdf: "papers/pdfs/gpaco2025.pdf"
-tags: [aco metaheuristic gp]
+pdf: papers/pdfs/gpaco2025.pdf
+tags:
+- evidencia/referencia
+- metodo/aco
+- metodo/gp
+- metodo/metaheuristic
+- status/lido
+- tipo/paper
 status: lido
 rating: 4
+type: paper
+methods:
+- aco
+- gp
+- metaheuristic
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

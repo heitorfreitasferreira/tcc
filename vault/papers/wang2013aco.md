@@ -1,12 +1,33 @@
 ---
-title: "Ant Colony Optimization for Task Allocation in Multi-Agent Systems"
-authors: [Wang, Lu, Wang, Zhiliang, Hu, Siquan, Liu, Lei]
+title: Ant Colony Optimization for Task Allocation in Multi-Agent Systems
+authors:
+- Wang
+- Lu
+- Wang
+- Zhiliang
+- Hu
+- Siquan
+- Liu
+- Lei
 year: 2013
-doi: "10.1109/cc.2013.6488841"
+doi: 10.1109/cc.2013.6488841
 bibtex_key: wang2013aco
-tags: [aco, task-allocation, feromonio-3d]
+tags:
+- area/drone-routing
+- evidencia/referencia
+- metodo/aco
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 2
+type: paper
+areas:
+- drone-routing
+methods:
+- aco
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

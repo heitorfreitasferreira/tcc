@@ -1,14 +1,34 @@
 ---
-title: "Asymptotic Experimental Analysis for the Held-Karp Traveling Salesman Bound"
-authors: [Johnson, David S., McGeoch, Lyle A., Rothberg, Edward E., Schreiber, Robert]
+title: Asymptotic Experimental Analysis for the Held-Karp Traveling Salesman Bound
+authors:
+- Johnson
+- David S.
+- McGeoch
+- Lyle A.
+- Rothberg
+- Edward E.
 year: 1996
-doi: "10.1137/1.9781611971486"
+doi: 10.1137/1.9781611971486
 bibtex_key: johnson1996asymptotic
 bibtex-key: johnson1996asymptotic
-pdf: "papers/pdfs/johnson1996asymptotic.pdf"
-tags: [tsp, lower-bound, held-karp, experimental]
+pdf: papers/pdfs/johnson1996asymptotic.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/held-karp
+- metodo/lower-bound
+- papel/benchmark
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
+type: paper
+methods:
+- held-karp
+- lower-bound
+role: benchmark
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## Resumo

@@ -1,14 +1,30 @@
 ---
-title: "Optimization Approaches for the Traveling Salesman Problem with Drone"
-authors: [Agatz, Niels]
+title: Optimization Approaches for the Traveling Salesman Problem with Drone
+authors:
+- Agatz
+- Niels
 year: 2018
-doi: "10.1287/trsc.2017.0791"
+doi: 10.1287/trsc.2017.0791
 bibtex_key: agatz2018optimization
 bibtex-key: agatz2018optimization
-tags: [tsp drone metaheuristic]
+tags:
+- area/drone-routing
+- area/tsp
+- evidencia/referencia
+- metodo/metaheuristic
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
-pdf: "papers/pdfs/agatz2018optimization.pdf"
+pdf: papers/pdfs/agatz2018optimization.pdf
+type: paper
+areas:
+- drone-routing
+methods:
+- metaheuristic
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

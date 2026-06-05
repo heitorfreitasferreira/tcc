@@ -1,14 +1,24 @@
 ---
-title: "Ant Colonies for the Travelling Salesman Problem"
-authors: [Dorigo, Marco]
+title: Ant Colonies for the Travelling Salesman Problem
+authors:
+- Dorigo
+- Marco
 year: 1997
-doi: "10.1016/S0303-2647(97)01708-5"
+doi: 10.1016/S0303-2647(97)01708-5
 bibtex_key: dorigo1997ant
 bibtex-key: dorigo1997ant
-tags: [tsp]
+tags:
+- area/tsp
+- evidencia/referencia
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
-pdf: "papers/pdfs/dorigo1997ant.pdf"
+pdf: papers/pdfs/dorigo1997ant.pdf
+type: paper
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF
@@ -53,7 +63,7 @@ O código do TCC implementa Ant System (todas as formigas depositam, sem bounds 
 ## Notas e Insights
 
 - O ACS resolve Oliver30 em apenas 830 tours (vs. 1830 do GA, 40.000 do SA, 325.000 do EP)
-- Em problemas grandes (fl1577), erro médio de ~3.5% — notável para método geral sem ajuste fino
+- Em problemas grandes (fl1577), o ACS alcança erro de 3.27% (melhor resultado) e 3.79% (média sobre 15 trials) em relação à melhor solução conhecida (Tabela 4 do PDF)
 - A atualização LOCAL de feromônio (diminuir trilha) é contraintuitiva mas crucial para diversidade
 - O ACS é comparável ao Lin-Kernighan em qualidade, mas mais lento; sua vantagem é a adaptabilidade a variações do problema
 - A regra pseudo-aleatória proporcional é uma contribuição elegante que influenciou aprendizado por reforço

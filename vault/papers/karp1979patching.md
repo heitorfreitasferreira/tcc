@@ -1,14 +1,31 @@
 ---
-title: "A Patching Algorithm for the Nonsymmetric Traveling-Salesman Problem"
-authors: [Karp, Richard M.]
+title: A Patching Algorithm for the Nonsymmetric Traveling-Salesman Problem
+authors:
+- Karp
+- Richard M.
 year: 1979
-doi: "10.1137/0208007"
+doi: 10.1137/0208007
 bibtex_key: karp1979patching
 bibtex-key: karp1979patching
-pdf: "papers/pdfs/karp1979patching.pdf"
-tags: [atsp, assignment, patching]
+pdf: papers/pdfs/karp1979patching.pdf
+tags:
+- area/atsp
+- evidencia/referencia
+- metodo/exact
+- metodo/heuristic
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 4
+type: paper
+areas:
+- atsp
+methods:
+- exact
+- heuristic
+role: revisao
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF

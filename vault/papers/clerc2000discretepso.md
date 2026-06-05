@@ -1,14 +1,28 @@
 ---
-title: "Discrete Particle Swarm Optimization, Illustrated by the Traveling Salesman Problem"
-authors: [Clerc, Maurice]
+title: Discrete Particle Swarm Optimization, Illustrated by the Traveling Salesman Problem
+authors:
+- Clerc
+- Maurice
 year: 2000
-doi: ""
+doi: ''
 bibtex_key: clerc2000discretepso
 bibtex-key: clerc2000discretepso
-pdf: "papers/pdfs/clerc2000discretepso.pdf"
-tags: [pso tsp survey]
+pdf: papers/pdfs/clerc2000discretepso.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/pso
+- papel/revisao
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 5
+type: paper
+methods:
+- pso
+role: revisao
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF

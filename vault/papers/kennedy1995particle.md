@@ -1,14 +1,28 @@
 ---
-title: "Particle Swarm Optimization"
-authors: [Kennedy, James]
+title: Particle Swarm Optimization
+authors:
+- Kennedy
+- James
 year: 1995
-doi: "10.1109/ICNN.1995.488968"
+doi: 10.1109/ICNN.1995.488968
 bibtex_key: kennedy1995particle
 bibtex-key: kennedy1995particle
-tags: [pso metaheuristic]
+tags:
+- evidencia/referencia
+- metodo/metaheuristic
+- metodo/pso
+- status/lido
+- tipo/paper
 status: lido
 rating: 5
-pdf: "papers/pdfs/kennedy1995particle.pdf"
+pdf: papers/pdfs/kennedy1995particle.pdf
+type: paper
+methods:
+- metaheuristic
+- pso
+role: revisao
+reading_status: lido
+validation_status: nao-validado
 ---
 
 ## PDF

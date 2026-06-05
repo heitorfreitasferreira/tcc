@@ -1,12 +1,28 @@
 ---
-title: "Multi-objective ACO for MOTSP - comparison of best-preforming configurations"
-authors: [Starzec, Grażyna, Starzec, Mateusz]
+title: Multi-objective ACO for MOTSP - comparison of best-preforming configurations
+authors:
+- Starzec
+- Grażyna
+- Starzec
+- Mateusz
 year: 2026
-doi: "10.58032/agh/3gokaq"
+doi: 10.58032/agh/3gokaq
 bibtex_key: starzec2026motsp
-tags: [aco, tsp, multi-objetivo, feromonio-3d]
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/aco
+- status/resumo-lido
+- tipo/paper
+- topico/multi-objetivo
 status: resumo-lido
 rating: 1
+type: paper
+methods:
+- aco
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

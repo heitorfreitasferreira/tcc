@@ -1,14 +1,42 @@
 ---
-title: "Comparison of New and Old Optimization Algorithms for Traveling Salesman Problem on Small, Medium, and Large-Scale Benchmark Instances"
-authors: [Hossain, Md Al Amin, Yılmaz Acar, Züleyha]
+title: Comparison of New and Old Optimization Algorithms for Traveling Salesman Problem on Small, Medium, and Large-Scale
+  Benchmark Instances
+authors:
+- Hossain
+- Md Al Amin
+- Yılmaz Acar
+- Züleyha
 year: 2024
-doi: "10.17798/bitlisfen.1380086"
+doi: 10.17798/bitlisfen.1380086
 bibtex_key: hossain2024comparison
 bibtex-key: hossain2024comparison
-pdf: "papers/pdfs/hossain2024comparison.pdf"
-tags: [tsp, ga, aco, sa, abc, gwo, ssa, comparison, benchmark]
+pdf: papers/pdfs/hossain2024comparison.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- metodo/abc
+- metodo/aco
+- metodo/ga
+- metodo/gwo
+- metodo/sa
+- metodo/ssa
+- papel/benchmark
+- papel/comparativo
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 4
+type: paper
+methods:
+- abc
+- aco
+- ga
+- gwo
+- sa
+- ssa
+role: benchmark
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF

@@ -34,7 +34,7 @@ tags:
 
 ## PDF
 
-<!-- Se disponível, link para o PDF local: [[papers/pdfs/shami2022pso.pdf]] -->
+<!-- PDF não disponível -->
 
 ## Tese Central
 

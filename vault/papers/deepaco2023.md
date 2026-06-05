@@ -1,14 +1,36 @@
 ---
-title: "DeepACO: Neural-enhanced Ant Systems for Combinatorial Optimization"
-authors: [Ye, Haoran, Wang, Jiarui, Cao, Zhiguang, Liang, Helan, Li, Yong]
+title: 'DeepACO: Neural-enhanced Ant Systems for Combinatorial Optimization'
+authors:
+- Ye
+- Haoran
+- Wang
+- Jiarui
+- Cao
+- Zhiguang
+- Liang
+- Helan
+- Li
+- Yong
 year: 2023
-doi: "10.48550/arXiv.2305.19416"
+doi: 10.48550/arXiv.2305.19416
 bibtex_key: deepaco2023
 bibtex-key: deepaco2023
-pdf: "papers/pdfs/deepaco2023.pdf"
-tags: [aco, deep-learning, neural-combinatorial-optimization, neurips]
+pdf: papers/pdfs/deepaco2023.pdf
+tags:
+- evidencia/referencia
+- metodo/aco
+- metodo/machine-learning
+- status/resumo-lido
+- tipo/paper
 status: resumo-lido
 rating: 4
+type: paper
+methods:
+- aco
+- machine-learning
+role: revisao
+reading_status: resumo-lido
+validation_status: nao-validado
 ---
 
 ## Resumo

@@ -1,14 +1,27 @@
 ---
-title: "Computers and Intractability: A Guide to the Theory of NP-Completeness"
-authors: [Garey, Michael R., Johnson, David S.]
+title: 'Computers and Intractability: A Guide to the Theory of NP-Completeness'
+authors:
+- Garey
+- Michael R.
+- Johnson
+- David S.
 year: 1979
-doi: ""
+doi: ''
 bibtex_key: garey1979computers
 bibtex-key: garey1979computers
-pdf: "papers/pdfs/garey1979computers.pdf"
-tags: [complexity foundational]
+pdf: papers/pdfs/garey1979computers.pdf
+tags:
+- area/tsp
+- evidencia/referencia
+- papel/fundacional
+- status/lido-parcial
+- tipo/paper
 status: lido-parcial
 rating: 5
+type: paper
+role: fundacional
+reading_status: lido-parcial
+validation_status: nao-validado
 ---
 
 ## PDF
