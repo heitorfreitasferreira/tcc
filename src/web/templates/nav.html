@@ -1,0 +1,95 @@
+{{ define "nav_bar" }}
+<nav id="nav-bar" class="site-nav">
+  <a href="/" class="site-nav-brand">TSP-SD-ATP</a>
+
+  <div class="site-nav-controls">
+    <div class="nav-dropdown" id="dd-instance">
+      <button class="nav-dropdown-btn" onclick="toggleDropdown('dd-instance')">
+        {{ if .SelectedMap }}Instância: <strong>{{ .SelectedMap }}</strong>{{ else }}Instância{{ end }} ▾
+      </button>
+      <div class="nav-dropdown-menu">
+        {{ range .Maps }}
+        <a href="/?map={{ urlquery .ID }}"
+           hx-get="/ui/select-map?map={{ urlquery .ID }}&current_map={{ urlquery $.SelectedMap }}&expanded_map={{ urlquery $.ExpandedMap }}"
+           hx-target="#main-content"
+           hx-swap="innerHTML"
+           hx-push-url="/?map={{ urlquery .ID }}"
+           class="nav-dropdown-item {{ if eq $.SelectedMap .ID }}active{{ end }}">
+          {{ .ID }}
+        </a>
+        {{ else }}
+        <span class="nav-dropdown-empty">Nenhuma instância</span>
+        {{ end }}
+      </div>
+    </div>
+
+    {{ if .SelectedMap }}
+    <div class="nav-dropdown" id="dd-method">
+      <button class="nav-dropdown-btn" onclick="toggleDropdown('dd-method')">
+        {{ if .SelectedMethod }}Método: <strong>{{ methodLabel .SelectedMethod }}</strong>{{ else }}Método{{ end }} ▾
+      </button>
+      <div class="nav-dropdown-menu">
+        {{ range .MethodGroups }}
+        <a href="/?map={{ urlquery $.SelectedMap }}&method={{ urlquery .Method }}"
+           hx-get="/ui/select-method?map={{ urlquery $.SelectedMap }}&method={{ urlquery .Method }}&current_method={{ urlquery $.SelectedMethod }}&expanded_method={{ urlquery $.ExpandedMethod }}"
+           hx-target="#main-content"
+           hx-swap="innerHTML"
+           hx-push-url="/?map={{ urlquery $.SelectedMap }}&method={{ urlquery .Method }}"
+           class="nav-dropdown-item {{ if eq $.SelectedMethod .Method }}active{{ end }}">
+          {{ methodLabel .Method }}
+          <span class="nav-dropdown-count">{{ len .Runs }}</span>
+        </a>
+        {{ else }}
+        <span class="nav-dropdown-empty">Nenhum método</span>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+
+    {{ if .SelectedMethod }}
+    <div class="nav-dropdown" id="dd-run">
+      <button class="nav-dropdown-btn" onclick="toggleDropdown('dd-run')">
+        {{ if .SelectedRun }}Execução{{ else }}Execução{{ end }} ▾
+      </button>
+      <div class="nav-dropdown-menu">
+        {{ range .MethodGroups }}
+          {{ if eq .Method $.SelectedMethod }}
+            {{ range .Runs }}
+            <a href="/?map={{ urlquery $.SelectedMap }}&method={{ urlquery $.SelectedMethod }}&run={{ urlquery .RunID }}"
+               hx-get="/ui/select-run?map={{ urlquery $.SelectedMap }}&method={{ urlquery $.SelectedMethod }}&run={{ urlquery .RunID }}"
+               hx-target="#main-content"
+               hx-swap="innerHTML"
+               hx-push-url="/?map={{ urlquery $.SelectedMap }}&method={{ urlquery $.SelectedMethod }}&run={{ urlquery .RunID }}"
+               class="nav-dropdown-item {{ if eq $.SelectedRun .RunID }}active{{ end }}">
+              <span class="nav-dropdown-run-name">{{ .RunHash }}</span>
+              <span class="nav-dropdown-run-meta">s{{ .Seed }}{{ if gt .Iterations 0 }} · {{ .Iterations }}it{{ end }}</span>
+            </a>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+  <a href="/aprendizado-visual/" class="site-nav-action">Aprendizado Visual</a>
+</nav>
+{{ end }}
+
+{{ define "nav_oob" }}
+<div id="nav-bar" hx-swap-oob="outerHTML">
+  {{ template "nav_bar" . }}
+</div>
+{{ end }}
+
+{{ define "nav_aprendizado" }}
+<nav class="site-nav">
+  <a href="/aprendizado-visual/" class="site-nav-brand">Aprendizado Visual</a>
+  <div class="site-nav-links">
+    {{ range .Methods }}
+    <a href="/aprendizado-visual/{{ .Slug }}" {{ if eq .Slug $.Slug }}class="active"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </div>
+  <a href="/" class="site-nav-action">← Visualizador</a>
+</nav>
+{{ end }}

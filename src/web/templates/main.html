@@ -7,19 +7,23 @@
 {{ end }}
 
 {{ define "main_empty" }}
-<section class="main-card">
-  <h2>Como usar</h2>
-  <p>1) Selecione um mapa no menu lateral.</p>
-  <p>2) Abra um metodo e selecione uma run no menu em niveis.</p>
-</section>
+<div class="main-empty-state">
+  <div class="main-empty-card">
+    <h2>TSP-SD-ATP</h2>
+    <p class="main-empty-sub">Problema do Caixeiro Viajante com Penalidades Angulares Dependentes da Sequência</p>
+    <p>Selecione uma <strong>instância</strong> na barra de navegação acima para começar.</p>
+    <p>Depois escolha o <strong>método</strong> e a <strong>execução</strong> (semente) para visualizar a evolução da otimização.</p>
+    <p class="main-empty-hint">Use <strong>▶</strong> para animar a convergência e <strong>◀ ▶</strong> para navegar entre iterações.</p>
+  </div>
+</div>
 {{ end }}
 
 {{ define "main_points" }}
-<div class="main-split">
-  <section class="main-card map-card">
-    <div class="map-card-header">
-      <h2>Mapa {{ .SelectedMap }}</h2>
-      <button type="button" id="export-png-button" class="export-png-button">Exportar PNG</button>
+<div class="viz-layout">
+  <section class="viz-card viz-map-card">
+    <div class="viz-map-header">
+      <h2>Instância {{ .SelectedMap }}</h2>
+      <button type="button" id="export-png-button" class="btn">Exportar PNG</button>
     </div>
     <canvas
       id="points-canvas"
@@ -30,7 +34,7 @@
     ></canvas>
   </section>
 
-  <aside class="main-side-column">
+  <aside class="viz-panel">
     {{ if .SelectedRun }}
       {{ template "main_evolution" . }}
       {{ template "main_best_sequence" . }}
@@ -42,66 +46,66 @@
 {{ end }}
 
 {{ define "main_run_hint" }}
-<section class="main-card side-hint-card">
-  <h3>Controles e informacoes</h3>
-  <p class="section-hint">Selecione uma run para visualizar evolucao, metricas e controle de velocidade.</p>
-</section>
+<div class="viz-card viz-info-card">
+  <h3>Métricas e controles</h3>
+  <p class="viz-hint">Selecione uma execução (semente) para visualizar evolução, métricas e controle de velocidade.</p>
+</div>
 {{ end }}
 
 {{ define "main_best_sequence" }}
-<section class="main-card best-sequence-card">
-  <h3>Best sequence</h3>
+<div class="viz-card viz-seq-card">
+  <h3>Melhor sequência</h3>
   {{ if gt .EvolutionFramesCount 0 }}
-  <p class="section-hint">Clique para alternar entre evolucao e percurso da melhor sequencia.</p>
+  <p class="viz-hint">Clique para alternar entre evolução e percurso da melhor sequência.</p>
   {{ else }}
-  <p class="section-hint">Sem best sequence disponivel para esta run.</p>
+  <p class="viz-hint">Melhor sequência não disponível para esta execução.</p>
   {{ end }}
-  <button type="button" id="best-sequence-toggle" class="best-sequence-toggle" aria-pressed="false">
-    <span id="frame-best-sequence" class="best-sequence-value">-</span>
+  <button type="button" id="best-sequence-toggle" class="seq-toggle" aria-pressed="false">
+    <span id="frame-best-sequence" class="seq-value">-</span>
   </button>
-  <p id="best-sequence-toggle-hint" class="section-hint best-sequence-toggle-hint">Clique para animar o percurso da best sequence.</p>
-</section>
+  <p id="best-sequence-toggle-hint" class="viz-hint seq-hint">Clique para animar o percurso da melhor sequência.</p>
+</div>
 {{ end }}
 
 {{ define "main_evolution" }}
-<section class="main-card evolution-card">
-  <div class="evolution-header">
-    <h3>Evolucao da run</h3>
-    <p class="evolution-run-id">{{ .SelectedRun }}</p>
+<div class="viz-card viz-evo-card">
+  <div class="viz-evo-header">
+    <h3>Evolução da execução</h3>
+    <p class="viz-evo-run-id">{{ .SelectedRun }}</p>
   </div>
 
-  <div class="speed-controls" role="group" aria-label="Controle de velocidade">
-    <button type="button" class="speed-button" data-speed="0.5">0.5x</button>
-    <button type="button" class="speed-button is-active" data-speed="1">1x</button>
-    <button type="button" class="speed-button" data-speed="2">2x</button>
-    <button type="button" class="speed-button" data-speed="4">4x</button>
+  <div class="viz-speed" role="group" aria-label="Controle de velocidade">
+    <button type="button" class="speed-button" data-speed="0.5">0.5×</button>
+    <button type="button" class="speed-button is-active" data-speed="1">1×</button>
+    <button type="button" class="speed-button" data-speed="2">2×</button>
+    <button type="button" class="speed-button" data-speed="4">4×</button>
   </div>
 
-  <div class="playback-controls" role="group" aria-label="Controles da animacao">
+  <div class="viz-playback" role="group" aria-label="Controles da animação">
     <button type="button" id="playback-pause-button" class="playback-button">Pausar</button>
     <button type="button" id="playback-restart-button" class="playback-button">Reiniciar</button>
   </div>
 
-  <p class="section-hint visualization-mode">Modo atual: <strong id="visualization-mode-label">Evolucao</strong></p>
+  <p class="viz-mode-label">Modo: <strong id="visualization-mode-label">Evolução</strong></p>
 
   {{ if gt .EvolutionFramesCount 0 }}
-  <div class="evolution-metrics">
-    <p>Iteracao: <strong id="frame-iter">-</strong></p>
-    <p>Avaliacao: <strong id="frame-eval">-</strong></p>
-    <p>Best makespan: <strong id="frame-makespan">-</strong></p>
+  <div class="viz-metrics">
+    <p>Iteração: <strong id="frame-iter">-</strong></p>
+    <p>Avaliações: <strong id="frame-eval">-</strong></p>
+    <p>Makespan: <strong id="frame-makespan">-</strong></p>
   </div>
-  <p class="section-hint">
-    Frames: {{ .EvolutionFramesCount }}{{ if gt .SelectedRunIterations 0 }} | Iteracoes totais: {{ .SelectedRunIterations }}{{ end }}
+  <p class="viz-hint">
+    Frames: {{ .EvolutionFramesCount }}{{ if gt .SelectedRunIterations 0 }} · Iterações: {{ .SelectedRunIterations }}{{ end }}
   </p>
   {{ else }}
-  <p class="section-hint">Sem frames de evolucao para esta run.</p>
+  <p class="viz-hint">Sem registros de evolução para esta execução.</p>
   {{ end }}
 
-  <p class="run-best">Melhor makespan final: {{ printf "%.6f" .SelectedRunBestMakespan }}</p>
-</section>
+  <p class="viz-best">Melhor makespan: {{ printf "%.6f" .SelectedRunBestMakespan }}</p>
+</div>
 {{ end }}
 
-{{ define "main_with_sidebar_oob" }}
+{{ define "main_with_nav_oob" }}
 {{ template "main_content" . }}
-{{ template "sidebar_tree_oob" . }}
+{{ template "nav_oob" . }}
 {{ end }}

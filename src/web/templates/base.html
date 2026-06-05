@@ -1,15 +1,17 @@
 {{ define "base" }}
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Title }}</title>
   <link rel="stylesheet" href="/css/style.css">
   <script src="https://unpkg.com/htmx.org@2.0.7"></script>
+  <script type="module" src="/js/nav.js"></script>
   <script type="module" src="/js/index.js"></script>
 </head>
 <body>
+  {{ template "nav_bar" . }}
   {{ template "content" . }}
 </body>
 </html>

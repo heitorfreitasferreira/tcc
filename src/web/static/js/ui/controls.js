@@ -39,7 +39,7 @@ export function connectVisualizationControls(controller) {
     }
 
     if (modeElement) {
-      modeElement.textContent = enabled ? modeLabel(mode) : "Indisponivel";
+      modeElement.textContent = enabled ? modeLabel(mode) : "Indisponível";
     }
 
     if (bestSequenceToggle) {
@@ -51,11 +51,11 @@ export function connectVisualizationControls(controller) {
 
     if (bestSequenceHint) {
       if (!canToggleBestMode) {
-        bestSequenceHint.textContent = "Sem best sequence disponivel para animacao.";
+        bestSequenceHint.textContent = "Sem best sequence disponível para animação.";
       } else if (mode === "best-sequence") {
-        bestSequenceHint.textContent = "Clique para voltar para a visualizacao da evolucao.";
+        bestSequenceHint.textContent = "Clique para voltar para a visualização da evolução.";
       } else {
-        bestSequenceHint.textContent = "Clique para animar o percurso da best sequence.";
+        bestSequenceHint.textContent = "Clique para animar o percurso da melhor sequência.";
       }
     }
   };

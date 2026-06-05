@@ -29,7 +29,7 @@ export function findBestSequenceFrame(frames) {
 }
 
 export function modeLabel(mode) {
-  return mode === "best-sequence" ? "Best sequence" : "Evolucao";
+  return mode === "best-sequence" ? "Best Sequence" : "Evolução";
 }
 
 export function formatBestSequence(sequence) {

@@ -1,0 +1,73 @@
+{{ define "aprendizado" }}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/aprendizado.css">
+</head>
+<body>
+  {{ template "nav_aprendizado" . }}
+
+  <main class="aprendizado-main">
+    {{ if .IsIndex }}
+    <div class="aprendizado-index">
+      <h1>Aprendizado Visual</h1>
+      <p class="aprendizado-subtitle">Meta-heurísticas bioinspiradas aplicadas ao Problema do Caixeiro Viajante com Penalidades Angulares Dependentes da Sequência (TSP-SD-ATP)</p>
+      <p class="aprendizado-intro">
+        Esta seção apresenta visualizações interativas dos operadores de cada meta-heurística
+        utilizada nos experimentos. Cada método possui uma animação passo a passo que explica
+        como o espaço de busca é explorado e como as soluções evoluem ao longo das iterações.
+      </p>
+      <div class="aprendizado-grid">
+        {{ range .Methods }}
+        <a href="/aprendizado-visual/{{ .Slug }}" class="aprendizado-card">
+          <h2>{{ .Name }}</h2>
+          <p>{{ .Description }}</p>
+          <span class="aprendizado-card-link">Explorar →</span>
+        </a>
+        {{ end }}
+      </div>
+    </div>
+    {{ else }}
+    <div class="aprendizado-method">
+      <h1>{{ .Title }}</h1>
+      <p class="aprendizado-description">{{ .Description }}</p>
+
+      <div class="aprendizado-canvas-wrapper">
+        <canvas id="viz-canvas"></canvas>
+      </div>
+
+      <div class="aprendizado-canvas-wrapper" id="chrom-wrapper" style="display:none">
+        <canvas id="chrom-canvas"></canvas>
+      </div>
+
+      <div class="aprendizado-controls">
+        <div class="aprendizado-step-buttons">
+          <button id="btn-reset" title="Reiniciar">⟳</button>
+          <button id="btn-prev" title="Passo anterior">◀</button>
+          <button id="btn-play" title="Reproduzir/Pausar">▶</button>
+          <button id="btn-next" title="Próximo passo">▶</button>
+          <button id="btn-end" title="Ir para o final">⏭</button>
+        </div>
+        <span id="step-info" class="aprendizado-step-info">Passo 0 / 0</span>
+      </div>
+
+      <div id="step-description" class="aprendizado-step-desc"></div>
+    </div>
+
+    <script type="module">
+      import { init } from "/js/aprendizado/{{ .Slug }}.js";
+      init();
+    </script>
+    {{ end }}
+  </main>
+
+  <footer class="aprendizado-footer">
+    <a href="/">← Voltar ao Visualizador TSP-SD-ATP</a>
+  </footer>
+</body>
+</html>
+{{ end }}

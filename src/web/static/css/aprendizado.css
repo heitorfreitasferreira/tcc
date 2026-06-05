@@ -1,0 +1,217 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Main ───────────────────────────────────────────────── */
+
+.aprendizado-main {
+  flex: 1;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+
+/* ─── Index ──────────────────────────────────────────────── */
+
+.aprendizado-index h1 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.aprendizado-subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin: 0 0 24px;
+}
+
+.aprendizado-intro {
+  max-width: 720px;
+  line-height: 1.7;
+  color: #444;
+  margin: 0 0 40px;
+  font-size: 14px;
+}
+
+/* ─── Cards ──────────────────────────────────────────────── */
+
+.aprendizado-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.aprendizado-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.aprendizado-card:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent);
+}
+
+.aprendizado-card h2 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  color: var(--dark);
+}
+
+.aprendizado-card p {
+  flex: 1;
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.aprendizado-card-link {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ─── Method Page ────────────────────────────────────────── */
+
+.aprendizado-method h1 {
+  margin: 0 0 12px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.aprendizado-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 24px;
+  max-width: 800px;
+}
+
+/* ─── Canvas ─────────────────────────────────────────────── */
+
+.aprendizado-canvas-wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+#viz-canvas,
+#chrom-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ─── Controls ───────────────────────────────────────────── */
+
+.aprendizado-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.aprendizado-step-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.aprendizado-step-buttons button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.aprendizado-step-buttons button:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}
+
+.aprendizado-step-buttons button:active {
+  background: #dceaf9;
+}
+
+.aprendizado-step-info {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.aprendizado-step-desc {
+  padding: 16px 20px;
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #333;
+  min-height: 48px;
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+
+.aprendizado-footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.aprendizado-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.aprendizado-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+  .aprendizado-main {
+    padding: 20px 14px 32px;
+  }
+
+  .aprendizado-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aprendizado-step-buttons button {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+}

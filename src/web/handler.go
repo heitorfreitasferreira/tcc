@@ -39,12 +39,17 @@ var assetsFS embed.FS
 // repository, service, and handler layers. It embeds all experiment data so the
 // binary is self-contained.
 func NewHandler() (http.Handler, error) {
-	tmpl, err := template.ParseFS(
+	tmpl := template.New("").Funcs(template.FuncMap{
+		"methodLabel": handlers.MethodLabel,
+	})
+
+	tmpl, err := tmpl.ParseFS(
 		assetsFS,
 		"templates/base.html",
 		"templates/index.html",
-		"templates/sidebar.html",
+		"templates/nav.html",
 		"templates/main.html",
+		"templates/aprendizado.html",
 	)
 	if err != nil {
 		return nil, fmt.Errorf("parse templates: %w", err)
@@ -82,6 +87,9 @@ func NewHandler() (http.Handler, error) {
 
 	renderHandler := handlers.NewRenderHandler(dataRepository, dataRepository)
 	mux.Handle("/api/render", renderHandler)
+
+	aprendizadoHandler := handlers.NewAprendizadoHandler(tmpl)
+	aprendizadoHandler.RegisterRoutes(mux)
 
 	return mux, nil
 }

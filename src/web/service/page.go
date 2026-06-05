@@ -16,7 +16,7 @@ import (
 	"tcc/web/repository"
 )
 
-const defaultTitle = "TCC - Visualizador"
+const defaultTitle = "TSP-SD-ATP — Visualizador de Experimentos"
 
 // preferredMethods defines the display ordering of method groups in the sidebar.
 var preferredMethods = map[string]int{
