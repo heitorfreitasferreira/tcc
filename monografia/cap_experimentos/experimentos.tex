@@ -11,13 +11,13 @@ Todas as execuções otimizam a mesma função objetivo: o \textit{makespan} da 
 As instâncias são sintéticas, com coordenadas no intervalo $[-1,1]$. Foram usados \TotalTamanhosInstancia{} tamanhos de instância, com \TotalVariantesPorTamanho{} variantes por tamanho, totalizando \TotalInstancias{} instâncias. \ac{GA}, \ac{PSO} e \ac{ACO} foram executados com \TotalSementesGA{} sementes em cada instância. A busca exaustiva foi executada nas \TotalInstanciasComOtimo{} instâncias de 10 a 15 pontos. O \ac{LB} \ac{AP} foi executado em todas as \TotalInstancias{} instâncias.
 
 As métricas principais são:
-\begin{itemize}
+\begin{alineas}
   \item \textbf{makespan}: valor final da função objetivo;
   \item \textbf{gap vs. ótimo}: diferença percentual em relação à busca exaustiva, nas 18 instâncias com ótimo conhecido;
   \item \textbf{gap vs. \ac{LB}}: diferença percentual em relação ao limitante \ac{AP};
   \item \textbf{tempo de otimização}: duração da etapa de otimização em milissegundos;
   \item \textbf{taxa de acerto}: proporção de sementes que alcançam o ótimo nas instâncias com busca exaustiva.
-\end{itemize}
+\end{alineas}
 
 \begin{table}[htbp]
   \centering

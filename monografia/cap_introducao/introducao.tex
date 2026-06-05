@@ -19,14 +19,14 @@ A literatura contém comparações entre \ac{GA}, \ac{PSO} e \ac{ACO} no \ac{TSP
 O objetivo geral deste trabalho é analisar o desempenho de meta-heurísticas bioinspiradas na otimização de rotas de patrulhamento com drones modeladas como \ac{TSP-SD-ATP}.
 
 Os objetivos específicos são:
-\begin{itemize}
+\begin{alineas}
   \item formalizar a função objetivo baseada em distância euclidiana e penalidade angular dependente da sequência;
   \item implementar e comparar \ac{GA}, \ac{PSO} e \ac{ACO} sobre a mesma representação de instância e a mesma função objetivo;
   \item usar busca exaustiva como referência ótima nas instâncias pequenas em que a enumeração completa foi executada;
   \item implementar um limitante inferior por relaxação do problema de designação para apoiar a análise em instâncias maiores;
   \item medir qualidade da solução, tempo de otimização, estabilidade entre sementes e comportamento de convergência;
   \item discutir limitações metodológicas associadas a instâncias sintéticas, parâmetros fixos e diferenças de codificação entre métodos.
-\end{itemize}
+\end{alineas}
 
 O principal desafio computacional é combinar duas fontes de complexidade. A primeira é combinatória: a quantidade de rotas cresce fatorialmente com o número de pontos. A segunda é estrutural: o custo de uma transição depende de três nós consecutivos, não apenas da aresta atual. Como consequência, métodos projetados para o \ac{TSP} clássico precisam ser adaptados para avaliar rotas em um tensor de custos tridimensional.
 
@@ -35,24 +35,24 @@ O principal desafio computacional é combinar duas fontes de complexidade. A pri
 A hipótese principal é que meta-heurísticas bioinspiradas conseguem produzir rotas factíveis de baixo \textit{makespan} em instâncias nas quais a busca exaustiva se torna inviável. A hipótese secundária é que a qualidade e o tempo de execução variam substancialmente conforme a forma como cada método representa e explora a dependência de sequência do \ac{TSP-SD-ATP}.
 
 As perguntas de pesquisa são:
-\begin{itemize}
+\begin{alineas}
   \item Nas instâncias pequenas, qual é o gap das meta-heurísticas em relação ao ótimo obtido por busca exaustiva?
   \item Nas \TotalInstancias{} instâncias avaliadas, qual método apresenta menor \textit{makespan} mediano?
   \item Qual é o custo temporal de obter soluções de melhor qualidade?
   \item As diferenças observadas entre \ac{GA}, \ac{PSO} e \ac{ACO} são estatisticamente consistentes quando os métodos são comparados por instância?
   \item O limitante inferior por relaxação do problema de designação é informativo para esta variante com penalidade angular?
-\end{itemize}
+\end{alineas}
 
 \section{Contribuições}
 
 As contribuições deste trabalho são:
-\begin{itemize}
+\begin{alineas}
   \item a formulação computacional do \ac{TSP-SD-ATP} para rotas de patrulhamento com drones, usando tensor 3D de custos;
   \item uma implementação em Go de \ac{GA}, \ac{PSO}, \ac{ACO}, busca exaustiva e \ac{LB} por relaxação \ac{AP}/Hungarian sobre a mesma função objetivo;
   \item uma base experimental com \TotalExecucoes{} arquivos de resumo, evolução e tempo, cobrindo \TotalInstancias{} instâncias e \TotalSementesGA{} sementes por meta-heurística;
   \item a comparação com ótimo exato em \TotalInstanciasComOtimo{} instâncias pequenas e com \ac{LB} em todas as \TotalInstancias{} instâncias;
   \item uma análise empírica e estatística do trade-off entre qualidade de solução e tempo computacional.
-\end{itemize}
+\end{alineas}
 
 \section{Organização da Monografia}
 
