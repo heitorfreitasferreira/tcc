@@ -4,7 +4,7 @@ tags:
 - metodo/lower-bound
 - tipo/area
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-05
 type: area
 ---
 
@@ -90,7 +90,7 @@ Sem redução, usando o MDD com largura limitada W. Implementável em Go puro. O
 ## Referências no Vault
 
 - [[heldkarp1970traveling]] — bound HK original
-- [[heldkarp1971traveling]] — DP O(n²2ⁿ) + subgradiente
+- [[heldkarp1971traveling]] — ascent method + branch-and-bound para o bound HK; não é a DP O(n²2ⁿ) de Held-Karp 1962
 - [[johnson1996asymptotic]] — validação empírica HK
 - [[valenzuela1997estimating]] — implementação subgradiente
 - [[righini2021efficient]] — otimização vértice HK

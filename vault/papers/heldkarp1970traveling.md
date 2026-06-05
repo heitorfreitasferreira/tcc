@@ -53,7 +53,7 @@ O Held-Karp bound é o lower bound mais utilizado para TSP simétrico, com gap e
 
 ## Conexões
 
-- [[heldkarp1971traveling]] — Part II, com formulação de programação dinâmica O(n²2ⁿ)
+- [[heldkarp1971traveling]] — Part II, com ascent method e branch-and-bound para o bound HK
 - [[johnson1996asymptotic]] — validação empírica do HK bound em larga escala
 - [[valenzuela1997estimating]] — implementação prática do subgradiente para HK
 - [[righini2021efficient]] — otimização da seleção de vértice p no bound HK

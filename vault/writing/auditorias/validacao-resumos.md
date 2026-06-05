@@ -123,7 +123,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 | 2 | **Bock 2025** (TSP em Warehousing) | ✅ **CORRETO** | Nenhuma. TSP e variantes em armazéns com corredores paralelos, 10 variantes relevantes, TSP clássico polinomial em layouts 1B/2B/MB, análise de complexidade — confirmados. Citação literal do Abstract confirmada: "Traditional picker routing... can be modeled as the classical Traveling Salesman Problem (TSP)." | PDF legível. Abstract e Seções 1–3 lidas. |
 | 3 | **Applegate 2006** (Concorde) | ⚠️ **PLAUSÍVEL** | Claims sobre Concorde, branch-and-cut, planos de corte (subtour, blossom, comb, domino-parity), LKH, instância de 85.900 cidades, Prêmio Lanchester 2007 — todos consistentes com a reputação da obra. Não verificáveis diretamente: PDF é scan (606 páginas, OCR vazio nas primeiras 3 páginas testadas). | PDF scan. Vault declara `lido-parcial` corretamente. |
 | 4 | **Held-Karp 1970** (Lower Bound) | ✅ **CORRETO** | Nenhuma. Relaxação Lagrangiana, 1-trees, multiplicadores de Lagrange, equivalência com subtour LP, três métodos (column generation, ascent method/subgradiente, branch-and-bound) — todos confirmados no Abstract e Seção 1 do PDF. | PDF legível (OCR). Abstract e Seção 1 lidos. |
-| 5 | **Held-Karp 1971** (Part II) | ⚠️ **INCOMPLETO** | Vault contém apenas frontmatter (status "pendente"), **sem resumo técnico**. Não há conteúdo para validar. O artigo é a continuação de Held-Karp 1970, introduzindo formulação de programação dinâmica O(n²2ⁿ). | PDF disponível mas não lido pelo vault. |
+| 5 | **Held-Karp 1971** (Part II) | ⚠️ **INCOMPLETO — corrigido por P42/P43** | Esta auditoria registrou incorretamente que o artigo introduzia programação dinâmica O(n²2ⁿ). A leitura posterior do PDF corrigiu a atribuição: Held-Karp 1971 trata de ascent method + branch-and-bound para o bound HK; a DP O(n²2ⁿ) é de Held-Karp 1962. | PDF disponível; leitura posterior registrada em [[heldkarp1971traveling]]. |
 | 6 | **Lin 1973** (LK Heuristic) | ✅ **CORRETO** | Nenhuma. Heurística Lin-Kernighan, trocas sequenciais de k arestas com k variável, critério de ganho acumulado, lookahead, redução por interseção, backtracking limitado, problemas até 110 cidades, aplicação real de 318 pontos — todos confirmados. | PDF legível. Abstract e Seção 1 lidos. |
 
 ### Resumo do Lote 4
@@ -143,7 +143,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
 - `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
-- `heldkarp1971traveling.md`: adicionar resumo técnico (programação dinâmica O(n²2ⁿ)).
+- `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 
 ---
 
@@ -176,7 +176,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
 - `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
-- `heldkarp1971traveling.md`: adicionar resumo técnico (programação dinâmica O(n²2ⁿ)).
+- `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 
 ---
 
@@ -224,7 +224,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 2. `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 3. `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
 4. `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
-5. `heldkarp1971traveling.md`: adicionar resumo técnico (programação dinâmica O(n²2ⁿ)).
+5. `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 6. `aggarwal2000angular.md`: corrigir ano de 2000 para 1999.
 7. `johnson1996asymptotic.md`: remover Robert Schreiber da lista de autores (são apenas Johnson, McGeoch e Rothberg).
 8. `nagata2006eax.md`: corrigir bibtex_key/ano de 2006 para 2013 (publicação real).
@@ -267,4 +267,3 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 ---
 
 *Validação concluída em 2026-06-04. Todos os 49 papers da interseção foram avaliados.*
-

@@ -8,7 +8,7 @@ tags:
 - topico/roadmap
 status: pronto-com-pendencias-bibliograficas-rastreabilidade-e-validacao
 created: 2026-06-02
-updated: 2026-06-04
+updated: 2026-06-05
 concluded: 2026-06-03
 type: writing
 ---
@@ -159,7 +159,7 @@ Em 2026-06-04, a validação sistemática em `vault/validacao-resumos.md` compar
 
 A validação afirmava que [[heldkarp1971traveling]] introduzia a formulação `O(n²2ⁿ)` por DP. **A leitura do PDF contradiz a validação**: o paper de 1971 é a Parte II da série Held-Karp, com *ascent method* iterativo + *branch-and-bound* (resolve até 64 cidades com ótimo provado). A formulação `O(n²2ⁿ)` por DP é o paper separado de 1962 (referência [8] deste PDF).
 
-A nota do paper foi corrigida para refletir o conteúdo real, mas a área `vault/areas/lower-bounds.md:93` ainda propaga o erro antigo: `"DP O(n²2ⁿ) + subgradiente"`. **P43 (alta)** é corrigir essa entrada da área.
+A nota do paper foi corrigida para refletir o conteúdo real. **P43 concluída** propagou a correção para `vault/areas/lower-bounds.md`, `vault/papers/heldkarp1970traveling.md`, `vault/writing/auditorias/validacao-resumos.md` e para a Seção 2.8 da monografia, removendo a atribuição ativa da DP `O(n²2ⁿ)` ao paper de 1971.
 
 ### Consequência Editorial (P44)
 
@@ -174,7 +174,7 @@ A correção de [[muthanna2022uav]] revelou que o artigo **não trata de TSP nem
 | PSO discreto/permutacional | Reforçar a ponte entre PSO contínuo, random keys e permutações; [[clerc2000discretepso]] ajuda, mas a nota é parcial | Média para Fundamentação |
 | Turn costs / angular routing | Usar [[winter2002modeling]] como base segura. [[aggarwal2000angular]] agora tem nota com ano corrigido (1999) e PDF íntegro, mas continua classificado como "download manual" — revisar se a nota enriquecida permite mover para análise posterior ou se deve entrar no texto | Média para Fundamentação |
 | Muthanna 2022 e IoT/5G | Após P44, decidir se [[muthanna2022uav]] permanece como referência contextual ou sai do escopo | Média para Fundamentação |
-| Held-Karp 1971 vs 1962 | Após P43, garantir que a nota de área e o texto da monografia não propaguem o erro de atribuir DP `O(n²2ⁿ)` ao paper de 1971 (é o de 1962) | Alta para Fundamentação (Seção 2.8) |
+| Held-Karp 1971 vs 1962 | Concluído em P43: nota de área, nota Held-Karp 1970, auditoria e Seção 2.8 distinguem 1970/1971 (1-tree, ascent method, branch-and-bound) de 1962 (DP `O(n²2ⁿ)`) | Resolvido para Fundamentação (Seção 2.8) |
 
 ## Rastreabilidade de Valores Quantitativos
 
@@ -465,7 +465,7 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P40 | Resolver TODO da ficha catalográfica e folha de aprovação | `main_ppgco_ufu.tex:75` contém TODO comentado para `\inserirfichacatalografica` e `\inserirfolhaaprovacao`. Gerar/obter PDFs antes da compilação final. Descoberto em [[auditoria-formato-abnt]]. | Pendente (entrega final) |
 | P41 | Limpar preâmbulo LaTeX: pacotes duplicados e não usados | `nomencl`, `graphicx`, `hyperref` carregados duplamente (ppgco.cls + main.tex). `subfig` carregado mas não usado. `makeidx` carregado em ppgco.cls mas `\printindex` nunca chamado. Remover redundâncias. Descoberto em [[auditoria-formato-abnt]]. | Pendente |
 | P42 | Aplicar correções da validação de resumos 2026-06-04 | 8 correções aplicadas em `vault/papers/` (dorigo1997ant, bean1994genetic, ahmed2024receding, muthanna2022uav, heldkarp1971traveling, aggarwal2000angular, johnson1996asymptotic, nagata2006eax). BibTeX atualizado (nagata2013eax, aggarwal1999angular) e citação em `monografia/cap_fundamentacao/fundamentacao.tex:60` corrigida. Detalhes na seção [[#Correções Pós-Validação de Resumos 2026-06-04]] | Concluída |
-| P43 | Corrigir erro de atribuição Held-Karp 1971 × 1962 em `vault/areas/lower-bounds.md` | A nota da área ainda diz "DP O(n²2ⁿ) + subgradiente" para [[heldkarp1971traveling]]. O paper de 1971 trata de ascent method + branch-and-bound; o `O(n²2ⁿ)` por DP é o paper de 1962 (Held-Karp 1962, J. SIAM 10, 196-210). A nota do paper em `vault/papers/heldkarp1971traveling.md` já foi corrigida (P42); falta propagar para a área e para o texto da Seção 2.8 da monografia. Verificar se há outras notas que repetem o erro. | Pendente (alta) |
+| P43 | Corrigir erro de atribuição Held-Karp 1971 × 1962 em `vault/areas/lower-bounds.md` | Correção propagada para `vault/areas/lower-bounds.md`, `vault/papers/heldkarp1970traveling.md`, `vault/writing/auditorias/validacao-resumos.md` e `monografia/cap_fundamentacao/fundamentacao.tex`. O texto agora distingue 1970/1971 (1-tree, relaxação lagrangeana, ascent method, branch-and-bound) de Held-Karp 1962 (DP `O(n²2ⁿ)`). Busca textual não encontrou atribuição problemática ativa remanescente; `scripts/check-monografia.sh` passou; validação registrada em `.agents/council/2026-06-05-P43*.md`. | Concluída |
 | P44 | Decidir destino de [[muthanna2022uav]] no escopo da monografia | Após correção da nota em P42, o artigo foi reclassificado como de **baixa relevância** para TSP/bio-inspired (trata de IoT/5G com C-LSTM + A3C + Mayfly). Decidir entre: (a) remover da lista de referências centrais, mantendo apenas menção contextual em Fundamentação; (b) manter como referência de cenário de aplicação UAV em emergência, sem claims sobre TSP; (c) substituir por referência mais alinhada ([[rajan2022routing]] já cobre o aspecto de patrulha UAV). | Pendente (média) |
 
 ## Protocolo Para Cada Agente Escritor
@@ -559,8 +559,8 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 ## Próxima Ação Recomendada
 
 **Prioridade imediata** — saneamento de notas da validação 2026-06-04 (ver seção [[#Correções Pós-Validação de Resumos 2026-06-04]]):
-- **P43** (alta): corrigir a frase `"DP O(n²2ⁿ) + subgradiente"` em `vault/areas/lower-bounds.md:93` para a entrada Held-Karp 1971 — o paper de 1971 trata de *ascent method* + *branch-and-bound*; o `O(n²2ⁿ)` por DP é o paper de 1962 (referência [8] do PDF). A nota do paper já foi corrigida; a área ainda propaga o erro antigo.
+
 - **P44** (média): decidir destino de [[muthanna2022uav]] — análise pós-correção indica que o artigo **não trata de TSP nem de meta-heurísticas bio-inspiradas clássicas** (C-LSTM + A3C + Mayfly em IoT/5G). Considerar remover da lista de referências centrais ou restringir a menção puramente contextual em Fundamentação.
-- Re-executar `scripts/check-monografia.sh` após P43 e P44 para garantir que a propagação do erro antigo não persista.
+- Re-executar `scripts/check-monografia.sh` após P44 para garantir que a seleção bibliográfica continue consistente.
 
 **Em seguida** — manter o plano original: **P14–P15** (apêndices e formatação), **P36** (4 chaves BibTeX críticas que bloqueiam compilação) e as demais pendências bibliográficas (**P18**, **P26**, **P28**, **P30**, **P31**, **P33**, **P34**). Escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão. Durante a escrita dos capítulos, aplicar **P37** (`\ac{}`), **P38** (`\autoref{}`) e **P39** (`alineas`). Por último, **P11** (Resumo/Abstract), **P24** (vincular claims), **P25** (relatório anti-alucinação), **P40** (ficha catalográfica) e **P41** (limpeza de preâmbulo).
