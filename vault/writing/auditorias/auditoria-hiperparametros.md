@@ -1,7 +1,13 @@
 ---
-tags: [writing, auditoria, estatistica, metodologia]
+tags:
+- evidencia/auditoria
+- evidencia/estatistica
+- evidencia/metodologia
+- tipo/auditoria
+- tipo/writing
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Auditoria P10 — Sensibilidade a Hiperparâmetros

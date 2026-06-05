@@ -1,14 +1,17 @@
 ---
 title: Auditoria Código-Dados-Vault
 tags:
-  - writing
-  - auditoria
-  - codigo
-  - dados
-  - monografia
+- evidencia/auditoria
+- evidencia/codigo
+- evidencia/dados
+- status/atualizado
+- tipo/auditoria
+- tipo/writing
+- topico/monografia
 status: atualizado-2026-06-02
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Auditoria Código-Dados-Vault

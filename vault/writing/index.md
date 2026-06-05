@@ -1,7 +1,10 @@
 ---
-tags: [writing, catalogo, index]
+tags:
+- tipo/index
+- tipo/writing
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Writing — Scaffolds de Escrita da Monografia

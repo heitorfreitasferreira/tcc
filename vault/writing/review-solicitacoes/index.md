@@ -1,10 +1,12 @@
 ---
 title: Índice de Solicitações de Revisão
 tags:
-  - tipo/index
-  - revisao
-  - monografia
+- tipo/index
+- tipo/revisao
+- topico/monografia
+- topico/revisao
 updated: 2026-06-03
+type: writing
 ---
 
 # Índice de Solicitações de Revisão

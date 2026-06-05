@@ -2,13 +2,11 @@
 title: Matriz Claim-Evidência da Monografia
 type: claim-registry
 tags:
-  - tipo/writing
-  - tipo/auditoria
-  - claims
-  - evidencias
-  - monografia
-  - evidencia/auditoria
-  - capitulo/experimentos
+- capitulo/experimentos
+- evidencia/auditoria
+- tipo/auditoria
+- tipo/writing
+- topico/monografia
 writing_status: revisar
 validation_status: validado
 status: atualizada-pos-p7

@@ -1,13 +1,15 @@
 ---
 title: Figuras e Tabelas da Monografia
 tags:
-  - writing
-  - monografia
-  - figuras
-  - tabelas
+- status/atualizado
+- tipo/writing
+- topico/figuras
+- topico/monografia
+- topico/tabelas
 status: regenerado-pos-p4
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Figuras e Tabelas da Monografia

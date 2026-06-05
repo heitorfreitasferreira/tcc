@@ -1,8 +1,13 @@
 ---
-tags: [writing, capitulo, conclusao]
+tags:
+- capitulo/conclusao
+- status/atualizado
+- tipo/writing
+- topico/monografia
 status: atualizado-pos-p4
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Conclusão — Scaffold

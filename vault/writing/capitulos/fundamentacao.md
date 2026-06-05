@@ -1,7 +1,11 @@
 ---
-tags: [writing, capitulo, fundamentacao]
+tags:
+- capitulo/fundamentacao
+- tipo/writing
+- topico/monografia
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Fundamentação Teórica — Scaffold

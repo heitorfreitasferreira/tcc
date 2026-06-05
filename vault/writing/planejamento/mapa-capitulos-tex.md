@@ -1,13 +1,14 @@
 ---
 title: Mapa Capítulos-TeX da Monografia
 tags:
-  - writing
-  - monografia
-  - latex
-  - capitulos
+- status/auditado-bloqueios
+- tipo/writing
+- topico/formatacao
+- topico/monografia
 status: auditado-com-bloqueios
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Mapa Capítulos-TeX da Monografia

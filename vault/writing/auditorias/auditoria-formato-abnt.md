@@ -1,19 +1,21 @@
 ---
 title: Auditoria de Formatação ABNT no Template LaTeX
 tags:
-  - writing
-  - auditoria
-  - abnt
-  - latex
+- evidencia/auditoria
+- status/concluido
+- tipo/auditoria
+- tipo/writing
+- topico/formatacao
 status: concluido-com-achados
 created: 2026-06-04
 related:
-  - "[[roadmap-monografia]]"
-  - "[[../capitulos/introducao]]"
-  - "[[../capitulos/fundamentacao]]"
-  - "[[../capitulos/proposta]]"
-  - "[[../capitulos/experimentos]]"
-  - "[[../capitulos/conclusao]]"
+- '[[roadmap-monografia]]'
+- '[[../capitulos/introducao]]'
+- '[[../capitulos/fundamentacao]]'
+- '[[../capitulos/proposta]]'
+- '[[../capitulos/experimentos]]'
+- '[[../capitulos/conclusao]]'
+type: writing
 ---
 
 # Auditoria de Formatação ABNT — Template LaTeX

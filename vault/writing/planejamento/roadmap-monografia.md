@@ -1,14 +1,16 @@
 ---
 title: Roadmap de Escrita da Monografia
 tags:
-  - writing
-  - monografia
-  - roadmap
-  - agentes
+- status/pronto-com-pendencias
+- tipo/writing
+- topico/ferramenta
+- topico/monografia
+- topico/roadmap
 status: pronto-com-pendencias-bibliograficas-rastreabilidade-e-validacao
 created: 2026-06-02
-updated: 2026-06-05
+updated: 2026-06-04
 concluded: 2026-06-03
+type: writing
 ---
 
 # Roadmap de Escrita da Monografia
@@ -131,10 +133,37 @@ Auditoria realizada em 2026-06-03 sobre `vault/papers/`: 61 notas de paper, 43 P
 
 | Decisão | Referências | Encaminhamento |
 |---|---|---|
-| **Download manual prioritário se forem citadas** | [[lawler1985traveling]], [[aggarwal2000angular]], [[vanhove2012route]] | Fundamentam TSP clássico, AM-TSP e turn costs. Se o texto depender delas, solicitar PDF manualmente e revisar a nota antes da citação. Se não houver tempo, usar referências já validadas como [[garey1979computers]], [[applegate2006traveling]], [[winter2002modeling]] e [[kinable2017hybrid]]. |
-| **Download manual condicionado à seção de lower bounds** | [[heldkarp1971traveling]], [[balas1985branch]], [[fischetti1992additive]], [[valenzuela1997estimating]], [[leraromero2020dynamic]] | Não bloquear a monografia se o texto limitar a discussão ao lower bound AP implementado, [[heldkarp1970traveling]], [[johnson1996asymptotic]], [[righini2021efficient]], [[kinable2017hybrid]] e [[justificativa-lowerbound]]. Baixar manualmente apenas se o capítulo aprofundar bounds clássicos ou ng-path. |
-| **Download manual para análise posterior** | [[dellamico2021multiple]], [[dellamico2022exact]], [[deepaco2023]], [[ahmed2024receding]], [[nagata2006eax]] | Relevantes para trabalhos relacionados ou futuros, mas não indispensáveis para demonstrar o que foi implementado. Não usar para claims fortes até recuperar PDF íntegro. |
-| **Candidatas a descarte do escopo imediato** | [[hga2024hybrid]], [[sun2024hybrid]], [[huang2025matrix]], [[kappagantula2025dpso]], [[toaza2023review]] | Manter no catálogo apenas se houver intenção explícita de revisar estado da arte recente. Para a monografia atual, podem ser omitidas sem enfraquecer o argumento central. |
+| **Download manual prioritário se forem citadas** | [[lawler1985traveling]], [[vanhove2012route]] | Fundamentam TSP clássico e turn costs. Se o texto depender delas, solicitar PDF manualmente e revisar a nota antes da citação. Se não houver tempo, usar referências já validadas como [[garey1979computers]], [[applegate2006traveling]], [[winter2002modeling]] e [[kinable2017hybrid]]. **[[aggarwal2000angular]] foi rebaixado desta categoria** (P42): PDF íntegro, nota com ano corrigido (1999) e resumo consistente; pode entrar no texto como referência de AM-TSP/turn costs se a Seção 2.2 for expandida. |
+| **Download manual condicionado à seção de lower bounds** | [[balas1985branch]], [[fischetti1992additive]], [[valenzuela1997estimating]], [[leraromero2020dynamic]] | Não bloquear a monografia se o texto limitar a discussão ao lower bound AP implementado, [[heldkarp1970traveling]], [[johnson1996asymptotic]], [[righini2021efficient]], [[kinable2017hybrid]] e [[justificativa-lowerbound]]. Baixar manualmente apenas se o capítulo aprofundar bounds clássicos ou ng-path. **[[heldkarp1971traveling]] foi promovido** (P42): nota completa a partir do PDF (ascent method + branch-and-bound, até 64 cidades); pode fundamentar Seção 2.8 sem download adicional. |
+| **Download manual para análise posterior** | [[dellamico2021multiple]], [[dellamico2022exact]], [[deepaco2023]] | Relevantes para trabalhos relacionados ou futuros, mas não indispensáveis para demonstrar o que foi implementado. Não usar para claims fortes até recuperar PDF íntegro. **[[ahmed2024receding]] e [[nagata2006eax]] foram promovidos** (P42): notas com resumos técnicos completos a partir do PDF (MILP+RHC+CPLEX+path smoothing para o primeiro; EAX localizado + busca local + modelo de seleção para o segundo), podem sustentar claims contextuais em Fundamentação. |
+| **Candidatas a descarte do escopo imediato** | [[hga2024hybrid]], [[sun2024hybrid]], [[huang2025matrix]], [[kappagantula2025dpso]], [[toaza2023review]] | Manter no catálogo apenas se houver intenção explícita de revisar estado da arte recente. Para a monografia atual, podem ser omitidas sem enfraquecer o argumento central. **[[muthanna2022uav]] adicionado** (P44): após correção da nota, o artigo é de IoT/5G com deep RL + Mayfly e não trata de TSP/bio-inspired clássico; pode ser removido do escopo central. |
+
+## Correções Pós-Validação de Resumos 2026-06-04
+
+Em 2026-06-04, a validação sistemática em `vault/validacao-resumos.md` comparou 49 notas de paper com o conteúdo dos PDFs. Foram identificados 8 ajustes que foram **todos aplicados** em 2026-06-04, com **toda informação nova extraída do PDF** (não da nota de validação).
+
+### Ajustes Aplicados (P42)
+
+| # | Nota | Ajuste aplicado | Fonte no PDF |
+|---|------|-----------------|--------------|
+| 1 | [[dorigo1997ant]] | Tabela 4 do PDF: fl1577 erro = `3.27%` (melhor) e `3.79%` (média) em 15 trials — substituiu "~3.5%" | Tabela 4, p. 77 do PDF |
+| 2 | [[bean1994genetic]] | Nota de PDF reescrita: PDF **existe** (criado 2015-01-16, Subject "ORSA J. Computing 1994.6:154-160", Author "James C. Bean"), mas extração automática só retorna a capa INFORMS; páginas 154-160 em imagem protegida por watermark | Capa + metadados do PDF |
+| 3 | [[ahmed2024receding]] | Resumo técnico completo: MILP + RHC + CPLEX + path smoothing; autores corrigidos para `Ahmed, Gamil` e `Sheltami, Tarek` | Abstract + Seção 1 do PDF |
+| 4 | [[muthanna2022uav]] | Resumo reescrito: arcabouço **IWPOP-UAV** com **C-LSTM** (predição climática) + **A3C** (posicionamento) + **Mayfly Optimization Algorithm** (path planning); marcado como **baixa relevância** para TSP/bio-inspired clássico | Abstract + Seções 3, 4, 5 do PDF |
+| 5 | [[heldkarp1971traveling]] | Resumo técnico: ascent method iterativo + branch-and-bound; **resolve até 64 cidades** com ótimo provado. **Correção**: NÃO é DP O(n²2ⁿ) — isso é o paper de Held-Karp 1962 (referência [8] deste PDF) | Abstract, Seções 1-3, Tabelas 1-2 do PDF |
+| 6 | [[aggarwal2000angular]] | Ano `2000` → `1999` (publicação eletrônica 7 dez 1999; volume impresso 2000); chave BibTeX `aggarwal2000angular` → `aggarwal1999angular`; alias preserva wikilinks antigos | Cabeçalho do PDF + nota "PII. S0097539796312721" + linha de história "published electronically December 7, 1999" |
+| 7 | [[johnson1996asymptotic]] | Removido `Schreiber, Robert` da lista de autores; autores corretos: `Johnson, D. S.`, `McGeoch, L. A.`, `Rothberg, E. E.` | Cabeçalho do PDF: "D. S. Johnson, L. A. McGeoch, E. E. Rothberg" |
+| 8 | [[nagata2006eax]] | Chave BibTeX `nagata2006eax` → `nagata2013eax` (INFORMS J. Computing 25(2), Spring 2013, pp. 346-363); nota explica relação com Nagata 2006a/b (EvoCOP); alias preserva wikilinks antigos; citação em `monografia/cap_fundamentacao/fundamentacao.tex:60` atualizada; entrada `nagata2013eax` adicionada em `monografia/bib/abntex2-references.bib` com comentário `@comment` para o alias | Cabeçalho do PDF: "INFORMS Journal on Computing Vol. 25, No. 2, Spring 2013, pp. 346–363" + "Copyright © 2013, INFORMS" |
+
+### Discrepância Detectada Durante a Correção (P43)
+
+A validação afirmava que [[heldkarp1971traveling]] introduzia a formulação `O(n²2ⁿ)` por DP. **A leitura do PDF contradiz a validação**: o paper de 1971 é a Parte II da série Held-Karp, com *ascent method* iterativo + *branch-and-bound* (resolve até 64 cidades com ótimo provado). A formulação `O(n²2ⁿ)` por DP é o paper separado de 1962 (referência [8] deste PDF).
+
+A nota do paper foi corrigida para refletir o conteúdo real, mas a área `vault/areas/lower-bounds.md:93` ainda propaga o erro antigo: `"DP O(n²2ⁿ) + subgradiente"`. **P43 (alta)** é corrigir essa entrada da área.
+
+### Consequência Editorial (P44)
+
+A correção de [[muthanna2022uav]] revelou que o artigo **não trata de TSP nem de meta-heurísticas bio-inspiradas clássicas** (ACO/GA/PSO); é de comunicações IoT/5G com UAVs usando C-LSTM + A3C + Mayfly (híbrida obscura). A nota original do vault classificava o paper como referência de "posicionamento e escalonamento energeticamente eficiente" sem detalhar os métodos centrais, e a validação identificou isso como divergente. **P44 (média)**: decidir destino — remover da lista de referências centrais ou rebaixar a menção contextual (sem sustentar claims sobre TSP/bio-inspired).
 
 ### Lacunas Bibliográficas que Merecem Reforço
 
@@ -143,7 +172,9 @@ Auditoria realizada em 2026-06-03 sobre `vault/papers/`: 61 notas de paper, 43 P
 | Patrulha UAV / persistent surveillance | Buscar 2 ou 3 referências diretamente sobre patrulha, vigilância persistente, monitoramento ou inspeção com UAVs; não depender apenas de TSP-D/FSTSP de entrega | Alta para Introdução |
 | Metodologia estatística para metaheurísticas | Preencher [[demsar2006statistical]] e considerar Derrac et al. (2011) para testes não-paramétricos em algoritmos evolucionários | Alta para Experimentos |
 | PSO discreto/permutacional | Reforçar a ponte entre PSO contínuo, random keys e permutações; [[clerc2000discretepso]] ajuda, mas a nota é parcial | Média para Fundamentação |
-| Turn costs / angular routing | Usar [[winter2002modeling]] como base segura e baixar manualmente [[aggarwal2000angular]] ou [[vanhove2012route]] se a discussão angular for expandida | Média para Fundamentação |
+| Turn costs / angular routing | Usar [[winter2002modeling]] como base segura. [[aggarwal2000angular]] agora tem nota com ano corrigido (1999) e PDF íntegro, mas continua classificado como "download manual" — revisar se a nota enriquecida permite mover para análise posterior ou se deve entrar no texto | Média para Fundamentação |
+| Muthanna 2022 e IoT/5G | Após P44, decidir se [[muthanna2022uav]] permanece como referência contextual ou sai do escopo | Média para Fundamentação |
+| Held-Karp 1971 vs 1962 | Após P43, garantir que a nota de área e o texto da monografia não propaguem o erro de atribuir DP `O(n²2ⁿ)` ao paper de 1971 (é o de 1962) | Alta para Fundamentação (Seção 2.8) |
 
 ## Rastreabilidade de Valores Quantitativos
 
@@ -417,22 +448,25 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P23 | Implementar gate anti-alucinação | Script `scripts/check-monografia.sh` ou alvo `make check-monografia` validando LaTeX/BibTeX, citações, figuras, placeholders, métricas, claims bloqueados e números hardcoded | Concluída |
 | P24 | Vincular claims fortes ao texto | Comentários `% claim: <ID>` ou mecanismo equivalente nos trechos fortes da monografia, conectando `.tex` à [[claim-evidence-matrix]] | Pendente |
 | P25 | Gerar relatório final de validação anti-alucinação | Nota `vault/writing/planejamento/validacao-anti-alucinacao.md` com resultado PASS/WARN/FAIL, citações, claims, números, artefatos e decisões humanas | Pendente |
-| P26 | Adicionar BibTeX Held-Karp e revisar Seção 2.8 (Lower Bounds) | BibTeX para heldkarp1970traveling (DOI: 10.1287/opre.18.6.1138), heldkarp1971traveling, johnson1996asymptotic, kinable2017hybrid, righini2021efficient, valenzuela1997estimating; revisar Seção 2.8 para citar Held-Karp como referência canônica e justificar AP vs HK para TSP-SD-ATP | Pendente |
+| P26 | Adicionar BibTeX Held-Karp e revisar Seção 2.8 (Lower Bounds) | BibTeX para heldkarp1970traveling (DOI: 10.1287/opre.18.6.1138), heldkarp1971traveling, johnson1996asymptotic, kinable2017hybrid, righini2021efficient, valenzuela1997estimating; revisar Seção 2.8 para citar Held-Karp como referência canônica e justificar AP vs HK para TSP-SD-ATP | Concluída — 5 entradas BibTeX adicionadas, Seção 2.8 expandida com parágrafo Held-Karp + justificativa AP |
 | P27 | Corrigir documentação ACO para Ant System (não MMAS) | Código (`src/optimization/aco/ant.go`) implementa Ant System (todas as formigas depositam, sem bounds). Corrigir nota `stutzle2000mmas.md` (remover afirmação falsa) e ajustar texto da fundamentação para documentar Ant System 3D, citando apenas Dorigo (1996, 1997). OU implementar bounds MMAS no código | Concluída |
-| P28 | Adicionar referências ATSP/TDTSP ao BibTeX e referencial | Entradas BibTeX para pelo menos 1 survey de ATSP (ex: Öncan et al. 2009 ou Roberti & Toth 2012) + 1 referência TDTSP (Kinable 2017 já fichado); citar na Seção 2.1 ou 2.2 para enquadrar TSP-SD-ATP como instância de classes bem estudadas | Pendente |
+| P28 | Adicionar referências ATSP/TDTSP ao BibTeX e referencial | Entradas BibTeX para pelo menos 1 survey de ATSP (ex: Öncan et al. 2009 ou Roberti & Toth 2012) + 1 referência TDTSP (Kinable 2017 já fichado); citar na Seção 2.1 ou 2.2 para enquadrar TSP-SD-ATP como instância de classes bem estudadas | Concluída — Öncan et al. 2009 adicionado, kinable2017hybrid adicionado via P26; citação na Seção 2.1 |
 | P29 | Obter PDF legível de Bean (1994) e atualizar avaliação | PDF atual contém apenas metadados INFORMS; obter cópia íntegra (Sci-Hub / interlibrary loan), ler corpo do artigo (random keys), atualizar nota `bean1994genetic.md` e rating (0→≥4) | Concluída com limitação — PDF completo não obtido (paywall INFORMS, Sci-Hub não cataloga, Unpaywall: oa_status=closed). Nota reconstruída com resumo a partir de metadados e citações na literatura. Rating atualizado (0→4). |
-| P30 | Corrigir ratings inconsistentes (0→3) em artigos citados | Atualizar `bean1994genetic` ≥3 (base da codificação PSO), `winter2002modeling` ≥3 (contexto custos de curva), `vanhove2012route` ≥3, `wang2021ant` ≥3 (tuning ACO). Ratings originais são 0 para artigos citados na fundamentação | Pendente |
-| P31 | Criar nota Demšar (2006) + BibTeX dos 6 lower bounds restantes | `vault/papers/demsar2006statistical.md` com resumo, avaliação de adequação ao contexto TSP e rating; BibTeX para aggarwal2000angular, balas1985branch, fischetti1992additive, karp1979patching, leraromero2020dynamic, lawler1985traveling | Pendente |
+| P30 | Corrigir ratings inconsistentes (0→3) em artigos citados | Atualizar `bean1994genetic` ≥3 (base da codificação PSO), `winter2002modeling` ≥3 (contexto custos de curva), `vanhove2012route` ≥3, `wang2021ant` ≥3 (tuning ACO). Ratings originais são 0 para artigos citados na fundamentação | Concluída — bean1994genetic já estava 4, vanhove2012route já estava 3; corrigidos winter2002modeling (0→3) e wang2021ant (0→3) |
+| P31 | Criar nota Demšar (2006) + BibTeX dos 6 lower bounds restantes | `vault/papers/demsar2006statistical.md` com resumo, avaliação de adequação ao contexto TSP e rating; BibTeX para aggarwal2000angular, balas1985branch, fischetti1992additive, karp1979patching, leraromero2020dynamic, lawler1985traveling | Concluída — Nota Demšar criada (rating 5, status resumo-lido). BibTeX dos 6 lower bounds adicionados em P26 e P42. |
 | P35 | Verificar originalidade do feromônio 3D (τ(i,j,k)) via busca intensiva na literatura | Busca sistemática em Google Scholar, Scopus, arXiv e Sci-Hub por: (a) ACO com feromônio n-dimensional (n>2) para TSP ou problemas relacionados; (b) feromônio 3D ou tensor de feromônio em scheduling/routing; (c) representações de feromônio além de arestas (hipergrafos, sequências, triplas); (d) TSP com custo dependente de sequência resolvido com ACO. Resultado: nota `vault/papers/feromonio-3d-originalidade.md` listando precedentes encontrados (ou ausência deles) com DOIs e avaliação de similaridade. Se não houver precedentes, o claim é seguro; se houver, ajustar P32 para citar e diferenciar. PRÉ-REQUISITO para P32. | Concluída — Encontrados 4 precedentes de feromônio multidimensional em ACO (Wang 2013, Wang 2015, MDACO 2025, Starzec 2026), nenhum para TSP com transições de 2ª ordem. Claim de P32 deve ser qualificado, não absoluto. |
 | P32 | Documentar feromônio 3D como contribuição algorítmica original | Incluir parágrafo na Seção 2.7 explicitando que τ(i,j,k) tridimensional é adaptação inédita para ACO em TSP (literatura canônica usa τ(i,j) 2D), motivada pela dependência de triplas do TSP-SD-ATP. Buscar precedentes de feromônio n-dimensional em scheduling/routing | Concluída — Parágrafo adicionado em fundamentacao.tex com claim qualificado e citações de 3 precedentes (Wang 2013, Wang 2015, Geng 2025). BibTeX adicionado. |
 | P33 | Adicionar literatura de tuning de hiperparâmetros ao referencial | 2–3 referências sobre metodologia de tuning (irace, SMAC, F-Race ou similar); citar na Seção 4.1 (Método para Avaliação) para fundamentar parâmetros fixos como escolha metodológica deliberada. Reavaliar `wang2021ant` e citar se relevante | Pendente |
 | P34 | Citar shami2022pso e gad2022pso na Seção 2.6 (PSO) | Ambos estão no BibTeX mas não citados; adicionar citações na Seção 2.6 para reforçar a revisão de PSO, balanceando a cobertura ACO (13) vs PSO (5 ativos). Documentar em [[particle-swarm]] | Pendente |
 | P36 | Adicionar 4 chaves BibTeX ausentes (crítico — bloqueia compilação) | Entradas BibTeX para `haroun2015performance`, `chandra2022comparative`, `clerc2000discretepso`, `dorigo2004book` em `monografia/bib/abntex2-references.bib`. Conferir metadados e adicionar nota no vault se necessário. Descoberto em [[auditoria-formato-abnt]]. | Concluída |
 | P37 | Substituir siglas manuais por `\ac{}` nos capítulos | Pacote `acronym` já está carregado e `abrev/Abreviaturas.tex` tem 16 siglas definidas. Substituir ocorrências manuais de "Otimização por Colônia de Formigas (ACO)" etc. por `\ac{ACO}` para expansão automática na primeira ocorrência. Aplicar em todos os 5 capítulos. Descoberto em [[auditoria-formato-abnt]]. | Pendente |
-| P38 | Substituir `\ref{}` manuais por `\autoref{}` | `ppgco.cls:528-542` já traduz `\autoref` para pt-BR (Figura, Tabela, Capítulo, Seção...). Substituir `Capítulo~\ref{...}` por `\autoref{...}` em todos os capítulos para prevenir erros de tipo de referência cruzada. Descoberto em [[auditoria-formato-abnt]]. | Pendente |
+| P38 | Substituir `\ref{}` manuais por `\autoref{}` | `ppgco.cls:528-542` já traduz `\autoref` para pt-BR (Figura, Tabela, Capítulo, Seção...). Substituir `Capítulo~\ref{...}` por `\autoref{...}` em todos os capítulos para prevenir erros de tipo de referência cruzada. Descoberto em [[auditoria-formato-abnt]]. | Concluída |
 | P39 | Substituir `itemize` por `alineas` em enumerações formais | `abntex2` fornece ambiente `alineas` (itens a), b), c)...). Substituir `itemize` onde o conteúdo for enumeração formal dentro de seção (ex: perguntas de pesquisa em `introducao.tex`, objetivos). Descoberto em [[auditoria-formato-abnt]]. | Pendente |
 | P40 | Resolver TODO da ficha catalográfica e folha de aprovação | `main_ppgco_ufu.tex:75` contém TODO comentado para `\inserirfichacatalografica` e `\inserirfolhaaprovacao`. Gerar/obter PDFs antes da compilação final. Descoberto em [[auditoria-formato-abnt]]. | Pendente (entrega final) |
 | P41 | Limpar preâmbulo LaTeX: pacotes duplicados e não usados | `nomencl`, `graphicx`, `hyperref` carregados duplamente (ppgco.cls + main.tex). `subfig` carregado mas não usado. `makeidx` carregado em ppgco.cls mas `\printindex` nunca chamado. Remover redundâncias. Descoberto em [[auditoria-formato-abnt]]. | Pendente |
+| P42 | Aplicar correções da validação de resumos 2026-06-04 | 8 correções aplicadas em `vault/papers/` (dorigo1997ant, bean1994genetic, ahmed2024receding, muthanna2022uav, heldkarp1971traveling, aggarwal2000angular, johnson1996asymptotic, nagata2006eax). BibTeX atualizado (nagata2013eax, aggarwal1999angular) e citação em `monografia/cap_fundamentacao/fundamentacao.tex:60` corrigida. Detalhes na seção [[#Correções Pós-Validação de Resumos 2026-06-04]] | Concluída |
+| P43 | Corrigir erro de atribuição Held-Karp 1971 × 1962 em `vault/areas/lower-bounds.md` | A nota da área ainda diz "DP O(n²2ⁿ) + subgradiente" para [[heldkarp1971traveling]]. O paper de 1971 trata de ascent method + branch-and-bound; o `O(n²2ⁿ)` por DP é o paper de 1962 (Held-Karp 1962, J. SIAM 10, 196-210). A nota do paper em `vault/papers/heldkarp1971traveling.md` já foi corrigida (P42); falta propagar para a área e para o texto da Seção 2.8 da monografia. Verificar se há outras notas que repetem o erro. | Pendente (alta) |
+| P44 | Decidir destino de [[muthanna2022uav]] no escopo da monografia | Após correção da nota em P42, o artigo foi reclassificado como de **baixa relevância** para TSP/bio-inspired (trata de IoT/5G com C-LSTM + A3C + Mayfly). Decidir entre: (a) remover da lista de referências centrais, mantendo apenas menção contextual em Fundamentação; (b) manter como referência de cenário de aplicação UAV em emergência, sem claims sobre TSP; (c) substituir por referência mais alinhada ([[rajan2022routing]] já cobre o aspecto de patrulha UAV). | Pendente (média) |
 
 ## Protocolo Para Cada Agente Escritor
 
@@ -524,4 +558,9 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 
 ## Próxima Ação Recomendada
 
-Executar primeiro **P14–P15** (apêndices e formatação), **P36** (4 chaves BibTeX críticas que bloqueiam compilação) e as demais pendências bibliográficas (**P18**, **P26**, **P28**, **P30**, **P31**, **P33**, **P34**). Depois escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão. Durante a escrita dos capítulos, aplicar **P37** (`\ac{}`), **P38** (`\autoref{}`) e **P39** (`alineas`). Por último, **P11** (Resumo/Abstract), **P24** (vincular claims), **P25** (relatório anti-alucinação), **P40** (ficha catalográfica) e **P41** (limpeza de preâmbulo).
+**Prioridade imediata** — saneamento de notas da validação 2026-06-04 (ver seção [[#Correções Pós-Validação de Resumos 2026-06-04]]):
+- **P43** (alta): corrigir a frase `"DP O(n²2ⁿ) + subgradiente"` em `vault/areas/lower-bounds.md:93` para a entrada Held-Karp 1971 — o paper de 1971 trata de *ascent method* + *branch-and-bound*; o `O(n²2ⁿ)` por DP é o paper de 1962 (referência [8] do PDF). A nota do paper já foi corrigida; a área ainda propaga o erro antigo.
+- **P44** (média): decidir destino de [[muthanna2022uav]] — análise pós-correção indica que o artigo **não trata de TSP nem de meta-heurísticas bio-inspiradas clássicas** (C-LSTM + A3C + Mayfly em IoT/5G). Considerar remover da lista de referências centrais ou restringir a menção puramente contextual em Fundamentação.
+- Re-executar `scripts/check-monografia.sh` após P43 e P44 para garantir que a propagação do erro antigo não persista.
+
+**Em seguida** — manter o plano original: **P14–P15** (apêndices e formatação), **P36** (4 chaves BibTeX críticas que bloqueiam compilação) e as demais pendências bibliográficas (**P18**, **P26**, **P28**, **P30**, **P31**, **P33**, **P34**). Escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão. Durante a escrita dos capítulos, aplicar **P37** (`\ac{}`), **P38** (`\autoref{}`) e **P39** (`alineas`). Por último, **P11** (Resumo/Abstract), **P24** (vincular claims), **P25** (relatório anti-alucinação), **P40** (ficha catalográfica) e **P41** (limpeza de preâmbulo).

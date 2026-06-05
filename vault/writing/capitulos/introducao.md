@@ -1,8 +1,13 @@
 ---
-tags: [writing, capitulo, introducao]
+tags:
+- capitulo/introducao
+- status/atualizado
+- tipo/writing
+- topico/monografia
 status: atualizado-pos-p7
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Introdução — Scaffold

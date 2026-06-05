@@ -1,12 +1,13 @@
 ---
-title: "Política de Segurança de Citações"
+title: Política de Segurança de Citações
 tags:
-  - writing
-  - monografia
-  - citacoes
-  - validacao
+- evidencia/validacao
+- tipo/writing
+- topico/citacoes
+- topico/monografia
 created: 2026-06-05
 updated: 2026-06-05
+type: writing
 ---
 
 ## Classificação
@@ -48,7 +49,7 @@ Cada referência citada na monografia recebe uma de quatro classes:
 | dellamico2021multiple | resumo-lido | Legível |
 | dellamico2022exact | resumo-lido | Legível |
 | demsar2006statistical | resumo-lido | Legível |
-| nagata2006eax | resumo-lido | Legível |
+| nagata2013eax | resumo-lido | Legível |
 | vanhove2012route | resumo-lido | Legível |
 
 ### Condicionais (7 — 3 removidos da monografia)
@@ -75,7 +76,7 @@ Cada referência citada na monografia recebe uma de quatro classes:
 | ~~dellamico2021multiple~~ | → resumo-lido | ~~Sem resumo~~ | Fund. + Intro |
 | ~~dellamico2022exact~~ | → resumo-lido | ~~Sem resumo~~ | Fund. + Intro |
 | ~~demsar2006statistical~~ | → resumo-lido | ~~Sem vault note, sem PDF~~ | Fund. + Exp. |
-| ~~nagata2006eax~~ | → resumo-lido | ~~Sem resumo~~ | Fund. |
+| ~~nagata2013eax~~ | → resumo-lido | ~~Sem resumo~~ | Fund. |
 | ~~vanhove2012route~~ | → resumo-lido | ~~Sem resumo~~ | Fund. |
 
 ### Bloqueadas (0)
@@ -95,7 +96,7 @@ Nenhuma. Todas as 34 chaves acadêmicas resolvem no BibTeX.
 | 18 | winter2002modeling, vanhove2012route | ✅ seguro |
 | 48 | murray2015flying, agatz2018optimization, dellamico2021multiple, dellamico2022exact, freitas2020vns | ✅ seguro |
 | 50 | rajan2022routing | ✅ seguro |
-| 60 | holland1975adaptation, goldberg1989genetic, potvin1996ga, larranaga1999ga, nagata2006eax | ⚠️ 2 condicionais (potvin, larranaga) |
+| 60 | holland1975adaptation, goldberg1989genetic, potvin1996ga, larranaga1999ga, nagata2013eax | ⚠️ 2 condicionais (potvin, larranaga) |
 | 67 | kennedy1995particle | ✅ seguro |
 | 69 | clerc2000discretepso, bean1994genetic | ⚠️ 2 condicionais |
 | 74 | dorigo1996ant, dorigo1997ant, dorigo2004book | ✅ seguro |
@@ -126,7 +127,7 @@ Nenhuma. Todas as 34 chaves acadêmicas resolvem no BibTeX.
 | # | Key | Ação | Bloqueia |
 |---|-----|------|----------|
 | 1 | demsar2006statistical | Criar vault note + obter PDF. Referência metodológica central. | Protocolo estatístico inteiro |
-| 2 | nagata2006eax | Preencher vault note (PDF já existe e é legível) | Claim sobre EAX |
+| 2 | nagata2013eax | Preencher vault note (PDF já existe e é legível) | Claim sobre EAX |
 | 3 | vanhove2012route | Preencher vault note (PDF já existe e é legível) | Contexto turn costs |
 | 4 | dellamico2021multiple | Preencher vault note (PDF já existe e é legível) | Contexto drone routing |
 | 5 | dellamico2022exact | Preencher vault note (PDF já existe e é legível) | Contexto drone routing |

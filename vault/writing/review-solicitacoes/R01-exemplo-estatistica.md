@@ -1,9 +1,8 @@
 ---
-title: "Adicionar análise estatística formal (Friedman + Nemenyi)"
+title: Adicionar análise estatística formal (Friedman + Nemenyi)
 tags:
-  - tipo/revisao
-  - status/resolvido
-  - exemplo
+- status/resolvido
+- tipo/revisao
 review_id: R01
 status: resolvido
 priority: alta
@@ -12,17 +11,18 @@ date_opened: 2026-06-01
 date_closed: 2026-06-03
 target_chapter: experimentos
 correction_layers:
-  - dados
-  - latex-macro
+- dados
+- latex-macro
 evidence_layer: dados
 claim_ids:
-  - C04
-  - E01
-  - E02
+- C04
+- E01
+- E02
 verified_by_script: scripts/check-reviews.sh --count --status resolvido
 aliases:
-  - R01
-  - exemplo-estatistica
+- R01
+- exemplo-estatistica
+type: writing
 ---
 
 <!-- ITEM EXEMPLO — pode ser removido após entender o formato -->

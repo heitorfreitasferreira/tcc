@@ -1,12 +1,16 @@
 ---
 title: Validação do Roadmap vs. Modelo FACOM
 tags:
-  - writing
-  - monografia
-  - validacao
-  - modelo-facom
+- evidencia/auditoria
+- evidencia/validacao
+- status/rascunho
+- tipo/auditoria
+- tipo/writing
+- topico/formatacao
+- topico/monografia
 status: draft
 created: 2026-06-03
+type: writing
 ---
 
 # Validação do Roadmap vs. Modelo FACOM

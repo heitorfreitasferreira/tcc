@@ -1,7 +1,11 @@
 ---
-tags: [writing, capitulo, experimentos]
+tags:
+- capitulo/experimentos
+- tipo/writing
+- topico/monografia
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Experimentos — Scaffold

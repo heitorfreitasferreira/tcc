@@ -1,14 +1,17 @@
 ---
 title: Auditoria do Script de Análise Estatística
 tags:
-  - writing
-  - auditoria
-  - estatistica
-  - metodologia
-  - monografia
+- evidencia/auditoria
+- evidencia/estatistica
+- evidencia/metodologia
+- status/validado
+- tipo/auditoria
+- tipo/writing
+- topico/monografia
 status: validado
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Auditoria do Script de Análise Estatística

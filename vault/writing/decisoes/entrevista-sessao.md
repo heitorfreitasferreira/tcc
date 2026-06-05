@@ -1,14 +1,14 @@
 ---
 title: Sessão de Grille — Banca Simulada
 tags:
-  - writing
-  - monografia
-  - banca
-  - grill
+- tipo/writing
+- topico/monografia
+- topico/revisao
 created: 2026-06-02
 updated: 2026-06-02
 aliases:
-  - entrevista
+- entrevista
+type: writing
 ---
 
 # Sessão de Grille — Banca Simulada

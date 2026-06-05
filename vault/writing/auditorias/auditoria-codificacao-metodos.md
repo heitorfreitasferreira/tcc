@@ -1,7 +1,13 @@
 ---
-tags: [writing, auditoria, codigo, metodologia]
+tags:
+- evidencia/auditoria
+- evidencia/codigo
+- evidencia/metodologia
+- tipo/auditoria
+- tipo/writing
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Auditoria P9 — Codificação dos Métodos

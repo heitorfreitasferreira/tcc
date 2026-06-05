@@ -1,12 +1,14 @@
 ---
-title: "Triagem de PDFs Faltantes — P17"
+title: Triagem de PDFs Faltantes — P17
 tags:
-  - writing
-  - auditoria
-  - bibliografia
-  - pdf
+- evidencia/auditoria
+- evidencia/referencia
+- status/concluido
+- tipo/auditoria
+- tipo/writing
 status: concluido
 created: 2026-06-04
+type: writing
 ---
 
 # Triagem de PDFs Faltantes — P17

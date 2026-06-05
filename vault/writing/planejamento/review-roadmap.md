@@ -1,17 +1,18 @@
 ---
 title: Roadmap de Revisão — Solicitações do Orientador
 tags:
-  - writing
-  - monografia
-  - revisao
-  - orientador
-  - roadmap
+- status/ativo
+- tipo/writing
+- topico/monografia
+- topico/revisao
+- topico/roadmap
 status: ativo
 created: 2026-06-03
 updated: 2026-06-03
 aliases:
-  - revisao
-  - solicitacoes-revisao
+- revisao
+- solicitacoes-revisao
+type: writing
 ---
 
 # Roadmap de Revisão — Solicitações do Orientador
@@ -119,8 +120,8 @@ Itens de revisão podem afetar diretamente o resultado do [[roadmap-monografia#G
 
 ## View Obsidian
 
-Uma [[reviews.base]] em `vault/bases/` permite visualizar os itens por status, prioridade, capítulo ou camada de correção, usando a estrutura de Bases do Obsidian.
+A base `vault/bases/reviews.base` permite visualizar os itens por status, prioridade, capítulo ou camada de correção, usando a estrutura de Bases do Obsidian.
 
 ---
 
-**Ver também:** [[roadmap-monografia]], [[claim-evidence-matrix]], [[review-request]], [[check-reviews]]
+**Ver também:** [[roadmap-monografia]], [[claim-evidence-matrix]], [[review-request]]

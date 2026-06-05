@@ -1,9 +1,15 @@
 ---
 title: Justificativa do Lower Bound — Análise e Decisão
-tags: [writing, lower-bound, analise, monografia]
+tags:
+- evidencia/estatistica
+- metodo/lower-bound
+- status/pronto-revisao
+- tipo/writing
+- topico/monografia
 status: pronto-para-revisao
 created: 2026-06-02
 updated: 2026-06-02
+type: writing
 ---
 
 # Justificativa do Método de Lower Bound
