@@ -390,9 +390,8 @@ Decisoes registradas em 2026-06-05, a partir de resposta do autor no fluxo `/roa
 - `summaries/` ainda acrescenta forcas/limitacoes e takeaway.
 - Campos faltantes em `vault/papers/`: `chapters`, `claim_support`, `aliases`.
 - Divergencia inventariada em P45: o summary inclui autores/ano no heading e registra DOI `10.1016/j.comcom.2022.04.029`, enquanto a nota canonica registrava `10.1016/j.comcom.2022.04.028` antes da correcao P46.
-- Validacao no PDF: necessaria para decidir DOI correto; a incorporacao de conteudo continua subordinada a P44.
-- Recomendacao preliminar: nao incorporar expansao antes de decidir P44; se P44 mantiver a referencia, validar primeiro o DOI.
-- Decisao P46: DOI corrigido para `10.1016/j.comcom.2022.04.029`, confirmado no PDF; nota permanece periferica e nao deve sustentar claim central de TSP ou meta-heuristicas classicas.
+- Validacao no PDF: DOI corrigido para `10.1016/j.comcom.2022.04.029`, confirmado; incorporacao de conteudo permanece periferica.
+- **P44 concluida**: [[muthanna2022uav]] mantido como referencia contextual em Fundamentacao (cenario UAV em IoT/emergencia); nao usar para claims sobre TSP/bio-inspired.
 
 ### nagata2006eax
 
@@ -437,7 +436,7 @@ Decisoes registradas em 2026-06-05, a partir de resposta do autor no fluxo `/roa
 - Campos faltantes em `vault/papers/`: `pdf_status`, `methods`, `chapters`, `claim_support`, `aliases`.
 - Divergencia: diferenca tipografica entre travessao e `--` no titulo.
 - Validacao no PDF: recomendada para resultados e formulacao do problema.
-- Recomendacao preliminar: incorporar com prioridade se substituir ou complementar [[muthanna2022uav]] no contexto de patrulha UAV.
+- Recomendacao preliminar: incorporar com prioridade para contexto de patrulha UAV. Relacao com [[muthanna2022uav]]: P44 decidiu manter muthanna como referencia contextual (IoT/emergencia), sem substituicao. Ambos coexistem como referencias perifericas independentes.
 
 ### rajwar2023exhaustive
 

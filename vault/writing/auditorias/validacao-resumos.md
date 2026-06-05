@@ -77,7 +77,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; **P44 concluída**: mantido como referência contextual em Fundamentação; **não** usar para claims sobre TSP/bio-inspired.
 
 ---
 
@@ -109,7 +109,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; **P44 concluída**: mantido como referência contextual em Fundamentação; **não** usar para claims sobre TSP/bio-inspired.
 
 ---
 
@@ -142,7 +142,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; **P44 concluída**: mantido como referência contextual em Fundamentação; **não** usar para claims sobre TSP/bio-inspired.
 - `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 
 ---
@@ -175,7 +175,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; **P44 concluída**: mantido como referência contextual em Fundamentação; **não** usar para claims sobre TSP/bio-inspired.
 - `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 
 ---
@@ -223,7 +223,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 1. `dorigo1997ant.md`: corrigido em P42; Tabela 4 do PDF registra fl1577 com erro de 3.27% (melhor) e 3.79% (médio).
 2. `bean1994genetic.md`: corrigido em P42; PDF existe, mas a extração automática retorna apenas capa/metadados por imagem protegida.
 3. `ahmed2024receding.md`: corrigido em P42; resumo técnico adicionado com MILP, RHC, CPLEX e path smoothing.
-4. `muthanna2022uav.md`: corrigido em P42/P46; a nota agora explicita C-LSTM + A3C + MOA, DOI `10.1016/j.comcom.2022.04.029` e baixa relevância para TSP/meta-heurísticas clássicas. A decisão editorial de uso central/periférico permanece ligada a P44.
+4. `muthanna2022uav.md`: corrigido em P42/P46; a nota agora explicita C-LSTM + A3C + MOA, DOI `10.1016/j.comcom.2022.04.029` e baixa relevância para TSP/meta-heurísticas clássicas. **P44 concluída**: mantido como referência contextual em Fundamentação; não usar para claims sobre TSP/bio-inspired.
 5. `heldkarp1971traveling.md`: corrigido por P42/P43; resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 6. `aggarwal2000angular.md`: corrigido em P46; ano 1999 e DOI `10.1137/S0097539796312721` confirmados no PDF.
 7. `johnson1996asymptotic.md`: corrigido em P42; autores são Johnson, McGeoch e Rothberg.
