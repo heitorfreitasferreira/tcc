@@ -1,0 +1,67 @@
+\chapter[Instâncias de Teste]{Instâncias de Teste}
+\label{ape:instancias}
+
+Este apêndice descreve as 30 instâncias sintéticas utilizadas nos experimentos, incluindo parâmetros de geração, estrutura dos arquivos e um exemplo representativo.
+
+\section{Visão Geral}
+
+As instâncias foram geradas sinteticamente para o TSP-SD-ATP, variando o número de pontos de interesse ($n$) e a disposição espacial (variantes a, b, c). A \autoref{tab:ape-instancias} lista todas as instâncias e suas características.
+
+\begin{table}[htbp]
+\centering
+\caption{Instâncias de teste.}
+\label{tab:ape-instancias}
+\begin{tabular}{clrr}
+\toprule
+Grupo & Instâncias & $n$ & Variantes \\
+\midrule
+Pequenas & 10a, 10b, 10c & 10 & a, b, c \\
+Pequenas & 11a, 11b, 11c & 11 & a, b, c \\
+Pequenas & 12a, 12b, 12c & 12 & a, b, c \\
+Pequenas & 13a, 13b, 13c & 13 & a, b, c \\
+Pequenas & 14a, 14b, 14c & 14 & a, b, c \\
+Pequenas & 15a, 15b, 15c & 15 & a, b, c \\
+Médias & 30a, 30b, 30c & 30 & a, b, c \\
+Grandes & 50a, 50b, 50c & 50 & a, b, c \\
+Grandes & 100a, 100b, 100c & 100 & a, b, c \\
+\bottomrule
+\end{tabular}
+\legend{Fonte: dados da pesquisa.}
+\end{table}
+
+\section{Parâmetros de Geração}
+
+Cada instância foi gerada com uma semente pseudoaleatória, resultando em coordenadas $(x, y)$ distribuídas uniformemente no plano. O tensor de custo tridimensional $G[i][j][k]$ é calculado como:
+
+\begin{equation}
+G[i][j][k] = d[j][k] + \alpha \cdot \theta(i,j,k)
+\end{equation}
+
+onde $d[j][k]$ é a distância euclidiana entre $j$ e $k$, e $\theta(i,j,k)$ é a penalidade angular dependente da tripla $(i,j,k)$.
+
+\section{Exemplo: Instância 10a}
+
+A \autoref{tab:ape-coords-10a} apresenta as coordenadas dos 10 pontos de interesse da instância 10a, incluindo a base (ponto 0).
+
+\begin{table}[htbp]
+\centering
+\caption{Coordenadas da instância 10a.}
+\label{tab:ape-coords-10a}
+\begin{tabular}{crr}
+\toprule
+Ponto & $x$ & $y$ \\
+\midrule
+0 (base) & 50,00 & 50,00 \\
+1 & 22,21 & 33,09 \\
+2 & 87,13 & 49,90 \\
+3 & 12,79 & 85,09 \\
+4 & 63,99 & 14,89 \\
+5 & 78,41 & 67,97 \\
+6 & 32,87 & 42,95 \\
+7 & 55,42 & 91,77 \\
+8 & 43,75 & 55,79 \\
+9 & 91,25 & 27,63 \\
+\bottomrule
+\end{tabular}
+\legend{Fonte: dados da pesquisa.}
+\end{table}

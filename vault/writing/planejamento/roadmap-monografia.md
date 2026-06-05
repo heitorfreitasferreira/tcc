@@ -86,7 +86,7 @@ Escrever em português acadêmico, com foco no cenário de patrulha com drones e
 | **Resumo + Abstract** | Escritos antes da introdução, revisados por último | [[validacao-modelo-facom]] |
 | **Capa + Folha de Rosto** | Dados preenchidos antes da compilação final | autor, orientador, título, data |
 | **Lista de Siglas** | Levantamento antes da escrita de qualquer capítulo | `vault/siglas/` (notas individuais) + `vault/bases/siglas.base` |
-| **Apêndices** | Estrutura definida antes de Experimentos | `vault/writing/planejamento/apendices.md` |
+| **Apêndices** | Estrutura definida (P14 concluída) | `vault/writing/planejamento/apendices.md` + esqueleto `.tex` |
 
 ## Protocolo de Validação Antes de Escrever
 
@@ -451,7 +451,7 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P11 | Escrever Resumo (pt-BR) e Abstract (en) | Último item a ser escrito, após todos os capítulos estarem estabilizados. Nota `vault/writing/planejamento/resumo-abstract.md` com texto final de 150–500 palavras cada, destacando objetivo, método, resultados e conclusões | Pendente (pós-capítulos) |
 | P12 | Preencher Capa e Folha de Rosto | Dados do autor, título definitivo, orientador, área de concentração, data em `monografia/` (via template LaTeX) | Concluída |
 | P13 | Levantar e definir Lista de Siglas | Notas individuais em `vault/siglas/` (24 gerenciadas) + notas existentes em `vault/projeto/` e `vault/areas/` com tag `siglas` (GA, PSO, ACO, BF, TSP, TSP-SD-ATP). Base Obsidian em `vault/bases/siglas.base`. Script `scripts/gerar-lista-siglas.py` (scan/generate/validate). 30 siglas catalogadas (15 incluir, 5 excluir, 10 pendentes). `monografia/abrev/Abreviaturas.tex` gerado com 15 entradas | Concluída |
-| P14 | Definir estrutura dos Apêndices | Nota `vault/writing/planejamento/apendices.md` listando o que vai em cada apêndice (resultados completos, pseudocódigo, instâncias exemplo) | Pendente |
+| P14 | Definir estrutura dos Apêndices | Nota `vault/writing/planejamento/apendices.md` listando o que vai em cada apêndice, esqueleto `.tex` em `ape_resultados/`, `ape_figuras/`, `ape_instancias/`, incluídos em `main.tex`. Council PASS/PASS em `.agents/council/2026-06-05-P14*.md` | Concluída |
 | P15 | Verificar formatação ABNT no template LaTeX | Auditoria completa em `monografia/`. `ppgco.cls` herda de `abntex2` corretamente (ambiente `citacao` 4cm, `alineas`, `\autoref` em pt-BR). Achados: 4 chaves BibTeX ausentes (haroun2015performance, chandra2022comparative, clerc2000discretepso, dorigo2004book); `\ac{}` nunca usado nos capítulos mesmo com pacote `acronym` carregado; `\autoref` nunca usado; `alineas` nunca usado; TODO da ficha catalográfica em main.tex. Documentado em [[auditoria-formato-abnt]]. Achado de siglas consumido em P37. | Concluída com achados |
 | P16 | Corrigir exatidão bibliográfica crítica | Ajustar autores de [[gpaco2025]] (Lin, Mei, Zhangjie) e [[neufaco2025]] (Tran et al.), qualificar leituras seletivas em livros longos (applegate2006traveling, dorigo2004book → lido-parcial) e remover duplicata `haroun2015.pdf` | Concluída |
 | P17 | Triar PDFs faltantes por decisão editorial | Para cada referência sem PDF íntegro: baixar manualmente se central, marcar como análise posterior se útil para futuro, ou descartar do escopo imediato se periférica | Concluída |
@@ -576,10 +576,10 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 
 ## Próxima Ação Recomendada
 
-**P44 concluída** — muthanna2022uav mantido como referência contextual, sem impacto em citações ou claims na monografia (não citado em `.tex`). `scripts/check-monografia.sh` não precisa ser reexecutado.
+**P14 concluída** — estrutura dos apêndices definida em `vault/writing/planejamento/apendices.md`, esqueleto `.tex` criado em `ape_resultados/`, `ape_figuras/` e `ape_instancias/`. Council PASS/PASS. Detalhes em `.agents/council/2026-06-05-P14.md`.
 
-**Prioridade imediata** — definir estrutura dos apêndices:
+**Prioridade imediata** — fechar bibliografia mínima por capítulo:
 
-- **P14** (média): estrutura dos Apêndices — resultados completos, pseudocódigo, instâncias exemplo. Pré-requisito leve para Experimentos. Nota-base: [[apendices]].
+- **P18** (alta): cada capítulo deve ter referências suficientes com PDF/nota validada; referências condicionais não podem aparecer sem validação. Nota-base: [[figuras-tabelas-monografia]] (seção de referências por capítulo) e `vault/papers/index.md`.
 
-**Em seguida** — pendências ainda abertas: **P18** (bibliografia mínima por capítulo), **P24** (vincular claims ao texto `.tex`), **P25** (relatório anti-alucinação), **P33** (literatura de tuning), **P39** (`alineas`), **P40** (ficha catalográfica) e **P41** (limpeza de preâmbulo). Escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão. Por último, **P11** (Resumo/Abstract).
+**Em seguida** — pendências ainda abertas: **P24** (vincular claims ao texto `.tex`), **P25** (relatório anti-alucinação), **P33** (literatura de tuning), **P39** (`alineas`), **P40** (ficha catalográfica) e **P41** (limpeza de preâmbulo). Escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão. Por último, **P11** (Resumo/Abstract).
