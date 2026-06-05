@@ -1,1586 +1,187 @@
 {
-	"nodes": [
-		{
-			"id": "area-tsp",
-			"type": "group",
-			"text": "TSP",
-			"x": 400,
-			"y": 100,
-			"width": 200,
-			"height": 60
-		},
-		{
-			"id": "area-drone",
-			"type": "group",
-			"text": "Drone Routing",
-			"x": 700,
-			"y": 100,
-			"width": 200,
-			"height": 60
-		},
-		{
-			"id": "area-bio",
-			"type": "group",
-			"text": "Bio-inspired",
-			"x": 100,
-			"y": 100,
-			"width": 200,
-			"height": 60
-		},
-		{
-			"id": "area-comparative",
-			"type": "group",
-			"text": "Comparative Studies",
-			"x": 400,
-			"y": 180,
-			"width": 200,
-			"height": 60
-		},
-		{
-			"id": "area-neural",
-			"type": "group",
-			"text": "Neural-enhanced",
-			"x": 500,
-			"y": 620,
-			"width": 200,
-			"height": 360
-		},
-		{
-			"id": "method-ga",
-			"type": "group",
-			"text": "Genetic Algorithms",
-			"x": 100,
-			"y": 250,
-			"width": 180,
-			"height": 50
-		},
-		{
-			"id": "method-pso",
-			"type": "group",
-			"text": "PSO",
-			"x": 100,
-			"y": 350,
-			"width": 180,
-			"height": 50
-		},
-		{
-			"id": "method-aco",
-			"type": "group",
-			"text": "Ant Colony",
-			"x": 100,
-			"y": 450,
-			"width": 180,
-			"height": 50
-		},
-		{
-			"id": "paper-holland",
-			"type": "file",
-			"text": "Holland (1975)",
-			"file": "papers/holland1975adaptation.md",
-			"x": 50,
-			"y": 560,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-goldberg",
-			"type": "file",
-			"text": "Goldberg (1989)",
-			"file": "papers/goldberg1989genetic.md",
-			"x": 250,
-			"y": 560,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-kennedy",
-			"type": "file",
-			"text": "Kennedy & Eberhart (1995)",
-			"file": "papers/kennedy1995particle.md",
-			"x": 50,
-			"y": 630,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-dorigo96",
-			"type": "file",
-			"text": "Dorigo et al. (1996)",
-			"file": "papers/dorigo1996ant.md",
-			"x": 50,
-			"y": 700,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-murray",
-			"type": "file",
-			"text": "Murray & Chu (2015)",
-			"file": "papers/murray2015flying.md",
-			"x": 620,
-			"y": 350,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-agatz",
-			"file": "papers/agatz2018optimization.md",
-			"type": "file",
-			"text": "Agatz et al. (2018)",
-			"x": 840,
-			"y": 350,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-freitas",
-			"type": "file",
-			"text": "Freitas & Penna (2020)",
-			"file": "papers/freitas2020vns.md",
-			"x": 620,
-			"y": 450,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-dellamico21",
-			"type": "file",
-			"text": "Dell'Amico et al. (2021)",
-			"file": "papers/dellamico2021multiple.md",
-			"x": 840,
-			"y": 450,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-dellamico22",
-			"type": "file",
-			"text": "Dell'Amico et al. (2022)",
-			"file": "papers/dellamico2022exact.md",
-			"x": 840,
-			"y": 530,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-oliver",
-			"type": "file",
-			"text": "Oliver et al. (1987)",
-			"file": "papers/oliver1987crossover.md",
-			"x": 400,
-			"y": 450,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-bean",
-			"type": "file",
-			"text": "Bean (1994)",
-			"file": "papers/bean1994genetic.md",
-			"x": 400,
-			"y": 530,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-winter",
-			"type": "file",
-			"text": "Winter (2002)",
-			"file": "papers/winter2002modeling.md",
-			"x": 620,
-			"y": 560,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-vanhove",
-			"type": "file",
-			"text": "Vanhove & Fack (2012)",
-			"file": "papers/vanhove2012route.md",
-			"x": 620,
-			"y": 630,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-ahmed",
-			"type": "file",
-			"text": "Ahmed & Sheltami (2024)",
-			"file": "papers/ahmed2024receding.md",
-			"x": 840,
-			"y": 620,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-toaza",
-			"type": "file",
-			"text": "Toaza & Esztergar-Kiss (2023)",
-			"file": "papers/toaza2023review.md",
-			"x": 400,
-			"y": 650,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-pop",
-			"type": "file",
-			"text": "Pop et al. (2024)",
-			"file": "papers/pop2024comprehensive.md",
-			"x": 400,
-			"y": 720,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-bock",
-			"type": "file",
-			"text": "Bock et al. (2025)",
-			"file": "papers/bock2025survey.md",
-			"x": 620,
-			"y": 700,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-kappagantula",
-			"type": "file",
-			"text": "Kappagantula et al. (2025)",
-			"file": "papers/kappagantula2025dpso.md",
-			"x": 50,
-			"y": 780,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-araujo",
-			"type": "file",
-			"text": "Araujo (2025)",
-			"file": "papers/araujo2025pso.md",
-			"x": 50,
-			"y": 850,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-sun",
-			"type": "file",
-			"text": "Sun et al. (2024)",
-			"file": "papers/sun2024hybrid.md",
-			"x": 250,
-			"y": 780,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-wang",
-			"type": "file",
-			"text": "Wang & Han (2021)",
-			"file": "papers/wang2021ant.md",
-			"x": 250,
-			"y": 850,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-huang25",
-			"type": "file",
-			"text": "Huang et al. (2025)",
-			"file": "papers/huang2025matrix.md",
-			"x": 250,
-			"y": 700,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-rajan",
-			"type": "file",
-			"text": "Rajan et al. (2022)",
-			"file": "papers/rajan2022routing.md",
-			"x": 840,
-			"y": 700,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-rajwar",
-			"type": "file",
-			"text": "Rajwar et al. (2023)",
-			"file": "papers/rajwar2023exhaustive.md",
-			"x": 400,
-			"y": 800,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-garey",
-			"type": "file",
-			"text": "Garey & Johnson (1979)",
-			"file": "papers/garey1979computers.md",
-			"x": 400,
-			"y": 250,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-lawler",
-			"type": "file",
-			"text": "Lawler et al. (1985)",
-			"file": "papers/lawler1985traveling.md",
-			"x": 620,
-			"y": 250,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-applegate",
-			"type": "file",
-			"text": "Applegate et al. (2006)",
-			"file": "papers/applegate2006traveling.md",
-			"x": 840,
-			"y": 250,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-lin",
-			"type": "file",
-			"text": "Lin & Kernighan (1973)",
-			"file": "papers/lin1973effective.md",
-			"x": 400,
-			"y": 350,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-wu",
-			"type": "file",
-			"text": "Wu (2020)",
-			"file": "papers/wu2020comparative.md",
-			"x": 400,
-			"y": 880,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-haroun",
-			"type": "file",
-			"text": "Haroun et al. (2015)",
-			"file": "papers/haroun2015performance.md",
-			"x": 620,
-			"y": 880,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-almufti",
-			"type": "file",
-			"text": "Almufti & Shaban (2025)",
-			"file": "papers/almufti2025comparative.md",
-			"x": 840,
-			"y": 880,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-hossain",
-			"type": "file",
-			"text": "Hossain & Acar (2024)",
-			"file": "papers/hossain2024comparison.md",
-			"x": 400,
-			"y": 950,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-chandra",
-			"type": "file",
-			"text": "Chandra & Naro (2022)",
-			"file": "papers/chandra2022comparative.md",
-			"x": 620,
-			"y": 950,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-wadi",
-			"type": "file",
-			"text": "Wadi & Umar (2025)",
-			"file": "papers/wadi2025charting.md",
-			"x": 840,
-			"y": 950,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-alexander",
-			"type": "file",
-			"text": "Alexander & Sriwindono (2020)",
-			"file": "papers/alexander2020comparison.md",
-			"x": 400,
-			"y": 1020,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-halim",
-			"type": "file",
-			"text": "Halim & Ismail (2019)",
-			"file": "papers/halim2019combinatorial.md",
-			"x": 620,
-			"y": 1020,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-larranaga",
-			"type": "file",
-			"text": "Larrañaga et al. (1999)",
-			"file": "papers/larranaga1999ga.md",
-			"x": 400,
-			"y": 580,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-potvin",
-			"type": "file",
-			"text": "Potvin (1996)",
-			"file": "papers/potvin1996ga.md",
-			"x": 250,
-			"y": 640,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-clerc",
-			"type": "file",
-			"text": "Clerc (2000)",
-			"file": "papers/clerc2000discretepso.md",
-			"x": 250,
-			"y": 580,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-nagata",
-			"type": "file",
-			"text": "Nagata (2006)",
-			"file": "papers/nagata2006eax.md",
-			"x": 400,
-			"y": 640,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-blum",
-			"type": "file",
-			"text": "Blum (2005)",
-			"file": "papers/blum2005acointro.md",
-			"x": 250,
-			"y": 750,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-stutzle",
-			"type": "file",
-			"text": "Stützle & Hoos (2000)",
-			"file": "papers/stutzle2000mmas.md",
-			"x": 250,
-			"y": 810,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-dorigo04",
-			"type": "file",
-			"text": "Dorigo & Stützle (2004)",
-			"file": "papers/dorigo2004book.md",
-			"x": 250,
-			"y": 870,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-deepaco",
-			"type": "file",
-			"text": "DeepACO (2023)",
-			"file": "papers/deepaco2023.md",
-			"x": 520,
-			"y": 680,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-neufaco",
-			"type": "file",
-			"text": "NeuFACO (2025)",
-			"file": "papers/neufaco2025.md",
-			"x": 520,
-			"y": 740,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-gpaco",
-			"type": "file",
-			"text": "GP-ACO (2025)",
-			"file": "papers/gpaco2025.md",
-			"x": 520,
-			"y": 800,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-ppaco",
-			"type": "file",
-			"text": "PGACO/PPOACO (2024)",
-			"file": "papers/ppaco2024.md",
-			"x": 520,
-			"y": 860,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-hga",
-			"type": "file",
-			"text": "HGA-ACO (2024)",
-			"file": "papers/hga2024hybrid.md",
-			"x": 520,
-			"y": 620,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-khoufi19",
-			"type": "file",
-			"text": "Khoufi et al. (2019)",
-			"file": "papers/khoufi2019survey.md",
-			"x": 400,
-			"y": 1100,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-saller25",
-			"type": "file",
-			"text": "Saller et al. (2025)",
-			"file": "papers/saller2025approximability.md",
-			"x": 620,
-			"y": 1100,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-yang23",
-			"type": "file",
-			"text": "Yang et al. (2023)",
-			"file": "papers/yang2023review.md",
-			"x": 840,
-			"y": 1100,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-ilavarasi14",
-			"type": "file",
-			"text": "Ilavarasi & Joseph (2014)",
-			"file": "papers/ilavarasi2014variants.md",
-			"x": 400,
-			"y": 1170,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-alkhalifa25",
-			"type": "file",
-			"text": "Alkhalifa et al. (2025)",
-			"file": "papers/alkhalifa2025comparative.md",
-			"x": 620,
-			"y": 1170,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-alhijawi24",
-			"type": "file",
-			"text": "Alhijawi & Awajan (2024)",
-			"file": "papers/alhijawi2024genetic.md",
-			"x": 50,
-			"y": 920,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-hassanat19",
-			"type": "file",
-			"text": "Hassanat et al. (2019)",
-			"file": "papers/hassanat2019crossover.md",
-			"x": 50,
-			"y": 990,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-umbarkar15",
-			"type": "file",
-			"text": "Umbarkar & Sheth (2015)",
-			"file": "papers/umbarkar2015crossover.md",
-			"x": 50,
-			"y": 1060,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-waysi25",
-			"type": "file",
-			"text": "Waysi et al. (2025)",
-			"file": "papers/waysi2025optimization.md",
-			"x": 50,
-			"y": 1130,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-shami22",
-			"type": "file",
-			"text": "Shami et al. (2022)",
-			"file": "papers/shami2022pso.md",
-			"x": 250,
-			"y": 920,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-gad22",
-			"type": "file",
-			"text": "Gad (2022)",
-			"file": "papers/gad2022pso.md",
-			"x": 250,
-			"y": 990,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-zhu25",
-			"type": "file",
-			"text": "Zhu et al. (2025)",
-			"file": "papers/zhu2025cumulative.md",
-			"x": 250,
-			"y": 1060,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-zhang15",
-			"type": "file",
-			"text": "Zhang et al. (2015)",
-			"file": "papers/zhang2015comprehensive.md",
-			"x": 250,
-			"y": 1130,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-blum24bib",
-			"type": "file",
-			"text": "Blum (2024) - bibliometric",
-			"file": "papers/blum2024acobibliometric.md",
-			"x": 50,
-			"y": 1200,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-dorigo18aco",
-			"type": "file",
-			"text": "Dorigo & Stutzle (2018)",
-			"file": "papers/dorigo2018acooverview.md",
-			"x": 50,
-			"y": 1270,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-abdulghani24",
-			"type": "file",
-			"text": "Abdulghani & Abdulghani (2024)",
-			"file": "papers/abdulghani2024comprehensive.md",
-			"x": 250,
-			"y": 1200,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-misra24aco",
-			"type": "file",
-			"text": "Misra & Chakraborty (2024)",
-			"file": "papers/misra2024acorecent.md",
-			"x": 250,
-			"y": 1340,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-hoffman13",
-			"type": "file",
-			"text": "Hoffman et al. (2013)",
-			"file": "papers/hoffman2013tspencyclopedia.md",
-			"x": 620,
-			"y": 1240,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-valenzuela97",
-			"type": "file",
-			"text": "Valenzuela & Jones (1997)",
-			"file": "papers/valenzuela1997estimating.md",
-			"x": 620,
-			"y": 1310,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-huang21",
-			"type": "file",
-			"text": "Huang et al. (2021)",
-			"file": "papers/huang2021branchsurvey.md",
-			"x": 620,
-			"y": 1380,
-			"width": 180,
-			"height": 40
-		},
-		{
-			"id": "paper-gutekunst20",
-			"type": "file",
-			"text": "Gutekunst (2020)",
-			"file": "papers/gutekunst2020relaxations.md",
-			"x": 840,
-			"y": 1240,
-			"width": 180,
-			"height": 40
-		}
+	"nodes":[
+		{"id":"area-tsp","type":"group","text":"TSP","x":400,"y":100,"width":200,"height":60},
+		{"id":"area-drone","type":"group","text":"Drone Routing","x":700,"y":100,"width":200,"height":60},
+		{"id":"area-bio","type":"group","text":"Bio-inspired","x":100,"y":100,"width":200,"height":60},
+		{"id":"area-comparative","type":"group","text":"Comparative Studies","x":400,"y":180,"width":200,"height":60},
+		{"id":"area-neural","type":"group","text":"Neural-enhanced","x":500,"y":620,"width":200,"height":360},
+		{"id":"method-ga","type":"group","text":"Genetic Algorithms","x":100,"y":250,"width":180,"height":50},
+		{"id":"method-pso","type":"group","text":"PSO","x":100,"y":350,"width":180,"height":50},
+		{"id":"method-aco","type":"group","text":"Ant Colony","x":100,"y":450,"width":180,"height":50},
+		{"id":"paper-holland","type":"file","text":"Holland (1975)","file":"papers/holland1975adaptation.md","x":50,"y":560,"width":180,"height":40},
+		{"id":"paper-goldberg","type":"file","text":"Goldberg (1989)","file":"papers/goldberg1989genetic.md","x":250,"y":560,"width":180,"height":40},
+		{"id":"paper-kennedy","type":"file","text":"Kennedy & Eberhart (1995)","file":"papers/kennedy1995particle.md","x":50,"y":630,"width":180,"height":40},
+		{"id":"paper-dorigo96","type":"file","text":"Dorigo et al. (1996)","file":"papers/dorigo1996ant.md","x":50,"y":700,"width":180,"height":40},
+		{"id":"paper-murray","type":"file","text":"Murray & Chu (2015)","file":"papers/murray2015flying.md","x":620,"y":350,"width":180,"height":40},
+		{"id":"paper-agatz","file":"papers/agatz2018optimization.md","type":"file","text":"Agatz et al. (2018)","x":840,"y":350,"width":180,"height":40},
+		{"id":"paper-freitas","type":"file","text":"Freitas & Penna (2020)","file":"papers/freitas2020vns.md","x":620,"y":450,"width":180,"height":40},
+		{"id":"paper-dellamico21","type":"file","text":"Dell'Amico et al. (2021)","file":"papers/dellamico2021multiple.md","x":840,"y":450,"width":180,"height":40},
+		{"id":"paper-dellamico22","type":"file","text":"Dell'Amico et al. (2022)","file":"papers/dellamico2022exact.md","x":840,"y":530,"width":180,"height":40},
+		{"id":"paper-oliver","type":"file","text":"Oliver et al. (1987)","file":"papers/oliver1987crossover.md","x":400,"y":450,"width":180,"height":40},
+		{"id":"paper-bean","type":"file","text":"Bean (1994)","file":"papers/bean1994genetic.md","x":400,"y":530,"width":180,"height":40},
+		{"id":"paper-winter","type":"file","text":"Winter (2002)","file":"papers/winter2002modeling.md","x":620,"y":560,"width":180,"height":40},
+		{"id":"paper-vanhove","type":"file","text":"Vanhove & Fack (2012)","file":"papers/vanhove2012route.md","x":620,"y":630,"width":180,"height":40},
+		{"id":"paper-ahmed","type":"file","text":"Ahmed & Sheltami (2024)","file":"papers/ahmed2024receding.md","x":840,"y":620,"width":180,"height":40},
+		{"id":"paper-toaza","type":"file","text":"Toaza & Esztergar-Kiss (2023)","file":"papers/toaza2023review.md","x":400,"y":650,"width":180,"height":40},
+		{"id":"paper-pop","type":"file","text":"Pop et al. (2024)","file":"papers/pop2024comprehensive.md","x":400,"y":720,"width":180,"height":40},
+		{"id":"paper-bock","type":"file","text":"Bock et al. (2025)","file":"papers/bock2025survey.md","x":620,"y":700,"width":180,"height":40},
+		{"id":"paper-kappagantula","type":"file","text":"Kappagantula et al. (2025)","file":"papers/kappagantula2025dpso.md","x":50,"y":780,"width":180,"height":40},
+		{"id":"paper-araujo","type":"file","text":"Araujo (2025)","file":"papers/araujo2025pso.md","x":50,"y":850,"width":180,"height":40},
+		{"id":"paper-sun","type":"file","text":"Sun et al. (2024)","file":"papers/sun2024hybrid.md","x":250,"y":780,"width":180,"height":40},
+		{"id":"paper-wang","type":"file","text":"Wang & Han (2021)","file":"papers/wang2021ant.md","x":250,"y":850,"width":180,"height":40},
+		{"id":"paper-huang25","type":"file","text":"Huang et al. (2025)","file":"papers/huang2025matrix.md","x":250,"y":700,"width":180,"height":40},
+		{"id":"paper-rajan","type":"file","text":"Rajan et al. (2022)","file":"papers/rajan2022routing.md","x":840,"y":700,"width":180,"height":40},
+		{"id":"paper-rajwar","type":"file","text":"Rajwar et al. (2023)","file":"papers/rajwar2023exhaustive.md","x":400,"y":800,"width":180,"height":40},
+		{"id":"paper-garey","type":"file","text":"Garey & Johnson (1979)","file":"papers/garey1979computers.md","x":400,"y":250,"width":180,"height":40},
+		{"id":"paper-lawler","type":"file","text":"Lawler et al. (1985)","file":"papers/lawler1985traveling.md","x":620,"y":250,"width":180,"height":40},
+		{"id":"paper-applegate","type":"file","text":"Applegate et al. (2006)","file":"papers/applegate2006traveling.md","x":840,"y":250,"width":180,"height":40},
+		{"id":"paper-lin","type":"file","text":"Lin & Kernighan (1973)","file":"papers/lin1973effective.md","x":400,"y":350,"width":180,"height":40},
+		{"id":"paper-wu","type":"file","text":"Wu (2020)","file":"papers/wu2020comparative.md","x":400,"y":880,"width":180,"height":40},
+		{"id":"paper-haroun","type":"file","text":"Haroun et al. (2015)","file":"papers/haroun2015performance.md","x":620,"y":880,"width":180,"height":40},
+		{"id":"paper-almufti","type":"file","text":"Almufti & Shaban (2025)","file":"papers/almufti2025comparative.md","x":840,"y":880,"width":180,"height":40},
+		{"id":"paper-hossain","type":"file","text":"Hossain & Acar (2024)","file":"papers/hossain2024comparison.md","x":400,"y":950,"width":180,"height":40},
+		{"id":"paper-chandra","type":"file","text":"Chandra & Naro (2022)","file":"papers/chandra2022comparative.md","x":620,"y":950,"width":180,"height":40},
+		{"id":"paper-wadi","type":"file","text":"Wadi & Umar (2025)","file":"papers/wadi2025charting.md","x":840,"y":950,"width":180,"height":40},
+		{"id":"paper-alexander","type":"file","text":"Alexander & Sriwindono (2020)","file":"papers/alexander2020comparison.md","x":400,"y":1020,"width":180,"height":40},
+		{"id":"paper-halim","type":"file","text":"Halim & Ismail (2019)","file":"papers/halim2019combinatorial.md","x":620,"y":1020,"width":180,"height":40},
+		{"id":"paper-larranaga","type":"file","text":"Larrañaga et al. (1999)","file":"papers/larranaga1999ga.md","x":400,"y":580,"width":180,"height":40},
+		{"id":"paper-potvin","type":"file","text":"Potvin (1996)","file":"papers/potvin1996ga.md","x":250,"y":640,"width":180,"height":40},
+		{"id":"paper-clerc","type":"file","text":"Clerc (2000)","file":"papers/clerc2000discretepso.md","x":250,"y":580,"width":180,"height":40},
+		{"id":"paper-nagata","type":"file","text":"Nagata (2006)","file":"papers/nagata2006eax.md","x":400,"y":640,"width":180,"height":40},
+		{"id":"paper-blum","type":"file","text":"Blum (2005)","file":"papers/blum2005acointro.md","x":250,"y":750,"width":180,"height":40},
+		{"id":"paper-stutzle","type":"file","text":"Stützle & Hoos (2000)","file":"papers/stutzle2000mmas.md","x":250,"y":810,"width":180,"height":40},
+		{"id":"paper-dorigo04","type":"file","text":"Dorigo & Stützle (2004)","file":"papers/dorigo2004book.md","x":250,"y":870,"width":180,"height":40},
+		{"id":"paper-deepaco","type":"file","text":"DeepACO (2023)","file":"papers/deepaco2023.md","x":520,"y":680,"width":180,"height":40},
+		{"id":"paper-neufaco","type":"file","text":"NeuFACO (2025)","file":"papers/neufaco2025.md","x":520,"y":740,"width":180,"height":40},
+		{"id":"paper-gpaco","type":"file","text":"GP-ACO (2025)","file":"papers/gpaco2025.md","x":520,"y":800,"width":180,"height":40},
+		{"id":"paper-ppaco","type":"file","text":"PGACO/PPOACO (2024)","file":"papers/ppaco2024.md","x":520,"y":860,"width":180,"height":40},
+		{"id":"paper-hga","type":"file","text":"HGA-ACO (2024)","file":"papers/hga2024hybrid.md","x":520,"y":620,"width":180,"height":40},
+		{"id":"paper-khoufi19","type":"file","text":"Khoufi et al. (2019)","file":"papers/khoufi2019survey.md","x":400,"y":1100,"width":180,"height":40},
+		{"id":"paper-saller25","type":"file","text":"Saller et al. (2025)","file":"papers/saller2025approximability.md","x":620,"y":1100,"width":180,"height":40},
+		{"id":"paper-yang23","type":"file","text":"Yang et al. (2023)","file":"papers/yang2023review.md","x":840,"y":1100,"width":180,"height":40},
+		{"id":"paper-ilavarasi14","type":"file","text":"Ilavarasi & Joseph (2014)","file":"papers/ilavarasi2014variants.md","x":400,"y":1170,"width":180,"height":40},
+		{"id":"paper-alkhalifa25","type":"file","text":"Alkhalifa et al. (2025)","file":"papers/alkhalifa2025comparative.md","x":620,"y":1170,"width":180,"height":40},
+		{"id":"paper-alhijawi24","type":"file","text":"Alhijawi & Awajan (2024)","file":"papers/alhijawi2024genetic.md","x":50,"y":920,"width":180,"height":40},
+		{"id":"paper-hassanat19","type":"file","text":"Hassanat et al. (2019)","file":"papers/hassanat2019crossover.md","x":50,"y":990,"width":180,"height":40},
+		{"id":"paper-umbarkar15","type":"file","text":"Umbarkar & Sheth (2015)","file":"papers/umbarkar2015crossover.md","x":50,"y":1060,"width":180,"height":40},
+		{"id":"paper-waysi25","type":"file","text":"Waysi et al. (2025)","file":"papers/waysi2025optimization.md","x":50,"y":1130,"width":180,"height":40},
+		{"id":"paper-shami22","type":"file","text":"Shami et al. (2022)","file":"papers/shami2022pso.md","x":250,"y":920,"width":180,"height":40},
+		{"id":"paper-gad22","type":"file","text":"Gad (2022)","file":"papers/gad2022pso.md","x":250,"y":990,"width":180,"height":40},
+		{"id":"paper-zhu25","type":"file","text":"Zhu et al. (2025)","file":"papers/zhu2025cumulative.md","x":250,"y":1060,"width":180,"height":40},
+		{"id":"paper-zhang15","type":"file","text":"Zhang et al. (2015)","file":"papers/zhang2015comprehensive.md","x":250,"y":1130,"width":180,"height":40},
+		{"id":"paper-blum24bib","type":"file","text":"Blum (2024) - bibliometric","file":"papers/blum2024acobibliometric.md","x":50,"y":1200,"width":180,"height":40},
+		{"id":"paper-dorigo18aco","type":"file","text":"Dorigo & Stutzle (2018)","file":"papers/dorigo2018acooverview.md","x":50,"y":1270,"width":180,"height":40},
+		{"id":"paper-abdulghani24","type":"file","text":"Abdulghani & Abdulghani (2024)","file":"papers/abdulghani2024comprehensive.md","x":250,"y":1200,"width":180,"height":40},
+		{"id":"paper-misra24aco","type":"file","text":"Misra & Chakraborty (2024)","file":"papers/misra2024acorecent.md","x":250,"y":1340,"width":180,"height":40},
+		{"id":"paper-hoffman13","type":"file","text":"Hoffman et al. (2013)","file":"papers/hoffman2013tspencyclopedia.md","x":620,"y":1240,"width":180,"height":40},
+		{"id":"paper-valenzuela97","type":"file","text":"Valenzuela & Jones (1997)","file":"papers/valenzuela1997estimating.md","x":620,"y":1310,"width":180,"height":40},
+		{"id":"paper-huang21","type":"file","text":"Huang et al. (2021)","file":"papers/huang2021branchsurvey.md","x":620,"y":1380,"width":180,"height":40},
+		{"id":"paper-gutekunst20","type":"file","text":"Gutekunst (2020)","file":"papers/gutekunst2020relaxations.md","x":840,"y":1240,"width":180,"height":40}
 	],
-	"edges": [
-		{
-			"id": "e1",
-			"fromNode": "paper-garey",
-			"fromSide": "bottom",
-			"toNode": "area-tsp",
-			"toSide": "top",
-			"label": "fundamenta"
-		},
-		{
-			"id": "e2",
-			"fromNode": "paper-lawler",
-			"fromSide": "bottom",
-			"toNode": "area-tsp",
-			"toSide": "top",
-			"label": "survey"
-		},
-		{
-			"id": "e3",
-			"fromNode": "paper-applegate",
-			"fromSide": "bottom",
-			"toNode": "area-tsp",
-			"toSide": "top",
-			"label": "computacional"
-		},
-		{
-			"id": "e4",
-			"fromNode": "method-ga",
-			"fromSide": "bottom",
-			"toNode": "area-bio",
-			"toSide": "top"
-		},
-		{
-			"id": "e5",
-			"fromNode": "method-pso",
-			"fromSide": "bottom",
-			"toNode": "area-bio",
-			"toSide": "top"
-		},
-		{
-			"id": "e6",
-			"fromNode": "method-aco",
-			"fromSide": "bottom",
-			"toNode": "area-bio",
-			"toSide": "top"
-		},
-		{
-			"id": "e7",
-			"fromNode": "paper-holland",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e8",
-			"fromNode": "paper-goldberg",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e9",
-			"fromNode": "paper-kennedy",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e10",
-			"fromNode": "paper-dorigo96",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e11",
-			"fromNode": "paper-murray",
-			"fromSide": "top",
-			"toNode": "area-drone",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e12",
-			"fromNode": "paper-agatz",
-			"fromSide": "top",
-			"toNode": "area-drone",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e13",
-			"fromNode": "paper-freitas",
-			"fromSide": "top",
-			"toNode": "area-drone",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e14",
-			"fromNode": "paper-dellamico22",
-			"fromSide": "top",
-			"toNode": "area-drone",
-			"toSide": "bottom"
-		},
-		{
-			"id": "e15",
-			"fromNode": "paper-oliver",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right"
-		},
-		{
-			"id": "e16",
-			"fromNode": "paper-bean",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right"
-		},
-		{
-			"id": "e17",
-			"fromNode": "paper-lin",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right"
-		},
-		{
-			"id": "e18",
-			"fromNode": "method-ga",
-			"fromSide": "right",
-			"toNode": "area-tsp",
-			"toSide": "left",
-			"label": "aplica-se a"
-		},
-		{
-			"id": "e19",
-			"fromNode": "method-pso",
-			"fromSide": "right",
-			"toNode": "area-tsp",
-			"toSide": "left",
-			"label": "aplica-se a"
-		},
-		{
-			"id": "e20",
-			"fromNode": "method-aco",
-			"fromSide": "right",
-			"toNode": "area-tsp",
-			"toSide": "left",
-			"label": "aplica-se a"
-		},
-		{
-			"id": "e21",
-			"fromNode": "paper-toaza",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey metaheuristicas"
-		},
-		{
-			"id": "e22",
-			"fromNode": "paper-toaza",
-			"fromSide": "top",
-			"toNode": "area-drone",
-			"toSide": "right",
-			"label": "TSP scheduling"
-		},
-		{
-			"id": "e23",
-			"fromNode": "paper-pop",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey GTSP"
-		},
-		{
-			"id": "e24",
-			"fromNode": "paper-bock",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey variantes"
-		},
-		{
-			"id": "e25",
-			"fromNode": "paper-kappagantula",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "DPSO + RL"
-		},
-		{
-			"id": "e26",
-			"fromNode": "paper-araujo",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "PSO + 2-opt/3-opt"
-		},
-		{
-			"id": "e27",
-			"fromNode": "paper-sun",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "HPSO greed+Metropolis"
-		},
-		{
-			"id": "e28",
-			"fromNode": "paper-wang",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "SOS-ACO"
-		},
-		{
-			"id": "e29",
-			"fromNode": "paper-huang25",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "matrix-PSO mTSP"
-		},
-		{
-			"id": "e30",
-			"fromNode": "paper-rajan",
-			"fromSide": "top",
-			"toNode": "area-drone",
-			"toSide": "right",
-			"label": "UAV patrulha"
-		},
-		{
-			"id": "e31",
-			"fromNode": "paper-rajwar",
-			"fromSide": "top",
-			"toNode": "area-bio",
-			"toSide": "right",
-			"label": "survey metaheuristicas"
-		},
-		{
-			"id": "e32",
-			"fromNode": "paper-kappagantula",
-			"fromSide": "left",
-			"toNode": "paper-araujo",
-			"toSide": "right",
-			"label": "PSO+TSP"
-		},
-		{
-			"id": "e33",
-			"fromNode": "paper-sun",
-			"fromSide": "left",
-			"toNode": "paper-huang25",
-			"toSide": "right",
-			"label": "PSO+TSP"
-		},
-		{
-			"id": "e34",
-			"fromNode": "paper-bock",
-			"fromSide": "bottom",
-			"toNode": "paper-rajan",
-			"toSide": "top",
-			"label": "TSP variantes"
-		},
-		{
-			"id": "e35",
-			"fromNode": "area-tsp",
-			"fromSide": "bottom",
-			"toNode": "area-comparative",
-			"toSide": "top",
-			"label": "benchmark para"
-		},
-		{
-			"id": "e36",
-			"fromNode": "paper-wu",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "GA+ACO+PSO"
-		},
-		{
-			"id": "e37",
-			"fromNode": "paper-haroun",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "GA+ACO"
-		},
-		{
-			"id": "e38",
-			"fromNode": "paper-almufti",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "9 metaheuristicas"
-		},
-		{
-			"id": "e39",
-			"fromNode": "paper-hossain",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "old vs new"
-		},
-		{
-			"id": "e40",
-			"fromNode": "paper-chandra",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "8 metodos+ANOVA"
-		},
-		{
-			"id": "e41",
-			"fromNode": "paper-wadi",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "swarm comparison"
-		},
-		{
-			"id": "e42",
-			"fromNode": "paper-alexander",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "GA+ACO"
-		},
-		{
-			"id": "e43",
-			"fromNode": "paper-halim",
-			"fromSide": "top",
-			"toNode": "area-comparative",
-			"toSide": "bottom",
-			"label": "6 heuristicas"
-		},
-		{
-			"id": "e44",
-			"fromNode": "paper-wu",
-			"fromSide": "left",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "compara"
-		},
-		{
-			"id": "e45",
-			"fromNode": "paper-wu",
-			"fromSide": "left",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "compara"
-		},
-		{
-			"id": "e46",
-			"fromNode": "paper-wu",
-			"fromSide": "left",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "compara"
-		},
-		{
-			"id": "e47",
-			"fromNode": "paper-haroun",
-			"fromSide": "left",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "compara"
-		},
-		{
-			"id": "e48",
-			"fromNode": "paper-haroun",
-			"fromSide": "left",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "compara"
-		},
-		{
-			"id": "e49",
-			"fromNode": "paper-larranaga",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "survey GA+TSP"
-		},
-		{
-			"id": "e50",
-			"fromNode": "paper-potvin",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "survey crossover"
-		},
-		{
-			"id": "e51",
-			"fromNode": "paper-clerc",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "PSO discreto"
-		},
-		{
-			"id": "e52",
-			"fromNode": "paper-nagata",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "EAX crossover"
-		},
-		{
-			"id": "e53",
-			"fromNode": "paper-blum",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "intro+variants"
-		},
-		{
-			"id": "e54",
-			"fromNode": "paper-stutzle",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "MMAS"
-		},
-		{
-			"id": "e55",
-			"fromNode": "paper-dorigo04",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "livro ACO"
-		},
-		{
-			"id": "e56",
-			"fromNode": "paper-deepaco",
-			"fromSide": "left",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "GNN+PPO"
-		},
-		{
-			"id": "e57",
-			"fromNode": "paper-neufaco",
-			"fromSide": "left",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "focused ACO"
-		},
-		{
-			"id": "e58",
-			"fromNode": "paper-gpaco",
-			"fromSide": "left",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "GP + ACO"
-		},
-		{
-			"id": "e59",
-			"fromNode": "paper-ppaco",
-			"fromSide": "left",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "PG+experience replay"
-		},
-		{
-			"id": "e60",
-			"fromNode": "paper-hga",
-			"fromSide": "left",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "GA-ACO hibrido"
-		},
-		{
-			"id": "e61",
-			"fromNode": "paper-hga",
-			"fromSide": "left",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "GA-ACO hibrido"
-		},
-		{
-			"id": "e62",
-			"fromNode": "paper-deepaco",
-			"fromSide": "top",
-			"toNode": "area-neural",
-			"toSide": "bottom",
-			"label": "neural ACO"
-		},
-		{
-			"id": "e63",
-			"fromNode": "paper-neufaco",
-			"fromSide": "top",
-			"toNode": "area-neural",
-			"toSide": "bottom",
-			"label": "neural ACO"
-		},
-		{
-			"id": "e64",
-			"fromNode": "paper-gpaco",
-			"fromSide": "top",
-			"toNode": "area-neural",
-			"toSide": "bottom",
-			"label": "GP+neural?"
-		},
-		{
-			"id": "e65",
-			"fromNode": "paper-ppaco",
-			"fromSide": "top",
-			"toNode": "area-neural",
-			"toSide": "bottom",
-			"label": "RL+ACO"
-		},
-		{
-			"id": "e66",
-			"fromNode": "paper-deepaco",
-			"fromSide": "bottom",
-			"toNode": "paper-neufaco",
-			"toSide": "top",
-			"label": "evolui para"
-		},
-		{
-			"id": "e67",
-			"fromNode": "paper-larranaga",
-			"fromSide": "bottom",
-			"toNode": "paper-nagata",
-			"toSide": "top",
-			"label": "EAX > classic operators"
-		},
-		{
-			"id": "e68",
-			"fromNode": "paper-potvin",
-			"fromSide": "bottom",
-			"toNode": "paper-larranaga",
-			"toSide": "top",
-			"label": "expandido por"
-		},
-		{
-			"id": "e69",
-			"fromNode": "paper-dorigo96",
-			"fromSide": "right",
-			"toNode": "paper-blum",
-			"toSide": "left",
-			"label": "base do survey"
-		},
-		{
-			"id": "e70",
-			"fromNode": "paper-blum",
-			"fromSide": "bottom",
-			"toNode": "paper-stutzle",
-			"toSide": "top",
-			"label": "MMAS coberto"
-		},
-		{
-			"id": "e71",
-			"fromNode": "paper-blum",
-			"fromSide": "bottom",
-			"toNode": "paper-dorigo04",
-			"toSide": "top",
-			"label": "book coberto"
-		},
-		{
-			"id": "e72",
-			"fromNode": "paper-clerc",
-			"fromSide": "bottom",
-			"toNode": "paper-kappagantula",
-			"toSide": "top",
-			"label": "DPSO base"
-		},
-		{
-			"id": "e73",
-			"fromNode": "paper-clerc",
-			"fromSide": "bottom",
-			"toNode": "paper-araujo",
-			"toSide": "top",
-			"label": "DPSO base"
-		},
-		{
-			"id": "e74",
-			"fromNode": "paper-khoufi19",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey TSP+UAV"
-		},
-		{
-			"id": "e75",
-			"fromNode": "paper-saller25",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey approximability"
-		},
-		{
-			"id": "e76",
-			"fromNode": "paper-yang23",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey solucoes"
-		},
-		{
-			"id": "e77",
-			"fromNode": "paper-ilavarasi14",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey variantes"
-		},
-		{
-			"id": "e78",
-			"fromNode": "paper-alkhalifa25",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "survey tecnicas"
-		},
-		{
-			"id": "e79",
-			"fromNode": "paper-alhijawi24",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "survey teoria+operadores"
-		},
-		{
-			"id": "e80",
-			"fromNode": "paper-hassanat19",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "survey crossover+mutation"
-		},
-		{
-			"id": "e81",
-			"fromNode": "paper-umbarkar15",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "survey crossover operators"
-		},
-		{
-			"id": "e82",
-			"fromNode": "paper-waysi25",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "survey tecnicas"
-		},
-		{
-			"id": "e83",
-			"fromNode": "paper-shami22",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "survey comprehensive"
-		},
-		{
-			"id": "e84",
-			"fromNode": "paper-gad22",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "survey systematic PRISMA"
-		},
-		{
-			"id": "e85",
-			"fromNode": "paper-zhu25",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "survey recent advances"
-		},
-		{
-			"id": "e86",
-			"fromNode": "paper-zhang15",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "survey classic"
-		},
-		{
-			"id": "e87",
-			"fromNode": "paper-blum24bib",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "survey bibliometrico"
-		},
-		{
-			"id": "e88",
-			"fromNode": "paper-dorigo18aco",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "survey canonico"
-		},
-		{
-			"id": "e89",
-			"fromNode": "paper-abdulghani24",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "survey comprehensive"
-		},
-		{
-			"id": "e91",
-			"fromNode": "paper-misra24aco",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "survey recent variants"
-		},
-		{
-			"id": "e92",
-			"fromNode": "paper-hoffman13",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "encyclopedia TSP"
-		},
-		{
-			"id": "e93",
-			"fromNode": "paper-valenzuela97",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "Held-Karp survey"
-		},
-		{
-			"id": "e94",
-			"fromNode": "paper-huang21",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "B&B survey"
-		},
-		{
-			"id": "e95",
-			"fromNode": "paper-gutekunst20",
-			"fromSide": "top",
-			"toNode": "area-tsp",
-			"toSide": "right",
-			"label": "TSP relaxations"
-		},
-		{
-			"id": "e96",
-			"fromNode": "paper-alhijawi24",
-			"fromSide": "top",
-			"toNode": "paper-hassanat19",
-			"toSide": "right",
-			"label": "expanded by"
-		},
-		{
-			"id": "e97",
-			"fromNode": "paper-shami22",
-			"fromSide": "top",
-			"toNode": "paper-gad22",
-			"toSide": "right",
-			"label": "parallel survey"
-		},
-		{
-			"id": "e98",
-			"fromNode": "paper-gad22",
-			"fromSide": "top",
-			"toNode": "paper-zhu25",
-			"toSide": "right",
-			"label": "expanded by"
-		},
-		{
-			"id": "e99",
-			"fromNode": "paper-blum24bib",
-			"fromSide": "top",
-			"toNode": "paper-dorigo18aco",
-			"toSide": "right",
-			"label": "based on"
-		},
-		{
-			"id": "e100",
-			"fromNode": "paper-saller25",
-			"fromSide": "top",
-			"toNode": "paper-hoffman13",
-			"toSide": "right",
-			"label": "extends"
-		},
-		{
-			"id": "e101",
-			"fromNode": "paper-saller25",
-			"fromSide": "top",
-			"toNode": "paper-valenzuela97",
-			"toSide": "right",
-			"label": "includes bounds"
-		},
-		{
-			"id": "e102",
-			"fromNode": "paper-khoufi19",
-			"fromSide": "top",
-			"toNode": "area-drone",
-			"toSide": "right",
-			"label": "UAV applications"
-		},
-		{
-			"id": "e103",
-			"fromNode": "paper-alkhalifa25",
-			"fromSide": "top",
-			"toNode": "method-ga",
-			"toSide": "right",
-			"label": "covers GA"
-		},
-		{
-			"id": "e104",
-			"fromNode": "paper-alkhalifa25",
-			"fromSide": "top",
-			"toNode": "method-pso",
-			"toSide": "right",
-			"label": "covers PSO"
-		},
-		{
-			"id": "e105",
-			"fromNode": "paper-alkhalifa25",
-			"fromSide": "top",
-			"toNode": "method-aco",
-			"toSide": "right",
-			"label": "covers ACO"
-		}
+	"edges":[
+		{"id":"e1","fromNode":"paper-garey","fromSide":"bottom","toNode":"area-tsp","toSide":"top","label":"fundamenta"},
+		{"id":"e2","fromNode":"paper-lawler","fromSide":"bottom","toNode":"area-tsp","toSide":"top","label":"survey"},
+		{"id":"e3","fromNode":"paper-applegate","fromSide":"bottom","toNode":"area-tsp","toSide":"top","label":"computacional"},
+		{"id":"e4","fromNode":"method-ga","fromSide":"bottom","toNode":"area-bio","toSide":"top"},
+		{"id":"e5","fromNode":"method-pso","fromSide":"bottom","toNode":"area-bio","toSide":"top"},
+		{"id":"e6","fromNode":"method-aco","fromSide":"bottom","toNode":"area-bio","toSide":"top"},
+		{"id":"e7","fromNode":"paper-holland","fromSide":"top","toNode":"method-ga","toSide":"bottom"},
+		{"id":"e8","fromNode":"paper-goldberg","fromSide":"top","toNode":"method-ga","toSide":"bottom"},
+		{"id":"e9","fromNode":"paper-kennedy","fromSide":"top","toNode":"method-pso","toSide":"bottom"},
+		{"id":"e10","fromNode":"paper-dorigo96","fromSide":"top","toNode":"method-aco","toSide":"bottom"},
+		{"id":"e11","fromNode":"paper-murray","fromSide":"top","toNode":"area-drone","toSide":"bottom"},
+		{"id":"e12","fromNode":"paper-agatz","fromSide":"top","toNode":"area-drone","toSide":"bottom"},
+		{"id":"e13","fromNode":"paper-freitas","fromSide":"top","toNode":"area-drone","toSide":"bottom"},
+		{"id":"e14","fromNode":"paper-dellamico22","fromSide":"top","toNode":"area-drone","toSide":"bottom"},
+		{"id":"e15","fromNode":"paper-oliver","fromSide":"top","toNode":"method-ga","toSide":"right"},
+		{"id":"e16","fromNode":"paper-bean","fromSide":"top","toNode":"method-ga","toSide":"right"},
+		{"id":"e17","fromNode":"paper-lin","fromSide":"top","toNode":"area-tsp","toSide":"right"},
+		{"id":"e18","fromNode":"method-ga","fromSide":"right","toNode":"area-tsp","toSide":"left","label":"aplica-se a"},
+		{"id":"e19","fromNode":"method-pso","fromSide":"right","toNode":"area-tsp","toSide":"left","label":"aplica-se a"},
+		{"id":"e20","fromNode":"method-aco","fromSide":"right","toNode":"area-tsp","toSide":"left","label":"aplica-se a"},
+		{"id":"e21","fromNode":"paper-toaza","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey metaheuristicas"},
+		{"id":"e22","fromNode":"paper-toaza","fromSide":"top","toNode":"area-drone","toSide":"right","label":"TSP scheduling"},
+		{"id":"e23","fromNode":"paper-pop","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey GTSP"},
+		{"id":"e24","fromNode":"paper-bock","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey variantes"},
+		{"id":"e25","fromNode":"paper-kappagantula","fromSide":"top","toNode":"method-pso","toSide":"right","label":"DPSO + RL"},
+		{"id":"e26","fromNode":"paper-araujo","fromSide":"top","toNode":"method-pso","toSide":"right","label":"PSO + 2-opt/3-opt"},
+		{"id":"e27","fromNode":"paper-sun","fromSide":"top","toNode":"method-pso","toSide":"right","label":"HPSO greed+Metropolis"},
+		{"id":"e28","fromNode":"paper-wang","fromSide":"top","toNode":"method-aco","toSide":"right","label":"SOS-ACO"},
+		{"id":"e29","fromNode":"paper-huang25","fromSide":"top","toNode":"method-pso","toSide":"right","label":"matrix-PSO mTSP"},
+		{"id":"e30","fromNode":"paper-rajan","fromSide":"top","toNode":"area-drone","toSide":"right","label":"UAV patrulha"},
+		{"id":"e31","fromNode":"paper-rajwar","fromSide":"top","toNode":"area-bio","toSide":"right","label":"survey metaheuristicas"},
+		{"id":"e32","fromNode":"paper-kappagantula","fromSide":"left","toNode":"paper-araujo","toSide":"right","label":"PSO+TSP"},
+		{"id":"e33","fromNode":"paper-sun","fromSide":"left","toNode":"paper-huang25","toSide":"right","label":"PSO+TSP"},
+		{"id":"e34","fromNode":"paper-bock","fromSide":"bottom","toNode":"paper-rajan","toSide":"top","label":"TSP variantes"},
+		{"id":"e35","fromNode":"area-tsp","fromSide":"bottom","toNode":"area-comparative","toSide":"top","label":"benchmark para"},
+		{"id":"e36","fromNode":"paper-wu","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"GA+ACO+PSO"},
+		{"id":"e37","fromNode":"paper-haroun","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"GA+ACO"},
+		{"id":"e38","fromNode":"paper-almufti","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"9 metaheuristicas"},
+		{"id":"e39","fromNode":"paper-hossain","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"old vs new"},
+		{"id":"e40","fromNode":"paper-chandra","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"8 metodos+ANOVA"},
+		{"id":"e41","fromNode":"paper-wadi","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"swarm comparison"},
+		{"id":"e42","fromNode":"paper-alexander","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"GA+ACO"},
+		{"id":"e43","fromNode":"paper-halim","fromSide":"top","toNode":"area-comparative","toSide":"bottom","label":"6 heuristicas"},
+		{"id":"e44","fromNode":"paper-wu","fromSide":"left","toNode":"method-ga","toSide":"right","label":"compara"},
+		{"id":"e45","fromNode":"paper-wu","fromSide":"left","toNode":"method-pso","toSide":"right","label":"compara"},
+		{"id":"e46","fromNode":"paper-wu","fromSide":"left","toNode":"method-aco","toSide":"right","label":"compara"},
+		{"id":"e47","fromNode":"paper-haroun","fromSide":"left","toNode":"method-ga","toSide":"right","label":"compara"},
+		{"id":"e48","fromNode":"paper-haroun","fromSide":"left","toNode":"method-aco","toSide":"right","label":"compara"},
+		{"id":"e49","fromNode":"paper-larranaga","fromSide":"top","toNode":"method-ga","toSide":"right","label":"survey GA+TSP"},
+		{"id":"e50","fromNode":"paper-potvin","fromSide":"top","toNode":"method-ga","toSide":"right","label":"survey crossover"},
+		{"id":"e51","fromNode":"paper-clerc","fromSide":"top","toNode":"method-pso","toSide":"right","label":"PSO discreto"},
+		{"id":"e52","fromNode":"paper-nagata","fromSide":"top","toNode":"method-ga","toSide":"right","label":"EAX crossover"},
+		{"id":"e53","fromNode":"paper-blum","fromSide":"top","toNode":"method-aco","toSide":"right","label":"intro+variants"},
+		{"id":"e54","fromNode":"paper-stutzle","fromSide":"top","toNode":"method-aco","toSide":"right","label":"MMAS"},
+		{"id":"e55","fromNode":"paper-dorigo04","fromSide":"top","toNode":"method-aco","toSide":"right","label":"livro ACO"},
+		{"id":"e56","fromNode":"paper-deepaco","fromSide":"left","toNode":"method-aco","toSide":"right","label":"GNN+PPO"},
+		{"id":"e57","fromNode":"paper-neufaco","fromSide":"left","toNode":"method-aco","toSide":"right","label":"focused ACO"},
+		{"id":"e58","fromNode":"paper-gpaco","fromSide":"left","toNode":"method-aco","toSide":"right","label":"GP + ACO"},
+		{"id":"e59","fromNode":"paper-ppaco","fromSide":"left","toNode":"method-aco","toSide":"right","label":"PG+experience replay"},
+		{"id":"e60","fromNode":"paper-hga","fromSide":"left","toNode":"method-ga","toSide":"right","label":"GA-ACO hibrido"},
+		{"id":"e61","fromNode":"paper-hga","fromSide":"left","toNode":"method-aco","toSide":"right","label":"GA-ACO hibrido"},
+		{"id":"e62","fromNode":"paper-deepaco","fromSide":"top","toNode":"area-neural","toSide":"bottom","label":"neural ACO"},
+		{"id":"e63","fromNode":"paper-neufaco","fromSide":"top","toNode":"area-neural","toSide":"bottom","label":"neural ACO"},
+		{"id":"e64","fromNode":"paper-gpaco","fromSide":"top","toNode":"area-neural","toSide":"bottom","label":"GP+neural?"},
+		{"id":"e65","fromNode":"paper-ppaco","fromSide":"top","toNode":"area-neural","toSide":"bottom","label":"RL+ACO"},
+		{"id":"e66","fromNode":"paper-deepaco","fromSide":"bottom","toNode":"paper-neufaco","toSide":"top","label":"evolui para"},
+		{"id":"e67","fromNode":"paper-larranaga","fromSide":"bottom","toNode":"paper-nagata","toSide":"top","label":"EAX > classic operators"},
+		{"id":"e68","fromNode":"paper-potvin","fromSide":"bottom","toNode":"paper-larranaga","toSide":"top","label":"expandido por"},
+		{"id":"e69","fromNode":"paper-dorigo96","fromSide":"right","toNode":"paper-blum","toSide":"left","label":"base do survey"},
+		{"id":"e70","fromNode":"paper-blum","fromSide":"bottom","toNode":"paper-stutzle","toSide":"top","label":"MMAS coberto"},
+		{"id":"e71","fromNode":"paper-blum","fromSide":"bottom","toNode":"paper-dorigo04","toSide":"top","label":"book coberto"},
+		{"id":"e72","fromNode":"paper-clerc","fromSide":"bottom","toNode":"paper-kappagantula","toSide":"top","label":"DPSO base"},
+		{"id":"e73","fromNode":"paper-clerc","fromSide":"bottom","toNode":"paper-araujo","toSide":"top","label":"DPSO base"},
+		{"id":"e74","fromNode":"paper-khoufi19","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey TSP+UAV"},
+		{"id":"e75","fromNode":"paper-saller25","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey approximability"},
+		{"id":"e76","fromNode":"paper-yang23","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey solucoes"},
+		{"id":"e77","fromNode":"paper-ilavarasi14","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey variantes"},
+		{"id":"e78","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"survey tecnicas"},
+		{"id":"e79","fromNode":"paper-alhijawi24","fromSide":"top","toNode":"method-ga","toSide":"right","label":"survey teoria+operadores"},
+		{"id":"e80","fromNode":"paper-hassanat19","fromSide":"top","toNode":"method-ga","toSide":"right","label":"survey crossover+mutation"},
+		{"id":"e81","fromNode":"paper-umbarkar15","fromSide":"top","toNode":"method-ga","toSide":"right","label":"survey crossover operators"},
+		{"id":"e82","fromNode":"paper-waysi25","fromSide":"top","toNode":"method-ga","toSide":"right","label":"survey tecnicas"},
+		{"id":"e83","fromNode":"paper-shami22","fromSide":"top","toNode":"method-pso","toSide":"right","label":"survey comprehensive"},
+		{"id":"e84","fromNode":"paper-gad22","fromSide":"top","toNode":"method-pso","toSide":"right","label":"survey systematic PRISMA"},
+		{"id":"e85","fromNode":"paper-zhu25","fromSide":"top","toNode":"method-pso","toSide":"right","label":"survey recent advances"},
+		{"id":"e86","fromNode":"paper-zhang15","fromSide":"top","toNode":"method-pso","toSide":"right","label":"survey classic"},
+		{"id":"e87","fromNode":"paper-blum24bib","fromSide":"top","toNode":"method-aco","toSide":"right","label":"survey bibliometrico"},
+		{"id":"e88","fromNode":"paper-dorigo18aco","fromSide":"top","toNode":"method-aco","toSide":"right","label":"survey canonico"},
+		{"id":"e89","fromNode":"paper-abdulghani24","fromSide":"top","toNode":"method-aco","toSide":"right","label":"survey comprehensive"},
+		{"id":"e91","fromNode":"paper-misra24aco","fromSide":"top","toNode":"method-aco","toSide":"right","label":"survey recent variants"},
+		{"id":"e92","fromNode":"paper-hoffman13","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"encyclopedia TSP"},
+		{"id":"e93","fromNode":"paper-valenzuela97","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"Held-Karp survey"},
+		{"id":"e94","fromNode":"paper-huang21","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"B&B survey"},
+		{"id":"e95","fromNode":"paper-gutekunst20","fromSide":"top","toNode":"area-tsp","toSide":"right","label":"TSP relaxations"},
+		{"id":"e96","fromNode":"paper-alhijawi24","fromSide":"top","toNode":"paper-hassanat19","toSide":"right","label":"expanded by"},
+		{"id":"e97","fromNode":"paper-shami22","fromSide":"top","toNode":"paper-gad22","toSide":"right","label":"parallel survey"},
+		{"id":"e98","fromNode":"paper-gad22","fromSide":"top","toNode":"paper-zhu25","toSide":"right","label":"expanded by"},
+		{"id":"e99","fromNode":"paper-blum24bib","fromSide":"top","toNode":"paper-dorigo18aco","toSide":"right","label":"based on"},
+		{"id":"e100","fromNode":"paper-saller25","fromSide":"top","toNode":"paper-hoffman13","toSide":"right","label":"extends"},
+		{"id":"e101","fromNode":"paper-saller25","fromSide":"top","toNode":"paper-valenzuela97","toSide":"right","label":"includes bounds"},
+		{"id":"e102","fromNode":"paper-khoufi19","fromSide":"top","toNode":"area-drone","toSide":"right","label":"UAV applications"},
+		{"id":"e103","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"method-ga","toSide":"right","label":"covers GA"},
+		{"id":"e104","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"method-pso","toSide":"right","label":"covers PSO"},
+		{"id":"e105","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"method-aco","toSide":"right","label":"covers ACO"}
 	]
 }
