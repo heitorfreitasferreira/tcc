@@ -1,7 +1,7 @@
 \chapter[Experimentos e Análise dos Resultados]{Experimentos e Análise dos Resultados}
 \label{experimentos}
 
-Este capítulo apresenta a avaliação experimental dos métodos descritos no Capítulo~\ref{proposta}. A análise usa os arquivos estruturados produzidos pela implementação: \TotalArquivosResumo{} resumos, \TotalArquivosEvolucao{} históricos de evolução e \TotalArquivosTempo{} arquivos de tempo. Os resultados são discutidos em termos de qualidade da solução, tempo computacional, estabilidade entre sementes, significância estatística e limitações metodológicas.
+Este capítulo apresenta a avaliação experimental dos métodos descritos no \autoref{proposta}. A análise usa os arquivos estruturados produzidos pela implementação: \TotalArquivosResumo{} resumos, \TotalArquivosEvolucao{} históricos de evolução e \TotalArquivosTempo{} arquivos de tempo. Os resultados são discutidos em termos de qualidade da solução, tempo computacional, estabilidade entre sementes, significância estatística e limitações metodológicas.
 
 \section{Método para a Avaliação}
 \label{metodo}
@@ -30,7 +30,7 @@ As métricas principais são:
 
 Os experimentos foram executados por uma interface de linha de comando em Go. Cada execução recebe o arquivo de instância, o método, a semente e o diretório de resultados. O identificador da execução é usado para nomear os arquivos de resumo, evolução e tempo. Para as meta-heurísticas, os parâmetros foram mantidos fixos: população 100 e 100 iterações. Essa decisão permite comparar os métodos sob o mesmo orçamento populacional, mas não substitui uma análise de sensibilidade de hiperparâmetros.
 
-A busca exaustiva fornece o ótimo global nas instâncias em que foi executada. A Tabela~\ref{tab:otimos-bf} apresenta esses valores. Eles são usados como referência para calcular o gap das meta-heurísticas nas instâncias pequenas.
+A busca exaustiva fornece o ótimo global nas instâncias em que foi executada. A \autoref{tab:otimos-bf} apresenta esses valores. Eles são usados como referência para calcular o gap das meta-heurísticas nas instâncias pequenas.
 
 \begin{table}[htbp]
   \centering
@@ -45,7 +45,7 @@ A busca exaustiva fornece o ótimo global nas instâncias em que foi executada. 
 
 \subsection{Qualidade nas Instâncias com Ótimo Conhecido}
 
-Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, o ACO apresentou o menor gap médio em relação ao ótimo. A Tabela~\ref{tab:gap-bf} resume os resultados agregados sobre \TotalExecucoesOtimoPorMetodo{} execuções por método nesse subconjunto. O ACO obteve gap médio de \GapMedioOtimoACO{} e taxa global de acerto de \TaxaAcertoOtimoACO{}. O GA obteve gap médio de \GapMedioOtimoGA{} e taxa de acerto de \TaxaAcertoOtimoGA{}. O PSO obteve gap médio de \GapMedioOtimoPSO{} e taxa de acerto de \TaxaAcertoOtimoPSO{}.
+Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, o ACO apresentou o menor gap médio em relação ao ótimo. A \autoref{tab:gap-bf} resume os resultados agregados sobre \TotalExecucoesOtimoPorMetodo{} execuções por método nesse subconjunto. O ACO obteve gap médio de \GapMedioOtimoACO{} e taxa global de acerto de \TaxaAcertoOtimoACO{}. O GA obteve gap médio de \GapMedioOtimoGA{} e taxa de acerto de \TaxaAcertoOtimoGA{}. O PSO obteve gap médio de \GapMedioOtimoPSO{} e taxa de acerto de \TaxaAcertoOtimoPSO{}.
 
 \begin{table}[htbp]
   \centering
@@ -70,7 +70,7 @@ Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, o ACO apresentou
 
 \subsection{Qualidade nas Instâncias Maiores}
 
-Para instâncias acima de 15 pontos, a busca exaustiva não foi usada como ótimo de referência. A análise passa a comparar as meta-heurísticas entre si e com o lower bound. Nas instâncias de 50 e 100 pontos, o ACO apresentou \textit{makespan} médio substancialmente menor que GA e PSO, como mostra a Tabela~\ref{tab:grandes}.
+Para instâncias acima de 15 pontos, a busca exaustiva não foi usada como ótimo de referência. A análise passa a comparar as meta-heurísticas entre si e com o lower bound. Nas instâncias de 50 e 100 pontos, o ACO apresentou \textit{makespan} médio substancialmente menor que GA e PSO, como mostra a \autoref{tab:grandes}.
 
 \begin{table}[htbp]
   \centering
@@ -104,7 +104,7 @@ A frouxidão é esperada: a redução $c'_{j,k}=\min_i G[i][j][k]$ remove parte 
 
 \subsection{Tempo Computacional}
 
-O ganho de qualidade do ACO vem acompanhado de maior custo computacional. Nas instâncias de 100 pontos, o tempo médio de otimização do ACO ficou em torno de \TempoOtimizacaoACOCemMedioSegundos{}, enquanto a maior média por instância do GA foi \TempoOtimizacaoGAMaxCemMs{} e a do PSO foi \TempoOtimizacaoPSOMaxCemMs{}. A Tabela~\ref{tab:tempo-100} mostra as razões por instância.
+O ganho de qualidade do ACO vem acompanhado de maior custo computacional. Nas instâncias de 100 pontos, o tempo médio de otimização do ACO ficou em torno de \TempoOtimizacaoACOCemMedioSegundos{}, enquanto a maior média por instância do GA foi \TempoOtimizacaoGAMaxCemMs{} e a do PSO foi \TempoOtimizacaoPSOMaxCemMs{}. A \autoref{tab:tempo-100} mostra as razões por instância.
 
 \begin{table}[htbp]
   \centering

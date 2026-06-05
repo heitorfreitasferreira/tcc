@@ -1,13 +1,13 @@
 \chapter[Proposta]{Formulação do Problema e Métodos}
 \label{proposta}
 
-Este capítulo descreve a proposta computacional avaliada nesta monografia. O foco é formalizar o TSP-SD-ATP, apresentar a estrutura de implementação e detalhar como GA, PSO, ACO, busca exaustiva e lower bound foram integrados ao mesmo pipeline experimental. Conforme a orientação do template institucional, a revisão bibliográfica fica concentrada no Capítulo~\ref{fundamentacao}; aqui são descritas as escolhas efetivamente implementadas.
+Este capítulo descreve a proposta computacional avaliada nesta monografia. O foco é formalizar o TSP-SD-ATP, apresentar a estrutura de implementação e detalhar como GA, PSO, ACO, busca exaustiva e lower bound foram integrados ao mesmo pipeline experimental. Conforme a orientação do template institucional, a revisão bibliográfica fica concentrada no \autoref{fundamentacao}; aqui são descritas as escolhas efetivamente implementadas.
 
 \section{Formulação do Problema}
 
 Uma instância é definida por um conjunto de pontos bidimensionais $V=\{0,1,\ldots,n-1\}$. O nó $0$ é a base de partida e retorno do drone. Os demais nós, $V'=V\setminus\{0\}$, são pontos de interesse que devem ser visitados exatamente uma vez. Uma rota factível é uma permutação $\pi$ dos nós de $V'$.
 
-O diferencial do TSP-SD-ATP está na avaliação da rota. Em vez de uma matriz $D[j][k]$, a implementação usa um tensor 3D $G[anterior][atual][proximo]$. Cada entrada armazena o custo de seguir de `atual' para `proximo' considerando que o nó visitado imediatamente antes foi `anterior'. O custo soma distância euclidiana e penalidade angular normalizada, conforme a Equação~\ref{eq:custo}.
+O diferencial do TSP-SD-ATP está na avaliação da rota. Em vez de uma matriz $D[j][k]$, a implementação usa um tensor 3D $G[anterior][atual][proximo]$. Cada entrada armazena o custo de seguir de `atual' para `proximo' considerando que o nó visitado imediatamente antes foi `anterior'. O custo soma distância euclidiana e penalidade angular normalizada, conforme a \autoref{eq:custo}.
 
 \begin{figure}[htbp]
   \centering

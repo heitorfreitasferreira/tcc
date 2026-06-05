@@ -1,7 +1,7 @@
 \chapter[Fundamentação Teórica]{Fundamentação Teórica}
 \label{fundamentacao}
 
-Este capítulo apresenta os conceitos necessários para compreender a formulação e a comparação experimental desenvolvidas neste trabalho. A Seção~\ref{sec:tsp} revisa o TSP clássico e sua dificuldade computacional. A Seção~\ref{sec:custo-dependente} discute custos dependentes da sequência e penalidades angulares. A Seção~\ref{sec:drone-tsp} situa o problema no contexto de roteamento com drones. As Seções~\ref{sec:exaustiva} a~\ref{sec:aco} apresentam os métodos de otimização usados. A Seção~\ref{sec:lowerbound} descreve a ideia de limitantes inferiores por relaxação, e a Seção~\ref{sec:comparativos} sintetiza estudos comparativos relacionados.
+Este capítulo apresenta os conceitos necessários para compreender a formulação e a comparação experimental desenvolvidas neste trabalho. A \autoref{sec:tsp} revisa o TSP clássico e sua dificuldade computacional. A \autoref{sec:custo-dependente} discute custos dependentes da sequência e penalidades angulares. A \autoref{sec:drone-tsp} situa o problema no contexto de roteamento com drones. \autoref{sec:exaustiva} a \autoref{sec:aco} apresentam os métodos de otimização usados. A \autoref{sec:lowerbound} descreve a ideia de limitantes inferiores por relaxação, e a \autoref{sec:comparativos} sintetiza estudos comparativos relacionados.
 
 \section{Problema do Caixeiro Viajante}
 \label{sec:tsp}
@@ -10,7 +10,7 @@ O Problema do Caixeiro Viajante define a busca por um ciclo de menor custo que v
 
 Em uma instância com $n$ nós, fixada a origem, existem $(n-1)!$ permutações possíveis para a ordem de visita. A busca exaustiva é, portanto, apropriada apenas para instâncias pequenas. Para instâncias maiores, heurísticas e meta-heurísticas buscam soluções de boa qualidade sem percorrer todo o espaço de soluções. A heurística Lin--Kernighan, por exemplo, tornou-se uma referência histórica para o TSP por explorar trocas de arestas de forma eficiente \cite{lin1973effective}.
 
-O TSP clássico costuma ser representado por uma matriz de custos $D$, na qual $d_{ij}$ indica o custo de ir diretamente do nó $i$ ao nó $j$. Essa representação pressupõe que o custo de uma aresta independe do caminho percorrido antes dela. O problema deste trabalho rompe essa hipótese: a transição de $j$ para $k$ depende também do nó $i$ visitado imediatamente antes de $j$.
+O TSP clássico costuma ser representado por uma matriz de custos $D$, na qual $d_{ij}$ indica o custo de ir diretamente do nó $i$ ao nó $j$. Essa representação pressupõe que o custo de uma aresta independe do caminho percorrido antes dela. O problema deste trabalho rompe essa hipótese: a transição de $j$ para $k$ depende também do nó $i$ visitado imediatamente antes de $j$. Nesse aspecto, o TSP-SD-ATP pode ser enquadrado como instância de duas classes bem estudadas: o TSP assimétrico \cite{oncan2009comparative} e o TSP dependente do tempo \cite{kinable2017hybrid}.
 
 \section{Custos Dependentes da Sequência}
 \label{sec:custo-dependente}
@@ -57,7 +57,7 @@ A busca exaustiva enumera todas as permutações dos pontos de interesse e avali
 \section{Algoritmos Genéticos}
 \label{sec:ga}
 
-Algoritmos Genéticos são meta-heurísticas populacionais inspiradas em seleção, recombinação e mutação de indivíduos \cite{holland1975adaptation,goldberg1989genetic}. Em problemas de permutação como o TSP, a representação da solução e o operador de cruzamento são decisivos. Potvin \cite{potvin1996ga} revisou operadores de crossover para TSP, incluindo operadores que preservam ordem relativa, posição absoluta ou arestas, e Nagata \cite{nagata2006eax} propôs o operador EAX, referência de alta qualidade para recombinação baseada em arestas.
+Algoritmos Genéticos são meta-heurísticas populacionais inspiradas em seleção, recombinação e mutação de indivíduos \cite{holland1975adaptation,goldberg1989genetic}. Em problemas de permutação como o TSP, a representação da solução e o operador de cruzamento são decisivos. Potvin \cite{potvin1996ga} revisou operadores de crossover para TSP, incluindo operadores que preservam ordem relativa, posição absoluta ou arestas, e Nagata \cite{nagata2013eax} propôs o operador EAX, referência de alta qualidade para recombinação baseada em arestas.
 
 Na família de operadores por ordem, o OX preserva a sequência relativa de parte dos pontos e produz filhos que continuam sendo permutações válidas. Essa propriedade é útil quando a função objetivo depende da ordem de visita. Neste trabalho, o GA usa permutação direta dos pontos de interesse, seleção por torneio, crossover OX, mutação por troca e elitismo.
 
@@ -88,6 +88,8 @@ c'_{j,k} = \min_i c_{i,j,k}.
 \end{equation}
 
 Como cada entrada reduzida escolhe o menor custo possível entre todos os nós anteriores, a matriz $C'$ não superestima a transição correspondente no problema original. Resolver o problema de designação nessa matriz por algoritmo Hungarian gera um limitante inferior. Esse valor não é necessariamente uma rota factível, pois a solução relaxada pode conter subtours e não preserva todo o contexto angular da sequência.
+
+A referência canônica para limitantes inferiores no TSP é a relaxação de Held--Karp \cite{heldkarp1970traveling,heldkarp1971traveling}, que utiliza árvores geradoras mínimas ponderadas por multiplicadores lagrangeanos. O limitante de Held--Karp é em média mais apertado que o AP (<1\% do ótimo para instâncias euclidianas \cite{johnson1996asymptotic}), e algoritmos eficientes para calculá-lo continuam a ser desenvolvidos \cite{righini2021efficient}. Para o TSP-SD-ATP, entretanto, a adaptação da relaxação de Held--Karp exigiria lidar com o tensor tridimensional $c_{i,j,k}$ e com três índices na penalidade lagrangeana, o que está fora do escopo desta monografia. A relaxação AP, embora mais frouxa, é direta de implementar a partir da redução 3D$\rightarrow$2D e serve como referência inferior para as instâncias grandes.
 
 \section{Estudos Comparativos}
 \label{sec:comparativos}
