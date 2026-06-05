@@ -81,7 +81,7 @@ Escrever em português acadêmico, com foco no cenário de patrulha com drones e
 | Figuras/tabelas mínimas de resultados | Criadas antes de Experimentos | `scripts/`, `monografia/figs/` |
 | Protocolo estatístico final | Fechado antes de Experimentos | [[analysis-methodology]] |
 | Pipeline de métricas TeX auditáveis | Criado antes de Experimentos, Resumo, Abstract e Conclusão | `scripts/gerar-metricas-monografia.py`, `monografia/generated/` |
-| Gate formal anti-alucinação | Executado antes da versão final e antes de qualquer entrega para banca | `scripts/check-monografia.sh`, `vault/writing/planejamento/citation-safety.md`, [[claim-evidence-matrix]] |
+| Gate formal anti-alucinação | Executado antes da versão final e antes de qualquer entrega para banca | `scripts/check-monografia.sh`, `vault/writing/planejamento/citation-safety.md`, [[claims.base]], `vault/claims/` |
 | Auditoria bibliográfica pós-council | Referências centrais com PDF/nota validada; periféricas classificadas como download manual, análise posterior ou descarte | `vault/papers/index.md`, seção [[#Correções Bibliográficas Pós-Auditoria]] |
 | **Resumo + Abstract** | Escritos antes da introdução, revisados por último | [[validacao-modelo-facom]] |
 | **Capa + Folha de Rosto** | Dados preenchidos antes da compilação final | autor, orientador, título, data |
@@ -176,6 +176,20 @@ A correção de [[muthanna2022uav]] revelou que o artigo **não trata de TSP nem
 | Muthanna 2022 e IoT/5G | Após P44, decidir se [[muthanna2022uav]] permanece como referência contextual ou sai do escopo | Média para Fundamentação |
 | Held-Karp 1971 vs 1962 | Concluído em P43: nota de área, nota Held-Karp 1970, auditoria e Seção 2.8 distinguem 1970/1971 (1-tree, ascent method, branch-and-bound) de 1962 (DP `O(n²2ⁿ)`) | Resolvido para Fundamentação (Seção 2.8) |
 
+### Conciliação entre `vault/papers/` e `vault/papers/summaries/`
+
+As notas em `vault/papers/` são a versão integrada ao restante do vault: contêm wikilinks, tags estruturadas, metadados, classificação editorial e conexões com áreas, capítulos e claims. As notas em `vault/papers/summaries/` parecem conter resumos mais completos para parte das referências, mas ainda não estão conectadas ao grafo principal. A consolidação deve preservar `vault/papers/` como destino canônico e usar `summaries/` como fonte auxiliar de conteúdo.
+
+O processo deve ocorrer em duas etapas separadas:
+
+| Etapa | Objetivo | Saída esperada |
+|---|---|---|
+| Inventário de diferenças | Comparar cada par `vault/papers/<chave>.md` e `vault/papers/summaries/<chave>.md`, registrando diferenças de conteúdo: tese central, resumo, contribuições, métodos, resultados, limitações, citações-chave, relevância para o TCC e divergências factuais. Não alterar as notas nessa etapa. | Nota `vault/writing/auditorias/comparacao-papers-summaries.md` com uma seção por paper, indicando conteúdo ausente em `vault/papers/`, conteúdo conflitante e sugestão preliminar de ação. |
+| Decisão e incorporação assistida | Para cada diferença documentada, perguntar ao usuário qual decisão tomar antes de alterar a nota canônica: incorporar, substituir, manter ambas as versões, descartar, marcar como conflito ou pedir validação no PDF. | Atualizações controladas em `vault/papers/`, registro das decisões na nota de auditoria e manutenção dos wikilinks/metadados já usados pelo vault. |
+
+> [!warning] Regra de segurança
+> Não copiar automaticamente conteúdo de `summaries/` para `vault/papers/`. Quando houver conflito de interpretação, número, autoria, ano, DOI, resultado experimental ou relevância para o TCC, a decisão deve passar pelo usuário ou por validação no PDF original.
+
 ## Rastreabilidade de Valores Quantitativos
 
 Os valores quantitativos derivados de `src/data/results/` não devem permanecer copiados manualmente na monografia. A meta é que todo número experimental, estatístico ou tabular usado para sustentar uma conclusão seja gerado por scripts determinísticos auditáveis e incorporado ao LaTeX por macros ou fragmentos `.tex`.
@@ -263,7 +277,7 @@ O comando deve retornar:
 | Figuras e tabelas | Verificar se todo `\includegraphics` e todo `\input` existe; quando gerado, conferir origem em `scripts/`, `src/web/` ou `monografia/generated/manifest.json` |
 | Métricas | Rodar `scripts/gerar-metricas-monografia.py --check`; falhar se `monografia/generated/` estiver ausente ou desatualizado |
 | Números hardcoded | Alertar ou falhar quando Resumo, Abstract, Experimentos ou Conclusão contiverem números experimentais literais que deveriam vir de macros |
-| Claims bloqueados | Procurar padrões associados a claims `Bxx` da [[claim-evidence-matrix]], como ótimo em 100\%, gaps antigos, tempos antigos e superioridade universal |
+| Claims bloqueados | Procurar padrões associados a claims `Bxx` em [[claims.base]] e `vault/claims/B*.md`, como ótimo em 100\%, gaps antigos, tempos antigos e superioridade universal |
 | Placeholders | Falhar em conteúdo de template, texto incompleto ou marcadores de revisão não resolvidos |
 
 ### Política de Segurança de Citações
@@ -395,6 +409,7 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 **Entradas obrigatórias:** arquivos em `src/data/`, `src/data/results/`, código/scripts que geram resultados e figuras; depois [[experimentos]], [[resultados]], [[analysis-methodology]], [[experiment-pipeline]], figuras em `monografia/figs/` e fragmentos gerados em `monografia/generated/`.
 
 **Estrutura sugerida:**
+
 - **4.1 Método para Avaliação** (conforme modelo FACOM): instâncias e sementes; parâmetros dos métodos; métricas de avaliação (gap vs AP bound, tempo); baseline brute-force (n ≤ 10); lower bound AP como referência para instâncias grandes; plataforma e ambiente computacional
 - **4.2 Experimentos**: qualidade das soluções com gap vs AP bound; tempo computacional; trade-off qualidade-tempo; curvas de convergência
 - **4.3 Avaliação dos Resultados**: análise estatística (Friedman + Nemenyi + Wilcoxon); discussão por método; visualização de rotas selecionadas; ameaças à validade
@@ -423,7 +438,7 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 
 | ID | Tarefa | Saída esperada | Prioridade |
 |---|---|---|---|
-| P1 | Criar matriz claim-evidência | Nota `vault/writing/planejamento/claim-evidence-matrix.md` | Concluída |
+| P1 | Criar sistema de claims rastreáveis | Notas individuais em `vault/claims/`, sumário em `vault/bases/claims.base` e guia de schema em `vault/writing/planejamento/claim-evidence-matrix.md` | Concluída |
 | P2 | Atualizar índice de papers | `vault/papers/index.md` com contagem e categorias atuais | Concluída |
 | P3 | Criar glossário terminológico | Nota `vault/writing/planejamento/glossario-monografia.md` | Concluída |
 | P4 | Fechar protocolo estatístico | Validado em [[analysis-methodology]]; `scripts/analise-estatistica.py` corrigido; `cd-diagram.{svg,png}` regenerado | Concluída |
@@ -446,7 +461,7 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P21 | Adicionar verificação de atualização dos artefatos gerados | Modo `--check` ou comando equivalente falha se `monografia/generated/` estiver desatualizado em relação aos dados/scripts | Concluída |
 | P22 | Criar política de segurança de citações | Nota `vault/writing/planejamento/citation-safety.md` classificando cada referência citada como `segura`, `condicional`, `frágil` ou `bloqueada` | Concluída — 35 chaves classificadas: 17 seguras, 10 condicionais, 7 frágeis, 0 bloqueadas. Plano de ação com 16 itens por criticidade. Gate de segurança definido. |
 | P23 | Implementar gate anti-alucinação | Script `scripts/check-monografia.sh` ou alvo `make check-monografia` validando LaTeX/BibTeX, citações, figuras, placeholders, métricas, claims bloqueados e números hardcoded | Concluída |
-| P24 | Vincular claims fortes ao texto | Comentários `% claim: <ID>` ou mecanismo equivalente nos trechos fortes da monografia, conectando `.tex` à [[claim-evidence-matrix]] | Pendente |
+| P24 | Vincular claims fortes ao texto | Comentários `% claim: <ID>` ou mecanismo equivalente nos trechos fortes da monografia, conectando `.tex` às notas individuais em `vault/claims/` e ao sumário [[claims.base]] | Pendente |
 | P25 | Gerar relatório final de validação anti-alucinação | Nota `vault/writing/planejamento/validacao-anti-alucinacao.md` com resultado PASS/WARN/FAIL, citações, claims, números, artefatos e decisões humanas | Pendente |
 | P26 | Adicionar BibTeX Held-Karp e revisar Seção 2.8 (Lower Bounds) | BibTeX para heldkarp1970traveling (DOI: 10.1287/opre.18.6.1138), heldkarp1971traveling, johnson1996asymptotic, kinable2017hybrid, righini2021efficient, valenzuela1997estimating; revisar Seção 2.8 para citar Held-Karp como referência canônica e justificar AP vs HK para TSP-SD-ATP | Concluída — 5 entradas BibTeX adicionadas, Seção 2.8 expandida com parágrafo Held-Karp + justificativa AP |
 | P27 | Corrigir documentação ACO para Ant System (não MMAS) | Código (`src/optimization/aco/ant.go`) implementa Ant System (todas as formigas depositam, sem bounds). Corrigir nota `stutzle2000mmas.md` (remover afirmação falsa) e ajustar texto da fundamentação para documentar Ant System 3D, citando apenas Dorigo (1996, 1997). OU implementar bounds MMAS no código | Concluída |
@@ -467,6 +482,9 @@ Estes claims podem orientar a escrita, mas devem ser verificados contra os dados
 | P42 | Aplicar correções da validação de resumos 2026-06-04 | 8 correções aplicadas em `vault/papers/` (dorigo1997ant, bean1994genetic, ahmed2024receding, muthanna2022uav, heldkarp1971traveling, aggarwal2000angular, johnson1996asymptotic, nagata2006eax). BibTeX atualizado (nagata2013eax, aggarwal1999angular) e citação em `monografia/cap_fundamentacao/fundamentacao.tex:60` corrigida. Detalhes na seção [[#Correções Pós-Validação de Resumos 2026-06-04]] | Concluída |
 | P43 | Corrigir erro de atribuição Held-Karp 1971 × 1962 em `vault/areas/lower-bounds.md` | Correção propagada para `vault/areas/lower-bounds.md`, `vault/papers/heldkarp1970traveling.md`, `vault/writing/auditorias/validacao-resumos.md` e `monografia/cap_fundamentacao/fundamentacao.tex`. O texto agora distingue 1970/1971 (1-tree, relaxação lagrangeana, ascent method, branch-and-bound) de Held-Karp 1962 (DP `O(n²2ⁿ)`). Busca textual não encontrou atribuição problemática ativa remanescente; `scripts/check-monografia.sh` passou; validação registrada em `.agents/council/2026-06-05-P43*.md`. | Concluída |
 | P44 | Decidir destino de [[muthanna2022uav]] no escopo da monografia | Após correção da nota em P42, o artigo foi reclassificado como de **baixa relevância** para TSP/bio-inspired (trata de IoT/5G com C-LSTM + A3C + Mayfly). Decidir entre: (a) remover da lista de referências centrais, mantendo apenas menção contextual em Fundamentação; (b) manter como referência de cenário de aplicação UAV em emergência, sem claims sobre TSP; (c) substituir por referência mais alinhada ([[rajan2022routing]] já cobre o aspecto de patrulha UAV). | Pendente (média) |
+| P45 | Inventariar diferenças entre `vault/papers/` e `vault/papers/summaries/` | Auditoria criada em `vault/writing/auditorias/comparacao-papers-summaries.md`: 49 summaries pareados com 49 notas canônicas, três notas canônicas praticamente vazias priorizadas, campos faltantes e divergências DOI/ano/título inventariados, recomendações preliminares para P46 registradas. Validação council: `.agents/council/2026-06-05-P45*.md`, com rechecagem PASS após correções. | Concluída |
+| P46 | Incorporar diferenças com decisão do usuário | Auditoria P46 consumida em `vault/writing/auditorias/comparacao-papers-summaries.md` (seção Decisoes P46). Três notas canônicas vazias enriquecidas (`aggarwal2000angular`, `balas1985branch`, `lysgaard1999cluster`). Conflitos bibliográficos corrigidos: DOI Aggarwal (`10.1137/S0097539796312721`), DOI Muthanna (`10.1016/j.comcom.2022.04.029`), título Chandra (sem "Problem"). BibTeX DeepACO alinhado à nota (Ye et al.); entradas Balas e Lysgaard adicionadas. Status/tags/índice sincronizados. Validação council: `.agents/council/2026-06-05-P46*.md`, PASS unanime na rechecagem. | Concluída |
+| P47 | Vincular claims a código, dados e literatura no vault | 48 claims (A01-A13, C01-C05, E01-E22, I01-I06, M01-M06) vinculados a evidências: `source_refs` (código Go com file+lines+describes), `data_refs` (padrões de dados com pattern+scope+metric), `literature_pdfs` (PDFs+notas). Seções de corpo: `Evidência no Código`, `Dados de Suporte`, `Cadeia de Evidência`, `Literatura de Suporte`. Caminhos relativos validados via `realpath`. B-series (9 bloqueados) excluído propositalmente. Validação council: `.agents/council/2026-06-05-claims-consensus.md`, WARN corrigido (bugs de path prefix). | Concluída |
 
 ## Protocolo Para Cada Agente Escritor
 
@@ -482,7 +500,7 @@ Antes de escrever:
 8. Atualizar ou sinalizar qualquer nota do `vault/` que não reflita código ou dados atuais.
 9. Conferir se cada referência citada está classificada como segura ou foi baixada/analisada manualmente após a auditoria bibliográfica.
 10. Conferir se valores experimentais, estatísticos ou tabulares são macros/fragmentos gerados, não cópias manuais.
-11. Conferir se claims fortes têm ID da [[claim-evidence-matrix]] ou evidência explícita indicada no trecho.
+11. Conferir se claims fortes têm ID existente em `vault/claims/`/[[claims.base]] ou evidência explícita indicada no trecho.
 
 Durante a escrita:
 
@@ -558,9 +576,10 @@ A monografia estará pronta para escrita definitiva quando estas condições for
 
 ## Próxima Ação Recomendada
 
-**Prioridade imediata** — saneamento de notas da validação 2026-06-04 (ver seção [[#Correções Pós-Validação de Resumos 2026-06-04]]):
+**Prioridade imediata** — saneamento bibliográfico antes de fortalecer a escrita:
 
 - **P44** (média): decidir destino de [[muthanna2022uav]] — análise pós-correção indica que o artigo **não trata de TSP nem de meta-heurísticas bio-inspiradas clássicas** (C-LSTM + A3C + Mayfly em IoT/5G). Considerar remover da lista de referências centrais ou restringir a menção puramente contextual em Fundamentação.
-- Re-executar `scripts/check-monografia.sh` após P44 para garantir que a seleção bibliográfica continue consistente.
+- **P46** (alta): consumir a auditoria [[comparacao-papers-summaries]] com decisão explícita por paper, começando por [[aggarwal2000angular]], [[balas1985branch]], [[lysgaard1999cluster]], conflitos de DOI/ano e notas diretamente usadas na monografia.
+- Re-executar `scripts/check-monografia.sh` após P44/P46 se houver alteração em citações, referências centrais ou notas que sustentem claims.
 
-**Em seguida** — manter o plano original: **P14–P15** (apêndices e formatação), **P36** (4 chaves BibTeX críticas que bloqueiam compilação) e as demais pendências bibliográficas (**P18**, **P26**, **P28**, **P30**, **P31**, **P33**, **P34**). Escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão. Durante a escrita dos capítulos, aplicar **P37** (`\ac{}`), **P38** (`\autoref{}`) e **P39** (`alineas`). Por último, **P11** (Resumo/Abstract), **P24** (vincular claims), **P25** (relatório anti-alucinação), **P40** (ficha catalográfica) e **P41** (limpeza de preâmbulo).
+**Em seguida** — pendências ainda abertas: **P14** (apêndices), **P18** (bibliografia mínima por capítulo), **P24** (vincular claims ao texto `.tex`), **P25** (relatório anti-alucinação), **P33** (literatura de tuning), **P34** (PSO), **P37** (`\ac{}`), **P39** (`alineas`), **P40** (ficha catalográfica) e **P41** (limpeza de preâmbulo). Escrever os capítulos na ordem: Proposta → Experimentos → Fundamentação → Introdução → Conclusão. Por último, **P11** (Resumo/Abstract).

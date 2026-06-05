@@ -10,6 +10,7 @@ formulas:
   estado: if(validation_status, validation_status, status)
   forca: if(strength, strength, "")
   secao: if(monografia_section, monografia_section, "")
+  tipo: if(claim_type, claim_type, type)
 properties:
   file.name:
     displayName: Nota
@@ -18,6 +19,8 @@ properties:
   claim:
     displayName: Claim
   claim_type:
+    displayName: Tipo
+  formula.tipo:
     displayName: Tipo
   formula.estado:
     displayName: Validacao
@@ -31,23 +34,61 @@ properties:
     displayName: Secao
   last_verified:
     displayName: Ultima Verificacao
+  usage_guidance:
+    displayName: Uso
+  rationale:
+    displayName: Motivo
+  action_required:
+    displayName: Acao Necessaria
 views:
   - type: table
-    name: Claims - Registro
+    name: Sumario de Claims
+    filters:
+      and:
+        - file.inFolder("claims")
+        - type == "claim"
     order:
       - file.name
       - claim_id
+      - claim
+      - formula.tipo
+      - formula.estado
+      - formula.forca
+      - primary_evidence
+      - vault_support
+      - formula.secao
+      - usage_guidance
+      - last_verified
+  - type: table
+    name: Guia do Schema
+    filters:
+      and:
+        - type == "claim-registry"
+    order:
+      - file.name
+      - title
+      - formula.estado
+      - last_verified
+  - type: table
+    name: Todos os Registros
+    order:
+      - file.name
+      - claim_id
+      - claim
       - claim_type
       - formula.estado
       - formula.forca
       - primary_evidence
       - vault_support
       - formula.secao
+      - usage_guidance
       - last_verified
   - type: table
     name: Requer Validacao
     filters:
       and:
+        - file.inFolder("claims")
+        - type == "claim"
         - formula.estado != "validado"
     order:
       - file.name
@@ -57,16 +98,37 @@ views:
       - formula.estado
       - formula.forca
       - primary_evidence
+      - usage_guidance
       - last_verified
   - type: table
     name: Claims Experimentais
     filters:
       and:
+        - file.inFolder("claims")
+        - type == "claim"
         - claim_type == "experimental"
     order:
       - file.name
       - claim_id
       - claim
       - formula.estado
+      - primary_evidence
+      - formula.secao
+      - usage_guidance
+  - type: table
+    name: Claims Bloqueados
+    filters:
+      and:
+        - file.inFolder("claims")
+        - type == "claim"
+        - claim_type == "bloqueado"
+    order:
+      - file.name
+      - claim_id
+      - claim
+      - formula.estado
+      - formula.forca
+      - rationale
+      - action_required
       - primary_evidence
       - formula.secao

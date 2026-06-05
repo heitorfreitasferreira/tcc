@@ -19,7 +19,7 @@ tags:
 # Claim: 
 
 > [!warning] Uso restrito
-> Use notas individuais de claim apenas para claims complexos ou de alto risco. A fonte canônica continua sendo [[claim-evidence-matrix]].
+> Cada claim deve viver em uma nota individual e aparecer em [[claims.base]]. Use [[claim-evidence-matrix]] apenas como guia de schema e protocolo.
 
 ## Enunciado
 
