@@ -30,6 +30,13 @@ methods:
 role: revisao
 reading_status: resumo-lido
 validation_status: nao-validado
+pdf_status: integro
+chapters:
+- fundamentacao
+claim_support: []
+aliases:
+- MFSTSP
+- Multiple Flying Sidekick Traveling Salesman Problem
 ---
 
 ## Resumo
@@ -42,6 +49,18 @@ Publicado na Networks (2021). Estuda o MFSTSP (Flying Sidekick TSP with Multiple
 - Comparação extensiva entre formulações e variantes do problema
 - Demonstra vantagens do uso de múltiplos drones em relação ao single-drone
 - Valid inequalities adaptadas para o caso multi-drone
+
+## Evidência / Resultado Relevante
+
+- O artigo compara quatro formulações MILP para MFSTSP e destaca a necessidade de modelar explicitamente a ordem de lançamento e recolhimento dos drones.
+- O summary registra que ignorar o escalonamento de operações pode produzir soluções 5--20% mais baratas, porém infactíveis; validar no PDF antes de citar esse intervalo como número no texto final.
+- O uso de múltiplos drones reduz o custo em relação ao caso com um drone, mas os experimentos são pequenos e voltados a entrega cooperativa caminhão-drone.
+
+## Limitações de Uso
+
+- O problema estudado é entrega com caminhão e múltiplos drones, não patrulha com um drone.
+- As instâncias avaliadas são pequenas; a nota serve para contextualização de variantes, não para comparar com os experimentos do TCC.
+- Claims numéricos sobre gaps e tempos devem ser revalidados no PDF antes de irem para a monografia.
 
 ## Relevância para o TCC
 

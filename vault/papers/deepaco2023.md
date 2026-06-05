@@ -31,6 +31,15 @@ methods:
 role: revisao
 reading_status: resumo-lido
 validation_status: nao-validado
+pdf_status: integro
+areas:
+- aco
+- neural-combinatorial-optimization
+chapters:
+- conclusao
+claim_support: []
+aliases:
+- DeepACO
 ---
 
 ## Resumo
@@ -43,6 +52,18 @@ Publicado no NeurIPS 2023. Propõe o DeepACO, um framework genérico que utiliza
 - Único modelo neural + único conjunto de hiperparâmetros funcionam em 8 problemas diferentes
 - Supera ACO padrão e compete com métodos NCO específicos de problema
 - Código aberto disponível
+
+## Evidência / Resultado Relevante
+
+- Avaliação em oito problemas de otimização combinatória, incluindo TSP, CVRP, OP, PCTSP, SOP, SMTWTP, RCPSP e MKP.
+- O método aprende uma matriz heurística com GNN e a injeta na construção de soluções ACO, preservando o mecanismo de feromônio.
+- O summary registra menor sensibilidade a hiperparâmetros do que ACO padrão; usar esse ponto apenas como motivação para trabalhos futuros, não como comparação direta com o ACO implementado no TCC.
+
+## Limitações de Uso
+
+- Referência periférica para fronteira de pesquisa, não para justificar resultados experimentais do projeto.
+- O modelo neural aprende heurísticas estáticas e depende de componentes de busca local para melhor desempenho.
+- Não confundir DeepACO com a implementação atual do repositório, que usa Ant System sem aprendizado neural.
 
 ## Relevância para o TCC
 

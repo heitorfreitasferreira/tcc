@@ -1,10 +1,15 @@
 filters:
   and:
-    - file.hasTag("siglas")
+    - file.inFolder("siglas")
+    - file.ext == "md"
+    - file.hasTag("tipo/sigla")
 formulas:
-  tem_uso: if(ocorrencias_ac > 0, "sim", if(ocorrencias_texto > 0, "texto", "nao"))
+  tem_uso: if(ocorrencias_ac > 0, "\\ac", if(ocorrencias_texto > 0, "texto", "nao"))
+  total_ocorrencias: if(ocorrencias_ac, ocorrencias_ac, 0) + if(ocorrencias_texto, ocorrencias_texto, 0)
 properties:
   file.name:
+    displayName: Nota
+  sigla:
     displayName: Sigla
   definicao:
     displayName: Definicao
@@ -12,20 +17,24 @@ properties:
     displayName: Incluir
   formula.tem_uso:
     displayName: Em Uso
+  formula.total_ocorrencias:
+    displayName: Total
   ocorrencias_ac:
-    displayName: 📋 \ac
+    displayName: Usos \ac
   ocorrencias_texto:
-    displayName: 📝 Texto
+    displayName: Texto
   arquivos_ac:
     displayName: Arquivos
 views:
   - type: table
-    name: Todas as Siglas
+    name: Sumario de Siglas
     order:
+      - sigla
       - file.name
       - definicao
       - incluir
       - formula.tem_uso
+      - formula.total_ocorrencias
       - ocorrencias_ac
       - ocorrencias_texto
       - arquivos_ac
@@ -35,9 +44,11 @@ views:
       and:
         - incluir == "sim"
     order:
+      - sigla
       - file.name
       - definicao
       - formula.tem_uso
+      - formula.total_ocorrencias
       - ocorrencias_ac
       - ocorrencias_texto
       - arquivos_ac
@@ -48,9 +59,11 @@ views:
         - incluir != "sim"
         - incluir != "nao"
     order:
+      - sigla
       - file.name
       - definicao
       - formula.tem_uso
+      - formula.total_ocorrencias
       - ocorrencias_ac
       - ocorrencias_texto
   - type: table
@@ -59,6 +72,8 @@ views:
       and:
         - incluir == "nao"
     order:
+      - sigla
       - file.name
       - definicao
       - formula.tem_uso
+      - formula.total_ocorrencias

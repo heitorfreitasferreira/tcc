@@ -189,5 +189,6 @@ O claim deve ser **qualificado**, não absoluto. Três camadas, da mais segura p
 - [[dorigo1996ant]] — Ant System original (feromônio 2D)
 - [[dorigo2005acotheory]] — abstração de componentes de solução
 - [[kinable2017hybrid]] — SDTSP resolvido com MDDs (não ACO)
-- [[claim-evidence-matrix]] — claims A07 e I01
+- [[claims.base]] — claims A07 e I01
+- [[A07]], [[I01]] — claims individuais relacionados
 - [[roadmap-monografia]] — P35 e P32

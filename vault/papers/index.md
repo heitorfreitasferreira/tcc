@@ -5,7 +5,7 @@ tags:
 - tipo/index
 - tipo/paper
 status: atualizado
-updated: 2026-06-03
+updated: 2026-06-05
 pdf-script: scripts/download-pdfs.sh
 type: paper
 role: revisao
@@ -14,20 +14,20 @@ validation_status: nao-validado
 
 # Catálogo de Artigos — Base de Conhecimento
 
-61 artigos fichados no vault.
+62 artigos fichados no vault.
 
 ## Status Geral
 
 | Métrica | Valor |
 |---|---:|
-| Notas no vault | 61 |
-| **PDF íntegro** | **43 (70.5%)** |
-| PDF corrompido (`corrupted/`) | 5 |
-| Sem PDF local | 13 |
-| Notas **lido/lido-parcial** (com inventário) | 43 |
-| Notas **pendente** (sem resumo) | **18** |
-| Com BibTeX na monografia | 50 |
-| Sem BibTeX | 11 |
+| Notas no vault | 62 |
+| **PDF íntegro** | **51 (82.3%)** |
+| PDF corrompido (`corrupted/`) | 1 |
+| Sem PDF local | 10 |
+| Notas **lido/lido-parcial** (com inventário) | 50 |
+| Notas **pendente** (sem resumo) | **11** |
+| Com BibTeX na monografia | 53 |
+| Sem BibTeX | 9 |
 
 > [!note] Critério de leitura
 > **`status:` no frontmatter** = `pendente` (sem resumo), `lido-parcial` ou `lido` (seção `## Resumo` com ≥ 40 caracteres). Índice e notas usam o mesmo valor.
@@ -45,7 +45,7 @@ validation_status: nao-validado
 | 4 | [[applegate2006traveling]] | 2006 | ✅ | — | lido | 5 | TSP Clássico | tsp |
 | 5 | [[bock2025survey]] | 2025 | ✅ | — | lido | 3 | TSP Clássico | tsp tsp-variants warehousing complexity |
 | 6 | [[winter2002modeling]] | 2002 | ✅ | — | lido | 0 | TSP Clássico | routing |
-| 7 | [[aggarwal2000angular]] | 2000 | ❌ | 🏛️ | pendente | 4 | TSP Clássico | tsp, angular-cost, turn-penalty, approximation |
+| 7 | [[aggarwal2000angular]] | 1999 | ✅ | — | resumo-lido | 4 | TSP Clássico | tsp, angular-cost, turn-penalty, approximation |
 | 8 | [[oliver1987crossover]] | 1987 | ✅ | — | lido-parcial | 4 | GA | ga tsp |
 | 9 | [[bean1994genetic]] | 1994 | ✅ | — | lido-parcial | 0 | GA | ga metaheuristic |
 | 10 | [[potvin1996ga]] | 1996 | ✅ | — | lido-parcial | 4 | GA | ga tsp survey |
@@ -69,21 +69,22 @@ validation_status: nao-validado
 | 28 | [[dorigo2005acotheory]] | 2005 | ✅ | — | lido | 4 | ACO | aco survey theory |
 | 29 | [[blum2005acointro]] | 2005 | ✅ | — | lido-parcial | 5 | ACO | aco survey |
 | 30 | [[wang2021ant]] | 2021 | ✅ | — | lido | 0 | ACO | aco tsp metaheuristic |
-| 31 | [[deepaco2023]] | 2023 | ⚠️ | 🏛️ | pendente | 4 | ACO | aco metaheuristic tsp deep-learning |
+| 31 | [[deepaco2023]] | 2023 | ✅ | — | resumo-lido | 4 | ACO | aco metaheuristic tsp deep-learning |
 | 32 | [[ppaco2024]] | 2024 | ✅ | — | lido-parcial | 4 | ACO | aco metaheuristic rl |
 | 33 | [[neufaco2025]] | 2025 | ✅ | — | lido | 5 | ACO | aco metaheuristic tsp deep-learning |
 | 34 | [[gpaco2025]] | 2025 | ✅ | — | lido | 4 | ACO | aco metaheuristic gp |
 | 35 | [[murray2015flying]] | 2015 | ✅ | — | lido | 5 | Drone | tsp drone metaheuristic |
 | 36 | [[agatz2018optimization]] | 2018 | ✅ | — | lido | 5 | Drone | tsp drone metaheuristic |
-| 37 | [[dellamico2021multiple]] | 2021 | ⚠️ | 🏛️ | pendente | 4 | Drone | tsp drone |
-| 38 | [[dellamico2022exact]] | 2022 | ⚠️ | 🏛️ | pendente | 4 | Drone | tsp drone |
+| 37 | [[dellamico2021multiple]] | 2021 | ✅ | — | resumo-lido | 4 | Drone | tsp drone |
+| 38 | [[dellamico2022exact]] | 2022 | ✅ | — | resumo-lido | 4 | Drone | tsp drone |
 | 39 | [[freitas2020vns]] | 2020 | ✅ | — | lido | 4 | Drone | tsp drone |
 | 40 | [[rajan2022routing]] | 2022 | ✅ | — | lido | 5 | Drone | drone routing |
 | 41 | [[ahmed2024receding]] | 2024 | ❌ | 🏛️ | pendente | 3 | Drone | drone metaheuristic routing |
-| 42 | [[vanhove2012route]] | 2012 | ⚠️ | 🏛️ | pendente | 0 | Drone | routing |
+| 42 | [[vanhove2012route]] | 2012 | ✅ | — | resumo-lido | 0 | Drone | routing |
 | 43 | [[heldkarp1970traveling]] | 1970 | ✅ | — | lido | 5 | Lower Bounds | tsp, lower-bound, lagrangean |
-| 44 | [[heldkarp1971traveling]] | 1971 | ❌ | 🏛️ | pendente | 5 | Lower Bounds | tsp, lower-bound, lagrangean |
-| 45 | [[balas1985branch]] | 1985 | ❌ | 🏛️ | pendente | 5 | Lower Bounds | tsp, atsp, lower-bound, branch-and-bound, survey |
+| 44 | [[heldkarp1971traveling]] | 1971 | ✅ | — | resumo-lido | 5 | Lower Bounds | tsp, lower-bound, lagrangean |
+| 45 | [[balas1985branch]] | 1983 | ✅ | — | resumo-lido | 5 | Lower Bounds | tsp, atsp, lower-bound, branch-and-bound, survey |
+| 45a | [[lysgaard1999cluster]] | 1999 | ✅ | — | resumo-lido | 4 | Lower Bounds | atsp, lower-bound, branch-and-bound, clustering |
 | 46 | [[fischetti1992additive]] | 1992 | ❌ | 🏛️ | pendente | 5 | Lower Bounds | atsp, lower-bound, additive-bounding |
 | 47 | [[johnson1996asymptotic]] | 1996 | ✅ | — | lido | 5 | Lower Bounds | tsp, lower-bound, held-karp, experimental |
 | 48 | [[valenzuela1997estimating]] | 1997 | ❌ | 🏛️ | pendente | 4 | Lower Bounds | tsp, lower-bound, held-karp, lagrangean |
@@ -112,32 +113,25 @@ validation_status: nao-validado
 | 🔍 | Busca manual |
 | pendente / lido-parcial / lido | Igual ao frontmatter da nota |
 
-## PDFs Íntegros (43)
+## PDFs Íntegros (51)
 
-[[garey1979computers]] • [[lin1973effective]] • [[applegate2006traveling]] • [[bock2025survey]] • [[winter2002modeling]] • [[oliver1987crossover]] • [[bean1994genetic]] • [[potvin1996ga]] • [[larranaga1999ga]] • [[holland1975adaptation]] • [[goldberg1989genetic]] • [[wu2020comparative]] • [[alexander2020comparison]] • [[kennedy1995particle]] • [[clerc2000discretepso]] • [[araujo2025pso]] • [[dorigo1996ant]] • [[dorigo1997ant]] • [[stutzle2000mmas]] • [[dorigo2004book]] • [[dorigo2005acotheory]] • [[blum2005acointro]] • [[wang2021ant]] • [[ppaco2024]] • [[neufaco2025]] • [[gpaco2025]] • [[murray2015flying]] • [[agatz2018optimization]] • [[freitas2020vns]] • [[rajan2022routing]] • [[heldkarp1970traveling]] • [[johnson1996asymptotic]] • [[karp1979patching]] • [[righini2021efficient]] • [[kinable2017hybrid]] • [[halim2019combinatorial]] • [[chandra2022comparative]] • [[haroun2015performance]] • [[almufti2025comparative]] • [[hossain2024comparison]] • [[wadi2025charting]] • [[rajwar2023exhaustive]] • [[pop2024comprehensive]]
+[[garey1979computers]] • [[lin1973effective]] • [[applegate2006traveling]] • [[bock2025survey]] • [[winter2002modeling]] • [[aggarwal2000angular]] • [[oliver1987crossover]] • [[bean1994genetic]] • [[potvin1996ga]] • [[larranaga1999ga]] • [[holland1975adaptation]] • [[goldberg1989genetic]] • [[wu2020comparative]] • [[alexander2020comparison]] • [[kennedy1995particle]] • [[clerc2000discretepso]] • [[araujo2025pso]] • [[dorigo1996ant]] • [[dorigo1997ant]] • [[stutzle2000mmas]] • [[dorigo2004book]] • [[dorigo2005acotheory]] • [[blum2005acointro]] • [[wang2021ant]] • [[deepaco2023]] • [[ppaco2024]] • [[neufaco2025]] • [[gpaco2025]] • [[murray2015flying]] • [[agatz2018optimization]] • [[dellamico2021multiple]] • [[dellamico2022exact]] • [[freitas2020vns]] • [[rajan2022routing]] • [[vanhove2012route]] • [[heldkarp1970traveling]] • [[heldkarp1971traveling]] • [[balas1985branch]] • [[lysgaard1999cluster]] • [[johnson1996asymptotic]] • [[karp1979patching]] • [[righini2021efficient]] • [[kinable2017hybrid]] • [[halim2019combinatorial]] • [[chandra2022comparative]] • [[haroun2015performance]] • [[almufti2025comparative]] • [[hossain2024comparison]] • [[wadi2025charting]] • [[rajwar2023exhaustive]] • [[pop2024comprehensive]]
 
-## Pendentes — sem resumo (18)
+## Pendentes — sem resumo (11)
 
-[[lawler1985traveling]] • [[aggarwal2000angular]] • [[nagata2006eax]] • [[hga2024hybrid]] • [[sun2024hybrid]] • [[huang2025matrix]] • [[kappagantula2025dpso]] • [[deepaco2023]] • [[dellamico2021multiple]] • [[dellamico2022exact]] • [[ahmed2024receding]] • [[vanhove2012route]] • [[heldkarp1971traveling]] • [[balas1985branch]] • [[fischetti1992additive]] • [[valenzuela1997estimating]] • [[leraromero2020dynamic]] • [[toaza2023review]]
+[[lawler1985traveling]] • [[nagata2006eax]] • [[hga2024hybrid]] • [[sun2024hybrid]] • [[huang2025matrix]] • [[kappagantula2025dpso]] • [[ahmed2024receding]] • [[fischetti1992additive]] • [[valenzuela1997estimating]] • [[leraromero2020dynamic]] • [[toaza2023review]]
 
-## Obter via Biblioteca UFU / CAPES (16)
+## Obter via Biblioteca UFU / CAPES (9)
 
 Login UFU → [Portal de Periódicos CAPES](https://www.periodicos.capes.gov.br/).
 
 | Nota | PDF | Plataforma | DOI |
 |------|:---:|------------|-----|
 | [[lawler1985traveling]] | ❌ | Wiley Online Library | `10.1002/net.3230170210` |
-| [[aggarwal2000angular]] | ❌ | SIAM Journals | `10.1137/S0097539796312719` |
 | [[hga2024hybrid]] | ❌ | SpringerLink | `10.1007/978-3-031-64067-4_22` |
 | [[sun2024hybrid]] | ❌ | Elsevier / ScienceDirect | `10.1016/j.procs.2024.09.151` |
 | [[huang2025matrix]] | ❌ | SpringerLink | `10.1007/s12065-025-01082-2` |
-| [[deepaco2023]] | ⚠️ | Conferência — buscar no CAPES | `—` |
-| [[dellamico2021multiple]] | ⚠️ | Wiley Online Library | `10.1002/net.22022` |
-| [[dellamico2022exact]] | ⚠️ | Wiley Online Library | `10.1111/itor.13030` |
 | [[ahmed2024receding]] | ❌ | Elsevier / ScienceDirect | `10.1016/j.procs.2024.11.079` |
-| [[vanhove2012route]] | ⚠️ | Elsevier / ScienceDirect | `10.1016/j.orl.2012.06.001` |
-| [[heldkarp1971traveling]] | ❌ | SpringerLink | `10.1007/BF01584070` |
-| [[balas1985branch]] | ❌ | INFORMS / relatório CMU | `—` |
 | [[fischetti1992additive]] | ❌ | SpringerLink | `10.1007/BF01585642` |
 | [[valenzuela1997estimating]] | ❌ | Elsevier / ScienceDirect | `10.1016/S0377-2217(97)00360-1` |
 | [[leraromero2020dynamic]] | ❌ | SpringerLink | `10.1007/s10288-020-00450-x` |
@@ -154,11 +148,8 @@ Login UFU → [Portal de Periódicos CAPES](https://www.periodicos.capes.gov.br/
 
 | Nota | PDF | Status | Prioridade |
 |------|:---:|:------:|------------|
-| [[aggarwal2000angular]] | ❌ | pendente | Média |
-| [[balas1985branch]] | ❌ | pendente | Alta |
 | [[fischetti1992additive]] | ❌ | pendente | Média |
 | [[heldkarp1970traveling]] | ✅ | lido | Média |
-| [[heldkarp1971traveling]] | ❌ | pendente | Média |
 | [[johnson1996asymptotic]] | ✅ | lido | Média |
 | [[karp1979patching]] | ✅ | lido-parcial | Alta |
 | [[kinable2017hybrid]] | ✅ | lido | Alta |

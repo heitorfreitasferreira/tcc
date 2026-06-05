@@ -1,5 +1,5 @@
 ---
-title: A Comparative Study of Metaheuristics Methods for Solving Traveling Salesman Problem
+title: A Comparative Study of Metaheuristics Methods for Solving Traveling Salesman
 authors:
 - Chandra
 - Agung
@@ -38,6 +38,14 @@ methods:
 role: comparativo
 reading_status: lido
 validation_status: nao-validado
+pdf_status: integro
+areas:
+- tsp
+chapters:
+- fundamentacao
+claim_support: []
+aliases:
+- Chandra e Naro 2022
 ---
 
 ## PDF
@@ -47,6 +55,8 @@ validation_status: nao-validado
 ## Resumo
 
 Compara 8 metaheurísticas — GA, SA, TS, ACO, PSO, ABC, EFOA e A3 (Artificial Atom Algorithm) — na resolução do TSP simétrico para 70 cidades reais na ilha de Java, Indonésia. O ABC (Artificial Bee Colony) obteve a melhor distância (2.447 km) e a melhor média (2.458 km). Os resultados foram submetidos a ANOVA e teste post-hoc de Tukey, que indicaram que 20 dos 28 pares de métodos apresentam diferenças estatisticamente significativas. PSO apresentou o pior desempenho, com distância média de 10.932 km.
+
+Decisão P46: o título canônico foi corrigido para a forma que aparece na primeira página do PDF, sem a palavra final "Problem". O DOI `10.57675/IMIST.PRSM/ijist-v6i2.211` foi preservado por estar registrado no BibTeX; o PDF local não exibe DOI na primeira página.
 
 ## Contribuições Principais
 
@@ -89,6 +99,7 @@ Demonstra como ANOVA e Tukey podem validar diferenças entre metaheurísticas no
 - GA e ACO tiveram desempenho intermediário comparável (GA: 2.727 km, ACO: 2.851 km)
 - Apenas 8 dos 28 pares não apresentaram diferença significativa — a maioria dos métodos difere estatisticamente
 - Os métodos no mesmo framework facilitam comparação justa, mas a sintonia de parâmetros pode favorecer alguns algoritmos
+- Limitação de uso: não usar o ranking ABC/SA/GA/ACO/PSO como evidência geral de superioridade entre meta-heurísticas; o estudo depende de uma instância principal, implementações específicas e ajuste de parâmetros.
 
 ## Citações-chave
 

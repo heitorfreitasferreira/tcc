@@ -28,6 +28,13 @@ methods:
 role: revisao
 reading_status: resumo-lido
 validation_status: nao-validado
+pdf_status: integro
+chapters:
+- fundamentacao
+claim_support: []
+aliases:
+- Turn restrictions
+- Turn costs route planning
 ---
 
 ## Resumo
@@ -40,6 +47,18 @@ Publicado na Operations Research Letters (2012). Compara experimentalmente três
 - Análise teórica de complexidade de tempo e memória para os três métodos
 - Diretriz prática: line graph é preferível para grafos com muitas restrições; direct method para poucas restrições
 - Modelagem de turn costs como custos adicionais de transição entre arcos consecutivos
+
+## Evidência / Resultado Relevante
+
+- O estudo compara node splitting, line graph e direct method para caminho mínimo com custos ou proibições de conversão.
+- O summary registra diretrizes empíricas por densidade de restrições: método direto para custos de conversão esparsos, line graph quando muitos arcos têm custo de conversão e node splitting para proibições reais esparsas.
+- A complexidade e o consumo de memória dependem da quantidade de curvas restritas, não apenas do número de nós e arestas.
+
+## Limitações de Uso
+
+- O artigo trata caminho mínimo em redes viárias, não TSP.
+- A conexão com o TSP-SD-ATP é conceitual: ambos dependem da transição entre arcos/visitas consecutivas.
+- Números de limiar, como 25% ou 5% de restrições, devem ser conferidos no PDF antes de citação formal.
 
 ## Relevância para o TCC
 

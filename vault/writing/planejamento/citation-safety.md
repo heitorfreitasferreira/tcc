@@ -174,5 +174,6 @@ Antes da entrega final da monografia:
 
 - [[roadmap-monografia]] — P22, P26, P28, P29, P30, P31
 - [[auditoria-codigo-dados-vault]] — auditoria de consistência código-dados-vault
-- [[claim-evidence-matrix]] — matriz de claims × evidências
+- [[claims.base]] — sumário de claims × evidências
+- [[claim-evidence-matrix]] — guia de schema dos claims
 - [[feromonio-3d-originalidade]] — verificação de originalidade do feromônio 3D

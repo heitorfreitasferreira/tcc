@@ -23,6 +23,9 @@ status: resumo-lido
 rating: 5
 classificacao: recuperado
 type: paper
+areas:
+- tsp
+- lower-bound
 methods:
 - lagrangean
 - lower-bound
@@ -30,6 +33,12 @@ methods:
 - relaxation-method
 - 1-tree
 role: revisao
+chapters:
+- fundamentacao
+claim_support: []
+aliases:
+- Held-Karp Part II
+- Held-Karp 1971
 reading_status: resumo-lido
 validation_status: nao-validado
 pdf_status: lido
@@ -86,6 +95,7 @@ Referência canônica de lower bound para TSP. O `C* - max w(π)` é o *gap* que
 - O paper nota que "the bounds computed in the initial ascent are extremely close to `max w(π)`" — a maior parte do gap `C* - w(π)` é intrínseco à relaxação 1-tree
 - Trabalhos posteriores (Held-Karp 1970, depois [Johnson et al. 1996]) generalizaram para até 1 milhão de cidades
 - Trabalhos posteriores: column generation (equivalente a simplex) pode ser mais rápido para instâncias grandes, mas o ascent method é surpreendentemente competitivo
+- Decisão P46: preservar a nota canônica e o DOI `10.1007/BF01584070`; o summary registra DOI como `[to be verified]`, mas BibTeX e nota canônica já estão alinhados com a versão corrigida em P43.
 
 ## Citações-chave
 

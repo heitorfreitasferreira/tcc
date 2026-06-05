@@ -40,6 +40,7 @@ Referência metodológica central. O protocolo estatístico da monografia (Fried
 
 ## Conexões
 
-- [[claim-evidence-matrix]] — suporta claims sobre significância estatística
+- [[claims.base]] — suporta claims sobre significância estatística
+- [[E21]], [[E22]] — claims estatísticos individuais
 - [[auditoria-hiperparametros]] — limitação de parâmetros fixos
 - [[tsp]]

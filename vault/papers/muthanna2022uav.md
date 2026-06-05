@@ -12,7 +12,7 @@ authors:
 - Abd El-Latif
 - Ahmed A.
 year: 2022
-doi: 10.1016/j.comcom.2022.04.028
+doi: 10.1016/j.comcom.2022.04.029
 bibtex_key: muthanna2022uav
 bibtex-key: muthanna2022uav
 pdf: papers/pdfs/muthanna2022uav.pdf
@@ -40,8 +40,13 @@ methods:
 - iot
 role: revisao
 reading_status: lido
-validation_status: nao-validado
-pdf_status: lido
+validation_status: requer-validacao
+pdf_status: integro
+chapters: []
+claim_support: []
+aliases:
+- IWPOP-UAV
+- Weather-based positioning and path planning of UAVs
 ---
 
 ## Resumo
@@ -52,7 +57,7 @@ Publicado em Computer Communications 191 (2022) 145–160, Elsevier. Propõe o a
 2. **Posicionamento multi-UAV com A3C** (*Asynchronous Actor Critic*): o A3C é um algoritmo de *deep reinforcement learning* que, usando a previsão climática da C-LSTM, decide a posição ótima de cada UAV para maximizar cobertura e QoS.
 3. **Path planning com Mayfly Optimization Algorithm (MOA)**: meta-heurística bioinspirada híbrida que combina GA + PSO + Firefly, resolvendo o planejamento de trajetória energeticamente eficiente para cada UAV já posicionado.
 
-A avaliação experimental é feita em NS-3.26, comparando IWPOP-UAV com abordagens de referência em métricas de QoS, cobertura, latência, energia e PDR (*Packet Delivery Ratio*).
+A avaliação experimental é feita em NS-3.26, comparando IWPOP-UAV com abordagens de referência em métricas de QoS, cobertura, latência, energia e PDR (*Packet Delivery Ratio*). O PDF confirma o DOI `10.1016/j.comcom.2022.04.029`; a versão anterior da nota registrava `...028` por engano.
 
 **Atenção**: este artigo **NÃO trata de TSP nem de meta-heurísticas clássicas de otimização combinatória** (ACO, GA, PSO puro). É de comunicações sem fio em IoT/5G com UAVs, e o "PSO" mencionado na literatura relacionada não é o algoritmo de Kennedy/Eberhart, mas sim um ingrediente da Mayfly. Para o TCC, a relevância é apenas contextual: modelagem de restrições energéticas em missões com UAV.
 
@@ -93,6 +98,7 @@ Relevância **baixa** para o problema central (TSP/rTSP patrulha de drones). O a
 - A integração clima→posicionamento→trajetória é o diferencial conceitual
 - Limitação: a avaliação é simulada (NS-3), sem experimentos de campo
 - Tabela 7 do PDF compara IWPOP-UAV com baselines (GA, PSO, Firefly) e reporta superioridade em QoS
+- Limitação editorial para o TCC: manter fora do núcleo bibliográfico de TSP/ACO/GA/PSO; usar, no máximo, como exemplo periférico de UAV em IoT sob clima e energia.
 
 ## Citações-chave
 

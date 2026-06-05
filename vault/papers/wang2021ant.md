@@ -24,6 +24,16 @@ methods:
 role: revisao
 reading_status: lido
 validation_status: nao-validado
+pdf_status: integro
+areas:
+- tsp
+- aco
+chapters:
+- fundamentacao
+claim_support: []
+aliases:
+- SOS-ACO
+- ACO parameter optimization
 ---
 
 ## PDF
@@ -39,6 +49,18 @@ Propõe um algoritmo híbrido SOS-ACO para TSP, onde Symbiotic Organisms Search 
 - Uso de SOS para tuning automático de parâmetros do ACO
 - Estratégia de otimização local integrada
 - Validação em TSPLIB com resultados superiores a baseline ACO
+
+## Evidência / Resultado Relevante
+
+- O SOS-ACO usa Symbiotic Organisms Search para otimizar `α` e `β`, dois parâmetros centrais da construção de soluções em ACO.
+- A escolha de SOS é motivada por ser uma meta-heurística sem parâmetros próprios de controle, evitando transferir o problema de tuning para outro algoritmo parametrizado.
+- O summary registra testes em 10 instâncias TSPLIB, de 51 a 575 cidades, com erro máximo de 2,33% em relação ao melhor conhecido; validar esse número no PDF antes de usar como claim quantitativo na monografia.
+
+## Limitações de Uso
+
+- O artigo otimiza apenas `α` e `β`; outros parâmetros de ACO continuam definidos pelo usuário.
+- O método combina tuning e busca local, portanto não deve ser comparado diretamente ao Ant System puro implementado no repositório.
+- O estudo não substitui uma análise de sensibilidade própria do TCC.
 
 ## Relevância para o TCC
 
@@ -63,6 +85,7 @@ Abordagem de tuning automático de parâmetros é relevante para a implementaç�
 - ACO é altamente sensível aos parâmetros α (influência do feromônio) e β (influência da heurística)
 - SOS-ACO reduz erro relativo em instâncias grandes comparado a ACO padrão
 - Tuning automático pode ser uma direção para melhorar o ACO implementado no TCC
+- Decisão P46: incorporar como referência útil para P33/tuning, sem transformar os resultados do paper em benchmark direto do projeto.
 
 ## Citações-chave
 
