@@ -52,4 +52,4 @@ type: writing
 - [[murray2015flying]] — FSTSP (contexto drone routing)
 - [[tsp-variants]] — classificação da variante
 - [[resultados]] — dados experimentais (para mencionar na introdução)
-- [[claim-evidence-matrix]] — claims liberados e bloqueados
+- [[claims.base]] — claims liberados e bloqueados

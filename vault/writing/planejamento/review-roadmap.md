@@ -67,7 +67,7 @@ Cada solicitação é uma nota individual em `review-solicitacoes/Rxx-descricao-
 | `target_chapter` | Não | Capítulo(s) afetado(s): `fundamentacao`, `proposta`, `experimentos`, `introducao`, `conclusao`, `todos` |
 | `correction_layers` | Sim | Lista das camadas envolvidas na correção: `[codigo, dados, latex-macro]` |
 | `evidence_layer` | Sim | Camada onde está a evidência da correção: `codigo` / `dados` / `literatura` / `vault` / `monografia` |
-| `claim_ids` | Não | Lista de claims da [[claim-evidence-matrix]] afetadas: `[E06, E13]` |
+| `claim_ids` | Não | Lista de IDs existentes em `vault/claims/`/[[claims.base]] afetados: `[E06, E13]` |
 | `verified_by_script` | Não | Caminho do script que valida a correção |
 
 O corpo da nota segue a estrutura definida no template [[review-request]].
@@ -94,7 +94,7 @@ Valida o estado das revisões:
 |---|---|
 | YAML completo | Todo Rxx tem os campos obrigatórios |
 | IDs únicos | Nenhum ID duplicado entre notas |
-| Links válidos | `claim_ids` referenciam IDs existentes na [[claim-evidence-matrix]] |
+| Links válidos | `claim_ids` referenciam IDs existentes em `vault/claims/` ou [[claims.base]] |
 | Estado de resolvidos | Rxx `resolvido` tem `date_closed` preenchido |
 | Hierarquia respeitada | Rxx com `correction_layers` contendo `agentico` justifica por que camadas inferiores não bastam |
 
@@ -124,4 +124,4 @@ A base `vault/bases/reviews.base` permite visualizar os itens por status, priori
 
 ---
 
-**Ver também:** [[roadmap-monografia]], [[claim-evidence-matrix]], [[review-request]]
+**Ver também:** [[roadmap-monografia]], [[claims.base]], [[review-request]], [[claim-evidence-matrix]]

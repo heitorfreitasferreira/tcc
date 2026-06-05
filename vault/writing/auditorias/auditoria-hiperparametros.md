@@ -53,7 +53,7 @@ P10 não bloqueia a escrita definitiva. A monografia deve declarar a ausência d
 
 ## Links
 
-- [[claim-evidence-matrix]]
+- [[claims.base]]
 - [[auditoria-codificacao-metodos]]
 - [[analysis-methodology]]
 - [[resultados]]

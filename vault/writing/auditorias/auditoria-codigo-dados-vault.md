@@ -140,7 +140,7 @@ Agregado sobre 18 instâncias e 51 sementes por método, normalizando o campo `i
 | PSO | 918 | 22.2915% | 0.0000% | 76.5549% | 4.25% |
 
 > [!success] Claims experimentais atualizados
-> [[resultados]] e [[claim-evidence-matrix]] foram atualizadas para usar os gaps das 18 instâncias com brute-force (`10a..15c`).
+> [[resultados]] e os claims individuais em `vault/claims/` foram atualizados para usar os gaps das 18 instâncias com brute-force (`10a..15c`).
 
 ## Instâncias Grandes
 
@@ -225,7 +225,7 @@ Esses artefatos existem, mas a seleção final de figuras ainda deve passar por 
 |---|---|---|
 | ~~[[resultados]]~~ | ~~Declara 4605 execuções, 15 brute-force e gaps do subconjunto `10a..14c`~~ | Resolvido: atualizado para cobertura P7 |
 | ~~[[analysis-methodology]]~~ | ~~Declara 4635 runs e 15 brute-force~~ | Resolvido quanto à cobertura e estatística |
-| ~~[[claim-evidence-matrix]]~~ | ~~Claims E02, E03, E06, E17 usam cobertura antiga~~ | Resolvido |
+| ~~`vault/claims/` / [[claims.base]]~~ | ~~Claims E02, E03, E06, E17 usam cobertura antiga~~ | Resolvido |
 | ~~[[experiment-pipeline]]~~ | ~~Omite `lowerbound`~~ | Resolvido |
 | ~~[[experiment-pipeline]]~~ | ~~Formato de run ID contém `p{pop}__i{iter}`~~ | Resolvido |
 | ~~[[roadmap-monografia]]~~ | ~~P4 aparece resolvido, mas o script estatístico não cumpre integralmente o protocolo~~ | Resolvido após correção e validação de P4 |

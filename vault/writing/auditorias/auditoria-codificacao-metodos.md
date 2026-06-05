@@ -53,7 +53,7 @@ P9 não exige nova implementação para a escrita atual da monografia. A ação 
 
 ## Links
 
-- [[claim-evidence-matrix]]
+- [[claims.base]]
 - [[glossario-monografia]]
 - [[ga]]
 - [[pso]]

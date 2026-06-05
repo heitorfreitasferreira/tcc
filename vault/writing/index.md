@@ -27,7 +27,8 @@ type: writing
 |------|----------|--------|
 | [[planejamento/roadmap-monografia]] | Roadmap de escrita com prioridades e dependências | `pronto-para-execucao` |
 | [[planejamento/mapa-capitulos-tex]] | Mapeamento vault → arquivos `.tex` da monografia | `auditado-com-bloqueios` |
-| [[planejamento/claim-evidence-matrix]] | Matriz claims ↔ evidências dos experimentos | — |
+| [[../bases/claims.base]] | Sumário de claims ↔ evidências da monografia | — |
+| [[planejamento/claim-evidence-matrix]] | Guia de schema e protocolo dos claims | — |
 | [[planejamento/figuras-tabelas-monografia]] | Planejamento de figuras e tabelas por capítulo | — |
 | [[planejamento/glossario-monografia]] | Glossário e terminologia consistente | — |
 
@@ -56,5 +57,5 @@ type: writing
 ## Convenções
 
 - Tags: `writing`, `monografia`, `capitulo`, `auditoria`
-- Toda claim na monografia deve ter suporte na [[planejamento/claim-evidence-matrix]]
+- Toda claim na monografia deve ter nota individual em `vault/claims/` e aparecer em [[../bases/claims.base]]
 - Toda figura/tabela planejada deve estar em [[planejamento/figuras-tabelas-monografia]]

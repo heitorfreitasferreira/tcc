@@ -32,4 +32,4 @@ Lista consolidada de todas as solicitações de revisão do orientador.
 
 ---
 
-**Ver também:** [[review-roadmap]], [[claim-evidence-matrix]], [[roadmap-monografia]]
+**Ver também:** [[review-roadmap]], [[claims.base]], [[roadmap-monografia]], [[claim-evidence-matrix]]

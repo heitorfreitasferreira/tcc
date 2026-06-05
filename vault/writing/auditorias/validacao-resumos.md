@@ -77,7 +77,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
 
 ---
 
@@ -109,7 +109,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
 
 ---
 
@@ -142,7 +142,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
 - `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 
 ---
@@ -175,7 +175,7 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 - `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
 - `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
 - `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-- `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
+- `muthanna2022uav.md`: corrigido em P42/P46 — a nota agora explicita C-LSTM + A3C + MOA para UAV em IoT/5G, DOI correto e baixa relevância para TSP/meta-heurísticas clássicas; decisão editorial de escopo permanece em P44.
 - `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
 
 ---
@@ -186,9 +186,9 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 
 | # | Paper | Status | Divergência / Observação | Verificação PDF |
 |---|-------|--------|--------------------------|-----------------|
-| 1 | **Aggarwal 1999** (Angular TSP) | ❌ **DIVERGENTE** | Vault registra ano 2000, mas PDF indica copyright 1999 e publicação eletrônica em dezembro de 1999. DOI `10.1137/S0097539796312719` também codifica 1999. Título e autores estão corretos. | PDF legível. Capa e metadados conferidos. |
+| 1 | **Aggarwal 1999** (Angular TSP) | ✅ **CORRIGIDO EM P46** | Vault agora registra ano 1999 e DOI `10.1137/S0097539796312721`, confirmado pelo PII/URL da primeira página do PDF. Título e autores estão corretos. | PDF legível. Capa e metadados conferidos. |
 | 2 | **Almufti 2025** (Comparativo) | ✅ **CORRETO** | Nove metaheurísticas em berlin52, eil76, pr1002, 30 execuções independentes, ACO/GWO/CSO como mais robustos — confirmados. | PDF legível. Abstract confirmado. |
-| 3 | **Balas 1985** (Branch-and-Bound) | ✅ **CORRETO** | Título, autores (Balas e Toth), ano canônico 1985 — confirmados. O PDF é um working paper de 1983, mas a publicação final é 1985. | PDF legível. Capa conferida. |
+| 3 | **Balas 1983** (Branch-and-Bound) | ✅ **CORRIGIDO EM P46** | Título e autores (Balas e Toth) confirmados no PDF local. A nota canônica agora trata a versão disponível como relatório técnico MSRR 488 de 1983; a chave `balas1985branch` foi preservada por compatibilidade. | PDF legível. Capa conferida. |
 | 4 | **Dorigo 2004** (ACO Book) | ✅ **CORRETO** | Título, autores (Dorigo e Stützle), ano 2004, conteúdo (AS, EAS, RAS, MMAS, ACS, AntNet, diretrizes de parâmetros) — confirmados. | PDF legível. Capa e índice lidos. |
 | 5 | **Dorigo 2005** (ACO Theory) | ✅ **CORRETO** | Título, autores (Dorigo e Blum), ano 2005, claims sobre teoria de convergência, model-based search, relação com stochastic gradient ascent — confirmados. | PDF legível. Abstract confirmado. |
 | 6 | **Freitas 2020** (VNS FSTSP) | ⚠️ **PLAUSÍVEL** | Claims centrais (HGVNS para FSTSP, MIP solução inicial, RVND, até 67.79% de melhoria, novos BKS) coincidem com preprint arXiv de 2018. Ano 2020 e DOI `10.1111/itor.12671` são plausíveis para versão publicada, mas não verificáveis diretamente no preprint. | PDF é preprint arXiv 2018. Abstract e Seção 1 lidos. |
@@ -220,14 +220,14 @@ Comparar o conteúdo técnico dos resumos em `vault/papers/` contra `resumos_kim
 
 ## Ajustes pendentes no vault (acumulado final)
 
-1. `dorigo1997ant.md`: corrigir "erro médio de ~3.5%" para "erro de 3.27% (melhor) a 3.79% (médio)" em fl1577.
-2. `bean1994genetic.md`: atualizar nota sobre PDF (existe, mas é imagem protegida).
-3. `ahmed2024receding.md`: adicionar resumo técnico (MILP, RHC, path smoothing, CPLEX).
-4. `muthanna2022uav.md`: **rever completamente** — o artigo trata de C-LSTM + A3C + MOA para UAV em IoT/5G com condições climáticas, não de TSP ou meta-heurísticas clássicas.
-5. `heldkarp1971traveling.md`: ~~adicionar resumo técnico (programação dinâmica O(n²2ⁿ))~~ corrigido por P42/P43: resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
-6. `aggarwal2000angular.md`: corrigir ano de 2000 para 1999.
-7. `johnson1996asymptotic.md`: remover Robert Schreiber da lista de autores (são apenas Johnson, McGeoch e Rothberg).
-8. `nagata2006eax.md`: corrigir bibtex_key/ano de 2006 para 2013 (publicação real).
+1. `dorigo1997ant.md`: corrigido em P42; Tabela 4 do PDF registra fl1577 com erro de 3.27% (melhor) e 3.79% (médio).
+2. `bean1994genetic.md`: corrigido em P42; PDF existe, mas a extração automática retorna apenas capa/metadados por imagem protegida.
+3. `ahmed2024receding.md`: corrigido em P42; resumo técnico adicionado com MILP, RHC, CPLEX e path smoothing.
+4. `muthanna2022uav.md`: corrigido em P42/P46; a nota agora explicita C-LSTM + A3C + MOA, DOI `10.1016/j.comcom.2022.04.029` e baixa relevância para TSP/meta-heurísticas clássicas. A decisão editorial de uso central/periférico permanece ligada a P44.
+5. `heldkarp1971traveling.md`: corrigido por P42/P43; resumo técnico de ascent method + branch-and-bound; DP O(n²2ⁿ) pertence a Held-Karp 1962.
+6. `aggarwal2000angular.md`: corrigido em P46; ano 1999 e DOI `10.1137/S0097539796312721` confirmados no PDF.
+7. `johnson1996asymptotic.md`: corrigido em P42; autores são Johnson, McGeoch e Rothberg.
+8. `nagata2006eax.md`: corrigido em P42; chave canônica atual é `nagata2013eax`, com alias histórico preservado.
 
 ---
 

@@ -13,7 +13,7 @@ type: writing
 
 # Mapa Capítulos-TeX da Monografia
 
-Esta nota mapeia a estrutura real de `monografia/` para os capítulos planejados no roadmap. Também registra divergências entre os arquivos `.tex` atuais e as evidências auditadas em [[auditoria-codigo-dados-vault]], [[claim-evidence-matrix]], [[glossario-monografia]] e [[figuras-tabelas-monografia]].
+Esta nota mapeia a estrutura real de `monografia/` para os capítulos planejados no roadmap. Também registra divergências entre os arquivos `.tex` atuais e as evidências auditadas em [[auditoria-codigo-dados-vault]], [[claims.base]], [[glossario-monografia]] e [[figuras-tabelas-monografia]].
 
 > [!danger] Bloqueio de escrita
 > Os arquivos `.tex` atuais contêm resultados experimentais desatualizados: `5029` execuções, `55` sementes, `GA` como melhor método e `ACO` como pior. Isso contradiz os dados auditados: `4638` summaries, `51` sementes para GA/PSO/ACO, `18` brute-force, e ACO com melhor qualidade descritiva nas instâncias avaliadas. Não reaproveitar esses parágrafos sem reescrita.
@@ -58,7 +58,7 @@ Esta nota mapeia a estrutura real de `monografia/` para os capítulos planejados
 | Ponto forte | Estrutura já contém contexto, motivação, objetivos, hipótese e contribuições | Preservar macroestrutura |
 | Divergência | Usa VANTs de forma predominante, enquanto o glossário prefere `drone` | Padronizar para `drone` |
 | Divergência | Hipótese ainda não reflete resultado auditado: ACO melhor qualidade, GA melhor tempo | Reescrever objetivos/perguntas após Capítulo 4 estabilizado |
-| Entradas do vault | [[introducao]], [[problem-formulation]], [[drone-routing]], [[comparative-studies]], [[claim-evidence-matrix]] | Conferir antes de reescrever |
+| Entradas do vault | [[introducao]], [[problem-formulation]], [[drone-routing]], [[comparative-studies]], [[claims.base]], `vault/claims/C*.md`, `vault/claims/I*.md` | Conferir antes de reescrever |
 | Figuras | Nenhuma obrigatória | Omitir figura decorativa; criar só se apoiar cenário de patrulha |
 
 ### Capítulo 2 — Fundamentação Teórica
@@ -104,7 +104,7 @@ Esta nota mapeia a estrutura real de `monografia/` para os capítulos planejados
 | Arquivo | `monografia/cap_conclusao/conclusao.tex` | Precisa reescrita após Capítulo 4 |
 | Divergência crítica | Repete `5029` execuções e GA como melhor método | Corrigir após Experimentos |
 | Ponto forte | Estrutura com contribuições, limitações e trabalhos futuros é adequada | Preservar macroestrutura |
-| Entradas do vault | [[conclusao]], [[resultados]], [[analysis-methodology]], [[claim-evidence-matrix]], [[comparative-studies]] | Usar depois de resultados estabilizados |
+| Entradas do vault | [[conclusao]], [[resultados]], [[analysis-methodology]], [[claims.base]], `vault/claims/E*.md`, `vault/claims/I*.md`, [[comparative-studies]] | Usar depois de resultados estabilizados |
 | Figuras | Nenhuma nova | Não introduzir resultado novo |
 
 ## Arquivos de Apoio e Apêndices

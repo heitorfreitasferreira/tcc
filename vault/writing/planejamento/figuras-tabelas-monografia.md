@@ -14,7 +14,7 @@ type: writing
 
 # Figuras e Tabelas da Monografia
 
-Catálogo operacional das figuras e tabelas candidatas para a monografia. A seleção abaixo está alinhada com [[auditoria-codigo-dados-vault]], [[claim-evidence-matrix]], [[glossario-monografia]] e [[auditoria-script-analise-estatistica]].
+Catálogo operacional das figuras e tabelas candidatas para a monografia. A seleção abaixo está alinhada com [[auditoria-codigo-dados-vault]], [[claims.base]], [[glossario-monografia]] e [[auditoria-script-analise-estatistica]].
 
 > [!warning] Regra de uso
 > Não citar figura ou tabela no texto final sem conferir se o arquivo existe, se a escala/unidade aparece, e se o dado usado está coerente com a cobertura atual: 4638 summaries, 30 instâncias, 51 sementes para GA/PSO/ACO, 30 lowerbound e 18 brute-force (`10a..15c`).

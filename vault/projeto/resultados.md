@@ -120,7 +120,7 @@ Interpretação: a redução 3D→2D via `min_i G[i][j][k]` remove contexto angu
 - [[experiment-pipeline]] — como os experimentos foram executados
 - [[analysis-methodology]] — protocolo estatístico e pendências
 - [[auditoria-codigo-dados-vault]] — fonte da cobertura e dos números auditados
-- [[claim-evidence-matrix]] — claims permitidos e bloqueados
+- [[claims.base]] — claims permitidos e bloqueados
 - [[ga]], [[pso]], [[aco]], [[bruteforce]], [[lower-bounds]] — métodos comparados
 
 ## Dados Brutos

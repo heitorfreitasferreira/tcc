@@ -81,10 +81,12 @@ vault/
 
 ### Claims e Evidências
 
-- `vault/writing/planejamento/claim-evidence-matrix.md` é a fonte canônica dos claims.
+- `vault/claims/` contém uma nota individual por claim, seguindo `vault/templates/claim-note.md`.
+- `vault/bases/claims.base` é o sumário operacional para consultar claims por ID, tipo, força, status, evidência e seção.
+- `vault/writing/planejamento/claim-evidence-matrix.md` permanece apenas como guia de schema e protocolo.
 - Todo claim forte deve ter `ID`, força, evidência primária e apoio no vault.
 - Claims metodológicos apontam para `src/`; claims experimentais apontam para `src/data/results/` ou scripts de análise.
-- Notas de paper podem usar `claim_support` para listar IDs da matriz, mas a matriz continua sendo a fonte de verdade.
+- Notas de paper podem usar `claim_support` para listar IDs existentes em `vault/claims/`.
 
 ## Workflow de Busca
 
@@ -103,6 +105,9 @@ Agentes podem lê-lo e modificá-lo para refletir conexões entre papers e área
 ## Bases
 
 - `bases/papers.base` — visão tabular de papers, prioridade de leitura, PDF e uso na monografia.
-- `bases/claims.base` — visão de auditoria para a matriz de claims e eventuais notas individuais de claim.
+- `bases/claims.base` — sumário dos claims individuais em `vault/claims/`.
+- `bases/siglas.base` — sumário das notas individuais em `vault/siglas/`, com decisão de inclusão e ocorrências no LaTeX.
 
-Use Bases para localizar pendências; não duplique evidências nelas. A evidência primária continua nos arquivos indicados pela matriz de claims.
+Use Bases para localizar pendências; não duplique evidências nelas. A evidência primária continua nos arquivos indicados por cada nota individual em `vault/claims/`.
+
+Para claims, atualize a nota individual em `vault/claims/` e confirme a visualização em `bases/claims.base`. Não recrie uma tabela centralizada de claims.
