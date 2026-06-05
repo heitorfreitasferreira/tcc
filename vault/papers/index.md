@@ -14,19 +14,19 @@ validation_status: nao-validado
 
 # Catálogo de Artigos — Base de Conhecimento
 
-62 artigos fichados no vault.
+63 artigos fichados no vault.
 
 ## Status Geral
 
 | Métrica | Valor |
 |---|---:|
-| Notas no vault | 62 |
-| **PDF íntegro** | **51 (82.3%)** |
+| Notas no vault | 63 |
+| **PDF íntegro** | **52 (82.5%)** |
 | PDF corrompido (`corrupted/`) | 1 |
 | Sem PDF local | 10 |
-| Notas **lido/lido-parcial** (com inventário) | 50 |
+| Notas **lido/lido-parcial** (com inventário) | 51 |
 | Notas **pendente** (sem resumo) | **11** |
-| Com BibTeX na monografia | 53 |
+| Com BibTeX na monografia | 54 |
 | Sem BibTeX | 9 |
 
 > [!note] Critério de leitura
@@ -101,6 +101,7 @@ validation_status: nao-validado
 | 59 | [[wadi2025charting]] | 2025 | ✅ | — | lido-parcial | 3 | Survey/Comparativo | tsp, pso, aco, eho, swarm, comparison |
 | 60 | [[rajwar2023exhaustive]] | 2023 | ✅ | — | lido | 4 | Survey/Comparativo | metaheuristic |
 | 61 | [[pop2024comprehensive]] | 2024 | ✅ | — | lido | 5 | Survey/Comparativo | tsp gtsp survey combinatorial-optimization drone-routing |
+| 62 | [[eryoldas2022survey]] | 2022 | ✅ | — | lido | 4 | Survey/Comparativo | tuning metaheuristic algorithm-configuration survey |
 
 ### Legenda
 
@@ -113,9 +114,9 @@ validation_status: nao-validado
 | 🔍 | Busca manual |
 | pendente / lido-parcial / lido | Igual ao frontmatter da nota |
 
-## PDFs Íntegros (51)
+## PDFs Íntegros (52)
 
-[[garey1979computers]] • [[lin1973effective]] • [[applegate2006traveling]] • [[bock2025survey]] • [[winter2002modeling]] • [[aggarwal2000angular]] • [[oliver1987crossover]] • [[bean1994genetic]] • [[potvin1996ga]] • [[larranaga1999ga]] • [[holland1975adaptation]] • [[goldberg1989genetic]] • [[wu2020comparative]] • [[alexander2020comparison]] • [[kennedy1995particle]] • [[clerc2000discretepso]] • [[araujo2025pso]] • [[dorigo1996ant]] • [[dorigo1997ant]] • [[stutzle2000mmas]] • [[dorigo2004book]] • [[dorigo2005acotheory]] • [[blum2005acointro]] • [[wang2021ant]] • [[deepaco2023]] • [[ppaco2024]] • [[neufaco2025]] • [[gpaco2025]] • [[murray2015flying]] • [[agatz2018optimization]] • [[dellamico2021multiple]] • [[dellamico2022exact]] • [[freitas2020vns]] • [[rajan2022routing]] • [[vanhove2012route]] • [[heldkarp1970traveling]] • [[heldkarp1971traveling]] • [[balas1985branch]] • [[lysgaard1999cluster]] • [[johnson1996asymptotic]] • [[karp1979patching]] • [[righini2021efficient]] • [[kinable2017hybrid]] • [[halim2019combinatorial]] • [[chandra2022comparative]] • [[haroun2015performance]] • [[almufti2025comparative]] • [[hossain2024comparison]] • [[wadi2025charting]] • [[rajwar2023exhaustive]] • [[pop2024comprehensive]]
+[[garey1979computers]] • [[lin1973effective]] • [[applegate2006traveling]] • [[bock2025survey]] • [[winter2002modeling]] • [[aggarwal2000angular]] • [[oliver1987crossover]] • [[bean1994genetic]] • [[potvin1996ga]] • [[larranaga1999ga]] • [[holland1975adaptation]] • [[goldberg1989genetic]] • [[wu2020comparative]] • [[alexander2020comparison]] • [[kennedy1995particle]] • [[clerc2000discretepso]] • [[araujo2025pso]] • [[dorigo1996ant]] • [[dorigo1997ant]] • [[stutzle2000mmas]] • [[dorigo2004book]] • [[dorigo2005acotheory]] • [[blum2005acointro]] • [[wang2021ant]] • [[deepaco2023]] • [[ppaco2024]] • [[neufaco2025]] • [[gpaco2025]] • [[murray2015flying]] • [[agatz2018optimization]] • [[dellamico2021multiple]] • [[dellamico2022exact]] • [[freitas2020vns]] • [[rajan2022routing]] • [[vanhove2012route]] • [[heldkarp1970traveling]] • [[heldkarp1971traveling]] • [[balas1985branch]] • [[lysgaard1999cluster]] • [[johnson1996asymptotic]] • [[karp1979patching]] • [[righini2021efficient]] • [[kinable2017hybrid]] • [[halim2019combinatorial]] • [[chandra2022comparative]] • [[haroun2015performance]] • [[almufti2025comparative]] • [[hossain2024comparison]] • [[wadi2025charting]] • [[rajwar2023exhaustive]] • [[pop2024comprehensive]] • [[eryoldas2022survey]]
 
 ## Pendentes — sem resumo (11)
 

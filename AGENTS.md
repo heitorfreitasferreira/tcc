@@ -98,6 +98,36 @@ vault/
 BIB=path/to/file.bib ./scripts/import-bib-to-vault.sh     # custom .bib
 ```
 
+## Academic MCP Servers (PDF Download & Literature Search)
+
+New MCPs installed; each adds specific tools for academic workflows:
+
+| MCP | Tools | Instalação |
+|-----|-------|------------|
+| `crossref` | `crossref_get_work`, `crossref_search_works`, `crossref_get_references`, `crossref_search_journals`, `crossref_search_funders` | `npm i -g @cyanheads/crossref-mcp-server` |
+| `scholar-sidekick` | `resolveIdentifier`, `formatCitation`, `checkOpenAccess`, `checkRetraction`, `verifyCitation` | `npm i -g scholar-sidekick-mcp` |
+| `semantic-scholar` | 16 tools: search, citations, authors, recommendations, OA PDF URLs | `uv tool install semantic-scholar-fastmcp` |
+| `doiget` | `doiget_fetch_paper`, `doiget_resolve_paper`, `doiget_metadata_only`, `doiget_bibtex_export`, `doiget_batch_from_bibliography`, +9 more | `cargo install --path crates/doiget-cli` (from gh:sotashimozono/doiget) |
+| `academic-search` | `search_papers`, `fetch_paper_details`, `search_by_topic` (Crossref + S2) | `scripts/academic-search-mcp-server.py` |
+
+### OpenCode Commands
+
+- `/baixar-pdf <doi|bibtex-key>` — download PDF via MCP cascade + extract summary
+- `/consultar-academico <query>` — search multiple databases in parallel
+
+### Helper Scripts
+
+- `scripts/baixar-pdf-chave.sh <bibtex-key>` — CLI fallback for PDF download + summary extraction
+- `scripts/download-pdfs.sh [--keys K] [--use-scihub]` — batch PDF download pipeline (Unpaywall → S2 → OpenAlex → Sci-Hub)
+
+### Env Variables (optional, for higher rate limits)
+
+```bash
+export CROSSREF_MAILTO="heitor@ufu.br"           # polite Crossref pool
+export SCHOLAR_API_KEY="ssk_..."                 # free key from scholar-sidekick.com
+export SEMANTIC_SCHOLAR_API_KEY="..."             # higher S2 rate limits
+```
+
 ## Monograph Notes
 
 - For academic prose, write in Portuguese unless the target section explicitly requires English, and keep the problem framing as drone patrol/TSP comparison rather than a generic optimizer benchmark.

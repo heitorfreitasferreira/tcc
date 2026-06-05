@@ -30,6 +30,7 @@ areas:
 - aco
 chapters:
 - fundamentacao
+- experimentos
 claim_support: []
 aliases:
 - SOS-ACO
@@ -85,7 +86,7 @@ Abordagem de tuning automático de parâmetros é relevante para a implementaç�
 - ACO é altamente sensível aos parâmetros α (influência do feromônio) e β (influência da heurística)
 - SOS-ACO reduz erro relativo em instâncias grandes comparado a ACO padrão
 - Tuning automático pode ser uma direção para melhorar o ACO implementado no TCC
-- Decisão P46: incorporar como referência útil para P33/tuning, sem transformar os resultados do paper em benchmark direto do projeto.
+- Decisão P46/P33 (2026-06-05): incorporado como evidência empírica de sensibilidade paramétrica do ACO na Seção 4.1 (Experimentos). O survey eryoldas2022survey fornece o arcabouço metodológico de tuning; wang2021ant fornece o exemplo concreto de que $\alpha$ e $\beta$ afetam significativamente o desempenho.
 
 ## Citações-chave
 

@@ -20,8 +20,7 @@
     "arxiv": {
       "type": "local",
       "command": [
-        "uvx",
-        "arxiv-mcp-server"
+        "/home/heitor/.local/bin/arxiv-mcp-server"
       ],
       "enabled": true
     },
@@ -30,6 +29,41 @@
       "command": [
         "npx",
         "@sylphx/pdf-reader-mcp"
+      ],
+      "enabled": true
+    },
+    "crossref": {
+      "type": "local",
+      "command": [
+        "/home/heitor/tcc/.opencode/mcp/mcp-env.sh",
+        "crossref-mcp-server"
+      ],
+      "enabled": true
+    },
+    "scholar-sidekick": {
+      "type": "local",
+      "command": [
+        "/home/heitor/tcc/.opencode/mcp/mcp-env.sh",
+        "scholar-sidekick-mcp"
+      ],
+      "enabled": true
+    },
+    "semantic-scholar": {
+      "type": "local",
+      "command": ["semantic-scholar-fastmcp"],
+      "enabled": true
+    },
+    "doiget": {
+      "type": "local",
+      "command": ["/home/heitor/.cargo/bin/doiget", "serve"],
+      "enabled": true
+    },
+    "academic-search": {
+      "type": "local",
+      "command": [
+        "uv", "run", "--directory",
+        "/home/heitor/tcc/.opencode/mcp/academic-search-mcp-server",
+        "python", "server.py"
       ],
       "enabled": true
     }

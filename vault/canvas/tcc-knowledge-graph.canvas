@@ -76,7 +76,8 @@
 		{"id":"paper-hoffman13","type":"file","text":"Hoffman et al. (2013)","file":"papers/hoffman2013tspencyclopedia.md","x":620,"y":1240,"width":180,"height":40},
 		{"id":"paper-valenzuela97","type":"file","text":"Valenzuela & Jones (1997)","file":"papers/valenzuela1997estimating.md","x":620,"y":1310,"width":180,"height":40},
 		{"id":"paper-huang21","type":"file","text":"Huang et al. (2021)","file":"papers/huang2021branchsurvey.md","x":620,"y":1380,"width":180,"height":40},
-		{"id":"paper-gutekunst20","type":"file","text":"Gutekunst (2020)","file":"papers/gutekunst2020relaxations.md","x":840,"y":1240,"width":180,"height":40}
+		{"id":"paper-gutekunst20","type":"file","text":"Gutekunst (2020)","file":"papers/gutekunst2020relaxations.md","x":840,"y":1240,"width":180,"height":40},
+		{"id":"paper-eryoldas22","type":"file","text":"Eryoldaş & Durmuşoğlu (2022)","file":"papers/eryoldas2022survey.md","x":400,"y":1450,"width":180,"height":40}
 	],
 	"edges":[
 		{"id":"e1","fromNode":"paper-garey","fromSide":"bottom","toNode":"area-tsp","toSide":"top","label":"fundamenta"},
@@ -182,6 +183,10 @@
 		{"id":"e102","fromNode":"paper-khoufi19","fromSide":"top","toNode":"area-drone","toSide":"right","label":"UAV applications"},
 		{"id":"e103","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"method-ga","toSide":"right","label":"covers GA"},
 		{"id":"e104","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"method-pso","toSide":"right","label":"covers PSO"},
-		{"id":"e105","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"method-aco","toSide":"right","label":"covers ACO"}
+		{"id":"e105","fromNode":"paper-alkhalifa25","fromSide":"top","toNode":"method-aco","toSide":"right","label":"covers ACO"},
+		{"id":"e106","fromNode":"paper-eryoldas22","fromSide":"top","toNode":"method-ga","toSide":"right","label":"survey config GA"},
+		{"id":"e107","fromNode":"paper-eryoldas22","fromSide":"top","toNode":"method-pso","toSide":"right","label":"survey config PSO"},
+		{"id":"e108","fromNode":"paper-eryoldas22","fromSide":"top","toNode":"method-aco","toSide":"right","label":"survey config ACO"},
+		{"id":"e109","fromNode":"paper-eryoldas22","fromSide":"left","toNode":"area-comparative","toSide":"bottom","label":"metodologia tuning"}
 	]
 }
