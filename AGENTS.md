@@ -38,6 +38,26 @@
 - Lint target is `make -C src lint`, but it requires `golangci-lint` and runs `golangci-lint run --enable-all`.
 - CLI examples: `./src/tcc create -s 42 -f ./src/data`, `./src/tcc optimize ga --instance ./src/data/10a.graph --results-dir ./src/data/results`, `./src/tcc serve --addr :8080`.
 
+## OpenCode Commands (Sistema de Fila)
+
+O roadmap do TCC opera como uma **fila ordenada de tarefas**. A estrutura está em `vault/roadmap/` com tarefas em `tarefas/P<N>.md` e log de execução em `eventos/*.md`. As views do Obsidian estão em `vault/bases/roadmap-tarefas.base` e `roadmap-log.base`.
+
+| Comando | Função | Entrada na fila? |
+|---|---|---|
+| `/consultar` | Busca literatura acadêmica (MCPs em paralelo) | Não |
+| `/incorporar` | PDF → vault + BibTeX + canvas + claims (10 fases) | Sim (log + tarefa se pendente) |
+| `/tarefa` | Cria tarefa manual na fila | Sim |
+| `/claudiney` | Feedback do orientador → análise + tarefas na fila | Sim |
+| `/proximo` | Executa a próxima tarefa pendente da fila | Sim (consome) |
+| `/compilar` | Compila + valida monografia | Sim (log) |
+| `/experimento` | Roda experimentos batch | Sim (log) |
+
+**Comandos depreciados**: `/baixar-pdf` → `/incorporar`, `/roadmap-criar` → `/tarefa`, `/roadmap-consumir` → `/proximo`, `/consultar-academico` → `/consultar`.
+
+**Fases da fila** (ordem de execução): `infra` < `literatura` < `experimentacao` < `analise` < `escrita` < `polimento` < `revisao`.
+
+**Script auxiliar**: `scripts/roadmap.sh` — `tarefa criar/listar/concluir`, `proximo`, `log`.
+
 ## Experiment Workflow
 
 - Optimization methods are `bruteforce`, `ga`, `pso`, and `aco`; `ga`, `pso`, and `aco` use `--population` and `--iterations` plus method-specific flags.

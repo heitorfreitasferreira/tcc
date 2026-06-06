@@ -1,36 +1,38 @@
 #!/usr/bin/env bash
-# list-pending-roadmap.sh — Lista itens pendentes do roadmap-monografia.md
+# list-pending-roadmap.sh — Lista tarefas do sistema de fila
+# Lê de vault/roadmap/tarefas/P*.md.
 set -euo pipefail
 
-ROADMAP="${1:-vault/writing/roadmap-monografia.md}"
+TASKS_DIR="${1:-vault/roadmap/tarefas}"
 
-if [ ! -f "$ROADMAP" ]; then
-  echo "Erro: $ROADMAP não encontrado" >&2
+if [ ! -d "$TASKS_DIR" ]; then
+  echo "Erro: $TASKS_DIR não encontrado" >&2
   exit 1
 fi
 
 echo "=== Pendentes ==="
 echo ""
-
-grep '^| P[0-9]' "$ROADMAP" | while IFS='' read -r line; do
-  id=$(echo "$line" | awk -F'|' '{print $2}' | sed 's/^ *//;s/ *$//')
-  tarefa=$(echo "$line" | awk -F'|' '{print $3}' | sed 's/^ *//;s/ *$//')
-  status=$(echo "$line" | awk -F'|' '{print $5}' | sed 's/^ *//;s/ *$//')
-
-  if [[ "$status" != Concluída* ]]; then
-    printf "  %-5s %-55s [%s]\n" "$id" "$tarefa" "$status"
+for f in "$TASKS_DIR"/P*.md; do
+  [ -f "$f" ] || continue
+  id=$(grep -m1 '^task_id:' "$f" | sed 's/^task_id: *//')
+  title=$(grep -m1 '^title:' "$f" | sed 's/^title: *"//;s/"$//')
+  status=$(grep -m1 '^status:' "$f" | sed 's/^status: *//')
+  fase=$(grep -m1 '^fase:' "$f" | sed 's/^fase: *//')
+  priority=$(grep -m1 '^priority:' "$f" | sed 's/^priority: *//')
+  if [[ "$status" != concluida* ]]; then
+    printf "  %-5s %-55s [%s/%s]\n" "$id" "$title" "$status" "$priority"
   fi
-done
+done | sort
 
 echo ""
 echo "=== Concluídos ==="
 echo ""
-grep '^| P[0-9]' "$ROADMAP" | while IFS='' read -r line; do
-  id=$(echo "$line" | awk -F'|' '{print $2}' | sed 's/^ *//;s/ *$//')
-  tarefa=$(echo "$line" | awk -F'|' '{print $3}' | sed 's/^ *//;s/ *$//')
-  status=$(echo "$line" | awk -F'|' '{print $5}' | sed 's/^ *//;s/ *$//')
-
-  if [[ "$status" == Concluída* ]]; then
-    printf "  %-5s %s\n" "$id" "$tarefa"
+for f in "$TASKS_DIR"/P*.md; do
+  [ -f "$f" ] || continue
+  id=$(grep -m1 '^task_id:' "$f" | sed 's/^task_id: *//')
+  title=$(grep -m1 '^title:' "$f" | sed 's/^title: *"//;s/"$//')
+  status=$(grep -m1 '^status:' "$f" | sed 's/^status: *//')
+  if [[ "$status" == concluida* ]]; then
+    printf "  %-5s %s\n" "$id" "$title"
   fi
-done
+done | sort

@@ -1,0 +1,63 @@
+filters:
+  and:
+    - file.inFolder("roadmap/eventos")
+    - file.ext == "md"
+    - file.hasTag("tipo/log")
+formulas:
+  resumo: if(bibtex_key, bibtex_key, if(method, method + "/" + instance, if(check_monografia, check_monografia, "")))
+properties:
+  file.name:
+    displayName: Arquivo
+  date:
+    displayName: Data
+  log_type:
+    displayName: Tipo
+  bibtex_key:
+    displayName: Chave BibTeX
+  doi:
+    displayName: DOI
+  method:
+    displayName: Método
+  instance:
+    displayName: Instância
+  seeds:
+    displayName: Sementes
+  status:
+    displayName: Status
+  check_monografia:
+    displayName: Check
+  pdflatex_errors:
+    displayName: Erros LaTeX
+  formula.resumo:
+    displayName: Resumo
+views:
+  - type: table
+    name: Papers Incorporados
+    filters:
+      and:
+        - log_type == "incorporation"
+    order:
+      - date
+      - bibtex_key
+  - type: table
+    name: Experimentos
+    filters:
+      and:
+        - log_type == "experiment"
+    order:
+      - date
+      - method
+      - instance
+  - type: table
+    name: Compilações
+    filters:
+      and:
+        - log_type == "compilation"
+    order:
+      - date
+  - type: table
+    name: Tudo
+    order:
+      - date
+      - log_type
+      - file.name

@@ -1,0 +1,105 @@
+filters:
+  and:
+    - file.inFolder("roadmap/tarefas")
+    - file.ext == "md"
+    - file.hasTag("tipo/tarefa")
+formulas:
+  status_icone: if(status == "concluida", "✅", if(status == "pendente", "⬜", "🔄"))
+  atraso: if(concluido_em, "", if(criado_em, dateDiff("days", criado_em, now()), ""))
+properties:
+  file.name:
+    displayName: Arquivo
+  task_id:
+    displayName: ID
+  title:
+    displayName: Título
+  formula.status_icone:
+    displayName: ""
+  status:
+    displayName: Status
+  priority:
+    displayName: Prioridade
+  fase:
+    displayName: Fase
+  ordem:
+    displayName: Ordem
+  origin:
+    displayName: Origem
+  criado_em:
+    displayName: Criado
+  concluido_em:
+    displayName: Concluído
+  saida_esperada:
+    displayName: Saída Esperada
+  dependencias:
+    displayName: Dependências
+views:
+  - type: table
+    name: Próxima Tarefa
+    filters:
+      and:
+        - status == "pendente"
+    order:
+      - fase
+      - ordem
+  - type: table
+    name: Pendentes por Fase
+    filters:
+      and:
+        - status == "pendente"
+    groupBy:
+      property: fase
+    order:
+      - fase
+      - ordem
+  - type: table
+    name: Pendentes por Prioridade
+    filters:
+      and:
+        - status == "pendente"
+    groupBy:
+      property: priority
+      direction: DESC
+    order:
+      - fase
+      - ordem
+  - type: table
+    name: Todas as Tarefas
+    groupBy:
+      property: fase
+    order:
+      - fase
+      - ordem
+  - type: table
+    name: Concluídas
+    filters:
+      and:
+        - status == "concluida"
+    order:
+      - concluido_em
+      - fase
+  - type: table
+    name: Bloqueadas por Dependência
+    filters:
+      and:
+        - status == "pendente"
+        - dependencias != ""
+        - dependencias != "[]"
+    order:
+      - fase
+      - ordem
+  - type: table
+    name: Por Origem (Claudiney)
+    filters:
+      and:
+        - origin == "claudiney"
+    order:
+      - fase
+      - ordem
+  - type: kanban
+    name: Kanban
+    groupBy:
+      property: status
+    columns:
+      - { title: Pendente, value: pendente }
+      - { title: Concluída, value: concluida }

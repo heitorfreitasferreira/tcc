@@ -15,6 +15,10 @@ type: writing
 
 # Roadmap de Escrita da Monografia
 
+> **Nota**: As tarefas foram migradas para o novo sistema de fila em `vault/roadmap/`.
+> Consulte `vault/roadmap/README.md` para instruções e use os comandos `/tarefa`,
+> `/proximo`, `/claudiney` etc. Esta nota é mantida como referência histórica.
+
 Esta nota é o ponto de partida operacional para agentes que irão escrever a monografia. A escrita deve usar o `vault/` como camada organizada de conhecimento e a estrutura de diretórios da `monografia/` como destino, sem assumir conteúdo já escrito nos arquivos `.tex`.
 
 ## Hierarquia de Informação

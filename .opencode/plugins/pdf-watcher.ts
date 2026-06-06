@@ -1,8 +1,6 @@
 import type { Plugin } from "@opencode-ai/plugin"
 
-export const PdfWatcher: Plugin = async ({ $, directory, client }) => {
-  const LOG = ".opencode/log/pdf-events.log"
-
+export const PdfWatcher: Plugin = async ({ $, client }) => {
   await client.app.log({
     body: {
       service: "pdf-watcher",
@@ -22,32 +20,44 @@ export const PdfWatcher: Plugin = async ({ $, directory, client }) => {
         const filename = p.split("/").pop()!
         const key = filename.replace(/\.pdf$/i, "")
 
-        const existing = await $`ls vault/papers/${key}.md 2>/dev/null || true`.text()
-        if (existing.trim()) {
+        const existingNote = await $`ls vault/papers/${key}.md 2>/dev/null || true`.text()
+        const existingTask = await $`grep -l "acao.*incorporar.*${key}" vault/roadmap/tarefas/P*.md 2>/dev/null || true`.text()
+
+        if (existingNote.trim() || existingTask.trim()) {
           await client.app.log({
             body: {
               service: "pdf-watcher",
               level: "debug",
-              message: `Nota vault já existe para ${key}, ignorando`,
+              message: `Nota ou tarefa já existe para ${key}, ignorando`,
             },
           })
           continue
         }
 
+        const doi = await $`bash scripts/extract-pdf-doi.sh "${p}" 2>/dev/null || true`.text()
+        const doiStr = doi.trim()
+
         await client.app.log({
           body: {
             service: "pdf-watcher",
             level: "info",
-            message: `Novo PDF detectado: ${filename} — execute /incorporar "${p}"`,
-            extra: { path: p, key },
+            message: `Novo PDF detectado: ${filename}${doiStr ? " (DOI: " + doiStr + ")" : ""} — criando tarefa na fila`,
+            extra: { path: p, key, doi: doiStr },
           },
         })
 
-        const doi = await $`bash scripts/extract-pdf-doi.sh "${p}" 2>/dev/null || true`.text()
-        const doiInfo = doi.trim() ? ` DOI: ${doi.trim()}` : ""
+        const saida = doiStr
+          ? `Nota vault/papers/${key}.md enriquecida com metadados de ${doiStr}`
+          : `Nota vault/papers/${key}.md criada e enriquecida (DOI não detectado automaticamente)`
 
-        await $`mkdir -p .opencode/log`
-        await $`echo "$(date -Iseconds) | ${p}${doiInfo}" >> ${LOG}`
+        const result = await $`bash scripts/roadmap.sh tarefa criar "Incorporar artigo: ${key}" "${saida}" alta literatura`.text()
+        await client.app.log({
+          body: {
+            service: "pdf-watcher",
+            level: "info",
+            message: `Tarefa criada na fila: ${result.trim()}`,
+          },
+        })
       }
     },
   }
