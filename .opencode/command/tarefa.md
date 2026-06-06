@@ -19,7 +19,7 @@ Parâmetros posicionais:
 | 1 | Título | obrigatório | Descrição curta |
 | 2 | Descrição | vazio | Texto livre com detalhes |
 | 3 | Prioridade | `media` | `alta`, `media`, `baixa` |
-| 4 | Fase | `pendente` | `infra`, `literatura`, `experimentacao`, `analise`, `escrita`, `polimento`, `revisao` |
+| 4 | Fase | `escrita` | `infra`, `literatura`, `experimentacao`, `analise`, `escrita`, `polimento`, `revisao` |
 
 ## Comportamento
 

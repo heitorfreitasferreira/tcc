@@ -29,6 +29,11 @@ if [[ "$cmd" == "tarefa" && "${1:-}" == "criar" ]]; then
     prioridade="${1:-media}"; shift || true
     fase="${1:-escrita}"; shift || true
 
+    case "$fase" in
+        infra|literatura|experimentacao|analise|escrita|polimento|revisao) ;;
+        *) echo "Erro: fase inválida '$fase'. Use uma das: infra, literatura, experimentacao, analise, escrita, polimento, revisao" >&2; exit 1 ;;
+    esac
+
     # Next ID
     last=$(ls "$TAREFAS_DIR"/P*.md 2>/dev/null | sed 's/.*P//;s/\.md//' | sort -n | tail -1)
     next=$(( ${last:-0} + 1 ))
