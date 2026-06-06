@@ -1,4 +1,12 @@
-# Agent — Experiments
+# AGENTS — Experiments
+
+## Go CLI Commands
+
+- Build: `make -C src build` → `src/tcc`; batch scripts exigem este executável.
+- Testes focados: de `src/`, `go test ./path/to/pkg -run TestName`; testes completos: `go test ./...`.
+- `make -C src test` roda `go mod tidy`, `go mod vendor`, depois escreve `coverage.out` e `report.json`.
+- Lint: `make -C src lint` (requer `golangci-lint`).
+- Exemplos: `./src/tcc create -s 42 -f ./src/data`, `./src/tcc optimize ga --instance ./src/data/10a.graph --results-dir ./src/data/results`, `./src/tcc serve --addr :8080`.
 
 ## Fluxo de geração
 1. `make -C src build` → `src/tcc`
