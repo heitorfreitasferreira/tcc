@@ -13,10 +13,10 @@
 
 ## Guias por área
 
-| Arquivo | Conteúdo |
-|---------|----------|
-| [AGENTS-visualizacao.md](./AGENTS-visualizacao.md) | Geração de imagens, figuras, gráficos e artefatos visuais |
-| [AGENTS-experiments.md](./AGENTS-experiments.md) | CLI Go, workflow de experimentos, estrutura de dados |
-| [AGENTS-vault.md](./AGENTS-vault.md) | Vault Obsidian, skills instaladas, workflow de referências |
-| [AGENTS-mcp.md](./AGENTS-mcp.md) | Servidores MCP acadêmicos, scripts auxiliares, env vars |
-| [AGENTS-monografia.md](./AGENTS-monografia.md) | Notas de escrita e compilação |
+| Skill | Conteúdo |
+|-------|----------|
+| `experiment-workflow` | CLI Go, workflow de experimentos, estrutura de dados |
+| `project-figures` | Geração de imagens, figuras, gráficos e artefatos visuais |
+| `vault-reference` | Vault Obsidian, skills instaladas, workflow de referências |
+| `academic-mcp` | Servidores MCP acadêmicos, scripts auxiliares, env vars |
+| `monograph-notes` | Notas de escrita e compilação |
