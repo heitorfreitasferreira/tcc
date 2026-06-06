@@ -1,129 +1,147 @@
-# TCC
+# TCC — Otimizacao Bioinspirada para TSP/rTSP
 
-## Overview
+Este repositorio e o meu Trabalho de Conclusao de Curso. O projeto principal compara metodos de otimizacao bioinspirados aplicados a uma variante do TSP/rTSP motivada por patrulha de drones: visitar pontos de interesse com rota/tempo minimos considerando o custo da trajetoria.
 
-This CLI application is designed for finding RTSP paths using bio-inspired metaheuristics. It provides several commands for creating and managing point instances and graphs.
+O repositorio tambem contem um framework agentico de pesquisa que apoia a escrita da monografia. Esse framework nao e o produto final do TCC; ele e a infraestrutura de trabalho que organiza memoria, evidencias, backlog, literatura, validacao e escrita.
 
-## Installation
+## Estrutura Geral do Repositorio
 
-(Provide installation instructions specific to your project)
+| Parte | Caminho | Papel no TCC |
+|---|---|---|
+| Experimentos | `src/` | Codigo Go usado para gerar instancias, grafos, algoritmos e resultados experimentais |
+| CLI experimental | `src/cmd/` | Comandos Cobra para `create`, `graph`, `optimize`, metodos e reporting |
+| Algoritmos | `src/optimization/` | Implementacoes de GA, PSO, ACO, brute force e lower bound |
+| Dados e resultados | `src/data/` | Instancias, grafos e resultados estruturados usados como evidencia |
+| Visualizador | `src/web/` | Interface extra para inspecionar resultados; util, mas fora do escopo cientifico central |
+| Memoria de pesquisa | `vault/` | Vault Obsidian com papers, claims, areas, auditorias, roadmap e notas de escrita |
+| Texto final | `monografia/` | Monografia LaTeX, bibliografia, figuras e PDF final |
+| Framework agentico | `.opencode/`, `.agents/`, `scripts/roadmap.sh` | Camada que opera sobre codigo, vault e monografia |
 
-## Global Flags
+## Relacao Entre as Partes
 
-- `-s, --seed int64`: Set a seed for random number generation (default: 0)
-  - Example: `-s 42`
-- `-f, --folder string`: Directory to save maps and graphs (default: "./data")
-  - Example: `-f ./my-data-folder`
+```text
+src/             -> fatos de codigo e resultados experimentais
+papers/PDFs      -> fatos da literatura
+vault/           -> memoria organizada desses fatos
+framework        -> agente que consulta, valida, corrige e escreve
+monografia/      -> resultado textual final
+```
 
-## Commands
+O framework se baseia em fatos. Ele deve escrever ou revisar a monografia apenas a partir de evidencias verificaveis: codigo implementado, resultados experimentais, PDFs/notas de papers ou auditorias registradas.
 
-### 1. `create`
+Ele tambem se retroalimenta: quando encontra uma lacuna ou erro, cria tarefas, corrige codigo com supervisao humana, incorpora metodos da literatura, busca textos academicos com MCPs e atualiza o vault antes de alterar o texto final.
 
-**Short Description**: Save resources into files
+## Framework Agentico de Pesquisa
 
-**Usage**: `tcc create`
+O framework transforma o processo de pesquisa e escrita em um ciclo fechado:
 
-**Behavior**:
+1. Literatura entra por `/consultar` e `/incorporar`.
+2. Evidencias ficam no `vault/` como papers, claims, areas, auditorias e notas de escrita.
+3. Tarefas entram na fila em `vault/roadmap/tarefas/` por `/tarefa`, `/claudiney` ou pipelines automaticos.
+4. `/proximo` consome a primeira tarefa pendente por ordem de fase, executa, valida com `council` e conclui.
+5. Experimentos e compilacoes geram logs em `vault/roadmap/eventos/`.
+6. A monografia em `monografia/` recebe apenas texto apoiado por fatos.
 
-- Runs both `map` and `graph` subcommands
-- Generates point instances
-- Creates corresponding graphs
-- Saves files to the specified folder
+## Componentes Principais
 
-### 2. `create map`
+| Componente | Caminho | Funcao no framework |
+|---|---|---|
+| Comandos agenticos | `.opencode/command/` | Interfaces slash command para pesquisa, escrita, validacao e automacao |
+| Fila de roadmap | `vault/roadmap/tarefas/` | Tarefas atomicas `P<N>.md` ordenadas por fase e ordem |
+| Script de roadmap | `scripts/roadmap.sh` | Camada shell para criar, listar, concluir e logar tarefas |
+| Vault semantico | `vault/` | Base de conhecimento com papers, claims, areas, auditorias e bases Obsidian |
+| Bibliografia | `monografia/bib/abntex2-references.bib` | Fonte BibTeX da monografia |
+| Monografia | `monografia/` | Texto LaTeX final e artefatos de compilacao |
+| Codigo experimental | `src/` | Fonte primaria para claims metodologicos e experimentais |
+| Skills | `.agents/skills/` e `~/.agents/skills/` | Instrucoes especializadas carregadas por fase ou dominio |
+| Council | `.agents/council/` | Relatorios de validacao multi-juiz |
 
-**Short Description**: Save randomly generated point instances for Traveling Salesman Problem (TSP)
+## Fluxo Recomendado
 
-**Usage**: `tcc create map`
+```text
+/consultar -> /incorporar -> /tarefa ou /claudiney -> /proximo -> council -> concluir -> /compilar
+```
 
-**Features**:
+Para trabalho experimental:
 
-- Generates point instances based on predefined frequencies
-- Uses global seed for reproducibility
-- Saves instances to a specified folder
+```text
+/experimento -> resultados em src/data/results/ -> claims experimentais -> monografia
+```
 
-**Current Configuration**:
+Para feedback do orientador:
 
-- Generates 5 instances with 50 points
+```text
+/claudiney -> review note -> tarefas P<N> -> /proximo
+```
 
-### 3. `graph`
-
-**Short Description**: Generate graphs from point instances
-
-**Usage**: `tcc graph`
-
-**Behavior**:
-
-- Loads point instances from the specified folder
-- Creates graphs for each point instance
-- Saves graph files in the same folder
-
-### 4. `optimize <method>`
-
-**Short Description**: Optimize one `.graph` instance with a selected method
-
-**Methods**:
-
-- `bruteforce`
-- `ga`
-- `aco`
-- `pso`
-
-**Shared Flags**:
-
-- `--instance string`: Input graph file (default: `./data/10a.graph`)
-- `-p, --population int`: Population size for population-based methods (default: `100`)
-- `-i, --iterations int`: Number of iterations for population-based methods (default: `100`)
-- `--results-dir string`: Base folder for structured outputs (default: `./data/results`)
-- `--run-id string`: Optional explicit identifier for a run
-- `--if-exists string`: Existing artifact policy: `skip|overwrite|error` (default: `skip`)
-- `--progress bool`: Print improvement progress to stderr (default: `true`)
-
-**Structured Outputs** (saved under `--results-dir`):
-
-- `summary/<run_id>.json`: final best solution, metadata and params
-- `evolution/<run_id>.jsonl`: only improvement events (one JSON record per improvement)
-- `timing/<run_id>.json`: execution timing breakdown (`load_instance`, `optimize`, `serialize`, `total`)
-- `logs/<run_id>.log`: recommended destination for stderr when running in batch
-
-The `evolution` file only stores rows when the best makespan changes, including the iteration and evaluation count where it changed.
-
-### 5. `serve`
-
-**Short Description**: Start the RTSP results viewer web server
-
-**Usage**: `tcc serve`
-
-**Flags**:
-
-- `--addr string`: Address where the web server listens (default: `:8080`)
-
-**Behavior**:
-
-- Renders `/` with a sidebar tree (`map -> method -> run`) and a canvas preview for map points
-- Serves static files from `/css`, `/js`, and `/img`
-- Uses HTMX endpoints for partial updates: `/ui/select-map`, `/ui/select-method`, `/ui/select-run`
-- Uses embedded assets from `./data`: `*.graph`, `*.points`, `results/summary`, `results/evolution`, `results/timing`
-- Does not embed `results/logs` files in the binary
-
-## Example Usage
+## Comandos Mais Usados
 
 ```bash
-# Generate point instances and graphs with a specific seed
-tcc create -s 42 -f ./experiment-data
+# Ver a proxima tarefa pendente
+bash scripts/roadmap.sh proximo
 
-# Generate only point instances
-tcc create map -s 123 -f ./point-instances
+# Criar tarefa manual
+bash scripts/roadmap.sh tarefa criar "Titulo" "Saida esperada" alta escrita
 
-# Generate graphs from existing point instances
-tcc graph -f ./point-instances
+# Marcar tarefa como concluida
+bash scripts/roadmap.sh tarefa concluir P48
 
-# Optimize with GA and save structured artifacts
-tcc optimize ga --instance ./data/10a.graph --results-dir ./data/results
-
-# Start the local RTSP viewer web server
-tcc serve --addr :8080
-
-# Batch execution with run_all.sh
-./src/run_all.sh --method=ga --frequency=10:3,11:3 --results-dir=./src/data/results --if-exists=skip
+# Logar evento de experimento, incorporacao ou compilacao
+bash scripts/roadmap.sh log experiment method=aco seeds=0-50 status=ok
 ```
+
+Slash commands principais:
+
+| Comando | Uso |
+|---|---|
+| `/consultar` | Busca literatura em MCPs academicos |
+| `/incorporar` | DOI/PDF/arXiv/BibTeX -> vault + BibTeX + canvas + claims |
+| `/tarefa` | Cria tarefa manual na fila |
+| `/claudiney` | Converte feedback do orientador em review note e tarefas |
+| `/proximo` | Executa a proxima tarefa pendente com validacao |
+| `/experimento` | Roda experimentos batch e loga resultados |
+| `/compilar` | Valida e compila a monografia |
+| `/commitar` | Revisa e commita mudancas |
+
+## Ordem da Fila
+
+As tarefas sao ordenadas por fase e depois por `ordem` numerica:
+
+```text
+infra < literatura < experimentacao < analise < escrita < polimento < revisao
+```
+
+Essa ordem evita escrever texto final antes de fechar literatura, experimentos e evidencias.
+
+## Documentacao
+
+A documentacao detalhada esta em `docs/`:
+
+| Documento | Conteudo |
+|---|---|
+| `docs/arquitetura.md` | Visao geral, principios e fluxo de dados |
+| `docs/roadmap.md` | Fila ordenada, formato das tarefas e eventos |
+| `docs/comandos.md` | Cada slash command e sua responsabilidade |
+| `docs/literatura.md` | Busca, incorporacao de papers, BibTeX e PDFs |
+| `docs/vault.md` | Schema semantico do vault, papers, claims e tags |
+| `docs/validacao.md` | Council, auditorias, claims e anti-alucinacao |
+| `docs/experimentos.md` | CLI Go, batch experimental e resultados |
+| `docs/monografia.md` | Escrita, compilacao e relacao com evidencias |
+| `docs/skills.md` | Skills por fase e como elas entram no fluxo |
+| `docs/scripts.md` | Scripts auxiliares e contratos de entrada/saida |
+| `docs/go-cli.md` | Componente Go usado para gerar dados experimentais |
+
+## Invariantes do Repositorio
+
+- Toda tarefa executavel deve ter `task_id`, `fase`, `ordem`, `priority`, `status`, `origin` e `saida_esperada`.
+- Claims fortes na monografia precisam apontar para fonte primaria: codigo, dados, literatura validada ou auditoria.
+- Papers citados no texto final devem ter entrada BibTeX e nota no vault.
+- Referencias condicionais devem virar tarefa antes de permanecerem no texto final.
+- Resultados experimentais devem vir de `src/data/results/`, nao de tabelas manuais.
+- Mudancas relevantes devem ser validadas por council ou justificadas quando a validacao for pulada.
+- O visualizador em `src/web/` pode apoiar inspecao, mas nao deve ser tratado como evidencia cientifica central.
+- O vault e memoria; a monografia e o resultado; o codigo e os dados sao fontes primarias.
+
+## Estado Operacional
+
+Use `/proximo` para continuar o trabalho orientado pela fila. Use `bash scripts/roadmap.sh proximo` para inspecionar a proxima tarefa sem acionar o fluxo agentico completo.
