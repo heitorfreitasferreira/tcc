@@ -61,6 +61,16 @@ Mostra resumo:
 - Status
 - Evento logado em `vault/roadmap/eventos/`
 
+### 6. (Opcional) Commitar mudanças
+```bash
+git status --short
+```
+Se há mudanças no working tree (especialmente `src/data/results/`):
+1. Gera mensagem: `experiment: <method> <frequency> s<start>-<end>`.
+2. Usa toolcall `question` com opções `["SIM"]`, `["NAO"]`.
+3. **SIM**: `git add -A && git commit -m "<mensagem>"`.
+4. **NAO**: mostra o comando como texto e encerra sem executar.
+
 ## Dependências
 - `src/tcc` (build)
 - `src/run_experiments_multi_seed.sh`

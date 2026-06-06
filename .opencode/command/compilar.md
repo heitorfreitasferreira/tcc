@@ -36,6 +36,16 @@ Mostra:
 - PDF gerado: `monografia/main_ppgco_ufu.pdf`
 - Evento logado em `vault/roadmap/eventos/`
 
+### 5. (Opcional) Commitar mudanças
+```bash
+git status --short
+```
+Se há mudanças no working tree:
+1. Gera mensagem: `docs: compilação monografia <data>`.
+2. Usa toolcall `question` com opções `["SIM"]`, `["NAO"]`.
+3. **SIM**: `git add -A && git commit -m "<mensagem>"`.
+4. **NAO**: mostra o comando como texto e encerra sem executar.
+
 ## Dependências
 - `scripts/check-monografia.sh`
 - `pdflatex`, `bibtex` no PATH

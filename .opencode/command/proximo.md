@@ -57,7 +57,17 @@ bash scripts/roadmap.sh tarefa concluir P<N>
 - Se `origin == watcher`: loga incorporação em `vault/roadmap/eventos/`
 - Se `origin == incorporar`: atualiza nota do paper
 
-### 8. Sugerir próximo
+### 8. (Opcional) Commitar mudanças
+```bash
+git status --short
+```
+Se há mudanças no working tree:
+1. Gera mensagem no formato `<tipo>: P<N> — <título>` (tipo inferido da fase: `literatura` → `docs`, `experimentacao` → `experiment`, `escrita`/`polimento` → `docs`, `infra` → `chore`).
+2. Usa toolcall `question` com opções `["SIM"]`, `["NAO"]`.
+3. **SIM**: `git add -A && git commit -m "<mensagem>"`.
+4. **NAO**: mostra `git add -A && git commit -m "<mensagem>"` como texto e encerra sem executar.
+
+### 9. Sugerir próximo
 Mostra a próxima tarefa pendente após esta.
 
 ## Ordem da fila
