@@ -1,71 +1,106 @@
 {
-  "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "scihub": {
-      "type": "local",
-      "command": [
-        "/home/heitor/.config/opencode/mcp/Sci-Hub-MCP-Server/.venv/bin/python",
-        "/home/heitor/.config/opencode/mcp/Sci-Hub-MCP-Server/sci_hub_server.py"
-      ],
-      "enabled": true
+    "$schema": "https://opencode.ai/config.json",
+    "model": "opencode-go/deepseek-v4-pro",
+    "permission": {
+        "skill": {
+            "*": "allow",
+            "django": "deny",
+            "docker-best-practices": "deny",
+            "omarchy": "deny"
+        }
     },
-    "google-scholar": {
-      "type": "local",
-      "command": [
-        "/home/heitor/.config/opencode/mcp/Google-Scholar-MCP-Server/.venv/bin/python",
-        "/home/heitor/.config/opencode/mcp/Google-Scholar-MCP-Server/google_scholar_server.py"
-      ],
-      "enabled": true
+    "mcp": {
+        "scihub": {
+            "type": "local",
+            "command": [
+                "/home/heitor/.config/opencode/mcp/Sci-Hub-MCP-Server/.venv/bin/python",
+                "/home/heitor/.config/opencode/mcp/Sci-Hub-MCP-Server/sci_hub_server.py"
+            ],
+            "enabled": true
+        },
+        "google-scholar": {
+            "type": "local",
+            "command": [
+                "/home/heitor/.config/opencode/mcp/Google-Scholar-MCP-Server/.venv/bin/python",
+                "/home/heitor/.config/opencode/mcp/Google-Scholar-MCP-Server/google_scholar_server.py"
+            ],
+            "enabled": true
+        },
+        "arxiv": {
+            "type": "local",
+            "command": [
+                "/home/heitor/.local/bin/arxiv-mcp-server"
+            ],
+            "enabled": true
+        },
+        "pdf-reader": {
+            "type": "local",
+            "command": [
+                "npx",
+                "@sylphx/pdf-reader-mcp"
+            ],
+            "enabled": true
+        },
+        "crossref": {
+            "type": "local",
+            "command": [
+                "/home/heitor/tcc/.opencode/mcp/mcp-env.sh",
+                "crossref-mcp-server"
+            ],
+            "enabled": true
+        },
+        "scholar-sidekick": {
+            "type": "local",
+            "command": [
+                "/home/heitor/tcc/.opencode/mcp/mcp-env.sh",
+                "scholar-sidekick-mcp"
+            ],
+            "enabled": true
+        },
+        "semantic-scholar": {
+            "type": "local",
+            "command": [
+                "semantic-scholar-fastmcp"
+            ],
+            "enabled": true
+        },
+        "doiget": {
+            "type": "local",
+            "command": [
+                "/home/heitor/.cargo/bin/doiget",
+                "serve"
+            ],
+            "enabled": true
+        },
+        "academic-search": {
+            "type": "local",
+            "command": [
+                "uv",
+                "run",
+                "--directory",
+                "/home/heitor/tcc/.opencode/mcp/academic-search-mcp-server",
+                "python",
+                "server.py"
+            ],
+            "enabled": true
+        }
     },
-    "arxiv": {
-      "type": "local",
-      "command": [
-        "/home/heitor/.local/bin/arxiv-mcp-server"
-      ],
-      "enabled": true
-    },
-    "pdf-reader": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@sylphx/pdf-reader-mcp"
-      ],
-      "enabled": true
-    },
-    "crossref": {
-      "type": "local",
-      "command": [
-        "/home/heitor/tcc/.opencode/mcp/mcp-env.sh",
-        "crossref-mcp-server"
-      ],
-      "enabled": true
-    },
-    "scholar-sidekick": {
-      "type": "local",
-      "command": [
-        "/home/heitor/tcc/.opencode/mcp/mcp-env.sh",
-        "scholar-sidekick-mcp"
-      ],
-      "enabled": true
-    },
-    "semantic-scholar": {
-      "type": "local",
-      "command": ["semantic-scholar-fastmcp"],
-      "enabled": true
-    },
-    "doiget": {
-      "type": "local",
-      "command": ["/home/heitor/.cargo/bin/doiget", "serve"],
-      "enabled": true
-    },
-    "academic-search": {
-      "type": "local",
-      "command": [
-        "uv", "run", "--directory",
-        "/home/heitor/tcc/.opencode/mcp/academic-search-mcp-server",
-        "python", "server.py"
-      ],
-      "enabled": true
+    "command": {
+        "consultar": {
+            "template": "{file:.opencode/command/consultar.md}",
+            "model": "opencode-go/deepseek-v4-flash"
+        },
+        "commitar": {
+            "template": "{file:.opencode/command/commitar.md}",
+            "model": "opencode-go/deepseek-v4-flash"
+        },
+        "incorporar": {
+            "template": "{file:.opencode/command/incorporar.md}",
+            "model": "opencode-go/deepseek-v4-pro"
+        },
+        "revisar": {
+            "template": "{file:.opencode/command/revisar.md}",
+            "description": "Revisa texto da monografia com stop-slop",
+        }
     }
-  }
 }

@@ -15,8 +15,24 @@
 
 | Skill | Conteúdo |
 |-------|----------|
-| `experiment-workflow` | CLI Go, workflow de experimentos, estrutura de dados |
-| `project-figures` | Geração de imagens, figuras, gráficos e artefatos visuais |
-| `vault-reference` | Vault Obsidian, skills instaladas, workflow de referências |
+| `tcc-escrita` | Redação acadêmica (prosa, estrutura, LaTeX) — use ao escrever qualquer parte da monografia |
+| `stop-slop` | Remove AI tells da prosa — carregar ao revisar texto |
+| `monograph-notes` | Compilação LaTeX, ciclo BibTeX, idioma pt-BR |
+| `experiment-workflow` | CLI Go, workflow de experimentos, schemas de dados |
+| `analise-estatistica` | Testes estatísticos, effect sizes, power analysis, reporte APA |
+| `figuras-tcc` | Figuras e gráficos para a monografia (Tufte + convenções do projeto) |
+| `vault-tcc` | Vault Obsidian completo: estrutura, tags, Bases, schema, importação de papers |
+| `go` | Go idiomático, CLI e Cobra — sub-arquivos `idiomatic.md`, `cli.md`, `cobra.md` conforme o escopo |
 | `academic-mcp` | Servidores MCP acadêmicos, scripts auxiliares, env vars |
-| `monograph-notes` | Notas de escrita e compilação |
+
+## Escrita da Monografia
+
+Use o subagente `@tcc-redator` para escrever, revisar ou compilar qualquer
+parte da monografia. Ou carregue as skills individuais: `tcc-escrita`,
+`stop-slop`, `monograph-notes`.
+
+## Experimentos
+
+Use o subagente `@tcc-experimentos` para orquestrar benchmarks, análises
+estatísticas e geração de figuras. Ou carregue as skills individuais:
+`experiment-workflow`, `analise-estatistica`, `figuras-tcc`.
