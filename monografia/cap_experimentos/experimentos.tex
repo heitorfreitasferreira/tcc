@@ -1,12 +1,12 @@
 \chapter[Experimentos e Análise dos Resultados]{Experimentos e Análise dos Resultados}
 \label{experimentos}
 
-Este capítulo apresenta a avaliação experimental dos métodos descritos no \autoref{proposta}. A análise usa os arquivos estruturados produzidos pela implementação: \TotalArquivosResumo{} resumos, \TotalArquivosEvolucao{} históricos de evolução e \TotalArquivosTempo{} arquivos de tempo. Os resultados são discutidos em termos de qualidade da solução, tempo computacional, estabilidade entre sementes, significância estatística e limitações metodológicas.
+Este capítulo avalia experimentalmente os métodos descritos no \autoref{proposta}. A análise usa \TotalArquivosResumo{} resumos, \TotalArquivosEvolucao{} históricos de evolução e \TotalArquivosTempo{} arquivos de tempo. Discutimos qualidade da solução, tempo computacional, estabilidade entre sementes, significância estatística e limitações metodológicas.
 
 \section{Método para a Avaliação}
 \label{metodo}
 
-Todas as execuções otimizam a mesma função objetivo: o \textit{makespan} da rota de patrulhamento. Uma solução factível parte da base, visita cada ponto de interesse exatamente uma vez e retorna à base. A avaliação usa o tensor $G[anterior][atual][proximo]$, que incorpora distância euclidiana e penalidade angular.
+Todas as execuções otimizam a mesma função objetivo: o \textit{makespan} da rota de patrulhamento. Uma solução factível parte da base, visita cada ponto de interesse exatamente uma vez e retorna à base. A avaliação usa o tensor $G[\text{anterior}][\text{atual}][\text{proximo}]$, que incorpora distância euclidiana e penalidade angular.
 
 As instâncias são sintéticas, com coordenadas no intervalo $[-1,1]$. Foram usados \TotalTamanhosInstancia{} tamanhos de instância, com \TotalVariantesPorTamanho{} variantes por tamanho, totalizando \TotalInstancias{} instâncias. \ac{GA}, \ac{PSO} e \ac{ACO} foram executados com \TotalSementesGA{} sementes em cada instância. A busca exaustiva foi executada nas \TotalInstanciasComOtimo{} instâncias de 10 a 15 pontos. O \ac{LB} \ac{AP} foi executado em todas as \TotalInstancias{} instâncias.
 
@@ -28,7 +28,7 @@ As métricas principais são:
 
 \section{Experimentos}
 
-Os experimentos foram executados por uma interface de linha de comando em Go. Cada execução recebe o arquivo de instância, o método, a semente e o diretório de resultados. O identificador da execução é usado para nomear os arquivos de resumo, evolução e tempo. Para as meta-heurísticas, os parâmetros foram mantidos fixos: população 100 e 100 iterações. Essa decisão permite comparar os métodos sob o mesmo orçamento populacional, mas não substitui uma análise de sensibilidade de hiperparâmetros. A configuração automática de algoritmos é um campo ativo, com métodos que abrangem \textit{racing} (F-Race), \textit{iterated racing} (irace), busca local iterada (ParamILS) e otimização baseada em modelos (SMAC), conforme revisado por \citeonline{eryoldas2022survey}. Essas técnicas não foram empregadas neste estudo, que adota parâmetros fixos como escolha metodológica deliberada. Trabalhos como \citeonline{wang2021ant} demonstram que a otimização de parâmetros — no caso, os expoentes \(\alpha\) e \(\beta\) do ACO — pode alterar significativamente o desempenho, o que reforça que os resultados reportados refletem a configuração adotada e não o potencial máximo de cada método.
+Executamos os experimentos por uma interface de linha de comando em Go. Cada execução recebe o arquivo de instância, o método, a semente e o diretório de resultados. O identificador da execução nomeia os arquivos de resumo, evolução e tempo. Para as meta-heurísticas, mantivemos os parâmetros fixos: população 100 e 100 iterações. Isso permite comparar os métodos sob o mesmo orçamento populacional, mas não substitui uma análise de sensibilidade de hiperparâmetros. Trabalhos como \citeonline{wang2021ant} demonstram que a otimização de parâmetros --- no caso, os expoentes $\alpha$ e $\beta$ do ACO --- pode alterar significativamente o desempenho. Os resultados reportados refletem a configuração adotada, não o potencial máximo de cada método.
 
 A busca exaustiva fornece o ótimo global nas instâncias em que foi executada. A \autoref{tab:otimos-bf} apresenta esses valores. Eles são usados como referência para calcular o gap das meta-heurísticas nas instâncias pequenas.
 
@@ -51,6 +51,7 @@ Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, o \ac{ACO} apres
   \centering
   \caption{Gap percentual em relação ao ótimo nas instâncias `10a'--`15c'.}
   \label{tab:gap-bf}
+  \scriptsize
   \input{generated/tables/tab-gap-bf.tex}
 \end{table}
 
@@ -87,7 +88,7 @@ Para instâncias acima de 15 pontos, a busca exaustiva não foi usada como ótim
   \label{fig:heatmap-makespan}
 \end{figure}
 
-Esse resultado favorece a interpretação de que a construção probabilística com feromônio tridimensional aproveitou melhor a estrutura de dependência de sequência do problema. A interpretação deve ser delimitada: ela vale para a implementação, os parâmetros e as instâncias avaliadas. Não demonstra que \ac{ACO} domina \ac{GA} ou \ac{PSO} em todas as variantes de \ac{TSP} ou em todos os cenários de patrulha.
+O feromônio tridimensional permitiu à \ac{ACO} aproveitar melhor a estrutura de dependência de sequência do problema. Essa conclusão vale para a implementação, os parâmetros e as instâncias avaliadas. Não demonstra que \ac{ACO} domina \ac{GA} ou \ac{PSO} em toda variante de \ac{TSP} ou cenário de patrulha.
 
 \subsection{\texorpdfstring{\ac{LB}}{Lower Bound} \texorpdfstring{\ac{AP}}{AP}}
 
@@ -97,6 +98,7 @@ O \ac{LB} \ac{AP} foi válido nas \TotalInstanciasComOtimo{} instâncias com ót
   \centering
   \caption{Resumo do gap entre \ac{LB} \ac{AP} e ótimo por busca exaustiva.}
   \label{tab:lb-gap}
+  \scriptsize
   \input{generated/tables/tab-lb-gap.tex}
 \end{table}
 
@@ -128,11 +130,11 @@ O ganho de qualidade do \ac{ACO} vem acompanhado de maior custo computacional. N
   \label{fig:tradeoff}
 \end{figure}
 
-Para patrulhamento com drones, esse trade-off é central. Se a rota puder ser planejada offline, o \ac{ACO} pode ser preferível pela qualidade. Se a rota precisar ser recalculada rapidamente, o \ac{GA} oferece uma alternativa muito mais barata, embora com makespan médio maior nas instâncias avaliadas.
+Para patrulhamento com drones, esse trade-off define a escolha do método. Se a rota puder ser planejada offline, o \ac{ACO} é preferível pela qualidade. Se a rota precisar ser recalculada rapidamente, o \ac{GA} oferece uma alternativa mais barata, embora com makespan médio maior nas instâncias avaliadas.
 
 \subsection{Estabilidade e Convergência}
 
-A variabilidade entre sementes também difere entre os métodos. O \ac{ACO} apresentou boa qualidade média e estabilidade nas instâncias grandes, mas com custo temporal elevado. O \ac{GA} foi rápido, porém produziu soluções de maior makespan médio. O \ac{PSO} teve o pior desempenho de qualidade neste desenho experimental, resultado compatível com a limitação da codificação por \textit{random keys}: a ordenação de valores contínuos nem sempre preserva adjacências úteis para uma rota com custos de tripletas.
+A variabilidade entre sementes também difere entre os métodos. O \ac{ACO} apresentou boa qualidade média e estabilidade nas instâncias grandes, mas com custo temporal elevado. O \ac{GA} foi rápido, porém produziu soluções de maior makespan médio. O \ac{PSO} teve o pior desempenho de qualidade neste desenho experimental, consistente com a limitação da codificação por \textit{random keys}: a ordenação de valores contínuos nem sempre preserva adjacências úteis para uma rota com custos de tripletas.
 
 \begin{figure}[htbp]
   \centering
@@ -163,6 +165,6 @@ Os ranks médios foram \ac{ACO}=\RankMedioACO{}, \ac{GA}=\RankMedioGA{} e \ac{PS
 
 \subsection{Limitações Metodológicas}
 
-Os resultados devem ser interpretados dentro do desenho experimental. Primeiro, as instâncias são sintéticas e geradas em um plano normalizado; elas não capturam obstáculos, vento, autonomia de bateria, zonas proibidas ou prioridades reais de patrulha. Segundo, os hiperparâmetros foram fixados para todos os métodos. \ac{ACO}, \ac{GA} e \ac{PSO} poderiam ter desempenho diferente sob ajuste sistemático por instância. Terceiro, os métodos não usam a mesma codificação: \ac{GA} usa permutação direta, \ac{PSO} usa \textit{random keys}, e \ac{ACO} constrói rotas por transições probabilísticas tridimensionais. Essa diferença é parte do desenho comparativo, mas limita inferências causais sobre a superioridade intrínseca de uma meta-heurística.
+Os resultados valem dentro do desenho experimental. Primeiro, as instâncias são sintéticas e geradas em um plano normalizado; elas não capturam obstáculos, vento, autonomia de bateria, zonas proibidas ou prioridades reais de patrulha. Segundo, os hiperparâmetros foram fixados para todos os métodos. \ac{ACO}, \ac{GA} e \ac{PSO} poderiam ter desempenho diferente sob ajuste sistemático por instância. Terceiro, os métodos não usam a mesma codificação: \ac{GA} usa permutação direta, \ac{PSO} usa \textit{random keys}, e \ac{ACO} constrói rotas por transições probabilísticas tridimensionais. Essa diferença é parte do desenho comparativo, mas impede inferências causais sobre a superioridade de uma meta-heurística sobre a outra.
 
-Por fim, a busca exaustiva cobre apenas as instâncias `10a' a `15c'. Para instâncias maiores, não há ótimo conhecido. O \ac{LB} \ac{AP} ajuda a oferecer uma referência, mas sua frouxidão impede tratá-lo como aproximação apertada do ótimo. As conclusões, portanto, descrevem o desempenho observado nas implementações e instâncias avaliadas, não uma ordenação universal entre \ac{GA}, \ac{PSO} e \ac{ACO}.
+Por fim, a busca exaustiva cobre apenas as instâncias `10a' a `15c'. Para instâncias maiores, não há ótimo conhecido. O \ac{LB} \ac{AP} oferece uma referência, mas sua frouxidão impede tratá-lo como aproximação apertada do ótimo. As conclusões descrevem o desempenho observado nas implementações e instâncias avaliadas, não uma ordenação universal entre \ac{GA}, \ac{PSO} e \ac{ACO}.

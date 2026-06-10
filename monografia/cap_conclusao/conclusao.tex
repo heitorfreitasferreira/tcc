@@ -1,7 +1,7 @@
 \chapter[Conclusão]{Conclusão}
 \label{conclusao}
 
-Este trabalho investigou a otimização de rotas de patrulhamento com drones por meio do \ac{TSP-SD-ATP}, uma formulação em que o custo de transição depende da sequência anterior--atual--próximo e inclui penalidade angular. Foram implementados e avaliados \ac{GA}, \ac{PSO}, \ac{ACO}, busca exaustiva e um \ac{LB} por relaxação \ac{AP}/Hungarian. A avaliação usou \TotalInstancias{} instâncias sintéticas, \TotalSementesGA{} sementes por meta-heurística e \TotalExecucoes{} arquivos estruturados de resumo, evolução e tempo.
+Este trabalho investigou a otimização de rotas de patrulhamento com drones por meio do \ac{TSP-SD-ATP}, uma formulação em que o custo de transição depende da sequência anterior--atual--próximo e inclui penalidade angular. Implementamos e avaliamos \ac{GA}, \ac{PSO}, \ac{ACO}, busca exaustiva e um \ac{LB} por relaxação \ac{AP}/Hungarian. A avaliação usou \TotalInstancias{} instâncias sintéticas, \TotalSementesGA{} sementes por meta-heurística e \TotalExecucoes{} arquivos estruturados de resumo, evolução e tempo.
 
 \section{Principais Contribuições}
 
@@ -13,22 +13,22 @@ A terceira contribuição foi a análise experimental. Nas \TotalInstanciasComOt
 
 O principal trade-off observado foi qualidade versus tempo. Em instâncias de 100 pontos, o \ac{ACO} levou em média cerca de \TempoOtimizacaoACOCemMedioSegundos{} de otimização, enquanto a maior média por instância do \ac{GA} foi \TempoOtimizacaoGAMaxCemMs{} e a do \ac{PSO} foi \TempoOtimizacaoPSOMaxCemMs{}. Assim, o \ac{ACO} foi o método de melhor qualidade no desenho experimental, mas o \ac{GA} foi muito mais rápido. O \ac{PSO} teve desempenho inferior em qualidade, resultado delimitado à implementação por \textit{random keys} e aos parâmetros usados.
 
-O \ac{LB} \ac{AP} foi válido, mas frouxo. Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, ele nunca excedeu o ótimo, mas apresentou gap médio de \GapLBMedio{}. Esse resultado confirma sua utilidade como referência inferior barata e, ao mesmo tempo, mostra que a redução 3D$\to$2D perde informação angular relevante.
+O \ac{LB} \ac{AP} foi válido, mas frouxo. Nas \TotalInstanciasComOtimo{} instâncias com busca exaustiva, ele nunca excedeu o ótimo, mas apresentou gap médio de \GapLBMedio{}. O resultado confirma sua utilidade como referência inferior barata e mostra que a redução 3D$\to$2D perde informação angular relevante.
 
 \section{Limitações}
 
 As conclusões deste trabalho são limitadas por quatro fatores. Primeiro, as instâncias são sintéticas e bidimensionais; cenários reais de patrulha podem incluir obstáculos, zonas proibidas, vento, restrições de bateria e prioridades temporais. Segundo, os parâmetros das meta-heurísticas foram fixados, sem tuning sistemático. Terceiro, os métodos usam codificações distintas, o que torna a comparação prática, mas não isola completamente o efeito da meta-heurística em relação ao efeito da representação. Quarto, a busca exaustiva cobre apenas as instâncias de 10 a 15 pontos; para instâncias maiores, a análise depende de comparação relativa e de um \ac{LB} frouxo.
 
-Essas limitações não invalidam os achados, mas delimitam seu alcance. \ac{ACO} foi melhor em qualidade nas condições avaliadas; \ac{GA} foi melhor em tempo; \ac{PSO} foi inferior nesta implementação. Não se conclui que essa ordenação seja universal para todos os problemas de roteamento com drones ou para todas as parametrizações possíveis.
+Essas limitações não invalidam os achados, mas delimitam seu alcance. \ac{ACO} foi melhor em qualidade nas condições avaliadas; \ac{GA} foi melhor em tempo; \ac{PSO} foi inferior nesta implementação. Não concluímos que essa ordenação seja universal para todos os problemas de roteamento com drones ou para todas as parametrizações possíveis.
 
 \section{Trabalhos Futuros}
 
-Trabalhos futuros podem seguir cinco direções. A primeira é realizar análise de sensibilidade e tuning de hiperparâmetros, especialmente para \ac{ACO}, cujo desempenho depende de $\alpha$, $\beta$, $\rho$ e $Q$. A segunda é testar variantes mais fortes dos métodos, como MMAS para \ac{ACO}, EAX ou busca local 2-opt/3-opt para \ac{GA}, e \ac{PSO} discreto baseado em operadores de troca.
+Propomos cinco direções. A primeira é realizar análise de sensibilidade e tuning de hiperparâmetros, especialmente para \ac{ACO}, cujo desempenho depende de $\alpha$, $\beta$, $\rho$ e $Q$. A segunda é testar variantes mais fortes dos métodos, como MMAS para \ac{ACO}, EAX ou busca local 2-opt/3-opt para \ac{GA}, e \ac{PSO} discreto baseado em operadores de troca.
 
 A terceira direção é construir instâncias baseadas em cenários reais de patrulha, com mapas geográficos, obstáculos, zonas de risco e restrições de autonomia. A quarta é estender o modelo para múltiplos drones, aproximando-o de variantes de mTSP e problemas de roteamento com frota. A quinta é investigar métodos híbridos e neurais, como DeepACO, NeuFACO e abordagens que combinam aprendizado profundo com construção probabilística de rotas \cite{deepaco2023,neufaco2025,gpaco2025}.
 
-Também há espaço para desenvolver limitantes inferiores mais apertados para o \ac{TSP-SD-ATP}. O \ac{LB} \ac{AP} implementado é barato e válido, mas perde contexto ao reduzir o tensor 3D para matriz 2D. Relaxações que preservem mais informação de sequência podem fornecer referências melhores para instâncias grandes.
+Desenvolver limitantes inferiores mais apertados para o \ac{TSP-SD-ATP} é uma direção aberta. O \ac{LB} \ac{AP} implementado é barato e válido, mas perde contexto ao reduzir o tensor 3D para matriz 2D. Relaxações que preservem mais informação de sequência podem fornecer referências melhores para instâncias grandes.
 
 \section{Contribuições em Produção Bibliográfica}
 
-Até a finalização desta monografia, a principal produção associada ao trabalho é a base de código e dados experimentais do projeto. O repositório contém a implementação em Go, os scripts de execução, os resultados estruturados, as figuras de análise e o texto da monografia. Publicações acadêmicas derivadas podem explorar a formulação \ac{TSP-SD-ATP}, a comparação entre métodos e a construção de bounds mais informativos para custos dependentes da sequência.
+Até a finalização desta monografia, a principal produção é a base de código e dados experimentais do projeto. O repositório contém a implementação em Go, os scripts de execução, os resultados estruturados, as figuras de análise e o texto da monografia. Publicações acadêmicas derivadas podem explorar a formulação \ac{TSP-SD-ATP}, a comparação entre métodos e a construção de bounds mais informativos para custos dependentes da sequência.

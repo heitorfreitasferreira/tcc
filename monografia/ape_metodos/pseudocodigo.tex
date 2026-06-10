@@ -1,11 +1,11 @@
 \chapter[Pseudocódigo dos Métodos]{Pseudocódigo dos Métodos de Otimização}
 \label{ape:pseudocodigo}
 
-Este apêndice apresenta o pseudocódigo dos três métodos meta-heurísticos implementados para o TSP-SD-ATP. Todos os algoritmos compartilham a mesma função objetivo baseada no tensor tridimensional de custos $G[anterior][atual][proximo]$ e o mesmo critério de parada (número máximo de iterações).
+Todos os algoritmos compartilham a mesma função objetivo baseada no tensor tridimensional de custos $G[\text{anterior}][\text{atual}][\text{proximo}]$ e o mesmo critério de parada (número máximo de iterações).
 
 \section{Algoritmo Genético}
 
-O Algoritmo Genético utiliza permutação direta dos pontos de interesse, seleção por torneio, crossover OX, mutação \textit{swap} e elitismo. Cada indivíduo é uma permutação dos nós $1$ a $n-1$.
+O \ac{GA} usa permutação direta dos pontos de interesse, seleção por torneio, crossover \ac{OX}, mutação \textit{swap} e elitismo. Cada indivíduo é uma permutação dos nós $1$ a $n-1$.
 
 \begin{algorithm}[htbp]
 \caption{Algoritmo Genético para TSP-SD-ATP}
@@ -41,7 +41,7 @@ O Algoritmo Genético utiliza permutação direta dos pontos de interesse, sele�
 
 \section{Otimização por Enxame de Partículas}
 
-O PSO utiliza codificação por \textit{random keys}: cada partícula mantém um vetor real de dimensão $n-1$, e a rota é obtida ordenando os índices pelos valores do vetor. A atualização segue a equação clássica de velocidade com inércia, componente cognitiva e componente social.
+O \ac{PSO} usa codificação por \textit{random keys}: cada partícula mantém um vetor real de dimensão $n-1$, e a rota é obtida ordenando os índices pelos valores do vetor. A atualização segue a equação clássica de velocidade com inércia, componente cognitiva e componente social.
 
 \begin{algorithm}[htbp]
 \caption{PSO com Random Keys para TSP-SD-ATP}
@@ -79,7 +79,7 @@ O PSO utiliza codificação por \textit{random keys}: cada partícula mantém um
 
 \section{Otimização por Colônia de Formigas}
 
-O ACO utiliza feromônio tridimensional $\tau_{i,j,k}$, onde $i$ é o nó anterior, $j$ o nó atual e $k$ o próximo nó candidato. Cada formiga constrói uma rota incrementalmente, selecionando o próximo ponto por roleta proporcional ponderada por feromônio e informação heurística.
+O \ac{ACO} usa feromônio tridimensional $\tau_{i,j,k}$, onde $i$ é o nó anterior, $j$ o nó atual e $k$ o próximo nó candidato. Cada formiga constrói uma rota incrementalmente, selecionando o próximo ponto por roleta proporcional ponderada por feromônio e informação heurística.
 
 \begin{algorithm}[htbp]
 \caption{ACO com Feromônio 3D para TSP-SD-ATP}

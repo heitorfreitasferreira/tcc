@@ -1,13 +1,13 @@
 \chapter[Proposta]{Formulação do Problema e Métodos}
 \label{proposta}
 
-Este capítulo descreve a proposta computacional avaliada nesta monografia. O foco é formalizar o \ac{TSP-SD-ATP}, apresentar a estrutura de implementação e detalhar como \ac{GA}, \ac{PSO}, \ac{ACO}, busca exaustiva e \ac{LB} foram integrados ao mesmo pipeline experimental. Conforme a orientação do template institucional, a revisão bibliográfica fica concentrada no \autoref{fundamentacao}; aqui são descritas as escolhas efetivamente implementadas.
+Este capítulo formaliza o \ac{TSP-SD-ATP}, apresenta a estrutura de implementação e detalha a integração de \ac{GA}, \ac{PSO}, \ac{ACO}, busca exaustiva e \ac{LB} ao mesmo pipeline experimental. A revisão bibliográfica está concentrada no \autoref{fundamentacao}; aqui descrevemos as escolhas efetivamente implementadas.
 
 \section{Formulação do Problema}
 
 Uma instância é definida por um conjunto de pontos bidimensionais $V=\{0,1,\ldots,n-1\}$. O nó $0$ é a base de partida e retorno do drone. Os demais nós, $V'=V\setminus\{0\}$, são pontos de interesse que devem ser visitados exatamente uma vez. Uma rota factível é uma permutação $\pi$ dos nós de $V'$.
 
-O diferencial do \ac{TSP-SD-ATP} está na avaliação da rota. Em vez de uma matriz $D[j][k]$, a implementação usa um tensor 3D $G[anterior][atual][proximo]$. Cada entrada armazena o custo de seguir de `atual' para `proximo' considerando que o nó visitado imediatamente antes foi `anterior'. O custo soma distância euclidiana e penalidade angular normalizada, conforme a \autoref{eq:custo}.
+No \ac{TSP-SD-ATP}, a avaliação da rota difere do \ac{TSP} clássico. Em vez de uma matriz $D[j][k]$, a implementação usa um tensor 3D $G[\text{anterior}][\text{atual}][\text{proximo}]$. Cada entrada armazena o custo de seguir de `atual' para `proximo' considerando que o nó visitado imediatamente antes foi `anterior'. O custo soma distância euclidiana e penalidade angular normalizada, conforme a \autoref{eq:custo}.
 
 \begin{figure}[htbp]
   \centering
@@ -20,7 +20,7 @@ A função objetivo percorre a permutação de pontos de interesse, soma a parti
 
 \section{Arquitetura da Implementação}
 
-A implementação foi desenvolvida em Go e organizada em pacotes. O pacote `points' representa os pontos bidimensionais e a geração de instâncias. O pacote `graph' cria o tensor de custos e calcula o \textit{makespan}. O pacote `optimization' contém os métodos de otimização. O pacote `cmd' expõe a interface de linha de comando baseada em Cobra, e `shared/reporting' registra os resultados estruturados.
+A implementação em Go está organizada em pacotes. O pacote `points' representa os pontos bidimensionais e a geração de instâncias. O pacote `graph' cria o tensor de custos e calcula o \textit{makespan}. O pacote `optimization' contém os métodos. O pacote `cmd' expõe a interface de linha de comando baseada em Cobra, e `shared/reporting' registra os resultados estruturados.
 
 O fluxo experimental parte de arquivos `.points', gera ou carrega arquivos `.graph' e executa um comando de otimização. Cada execução produz três artefatos: um resumo final (`summary'), um histórico de melhorias (`evolution') e uma decomposição temporal (`timing'). O identificador da execução combina instância, método, semente e hash dos parâmetros, reduzindo o risco de sobrescrever resultados de configurações distintas.
 
@@ -28,7 +28,7 @@ O fluxo experimental parte de arquivos `.points', gera ou carrega arquivos `.gra
 
 No \ac{GA}, cada indivíduo é uma permutação direta dos pontos de interesse, isto é, dos nós $1$ a $n-1$. A população inicial é gerada aleatoriamente. A cada geração, pais são selecionados por torneio de tamanho 2; o crossover \ac{OX} produz descendentes preservando a validade da permutação; a mutação \textit{swap} troca dois pontos com probabilidade 0,05; e o elitismo preserva o melhor indivíduo.
 
-Os parâmetros usados nos experimentos são população 100, 100 iterações, elitismo 1, taxa de mutação 0,05 e torneio de tamanho 2. Esses valores foram mantidos fixos para todas as instâncias. A decisão favorece reprodutibilidade e comparação direta, mas não equivale a um ajuste fino por instância.
+Os parâmetros usados nos experimentos são população 100, 100 iterações, elitismo 1, taxa de mutação 0,05 e torneio de tamanho 2. Mantivemos esses valores fixos para todas as instâncias. Parâmetros fixos favorecem reprodutibilidade e comparação direta, mas não substituem um ajuste fino por instância.
 
 \section{Otimização por Enxame de Partículas}
 
@@ -41,7 +41,7 @@ v_{i,d}^{t+1} = w v_{i,d}^{t} + c_1 r_1(p_{i,d}-x_{i,d}^{t}) + c_2 r_2(g_d-x_{i,
 \label{eq:pso}
 \end{equation}
 
-em que $w=0{,}7$, $c_1=2{,}0$, $c_2=2{,}0$, $p_i$ é a melhor posição histórica da partícula e $g$ é a melhor posição global. Após a atualização, a posição contínua é reordenada para produzir a rota. A principal limitação dessa codificação é que pequenas mudanças no vetor contínuo podem alterar a permutação de forma não local, o que afeta a exploração de adjacências relevantes para o \ac{TSP-SD-ATP}.
+em que $w=0{,}7$, $c_1=2{,}0$, $c_2=2{,}0$, $p_i$ é a melhor posição histórica da partícula e $g$ é a melhor posição global. Após a atualização, a posição contínua é reordenada para produzir a rota. A principal limitação dessa codificação é que pequenas mudanças no vetor contínuo podem alterar a permutação de modo não local, o que afeta a exploração de adjacências relevantes para o \ac{TSP-SD-ATP}.
 
 \section{Otimização por Colônia de Formigas}
 
@@ -62,7 +62,7 @@ A busca exaustiva enumera todas as permutações dos pontos de interesse usando 
 
 \section{\texorpdfstring{\ac{LB}}{Lower Bound} por Relaxação \texorpdfstring{\ac{AP}}{AP}}
 
-Além dos métodos que retornam rotas factíveis, foi implementado um \ac{LB} baseado na relaxação do problema de designação. O tensor 3D é reduzido para uma matriz 2D por $c'_{j,k}=\min_i G[i][j][k]$. Em seguida, o problema de designação é resolvido pelo algoritmo Hungarian em $O(n^3)$.
+Além dos métodos que retornam rotas factíveis, implementamos um \ac{LB} baseado na relaxação do problema de designação. O tensor 3D é reduzido para uma matriz 2D por $c'_{j,k}=\min_i G[i][j][k]$. Em seguida, o problema de designação é resolvido pelo algoritmo Hungarian em $O(n^3)$.
 
 O valor retornado é um limitante inferior: ele não excede o ótimo do \ac{TSP-SD-ATP}, pois cada transição reduzida escolhe o menor custo possível entre contextos anteriores. Entretanto, a solução do problema de designação pode conter subtours e não representa necessariamente uma rota única que parte da base, visita todos os pontos e retorna. Por isso, o \ac{LB} é usado como referência numérica, não como método concorrente de construção de rotas.
 
