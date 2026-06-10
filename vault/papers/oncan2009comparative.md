@@ -33,7 +33,10 @@ tags:
 
 ## PDF
 
-<!-- PDF não disponível -->
+- Status: PDF não obtido em 2026-06-05.
+- Tentativas: Unpaywall/Scholar Sidekick indicou `oaStatus: closed`; pipeline `scripts/download-pdfs.sh --keys oncan2009comparative` falhou; fallback `--use-scihub` falhou; MCP Sci-Hub por DOI e por título retornou `not_found`.
+- Metadados confirmados: Elsevier/Computers & Operations Research, DOI `10.1016/j.cor.2007.11.008`; Crossref expõe apenas links TDM (`text/xml`, `text/plain`), sem PDF aberto.
+- Rechecagem em 2026-06-06: Scholar Sidekick/Unpaywall ainda indica `oaStatus: closed`; Crossref segue expondo apenas TDM; `doiget` salvou apenas metadados (`pdf.status: no_oa_url`); Sci-Hub por DOI e título retornou `not_found`; `scripts/download-pdfs.sh --keys oncan2009comparative` falhou.
 
 ## Tese Central
 

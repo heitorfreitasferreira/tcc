@@ -92,13 +92,13 @@ O tensor pré-computado $O(n^3)$ é uma **técnica de embedded turn cost**: as m
 
 ## Contraste com TSP Clássico
 
-| Aspecto | TSP Clássico | Este Projeto |
-|---------|-------------|--------------|
-| Espaço de busca | $(n-1)!$ permutações | $(n-1)!$ permutações (mesmo) |
-| Custo da aresta | $C[i][j]$ fixo (matriz 2D) | $G[k][i][j]$ depende do anterior (tensor 3D) |
-| Avaliação | $O(n)$ lookups na matriz | $O(n)$ lookups no tensor (mesmo) |
-| Penalidade angular | Não | Sim, normalizada $[0,1]$ |
-| Simetria | $C[i][j]=C[j][i]$ (simétrico) | Assimétrico devido à penalidade |
+| Aspecto            | TSP Clássico                  | Este Projeto                                 |
+| ------------------ | ----------------------------- | -------------------------------------------- |
+| Espaço de busca    | $(n-1)!$ permutações          | $(n-1)!$ permutações (mesmo)                 |
+| Custo da aresta    | $C[i][j]$ fixo (matriz 2D)    | $G[k][i][j]$ depende do anterior (tensor 3D) |
+| Avaliação          | $O(n)$ lookups na matriz      | $O(n)$ lookups no tensor (mesmo)             |
+| Penalidade angular | Não                           | Sim, normalizada $[0,1]$                     |
+| Simetria           | $C[i][j]=C[j][i]$ (simétrico) | Assimétrico devido à penalidade              |
 
 ## Nome Interno
 

@@ -1,4 +1,5 @@
 ---
+pdf: "papers/pdfs/gad2022pso.pdf"
 title: "Particle Swarm Optimization Algorithm and Its Applications: A Systematic Review"
 authors: [Gad, Ahmed G.]
 year: 2022
@@ -8,7 +9,7 @@ bibtex-key: gad2022pso
 type: paper
 reading_status: resumo-lido
 validation_status: nao-validado
-pdf_status: ausente
+pdf_status: disponivel
 rating: 4
 role: "revisao"
 areas:
@@ -34,7 +35,10 @@ tags:
 
 ## PDF
 
-<!-- PDF não disponível -->
+![[gad2022pso.pdf]]
+
+- Status: PDF obtido e validado em 2026-06-05 via Unpaywall/Springer, versão publicada, licença CC BY.
+- Validação: `pdfinfo` OK, 31 páginas, 2.344.358 bytes; metadados confirmam título, autor, periódico e DOI `10.1007/s11831-021-09694-4`.
 
 ## Tese Central
 

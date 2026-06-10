@@ -8,7 +8,8 @@ bibtex-key: shami2022pso
 type: paper
 reading_status: pendente
 validation_status: nao-validado
-pdf_status: ausente
+pdf: "papers/pdfs/shami2022pso.pdf"
+pdf_status: disponivel
 rating: 5
 role: "revisao"
 areas:
@@ -34,7 +35,10 @@ tags:
 
 ## PDF
 
-<!-- PDF não disponível -->
+![[shami2022pso.pdf]]
+
+- Status: PDF obtido e validado em 2026-06-05 via Griffith Research Online (`hdl.handle.net/10072/420548`), versão publicada, licença CC BY 4.0.
+- Validação: `pdfinfo` OK, 32 páginas, 4.130.751 bytes; primeira página confirma título, autores, DOI `10.1109/ACCESS.2022.3142859` e versão de registro.
 
 ## Tese Central
 
