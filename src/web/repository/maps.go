@@ -97,12 +97,12 @@ func (r *EmbeddedDataRepository) LoadPoints(_ context.Context, mapID string) (po
 func (r *EmbeddedDataRepository) LoadGraph(_ context.Context, mapID string) (graph.Graph, error) {
 	rawGraph, err := fs.ReadFile(r.dataFS, mapID+".graph")
 	if err != nil {
-		return nil, err
+		return graph.Graph{}, err
 	}
 
 	var loaded graph.Graph
 	if err := json.Unmarshal(rawGraph, &loaded); err != nil {
-		return nil, err
+		return graph.Graph{}, err
 	}
 
 	return loaded, nil

@@ -14,7 +14,7 @@ import (
 type mapsRepoStub struct {
 	maps           []string
 	pointsByMap    map[string]points.Points2D
-	graphByMap     map[string]graph.Graph
+	graphByMap     map[string]*graph.Graph
 	listErr        error
 	loadPointsErr  error
 	loadGraphErr   error
@@ -47,15 +47,15 @@ func (s *mapsRepoStub) LoadPoints(_ context.Context, mapID string) (points.Point
 func (s *mapsRepoStub) LoadGraph(_ context.Context, mapID string) (graph.Graph, error) {
 	s.loadGraphCall++
 	if s.loadGraphErr != nil {
-		return nil, s.loadGraphErr
+		return graph.Graph{}, s.loadGraphErr
 	}
 
 	loaded, ok := s.graphByMap[mapID]
 	if !ok {
-		return nil, errors.New("graph not found")
+		return graph.Graph{}, errors.New("graph not found")
 	}
 
-	return loaded, nil
+	return *loaded, nil
 }
 
 type summaryRepoStub struct {
@@ -94,6 +94,22 @@ type payloadForTest struct {
 	Frames     []repository.EvolutionFrame `json:"frames"`
 }
 
+func makeTestGraph(values ...[]float64) *graph.Graph {
+	n := len(values)
+	g := &graph.Graph{N: n, Data: make([]float64, n*n*n)}
+	for i := 0; i < n; i++ {
+		for j := 0; j < n; j++ {
+			for k := 0; k < n; k++ {
+				idx := i*n*n + j*n + k
+				if j < len(values) && k < len(values[j]) {
+					g.Data[idx] = values[j][k]
+				}
+			}
+		}
+	}
+	return g
+}
+
 func TestBuildPageLoadsEvolutionForSelectedRun(t *testing.T) {
 	t.Parallel()
 
@@ -107,11 +123,20 @@ func TestBuildPageLoadsEvolutionForSelectedRun(t *testing.T) {
 				{-0.2, 0.7},
 			},
 		},
-		graphByMap: map[string]graph.Graph{
+		graphByMap: map[string]*graph.Graph{
 			"10a": {
-				{{1}, {2}, {3}},
-				{{4}, {5}, {6}},
-				{{7}, {8}, {9}},
+				N: 3,
+				Data: []float64{
+					1, 2, 3,
+					4, 5, 6,
+					7, 8, 9,
+					10, 11, 12,
+					13, 14, 15,
+					16, 17, 18,
+					19, 20, 21,
+					22, 23, 24,
+					25, 26, 27,
+				},
 			},
 		},
 	}
@@ -200,10 +225,13 @@ func TestBuildPageSkipsEvolutionWhenRunIsInvalid(t *testing.T) {
 				{0.3, 0.2},
 			},
 		},
-		graphByMap: map[string]graph.Graph{
+		graphByMap: map[string]*graph.Graph{
 			"10a": {
-				{{1}, {2}},
-				{{3}, {4}},
+				N: 2,
+				Data: []float64{
+					1, 2, 3, 4,
+					5, 6, 7, 8,
+				},
 			},
 		},
 	}

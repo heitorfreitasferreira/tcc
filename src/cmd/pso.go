@@ -52,7 +52,7 @@ var psoCmd = &cobra.Command{
 		loadDuration := time.Since(loadStart)
 
 		sw := pso.Swarm{}
-		sw.Init(&g, params, rng)
+		sw.Init(g, params, rng)
 
 		optimizeStart := time.Now()
 		result := sw.Optimize(improvementLogger(cmd, run))

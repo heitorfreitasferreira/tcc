@@ -243,7 +243,7 @@ func (s *PageService) BuildPage(ctx context.Context, selection SelectionState) (
 	}
 
 	nodeLimit := len(loadedPoints)
-	if graphSize := len(loadedGraph); graphSize > 0 && graphSize < nodeLimit {
+	if graphSize := loadedGraph.N; graphSize > 0 && graphSize < nodeLimit {
 		nodeLimit = graphSize
 	}
 

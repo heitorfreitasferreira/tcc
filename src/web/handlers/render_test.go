@@ -43,7 +43,7 @@ func (f fakeMapsReader) ListMaps(context.Context) ([]string, error) { return nil
 func (f fakeMapsReader) LoadPoints(context.Context, string) (points.Points2D, error) {
 	return f.points, nil
 }
-func (f fakeMapsReader) LoadGraph(context.Context, string) (graph.Graph, error) { return nil, nil }
+func (f fakeMapsReader) LoadGraph(context.Context, string) (graph.Graph, error) { return graph.Graph{}, nil }
 
 type fakeEvolutionReader struct {
 	frames map[string][]repository.EvolutionFrame
