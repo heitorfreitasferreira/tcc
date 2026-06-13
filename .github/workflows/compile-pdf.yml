@@ -23,7 +23,6 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          # Evita gerar todos os formatos na instalação (~40s no runner).
           echo "postinst_format-disabled" | sudo tee /var/lib/texmf/postinst.formats-disabled
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends \
@@ -49,38 +48,42 @@ jobs:
 
   release:
     needs: compile
-    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Semantic Release (monografia)
+        id: semver
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -sL \
+            https://github.com/go-semantic-release/semantic-release/releases/latest/download/semantic-release_linux_amd64 \
+            -o /tmp/semantic-release
+          chmod +x /tmp/semantic-release
+
+          /tmp/semantic-release \
+            --token "${{ secrets.GITHUB_TOKEN }}" \
+            --tag-prefix monografia-v \
+            --allow-initial-development-versions \
+            --force-bump-patch-version \
+            2>&1 | tee /tmp/semrel-output
+
+          TAG=$(grep -oP 'monografia-v\d+\.\d+\.\d+' /tmp/semrel-output | head -1)
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
       - uses: actions/download-artifact@v7
+        if: steps.semver.outputs.tag != ''
         with:
           name: monografia
 
-      - name: Prepare release asset
-        run: |
-          PDF="$(find . -name 'main_ppgco_ufu.pdf' -print -quit)"
-          test -n "$PDF"
-          cp "$PDF" monografia.pdf
-
-      - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: monografia-${{ github.run_number }}
-          name: Monografia — build ${{ github.run_number }}
-          body: |
-            PDF da monografia compilado automaticamente pelo CI.
-
-            | | |
-            |---|---|
-            | **Commit** | `${{ github.sha }}` |
-            | **Branch** | `${{ github.ref_name }}` |
-            | **Workflow** | [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
-
-            **Download direto (última release):**  
-            https://github.com/${{ github.repository }}/releases/latest/download/monografia.pdf
-          files: monografia.pdf
-          make_latest: true
-          draft: false
-          prerelease: false
+      - name: Upload PDF to release
+        if: steps.semver.outputs.tag != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload "${{ steps.semver.outputs.tag }}" main_ppgco_ufu.pdf --clobber

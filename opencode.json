@@ -90,8 +90,8 @@
             "template": "{file:.opencode/command/consultar.md}",
             "model": "opencode-go/deepseek-v4-flash"
         },
-        "commitar": {
-            "template": "{file:.opencode/command/commitar.md}",
+        "commit": {
+            "template": "{file:.opencode/command/commit.md}",
             "model": "opencode-go/deepseek-v4-flash"
         },
         "incorporar": {

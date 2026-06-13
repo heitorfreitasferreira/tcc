@@ -3,8 +3,6 @@ name: Build Go binaries
 on:
   push:
     branches: [main, master]
-    tags:
-      - 'v*'
     paths:
       - 'src/**'
       - '.github/workflows/build.yml'
@@ -16,7 +14,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: src/go.mod
+          cache: true
+          cache-dependency-path: src/go.sum
+
+      - name: Test
+        working-directory: src
+        run: go test ./... -count=1 -race
+
   build:
+    needs: test
     strategy:
       matrix:
         include:
@@ -63,41 +77,45 @@ jobs:
 
   release:
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: src/go.mod
+          cache: true
+          cache-dependency-path: src/go.sum
+
+      - uses: go-semantic-release/action@v1
+        id: semver
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          force-bump-patch-version: true
+          allow-initial-development-versions: true
+
       - uses: actions/download-artifact@v7
+        if: steps.semver.outputs.version != ''
         with:
           pattern: tcc-*-amd64
           merge-multiple: true
-          path: artifacts
 
       - name: Prepare release assets
+        if: steps.semver.outputs.version != ''
         run: |
-          ls -la artifacts/
-          cp artifacts/tcc       tcc-linux-amd64
-          cp artifacts/tcc.exe   tcc-windows-amd64.exe
-          sha256sum tcc-* > checksums.txt
+          mkdir -p dist
+          mv tcc       dist/tcc-linux-amd64
+          mv tcc.exe   dist/tcc-windows-amd64.exe
+          cd dist
+          sha256sum * > checksums.txt
 
-      - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: ${{ github.ref_name }}
-          name: tcc ${{ github.ref_name }}
-          body: |
-            Binários compilados automaticamente pelo CI.
-
-            | | |
-            |---|---|
-            | **Commit** | `${{ github.sha }}` |
-            | **Release** | `${{ github.ref_name }}` |
-            | **Workflow** | [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
-          files: |
-            tcc-linux-amd64
-            tcc-windows-amd64.exe
-            checksums.txt
-          make_latest: true
-          draft: false
-          prerelease: false
+      - name: Upload assets to release
+        if: steps.semver.outputs.version != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload "v${{ steps.semver.outputs.version }}" dist/* --clobber
