@@ -26,9 +26,9 @@ func TestOptimizeUsesRoutesWithoutOrigin(t *testing.T) {
 
 	result := Optimize(params, g, rand.New(rand.NewSource(17)), nil)
 
-	assertRouteWithoutOrigin(t, len(g), result.BestSequence)
+	assertRouteWithoutOrigin(t, g.N, result.BestSequence)
 	for _, imp := range result.Improvements {
-		assertRouteWithoutOrigin(t, len(g), imp.BestSequence)
+		assertRouteWithoutOrigin(t, g.N, imp.BestSequence)
 	}
 
 	expected := g.Makespan(result.BestSequence)
@@ -56,17 +56,15 @@ func assertRouteWithoutOrigin(t *testing.T, nodes int, seq []int) {
 	}
 }
 
-func testGraph(nodes int) graph.Graph {
-	g := make(graph.Graph, nodes)
-	for prev := range nodes {
-		g[prev] = make([][]float64, nodes)
-		for curr := range nodes {
-			g[prev][curr] = make([]float64, nodes)
-			for next := range nodes {
+func testGraph(nodes int) *graph.Graph {
+	g := &graph.Graph{N: nodes, Data: make([]float64, nodes*nodes*nodes)}
+	for prev := 0; prev < nodes; prev++ {
+		for curr := 0; curr < nodes; curr++ {
+			for next := 0; next < nodes; next++ {
 				if prev == curr && curr == next {
 					continue
 				}
-				g[prev][curr][next] = float64(1 + prev + curr + next)
+				g.Data[prev*nodes*nodes+curr*nodes+next] = float64(1 + prev + curr + next)
 			}
 		}
 	}

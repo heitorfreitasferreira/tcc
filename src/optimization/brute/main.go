@@ -6,9 +6,9 @@ import (
 	"tcc/shared"
 )
 
-func Optimize(g graph.Graph, onImprovement func(shared.Improvement)) shared.OptimizationResult {
-	places := make([]int, len(g)-1)
-	for i := 1; i < len(g); i++ {
+func Optimize(g *graph.Graph, onImprovement func(shared.Improvement)) shared.OptimizationResult {
+	places := make([]int, g.N-1)
+	for i := 1; i < g.N; i++ {
 		places[i-1] = i
 	}
 
@@ -17,7 +17,7 @@ func Optimize(g graph.Graph, onImprovement func(shared.Improvement)) shared.Opti
 	evaluations := 0
 	improvements := make([]shared.Improvement, 0)
 
-	for perm := range generatePermutations(places) {
+	generatePermutations(places, func(perm []int) {
 		evaluations++
 		mksp := g.Makespan(perm)
 		if bestMksp > mksp {
@@ -41,7 +41,7 @@ func Optimize(g graph.Graph, onImprovement func(shared.Improvement)) shared.Opti
 				onImprovement(improvement)
 			}
 		}
-	}
+	})
 
 	return shared.OptimizationResult{
 		BestSequence:        bestPerm,
@@ -52,28 +52,21 @@ func Optimize(g graph.Graph, onImprovement func(shared.Improvement)) shared.Opti
 	}
 }
 
-func generatePermutations(arr []int) <-chan []int {
-	ch := make(chan []int)
-	go func() {
-		defer close(ch)
-		var helper func([]int, int)
-		helper = func(arr []int, n int) {
-			if n == 1 {
-				tmp := make([]int, len(arr))
-				copy(tmp, arr)
-				ch <- tmp
-				return
-			}
-			for i := 0; i < n; i++ {
-				helper(arr, n-1)
-				if n%2 == 1 {
-					arr[0], arr[n-1] = arr[n-1], arr[0]
-				} else {
-					arr[i], arr[n-1] = arr[n-1], arr[i]
-				}
+func generatePermutations(arr []int, fn func([]int)) {
+	var helper func([]int, int)
+	helper = func(arr []int, n int) {
+		if n == 1 {
+			fn(arr)
+			return
+		}
+		for i := 0; i < n; i++ {
+			helper(arr, n-1)
+			if n%2 == 1 {
+				arr[0], arr[n-1] = arr[n-1], arr[0]
+			} else {
+				arr[i], arr[n-1] = arr[n-1], arr[i]
 			}
 		}
-		helper(arr, len(arr))
-	}()
-	return ch
+	}
+	helper(arr, len(arr))
 }

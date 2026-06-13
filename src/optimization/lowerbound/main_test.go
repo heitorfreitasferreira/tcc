@@ -158,8 +158,8 @@ func TestOptimizeBoundIsLower(t *testing.T) {
 	}
 }
 
-func bruteForce(g graph.Graph) shared.OptimizationResult {
-	n := len(g)
+func bruteForce(g *graph.Graph) shared.OptimizationResult {
+	n := g.N
 	places := make([]int, n-1)
 	for i := 1; i < n; i++ {
 		places[i-1] = i
@@ -168,13 +168,13 @@ func bruteForce(g graph.Graph) shared.OptimizationResult {
 	bestMksp := math.MaxFloat64
 	bestPerm := []int{}
 
-	for perm := range generatePermutations(places) {
+	generatePermutations(places, func(perm []int) {
 		mksp := g.Makespan(perm)
 		if mksp < bestMksp {
 			bestMksp = mksp
 			bestPerm = append([]int(nil), perm...)
 		}
-	}
+	})
 
 	return shared.OptimizationResult{
 		BestSequence: bestPerm,
@@ -182,43 +182,34 @@ func bruteForce(g graph.Graph) shared.OptimizationResult {
 	}
 }
 
-func generatePermutations(arr []int) <-chan []int {
-	ch := make(chan []int)
-	go func() {
-		defer close(ch)
-		var helper func([]int, int)
-		helper = func(arr []int, n int) {
-			if n == 1 {
-				tmp := make([]int, len(arr))
-				copy(tmp, arr)
-				ch <- tmp
-				return
-			}
-			for i := 0; i < n; i++ {
-				helper(arr, n-1)
-				if n%2 == 1 {
-					arr[0], arr[n-1] = arr[n-1], arr[0]
-				} else {
-					arr[i], arr[n-1] = arr[n-1], arr[i]
-				}
+func generatePermutations(arr []int, fn func([]int)) {
+	var helper func([]int, int)
+	helper = func(arr []int, n int) {
+		if n == 1 {
+			fn(arr)
+			return
+		}
+		for i := 0; i < n; i++ {
+			helper(arr, n-1)
+			if n%2 == 1 {
+				arr[0], arr[n-1] = arr[n-1], arr[0]
+			} else {
+				arr[i], arr[n-1] = arr[n-1], arr[i]
 			}
 		}
-		helper(arr, len(arr))
-	}()
-	return ch
+	}
+	helper(arr, len(arr))
 }
 
-func testGraph(nodes int) graph.Graph {
-	g := make(graph.Graph, nodes)
-	for prev := range nodes {
-		g[prev] = make([][]float64, nodes)
-		for curr := range nodes {
-			g[prev][curr] = make([]float64, nodes)
-			for next := range nodes {
+func testGraph(nodes int) *graph.Graph {
+	g := &graph.Graph{N: nodes, Data: make([]float64, nodes*nodes*nodes)}
+	for prev := 0; prev < nodes; prev++ {
+		for curr := 0; curr < nodes; curr++ {
+			for next := 0; next < nodes; next++ {
 				if prev == curr && curr == next {
 					continue
 				}
-				g[prev][curr][next] = float64(1 + prev + curr + next)
+				g.Data[prev*nodes*nodes+curr*nodes+next] = float64(1 + prev + curr + next)
 			}
 		}
 	}

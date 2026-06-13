@@ -21,7 +21,7 @@ type individual struct {
 	fen float64
 }
 
-func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared.Improvement)) shared.OptimizationResult {
+func Optimize(p Params, g *graph.Graph, rnd *rand.Rand, onImprovement func(shared.Improvement)) shared.OptimizationResult {
 	result := shared.OptimizationResult{
 		BestMakespan: math.MaxFloat64,
 	}
@@ -55,8 +55,8 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared
 	}
 
 	// Initial population
-	nodes := make([]int, len(g)-1)
-	for node := 1; node < len(g); node++ {
+	nodes := make([]int, g.N-1)
+	for node := 1; node < g.N; node++ {
 		nodes[node-1] = node
 	}
 
@@ -81,20 +81,15 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared
 			newPop = append(newPop, pop[:eliteSize]...)
 		}
 
-		// Generate new population
 		for len(newPop) < p.PopulationSize {
-			// Select parents
 			parent1 := selectParentTournament(pop, p, rnd)
 			parent2 := selectParentTournament(pop, p, rnd)
 
-			// Crossover
 			child1, child2 := orderedCrossover(parent1.gen, parent2.gen, rnd)
 
-			// Mutation
 			mutateSwap(child1, p.MutationRate, rnd)
 			mutateSwap(child2, p.MutationRate, rnd)
 
-			// Evaluate fitness
 			fen1 := g.Makespan(child1)
 			evaluationCount++
 			reportImprovement(iteration, child1, fen1)
@@ -103,11 +98,9 @@ func Optimize(p Params, g graph.Graph, rnd *rand.Rand, onImprovement func(shared
 			evaluationCount++
 			reportImprovement(iteration, child2, fen2)
 
-			// Add to new population
 			newPop = append(newPop, individual{child1, fen1}, individual{child2, fen2})
 		}
 
-		// Trim to population size if necessary
 		if len(newPop) > p.PopulationSize {
 			newPop = newPop[:p.PopulationSize]
 		}
@@ -143,14 +136,12 @@ func orderedCrossover(parent1, parent2 []int, rnd *rand.Rand) ([]int, []int) {
 	child1 := make([]int, size)
 	child2 := make([]int, size)
 
-	// Select crossover points
 	pt1 := rnd.Intn(size)
 	pt2 := rnd.Intn(size)
 	if pt1 > pt2 {
 		pt1, pt2 = pt2, pt1
 	}
 
-	// Copy segments from parents to children
 	segment1 := make(map[int]bool)
 	segment2 := make(map[int]bool)
 	for i := pt1; i <= pt2; i++ {
@@ -160,7 +151,6 @@ func orderedCrossover(parent1, parent2 []int, rnd *rand.Rand) ([]int, []int) {
 		segment2[parent2[i]] = true
 	}
 
-	// Fill remaining positions for child1 from parent2
 	idx := 0
 	for i := range size {
 		if i < pt1 || i > pt2 {
@@ -175,7 +165,6 @@ func orderedCrossover(parent1, parent2 []int, rnd *rand.Rand) ([]int, []int) {
 		}
 	}
 
-	// Fill remaining positions for child2 from parent1
 	idx = 0
 	for i := range size {
 		if i < pt1 || i > pt2 {

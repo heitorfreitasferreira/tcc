@@ -14,14 +14,14 @@ type Params struct {
 }
 
 type ACO struct {
-	graph.Graph
+	*graph.Graph
 	Params
 	rng *rand.Rand
 
 	pheromones [][][]float64
 }
 
-func Optimize(p Params, g graph.Graph, rng *rand.Rand, onImprovement func(shared.Improvement)) shared.OptimizationResult {
+func Optimize(p Params, g *graph.Graph, rng *rand.Rand, onImprovement func(shared.Improvement)) shared.OptimizationResult {
 	aco := new(p, g, rng)
 	result := shared.OptimizationResult{
 		BestMakespan: math.MaxFloat64,
@@ -37,7 +37,7 @@ func Optimize(p Params, g graph.Graph, rng *rand.Rand, onImprovement func(shared
 			ants[i] = a
 			evaluationCount++
 
-			if a.lk < bestCost && len(a.seq) == len(aco.Graph) {
+			if a.lk < bestCost && len(a.seq) == g.N {
 				route := aco.pathWithoutOrigin(a.seq)
 				delta := 0.0
 				if bestCost < math.MaxFloat64 {
@@ -81,16 +81,16 @@ func (aco *ACO) pathWithoutOrigin(seq []int) []int {
 	return path
 }
 
-func new(p Params, g graph.Graph, rng *rand.Rand) *ACO {
-	
-	pheromones := make([][][]float64, len(g))
-	for i := range len(g) {
-		pheromones[i] = make([][]float64, len(g))
-		for j := range len(g) {
-			pheromones[i][j] = make([]float64, len(g))
-			for k := range len(g) {
+func new(p Params, g *graph.Graph, rng *rand.Rand) *ACO {
+	n := g.N
+	pheromones := make([][][]float64, n)
+	for i := range n {
+		pheromones[i] = make([][]float64, n)
+		for j := range n {
+			pheromones[i][j] = make([]float64, n)
+			for k := range n {
 				if i != j && j != k && i != k {
-					pheromones[i][j][k] = 1.0 // Valor inicial
+					pheromones[i][j][k] = 1.0
 				}
 			}
 		}

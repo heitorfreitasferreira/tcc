@@ -6,8 +6,8 @@ import (
 	"tcc/shared"
 )
 
-func Optimize(g graph.Graph, onImprovement func(shared.Improvement)) shared.OptimizationResult {
-	n := len(g)
+func Optimize(g *graph.Graph, onImprovement func(shared.Improvement)) shared.OptimizationResult {
+	n := g.N
 
 	cost := reduce3Dto2D(g, n)
 
@@ -36,7 +36,7 @@ func Optimize(g graph.Graph, onImprovement func(shared.Improvement)) shared.Opti
 	}
 }
 
-func reduce3Dto2D(g graph.Graph, n int) [][]float64 {
+func reduce3Dto2D(g *graph.Graph, n int) [][]float64 {
 	cost := make([][]float64, n)
 	for j := range n {
 		cost[j] = make([]float64, n)
@@ -47,8 +47,8 @@ func reduce3Dto2D(g graph.Graph, n int) [][]float64 {
 			}
 			minCost := math.Inf(1)
 			for i := range n {
-				if g[i][j][k] < minCost {
-					minCost = g[i][j][k]
+				if g.At(i, j, k) < minCost {
+					minCost = g.At(i, j, k)
 				}
 			}
 			cost[j][k] = minCost

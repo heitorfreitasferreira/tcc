@@ -12,7 +12,6 @@ type ant struct {
 }
 
 func (aco *ACO) updatePheromones(ants []ant) {
-	// Evaporação
 	for i := range aco.pheromones {
 		for j := range aco.pheromones[i] {
 			for k := range aco.pheromones[i][j] {
@@ -24,7 +23,6 @@ func (aco *ACO) updatePheromones(ants []ant) {
 		}
 	}
 
-	// Depósito por formigas (estilo Ant System — todas depositam)
 	for _, ant := range ants {
 		if ant.lk == 0 {
 			continue
@@ -40,17 +38,16 @@ func (aco *ACO) updatePheromones(ants []ant) {
 }
 
 func (aco *ACO) selectNextNode(prev, curr int, visited []bool) int {
-	probabilities := make([]float64, len(aco.Graph))
+	n := aco.Graph.N
+	probabilities := make([]float64, n)
 	total := 0.0
 
-	// Construindo as probs
-	for next := range aco.Graph[prev][curr] {
+	for next := 0; next < n; next++ {
 		if visited[next] || next == prev || next == curr {
 			continue
 		}
 
-		// η = 1/custo (heurística)
-		heuristic := 1.0 / aco.Graph[prev][curr][next]
+		heuristic := 1.0 / aco.Graph.At(prev, curr, next)
 		prob := math.Pow(aco.pheromones[prev][curr][next], aco.Alpha) *
 			math.Pow(heuristic, aco.Beta)
 
@@ -61,19 +58,18 @@ func (aco *ACO) selectNextNode(prev, curr int, visited []bool) int {
 	if total == 0 {
 		bestNext := -1
 		bestCost := math.MaxFloat64
-		for next := range aco.Graph[prev][curr] {
+		for next := 0; next < n; next++ {
 			if visited[next] || next == prev || next == curr {
 				continue
 			}
-			if aco.Graph[prev][curr][next] < bestCost {
-				bestCost = aco.Graph[prev][curr][next]
+			if aco.Graph.At(prev, curr, next) < bestCost {
+				bestCost = aco.Graph.At(prev, curr, next)
 				bestNext = next
 			}
 		}
 		return bestNext
 	}
 
-	// Roleta
 	cutoff := aco.rng.Float64() * total
 	sum := 0.0
 	for next, prob := range probabilities {
@@ -85,7 +81,7 @@ func (aco *ACO) selectNextNode(prev, curr int, visited []bool) int {
 }
 
 func (aco *ACO) walk() ant {
-	n := len(aco.Graph)
+	n := aco.Graph.N
 	ant := ant{
 		seq:     make([]int, 0, n),
 		visited: make([]bool, n),
