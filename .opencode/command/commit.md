@@ -21,7 +21,8 @@ Se não há nada a commitar, encerra com "Nada a commitar."
 
 ### 2. Analisar e agrupar mudanças
 
-Use `git diff` e `git diff --cached` para ler o conteúdo completo das mudanças.
+Use `git diff`, `git diff --cached` e `git ls-files --others --exclude-standard`
+para ler o conteúdo completo das mudanças (incluindo arquivos não trackeados).
 Identifique grupos lógicos atômicos baseados nos arquivos alterados:
 
 - Mudanças no mesmo pacote/diretório → mesmo commit
@@ -50,8 +51,6 @@ Commit 1: feat(graph): descrição
 
 Commit 2: fix(aco): descrição
   src/optimization/aco/ant.go  +3 -8
-
-Confirmar? [SIM/NAO/EDITAR]
 ```
 
 Use a toolcall `question` com:
@@ -61,11 +60,18 @@ Use a toolcall `question` com:
 
 ### 4. SIM
 
-Para cada commit:
+Para cada commit, na ordem definida:
 ```bash
 git add <arquivos>
 git commit -m "<tipo>(<escopo>): <descrição>"
 ```
+
+Se um commit falhar (ex.: gancho de pre-commit rejeita), pare imediatamente
+e mostre ao usuário o comando de rollback:
+```bash
+git reset --soft HEAD~<N>
+```
+onde N é o número de commits já executados. Não prossiga automaticamente.
 
 ### 5. NAO
 

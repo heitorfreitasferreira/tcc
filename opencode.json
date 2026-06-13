@@ -100,7 +100,7 @@
         },
         "revisar": {
             "template": "{file:.opencode/command/revisar.md}",
-            "description": "Revisa texto da monografia com stop-slop",
+            "description": "Revisa texto da monografia com stop-slop"
         }
     }
 }

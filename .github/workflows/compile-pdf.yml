@@ -67,20 +67,26 @@ jobs:
             -o /tmp/semantic-release
           chmod +x /tmp/semantic-release
 
+          echo "0.0.0" > /tmp/monografia-version
+
           /tmp/semantic-release \
             --token "${{ secrets.GITHUB_TOKEN }}" \
             --tag-prefix monografia-v \
             --allow-initial-development-versions \
             --force-bump-patch-version \
-            2>&1 | tee /tmp/semrel-output
+            --update-file /tmp/monografia-version \
+            2>&1 || true
 
-          TAG=$(grep -oP 'monografia-v\d+\.\d+\.\d+' /tmp/semrel-output | head -1)
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          VERSION=$(cat /tmp/monografia-version)
+          if echo "$VERSION" | grep -qP '^\d+\.\d+\.\d+$' && [ "$VERSION" != "0.0.0" ]; then
+            echo "tag=monografia-v$VERSION" >> "$GITHUB_OUTPUT"
+          fi
 
       - uses: actions/download-artifact@v7
         if: steps.semver.outputs.tag != ''
         with:
           name: monografia
+          path: .
 
       - name: Upload PDF to release
         if: steps.semver.outputs.tag != ''
