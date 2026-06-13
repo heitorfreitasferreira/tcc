@@ -18,23 +18,12 @@ func TestTensorIndexing(t *testing.T) {
 	route := []int{1, 2} // 0 → 1 → 2 → 0
 	got := g.Makespan(route)
 
-	// If the tensor followed the monograph semantics G[prev][curr][next]:
-	//   step1 (0→1): d(0,1) + turn(none→0→1)          = 1 + 0      = 1
-	//   step2 (1→2): d(1,2) + turn(0→1, 1→2)           = √2 + 0.75 ≈ 2.16421356
-	//   step3 (2→0): d(2,0) + turn(1→2, 2→0)           = 1 + 0.75  = 1.75
-	//   total                                          ≈ 4.91421356
-
 	d01 := 1.0
 	d12 := math.Sqrt(2)
 	d20 := 1.0
 	turn135 := 0.75 // 3π/4 / π
 	correctExpected := d01 + d12 + turn135 + d20 + turn135
 
-	// If the creater stores [current][next][prev] but Makespan reads [prev][curr][next]:
-	//   step1: g[0][0][1] = penalty[0][0][1] = d(0,0) + turn(1→0, 0→0) = 0
-	//   step2: g[0][1][2] = penalty[0][1][2] = d(0,1) + turn(2→0, 0→1) ≈ 1 + 0.5          = 1.5
-	//   step3: g[1][2][0] = penalty[1][2][0] = d(1,2) + turn(0→1, 1→2) = √2 + 0.75        ≈ 2.16421356
-	//   total                                                                              ≈ 3.66421356
 	buggyExpected := 0.0 + 1.5 + d12 + turn135
 
 	t.Logf("=== Tensor Indexing Validation ===")
@@ -75,13 +64,8 @@ func TestTensorCellSemantics(t *testing.T) {
 	}
 	g := New(pts)
 
-	// Semantic test: G[prev=0][curr=1][next=2] should be
-	// d(curr=1, next=2) + turnCost(prev→curr, curr→next)
-	// = d(1,2) + turnCost(0→1, 1→2)
-	// = √2 + 0.75 ≈ 2.16421356
-
 	expected := math.Sqrt(2) + 0.75
-	got := g[0][1][2]
+	got := g.At(0, 1, 2)
 
 	epsilon := 1e-9
 	if math.Abs(got-expected) < epsilon {

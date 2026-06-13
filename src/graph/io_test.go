@@ -10,15 +10,9 @@ import (
 func TestSaveSkipsExistingFiles(t *testing.T) {
 	folder := t.TempDir()
 
-	graphs := []Graph{
-		{
-			{{1}, {2}},
-			{{3}, {4}},
-		},
-		{
-			{{5}, {6}},
-			{{7}, {8}},
-		},
+	graphs := []*Graph{
+		{N: 2, Data: []float64{1, 2, 3, 4, 5, 6, 7, 8}},
+		{N: 2, Data: []float64{5, 6, 7, 8, 9, 10, 11, 12}},
 	}
 
 	first, err := Save(graphs, folder)
@@ -35,15 +29,9 @@ func TestSaveSkipsExistingFiles(t *testing.T) {
 		t.Fatalf("read original file: %v", err)
 	}
 
-	updatedGraphs := []Graph{
-		{
-			{{9}, {10}},
-			{{11}, {12}},
-		},
-		{
-			{{13}, {14}},
-			{{15}, {16}},
-		},
+	updatedGraphs := []*Graph{
+		{N: 2, Data: []float64{9, 10, 11, 12, 13, 14, 15, 16}},
+		{N: 2, Data: []float64{13, 14, 15, 16, 17, 18, 19, 20}},
 	}
 
 	second, err := Save(updatedGraphs, folder)
