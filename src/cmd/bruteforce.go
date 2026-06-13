@@ -1,12 +1,11 @@
-/*
-Copyright © 2025 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
 	"fmt"
+	"runtime"
 	"tcc/graph"
 	"tcc/optimization/brute"
+	"tcc/shared"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -27,7 +26,25 @@ var bruteforceCmd = &cobra.Command{
 			return fmt.Errorf("get --seed: %w", err)
 		}
 
-		run, skip, err := prepareOptimizeRun(cmd, "bruteforce", instance, seed, map[string]any{})
+		parallel, err := cmd.Flags().GetBool("parallel")
+		if err != nil {
+			return fmt.Errorf("get --parallel: %w", err)
+		}
+
+		workers := 0
+		if parallel {
+			workers, err = cmd.Flags().GetInt("workers")
+			if err != nil {
+				return fmt.Errorf("get --workers: %w", err)
+			}
+		}
+
+		params := map[string]any{"parallel": parallel}
+		if parallel {
+			params["workers"] = workers
+		}
+
+		run, skip, err := prepareOptimizeRun(cmd, "bruteforce", instance, seed, params)
 		if err != nil {
 			return err
 		}
@@ -43,7 +60,18 @@ var bruteforceCmd = &cobra.Command{
 		loadDuration := time.Since(loadStart)
 
 		optimizeStart := time.Now()
-		result := brute.Optimize(g, improvementLogger(cmd, run))
+		var result shared.OptimizationResult
+		if parallel {
+			if workers <= 0 {
+				workers = runtime.NumCPU()
+			}
+			if run.progress {
+				fmt.Fprintf(cmd.ErrOrStderr(), "parallel bruteforce using %d workers\n", workers)
+			}
+			result = brute.OptimizeParallel(g, workers, nil)
+		} else {
+			result = brute.Optimize(g, improvementLogger(cmd, run))
+		}
 		optimizeDuration := time.Since(optimizeStart)
 		optimizedAt := time.Now()
 
@@ -53,4 +81,6 @@ var bruteforceCmd = &cobra.Command{
 
 func init() {
 	optimizeCmd.AddCommand(bruteforceCmd)
+	bruteforceCmd.Flags().Bool("parallel", false, "Use parallel exhaustive search")
+	bruteforceCmd.Flags().Int("workers", 0, "Number of parallel workers (default: GOMAXPROCS)")
 }
