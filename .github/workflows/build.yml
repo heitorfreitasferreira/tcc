@@ -1,0 +1,103 @@
+name: Build Go binaries
+
+on:
+  push:
+    branches: [main, master]
+    tags:
+      - 'v*'
+    paths:
+      - 'src/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'src/**'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - target: linux
+            goos: linux
+            goarch: amd64
+            ext: ""
+          - target: windows
+            goos: windows
+            goarch: amd64
+            ext: .exe
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: src/go.mod
+          cache: true
+          cache-dependency-path: src/go.sum
+
+      - name: Derive version
+        id: version
+        run: echo "value=$(git describe --tags --always --dirty)" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        working-directory: src
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: 0
+        run: |
+          go build \
+            -ldflags="-s -w -X tcc/cmd.Version=${{ steps.version.outputs.value }}" \
+            -o tcc${{ matrix.ext }} .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: tcc-${{ matrix.target }}-${{ matrix.goarch }}
+          path: src/tcc${{ matrix.ext }}
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v7
+        with:
+          pattern: tcc-*-amd64
+          merge-multiple: true
+          path: artifacts
+
+      - name: Prepare release assets
+        run: |
+          ls -la artifacts/
+          cp artifacts/tcc       tcc-linux-amd64
+          cp artifacts/tcc.exe   tcc-windows-amd64.exe
+          sha256sum tcc-* > checksums.txt
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: tcc ${{ github.ref_name }}
+          body: |
+            Binários compilados automaticamente pelo CI.
+
+            | | |
+            |---|---|
+            | **Commit** | `${{ github.sha }}` |
+            | **Release** | `${{ github.ref_name }}` |
+            | **Workflow** | [#${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) |
+          files: |
+            tcc-linux-amd64
+            tcc-windows-amd64.exe
+            checksums.txt
+          make_latest: true
+          draft: false
+          prerelease: false

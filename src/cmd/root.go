@@ -7,10 +7,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var Version = "dev"
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:           "tcc",
 	Short:         "RTSP path finder using bio-inspired metaheuristics",
+	Version:       Version,
 	SilenceUsage:  true,
 	SilenceErrors: true,
 }
